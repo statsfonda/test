@@ -8,6 +8,8 @@ book:
   title: "Statistiques Fondamentales"
   author: "Simon Coste"
   date: today
+  repo-url: "https://github.com/statsfonda/site"
+  downloads: pdf
   chapters:
     - index.qmd
     - ch1.qmd
@@ -18,14 +20,19 @@ book:
     - ch6.qmd
     - ch7.qmd
     - references.qmd
+  sidebar:
+    style: docked
+    logo: "images/logoUP.png"
 
 bibliography: references.bib
 
 format:
   html:
+    mainfont: "Computer Modern Serif"
     theme:
       light: simplex
       dark: solar
+    css: styles.css
 
   pdf:
     documentclass: scrreport
