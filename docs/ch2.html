@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistiques Fondamentales - 3&nbsp; Estimation de paramètre</title>
+<title>Statistiques Fondamentales - 2&nbsp; Estimation de paramètre</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,10 +64,13 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -76,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -88,11 +91,16 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/logoUP.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistiques Fondamentales</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/statsfonda/site" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Statistiques-Fondamentales.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
     </div>
@@ -107,49 +115,49 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistiques mathématiques</span></span></a>
+ <span class="menu-text">Organisation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Test d’hypothèse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Test d’hypothèse</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Économétrie</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Économétrie</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -164,14 +172,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#précision-dun-estimateur" id="toc-précision-dun-estimateur" class="nav-link active" data-scroll-target="#précision-dun-estimateur"><span class="header-section-number">2.1</span> Précision d’un estimateur</a></li>
+  <li><a href="#normalité-asymptotique" id="toc-normalité-asymptotique" class="nav-link" data-scroll-target="#normalité-asymptotique"><span class="header-section-number">2.2</span> Normalité asymptotique</a></li>
+  <li><a href="#deux-outils-sur-la-normalité-asymptotique" id="toc-deux-outils-sur-la-normalité-asymptotique" class="nav-link" data-scroll-target="#deux-outils-sur-la-normalité-asymptotique"><span class="header-section-number">2.3</span> Deux outils sur la normalité asymptotique</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></h1>
 </div>
 
 
@@ -186,9 +202,57 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>nasitenate</p>
+<p>La plupart des expériences/modèles statistiques que nous rencontrerons dans ce cours, seront de nature paramétrique, autrement dit indexés par des parties de <span class="math inline">\(\mathbb{R}^d\)</span>. Dans de nombreux développements des statistiques, par exemple en estimation de densité, on travaille sur des modèles plus riches qui n’admettent pas de paramétrisation naturelle par une partie d’un espace euclidien de dimension finie. On parle pourtant de paramètre d’une distribution pour désigner ce qui devrait plutôt s’appeler une fonctionnelle. Par exemple, la moyenne, la covariance d’une distribution sur <span class="math inline">\(\mathbb{R}^d\)</span> sont des paramètres de cette distribution. Les quantiles, l’asymétrie, la kurtosis sont d’autres paramètres.</p>
+<section id="précision-dun-estimateur" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="précision-dun-estimateur"><span class="header-section-number">2.1</span> Précision d’un estimateur</h2>
+<p>On a fixé un modèle statistique <span class="math inline">\((\mathcal{X}, \mathscr{F}, (P_\theta))\)</span>, et l’on cherche à estimer <span class="math inline">\(\theta\)</span>.</p>
+<div id="def-biais" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 2.1 </strong></span>Le biais de <span class="math inline">\(\hat{\theta}\)</span> est la quantité <span class="math inline">\(\mathbb{E}_\theta[\hat\theta - \theta]\)</span>. L’estimateur est dit <em>sans biais</em> s’il est de biais nul.</p>
+</div>
+<div id="def-rq" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 2.2 </strong></span>Le risque quadratique de <span class="math inline">\(\hat\theta\)</span> est la quantité <span class="math inline">\(\mathbb{E}_{\theta}[ |\hat{\theta}- \theta|^2]\)</span>.</p>
+</div>
+<p>En pratique, on peut vouloir estimer non pas <span class="math inline">\(\theta\)</span> lui-même, mais un paramètre <span class="math inline">\(\psi = \psi_\theta\)</span> qui dépend de <span class="math inline">\(\theta\)</span>, comme <span class="math inline">\(\cos(\theta)\)</span> ou <span class="math inline">\(|\theta|\)</span> par exemple. Dans ce cas, si <span class="math inline">\(\hat{\psi}\)</span> est un estimateur de <span class="math inline">\(\psi\)</span> alors le biais est défini par <span class="math inline">\(\mathbb{E}_\theta[\hat{\psi} - \psi_\theta]\)</span> et le risque quadratique par <span class="math inline">\(\mathbb{E}_\theta [ |\psi^2 - \psi_\theta|^2]\)</span>.</p>
+<div id="thm-biaisvar" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 2.1 </strong></span><span class="math display">\[
+\mathbb{E}_{\theta} [|\hat{\theta}-\theta|^2]
+= \underbrace{\operatorname{Var}_{\theta} (\hat{\theta})}_{\text{variance}} +
+\underbrace{\left(\mathbb{E}_{\theta}[\hat{\theta}]-\theta \right)^2}_{\text{carré du biais}} \, .
+\]</span></p>
+</div>
+<p>La dépendance du risque quadratique vis à vis de la taille de l’échantillon est une question importante en statistique mathématique. Elle concerne la vitesse d’estimation (pour une suite d’expériences donnée, quelles sont les meilleures vitesses envisageables, et comment les obtenir ?).</p>
+<p>Pour introduire la notion de consistance d’une suite d’estimateurs, nous aurons besoin des notions de convergence en probabilité et de convergence presque sûre.</p>
+<div id="def-cv" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 2.3 </strong></span>Une suite de variables aléatoires <span class="math inline">\(X_n\)</span> à valeurs dans <span class="math inline">\(\mathbb{R}^k\)</span> converge en probabilité vers une variable aléatoire <span class="math inline">\(X\)</span> à valeurs dans <span class="math inline">\(\mathbb{R}^k\)</span>, vivant sur cet espace probabilisé si et seulement si, pour tout <span class="math inline">\(\epsilon &gt;0\)</span> <span class="math display">\[
+\lim_{n\to\infty} \mathbb{P} (| X_n -X|&gt; \epsilon ) = 0 \, .
+\]</span></p>
+</div>
+<div id="def-consistance" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 2.4 (consistance d’un estimateur) </strong></span>Une suite d’estimateurs <span class="math inline">\((\widehat{\theta}_n)\)</span> est consistante pour l’estimation de <span class="math inline">\(\theta\)</span> lorsque pour n’importe quel <span class="math inline">\(\theta \in \Theta\)</span>, si <span class="math display">\[ \forall \varepsilon&gt;0, \qquad \lim_n     P_\theta ( | \widehat{\theta}_n-\theta| &gt; \varepsilon ) =0 \qquad\text{(convergence en probabilité).}
+\]</span> La suite est fortement consistante si pour n’importe quel <span class="math inline">\(\theta \in \Theta\)</span>, <span class="math display">\[
+\hat{\theta}_n \to \theta \quad P_\theta-\text{p.s.} \qquad\text{(convergence presque sûre).}
+\]</span></p>
+</div>
+</section>
+<section id="normalité-asymptotique" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="normalité-asymptotique"><span class="header-section-number">2.2</span> Normalité asymptotique</h2>
+<div id="def-normasymp" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 2.5 (normalité asymtotique) </strong></span>Soit <span class="math inline">\(\theta\)</span> un paramètre à estimer, et <span class="math inline">\(\hat{\theta}_n\)</span> une suite d’estimateurs de <span class="math inline">\(\theta\)</span>. On dit que ces estimateurs sont <em>asymptotiquement gaussiens</em> (ou <em>normaux</em>) si, après les avoir renormalisés convenablement, ils convergent en loi vers une loi gaussienne. Autrement dit, s’il existe une suite <span class="math inline">\(a_n\)</span> de nombres réels tels que <span class="math display">\[ a_n(\hat{\theta}_n - \theta) \xrightarrow[n\to \infty]{\text{loi}} N(0,\Sigma)\]</span> où <span class="math inline">\(\Sigma\)</span> est une matrice de covariance qui dépend peut-être de <span class="math inline">\(\theta\)</span> — pour éviter les cas dégénérés, on demande à ce que <span class="math inline">\(\Sigma\)</span> soit non-nulle.</p>
+</div>
+<p>La normalité asymptotique n’est pas intéressante en elle-même, l’idée est de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d’intervalle de confiance. Le théorème central limite indique que le comportement asymptotique normal est relativement fréquent.</p>
+</section>
+<section id="deux-outils-sur-la-normalité-asymptotique" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="deux-outils-sur-la-normalité-asymptotique"><span class="header-section-number">2.3</span> Deux outils sur la normalité asymptotique</h2>
+<div id="thm-slutsky" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 2.2 (Lemme de Slutsky) </strong></span>Soit <span class="math inline">\((X_n)\)</span> une suite de variables aléatoire qui converge en loi vers <span class="math inline">\(X\)</span> et <span class="math inline">\((Y_n)\)</span> une suite de variables aléatoires qui converge en probabilité (ou en loi) vers une constante <span class="math inline">\(c\)</span>. Alors, le <em>couple</em> <span class="math inline">\((X_n, Y_n)\)</span> converge en loi vers <span class="math inline">\((X,c)\)</span> ; autrement dit, pour toute fonction continue bornée <span class="math inline">\(\varphi\)</span>, <span class="math display">\[\mathbb{E}[\varphi(X_n, Y_n)] \to \mathbb{E}[\varphi(X,c)].\]</span></p>
+</div>
+<div id="thm-deltamethod" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 2.3 (Delta-méthode) </strong></span>Soit <span class="math inline">\((X_n)\)</span> une suite de variables aléatoires réelles telle que <span class="math inline">\(\sqrt{n}(X_n - \alpha)\)</span> converge en loi vers <span class="math inline">\(N(0,\sigma^2)\)</span>. Pour toute fonction <span class="math inline">\(g :&nbsp;\mathbb{R} \to \mathbb{R}\)</span> dérivable en <span class="math inline">\(\alpha\)</span> (de dérivée non nulle en <span class="math inline">\(\alpha\)</span>), on a <span class="math display">\[ \sqrt{n}(g(X_n) - g(\alpha)) \xrightarrow[n \to \infty]{\text{loi}} N(0, g'(\alpha)^2 \sigma^2).\]</span></p>
+</div>
+<p>Plus généralement, si les <span class="math inline">\(X_n\)</span> sont à valeurs dans <span class="math inline">\(\mathbb{R}^d\)</span> et que <span class="math inline">\(\sqrt{n}(X_n - \alpha) \to N(0,\Sigma)\)</span>, alors pour toute fonction <span class="math inline">\(g:\mathbb{R}^d \to \mathbb{R}^k\)</span> on a <span class="math display">\[ \sqrt{n}(g(X_n) - g(\alpha)) \xrightarrow[n \to \infty]{\text{loi}} N(0, Dg(\alpha)\Sigma Dg(\alpha)^\top)\]</span> où <span class="math inline">\(Dg(x)\)</span> est la matrice jacobienne de <span class="math inline">\(g\)</span> en <span class="math inline">\(x\)</span>.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -542,12 +606,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./ch1.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./ch3.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
