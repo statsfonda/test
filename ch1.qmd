@@ -18,7 +18,7 @@ référence \eqref{1}
 
 \begin{align}a&= b \\&\leq c \end{align}
 
-
+  nasutie na
 
 ::: {#thm-line}
 
