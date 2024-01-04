@@ -1,7 +1,0 @@
-# Foreword {.unnumbered}
-
-[test](/images/20-410.pdf)
-
-I've always felt that something was off with existing approaches
-to geospatial data science in other programming languages.
-I remember sitting in the beautiful

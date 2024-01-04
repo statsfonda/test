@@ -1,60 +1,22 @@
-# Welcome {.unnumbered}
+# Statistiques mathématiques
 
-*Geospatial Data Science with Julia* presents a fresh
-approach to data science with geospatial data and the
+Bienvenue sur la page du cours de Statistiques Fondamentales (STF8) du master Mathématiques Fondamentales et Appliquées de l'Université Paris-Cité. 
 
-It contains best practices for writing *clean*, *readable*
-and *performant* code in geoscientific applications
-involving sophisticated representations of the (sub)surface
-of the Earth such as unstructured meshes made of 2D and
-3D geometries.
+Les notes de cours sont accessibles à tous. De nombreux auteurs s'y sont succédés ; je suis le dernier en date, mais les versions précédentes ont été travaillées par Clément Levrard, Stéphane Boucheron, Pierre Youssef (et d'autres). 
 
-By reading this book, you will:
+## Organisation {.unnumbered}
 
-1. Get a broader perspective on geospatial data
-2. Learn advanced geostatistical algorithms
-3. Reproduce practical **open source** examples
+- Les CM ont lieu les jeudi à (8h30 - 10h30), et les vendredi (10h45 - 12h45) **sauf le premier cours qui a lieu lundi 8 janvier à 10h45-12h45**. 
+- Les TD ont lieu lundi (13h45 - 16h45) et vendredi (13h30 - 15h30), de lundi 8 janvier à vendredi 16 février. 
+- Il y aura deux contrôles de 2h, le vendredi 26 janvier et lundi 12 février. 
+- L'examen a lieu le 1er mars de 13h30 à 16h30. 
+- Il y aura une interro de 5 minutes chaque semaine le jeudi. 
 
-Most importantly, you will learn a set of geospatial features
-that is much richer than the
-[simple features](https://en.wikipedia.org/wiki/Simple_Features)
-implemented in traditional geographic information systems (GIS).
+## Utiliser ce site
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+Chaque chapitre de ce livre contient une page dédiée au cours théorique, une page dédiée à quelques exemples, et une feuille d'exercices. 
 
-## How to contribute?
+La saveur du cours est essentiellement mathématique et nous n'aurons pas de TP d'info ; cependant, je vous recommande vraiment d'essayer d'appliquer tout ça via votre langage de programmation favori, c'est-à-dire ~~Python~~ ~~R~~ ~~SAS~~ ~~C++~~ Julia. J'essaierai autant que possible de fournir des mini-jeux de données avec des petits challenges pour appliquer ce que vous apprenez en cours. 
 
-First off, thank you for considering contributing to this book.
-It's people like you that make this project so much fun. Below
-are a few suggestions to facilitate the review process:
+Ces notes sont mises en lignes et totalement accessibles via [Quarto](https://quarto.org). Si vous savez comment utiliser `git`, n'hésitez pas à corriger toutes les erreurs que vous pourriez voir (et Dieu sait qu'elles seront nombreuses) via des pull requests. 
 
-- Please be polite, we are here to help and learn from each other
-- Try to explain your contribution with simple language
-- References to textbooks and papers are always welcome
-- Follow the code style in the examples as much as possible
-
-This book is [open source](https://github.com/juliohm/geospatial-data-science-with-julia)
-and fully reproducible thanks to the amazing
-[Quarto](https://quarto.org) project. You can edit the pages
-directly on GitHub and submit a pull request for review.
-If you are not familiar with this process, consider reading
-the [first contributions](https://github.com/firstcontributions/first-contributions) guide.
-
-Alternatively, you can render the book locally with the
-[Quarto VS Code Extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto),
-which is the recommended method for reviewing more elaborate changes.
-
-## Getting involved
-
-If you would like to get involved with the project, you can start by
-
-- Citing the work in publications:
-  ```bibtex
-  @book{Hoffimann2023,
-    title = {Geospatial Data Science with {{Julia}}},
-    author = {Hoffimann, Júlio},
-    year = {2023},
-    doi = {10.5281/zenodo.10150870},
-    url = {https://juliaearth.github.io/geospatial-data-science-with-julia}
-  }
-  ```

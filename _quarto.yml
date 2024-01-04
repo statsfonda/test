@@ -5,18 +5,18 @@ project:
 lang: fr
 
 book:
-  title: "STF8"
+  title: "Statistiques Fondamentales"
   author: "Simon Coste"
   date: today
   chapters:
     - index.qmd
-    - foreword.qmd
-    - part: "Part I: Foundations"
-      chapters:
-        - ch1.qmd
-    - part: "Part II: Transforms"
-      chapters:
-        - ch2.qmd
+    - ch1.qmd
+    - ch2.qmd
+    - ch3.qmd
+    - ch4.qmd
+    - ch5.qmd 
+    - ch6.qmd
+    - ch7.qmd
     - references.qmd
 
 bibliography: references.bib
@@ -24,11 +24,8 @@ bibliography: references.bib
 format:
   html:
     theme:
-      light: litera
+      light: simplex
       dark: solar
-    mermaid:
-      theme: dark
-    css: styles.css
 
   pdf:
     documentclass: scrreport

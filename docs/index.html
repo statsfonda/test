@@ -8,7 +8,7 @@
 
 <meta name="author" content="Simon Coste">
 
-<title>STF8</title>
+<title>Statistiques Fondamentales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,7 +31,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./foreword.html" rel="next">
+<link href="./ch1.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -99,7 +65,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -111,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistiques mathématiques</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -126,7 +91,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">STF8</a> 
+      <a href="./">Statistiques Fondamentales</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
@@ -142,53 +107,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Welcome</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistiques mathématiques</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./foreword.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Foreword</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Part I: Foundations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Basculer la section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./ch1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Zob</span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Part II: Transforms</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Basculer la section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">chapitre 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></span></a>
   </div>
 </li>
-      </ul>
-  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Test d’hypothèse</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Économétrie</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">refs</span></span></a>
+ <span class="menu-text">Et après ?</span></a>
   </div>
 </li>
     </ul>
@@ -201,10 +168,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <li><a href="#statistiques-mathématiques" id="toc-statistiques-mathématiques" class="nav-link active" data-scroll-target="#statistiques-mathématiques"><span class="header-section-number">1</span> Statistiques mathématiques</a>
   <ul class="collapse">
-  <li><a href="#how-to-contribute" id="toc-how-to-contribute" class="nav-link" data-scroll-target="#how-to-contribute">How to contribute?</a></li>
-  <li><a href="#getting-involved" id="toc-getting-involved" class="nav-link" data-scroll-target="#getting-involved">Getting involved</a></li>
+  <li><a href="#organisation" id="toc-organisation" class="nav-link" data-scroll-target="#organisation">Organisation</a></li>
+  <li><a href="#utiliser-ce-site" id="toc-utiliser-ce-site" class="nav-link" data-scroll-target="#utiliser-ce-site"><span class="header-section-number">1.1</span> Utiliser ce site</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -214,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">STF8</h1>
+<h1 class="title">Statistiques Fondamentales</h1>
 </div>
 
 
@@ -241,43 +208,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome</h1>
-<p><em>Geospatial Data Science with Julia</em> presents a fresh approach to data science with geospatial data and the</p>
-<p>It contains best practices for writing <em>clean</em>, <em>readable</em> and <em>performant</em> code in geoscientific applications involving sophisticated representations of the (sub)surface of the Earth such as unstructured meshes made of 2D and 3D geometries.</p>
-<p>By reading this book, you will:</p>
-<ol type="1">
-<li>Get a broader perspective on geospatial data</li>
-<li>Learn advanced geostatistical algorithms</li>
-<li>Reproduce practical <strong>open source</strong> examples</li>
-</ol>
-<p>Most importantly, you will learn a set of geospatial features that is much richer than the <a href="https://en.wikipedia.org/wiki/Simple_Features">simple features</a> implemented in traditional geographic information systems (GIS).</p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</p>
-<section id="how-to-contribute" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-contribute">How to contribute?</h2>
-<p>First off, thank you for considering contributing to this book. It’s people like you that make this project so much fun. Below are a few suggestions to facilitate the review process:</p>
+<section id="statistiques-mathématiques" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Statistiques mathématiques</h1>
+<p>Bienvenue sur la page du cours de Statistiques Fondamentales (STF8) du master Mathématiques Fondamentales et Appliquées de l’Université Paris-Cité.</p>
+<p>Les notes de cours sont accessibles à tous. De nombreux auteurs s’y sont succédés ; je suis le dernier en date, mais les versions précédentes ont été travaillées par Clément Levrard, Stéphane Boucheron, Pierre Youssef (et d’autres).</p>
+<section id="organisation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="organisation">Organisation</h2>
 <ul>
-<li>Please be polite, we are here to help and learn from each other</li>
-<li>Try to explain your contribution with simple language</li>
-<li>References to textbooks and papers are always welcome</li>
-<li>Follow the code style in the examples as much as possible</li>
+<li>Les CM&nbsp;ont lieu les jeudi à (8h30 - 10h30), et les vendredi (10h45 - 12h45) <strong>sauf le premier cours qui a lieu lundi 8 janvier à 10h45-12h45</strong>.</li>
+<li>Les TD&nbsp;ont lieu lundi (13h45 - 16h45) et vendredi (13h30 - 15h30), de lundi 8 janvier à vendredi 16 février.</li>
+<li>Il y aura deux contrôles de 2h, le vendredi 26 janvier et lundi 12 février.</li>
+<li>L’examen a lieu le 1er mars de 13h30 à 16h30.</li>
+<li>Il y aura une interro de 5 minutes chaque semaine le jeudi.</li>
 </ul>
-<p>This book is <a href="https://github.com/juliohm/geospatial-data-science-with-julia">open source</a> and fully reproducible thanks to the amazing <a href="https://quarto.org">Quarto</a> project. You can edit the pages directly on GitHub and submit a pull request for review. If you are not familiar with this process, consider reading the <a href="https://github.com/firstcontributions/first-contributions">first contributions</a> guide.</p>
-<p>Alternatively, you can render the book locally with the <a href="https://marketplace.visualstudio.com/items?itemName=quarto.quarto">Quarto VS Code Extension</a>, which is the recommended method for reviewing more elaborate changes.</p>
 </section>
-<section id="getting-involved" class="level2">
-<h2 class="anchored" data-anchor-id="getting-involved">Getting involved</h2>
-<p>If you would like to get involved with the project, you can start by</p>
-<ul>
-<li><p>Citing the work in publications:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@book</span>{<span class="ot">Hoffimann2023</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {Geospatial Data Science with {{Julia}}},</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Hoffimann, Júlio},</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2023},</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">doi</span> = {10.5281/zenodo.10150870},</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://juliaearth.github.io/geospatial-data-science-with-julia}</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
+<section id="utiliser-ce-site" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="utiliser-ce-site"><span class="header-section-number">1.1</span> Utiliser ce site</h2>
+<p>Chaque chapitre de ce livre contient une page dédiée au cours théorique, une page dédiée à quelques exemples, et une feuille d’exercices.</p>
+<p>La saveur du cours est essentiellement mathématique et nous n’aurons pas de TP d’info ; cependant, je vous recommande vraiment d’essayer d’appliquer tout ça via votre langage de programmation favori, c’est-à-dire <del>Python</del> <del>R</del> <del>SAS</del> <del>C++</del> Julia. J’essaierai autant que possible de fournir des mini-jeux de données avec des petits challenges pour appliquer ce que vous apprenez en cours.</p>
+<p>Ces notes sont mises en lignes et totalement accessibles via <a href="https://quarto.org">Quarto</a>. Si vous savez comment utiliser <code>git</code>, n’hésitez pas à corriger toutes les erreurs que vous pourriez voir (et Dieu sait qu’elles seront nombreuses) via des pull requests.</p>
 
 
 </section>
@@ -636,8 +585,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./foreword.html" class="pagination-link">
-        <span class="nav-page-text">Foreword</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch1.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
