@@ -1,0 +1,58 @@
+# Zob {.unnumbered}
+beauienatuie
+
+on va avoir besoin d'un $(\Omega, \mathcal{F}, \mathbb{P})$
+
+test
+
+$$\mathfrak{F} aenasite a\lim_{t\to\infty}$${#eq-1}
+
+\begin{equation}
+AX = B
+\end{equation}{#eq-1}
+
+référence \eqref{1}
+
+\begin{equation*}test
+\end{equation*}
+
+\begin{align}a&= b \\&\leq c \end{align}
+
+
+
+::: {#thm-line}
+
+## Line
+
+The equation of any straight line, called a linear equation, can be written as:
+
+$$
+y = mx + b
+$$
+:::
+
+See @thm-line.
+
+:::{#def-estimateur} 
+
+## estimateur convergent
+aniesaie ae advanced
+:::
+
+:::{#prp-pr} 
+
+test 
+
+:::
+
+
+::: {#thm-line2}
+
+## Line2
+
+The equation of any straight line, called a linear equation, can be written as:
+
+$$
+y = mx + b
+$$
+:::

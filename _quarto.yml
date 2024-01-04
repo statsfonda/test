@@ -1,0 +1,36 @@
+project:
+  type: book
+  output-dir: docs
+
+lang: fr
+
+book:
+  title: "STF8"
+  author: "Simon Coste"
+  date: today
+  chapters:
+    - index.qmd
+    - foreword.qmd
+    - part: "Part I: Foundations"
+      chapters:
+        - ch1.qmd
+    - part: "Part II: Transforms"
+      chapters:
+        - ch2.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      light: litera
+      dark: solar
+    mermaid:
+      theme: dark
+    css: styles.css
+
+  pdf:
+    documentclass: scrreport
+
+jupyter: julia-1.9

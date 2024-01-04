@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "STF8",
+    "section": "",
+    "text": "Welcome\nGeospatial Data Science with Julia presents a fresh approach to data science with geospatial data and the\nIt contains best practices for writing clean, readable and performant code in geoscientific applications involving sophisticated representations of the (sub)surface of the Earth such as unstructured meshes made of 2D and 3D geometries.\nBy reading this book, you will:\nMost importantly, you will learn a set of geospatial features that is much richer than the simple features implemented in traditional geographic information systems (GIS).\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License."
+  },
+  {
+    "objectID": "index.html#how-to-contribute",
+    "href": "index.html#how-to-contribute",
+    "title": "STF8",
+    "section": "How to contribute?",
+    "text": "How to contribute?\nFirst off, thank you for considering contributing to this book. It’s people like you that make this project so much fun. Below are a few suggestions to facilitate the review process:\n\nPlease be polite, we are here to help and learn from each other\nTry to explain your contribution with simple language\nReferences to textbooks and papers are always welcome\nFollow the code style in the examples as much as possible\n\nThis book is open source and fully reproducible thanks to the amazing Quarto project. You can edit the pages directly on GitHub and submit a pull request for review. If you are not familiar with this process, consider reading the first contributions guide.\nAlternatively, you can render the book locally with the Quarto VS Code Extension, which is the recommended method for reviewing more elaborate changes."
+  },
+  {
+    "objectID": "index.html#getting-involved",
+    "href": "index.html#getting-involved",
+    "title": "STF8",
+    "section": "Getting involved",
+    "text": "Getting involved\nIf you would like to get involved with the project, you can start by\n\nCiting the work in publications:\n@book{Hoffimann2023,\n  title = {Geospatial Data Science with {{Julia}}},\n  author = {Hoffimann, Júlio},\n  year = {2023},\n  doi = {10.5281/zenodo.10150870},\n  url = {https://juliaearth.github.io/geospatial-data-science-with-julia}\n}"
+  },
+  {
+    "objectID": "foreword.html",
+    "href": "foreword.html",
+    "title": "Foreword",
+    "section": "",
+    "text": "test\nI’ve always felt that something was off with existing approaches to geospatial data science in other programming languages. I remember sitting in the beautiful"
+  },
+  {
+    "objectID": "ch1.html",
+    "href": "ch1.html",
+    "title": "Zob",
+    "section": "",
+    "text": "beauienatuie\non va avoir besoin d’un \\((\\Omega, \\mathcal{F}, \\mathbb{P})\\)\ntest\n\\[\\mathfrak{F} aenasite a\\lim_{t\\to\\infty} \\tag{1}\\]\n\\[\\begin{equation}\nAX = B\n\\end{equation}\\]{#eq-1}\nréférence \\(\\eqref{1}\\)\n\\[\\begin{equation*}test\n\\end{equation*}\\]\n\\[\\begin{align}a&= b \\\\&\\leq c \\end{align}\\]\n\nThéorème 1 (Line) The equation of any straight line, called a linear equation, can be written as:\n\\[\ny = mx + b\n\\]\n\nSee Théorème 1.\n\nDéfinition 1 (estimateur convergent) aniesaie ae advanced\n\n\nProposition 1 test\n\n\nThéorème 2 (Line2) The equation of any straight line, called a linear equation, can be written as:\n\\[\ny = mx + b\n\\]"
+  },
+  {
+    "objectID": "ch2.html",
+    "href": "ch2.html",
+    "title": "2  chapitre 2",
+    "section": "",
+    "text": "nasitenate"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "3  refs",
+    "section": "",
+    "text": "nasuitenasute"
+  }
+]
