@@ -5,16 +5,16 @@ La plupart des expériences/modèles statistiques que nous rencontrerons dans ce
 
 ## Précision d'un estimateur
 
+On a fixé un modèle statistique $(\mathcal{X}, \mathscr{F}, (P_\theta))$, et l'on cherche à estimer $\theta$. 
+
+
+
 :::{#def-biais}
-Soit $\theta$ un paramètre à estimer et $\hat\theta$  un
-estimateur. On appelle *biais* (ou biais moyen) sous la loi $P$ de l'estimateur
-$\hat{\theta}$,  la quantité
-$$
-\mathbb{E}_{P}\left[ \hat{\theta}- \theta\right] \, .
-$$
-C'est l'écart entre la valeur moyenne de $\hat{\theta}$ et la valeur
-visée $\theta.$ L'estimateur est dit *sans biais* s'il est de biais nul.
+Le biais de $\hat{\theta}$ est la quantité $\mathbb{E}_\theta[\hat\theta - \theta]$. 
+L'estimateur est dit *sans biais* s'il est de biais nul.
 :::
+
+
 
 \begin{example}
 Si on se place dans le modèle binomial et qu'on cherche à estimer la probabilité de succès $\theta$, la fréquence empirique des succès est un estimateur sans biais de $\theta$  (la fréquence empirique d'un événement est toujours un estimateur sans biais de la probabilité de cet événement).
@@ -27,74 +27,56 @@ En revanche, on peut vérifier qu'il n'existe pas d'estimateur sans biais de $1/
 Si $\psi(P)$ désigne la variance de la loi $P$  sur $\mathbb{R}$, la variance empirique $S^2$ définie plus haut
 est un estimateur biaisé  de $\psi(P)$:
 \[
-\mathbb{E}_P\left[ S^2 \right] =  \frac{n-1}{n} \mathbb{E}_P \left[\left(X - \mathbb{E}_P X\right)^2\right] \, .
+\mathbb{E}_P[ S^2 ] =  \frac{n-1}{n} \mathbb{E}_P \left[\left(X - \mathbb{E}_P X\right)^2\right] \, .
 \]
 \end{example}
 
 :::{#def-rq}
-Soit $\theta$ une paramètre à estimer et $\hat{\theta}$  un
-estimateur. On appelle {écart quadratique moyen}  sous la loi $P$ de l'estimateur
-$\hat{\theta}$ la quantité
-$$
-\mathbb{E}_{P}\left[ |\hat{\theta}- \theta|^2\right]$$
-
+Le risque quadratique de $\hat\theta$ est la quantité $\mathbb{E}_{\theta}[ |\hat{\theta}- \theta|^2]$. 
 :::
+
+En pratique, on peut vouloir estimer non pas $\theta$ lui-même, mais un paramètre $\psi = \psi_\theta$ qui dépend de $\theta$, comme $\cos(\theta)$ ou $|\theta|$ par exemple. Dans ce cas, si $\hat{\psi}$ est un estimateur de $\psi$ alors le biais est défini par $\mathbb{E}_\theta[\hat{\psi} - \psi_\theta]$ et le risque quadratique par $\mathbb{E}_\theta [ |\psi^2 - \psi_\theta|^2]$. 
+
 
 \begin{example}
 Dans le cas du problème jouet, le risque quadratique de l'estimateur $\overline{X}_n$ de $\theta$ n'est autre que la variance de l'estimateur: \[
 \mathbb{E}_{\theta} \left[\left(\overline{X}_n - \theta\right)^2\right] =  \frac{\theta(1- \theta )}{n} \, .
 \]
 \end{example}
-La décomposition biais-variance du risque quadratique est une relation pythagoricienne.
+
+:::{#thm-biaisvar}
 $$
-\mathbb{E}_{P} \left[|\hat{\theta}-\theta|^2\right]
-= \underbrace{\operatorname{Var}_{P} [\hat{\theta}]}_{\text{variance}} +
-\underbrace{\left(\mathbb{E}_{P}[\hat{\theta}]-\theta \right)^2}_{\text{carré du biais}} \, .
+\mathbb{E}_{\theta} [|\hat{\theta}-\theta|^2]
+= \underbrace{\operatorname{Var}_{\theta} (\hat{\theta})}_{\text{variance}} +
+\underbrace{\left(\mathbb{E}_{\theta}[\hat{\theta}]-\theta \right)^2}_{\text{carré du biais}} \, .
 $$
+:::
 La dépendance du risque  quadratique vis à vis de la taille de l'échantillon est une question importante en statistique mathématique. Elle concerne la vitesse d'estimation (pour une suite d'expériences donnée, quelles sont les meilleures vitesses envisageables, et comment les obtenir ?).
 
 Pour introduire la notion de consistance d'une suite d'estimateurs,  nous aurons besoin des notions de convergence en probabilité et de convergence presque sûre.
 
 :::{#def-cv}
 Une suite de variables aléatoires $X_n$ à valeurs dans
-$\mathbb{R}^k$, vivant sur un espace probabilisé
-$(\Omega,\mathcal{F},\mathbb{P})$  converge en probabilité vers une
+$\mathbb{R}^k$ converge en probabilité vers une
 variable aléatoire $X$ à valeurs dans
 $\mathbb{R}^k$, vivant sur cet espace probabilisé si et seulement
 si, pour tout $\epsilon >0$
 $$
-\lim_n \mathbb{P} \{ | X_n -X|> \epsilon \} = 0 \, .
+\lim_{n\to\infty} \mathbb{P} (| X_n -X|> \epsilon ) = 0 \, .
 $$
 :::
 
 :::{#def-consistance}
-Dans une suite d'expériences statistiques échantillonnées,
-une suite d'estimateurs $(\widehat{\theta}_n)$ est consistante (pour l'estimation de $\theta$)
-si $$
-\forall \theta \in \Theta, \forall \epsilon>0, \qquad \lim_n     P^{\otimes n}_ \theta \left\{ \| \widehat{\theta}-\theta\| > \epsilon \right\} =0 \qquad\text{(convergence en probabilité).}
+
+## consistance d'un estimateur
+Une suite d'estimateurs $(\widehat{\theta}_n)$ est consistante pour l'estimation de $\theta$ lorsque pour n'importe quel $\theta \in \Theta$, 
+si $$ \forall \varepsilon>0, \qquad \lim_n     P_\theta ( | \widehat{\theta}_n-\theta| > \varepsilon ) =0 \qquad\text{(convergence en probabilité).}
 $$
-La suite est fortement consistante si $$
-\forall \theta \in \Theta, \forall \epsilon>0, \qquad     P^{\otimes \mathbb{N}}_ \theta \left\{ \lim_n \| \widehat{\theta}-\theta\| =0 \right\} =1 \qquad\text{(convergence presque sûre).}
+La suite est fortement consistante si pour n'importe quel $\theta \in \Theta$, $$
+\hat{\theta}_n \to \theta \quad P_\theta-\text{p.s.} \qquad\text{(convergence presque sûre).}
 $$
 
 :::
-
-Pour notre problème jouet, la suite d'estimateurs $(\overline{X}_n)$ est fortement consistante pour l'estimation de $\theta$ (loi forte des grands nombres). On peut aussi vérifier que la suite $(\overline{X}_n/(1-\overline{X}_n))$ est fortement consistante pour l'estimation de $\theta/(1- \theta)$.
-
-Ces suites d'estimateurs répondent aux questions d'estimation ponctuelle. On peut toutefois se demander s'il s'agit des meilleures réponses possibles. On peut par exemple se demander s'il n'y a pas d'information inexploitée dans l'échantillon. On peut se rassurer en remarquant que pour tout $\theta$
-
-\begin{eqnarray*}
-P_ \theta\{ x_1, \ldots, x_n \} &=  & \theta^{n \overline{X}_n} (1- \theta)^{n(1-\overline{X}_n)} \\
-& = & \left(\frac{\theta}{1- \theta}\right)^{n \overline{X}_n} (1- \theta)^n  \\
-& = & \exp\left( n \overline{X}_n \log\left(\frac{\theta}{1- \theta  }\right) - n \log (1- \theta)\right)\, ,
-\end{eqnarray*}
-et que donc
-$$
-P_ \theta\{ x_1, \ldots, x_n \mid \overline{X}_n\} = \frac{\mathbb{I}_{n \overline{X}_n = \sum_{i=1}^n x_i}}{\binom{n}{n \overline{X}_n}}
-$$
-autrement dit que conditionnellement à $\overline{X}_n$, la probabilité de l'échantillon  ne dépend pas de $\theta$
-(est \og\ libre de $\theta$~\fg). Dans ce modèle jouet, $\overline{X}_n$  est une statistique suffisante ou exhaustive.
-
 
 
 
@@ -102,23 +84,35 @@ autrement dit que conditionnellement à $\overline{X}_n$, la probabilité de l'�
 
 ::: {#def-normasymp}
 
+## normalité asymtotique
+
 Soit $\theta$ un paramètre à estimer, et $\hat{\theta}_n$ une suite d'estimateurs de $\theta$. On dit que ces estimateurs sont *asymptotiquement gaussiens* (ou *normaux*) si, après les avoir renormalisés convenablement, ils convergent en loi vers une loi gaussienne. Autrement dit, s'il existe une suite $a_n$ de nombres réels tels que 
 $$ a_n(\hat{\theta}_n - \theta) \xrightarrow[n\to \infty]{\text{loi}} N(0,\Sigma)$$
-où $\Sigma$ est une matrice de covariance qui dépend peut-être de $\theta$. 
+où $\Sigma$ est une matrice de covariance qui dépend peut-être de $\theta$ --- pour éviter les cas dégénérés, on demande à ce que $\Sigma$ soit non-nulle. 
 :::
 
-La normalité asymptotique en $\theta$ est la convergence en loi de l'estimateur renormalisé vers une loi normale non dégénérée. La normalité asymptotique désigne la même propriété lorsqu'elle est valide pour tout $\theta \in \Theta$. Enfin on peut étendre la définition en dimension supérieure en requérant une matrice de covariance non-nulle. 
 
-La normalité asymptotique n'est pas intéressante en elle-même, l'idée est de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire ultérieurement des garanties en terme de risque asymptotique ou d'intervalle de confiance. Le théorème central limite indique que le comportement asymptotique normal est relativement fréquent.
+La normalité asymptotique n'est pas intéressante en elle-même, l'idée est de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d'intervalle de confiance. Le théorème central limite indique que le comportement asymptotique normal est relativement fréquent.
+
+## Deux outils sur la normalité asymptotique
 
 :::{#thm-slutsky}
 
-## Lemme de slutsky
+## Lemme de Slutsky
 
+Soit $(X_n)$ une suite de variables aléatoire qui converge en loi vers $X$ et $(Y_n)$ une suite de variables aléatoires qui converge en probabilité (ou en loi) vers une constante $c$. Alors, le *couple* $(X_n, Y_n)$ converge en loi vers $(X,c)$ ; autrement dit, pour toute fonction continue bornée $\varphi$, 
+$$\mathbb{E}[\varphi(X_n, Y_n)] \to \mathbb{E}[\varphi(X,c)].$$
 :::
 
 :::{#thm-deltamethod}
 
 ## Delta-méthode
 
+Soit $(X_n)$ une suite de variables aléatoires réelles telle que $\sqrt{n}(X_n - \alpha)$ converge en loi vers $N(0,\sigma^2)$. Pour toute fonction $g : \mathbb{R} \to \mathbb{R}$ dérivable en $\alpha$ (de dérivée non nulle en $\alpha$), on a 
+$$ \sqrt{n}(g(X_n) - g(\alpha)) \xrightarrow[n \to \infty]{\text{loi}} N(0, g'(\alpha)^2 \sigma^2).$$
+
 :::
+
+Plus généralement, si les $X_n$ sont à valeurs dans $\mathbb{R}^d$ et que $\sqrt{n}(X_n - \alpha) \to N(0,\Sigma)$, alors pour toute fonction $g:\mathbb{R}^d \to \mathbb{R}^k$ on a 
+$$ \sqrt{n}(g(X_n) - g(\alpha)) \xrightarrow[n \to \infty]{\text{loi}} N(0, Dg(\alpha)\Sigma Dg(\alpha)^\top)$$
+où $Dg(x)$ est la matrice jacobienne de $g$ en $x$. 
