@@ -64,10 +64,8 @@ Une *statistique* est une fonction mesurable des observations. Plus formellement
 Le point important est qu'une statistique ne peut pas prendre $\theta$ en argument. Ses valeurs ne doivent dépendre du paramètre $\theta$ qu'au travers de $P_\theta$. 
 
 
-Si $X$ est une variable aléatoire et $\mathsf{t}$ une statistique, alors $\mathsf{t}(X)$ est une variable aléatoire. On peut donc définir des quantités théoriques liées à $\mathsf{t}$: typiquement, si $X$ a pour loi $P_\theta$, on peut définir la valeur moyenne de $\mathsf{t}$ sous le modèle $P_\theta$ comme 
-\begin{align*}
-\mathbb{E}_\theta[\mathsf{t}(X)] = \int_\mathcal{X} \mathsf{t}(x) P_\theta(dx),
-\end{align*}
+Si $X$ est une variable aléatoire et $T$ une statistique, alors $T(X)$ est une variable aléatoire. On peut donc définir des quantités théoriques liées à $T$: typiquement, si $X$ a pour loi $P_\theta$, on peut définir la valeur moyenne de $T$ sous le modèle $P_\theta$ comme 
+$$\mathbb{E}_\theta[T(X)] = \int_{\mathcal{X}} T(x) P_\theta(dx)$$
 ou encore sa variance $\mathbb{E}_\theta[\mathsf{t}(X)^2] - (\mathbb{E}_\theta[\mathsf{t}(X)])^2$, etc. On peut aussi calculer la valeur de cette statistique sur l'échantillon dont on dispose, c'est-à-dire $\mathsf{t}(x_1, \dotsc, x_n)$. Ce qui ne se voit pas dans la définition, c'est qu'une bonne statistique devrait être facilement calculable ; à la place de *statistique*, on peut penser à *algorithme* : une bonne statistique doit pouvoir être calculée facilement par un algorithme ne prenant en entrée que les échantillons $x_i$. 
 
 
