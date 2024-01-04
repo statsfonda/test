@@ -1,58 +1,89 @@
 # Introduction
-beauienatuie
 
-on va avoir besoin d'un $(\Omega, \mathcal{F}, \mathbb{P})$
 
-test
 
-$$\mathfrak{F} aenasite a\lim_{t\to\infty}$${#eq-1}
+## Un modèle-jouet
 
-\begin{equation}
-AX = B
-\end{equation}{#eq-1}
 
-référence \eqref{1}
 
-\begin{equation*}test
-\end{equation*}
 
-\begin{align}a&= b \\&\leq c \end{align}
+## Qu'est-ce qu'un problème statistique ?
 
-  nasutie na
 
-::: {#thm-line}
 
-## Line
+Il n'y aurait pas de statistiques s'il n'y avait pas de monde réel, et comme chacun sait, le monde réel est principalement composé de quantités aléatoires. 
 
-The equation of any straight line, called a linear equation, can be written as:
+Un problème statistique tire donc toujours sa source d'un ensemble d'observations, disons $n$ observations notées $x_1, \dotsc, x_n$ ; cet ensemble d'observations est appelé un *échantillon*. L'hypothèse de base de tout travail statistique consiste à supposer que cet échantillon suit une certaine loi de probabilité ; l'objectif est de trouver laquelle. Évidemment, on ne va pas partir de rien : il faut bien faire des hypothèse minimales sur cette loi. Ce qu'on appelle un *modèle statistique* est le choix d'une famille de lois de probabilités que l'on suppose pertinentes. 
 
-$$
-y = mx + b
-$$
+:::{#def-mst}
+
+Formellement, choisir un modèle statistique revient à choisir trois choses : 
+
+- $\mathcal{X}$, l'espace dans lequel vit notre échantillon ; 
+- $\mathscr{F}$, une tribu sur $\mathcal{X}$, pour donner du sens à ce qui est observable ou non ; 
+- $(P_\theta)_{\theta \in \Theta}$, une famille de mesures de probabilités sur $\mathcal{X}$ indexée par $\theta \in \Theta$, où $\Theta$ est appelé espace des paramètres.  
+
 :::
 
-See @thm-line.
+En pratique, dans ce cours, on aura toujours un échantillon $(x_1, \dotsc, x_n)$ où les $x_i$ vivent dans un même espace, disons $\mathbb{R}^d$ pour simplifier. On devrait donc écrire $\mathcal{X} = \mathbb{R}^{d\times n}$ ; et l'on fera toujours l'hypothèse que ces observations sont indépendantes les unes des autres, et que ces observations ont la même loi de probabilité. Autrement dit, on se donnera toujours une mesure $\mu_\theta$ sur $\mathbb{R}^d$ et on supposera que la loi de notre échantillon est $P_\theta = \mu_\theta^{\otimes n}$. Dans ce cadre, les observations $x_i$ sont des *réalisations* de variables aléatoires iid de loi $\mu_\theta$. 
 
-:::{#def-estimateur} 
 
-## estimateur convergent
-aniesaie ae advanced
-:::
+::: {#def-identifiable}
 
-:::{#prp-pr} 
-
-test 
+On dit qu'un modèle statistique est identifiable si $\theta \neq \theta'$ entraîne $P_\theta \neq P_{\theta'}$. 
 
 :::
 
 
-::: {#thm-line2}
+Si l'on a bien choisi notre modèle statistique, alors il existe un « vrai » paramètre, disons $\theta_\star$, tel que les observations $x_1, \dotsc, x_n$ sont des réalisations de loi $\mu_{\theta_\star}$. L'objectif est alors de trouver $\theta_\star$ ou quelque information que ce soit le concernant. 
 
-## Line2
 
-The equation of any straight line, called a linear equation, can be written as:
 
-$$
-y = mx + b
-$$
+  
+
+
+Dans un modèle (identifiable), la statistique inférentielle (classique) permet de faire trois choses:
+
+- Trouver une valeur approchée du vrai paramètre $\theta_\star$ (estimation ponctuelle).
+- Donner une zone de $\Theta$ dans laquelle le vrai paramètre $\theta_\star$ a des chances de se trouver (intervalle de confiance).
+-  Répondre à des questions binaires sur $\theta_\star$, par exemple « $\theta_\star$ est-il positif ? ».
+
+
+
+
+## Qu'est-ce qu'un estimateur ?
+
+
+
+:::{#def-stat}
+
+Une *statistique* est une fonction mesurable des observations. Plus formellement, si le modèle statistique fixé est $(\mathcal{X}, \mathscr{F}, P)$, alors une statistique est n'importe quelle fonction mesurable de $(\mathcal{X}, \mathscr{F})$. 
+::: 
+
+
+Le point important est qu'une statistique ne peut pas prendre $\theta$ en argument. Ses valeurs ne doivent dépendre du paramètre $\theta$ qu'au travers de $P_\theta$. 
+
+
+Si $X$ est une variable aléatoire et $\mathsf{t}$ une statistique, alors $\mathsf{t}(X)$ est une variable aléatoire. On peut donc définir des quantités théoriques liées à $\mathsf{t}$: typiquement, si $X$ a pour loi $P_\theta$, on peut définir la valeur moyenne de $\mathsf{t}$ sous le modèle $P_\theta$ comme 
+\begin{align*}
+\mathbb{E}_\theta[\mathsf{t}(X)] = \int_\mathcal{X} \mathsf{t}(x) P_\theta(dx),
+\end{align*}
+ou encore sa variance $\mathbb{E}_\theta[\mathsf{t}(X)^2] - (\mathbb{E}_\theta[\mathsf{t}(X)])^2$, etc. On peut aussi calculer la valeur de cette statistique sur l'échantillon dont on dispose, c'est-à-dire $\mathsf{t}(x_1, \dotsc, x_n)$. Ce qui ne se voit pas dans la définition, c'est qu'une bonne statistique devrait être facilement calculable ; à la place de *statistique*, on peut penser à *algorithme* : une bonne statistique doit pouvoir être calculée facilement par un algorithme ne prenant en entrée que les échantillons $x_i$. 
+
+
+
+Si le but est de deviner la valeur de $\theta$ à partir des observations, il est naturel de considérer des statistiques à valeurs dans $\Theta$. C'est précisément la définition d'un estimateur.
+
+:::{#def-estimateur}
+Dans le modèle $(\mathcal{X},\mathcal{A}, (P_\theta)_{\theta \in \Theta})$, un estimateur de $\theta$ est une statistique à valeurs dans $\Theta$.
 :::
+
+En fait, on n'est pas obligés de vouloir estimer précisément $\theta$. Peut-être qu'on veut estimer quelque chose qui dépend de $\theta$, mais qui n'est pas $\theta$ ; disons, une fonction $q(\theta)$. Dans ce cas, un estimateur de $q(\theta)$ sera simplement une statistique à valeurs dans l'espace où vit $q(\theta)$. 
+
+
+
+## Non-paramétrique
+
+Traditionnellement, on  distingue deux grands types de modèles : on dit qu'un modèle est *paramétrique* lorsque le paramètre $\theta$ vit dans un espace de dimension finie (autrement dit quand $\Theta$ est une partie de $\mathbb{R}^d$), et sinon on dit que le modèle est non-paramétrique. On verra quelques idées d'estimation non-paramétrique dans le dernier chapitre du cours. 
+
+
