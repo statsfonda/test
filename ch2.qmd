@@ -1,39 +1,38 @@
 # Estimation de paramètre
 
+On fixe un modèle statistique $(\mathcal{X}, \mathscr{F}, (P_\theta))$, et l'on cherche à estimer le paramètre $\theta$ ou un autre paramètre qui dépend de $\theta$. Dans ce chapitre, on explique comment juger la qualité d'un estimateur, et l'on donne une technique générale pour construire de bons estimateurs dans des situations assez naturelles.
 
-La plupart des expériences/modèles statistiques que nous rencontrerons dans ce cours, seront de nature paramétrique, autrement dit indexés par des parties de $\mathbb{R}^d$. Dans de nombreux développements des statistiques, par exemple en estimation de densité, on travaille sur des modèles plus riches qui n'admettent pas de paramétrisation naturelle par une partie d'un espace euclidien de dimension finie. On parle pourtant de paramètre d'une distribution pour désigner ce qui devrait plutôt s'appeler une fonctionnelle. Par exemple, la moyenne, la covariance  d'une   distribution sur $\mathbb{R}^d$ sont des paramètres de cette distribution. Les quantiles, l'asymétrie, la kurtosis sont d'autres paramètres.
 
 ## Précision d'un estimateur
 
-On a fixé un modèle statistique $(\mathcal{X}, \mathscr{F}, (P_\theta))$, et l'on cherche à estimer $\theta$. 
 
 
 
 :::{#def-biais}
-Le biais de $\hat{\theta}$ est la quantité $\mathbb{E}_\theta[\hat\theta - \theta]$. 
+
+## Biais , risque quadratique
+
+- Le biais de $\hat{\theta}$ est la quantité $\mathbb{E}_\theta[\hat\theta - \theta]$. 
 L'estimateur est dit *sans biais* s'il est de biais nul.
+- Le risque quadratique de $\hat\theta$ est la quantité $\mathbb{E}_{\theta}[ |\hat{\theta}- \theta|^2]$. 
 :::
 
+En pratique, on peut vouloir estimer non pas $\theta$ lui-même, mais un paramètre $\psi = \psi_\theta$ qui dépend de $\theta$, comme $\cos(\theta)$ ou $|\theta|$ par exemple. Dans ce cas, si $\hat{\psi}$ est un estimateur de $\psi$ alors le biais est défini par $\mathbb{E}_\theta[\hat{\psi} - \psi_\theta]$ et le risque quadratique par $\mathbb{E}_\theta [ |\hat\psi^2 - \psi_\theta|^2]$. 
 
-
-
-
-:::{#def-rq}
-Le risque quadratique de $\hat\theta$ est la quantité $\mathbb{E}_{\theta}[ |\hat{\theta}- \theta|^2]$. 
-:::
-
-En pratique, on peut vouloir estimer non pas $\theta$ lui-même, mais un paramètre $\psi = \psi_\theta$ qui dépend de $\theta$, comme $\cos(\theta)$ ou $|\theta|$ par exemple. Dans ce cas, si $\hat{\psi}$ est un estimateur de $\psi$ alors le biais est défini par $\mathbb{E}_\theta[\hat{\psi} - \psi_\theta]$ et le risque quadratique par $\mathbb{E}_\theta [ |\psi^2 - \psi_\theta|^2]$. 
-
-
+La dépendance du risque  quadratique vis à vis de la taille de l'échantillon est une question importante en statistique mathématique. Elle concerne la vitesse d'estimation (pour une suite d'expériences donnée, quelles sont les meilleures vitesses envisageables, et comment les obtenir ?).
 
 :::{#thm-biaisvar}
+
+## Décomposition biais-variance
 $$
 \mathbb{E}_{\theta} [|\hat{\theta}-\theta|^2]
 = \underbrace{\operatorname{Var}_{\theta} (\hat{\theta})}_{\text{variance}} +
-\underbrace{\left(\mathbb{E}_{\theta}[\hat{\theta}]-\theta \right)^2}_{\text{carré du biais}} \, .
+\underbrace{\mathbb{E}_{\theta}[\hat{\theta}-\theta]^2}_{\text{carré du biais}} \, .
 $$
 :::
-La dépendance du risque  quadratique vis à vis de la taille de l'échantillon est une question importante en statistique mathématique. Elle concerne la vitesse d'estimation (pour une suite d'expériences donnée, quelles sont les meilleures vitesses envisageables, et comment les obtenir ?).
+
+
+## Consistances 
 
 Pour introduire la notion de consistance d'une suite d'estimateurs,  nous aurons besoin des notions de convergence en probabilité et de convergence presque sûre.
 
@@ -51,11 +50,11 @@ $$
 :::{#def-consistance}
 
 ## consistance d'un estimateur
-Une suite d'estimateurs $(\widehat{\theta}_n)$ est consistante pour l'estimation de $\theta$ lorsque pour n'importe quel $\theta \in \Theta$, 
-si $$ \forall \varepsilon>0, \qquad \lim_n     P_\theta ( | \widehat{\theta}_n-\theta| > \varepsilon ) =0 \qquad\text{(convergence en probabilité).}
+Une suite d'estimateurs $(\widehat{\theta}_n)$ est consistante pour l'estimation de $\theta$ lorsque, pour tout $\theta \in \Theta$, 
+ $$ \forall \varepsilon>0, \qquad \lim_n     P_\theta ( | \widehat{\theta}_n-\theta| > \varepsilon ) =0.
 $$
-La suite est fortement consistante si pour n'importe quel $\theta \in \Theta$, $$
-\hat{\theta}_n \to \theta \quad P_\theta-\text{p.s.} \qquad\text{(convergence presque sûre).}
+La suite est fortement consistante si, pour tout $\theta \in \Theta$, $$
+\hat{\theta}_n \to \theta \quad P_\theta-\text{p.s.}
 $$
 
 :::
@@ -63,6 +62,8 @@ $$
 
 
 ## Normalité asymptotique
+
+Lorsqu'un estimateur est consistant, on peut se demander à quoi ressemblent ses fluctuations autour de sa valeur limite. Le théorème central limite indique que le comportement asymptotique gaussiens est relativement fréquent, et beaucoup d'estimateurs sont des sommes de réalisations de variables indépendantes. 
 
 ::: {#def-normasymp}
 
@@ -74,9 +75,11 @@ où $\Sigma$ est une matrice de covariance qui dépend peut-être de $\theta$ --
 :::
 
 
-La normalité asymptotique n'est pas intéressante en elle-même, l'idée est de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d'intervalle de confiance. Le théorème central limite indique que le comportement asymptotique normal est relativement fréquent.
 
 ## Deux outils sur la normalité asymptotique
+
+La normalité asymptotique n'est pas intéressante en elle-même ; l'idée est plutôt de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d'intervalle de confiance. Nous utiliserons cela de nombreuses fois dans la suite ; la normalité asymptotique sera par exemple la clé de la construction de nombreux intervalles de confiance. Aussi, prouver que des estimateurs sont asymptotiquement normaux est une tache importante, qui est grandement simplifiée par les deux outils suivants. 
+
 
 :::{#thm-slutsky}
 
@@ -95,24 +98,28 @@ $$ \sqrt{n}(g(X_n) - g(\alpha)) \xrightarrow[n \to \infty]{\text{loi}} N(0, g'(\
 
 :::
 
-Plus généralement, si les $X_n$ sont à valeurs dans $\mathbb{R}^d$ et que $\sqrt{n}(X_n - \alpha) \to N(0,\Sigma)$, alors pour toute fonction $g:\mathbb{R}^d \to \mathbb{R}^k$, la suite $ \sqrt{n}(g(X_n) - g(\alpha)) $ converge en loi vers $$ N(0, Dg(\alpha)\Sigma Dg(\alpha)^\top)$$
+Plus généralement, si les $X_n$ sont à valeurs dans $\mathbb{R}^d$ et que $\sqrt{n}(X_n - \alpha) \to N(0,\Sigma)$, alors pour toute application $g:\mathbb{R}^d \to \mathbb{R}^k$, la suite $\sqrt{n}(g(X_n) - g(\alpha))$ converge en loi vers $$N(0, Dg(\alpha)\Sigma Dg(\alpha)^\top)$$
 où $Dg(x)$ est la [matrice jacobienne](https://fr.wikipedia.org/wiki/Matrice_jacobienne) de $g$ en $x$. 
 
 ## La méthode des moments
 
-Dans un modèle statistique, supposons qu'on dispose d'une statistiques intégrable $T$ (pas forcément réelle). Supposons que sa moyenne soit, non pas le paramètre $\theta$ lui-même, mais plutôt une *fonction* de $\theta$ :  
+Il existe plusieurs techniques générales pour *construire* des estimateurs. La méthode des moments est la plus naturelle, et donne beaucoup des estimateurs avec de bonnes propriétés. 
+
+Dans un modèle statistique, supposons qu'on dispose d'une statistiques intégrable $T$ (pas forcément réelle), dont la moyenne n'est pas le paramètre $\theta$ lui-même, mais plutôt une *fonction* de $\theta$ :  
 $$\mathbb{E}_\theta[T(X)] = \varphi(\theta).$$ 
-C'est cette fonction $\varphi$ qu'on appelle \emph{moment}. Typiquement, 
+C'est cette fonction $\varphi$ qu'on appelle *moment*. Typiquement, 
+
 - la moyenne d'une loi $\mathscr{E}(\theta)$ n'est pas $\theta$ mais $1/\theta$. 
 - la moyenne d'une loi log-normale de paramètres $(0, \sigma^2)$ est $e^{\sigma^2/2}$. 
 
-Alors, par la loi des grands nombres, 
-$$\bar{T}_n = \frac{1}{n}\sum_{i=1}^n T(X_i) \to \varphi(\theta), $$
-ce qui permet d'estimer $\varphi(\theta)$. Peut-on alors estimer $\theta$ ? Si la fonction $\varphi$ est inversible et si $\bar{T}_n$ appartient presque sûrement à son ensemble de définition, alors $\varphi^{-1}(\bar{T_n})$ est bien définie. Pour qu'en plus cette quantité converge presque sûrement vers $\theta$, il faut s'assurer que $\varphi^{-1}$ est continue. C'est par exemple le cas lorsque l'ensemble des paramètres $\Theta$ est un ouvert, et que $\varphi$ est un difféomorphisme sur son image --- une situation si fréquente qu'elle mérite son propre théorème, et si agréable qu'elle garantit que l'esimateur est asymptotiquement normal. 
+Prenons la moyenne empirique associée à cet estimateur, $\bar{T}_n$. Par la loi des grands nombres, 
+$$\bar{T}_n = \frac{1}{n}\sum_{i=1}^n T(X_i) \to \varphi(\theta) \qquad P_\theta-ps, $$
+ce qui permet d'estimer $\varphi(\theta)$. Peut-on alors estimer $\theta$ ? Si la fonction $\varphi$ est inversible et si $\bar{T}_n$ appartient presque sûrement à l'ensemble de définition de $\varphi^{-1}$, alors $\varphi^{-1}(\bar{T_n})$ est bien définie. Pour qu'en plus cette quantité converge presque sûrement vers $\theta$, il faut s'assurer que $\varphi^{-1}$ est continue. C'est par exemple le cas lorsque l'ensemble des paramètres $\Theta$ est un ouvert, et que $\varphi$ est un difféomorphisme sur son image --- une situation si fréquente qu'elle mérite son propre théorème, et si agréable qu'elle garantit que l'estimateur associé est asymptotiquement normal. 
 
 :::{#thm-mom}
 
 ## Estimation par moments
+
 
 Sous l'hypothèse mentionnée ci-dessus (la fonction $\varphi$ est un difféomorphisme), l'estimateur $$\hat{\theta}_n = \varphi^{-1}(\bar{T}_n)$$ est presque sûrement bien défini pour tout $n$ suffisamment grand ; il est également consistant pour l'estimation de $\theta$. En outre, si $T$ est de carré intégrable, cet estimateur est asymptotiquement normal, au sens où $\sqrt{n}(\hat{\theta}_n - \theta)$ converge en loi vers une gaussienne centrée de matrice de covariance
 $$ (D\varphi(\theta))^{-1}\mathrm{Cov}_\theta(T)(D\varphi(\theta)^\top)^{-1}.$$
@@ -129,5 +136,5 @@ La première partie a essentiellement été démontrée un peu plus haut. Pour l
 ## loi de Yule-Simon
 
 
-Une variable aléatoire $X$ suit la loi de Yule-Simon de paramètre $\rho>0$ lorsque $\mathbb{P}(X = n) = \rho B(n, 1+\rho)$, où $n\geqslant 1$ et  $B(a,b) = \int_0^1 u^{a-1}(1-u)^{b-1}du$ est la [fonction beta](https://en.wikipedia.org/wiki/Beta_function). Montrer que si $\rho>1$, alors $\mathbb{E}[X] = \rho/(\rho-1)$, puis trouver un estimateur de $\rho$ par la méthode des moments. 
+Une variable aléatoire $X$ suit la loi de Yule-Simon de paramètre $\rho>0$ lorsque $\mathbb{P}(X = n) = \rho B(n, 1+\rho)$, où $n\geqslant 1$ et  $B(a,b) = \int_0^1 u^{a-1}(1-u)^{b-1}du$ est la [fonction beta](https://en.wikipedia.org/wiki/Beta_function). Montrer que si $\rho>1$, alors $\mathbb{E}[X] = \rho/(\rho-1)$, puis trouver un estimateur de $\rho$ par la méthode des moments et énumérer ses propriétés. 
 :::

@@ -2,7 +2,17 @@
 
 
 .theorem {
-    background-color: rgb(250, 245, 245);
+    background-color: rgb(248, 239, 239);
     padding: 0.5em;
-    margin-bottom: 1em;
   }
+
+.deep {
+  background-color: rgb(221, 235, 216);
+  padding: 0.5em;
+  margin-top: 1em;
+}
+
+.theorem .definition p {
+  background-color: rgb(119, 37, 37);
+  margin-top: 1em;
+}
