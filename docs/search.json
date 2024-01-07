@@ -11,7 +11,7 @@
     "href": "index.html#utiliser-ce-site",
     "title": "Statistiques Fondamentales",
     "section": "Utiliser ce site",
-    "text": "Utiliser ce site\nChaque chapitre de ce livre contient une page dédiée au cours théorique, une page dédiée à quelques exemples, et une feuille d’exercices.\nLa saveur du cours est essentiellement mathématique et nous n’aurons pas de TP d’info ; cependant, je vous recommande vraiment d’essayer d’appliquer tout ça via votre langage de programmation favori, c’est-à-dire Python R SAS C++ Julia. J’essaierai autant que possible de fournir des mini-jeux de données avec des petits challenges pour appliquer ce que vous apprenez en cours.\nCes notes sont mises en lignes et totalement accessibles via Quarto. Si vous savez comment utiliser git, n’hésitez pas à corriger toutes les erreurs que vous pourriez voir (et Dieu sait qu’elles seront nombreuses) via des pull requests."
+    "text": "Utiliser ce site\nChaque chapitre de ce livre contient une page dédiée au cours théorique, et contiendra dans un futur proche une page d’exercices.\nLa saveur du cours est essentiellement mathématique et nous n’aurons pas de TP d’info ; cependant, je vous recommande vraiment d’essayer d’appliquer tout ça via votre langage de programmation favori, c’est-à-dire Python R SAS C++ Julia. J’essaierai autant que possible de fournir des mini-jeux de données avec des petits challenges pour appliquer ce que vous apprenez en cours.\nCes notes sont mises en lignes et totalement accessibles via Quarto. Si vous savez comment utiliser git, n’hésitez pas à corriger toutes les erreurs que vous pourriez voir (et Dieu sait qu’elles seront nombreuses) via des pull requests."
   },
   {
     "objectID": "ch1.html#un-exemple-pour-fixer-les-idées",
@@ -81,7 +81,35 @@
     "href": "ch3.html",
     "title": "3  Intervalles de confiance",
     "section": "",
-    "text": "a"
+    "text": "Cours 2"
+  },
+  {
+    "objectID": "ch4.html",
+    "href": "ch4.html",
+    "title": "4  Test d’hypothèse",
+    "section": "",
+    "text": "Cours 3-4"
+  },
+  {
+    "objectID": "ch5.html",
+    "href": "ch5.html",
+    "title": "5  Économétrie",
+    "section": "",
+    "text": "Cours 5-6-7"
+  },
+  {
+    "objectID": "ch6.html",
+    "href": "ch6.html",
+    "title": "6  Théorie de l’information",
+    "section": "",
+    "text": "Cours 8-9-10"
+  },
+  {
+    "objectID": "ch7.html",
+    "href": "ch7.html",
+    "title": "7  Estimation de densité",
+    "section": "",
+    "text": "Cours 11-12"
   },
   {
     "objectID": "references.html",
