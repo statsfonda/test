@@ -4,8 +4,21 @@
 
 ## Un modèle-jouet
 
+On observe donc $x_1, \dotsc, x_n$ (avec $n=100$). Comment avoir une idée de la véritable valeur de $\mu$ ? Évidemment, la moyenne empirique 
+$$\bar x_n = \frac{x_1+\dotsb + x_n}{n}$$
+vient naturellement à l'esprit. On trouve $\bar{x}_n \approx 21,6$. Cette valeur est une *estimation* de $\mu$. On pourrait se demander à quel point cette estimation est précise ou, disons, essayer de quantifier l'erreur possible qu'on fait si l'on dit que $\mu$ est égal à 21,6. 
 
+Comme on a supposé que les $x_i$ sont des réalisations d'une loi gaussienne $N(\mu, 1)$, alors on sait que $\bar{x}_n$ est la réalisation d'une loi $N(\mu, 1/n)$, ou encore que $\bar{x}_n - \mu$ est la réalisation d'une gaussienne centrée de variance $1/n$. Les lois gaussiennes sont bien connues ; par exemple, avec probabilité supérieure à 99%, une gaussienne $N(0, \sigma^2)$ est comprise entre les valeurs $-2,96\sigma$ et $2,96\sigma$. Autrement dit, il y a 99% de chances pour que le nombre $|\bar{x}-\mu|$, qui représente l'erreur d'estimation, soit plus petite que $2,96/\sqrt{n} = 2,96/10 \approx 0,3$. 
 
+Ce dernier raisonnement peut être vu d'une autre façon. Dire que $\bar{x}_n$ et $\mu$ ne diffèrent pas de plus de $0,3$, c'est équivalent à dire que $\mu$ appartient à l'intervalle $[\bar{x} - 0,3, \bar{x} +0,3]$. En d'autres termes, avec une probabilité supérieure à 99%, le vrai paramètre $\mu$ se situe entre $21,3$ et $21,9$. Cela laisse tout de même une chance de 1% que le paramètre $\mu$ ne soit pas dans cette région. 
+
+Il existe encore un autre point de vue sur ce problème. Dans ce problème, nous ne sommes pas forcément intéressés par la valeur exacte de $\mu$. Ce qui nous intéresse, c'est plutôt d'être sûrs que le prix de l'actif est inférieur à un certain seuil (de rentabilité, par exemple). Typiquement, si j'ai un budget de 22€ et que mon estimation donne $\bar{x} = 21,4$, je suis a priori rassuré ; mais avec quel niveau de certitude ? Le raisonnement ci-dessus implique que, compte tenu de ce que j'ai observé et si mon hypothèse (les $x_i$ sont gaussiennes) est vraie, alors j'ai moins de 1% de me tromper si j'affirme que $\mu$ est inférieur à 22. 
+
+Supposons maintenant qu'un autre produit attire mon attention. Je dispose de moins d'observations, disons seulement $y_1, \dotsc, y_m$ avec $m=36$. On peut encore raisonnablement supposer que les $y_i$ sont des réalisations de lois gaussiennes $N(\nu, 1)$. Mon estimation de $\nu$ donne $\bar{y}  = 21,5$. Le prix de ce bien Y semble donc inférieur au prix du bien X. Mais est-ce vraiment sûr ? Par le même raisonnement que celui ci-dessus, je peux dire qu'il y a 99% de chances pour que $\nu$ et $\bar{y}$ ne diffèrent pas de plus de $2,96/\sqrt{m} \approx 3/6 = 0,5$, et donc que $\nu$ soit quelque part entre $21$ et $22$. L'arbitrage entre $\mu$ et $\nu$ n'est pas évident ! 
+
+<!-- On peut donc s'essayer à un petit raisonnement par l'absurde. Supposons un moment que ces deux prix soient identiques, c'est-à-dire que $\mu=\nu$. Si c'était le cas, alors $\bar{x}-\bar{y}$ devrait être une réalisation d'une loi $N(0, s^2$) où $s^2 = 1/n+1/m \approx 0,038$. Ainsi, $\bar{x} - \bar{y}$ aurait eu 99% de chances de se trouver entre les valeurs $\pm 2,96 s = \pm 0,57$.  -->
+
+L'objectif du cours de statistiques de quantifier l'incertitude. Comme dans les exemples donnés ci-dessus, c'est un ensemble de méthodes scientifiques qui s'appuient sur la théorie des probabilités ; dans ce cours, on fera des hypothèses sur le hasard qui est en jeu, et on en tirera des conséquences *probables*. Ce qui différencie la statistique mathématique des affirmations de votre tante Lise sur l'inflation, c'est que la statistique a pour objectif de quantifier les niveaux d'incertitude des énoncés que nous faisons. 
 
 ## Qu'est-ce qu'un problème statistique ?
 
