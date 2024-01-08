@@ -67,47 +67,103 @@
     "href": "ch2.html#deux-outils-sur-la-normalité-asymptotique",
     "title": "2  Estimation de paramètre",
     "section": "2.4 Deux outils sur la normalité asymptotique",
-    "text": "2.4 Deux outils sur la normalité asymptotique\nLa normalité asymptotique n’est pas intéressante en elle-même ; l’idée est plutôt de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d’intervalle de confiance. Nous utiliserons cela de nombreuses fois dans la suite ; la normalité asymptotique sera par exemple la clé de la construction de nombreux intervalles de confiance. Aussi, prouver que des estimateurs sont asymptotiquement normaux est une tache importante, qui est grandement simplifiée par les deux outils suivants.\n\nThéorème 2.2 (Lemme de Slutsky) Soit \\((X_n)\\) une suite de variables aléatoire qui converge en loi vers \\(X\\) et \\((Y_n)\\) une suite de variables aléatoires qui converge en probabilité (ou en loi) vers une constante \\(c\\). Alors, le couple \\((X_n, Y_n)\\) converge en loi vers \\((X,c)\\) ; autrement dit, pour toute fonction continue bornée \\(\\varphi\\), \\[\\mathbb{E}[\\varphi(X_n, Y_n)] \\to \\mathbb{E}[\\varphi(X,c)].\\]\n\n\nThéorème 2.3 (Delta-méthode) Soit \\((X_n)\\) une suite de variables aléatoires réelles telle que \\(\\sqrt{n}(X_n - \\alpha)\\) converge en loi vers \\(N(0,\\sigma^2)\\). Pour toute fonction \\(g : \\mathbb{R} \\to \\mathbb{R}\\) dérivable en \\(\\alpha\\) (de dérivée non nulle en \\(\\alpha\\)), on a \\[ \\sqrt{n}(g(X_n) - g(\\alpha)) \\xrightarrow[n \\to \\infty]{\\text{loi}} N(0, g'(\\alpha)^2 \\sigma^2).\\]\n\nPlus généralement, si les \\(X_n\\) sont à valeurs dans \\(\\mathbb{R}^d\\) et que \\(\\sqrt{n}(X_n - \\alpha) \\to N(0,\\Sigma)\\), alors pour toute application \\(g:\\mathbb{R}^d \\to \\mathbb{R}^k\\), la suite \\(\\sqrt{n}(g(X_n) - g(\\alpha))\\) converge en loi vers \\[N(0, Dg(\\alpha)\\Sigma Dg(\\alpha)^\\top)\\] où \\(Dg(x)\\) est la matrice jacobienne de \\(g\\) en \\(x\\)."
+    "text": "2.4 Deux outils sur la normalité asymptotique\nLa normalité asymptotique n’est pas intéressante en elle-même ; l’idée est plutôt de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d’intervalle de confiance. Nous utiliserons cela de nombreuses fois dans la suite ; la normalité asymptotique sera par exemple la clé de la construction de nombreux intervalles de confiance. Aussi, prouver que des estimateurs sont asymptotiquement normaux est une tache importante, qui est grandement simplifiée par les deux outils suivants.\n\nThéorème 2.2 (Lemme de Slutsky) Soit \\((X_n)\\) une suite de variables aléatoire qui converge en loi vers \\(X\\) et \\((Y_n)\\) une suite de variables aléatoires qui converge en probabilité (ou en loi) vers une constante \\(c\\). Alors, le couple \\((X_n, Y_n)\\) converge en loi vers \\((X,c)\\) ; autrement dit, pour toute fonction continue bornée \\(\\varphi\\), \\[\\mathbb{E}[\\varphi(X_n, Y_n)] \\to \\mathbb{E}[\\varphi(X,c)].\\]\n\n\nPreuve. Fixons une fonction test \\(\\varphi\\) continue à support compact, donc bornée par un certain \\(M\\). Il faut montrer que \\(\\mathbb{E}[\\varphi(X_n, Y_n) - \\varphi(X,c)]\\) tend vers zéro. L’intégrande est égal à la somme de \\(A = \\varphi(X_n, Y_n) - \\varphi(X_n, c)\\) et de \\(B=\\varphi(X_n, c) - \\varphi(X, c)\\).\nComme \\(X_n\\) tend en loi vers \\(X\\) et que \\(t\\to \\varphi(t,c)\\) est continue bornée, l’espérance de \\(B\\) tend vers zéro. Il faut donc montrer que l’espérance de \\(A\\) tend vers zéro. On fixe un \\(\\varepsilon&gt;0\\).\n\nPar le théorème de Heine, \\(\\varphi\\) est uniformément continue : il existe \\(\\delta&gt;0\\) tel que \\(|(x,y) - (x', y')|&lt;\\delta\\) entraîne que \\(|\\varphi(x,y) - \\varphi(x', y')|&lt; \\varepsilon/2\\).\nOn introduit l’événement \\(\\{|Y_n - c|\\leqslant \\delta\\}\\). Par le point précédent, sur cet événement on a \\(|A| &lt; \\varepsilon/2\\). Hors de cet événement, on peut toujours borner \\(|A|\\) par \\(2M\\). On a donc \\[|\\mathbb{E}A| \\leqslant \\mathbb{P}(|Y_n - c|\\leqslant \\delta)\\varepsilon/2 +  \\mathbb{P}(|Y_n - c| &gt; \\delta)2M.\\]\nComme \\(Y_n\\) converge en probabilité vers \\(c\\), lorsque \\(n\\) est assez grand on a \\(\\mathbb{P}(|Y_n - c| &gt; \\delta) &lt; \\varepsilon/4M\\).\nEn regroupant tout ce qui a été dit, on obtient bien \\(|\\mathbb{E}A| \\leqslant \\varepsilon\\) dès que \\(n\\) est assez grand, ce qui montre bien que \\(\\mathbb{E}A \\to 0\\).\n\n\n\n\nThéorème 2.3 (Delta-méthode) Soit \\((X_n)\\) une suite de variables aléatoires réelles telle que \\(\\sqrt{n}(X_n - \\alpha)\\) converge en loi vers \\(N(0,\\sigma^2)\\). Pour toute fonction \\(g : \\mathbb{R} \\to \\mathbb{R}\\) dérivable en \\(\\alpha\\) (de dérivée non nulle en \\(\\alpha\\)), on a \\[ \\sqrt{n}(g(X_n) - g(\\alpha)) \\xrightarrow[n \\to \\infty]{\\text{loi}} N(0, g'(\\alpha)^2 \\sigma^2).\\]\n\nPlus généralement, si les \\(X_n\\) sont à valeurs dans \\(\\mathbb{R}^d\\) et que \\(\\sqrt{n}(X_n - \\alpha) \\to N(0,\\Sigma)\\), alors pour toute application \\(g:\\mathbb{R}^d \\to \\mathbb{R}^k\\), la suite \\(\\sqrt{n}(g(X_n) - g(\\alpha))\\) converge en loi vers \\[N(0, Dg(\\alpha)\\Sigma Dg(\\alpha)^\\top)\\] où \\(Dg(x)\\) est la matrice jacobienne de \\(g\\) en \\(x\\).\n\nPreuve. À écrire."
   },
   {
     "objectID": "ch2.html#la-méthode-des-moments",
     "href": "ch2.html#la-méthode-des-moments",
     "title": "2  Estimation de paramètre",
     "section": "2.5 La méthode des moments",
-    "text": "2.5 La méthode des moments\nIl existe plusieurs techniques générales pour construire des estimateurs. La méthode des moments est la plus naturelle, et donne beaucoup des estimateurs avec de bonnes propriétés.\nDans un modèle statistique, supposons qu’on dispose d’une statistiques intégrable \\(T\\) (pas forcément réelle), dont la moyenne n’est pas le paramètre \\(\\theta\\) lui-même, mais plutôt une fonction de \\(\\theta\\) :\n\\[\\mathbb{E}_\\theta[T(X)] = \\varphi(\\theta).\\] C’est cette fonction \\(\\varphi\\) qu’on appelle moment. Typiquement,\n\nla moyenne d’une loi \\(\\mathscr{E}(\\theta)\\) n’est pas \\(\\theta\\) mais \\(1/\\theta\\).\nla moyenne d’une loi log-normale de paramètres \\((0, \\sigma^2)\\) est \\(e^{\\sigma^2/2}\\).\n\nPrenons la moyenne empirique associée à cet estimateur, \\(\\bar{T}_n\\). Par la loi des grands nombres, \\[\\bar{T}_n = \\frac{1}{n}\\sum_{i=1}^n T(X_i) \\to \\varphi(\\theta) \\qquad P_\\theta-ps, \\] ce qui permet d’estimer \\(\\varphi(\\theta)\\). Peut-on alors estimer \\(\\theta\\) ? Si la fonction \\(\\varphi\\) est inversible et si \\(\\bar{T}_n\\) appartient presque sûrement à l’ensemble de définition de \\(\\varphi^{-1}\\), alors \\(\\varphi^{-1}(\\bar{T_n})\\) est bien définie. Pour qu’en plus cette quantité converge presque sûrement vers \\(\\theta\\), il faut s’assurer que \\(\\varphi^{-1}\\) est continue. C’est par exemple le cas lorsque l’ensemble des paramètres \\(\\Theta\\) est un ouvert, et que \\(\\varphi\\) est un difféomorphisme sur son image — une situation si fréquente qu’elle mérite son propre théorème, et si agréable qu’elle garantit que l’estimateur associé est asymptotiquement normal.\n\nThéorème 2.4 (Estimation par moments) Sous l’hypothèse mentionnée ci-dessus (la fonction \\(\\varphi\\) est un difféomorphisme), l’estimateur \\[\\hat{\\theta}_n = \\varphi^{-1}(\\bar{T}_n)\\] est presque sûrement bien défini pour tout \\(n\\) suffisamment grand ; il est également consistant pour l’estimation de \\(\\theta\\). En outre, si \\(T\\) est de carré intégrable, cet estimateur est asymptotiquement normal, au sens où \\(\\sqrt{n}(\\hat{\\theta}_n - \\theta)\\) converge en loi vers une gaussienne centrée de matrice de covariance \\[ (D\\varphi(\\theta))^{-1}\\mathrm{Cov}_\\theta(T)(D\\varphi(\\theta)^\\top)^{-1}.\\]\n\n\nPreuve. La première partie a essentiellement été démontrée un peu plus haut. Pour la seconde, il faut d’abord remarquer que si \\(T\\) est de carré intégrable, alors \\(\\sqrt{n}(\\bar{T}_n - \\varphi(\\theta))\\) converge vers une loi \\(N(0, \\mathrm{Cov}_\\theta(T))\\) par le TCL. Une simple application de la delta-méthode (Théorème 2.3) donne alors le résultat, puisque la matrice jacobienne de \\(\\varphi^{-1}\\) en \\(\\varphi(\\theta)\\) n’est autre que l’inverse de la matrice jacobienne de \\(\\varphi\\) en \\(\\theta\\).\n\n\nExercice 2.1 (loi de Yule-Simon) Une variable aléatoire \\(X\\) suit la loi de Yule-Simon de paramètre \\(\\rho&gt;0\\) lorsque \\(\\mathbb{P}(X = n) = \\rho B(n, 1+\\rho)\\), où \\(n\\geqslant 1\\) et \\(B(a,b) = \\int_0^1 u^{a-1}(1-u)^{b-1}du\\) est la fonction beta. Montrer que si \\(\\rho&gt;1\\), alors \\(\\mathbb{E}[X] = \\rho/(\\rho-1)\\), puis trouver un estimateur de \\(\\rho\\) par la méthode des moments et énumérer ses propriétés."
+    "text": "2.5 La méthode des moments\nIl existe plusieurs techniques générales pour construire des estimateurs. La méthode des moments est la plus naturelle, et donne beaucoup des estimateurs avec de bonnes propriétés.\nDans un modèle statistique, supposons qu’on dispose d’une statistiques intégrable \\(T\\) (pas forcément réelle), dont la moyenne n’est pas le paramètre \\(\\theta\\) lui-même, mais plutôt une fonction de \\(\\theta\\) :\n\\[\\mathbb{E}_\\theta[T(X)] = \\varphi(\\theta).\\] C’est cette fonction \\(\\varphi\\) qu’on appelle moment. Typiquement,\n\nla moyenne d’une loi \\(\\mathscr{E}(\\theta)\\) n’est pas \\(\\theta\\) mais \\(1/\\theta\\).\nla moyenne d’une loi log-normale de paramètres \\((0, \\sigma^2)\\) est \\(e^{\\sigma^2/2}\\).\n\nPrenons la moyenne empirique associée à cet estimateur, \\(\\bar{T}_n\\). Par la loi des grands nombres, \\[\\bar{T}_n = \\frac{1}{n}\\sum_{i=1}^n T(X_i) \\to \\varphi(\\theta) \\qquad P_\\theta-ps, \\] ce qui permet d’estimer \\(\\varphi(\\theta)\\). Peut-on alors estimer \\(\\theta\\) ? Si la fonction \\(\\varphi\\) est inversible et si \\(\\bar{T}_n\\) appartient presque sûrement à l’ensemble de définition de \\(\\varphi^{-1}\\), alors \\(\\varphi^{-1}(\\bar{T_n})\\) est bien définie. Pour qu’en plus cette quantité converge presque sûrement vers \\(\\theta\\), il faut s’assurer que \\(\\varphi^{-1}\\) est continue. C’est par exemple le cas lorsque l’ensemble des paramètres \\(\\Theta\\) est un ouvert, et que \\(\\varphi\\) est un difféomorphisme sur son image — une situation si fréquente qu’elle mérite son propre théorème, et si agréable qu’elle garantit que l’estimateur associé est asymptotiquement normal.\n\nThéorème 2.4 (Estimation par moments) Sous l’hypothèse mentionnée ci-dessus (la fonction \\(\\varphi\\) est un difféomorphisme), l’estimateur \\[\\hat{\\theta}_n = \\varphi^{-1}(\\bar{T}_n)\\] est presque sûrement bien défini pour tout \\(n\\) suffisamment grand ; il est également consistant pour l’estimation de \\(\\theta\\). En outre, si \\(T\\) est de carré intégrable, cet estimateur est asymptotiquement normal, au sens où \\(\\sqrt{n}(\\hat{\\theta}_n - \\theta)\\) converge en loi vers une gaussienne centrée de matrice de covariance \\[ (D\\varphi(\\theta))^{-1}\\mathrm{Cov}_\\theta(T)(D\\varphi(\\theta)^\\top)^{-1}.\\]\n\n\nPreuve. La première partie a essentiellement été démontrée un peu plus haut. Pour la seconde, il faut d’abord remarquer que si \\(T\\) est de carré intégrable, alors \\(\\sqrt{n}(\\bar{T}_n - \\varphi(\\theta))\\) converge vers une loi \\(N(0, \\mathrm{Cov}_\\theta(T))\\) par le TCL. Une simple application de la delta-méthode (Théorème 2.3) donne alors le résultat, puisque la matrice jacobienne de \\(\\varphi^{-1}\\) en \\(\\varphi(\\theta)\\) n’est autre que l’inverse de la matrice jacobienne de \\(\\varphi\\) en \\(\\theta\\)."
+  },
+  {
+    "objectID": "ch2_ex.html#questions",
+    "href": "ch2_ex.html#questions",
+    "title": "3  Exercices",
+    "section": "3.1 Questions",
+    "text": "3.1 Questions\n\nMontrer que la convergence en loi vers une constante implique la convergence en probabilité.\nMontrer que, si un modèle statistique n’est pas identifiable, alors il ne peut exister aucun estimateur convergent.\nTrouver un couple de variables aléatoires \\((X_n, Y_n)\\) tel que \\(X_n\\) converge en loi et \\(Y_n\\) converge en loi, mais le couple ne converge pas en loi.\nOn observe un échantillon de lois de Poisson de paramètre \\(\\lambda\\), que l’on estime par la moyenne empirique. Calculer le risque quadratique de cet estimateur.\nQuelle est la loi d’une somme de lois de Bernoulli indépendantes ? L’écart-type ?"
+  },
+  {
+    "objectID": "ch2_ex.html#variance-empirique",
+    "href": "ch2_ex.html#variance-empirique",
+    "title": "3  Exercices",
+    "section": "3.2 Variance empirique",
+    "text": "3.2 Variance empirique\nOn se donne \\(Y_1, \\dots, Y_n\\), i.i.d de moyenne \\(\\mu\\) et variance \\(\\sigma^2\\).\n\nOn suppose \\(\\mu\\) connu. Donner un estimateur non biaisé de \\(\\sigma^2\\).\nOn suppose \\(\\mu\\) inconnu. Calculer l’espérance de \\(\\sum_{i=1}^n (Y_i - \\bar{Y}_n)^2\\). En déduire un estimateur non biaisé de \\(\\sigma^2\\)."
+  },
+  {
+    "objectID": "ch2_ex.html#estimation-de-masse",
+    "href": "ch2_ex.html#estimation-de-masse",
+    "title": "3  Exercices",
+    "section": "3.3 Estimation de masse",
+    "text": "3.3 Estimation de masse\nAu cours de la seconde guerre mondiale, l’armée alliée notait les numéros de série \\(X_1, \\dots, X_n\\) de tous les tanks nazis capturés ou détruits, afin d’obtenir un estimateur du nombre total \\(N\\) de tanks produits.\n\nProposer un modèle pour le tirage de \\(X_1, \\dots, X_n\\).\nCalculer l’espérance de \\(\\bar X_n\\). En déduire un estimateur non biaisé de \\(N\\). Indication: la loi de \\(n\\) tirages sans remise est échangeable.\nÉtudier la loi de \\(X_{(n)}\\) et en déduire un estimateur non biaisé de \\(N\\).\nProposer deux intervalles de confiance de niveau \\(\\alpha\\). %de la forme \\([aS, bS]\\) avec \\(a, b\\in\\mathbb{R}\\) et \\(S\\) une statistique résumée. On pourra utiliser le fait que l’inégalité de Hoeffding s’applique également aux tirages sans remise.\n\nSelon Ruggles et Broodie (1947, JASA), la méthode statistique a fourni comme estimation une production moyenne de 246 tanks/mois entre juin 1940 et septembre 1942. Des méthodes d’espionnage traditionnelles donnaient une estimation de 1400 tanks/mois. Les chiffres officiels du ministère nazi des Armements ont montré après la guerre que la production moyenne était de 245 tanks/mois."
+  },
+  {
+    "objectID": "ch2_ex.html#uniforme-1",
+    "href": "ch2_ex.html#uniforme-1",
+    "title": "3  Exercices",
+    "section": "3.4 Uniforme (1)",
+    "text": "3.4 Uniforme (1)\nOn considère \\((X_1, \\dots, X_n)\\) un échantillon de loi uniforme sur \\(]\\theta, \\theta+1[\\).\n\nDonner la densité de la loi de la variable \\(R_n=X_{(n)} -X_{(1)}\\), où \\(X_{(1)}=\\min(X_1, \\dots, X_n)\\) et \\(X_{(n)}=\\max(X_1, \\dots, X_n)\\).\nÉtudier les différents modes de convergence de \\(R_n\\) quand \\(n\\to\\infty\\).\nÉtudier le comportement en loi de \\(n(1-R_n)\\) quand \\(n\\to\\infty\\)."
+  },
+  {
+    "objectID": "ch2_ex.html#uniforme-2",
+    "href": "ch2_ex.html#uniforme-2",
+    "title": "3  Exercices",
+    "section": "3.5 Uniforme (2)",
+    "text": "3.5 Uniforme (2)\nSoit \\(X_1,\\dots,X_n\\) un échantillon de loi \\(\\mathscr{U}([0,\\theta])\\), avec \\(\\theta &gt;0\\). On veut estimer \\(\\theta\\).\n\nDéterminer un estimateur de \\(\\theta\\) à partir de \\(\\bar{X}_n\\).\nOn considère l’estimateur \\(X_{(n)}= {\\max}_{1\\leq i \\leq n}X_i\\). Déterminer les propriétés asymotptiques de ces estimateurs.\nComparer les performances des deux estimateurs."
+  },
+  {
+    "objectID": "ch2_ex.html#gamma",
+    "href": "ch2_ex.html#gamma",
+    "title": "3  Exercices",
+    "section": "3.6 Gamma",
+    "text": "3.6 Gamma\nLa loi Gamma \\(\\Gamma(\\alpha, \\beta)\\) de paramètres \\(\\alpha, \\beta&gt;0\\) a pour densité \\[ x\\mapsto \\frac{\\beta^\\alpha}{\\Gamma(\\alpha)}x^{\\alpha-1}\\exp(-\\beta x), \\quad x&gt;0.\\] On se donne un échantillon \\((X_1,\\dots,X_n)\\) de loi \\(\\Gamma(\\alpha, \\beta)\\) et on chercche à estimer les paramètres.\n\nOn suppose le paramètre \\(\\beta\\) connu. Proposer un estimateur de \\(\\alpha\\) par la méthode des moments.\nOn suppose à présent que les deux paramètres \\(\\alpha, \\beta\\) sont inconnus. Proposer un estimateur de \\((\\alpha,\\beta)\\) par la méthode des moments."
+  },
+  {
+    "objectID": "ch2_ex.html#gumbel",
+    "href": "ch2_ex.html#gumbel",
+    "title": "3  Exercices",
+    "section": "3.7 Gumbel",
+    "text": "3.7 Gumbel\nLa loi de Gumbel (centrale) de paramètre \\(\\beta\\) a pour fonction de répartition $ F(x)= e{-e{-x/}}$. On observe un échantillon de lois de Gumbell et l’on cherche à estimer \\(\\beta\\).\n\nCalculer la densité des lois de Gumbell, ainsi que leur moyenne et variance [indice : \\(0.57721…\\)]\nEn déduire un estimateur convergent dont on calculera le risque quadratique et les propriétés asymptotiques."
+  },
+  {
+    "objectID": "ch2_ex.html#yule-simon",
+    "href": "ch2_ex.html#yule-simon",
+    "title": "3  Exercices",
+    "section": "3.8 Yule-Simon",
+    "text": "3.8 Yule-Simon\nUne variable aléatoire \\(X\\) suit la loi de Yule-Simon de paramètre \\(\\rho&gt;0\\) lorsque \\(\\mathbb{P}(X = n) = \\rho B(n, 1+\\rho)\\), où \\(n\\geqslant 1\\) et \\(B\\) est la fonction beta.\n\nMontrer que si \\(\\rho&gt;1\\), alors \\(\\mathbb{E}[X] = \\rho/(\\rho-1)\\).\nTrouver un estimateur de \\(\\rho\\) et donner ses propriétés."
   },
   {
     "objectID": "ch3.html",
     "href": "ch3.html",
-    "title": "3  Intervalles de confiance",
+    "title": "4  Intervalles de confiance",
     "section": "",
     "text": "Cours 2"
   },
   {
     "objectID": "ch4.html",
     "href": "ch4.html",
-    "title": "4  Test d’hypothèse",
+    "title": "5  Test d’hypothèse",
     "section": "",
     "text": "Cours 3-4"
   },
   {
     "objectID": "ch5.html",
     "href": "ch5.html",
-    "title": "5  Économétrie",
+    "title": "6  Économétrie",
     "section": "",
     "text": "Cours 5-6-7"
   },
   {
     "objectID": "ch6.html",
     "href": "ch6.html",
-    "title": "6  Théorie de l’information",
+    "title": "7  Théorie de l’information",
     "section": "",
     "text": "Cours 8-9-10"
   },
   {
     "objectID": "ch7.html",
     "href": "ch7.html",
-    "title": "7  Estimation de densité",
+    "title": "8  Estimation de densité",
     "section": "",
     "text": "Cours 11-12"
   },

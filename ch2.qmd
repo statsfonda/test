@@ -89,6 +89,18 @@ Soit $(X_n)$ une suite de variables aléatoire qui converge en loi vers $X$ et $
 $$\mathbb{E}[\varphi(X_n, Y_n)] \to \mathbb{E}[\varphi(X,c)].$$
 :::
 
+:::{.proof}
+Fixons une fonction test $\varphi$ continue à support compact, donc bornée par un certain $M$. Il faut montrer que $\mathbb{E}[\varphi(X_n, Y_n) - \varphi(X,c)]$ tend vers zéro. L'intégrande est égal à la somme de $A = \varphi(X_n, Y_n) - \varphi(X_n, c)$ et de $B=\varphi(X_n, c) - \varphi(X, c)$. 
+
+Comme $X_n$ tend en loi vers $X$ et que $t\to \varphi(t,c)$ est continue bornée, l'espérance de $B$ tend vers zéro. Il faut donc montrer que l'espérance de $A$ tend vers zéro. On fixe un $\varepsilon>0$.   
+
+- Par le [théorème de Heine](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Heine), $\varphi$ est uniformément continue : il existe $\delta>0$ tel que $|(x,y) - (x', y')|<\delta$ entraîne que $|\varphi(x,y) - \varphi(x', y')|< \varepsilon/2$. 
+- On introduit l'événement $\{|Y_n - c|\leqslant \delta\}$. Par le point précédent, sur cet événement on a $|A| < \varepsilon/2$. Hors de cet événement, on peut toujours borner $|A|$ par $2M$. On a donc 
+$$|\mathbb{E}A| \leqslant \mathbb{P}(|Y_n - c|\leqslant \delta)\varepsilon/2 +  \mathbb{P}(|Y_n - c| > \delta)2M.$$
+- Comme $Y_n$ converge en probabilité vers $c$, lorsque $n$ est assez grand on a $\mathbb{P}(|Y_n - c| > \delta) < \varepsilon/4M$. 
+- En regroupant tout ce qui a été dit, on obtient bien $|\mathbb{E}A| \leqslant \varepsilon$ dès que $n$ est assez grand, ce qui montre bien que $\mathbb{E}A \to 0$.  
+:::
+
 :::{#thm-deltamethod}
 
 ## Delta-méthode
@@ -100,6 +112,10 @@ $$ \sqrt{n}(g(X_n) - g(\alpha)) \xrightarrow[n \to \infty]{\text{loi}} N(0, g'(\
 
 Plus généralement, si les $X_n$ sont à valeurs dans $\mathbb{R}^d$ et que $\sqrt{n}(X_n - \alpha) \to N(0,\Sigma)$, alors pour toute application $g:\mathbb{R}^d \to \mathbb{R}^k$, la suite $\sqrt{n}(g(X_n) - g(\alpha))$ converge en loi vers $$N(0, Dg(\alpha)\Sigma Dg(\alpha)^\top)$$
 où $Dg(x)$ est la [matrice jacobienne](https://fr.wikipedia.org/wiki/Matrice_jacobienne) de $g$ en $x$. 
+
+:::{.proof}
+À écrire. 
+:::
 
 ## La méthode des moments
 
@@ -131,10 +147,3 @@ La première partie a essentiellement été démontrée un peu plus haut. Pour l
 
 :::
 
-:::{#exr-yule}
-
-## loi de Yule-Simon
-
-
-Une variable aléatoire $X$ suit la loi de Yule-Simon de paramètre $\rho>0$ lorsque $\mathbb{P}(X = n) = \rho B(n, 1+\rho)$, où $n\geqslant 1$ et  $B(a,b) = \int_0^1 u^{a-1}(1-u)^{b-1}du$ est la [fonction beta](https://en.wikipedia.org/wiki/Beta_function). Montrer que si $\rho>1$, alors $\mathbb{E}[X] = \rho/(\rho-1)$, puis trouver un estimateur de $\rho$ par la méthode des moments et énumérer ses propriétés. 
-:::

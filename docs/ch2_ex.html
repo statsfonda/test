@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistiques Fondamentales - 8&nbsp; Estimation de densité</title>
+<title>Statistiques Fondamentales - 3&nbsp; Exercices</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./ch6.html" rel="prev">
+<link href="./ch3.html" rel="next">
+<link href="./ch2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -64,6 +64,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -77,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch7.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimation de densité</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch2_ex.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exercices</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -130,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch2_ex.html" class="sidebar-item-text sidebar-link">
+  <a href="./ch2_ex.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exercices</span></span></a>
   </div>
 </li>
@@ -160,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch7.html" class="sidebar-item-text sidebar-link active">
+  <a href="./ch7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
   </div>
 </li>
@@ -176,14 +178,27 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#questions" id="toc-questions" class="nav-link active" data-scroll-target="#questions"><span class="header-section-number">3.1</span> Questions</a></li>
+  <li><a href="#variance-empirique" id="toc-variance-empirique" class="nav-link" data-scroll-target="#variance-empirique"><span class="header-section-number">3.2</span> Variance empirique</a></li>
+  <li><a href="#estimation-de-masse" id="toc-estimation-de-masse" class="nav-link" data-scroll-target="#estimation-de-masse"><span class="header-section-number">3.3</span> Estimation de masse</a></li>
+  <li><a href="#uniforme-1" id="toc-uniforme-1" class="nav-link" data-scroll-target="#uniforme-1"><span class="header-section-number">3.4</span> Uniforme (1)</a></li>
+  <li><a href="#uniforme-2" id="toc-uniforme-2" class="nav-link" data-scroll-target="#uniforme-2"><span class="header-section-number">3.5</span> Uniforme (2)</a></li>
+  <li><a href="#gamma" id="toc-gamma" class="nav-link" data-scroll-target="#gamma"><span class="header-section-number">3.6</span> Gamma</a></li>
+  <li><a href="#gumbel" id="toc-gumbel" class="nav-link" data-scroll-target="#gumbel"><span class="header-section-number">3.7</span> Gumbel</a></li>
+  <li><a href="#yule-simon" id="toc-yule-simon" class="nav-link" data-scroll-target="#yule-simon"><span class="header-section-number">3.8</span> Yule-Simon</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimation de densité</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exercices</span></h1>
 </div>
 
 
@@ -198,9 +213,79 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Cours 11-12</p>
+<section id="questions" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="questions"><span class="header-section-number">3.1</span> Questions</h2>
+<ul>
+<li>Montrer que la convergence en loi vers une constante implique la convergence en probabilité.</li>
+<li>Montrer que, si un modèle statistique n’est pas identifiable, alors il ne peut exister aucun estimateur convergent.</li>
+<li>Trouver un couple de variables aléatoires <span class="math inline">\((X_n, Y_n)\)</span> tel que <span class="math inline">\(X_n\)</span> converge en loi et <span class="math inline">\(Y_n\)</span> converge en loi, mais le couple ne converge pas en loi.</li>
+<li>On observe un échantillon de lois de Poisson de paramètre <span class="math inline">\(\lambda\)</span>, que l’on estime par la moyenne empirique. Calculer le risque quadratique de cet estimateur.</li>
+<li>Quelle est la loi d’une somme de lois de Bernoulli indépendantes ? L’écart-type ?</li>
+</ul>
+</section>
+<section id="variance-empirique" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="variance-empirique"><span class="header-section-number">3.2</span> Variance empirique</h2>
+<p>On se donne <span class="math inline">\(Y_1, \dots, Y_n\)</span>, i.i.d de moyenne <span class="math inline">\(\mu\)</span> et variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<ol type="1">
+<li>On suppose <span class="math inline">\(\mu\)</span> connu. Donner un estimateur non biaisé de <span class="math inline">\(\sigma^2\)</span>.</li>
+<li>On suppose <span class="math inline">\(\mu\)</span> inconnu. Calculer l’espérance de <span class="math inline">\(\sum_{i=1}^n (Y_i - \bar{Y}_n)^2\)</span>. En déduire un estimateur non biaisé de <span class="math inline">\(\sigma^2\)</span>.</li>
+</ol>
+</section>
+<section id="estimation-de-masse" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="estimation-de-masse"><span class="header-section-number">3.3</span> Estimation de masse</h2>
+<p>Au cours de la seconde guerre mondiale, l’armée alliée notait les numéros de série <span class="math inline">\(X_1, \dots, X_n\)</span> de tous les tanks nazis capturés ou détruits, afin d’obtenir un estimateur du nombre total <span class="math inline">\(N\)</span> de tanks produits.</p>
+<ol type="1">
+<li>Proposer un modèle pour le tirage de <span class="math inline">\(X_1, \dots, X_n\)</span>.</li>
+<li>Calculer l’espérance de <span class="math inline">\(\bar X_n\)</span>. En déduire un estimateur non biaisé de <span class="math inline">\(N\)</span>. Indication: la loi de <span class="math inline">\(n\)</span> tirages sans remise est échangeable.</li>
+<li>Étudier la loi de <span class="math inline">\(X_{(n)}\)</span> et en déduire un estimateur non biaisé de <span class="math inline">\(N\)</span>.</li>
+<li>Proposer deux intervalles de confiance de niveau <span class="math inline">\(\alpha\)</span>. %de la forme <span class="math inline">\([aS, bS]\)</span> avec <span class="math inline">\(a, b\in\mathbb{R}\)</span> et <span class="math inline">\(S\)</span> une statistique résumée. On pourra utiliser le fait que l’inégalité de Hoeffding s’applique également aux tirages sans remise.</li>
+</ol>
+<p>Selon Ruggles et Broodie (1947, JASA), la méthode statistique a fourni comme estimation une production moyenne de 246 tanks/mois entre juin 1940 et septembre 1942. Des méthodes d’espionnage traditionnelles donnaient une estimation de 1400 tanks/mois. Les chiffres officiels du ministère nazi des Armements ont montré après la guerre que la production moyenne était de 245 tanks/mois.</p>
+</section>
+<section id="uniforme-1" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="uniforme-1"><span class="header-section-number">3.4</span> Uniforme (1)</h2>
+<p>On considère <span class="math inline">\((X_1, \dots, X_n)\)</span> un échantillon de loi uniforme sur <span class="math inline">\(]\theta, \theta+1[\)</span>.</p>
+<ol type="1">
+<li>Donner la densité de la loi de la variable <span class="math inline">\(R_n=X_{(n)} -X_{(1)}\)</span>, où <span class="math inline">\(X_{(1)}=\min(X_1, \dots, X_n)\)</span> et <span class="math inline">\(X_{(n)}=\max(X_1, \dots, X_n)\)</span>.</li>
+<li>Étudier les différents modes de convergence de <span class="math inline">\(R_n\)</span> quand <span class="math inline">\(n\to\infty\)</span>.</li>
+<li>Étudier le comportement en loi de <span class="math inline">\(n(1-R_n)\)</span> quand <span class="math inline">\(n\to\infty\)</span>.</li>
+</ol>
+</section>
+<section id="uniforme-2" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="uniforme-2"><span class="header-section-number">3.5</span> Uniforme (2)</h2>
+<p>Soit <span class="math inline">\(X_1,\dots,X_n\)</span> un échantillon de loi <span class="math inline">\(\mathscr{U}([0,\theta])\)</span>, avec <span class="math inline">\(\theta &gt;0\)</span>. On veut estimer <span class="math inline">\(\theta\)</span>.</p>
+<ol type="1">
+<li>Déterminer un estimateur de <span class="math inline">\(\theta\)</span> à partir de <span class="math inline">\(\bar{X}_n\)</span>.</li>
+<li>On considère l’estimateur <span class="math inline">\(X_{(n)}= {\max}_{1\leq i \leq n}X_i\)</span>. Déterminer les propriétés asymotptiques de ces estimateurs.</li>
+<li>Comparer les performances des deux estimateurs.</li>
+</ol>
+</section>
+<section id="gamma" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="gamma"><span class="header-section-number">3.6</span> Gamma</h2>
+<p>La loi Gamma <span class="math inline">\(\Gamma(\alpha, \beta)\)</span> de paramètres <span class="math inline">\(\alpha, \beta&gt;0\)</span> a pour densité <span class="math display">\[ x\mapsto \frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}\exp(-\beta x), \quad x&gt;0.\]</span> On se donne un échantillon <span class="math inline">\((X_1,\dots,X_n)\)</span> de loi <span class="math inline">\(\Gamma(\alpha, \beta)\)</span> et on chercche à estimer les paramètres.</p>
+<ol type="1">
+<li>On suppose le paramètre <span class="math inline">\(\beta\)</span> connu. Proposer un estimateur de <span class="math inline">\(\alpha\)</span> par la méthode des moments.</li>
+<li>On suppose à présent que les deux paramètres <span class="math inline">\(\alpha, \beta\)</span> sont inconnus. Proposer un estimateur de <span class="math inline">\((\alpha,\beta)\)</span> par la méthode des moments.</li>
+</ol>
+</section>
+<section id="gumbel" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="gumbel"><span class="header-section-number">3.7</span> Gumbel</h2>
+<p>La loi de Gumbel (centrale) de paramètre <span class="math inline">\(\beta\)</span> a pour fonction de répartition $ F(x)= e<sup>{-e</sup>{-x/}}$. On observe un échantillon de lois de Gumbell et l’on cherche à estimer <span class="math inline">\(\beta\)</span>.</p>
+<ol type="1">
+<li>Calculer la densité des lois de Gumbell, ainsi que leur moyenne et variance [indice :&nbsp;<span class="math inline">\(0.57721…\)</span>]</li>
+<li>En déduire un estimateur convergent dont on calculera le risque quadratique et les propriétés asymptotiques.</li>
+</ol>
+</section>
+<section id="yule-simon" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="yule-simon"><span class="header-section-number">3.8</span> Yule-Simon</h2>
+<p>Une variable aléatoire <span class="math inline">\(X\)</span> suit la loi de Yule-Simon de paramètre <span class="math inline">\(\rho&gt;0\)</span> lorsque <span class="math inline">\(\mathbb{P}(X = n) = \rho B(n, 1+\rho)\)</span>, où <span class="math inline">\(n\geqslant 1\)</span> et <span class="math inline">\(B\)</span> est la <a href="https://en.wikipedia.org/wiki/Beta_function">fonction beta</a>.</p>
+<ol type="1">
+<li>Montrer que si <span class="math inline">\(\rho&gt;1\)</span>, alors <span class="math inline">\(\mathbb{E}[X] = \rho/(\rho-1)\)</span>.</li>
+<li>Trouver un estimateur de <span class="math inline">\(\rho\)</span> et donner ses propriétés.</li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -553,13 +638,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch6.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span>
+      <a href="./ch2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link">
-        <span class="nav-page-text">Et après ?</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch3.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
