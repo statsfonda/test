@@ -1,3 +1,107 @@
 # Intervalles de confiance
 
-Cours 2
+## Principe 
+
+Dans un modèle statistique, l'estimation du paramètre d'intérêt $\theta$ par intervalles de confiance consiste à spécifier un intervalle calculable à partir des données, et qui contient $\theta$ avec grande probabilité : en d'autres termes, une *région de confiance* pour $\theta$. 
+
+Pour simplifier, on supposera d'abord que $\theta$ est un paramètre réel. 
+
+:::{#def-ic}
+
+## intervalle de confiance
+
+Un intervalle de confiance de niveau $1-\alpha$ est un intervalle $I = [A,B]$ dont les bornes $A,B$ sont des statistiques, et tel que 
+$$P_\theta(\theta \in I) \geqslant 1 - \alpha.$$
+Un intervalle de confiance de niveau asymptotique $1-\alpha$ est une *suite* d'intervalles $I_n = [A_n,B_n]$ dont les bornes $A_n,B_n$ sont des statistiques, et tels que pour tout $n$,
+$$ P_\theta(\theta \in I_n) \geqslant 1 - \alpha.$$
+:::
+
+Il n'y a rien d'autre à savoir sur les intervalles de confiance ; tout l'art de la chose consiste à savoir les construire. Commençons par trois exemples essentiels à plusieurs titres. 
+
+## Trois exemples
+
+### $\sigma$ est connu
+
+On se place dans un modèle gaussien où $X_1, \dotsc, X_n$ sont indépendantes de loi $N(\mu, \sigma^2)$ et on cherche à estimer $\mu$. Nous avons déjà vu que la moyenne empirique $\bar{X}_n$ est un estimateur convergent de $\mu$. Or, nous savons aussi la loi *exacte* de $\bar{X}_n$, qui est $N(\mu, \sigma^2/n)$. 
+
+Le moment est idéal pour rappeler l'existence et le calcul des *quantiles* d'une loi --- voir ci dessous. Si l'on se donne un niveau de confiance $\alpha = 99%$, alors 
+$$ \mathbb{P}( \sqrt{n}|\bar{X}_n - \mu| > z_{0.99}) = 99\%.$$
+et $z_{0.99} \approx 2.32$. Or, 
+$$ \frac{\sqrt{n}}{\sigma}|\bar{X}_n - \mu| > z_{0.99}$$
+est équivalent à 
+$$ \bar{X}_n - \frac{z_{0.99}\sigma}{\sqrt{n}} \leqslant \mu \leqslant \bar{X}_n + \frac{z_{0.99}\sigma}{\sqrt{n}}.$$
+Nous avons donc les deux bornes de notre intervalle de confiance : 
+$$ A = \bar{X}_n - \frac{z_{0.99}\sigma}{\sqrt{n}}$$
+$$ B = \bar{X}_n + \frac{z_{0.99}\sigma}{\sqrt{n}} .$$
+Ces deux quantités sont bien des statistiques, car $\sigma$ est connu. De plus, nous venons de montrer que $P_\mu(\mu \in [A,B]) = 99\%$. 
+
+### $\sigma$ est inconnu
+
+### La loi est inconnue
+
+## Outils pour construire des intervalles de confiance
+
+
+### Quantiles
+
+Si $X$ est une variable aléatoire sur $\mathbb{R}$, un quantile d'ordre $\alpha \in ]0,1[$, noté $q_\alpha$, est un nombre tel que $\mathbb{P}(X \leqslant q_\alpha) = \alpha$. Lorsque $X$ est continue, un tel nombre existe forcément (pourquoi ?). Les quantiles symétriques $z_\alpha$ sont, eux, définis par $\mathbb{P}(|X|\leqslant z_\alpha) = \alpha$. 
+
+Si la loi de $X$ est de surcroît symétrique, les quantiles symétriques s'expriment facilement en fonction des quantiles classiques. En effet, $\mathbb{P}(|X|\leqslant z)$ est égal à $\mathbb{P}(X \leqslant z) - \mathbb{P}(X \leqslant -z)$. Or, si la loi de $X$ est symétrique, alors $\mathbb{P}(X \leqslant -z) = 1 - \mathbb{P}(X \leqslant z)$, et donc 
+$$ \mathbb{P}(|X|\leqslant z) = 2\mathbb{P}(X \leqslant z) - 1.$$
+Il suffit alors de choisir pour $z$ le quantile $q_{\frac{1+\alpha}{2}}$ pour obtenir $\mathbb{P}(|X|\leqslant z) = \alpha$. 
+
+En règle générale, les quantiles s'obtiennent en inversant la fonction de répartition : lorsque celle-ci est une bijection sur $]0,1[$, alors $q_\alpha = F^{-1}(\alpha)$. En règle générale, il n'y a pas de forme fermée. Par exemple, pour une loi gaussienne standard, 
+$$F(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^x e^{-u^2/2}du$$
+qui elle-même n'a pas d'écriture plus simple. Fort heureusement, les outils de calcul numérique permettent d'effectuer ces calculs avec une grande précision. La table suivante donne les quantiles symétriques de la gaussienne.  
+
+| $\alpha$ | 90% | 95% | 98% | 99% | 99.9% | 99.99999% |
+| ---- | - | - | - | - | - | - |
+| $z_\alpha$ | 1.64 | 1.96 | 2.32 | 2.57 | 3.2 | 5.32 |
+
+:::{#thm-gaussiantail}
+
+### Queues de distribution de la gaussienne
+
+Si $x$ est plus grand que 1, 
+$$  \left(\frac{1}{x} - \frac{1}{x^3}\right) \frac{e^{-x^2/2}}{\sqrt{2\pi}}\leqslant \mathbb{P}(X > x) \leqslant \frac{1}{x}\frac{e^{-x^2/2}}{\sqrt{2\pi}} $$
+En particulier, si $x$ est grand, $\mathbb{P}(X \geqslant x) \sim e^{-x^2/2}/x\sqrt{2\pi}$ avec une erreur d'ordre $O(e^{-x^2/2}/x^3)$. 
+:::
+
+À titre d'exemple, pour $x=2.32$ cette approximation donne 98.83%, ce qui est remarquablement proche de 98%. Pour $x = 2.57$ on trouve 99.42%.
+
+:::{.proof}
+
+À écrire. 
+:::
+
+### Inégalités de concentration
+
+Les outils de base pour construire des intervalles de confiance sont les inégalités de concentration. Une inégalité de concentration pour une variable aléatoire intégrable $X$ est une inégalité de type 
+$$\mathbb{P}(|X - \mathbb{E}[X]|>x) \leqslant \text{(quelque chose de petit quand x est grand)}, $$ 
+c'est-à-dire une inégalité qui contrôle la probabilité pour que les réalisations d'une variable aléatoire $X$ soient éloignées de leur valeur moyenne. 
+
+:::{#thm-bt}
+
+Soit $X$ une variable aléatoire de carré intégrable. Alors, 
+$$ \mathbb{P}(|X - \mathbb{E}[X]|\geqslant x)\leqslant \frac{\mathrm{Var}(X)}{x^2}.$$ 
+
+
+:::
+
+:::{.proof} 
+Élever au carré les deux membres de l'inégalité, puis appliquer l'inégalité de Markov à la variable aléatoire positive $|X - \mathbb{E}X|^2$ dont l'espérance est $\mathrm{Var}(X)$. 
+:::
+
+:::{#thm-hoeffding}
+
+## Inégalité de Hoeffding
+
+Soient $X_1, \dotsc, X_n$ des variables aléatoires indépendantes, pas forcément de même loi. On suppose que chaque $X_i$ est à valeurs dans un intervalle borné $[a_i, b_i]$ et on pose $S_n = X_1 + \dotsc + X_n$. 
+
+$$\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant x) \leqslant e^{-\frac{2x^2}{\sum_{i=1}^n}(b_i - a_i)^2}.$$
+
+:::
+
+:::{.proof} 
+À écrire. 
+:::

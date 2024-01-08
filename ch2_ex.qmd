@@ -1,6 +1,6 @@
 # Exercices
 
-## Questions
+### Questions
 
 - Montrer que la convergence en loi vers une constante implique la convergence en probabilité. 
 - Montrer que, si un modèle statistique n'est pas identifiable, alors il ne peut exister aucun estimateur convergent. 
@@ -9,7 +9,7 @@
 - Quelle est la loi d'une somme de lois de Bernoulli indépendantes ? L'écart-type ?
 
 
-## Variance empirique
+### Variance empirique
 
 On se donne $Y_1, \dots, Y_n$, i.i.d de moyenne $\mu$ et variance $\sigma^2$.
 
@@ -17,7 +17,7 @@ On se donne $Y_1, \dots, Y_n$, i.i.d de moyenne $\mu$ et variance $\sigma^2$.
 2. On suppose $\mu$ inconnu. Calculer l'espérance de $\sum_{i=1}^n (Y_i - \bar{Y}_n)^2$. En déduire un estimateur non biaisé de $\sigma^2$.
 
 
-## Estimation de masse
+### Estimation de masse
 
 Au cours de la seconde guerre mondiale, l'armée alliée notait les numéros de série $X_1, \dots, X_n$ de tous les tanks nazis capturés ou détruits, afin d'obtenir un estimateur du nombre total $N$ de tanks produits. 
 
@@ -29,7 +29,7 @@ On pourra utiliser le fait que l'inégalité de Hoeffding s'applique également 
 
 Selon Ruggles et Broodie (1947, JASA), la méthode statistique a fourni comme estimation une production moyenne de 246 tanks/mois entre juin 1940 et septembre 1942. Des méthodes d'espionnage traditionnelles donnaient une estimation de 1400 tanks/mois. Les chiffres officiels du ministère nazi des Armements ont montré après la guerre que la production moyenne était de 245 tanks/mois.
 
-## Uniforme (1)
+### Uniforme (1)
 
 On considère $(X_1, \dots, X_n)$ un échantillon de loi uniforme sur $]\theta, \theta+1[$. 
 
@@ -38,7 +38,7 @@ où $X_{(1)}=\min(X_1, \dots, X_n)$ et $X_{(n)}=\max(X_1, \dots, X_n)$.
 2. Étudier les différents modes de convergence de $R_n$ quand $n\to\infty$.
 3. Étudier le comportement en loi de $n(1-R_n)$ quand $n\to\infty$.
 
-## Uniforme (2)
+### Uniforme (2)
 
 Soit $X_1,\dots,X_n$ un échantillon de loi $\mathscr{U}([0,\theta])$, avec $\theta >0$. On veut estimer $\theta$. 
 
@@ -47,7 +47,7 @@ Soit $X_1,\dots,X_n$ un échantillon de loi $\mathscr{U}([0,\theta])$, avec $\th
 2. On considère  l'estimateur $X_{(n)}= {\max}_{1\leq i \leq n}X_i$.  Déterminer les propriétés asymotptiques de ces estimateurs. 
 3. Comparer les performances des deux estimateurs.
 
-## Gamma
+### Gamma
 
 
 La loi Gamma $\Gamma(\alpha, \beta)$ de paramètres $\alpha, \beta>0$ a pour densité
@@ -58,17 +58,17 @@ On se donne un échantillon $(X_1,\dots,X_n)$ de loi $\Gamma(\alpha, \beta)$ et 
 2. On suppose à présent que les deux paramètres $\alpha, \beta$ sont inconnus. Proposer un estimateur de $(\alpha,\beta)$ par la méthode des moments.
 
 
-## Gumbel
+### Gumbel
 
-La loi de Gumbel (centrale) de paramètre $\beta$ a pour fonction de répartition $ F(x)= e^{-e^{-x/\beta}}$. 
-On observe un échantillon de lois de Gumbell et l'on cherche à estimer $\beta$.
+La loi de Gumbel (centrale) de paramètre $\beta$ a pour fonction de répartition $F(x)= e^{-e^{-x/\beta}}$. 
+On observe un échantillon de lois de Gumbel et l'on cherche à estimer $\beta$.
 
-1. Calculer la densité des lois de Gumbell, ainsi que leur moyenne et variance [indice : $0.57721…$] 
+1. Calculer la densité des lois de Gumbel, ainsi que leur moyenne et variance [indice : $0.57721…$] 
 2. En déduire un estimateur convergent dont on calculera le risque quadratique et les propriétés asymptotiques. 
 
 
 
-## Yule-Simon
+### Yule-Simon
 
 
 Une variable aléatoire $X$ suit la loi de Yule-Simon de paramètre $\rho>0$ lorsque $\mathbb{P}(X = n) = \rho B(n, 1+\rho)$, où $n\geqslant 1$ et $B$ est la [fonction beta](https://en.wikipedia.org/wiki/Beta_function). 
