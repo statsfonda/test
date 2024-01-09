@@ -1,0 +1,95 @@
+
+# Outils pour construire des intervalles de confiance
+
+
+## Quantiles
+
+Si $X$ est une variable aléatoire sur $\mathbb{R}$, un quantile d'ordre $\alpha \in ]0,1[$, noté $q_\alpha$, est un nombre tel que $\mathbb{P}(X \leqslant q_\alpha) = \alpha$. Lorsque $X$ est continue, un tel nombre existe forcément, car la fonction de répartition $F(x) = \mathbb{P}(X\leqslant x)$ est une surjection continue. Les quantiles symétriques $z_\alpha$ sont, eux, définis par $\mathbb{P}(|X|\leqslant z_\alpha) = \alpha$. 
+
+Si la loi de $X$ est de surcroît symétrique, les quantiles symétriques s'expriment facilement en fonction des quantiles classiques. En effet, $\mathbb{P}(|X|\leqslant z)$ est égal à $\mathbb{P}(X \leqslant z) - \mathbb{P}(X \leqslant -z)$. Or, si la loi de $X$ est symétrique, alors $\mathbb{P}(X \leqslant -z) = 1 - \mathbb{P}(X \leqslant z)$, et donc 
+$$ \mathbb{P}(|X|\leqslant z) = 2\mathbb{P}(X \leqslant z) - 1.$$
+Il suffit alors de choisir pour $z$ le quantile $q_{\frac{1+\alpha}{2}}$ pour obtenir $\mathbb{P}(|X|\leqslant z) = \alpha$. 
+
+Les quantiles s'obtiennent en inversant la fonction de répartition : lorsque celle-ci est une bijection sur $]0,1[$, alors $q_\alpha = F^{-1}(\alpha)$. En règle générale, il n'y a pas de forme fermée. Par exemple, pour une loi gaussienne standard, 
+$$F(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^x e^{-u^2/2}du$$
+qui elle-même n'a pas d'écriture plus simple. Fort heureusement, les outils de calcul numérique permettent d'effectuer ces calculs avec une grande précision. La table suivante donne les quantiles symétriques de la gaussienne.  
+
+| $\alpha$ | 90% | 95% | 98% | 99% | 99.9% | 99.99999% |
+| ---- | - | - | - | - | - | - |
+| $z_\alpha$ | 1.64 | 1.96 | 2.32 | 2.57 | 3.2 | 5.32 |
+
+Voir aussi la [règle 1-2-3](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). 
+
+
+
+:::{#thm-gaussiantail}
+
+## Queues de distribution de la gaussienne
+
+Si $x$ est plus grand que 1, 
+$$  \left(\frac{1}{x} - \frac{1}{x^3}\right) \frac{e^{-x^2/2}}{\sqrt{2\pi}}\leqslant \mathbb{P}(X > x) \leqslant \frac{1}{x}\frac{e^{-x^2/2}}{\sqrt{2\pi}} $$
+En particulier, si $x$ est grand, $\mathbb{P}(X \geqslant x) \sim e^{-x^2/2}/x\sqrt{2\pi}$ avec une erreur d'ordre $O(e^{-x^2/2}/x^3)$. 
+:::
+
+À titre d'exemple, pour $x=2.32$ cette approximation donne 98.83%, ce qui est remarquablement proche de 98%. Pour $x = 2.57$ on trouve 99.42%.
+
+:::{.proof}
+
+À écrire. 
+:::
+
+
+## Calculs de lois
+
+
+
+
+- calcul de la densité de la loi de Student. 
+- calcul de la densité de la loi du chi-deux. 
+- approximation binomiale et théorème de Berry-Esséen. 
+
+### Loi du chi-deux
+
+Soit $X$ une loi gaussienne standard. Calculons la densité de $X^2$ ; pour toute fonction-test $\varphi$, $\mathbb{E}[\varphi(X^2)]$ est donné par
+$$\frac{1}{\sqrt{2\pi}}\int e^{-x^2/2}\varphi(x^2)dx.$$
+Cette intégrale est symétrique, donc on peut ajouter un facteur 2 et intégrer sur $[0,\infty[$. En posant $u=x^2$, on obtient alors la valeur 
+$$ \frac{2}{\sqrt{2\pi}}\int_0^\infty e^{-u/2}\varphi(u)\frac{1}{2\sqrt{u}}du.$$
+On reconnaît la densité d'une [loi Gamma](https://fr.wikipedia.org/wiki/Loi_Gamma) de paramètres $(1/2, 1/2)$. Cette loi s'appelle *loi du chi-deux* et on la note $\chi_2(1)$. Sa tranformée de Fourier est donnée par 
+$$\mathbb{E}[e^{itX^2}] = \frac{1}{\sqrt{1 - 2it}}. $$
+
+Soient maintenant $X_1,\dotsc, X_n$ des lois gaussiennes standard indépendantes. Chaque $X_i^2$ est une $\chi_2(1)$ ; leur somme $S_n$ a donc pour loi la convolée $n$ fois de $\chi_2$. Calculons sa tranformée de Fourier : 
+$$\mathbb{E}[e^{itS_n}] = \mathbb{E}[e^{itX^2}]^n = \left(\frac{1}{\sqrt{1-2it}}\right)^n = \left(\frac{1}{1-2it}\right)^{\frac{n}{2}}.$$
+On reconnaît la transformée de Fourier d'une loi $\Gamma(n/2, 1/2)$ ; cette loi s'appelle loi du chi-deux à $n$ paramètres de liberté et elle est notée $\chi_2(n)$. Sa densité est 
+$$ \rho_n(x) = \frac{1}{2^{n/2}\Gamma(n/2)}e^{-x/2}x^{n/2 - 1}\mathbf{1}_{x>0}.$$
+
+## Inégalités de concentration
+
+Les outils de base pour construire des intervalles de confiance sont les inégalités de concentration. Une inégalité de concentration pour une variable aléatoire intégrable $X$ est une inégalité de type 
+$$\mathbb{P}(|X - \mathbb{E}[X]|>x) \leqslant \text{(quelque chose de petit quand x est grand)}, $$ 
+c'est-à-dire une inégalité qui contrôle la probabilité pour que les réalisations d'une variable aléatoire $X$ soient éloignées de leur valeur moyenne. 
+
+:::{#thm-bt}
+
+Soit $X$ une variable aléatoire de carré intégrable. Alors, 
+$$ \mathbb{P}(|X - \mathbb{E}[X]|\geqslant x)\leqslant \frac{\mathrm{Var}(X)}{x^2}.$$ 
+
+
+:::
+
+:::{.proof} 
+Élever au carré les deux membres de l'inégalité, puis appliquer l'inégalité de Markov à la variable aléatoire positive $|X - \mathbb{E}X|^2$ dont l'espérance est $\mathrm{Var}(X)$. 
+:::
+
+:::{#thm-hoeffding}
+
+## Inégalité de Hoeffding
+
+Soient $X_1, \dotsc, X_n$ des variables aléatoires indépendantes, pas forcément de même loi. On suppose que chaque $X_i$ est à valeurs dans un intervalle borné $[a_i, b_i]$ et on pose $S_n = X_1 + \dotsc + X_n$. 
+
+$$\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant x) \leqslant e^{-\frac{2x^2}{\sum_{i=1}^n}(b_i - a_i)^2}.$$
+
+:::
+
+:::{.proof} 
+À écrire. 
+:::

@@ -147,3 +147,23 @@ La première partie a essentiellement été démontrée un peu plus haut. Pour l
 
 :::
 
+## Deux estimateurs importants
+
+Deux estimateurs sont omniprésents en statistique : la moyenne empirique et la variance empirique. Ils sont pertinents dans n'importe quel modèle où les observations sont des réalisations de variables iid possédant une moyenne $\mu$ et une variance $\sigma^2$. 
+
+La moyenne empirique est définie par 
+$$ \bar{X}_n = \frac{1}{n}\sum_{i=1}^n X_i.$$
+Il est évident que $\mathbb{E}[\bar{X}_n] = \mathbb{E}[X] = \mu$. Cet estimateur est donc toujours sans biais, et son risque quadratique est égal à sa variance, c'est-à-dire $\frac{\sigma^2}{n}$. 
+
+L'estimateur de la variance empirique est défini comme 
+$$\hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar{X}_n)^2.$$
+
+:::{#thm-unb}
+
+L'estimateur $\hat{\sigma}_n^2$ est sans biais. 
+
+:::
+
+:::{.proof}
+À écrire.
+:::

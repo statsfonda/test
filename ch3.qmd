@@ -10,98 +10,95 @@ Pour simplifier, on supposera d'abord que $\theta$ est un paramètre réel.
 
 ## intervalle de confiance
 
-Un intervalle de confiance de niveau $1-\alpha$ est un intervalle $I = [A,B]$ dont les bornes $A,B$ sont des statistiques, et tel que 
+Un intervalle de confiance de niveau $1-\alpha$ est un intervalle $I = [A,B]$ dont les bornes $A,B$ sont des statistiques, et tel que pour tout $\theta$, 
 $$P_\theta(\theta \in I) \geqslant 1 - \alpha.$$
 Un intervalle de confiance de niveau asymptotique $1-\alpha$ est une *suite* d'intervalles $I_n = [A_n,B_n]$ dont les bornes $A_n,B_n$ sont des statistiques, et tels que pour tout $n$,
 $$ P_\theta(\theta \in I_n) \geqslant 1 - \alpha.$$
 :::
 
+Le terme « niveau » désigne $1-\alpha$ ; la vocation de ce nombre est d'être proche de 1, typiquement 99%. Le nombre $\alpha$ est parfois appelé « erreur » ou « marge d'erreur » ; la vocation de ce nombre est d'être proche de zéro, typiquement 1%. 
+
 Il n'y a rien d'autre à savoir sur les intervalles de confiance ; tout l'art de la chose consiste à savoir les construire. Commençons par trois exemples essentiels à plusieurs titres. 
 
-## Trois exemples
+## Exemples gaussiens
 
-### $\sigma$ est connu
+On dispose de variables aléatoires $X_1, \dotsc, X_n$ gaussiennes de loi $N(\mu, \sigma^2)$. On va donner des intervalles de confiance pour l'estimation des paramètres $\mu$ et $\sigma$ dans plusieurs cas de figure. Le moment est idéal pour rappeler l'existence et le calcul des *quantiles* d'une loi --- voir ci dessous. 
 
-On se place dans un modèle gaussien où $X_1, \dotsc, X_n$ sont indépendantes de loi $N(\mu, \sigma^2)$ et on cherche à estimer $\mu$. Nous avons déjà vu que la moyenne empirique $\bar{X}_n$ est un estimateur convergent de $\mu$. Or, nous savons aussi la loi *exacte* de $\bar{X}_n$, qui est $N(\mu, \sigma^2/n)$. 
+### Estimation de $\mu$
 
-Le moment est idéal pour rappeler l'existence et le calcul des *quantiles* d'une loi --- voir ci dessous. Si l'on se donne un niveau de confiance $\alpha = 99%$, alors 
-$$ \mathbb{P}( \sqrt{n}|\bar{X}_n - \mu| > z_{0.99}) = 99\%.$$
-et $z_{0.99} \approx 2.32$. Or, 
-$$ \frac{\sqrt{n}}{\sigma}|\bar{X}_n - \mu| > z_{0.99}$$
+**Lorsque $\sigma$ est connue. **
+
+Nous avons déjà vu que la moyenne empirique $\bar{X}_n$ est un estimateur sans biais de $\mu$. Or, nous savons aussi la loi *exacte* de $\bar{X}_n$, qui est $N(\mu, \sigma^2/n)$. Autrement dit, 
+$$\frac{\sqrt{n}}{\sigma}(\bar{X}_n - \mu) \sim N(0,1).$${#eq-pivg}
+
+Si l'on se donne une marge d'erreur $\alpha = 1\%$, alors 
+$$ \mathbb{P}( (\sqrt{n}/\sigma)|\bar{X}_n - \mu| > z_{0.99}) = 1\%$$
+où $z_{0.99} \approx 2.32$. Or, 
+$$ \frac{\sqrt{n}}{\sigma}|\bar{X}_n - \mu| > z_{0.99}$${#eq-piv1}
 est équivalent à 
-$$ \bar{X}_n - \frac{z_{0.99}\sigma}{\sqrt{n}} \leqslant \mu \leqslant \bar{X}_n + \frac{z_{0.99}\sigma}{\sqrt{n}}.$$
+$$ \bar{X}_n - \frac{z_{0.99}\sigma}{\sqrt{n}} \leqslant \mu \leqslant \bar{X}_n + \frac{z_{0.99}\sigma}{\sqrt{n}}.$${#eq-piv2}
+Le passage de @eq-piv1 à @eq-piv2 est souvent appelé *pivot*. 
+
 Nous avons donc les deux bornes de notre intervalle de confiance : 
 $$ A = \bar{X}_n - \frac{z_{0.99}\sigma}{\sqrt{n}}$$
 $$ B = \bar{X}_n + \frac{z_{0.99}\sigma}{\sqrt{n}} .$$
-Ces deux quantités sont bien des statistiques, car $\sigma$ est connu. De plus, nous venons de montrer que $P_\mu(\mu \in [A,B]) = 99\%$. 
-
-### $\sigma$ est inconnu
-
-### La loi est inconnue
-
-## Outils pour construire des intervalles de confiance
+Ces deux quantités sont bien des statistiques, car $\sigma$ est connu. De plus, nous venons de montrer que $P_\mu(\mu \in [A,B]) = 99\%$. Ici, le choix de la marge d'erreur $\alpha = 1\%$ ne jouait aucun rôle particulier ; ainsi, un intervalle de confiance de niveau $1-\alpha$ pour l'estimation de $\mu$ est donné par
+$$\left[\bar{X}_n - \frac{z_{1-\alpha}\sigma}{\sqrt{n}}~~;~~\bar{X}_n + \frac{z_{1-\alpha}\sigma}{\sqrt{n}} \right].$$
 
 
-### Quantiles
+**Exercice.** Montrer que cet intervalle de confiance est plus grand possible. 
 
-Si $X$ est une variable aléatoire sur $\mathbb{R}$, un quantile d'ordre $\alpha \in ]0,1[$, noté $q_\alpha$, est un nombre tel que $\mathbb{P}(X \leqslant q_\alpha) = \alpha$. Lorsque $X$ est continue, un tel nombre existe forcément (pourquoi ?). Les quantiles symétriques $z_\alpha$ sont, eux, définis par $\mathbb{P}(|X|\leqslant z_\alpha) = \alpha$. 
 
-Si la loi de $X$ est de surcroît symétrique, les quantiles symétriques s'expriment facilement en fonction des quantiles classiques. En effet, $\mathbb{P}(|X|\leqslant z)$ est égal à $\mathbb{P}(X \leqslant z) - \mathbb{P}(X \leqslant -z)$. Or, si la loi de $X$ est symétrique, alors $\mathbb{P}(X \leqslant -z) = 1 - \mathbb{P}(X \leqslant z)$, et donc 
-$$ \mathbb{P}(|X|\leqslant z) = 2\mathbb{P}(X \leqslant z) - 1.$$
-Il suffit alors de choisir pour $z$ le quantile $q_{\frac{1+\alpha}{2}}$ pour obtenir $\mathbb{P}(|X|\leqslant z) = \alpha$. 
+**Lorsque $\sigma$ est inconnue. **
 
-En règle générale, les quantiles s'obtiennent en inversant la fonction de répartition : lorsque celle-ci est une bijection sur $]0,1[$, alors $q_\alpha = F^{-1}(\alpha)$. En règle générale, il n'y a pas de forme fermée. Par exemple, pour une loi gaussienne standard, 
-$$F(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^x e^{-u^2/2}du$$
-qui elle-même n'a pas d'écriture plus simple. Fort heureusement, les outils de calcul numérique permettent d'effectuer ces calculs avec une grande précision. La table suivante donne les quantiles symétriques de la gaussienne.  
 
-| $\alpha$ | 90% | 95% | 98% | 99% | 99.9% | 99.99999% |
-| ---- | - | - | - | - | - | - |
-| $z_\alpha$ | 1.64 | 1.96 | 2.32 | 2.57 | 3.2 | 5.32 |
+Lorsque $\sigma$ n'est pas connu, les bornes $A,B$ ci-dessus ne sont pas des statistiques, car elles dépendent de $\sigma$. Heureusement, on peut estimer $\sigma$ sans biais via l'estimateur 
+$$ \hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_n)^2.$$
+Que se passe-t-il si, dans la statistique @eq-pivg, on remplace $\sigma$ par son estimation $\hat{\sigma}_n^2$ ? La loi n'est plus gaussienne. Il se trouve que la loi de 
+$$\frac{\sqrt{n}}{\hat{\sigma}^2_n}(\bar{X}_n - \mu)$${#eq-pivst}
+s'appelle [*loi de Student*](https://fr.wikipedia.org/wiki/Loi_de_Student) à $n-1$ paramètres de liberté. Cette loi de référence est bien connue ; sa densité est 
+$$ \rho_k(x) = \frac{1}{Z_k}\left(\frac{1}{1+\frac{x^2}{k}}\right)^{\frac{k+1}{2}}, $$
+où $Z_k$ est la constante de normalisation donnée par 
+$$ Z_k = \sqrt{k\pi}\frac{\Gamma((k+1)/2)}{\Gamma(k/2)}.$$
+Ses quantiles ont également été calculés avec une grande précision. On notera $t_{k,\alpha}$ le quantile symétrique de niveau $\alpha$ d'une loi de Student de paramètre $k$. Alors, 
+$$ P_{\mu, \sigma^2}(|T_n|> t_{n-1,\alpha})\leqslant \alpha .$$
+Par le même raisonnement que tout à l'heure, l'inégalité 
+$$ \left|\frac{\sqrt{n}}{\hat{\sigma}^2_n}(\bar{X}_n - \mu)\right| > t_{n-1,\alpha}$$
+est équivalente à 
+$$ \bar{X}_n - \frac{t_{n-1,\alpha}\hat{\sigma}^2_n}{\sqrt{n}} \leqslant \mu \leqslant \bar{X}_n + \frac{t_{n-1,\alpha}\hat{\sigma}^2_n}{\sqrt{n}}.$$
+et les deux côtés de ces inégalités sont des statistiques; en les notant $A,B$, on a bien trouvé un intervalle de confiance de niveau $\alpha$, c'est-à-dire tel que $P_{\mu,\sigma^2}(\mu \in [A,B]) = \alpha$. 
 
-:::{#thm-gaussiantail}
+:::{#thm-icg}
 
-### Queues de distribution de la gaussienne
+## Intervalle de Student
 
-Si $x$ est plus grand que 1, 
-$$  \left(\frac{1}{x} - \frac{1}{x^3}\right) \frac{e^{-x^2/2}}{\sqrt{2\pi}}\leqslant \mathbb{P}(X > x) \leqslant \frac{1}{x}\frac{e^{-x^2/2}}{\sqrt{2\pi}} $$
-En particulier, si $x$ est grand, $\mathbb{P}(X \geqslant x) \sim e^{-x^2/2}/x\sqrt{2\pi}$ avec une erreur d'ordre $O(e^{-x^2/2}/x^3)$. 
+Un intervalle de confiance de niveau $1-\alpha$ pour l'estimation de $\mu$ lorsque $\sigma$ n'est pas connue est donné par
+
+$$\left[\bar{X}_n - \frac{t_{1-\alpha}\hat{\sigma}_n}{\sqrt{n}}~~;~~\bar{X}_n + \frac{t_{1-\alpha}\hat{\sigma}_n}{\sqrt{n}} \right].$$
 :::
 
-À titre d'exemple, pour $x=2.32$ cette approximation donne 98.83%, ce qui est remarquablement proche de 98%. Pour $x = 2.57$ on trouve 99.42%.
+### Estimation de $\sigma$
 
-:::{.proof}
+Supposons maintenant qu'on désire estimer la variance $\sigma^2$. 
 
-À écrire. 
-:::
+**Lorsque $\mu$ est connue.**
 
-### Inégalités de concentration
+En supposant que $\mu$ est connue, l'estimateur des moments le plus naturel pour estimer $\sigma^2$ est évidemment 
+$$ \tilde{\sigma}^2_n = \frac{1}{n}\sum_{i=1}^n (X_i - \mu)^2.$$
+Comme les $(X_i - \mu)/\sigma$ sont des variables aléatoires gaussiennes centrées réduites, l'estimateur $\tilde{\sigma}^2_n \times (n/ \sigma^2)$ est une somme de $n$ gaussiennes standard indépendantes. La loi de cette statistique est connue : c'est une [loi du chi-deux](https://fr.wikipedia.org/wiki/Loi_du_%CF%87%C2%B2) à $n$ paramètres de liberté. Cette loi n'est pas symétrique, puisqu'elle est supportée sur $[0,\infty[$. On note souvent $k^-_{n,\alpha}$ et $k^+_{n,\alpha}$ les nombres les plus éloignées possible (ils exisent) tels que $\mathbb{P}(k^-_{n,\alpha}< \chi^2(n)<k^+_{n,\alpha}) = 1-\alpha$. Ainsi, 
+$$P_{\sigma^2}(k^-_{n,\alpha}< \frac{n \tilde{\sigma}^2_n}{\sigma^2} < k^+_{n,\alpha}) = \alpha.$$
+En pivotant comme dans les exemples précédents, on obtient que l'intervalle 
+$$\left[\frac{n\tilde{\sigma}_n^2}{k^{+}_{n,\alpha}} ~~;~~ \frac{n\tilde{\sigma}_n^2}{k^-_{n,\alpha}} \right] $$
+est un intervalle de confiance de niveau $\alpha$ pour $\sigma^2$. 
 
-Les outils de base pour construire des intervalles de confiance sont les inégalités de concentration. Une inégalité de concentration pour une variable aléatoire intégrable $X$ est une inégalité de type 
-$$\mathbb{P}(|X - \mathbb{E}[X]|>x) \leqslant \text{(quelque chose de petit quand x est grand)}, $$ 
-c'est-à-dire une inégalité qui contrôle la probabilité pour que les réalisations d'une variable aléatoire $X$ soient éloignées de leur valeur moyenne. 
+**Lorsque $\mu$ est inconnue.**
 
-:::{#thm-bt}
+Cette fois, on utilise l'estimateur déjà évoqué plus tôt, à savoir 
+$$ \hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_n)^2.$$
+La loi de $(n-1)\hat{\sigma}^2_n / \sigma^2$ est encore une loi du chi-deux, mais à $n-1$ paramètres de liberté. Ainsi, le même raisonnement que ci-dessus donne l'intervalle de confiance de niveau $\alpha$ suivant : 
+$$\left[\frac{(n-1)\tilde{\sigma}_n^2}{k^+_{n-1,\alpha}} ~~;~~ \frac{(n-1)\tilde{\sigma}_n^2}{k^-_{n-1,\alpha}} \right]. $$
 
-Soit $X$ une variable aléatoire de carré intégrable. Alors, 
-$$ \mathbb{P}(|X - \mathbb{E}[X]|\geqslant x)\leqslant \frac{\mathrm{Var}(X)}{x^2}.$$ 
+## Exemples asymptotiques
 
-
-:::
-
-:::{.proof} 
-Élever au carré les deux membres de l'inégalité, puis appliquer l'inégalité de Markov à la variable aléatoire positive $|X - \mathbb{E}X|^2$ dont l'espérance est $\mathrm{Var}(X)$. 
-:::
-
-:::{#thm-hoeffding}
-
-## Inégalité de Hoeffding
-
-Soient $X_1, \dotsc, X_n$ des variables aléatoires indépendantes, pas forcément de même loi. On suppose que chaque $X_i$ est à valeurs dans un intervalle borné $[a_i, b_i]$ et on pose $S_n = X_1 + \dotsc + X_n$. 
-
-$$\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant x) \leqslant e^{-\frac{2x^2}{\sum_{i=1}^n}(b_i - a_i)^2}.$$
-
-:::
-
-:::{.proof} 
-À écrire. 
-:::
+- Estimation du paramètre $p$ dans un modèle de Bernoulli. 
+- Estimation de moyenne dans un modèle non-gaussien. 

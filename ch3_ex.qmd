@@ -1,0 +1,24 @@
+# Exercices 
+
+## Questions 
+
+- Soit $X_n$ une variable aléatoire de loi de Student de paramètre $n$. Montrer que $X_n$ converge en loi vers $N(0,1)$. 
+- Construire un intervalle de confiance pour le paramètre d'une loi de Poisson. 
+- Donner un intervalle de confiance de la forme $[A,+\infty[$ pour la moyenne d'un échantillon gaussien. 
+- Même question pour la variance dans un modèle gaussien centré. 
+
+
+## Poisson
+
+
+On suppose que l'on observe $X_1, \dots, X_n$ i.i.d de loi $\mathscr{P}(\theta)$.
+
+1. Étudier $\bar{X}_n$. 
+2. Montrer que $\sqrt{\bar{X}_n} \underset{n \rightarrow \infty}{\overset{\mathbb{P}}{\longrightarrow}} \sqrt{\theta}$. 
+3. Donner deux intervalles de confiance au niveau $98 \%$ pour $\sqrt{\theta}$, et les comparer.
+
+## Uniforme
+
+Soit $X_1, \dotsc, X_n$ un échantillon iid de loi $\mathscr{U}[0,\theta]$. Donner un intervalle de confiance non asymptotique pour $\theta$. 
+
+
