@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistiques Fondamentales - 8&nbsp; Économétrie</title>
+<title>Statistiques Fondamentales - 6&nbsp; Exercices</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch6.html" rel="next">
-<link href="./ch4.html" rel="prev">
+<link href="./ch4.html" rel="next">
+<link href="./ch31_outils.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -64,6 +64,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -77,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch5.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Économétrie</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch3_ex.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exercices</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -148,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch3_ex.html" class="sidebar-item-text sidebar-link">
+  <a href="./ch3_ex.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exercices</span></span></a>
   </div>
 </li>
@@ -160,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch5.html" class="sidebar-item-text sidebar-link active">
+  <a href="./ch5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Économétrie</span></span></a>
   </div>
 </li>
@@ -188,14 +190,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#questions" id="toc-questions" class="nav-link active" data-scroll-target="#questions"><span class="header-section-number">6.1</span> Questions</a></li>
+  <li><a href="#poisson" id="toc-poisson" class="nav-link" data-scroll-target="#poisson"><span class="header-section-number">6.2</span> Poisson</a></li>
+  <li><a href="#uniforme" id="toc-uniforme" class="nav-link" data-scroll-target="#uniforme"><span class="header-section-number">6.3</span> Uniforme</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Économétrie</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exercices</span></h1>
 </div>
 
 
@@ -210,9 +220,30 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Cours 5-6-7</p>
+<section id="questions" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="questions"><span class="header-section-number">6.1</span> Questions</h2>
+<ul>
+<li>Soit <span class="math inline">\(X_n\)</span> une variable aléatoire de loi de Student de paramètre <span class="math inline">\(n\)</span>. Montrer que <span class="math inline">\(X_n\)</span> converge en loi vers <span class="math inline">\(N(0,1)\)</span>.</li>
+<li>Construire un intervalle de confiance pour le paramètre d’une loi de Poisson.</li>
+<li>Donner un intervalle de confiance de la forme <span class="math inline">\([A,+\infty[\)</span> pour la moyenne d’un échantillon gaussien.</li>
+<li>Même question pour la variance dans un modèle gaussien centré.</li>
+</ul>
+</section>
+<section id="poisson" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="poisson"><span class="header-section-number">6.2</span> Poisson</h2>
+<p>On suppose que l’on observe <span class="math inline">\(X_1, \dots, X_n\)</span> i.i.d de loi <span class="math inline">\(\mathscr{P}(\theta)\)</span>.</p>
+<ol type="1">
+<li>Étudier <span class="math inline">\(\bar{X}_n\)</span>.</li>
+<li>Montrer que <span class="math inline">\(\sqrt{\bar{X}_n} \underset{n \rightarrow \infty}{\overset{\mathbb{P}}{\longrightarrow}} \sqrt{\theta}\)</span>.</li>
+<li>Donner deux intervalles de confiance au niveau <span class="math inline">\(98 \%\)</span> pour <span class="math inline">\(\sqrt{\theta}\)</span>, et les comparer.</li>
+</ol>
+</section>
+<section id="uniforme" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="uniforme"><span class="header-section-number">6.3</span> Uniforme</h2>
+<p>Soit <span class="math inline">\(X_1, \dotsc, X_n\)</span> un échantillon iid de loi <span class="math inline">\(\mathscr{U}[0,\theta]\)</span>. Donner un intervalle de confiance non asymptotique pour <span class="math inline">\(\theta\)</span>.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -565,13 +596,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch4.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d’hypothèse</span></span>
+      <a href="./ch31_outils.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Outils pour construire des intervalles de confiance</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch6.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch4.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d’hypothèse</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
