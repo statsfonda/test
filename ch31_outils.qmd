@@ -2,23 +2,23 @@
 # Outils pour construire des intervalles de confiance
 
 
-## Quantiles
+## Quantiles {#sec-quantiles}
 
-Si $X$ est une variable aléatoire sur $\mathbb{R}$, un quantile d'ordre $\alpha \in ]0,1[$, noté $q_\alpha$, est un nombre tel que $\mathbb{P}(X \leqslant q_\alpha) = \alpha$. Lorsque $X$ est continue, un tel nombre existe forcément, car la fonction de répartition $F(x) = \mathbb{P}(X\leqslant x)$ est une surjection continue. Les quantiles symétriques $z_\alpha$ sont, eux, définis par $\mathbb{P}(|X|\leqslant z_\alpha) = \alpha$. 
+Si $X$ est une variable aléatoire sur $\mathbb{R}$, un quantile d'ordre $\beta \in ]0,1[$, noté $q_\beta$, est un nombre tel que $\mathbb{P}(X \leqslant q_\beta) = \beta$. Lorsque $X$ est continue, un tel nombre existe forcément, car la fonction de répartition $F(x) = \mathbb{P}(X\leqslant x)$ est une surjection continue. Les quantiles symétriques $z_\beta$ sont, eux, définis par $\mathbb{P}(|X|\leqslant z_\beta) = \beta$. 
 
 Si la loi de $X$ est de surcroît symétrique, les quantiles symétriques s'expriment facilement en fonction des quantiles classiques. En effet, $\mathbb{P}(|X|\leqslant z)$ est égal à $\mathbb{P}(X \leqslant z) - \mathbb{P}(X \leqslant -z)$. Or, si la loi de $X$ est symétrique, alors $\mathbb{P}(X \leqslant -z) = 1 - \mathbb{P}(X \leqslant z)$, et donc 
 $$ \mathbb{P}(|X|\leqslant z) = 2\mathbb{P}(X \leqslant z) - 1.$$
-Il suffit alors de choisir pour $z$ le quantile $q_{\frac{1+\alpha}{2}}$ pour obtenir $\mathbb{P}(|X|\leqslant z) = \alpha$. 
+Il suffit alors de choisir pour $z$ le quantile $q_{\frac{1+\beta}{2}}$ pour obtenir $\mathbb{P}(|X|\leqslant z) = \beta$. Lorsque $\beta$ est de la forme $1-\alpha$ avec $\alpha$ petit (comme les niveaux des intervalles de confiance), on trouve alors $z_{1-\alpha} = q_{1 - \alpha/2}$. 
 
-Les quantiles s'obtiennent en inversant la fonction de répartition : lorsque celle-ci est une bijection sur $]0,1[$, alors $q_\alpha = F^{-1}(\alpha)$. En règle générale, il n'y a pas de forme fermée. Par exemple, pour une loi gaussienne standard, 
+Les quantiles s'obtiennent en inversant la fonction de répartition : lorsque celle-ci est une bijection sur $]0,1[$, alors $q_\beta = F^{-1}(\beta)$. En règle générale, il n'y a pas de forme fermée. Par exemple, pour une loi gaussienne standard, 
 $$F(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^x e^{-u^2/2}du$$
 qui elle-même n'a pas d'écriture plus simple. Fort heureusement, les outils de calcul numérique permettent d'effectuer ces calculs avec une grande précision. La table suivante donne les quantiles symétriques de la gaussienne.  
 
-| $\alpha$ | 90% | 95% | 98% | 99% | 99.9% | 99.99999% |
+| $\beta$ | 90% | 95% | 98% | 99% | 99.9% | 99.99999% |
 | ---- | - | - | - | - | - | - |
-| $z_\alpha$ | 1.64 | 1.96 | 2.32 | 2.57 | 3.2 | 5.32 |
+| $z_\beta$ | 1.64 | 1.96 | 2.32 | 2.57 | 3.2 | 5.32 |
 
-Voir aussi la [règle 1-2-3](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). 
+Voir aussi la [règle 1-2-3](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). Il existe de nombreuses tables de quantiles pour les lois usuelles. 
 
 
 
@@ -46,8 +46,8 @@ En particulier, si $x$ est grand, $\mathbb{P}(X \geqslant x) \sim e^{-x^2/2}/x\s
 Une variable aléatoire suit une loi Gamma de paramètres $\lambda>0, \alpha>0$ lorsque sa densité est donnée par 
 $$\gamma_{r,\alpha}(x) =  \frac{\lambda^\alpha}{\Gamma(\alpha)}e^{-\lambda x}x^{\alpha -1}\mathbf{1}_{x>0}.$$
 Les lois Gamma rassemblent les lois exponentielles ($\Gamma(\lambda, 1) = \mathscr{E}(\lambda)$) et les lois du chi-deux qu'on verra ci-dessous $(\Gamma(1/2, n/2) = \chi_2(n)$). La transformée de Fourier $\varphi_{\lambda, \alpha}$ d'une loi $\Gamma(\lambda, \alpha)$ se calcule facilement par un changement de variables : 
-$$\varphi_{\lambda, \alpha}(t) = \left(1 - \frac{it}{\lambda}\right)^{-\alpha}.$$
-
+$$\varphi_{\lambda, \alpha}(t) = \left(1 - \frac{it}{\lambda}\right)^{-\alpha}.$${#eq-fcgamma}
+Cette identité montre également que si $X_1, \dotsc, X_n$ sont des variables indépendantes de loi $\Gamma(\lambda, \alpha_i)$, alors leur somme est une variable de loi $\Gamma(\lambda, \alpha_1 + \dotsc + \alpha_n)$. 
 
 ### Loi du chi-deux {#sec-chideux}
 
@@ -77,7 +77,7 @@ $$t_n(u) = \frac{1}{Z_n\sqrt{2\pi n}}\left(\frac{2}{1+\frac{u^2}{n}}\right)^{\fr
 On reconnaît $\Gamma((n+1)/2)$ à droite. La densité $t_n(x)$ est donc égale à 
 $$t_n(x) = \frac{1}{\sqrt{n\pi}}\frac{\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)}\left(\frac{1}{1 + \frac{u^2}{n}}\right)^{\frac{n+1}{2}}.$$
 
-La loi de Student de paramètre $n=1$ est tout simplement une loi de Cauchy. 
+Cette loi s'appelle *loi de Student* de paramètre $n$ ; on dit parfois *à $n$ degrés de liberté*. Elle est notée $\mathscr{T}(n)$. La loi de Student de paramètre $n=1$ est tout simplement une loi de Cauchy. 
 
 ### Loi de la statistique de Student {#sec-student2}
 
@@ -87,9 +87,11 @@ $$\hat{\sigma}^2_n = \frac{\sum_{i=1}^n (X_i - \bar{X}_n)^2}{n-1}. $$
 
 :::{#thm-student_density}
 
-La variable aléatoire $T_n$ suit une loi de Student de paramètre $n-1$. 
+$$T_n \sim \mathscr{T}_n.$$
 
 :::
+
+$~~$
 
 :::{.proof}
 
@@ -103,11 +105,17 @@ Or, les $n-1$ variables aléatoires $G_i = \langle f_i, X\rangle$ sont des gauss
 
 :::
 
+La seconde partie de la démonstration est un cas particulier du théorème de Cochran, que nous verrons dans le chapitre sur la régression linéaire. 
+
 
 
 ## Inégalités de concentration
 
 Les outils de base pour construire des intervalles de confiance dans des circonstances générales (non gaussiennes) sont les inégalités de concentration. Une inégalité de concentration pour une variable aléatoire intégrable $X$ consiste à borner $\mathbb{P}(|X - \mathbb{E}[X]|>x)$ par quelque chose de petit quand x est grand : on cherche à contrôler la probabilité pour que les réalisations de la variable aléatoire $X$ soient éloignées de leur valeur moyenne $\mathbb{E}[X]$ de plus de $x$. 
+
+
+## Inégalité de Bienaymé-Tchebychev
+
 
 :::{#thm-bt}
 
@@ -122,16 +130,37 @@ $$ \mathbb{P}(|X - \mathbb{E}[X]|\geqslant x)\leqslant \frac{\mathrm{Var}(X)}{x^
 Élever au carré les deux membres de l'inégalité, puis appliquer l'inégalité de Markov à la variable aléatoire positive $|X - \mathbb{E}X|^2$ dont l'espérance est $\mathrm{Var}(X)$. 
 :::
 
+## Inégalité de Hoeffding
+
+
 :::{#thm-hoeffding}
 
 ## Inégalité de Hoeffding
 
 Soient $X_1, \dotsc, X_n$ des variables aléatoires indépendantes, pas forcément de même loi. On suppose que chaque $X_i$ est à valeurs dans un intervalle borné $[a_i, b_i]$ et on pose $S_n = X_1 + \dotsc + X_n$. 
 
-$$\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant x) \leqslant e^{-\frac{2x^2}{\sum_{i=1}^n}(b_i - a_i)^2}.$$
+$$\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant x) \leqslant e^{-\frac{2x^2}{\sum_{i=1}^n(b_i - a_i)^2}}.$${#eq-hoeffding}
 
 :::
 
-:::{.proof} 
-À écrire. 
+
+
+:::{#lem-hoeffding}
+
+## lemme de Hoeffding
+
+Soit $X$ une variable aléatoire centrée à valeurs dans $[a,b]$. Pour tout $t$, 
+
+$$\mathbb{E}[e^{tX}] \leqslant e^{\frac{t^2(b-a)^2}{8}}.$$
+
 :::
+
+:::{.proof}
+Soit $X$ une variable aléatoire centrée à valeurs dans l'intervalle $[-1,1]$. En écrivant $x = (-1)\times (1-x)/2 + 1\times (1+x)/2$ et en utilisant la convexité de la fonction $x \mapsto e^{tx}$, on obtient $e^{tX}\leqslant ((1-X)e^{-t} + (1+X) e^{t})/2$, puis en prenant l'espérance et le fait que $X$ est centrée, $\mathbb{E}[e^{tX}]\leqslant \cosh(t)$. Il est facile de voir que $\cosh(t) \leqslant e^{t^2/2}$ en utilisant le développement en série entière de $\cosh$.  Le cas général où $X$ est à valeurs dans $[a,b]$ se fait de la même façon. 
+:::
+
+
+*Preuve de l'inégalité de Hoeffding.*
+L'inégalité de Markov montre que $\mathbb{P}(S_n > t)$ est plus petit que $\mathbb{E}[e^{\lambda tS_n}]e^{-\lambda t}$. De plus, $\mathbb{E}[e^{tS_n}]$ est aussi le produit des $e^{ \varphi_i(\lambda t)}$ où $\varphi_i(t) = \ln \mathbb{E}[e^{itX_i}]$. Le lemme de Hoeffding permet donc de borner $\mathbb{P}(|S_n - \mathbb{E}[S_n]|>t)$ par 
+$$ \exp\left(-\sum_{i=1}^n \frac{(b_i - a_i)^2 t^2}{8} - t\lambda\right).$$
+Il suffit alors de trouver le $\lambda$ qui minimise le terme dans l'exponentielle pour trouver exactement @eq-hoeffding. 

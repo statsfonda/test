@@ -16,13 +16,13 @@ Un intervalle de confiance de niveau asymptotique $1-\alpha$ est une *suite* d'i
 $$ P_\theta(\theta \in I_n) \geqslant 1 - \alpha.$$
 :::
 
-Le terme « niveau » désigne $1-\alpha$ ; la vocation de ce nombre est d'être proche de 1, typiquement 99%. Le nombre $\alpha$ est parfois appelé « erreur » ou « marge d'erreur » ; la vocation de ce nombre est d'être proche de zéro, typiquement 1%. 
+Le terme « niveau » désigne $1-\alpha$ ; la vocation de ce nombre est d'être proche de 1, typiquement 99%. Le nombre $\alpha$ est parfois appelé « erreur », « marge d'erreur » ou encore « niveau de risque » ; la vocation de ce nombre est d'être proche de zéro, typiquement 1%. 
 
-Il n'y a rien d'autre à savoir sur les intervalles de confiance ; tout l'art de la chose consiste à savoir les construire. Commençons par trois exemples essentiels à plusieurs titres. 
+Il n'y a rien d'autre à savoir sur les intervalles de confiance ; tout l'art de la chose consiste à savoir les construire. Commençons par des exemples essentiels à plusieurs titres : le cas d'un échantillon gaussien, et le cas de lois de Bernoulli.  
 
 ## Exemples gaussiens
 
-On dispose de variables aléatoires $X_1, \dotsc, X_n$ gaussiennes de loi $N(\mu, \sigma^2)$. On va donner des intervalles de confiance pour l'estimation des paramètres $\mu$ et $\sigma$ dans plusieurs cas de figure. Le moment est idéal pour rappeler l'existence et le calcul des *quantiles* d'une loi --- voir ci dessous. 
+On dispose de variables aléatoires $X_1, \dotsc, X_n$ de loi $N(\mu, \sigma^2)$. On va donner des intervalles de confiance pour l'estimation des paramètres $\mu$ et $\sigma$ dans plusieurs cas de figure. 
 
 ### Estimation de $\mu$
 
@@ -31,20 +31,20 @@ On dispose de variables aléatoires $X_1, \dotsc, X_n$ gaussiennes de loi $N(\mu
 Nous avons déjà vu que la moyenne empirique $\bar{X}_n$ est un estimateur sans biais de $\mu$. Or, nous savons aussi la loi *exacte* de $\bar{X}_n$, qui est $N(\mu, \sigma^2/n)$. Autrement dit, 
 $$\frac{\sqrt{n}}{\sigma}(\bar{X}_n - \mu) \sim N(0,1).$${#eq-pivg}
 
-Si l'on se donne une marge d'erreur $\alpha = 1\%$, alors 
+Dans cette équation, on a trouvé une variable aléatoire dont la loi ne dépend plus de $\mu$. Il est donc possible de déterminer un intervalle dans lequel elle fluctue à l'aide des quantiles de la loi normale, qui sont étudiés dans @sec-quantiles. Si l'on se donne une marge d'erreur $\alpha = 1\%$, alors 
 $$ \mathbb{P}( (\sqrt{n}/\sigma)|\bar{X}_n - \mu| > z_{0.99}) = 1\%$$
 où $z_{0.99} \approx 2.32$. Or, 
 $$ \frac{\sqrt{n}}{\sigma}|\bar{X}_n - \mu| > z_{0.99}$${#eq-piv1}
 est équivalent à 
 $$ \bar{X}_n - \frac{z_{0.99}\sigma}{\sqrt{n}} \leqslant \mu \leqslant \bar{X}_n + \frac{z_{0.99}\sigma}{\sqrt{n}}.$${#eq-piv2}
-Le passage de @eq-piv1 à @eq-piv2 est souvent appelé *pivot*. 
+Le passage de @eq-piv1 à @eq-piv2 est souvent appelé *pivot* et sert à passer d'un intervalle de fluctuation à un intervalle de confiance. 
 
 Nous avons donc les deux bornes de notre intervalle de confiance : 
 $$ A = \bar{X}_n - \frac{z_{0.99}\sigma}{\sqrt{n}}$$
 $$ B = \bar{X}_n + \frac{z_{0.99}\sigma}{\sqrt{n}} .$$
 Ces deux quantités sont bien des statistiques, car $\sigma$ est connu. De plus, nous venons de montrer que $P_\mu(\mu \in [A,B]) = 99\%$. Ici, le choix de la marge d'erreur $\alpha = 1\%$ ne jouait aucun rôle particulier ; ainsi, un intervalle de confiance de niveau $1-\alpha$ pour l'estimation de $\mu$ est donné par
 $$\left[\bar{X}_n - \frac{z_{1-\alpha}\sigma}{\sqrt{n}}~~;~~\bar{X}_n + \frac{z_{1-\alpha}\sigma}{\sqrt{n}} \right].$${#eq-icgmu1}
-
+ 
 
 
 **Lorsque $\sigma$ est inconnue. **
@@ -54,8 +54,8 @@ Lorsque $\sigma$ n'est pas connu, les bornes $A,B$ ci-dessus ne sont pas des sta
 $$ \hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_n)^2.$$
 Que se passe-t-il si, dans la statistique @eq-pivg, on remplace $\sigma$ par son estimation $\hat{\sigma}_n^2$ ? On obtient la statistique dite *de Student*, 
 $$T_n = \frac{\sqrt{n}}{\sqrt{\hat{\sigma}_n^2}}(\bar{X}_n - \mu).$${#eq-pivst}
-Sa loi n'est plus une loi gaussienne, mais une loi de Student à $n-1$ paramètres de liberté : le calcul de la densité est fait en détails dans @sec-student1 - @sec-student2. 
-Les quantiles des lois de Student ont été calculés avec précision. On notera $t_{k,\alpha}$ le quantile symétrique de niveau $\alpha$ d'une loi de Student de paramètre $k$. Alors, 
+Sa loi n'est plus une loi gaussienne, mais une loi de Student à $n-1$ paramètres de liberté $\mathscr{T}_{n-1}$: le calcul de la densité est fait en détails dans @sec-student1 - @sec-student2. 
+Les quantiles des lois de Student ont été calculés avec précision. On notera $t_{k,\alpha}$ le quantile symétrique de niveau $\alpha$ de $\mathscr{T}_k$. Alors, 
 $$ P_{\mu, \sigma^2}(|T_n|> t_{n-1,\alpha})\leqslant \alpha .$$
 Par le même raisonnement que tout à l'heure, l'inégalité 
 $$ \left|\frac{\sqrt{n}}{\hat{\sigma}^2_n}(\bar{X}_n - \mu)\right| > t_{n-1,\alpha}$$

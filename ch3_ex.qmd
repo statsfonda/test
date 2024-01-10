@@ -3,13 +3,17 @@
 ## Questions 
 
 - Soit $X_n$ une variable aléatoire de loi de Student de paramètre $n$. Montrer que $X_n$ converge en loi vers $N(0,1)$. 
-- Construire un intervalle de confiance pour le paramètre d'une loi de Poisson. 
+- Soit $X_n \sim \chi_2(n)$. La suite $(X_n)$ est-elle asymptotiquement normale ?
 - Donner un intervalle de confiance de la forme $[A,+\infty[$ pour la moyenne d'un échantillon gaussien. 
 - Même question pour la variance dans un modèle gaussien centré. 
 - Dans l'estimation de la moyenne $\mu$ d'un modèle gaussien où la variance $\sigma^2$ est connue, montrer que l'intervalle de confiance obtenu (@eq-icgmu1) est le plus grand possible de niveau $1-\alpha$. 
 - Démontrer le théorème @thm-gaussiantail sur l'asymptotique des queues de distribution de la loi gaussienne. 
+- Montrer la borne suivante sur les quantiles de loi gaussienne standard: $q_\beta < \sqrt{\ln\frac{1}{\beta\sqrt{2\pi}}}$ (pour tout $1/2<\beta<1$).  
+- Comparer les queues de distribution des lois $N(0,1), \chi_2(n)$ et $\mathscr{T}(n)$. 
+- Expliquer à votre grand-mère la différence entre un intervalle de fluctuation et un intervalle de confiance. 
+- L'intervalle de confiance de niveau $1-\alpha$ pour la moyenne d'un modèle $N(\mu, 1)$ avec $n$ observations est $I_n = [\bar{X}_n \pm z_\alpha /\sqrt{n}]$. Supposons qu'on obtienne une nouvelle observation indépendante des autres, disons $Z$. La probabilité $\mathbb{P}(Z \in I_n)$ est-elle plus grande ou plus petite que $1-\alpha$ ?
 
-## Poisson
+## Lois de Poisson
 
 
 On suppose que l'on observe $X_1, \dots, X_n$ i.i.d de loi $\mathscr{P}(\theta)$.
@@ -18,8 +22,25 @@ On suppose que l'on observe $X_1, \dots, X_n$ i.i.d de loi $\mathscr{P}(\theta)$
 2. Montrer que $\sqrt{\bar{X}_n} \underset{n \rightarrow \infty}{\overset{\mathbb{P}}{\longrightarrow}} \sqrt{\theta}$. 
 3. Donner deux intervalles de confiance au niveau $98 \%$ pour $\sqrt{\theta}$, et les comparer.
 
-## Uniforme
+## Lois uniformes
 
-Soit $X_1, \dotsc, X_n$ un échantillon iid de loi $\mathscr{U}[0,\theta]$. Donner un intervalle de confiance non asymptotique pour $\theta$. 
+Soit $X_1, \dotsc, X_n$ des variables aléatoires iid de loi $\mathscr{U}[0,\theta]$. Donner un intervalle de confiance non asymptotique pour $\theta$ en utilisant l'estimateur $\hat{\theta}_n = \max_{i=1,\dotsc, n}X_i$. 
 
 
+## Lois exponentielles décalées
+
+Soit $X_1, \dotsc, X_n$ des variables aléatoires iid de densité $e^{\theta-x} \mathbf{1}_{x>\theta}$, où $\theta >0$.
+
+1. Calculer $\mathbb{E}_\theta\left[X_1\right]$ et en déduire un estimateur de $\theta$ que l'on notera $\hat\theta_n$. Étudier ses propriétés (risque quadratique, convergence) et l'utiliser pour construire un premier intervalle de confiance $I_1(\alpha)$ non-asymptotique pour $\theta$ de niveau $1-\alpha$.
+2. Construire un intervalle de confiance asymptotique $I_2(\alpha)$ pour $\theta$ à partir de $\hat{\theta}_n$. 
+2. Montrer que l'estimateur $\theta_n^\star := \min_{1 \leq i \leq n} X_i$ est meilleur que $\hat \theta_n$ au sens du risque quadratique, puis l'utiliser pour construire un intervalle de confiance $I_3(\alpha)$ de niveau $1-\alpha$. 
+3. Comparer les longueurs de tous ces différents intervalles de confiance. 
+
+
+## Lois exponentielles
+
+
+Soit $X_1, \dotsc, X_n$ des variables aléatoires iid exponentielles de paramètre $\lambda>0$. 
+
+1. Quelle est la loi de $S_n = X_1 + \dotsb + X_n$ ?
+2. Construire un intervalle de confiance de niveau $1-\alpha$ pour $\lambda$. 
