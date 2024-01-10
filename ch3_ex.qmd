@@ -6,7 +6,8 @@
 - Construire un intervalle de confiance pour le paramètre d'une loi de Poisson. 
 - Donner un intervalle de confiance de la forme $[A,+\infty[$ pour la moyenne d'un échantillon gaussien. 
 - Même question pour la variance dans un modèle gaussien centré. 
-
+- Dans l'estimation de la moyenne $\mu$ d'un modèle gaussien où la variance $\sigma^2$ est connue, montrer que l'intervalle de confiance obtenu (@eq-icgmu1) est le plus grand possible de niveau $1-\alpha$. 
+- Démontrer le théorème @thm-gaussiantail sur l'asymptotique des queues de distribution de la loi gaussienne. 
 
 ## Poisson
 

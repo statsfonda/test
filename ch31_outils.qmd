@@ -41,14 +41,15 @@ En particulier, si $x$ est grand, $\mathbb{P}(X \geqslant x) \sim e^{-x^2/2}/x\s
 
 ## Calculs de lois
 
+### Lois Gamma 
+
+Une variable aléatoire suit une loi Gamma de paramètres $\lambda>0, \alpha>0$ lorsque sa densité est donnée par 
+$$\gamma_{r,\alpha}(x) =  \frac{\lambda^\alpha}{\Gamma(\alpha)}e^{-\lambda x}x^{\alpha -1}\mathbf{1}_{x>0}.$$
+Les lois Gamma rassemblent les lois exponentielles ($\Gamma(\lambda, 1) = \mathscr{E}(\lambda)$) et les lois du chi-deux qu'on verra ci-dessous $(\Gamma(1/2, n/2) = \chi_2(n)$). La transformée de Fourier $\varphi_{\lambda, \alpha}$ d'une loi $\Gamma(\lambda, \alpha)$ se calcule facilement par un changement de variables : 
+$$\varphi_{\lambda, \alpha}(t) = \left(1 - \frac{it}{\lambda}\right)^{-\alpha}.$$
 
 
-
-- calcul de la densité de la loi de Student. 
-- calcul de la densité de la loi du chi-deux. 
-- approximation binomiale et théorème de Berry-Esséen. 
-
-### Loi du chi-deux
+### Loi du chi-deux {#sec-chideux}
 
 Soit $X$ une loi gaussienne standard. Calculons la densité de $X^2$ ; pour toute fonction-test $\varphi$, $\mathbb{E}[\varphi(X^2)]$ est donné par
 $$\frac{1}{\sqrt{2\pi}}\int e^{-x^2/2}\varphi(x^2)dx.$$
@@ -57,24 +58,65 @@ $$ \frac{2}{\sqrt{2\pi}}\int_0^\infty e^{-u/2}\varphi(u)\frac{1}{2\sqrt{u}}du.$$
 On reconnaît la densité d'une [loi Gamma](https://fr.wikipedia.org/wiki/Loi_Gamma) de paramètres $(1/2, 1/2)$. Cette loi s'appelle *loi du chi-deux* et on la note $\chi_2(1)$. Sa tranformée de Fourier est donnée par 
 $$\mathbb{E}[e^{itX^2}] = \frac{1}{\sqrt{1 - 2it}}. $$
 
-Soient maintenant $X_1,\dotsc, X_n$ des lois gaussiennes standard indépendantes. Chaque $X_i^2$ est une $\chi_2(1)$ ; leur somme $S_n$ a donc pour loi la convolée $n$ fois de $\chi_2$. Calculons sa tranformée de Fourier : 
-$$\mathbb{E}[e^{itS_n}] = \mathbb{E}[e^{itX^2}]^n = \left(\frac{1}{\sqrt{1-2it}}\right)^n = \left(\frac{1}{1-2it}\right)^{\frac{n}{2}}.$$
-On reconnaît la transformée de Fourier d'une loi $\Gamma(n/2, 1/2)$ ; cette loi s'appelle loi du chi-deux à $n$ paramètres de liberté et elle est notée $\chi_2(n)$. Sa densité est 
-$$ \rho_n(x) = \frac{1}{2^{n/2}\Gamma(n/2)}e^{-x/2}x^{n/2 - 1}\mathbf{1}_{x>0}.$$
+Soient maintenant $X_1,\dotsc, X_n$ des lois gaussiennes standard indépendantes. Chaque $X_i^2$ est une $\chi_2(1)$ ; leur somme a donc pour loi la convolée $n$ fois de $\chi_2$. Calculons sa tranformée de Fourier : 
+\begin{align}\mathbb{E}[e^{it(X_1^2 + \dotsb + X_n^2)}] &= \mathbb{E}[e^{itX_1^2}]^n \\ &= (1-2it)^{-\frac{n}{2}} .\end{align}
+On reconnaît la transformée de Fourier d'une loi $\Gamma(n/2, 1/2)$ ; cette loi s'appelle loi du chi-deux à $n$ paramètres de liberté et elle est notée $\chi_2(n)$. Sa densité est donnée par
+$$ \frac{1}{2^{n/2}\Gamma(n/2)}e^{-x/2}x^{n/2 - 1}\mathbf{1}_{x>0}.$$
+
+### Loi de Student {#sec-student1}
+
+Soit $X$ une variable aléatoire gaussienne standard et $Y_n$ une variable aléatoire suivant une loi $\chi_2(n)$ indépendante de $X$. 
+On va calculer la loi de $T_n = X/\sqrt{Y_n/n}$. Soit $f$ une fonction test ; l'espérance $\mathbb{E}[f(T_n)]$ est égale à 
+$$\frac{1}{Z_n\sqrt{2\pi}}\int_0^\infty \int_{-\infty}^{\infty}  f\left(\frac{x}{\sqrt{y/n}}\right) e^{-\frac{x^2}{2}}e^{-\frac{y}{2}}y^{\frac{n}{2} - 1}dxdy $$
+où $Z_n = 2^{n/2}\Gamma(n/2)$. Dans l'intégrale en $x$, on effectue le changement de variable $u = x/\sqrt{y/n}$ afin d'obtenir 
+$$\frac{1}{Z_n\sqrt{2\pi}}\int_0^\infty \int_{-\infty}^{\infty}  f(u) e^{-\frac{yu^2}{2n}}e^{-\frac{y}{2}}y^{\frac{n}{2} - 1}\sqrt{\frac{y}{n}} dxdy. $$
+La densité de $T_n$ est donc donnée par 
+$$t_n(u)= \frac{1}{Z_n\sqrt{2\pi n}}\int_0^\infty  e^{-\frac{yu^2}{2n}-\frac{y}{2}}y^{\frac{n+1}{2}-1} dy. $$
+Le changement de variables $z = y(1+u^2/n)/2$ nous ramène à une fonction Gamma : 
+$$t_n(u) = \frac{1}{Z_n\sqrt{2\pi n}}\left(\frac{2}{1+\frac{u^2}{n}}\right)^{\frac{n+1}{2}}\int_0^\infty  e^{-z}z^{\frac{n+1}{2}- 1} dz.$$
+On reconnaît $\Gamma((n+1)/2)$ à droite. La densité $t_n(x)$ est donc égale à 
+$$t_n(x) = \frac{1}{\sqrt{n\pi}}\frac{\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)}\left(\frac{1}{1 + \frac{u^2}{n}}\right)^{\frac{n+1}{2}}.$$
+
+La loi de Student de paramètre $n=1$ est tout simplement une loi de Cauchy. 
+
+### Loi de la statistique de Student {#sec-student2}
+
+Soient $X_1, \dotsc, X_n$ des variables gaussiennes $N(\mu, \sigma^2)$ indépendantes, et soit $T_n = (\bar{X}_n-\mu)/\sqrt{\hat{\sigma}^2_n}$, où 
+$$\hat{\sigma}^2_n = \frac{\sum_{i=1}^n (X_i - \bar{X}_n)^2}{n-1}. $$
+
+
+:::{#thm-student_density}
+
+La variable aléatoire $T_n$ suit une loi de Student de paramètre $n-1$. 
+
+:::
+
+:::{.proof}
+
+On va montrer  1° que $\bar{X}_n$ et $\sqrt{\hat{\sigma}^2_n / \sigma^2}$ sont indépendantes, et 2° que $\sqrt{\hat{\sigma}^2_n / \sigma^2}$ a bien la même loi que $\sqrt{Y_{n-1}/(n-1)}$ où $Y_{n-1}$ est une $\chi_2(n-1)$. Dans la suite, on supposera que $\mu=0$ et $\sigma=1$, ce qui n'enlève rien en généralité. 
+
+*Premier point. * Le vecteur $X=(X_1, \dotsc, X_n)$ est gaussien. Posons $Z = (X_1 - \bar{X}_n, \dotsc, X_n - \bar{X}_n)$.  Le couple $(\bar{X}_n, Z_n)$ est linéaire en $X$, donc ce couple est aussi un vecteur gaussien. Or, la covariance de ses deux éléments est nulle. Par exemple, $\mathrm{Cov}(\bar{X}_n, Z_1)$ est égale à $\mathrm{Cov}(\bar{X}_n, X_1) - \mathrm{Var}(\bar{X}_n)$, ce qui par linéarité donne $1/n - 1/n = 0$. Ainsi, $\bar{X}_n$ et $Z$ sont deux variables conjointement gaussiennes et décorrélées : elles sont donc indépendantes. Comme $\hat{\sigma}_n$ est une fonction de $Z$, elle est aussi indépendante de $\bar{X}_n$. 
+
+*Second point. * $Z$ est la projection orthogonale de $X$ sur le sous-espace vectoriel $\mathscr{V}=\{x \in \mathbb{R}^n : x_1 + \dotsc + x_n = 0\}$. Soit $(f_i)_{i=2, \dotsc, n}$ une base orthonormale de $\mathscr{V}$, de sorte que $Z = \sum_{i=2}^n \langle f_i, X\rangle f_i$. Par l'identité de Parseval, 
+$$|Z|^2 = \sum_{i=2}^n |\langle f_i, X \rangle|^2.$$
+Or, les $n-1$ variables aléatoires $G_i = \langle f_i, X\rangle$ sont des gaussiennes standard iid. En effet, on vérifie facilement que $\mathrm{Cov}(G_i, G_j) = \langle f_i, f_j\rangle = \delta_{i,j}$. On en déduit donc que $|Z|^2$ suit une loi $\chi_2(n-1)$. 
+
+:::
+
+
 
 ## Inégalités de concentration
 
-Les outils de base pour construire des intervalles de confiance sont les inégalités de concentration. Une inégalité de concentration pour une variable aléatoire intégrable $X$ est une inégalité de type 
-$$\mathbb{P}(|X - \mathbb{E}[X]|>x) \leqslant \text{(quelque chose de petit quand x est grand)}, $$ 
-c'est-à-dire une inégalité qui contrôle la probabilité pour que les réalisations d'une variable aléatoire $X$ soient éloignées de leur valeur moyenne. 
+Les outils de base pour construire des intervalles de confiance dans des circonstances générales (non gaussiennes) sont les inégalités de concentration. Une inégalité de concentration pour une variable aléatoire intégrable $X$ consiste à borner $\mathbb{P}(|X - \mathbb{E}[X]|>x)$ par quelque chose de petit quand x est grand : on cherche à contrôler la probabilité pour que les réalisations de la variable aléatoire $X$ soient éloignées de leur valeur moyenne $\mathbb{E}[X]$ de plus de $x$. 
 
 :::{#thm-bt}
 
 Soit $X$ une variable aléatoire de carré intégrable. Alors, 
 $$ \mathbb{P}(|X - \mathbb{E}[X]|\geqslant x)\leqslant \frac{\mathrm{Var}(X)}{x^2}.$$ 
 
-
 :::
+
+
 
 :::{.proof} 
 Élever au carré les deux membres de l'inégalité, puis appliquer l'inégalité de Markov à la variable aléatoire positive $|X - \mathbb{E}X|^2$ dont l'espérance est $\mathrm{Var}(X)$. 
