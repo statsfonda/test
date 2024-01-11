@@ -39,5 +39,10 @@ format:
 
   pdf:
     documentclass: scrreport
+    fontsize: "10"
+    margin-left: 2cm
+    margin-right: 2cm
+    margin-bottom: 3cm
+    margin-top: 2cm
 
 jupyter: julia-1.9
