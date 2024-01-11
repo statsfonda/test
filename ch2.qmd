@@ -67,7 +67,7 @@ Lorsqu'un estimateur est consistant, on peut se demander à quoi ressemblent ses
 
 ::: {#def-normasymp}
 
-## normalité asymtotique
+## normalité asymptotique
 
 Soit $\theta$ un paramètre à estimer, et $\hat{\theta}_n$ une suite d'estimateurs de $\theta$. On dit que ces estimateurs sont *asymptotiquement gaussiens* (ou *normaux*) si, après les avoir renormalisés convenablement, ils convergent en loi vers une loi gaussienne. Autrement dit, s'il existe une suite $a_n$ de nombres réels tels que 
 $$ a_n(\hat{\theta}_n - \theta) \xrightarrow[n\to \infty]{\text{loi}} N(0,\Sigma)$$

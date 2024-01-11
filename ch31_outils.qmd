@@ -87,7 +87,7 @@ $$\hat{\sigma}^2_n = \frac{\sum_{i=1}^n (X_i - \bar{X}_n)^2}{n-1}. $$
 
 :::{#thm-student_density}
 
-$$T_n \sim \mathscr{T}_n.$$
+$$T_n \sim \mathscr{T}(n-1).$$
 
 :::
 
@@ -127,7 +127,7 @@ $$ \mathbb{P}(|X - \mathbb{E}[X]|\geqslant x)\leqslant \frac{\mathrm{Var}(X)}{x^
 
 
 :::{.proof} 
-Élever au carré les deux membres de l'inégalité, puis appliquer l'inégalité de Markov à la variable aléatoire positive $|X - \mathbb{E}X|^2$ dont l'espérance est $\mathrm{Var}(X)$. 
+Élever au carré les deux membres de l'inégalité dans $\mathbb{P}$, puis appliquer l'inégalité de Markov à la variable aléatoire positive $|X - \mathbb{E}X|^2$ dont l'espérance est $\mathrm{Var}(X)$. 
 :::
 
 ## Inégalité de Hoeffding
@@ -137,13 +137,16 @@ $$ \mathbb{P}(|X - \mathbb{E}[X]|\geqslant x)\leqslant \frac{\mathrm{Var}(X)}{x^
 
 ## Inégalité de Hoeffding
 
-Soient $X_1, \dotsc, X_n$ des variables aléatoires indépendantes, pas forcément de même loi. On suppose que chaque $X_i$ est à valeurs dans un intervalle borné $[a_i, b_i]$ et on pose $S_n = X_1 + \dotsc + X_n$. 
+Soient $X_1, \dotsc, X_n$ des variables aléatoires indépendantes, pas forcément de même loi. On suppose que chaque $X_i$ est à valeurs dans un intervalle borné $[a_i, b_i]$ et on pose $S_n = X_1 + \dotsc + X_n$. Pour tout $t>0$, 
 
-$$\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant x) \leqslant e^{-\frac{2x^2}{\sum_{i=1}^n(b_i - a_i)^2}}.$${#eq-hoeffding}
+$$\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant x) \leqslant e^{-\frac{2x^2}{\sum_{i=1}^n(b_i - a_i)^2}}$${#eq-hoeffding}
+et
+$$\mathbb{P}(|S_n - \mathbb{E}[S_n]| \geqslant x) \leqslant 2e^{-\frac{2x^2}{\sum_{i=1}^n(b_i - a_i)^2}}. $${#eq-hoeffdingsym}
+
 
 :::
 
-
+La démonstration se fonde sur le lemme suivant. 
 
 :::{#lem-hoeffding}
 
@@ -161,6 +164,7 @@ Soit $X$ une variable aléatoire centrée à valeurs dans l'intervalle $[-1,1]$.
 
 
 *Preuve de l'inégalité de Hoeffding.*
-L'inégalité de Markov montre que $\mathbb{P}(S_n > t)$ est plus petit que $\mathbb{E}[e^{\lambda tS_n}]e^{-\lambda t}$. De plus, $\mathbb{E}[e^{tS_n}]$ est aussi le produit des $e^{ \varphi_i(\lambda t)}$ où $\varphi_i(t) = \ln \mathbb{E}[e^{itX_i}]$. Le lemme de Hoeffding permet donc de borner $\mathbb{P}(|S_n - \mathbb{E}[S_n]|>t)$ par 
-$$ \exp\left(-\sum_{i=1}^n \frac{(b_i - a_i)^2 t^2}{8} - t\lambda\right).$$
-Il suffit alors de trouver le $\lambda$ qui minimise le terme dans l'exponentielle pour trouver exactement @eq-hoeffding. 
+En remplaçant $X_k$ par $X_k - \mathbb{E}[X_k]$, on peut supposer que tous les $X_i$ sont centrés et étudier seulement $\mathbb{P}(S_n >t)$. 
+Écrivons $\mathbb{P}(S_n > t) = \mathbb{P}(e^{\lambda S_n} > e^{\lambda t})$, où $\lambda$ est un nombre positif que l'on choisira plus tard. L'inégalité de Markov borne cette probabilité par $\mathbb{E}[e^{\lambda S_n}]e^{-\lambda t}$. Comme les $X_i$ sont indépendantes, $\mathbb{E}[e^{tS_n}]$ est le produit des $e^{ \varphi_k(\lambda)}$ où $\varphi_k(t) = \ln \mathbb{E}[e^{itX_k}]$. En appliquant le lemme de Hoeffding à chaque $\varphi_k$, on borne $\mathbb{P}(S_n >t)$ par 
+$$ \exp\left(\sum_{i=1}^n \frac{(b_i - a_i)^2 \lambda^2}{8} - t\lambda\right).$$
+Le minimum en $\lambda$ du terme dans l'exponentielle est atteint au point $4t / \sum (a_i - b_i)^2$ et la valeur du minimum est le terme dans l'exponentielle de @eq-hoeffding. On déduit @eq-hoeffdingsym par une simple borne de l'union.  

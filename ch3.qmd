@@ -54,8 +54,8 @@ Lorsque $\sigma$ n'est pas connu, les bornes $A,B$ ci-dessus ne sont pas des sta
 $$ \hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_n)^2.$$
 Que se passe-t-il si, dans la statistique @eq-pivg, on remplace $\sigma$ par son estimation $\hat{\sigma}_n^2$ ? On obtient la statistique dite *de Student*, 
 $$T_n = \frac{\sqrt{n}}{\sqrt{\hat{\sigma}_n^2}}(\bar{X}_n - \mu).$${#eq-pivst}
-Sa loi n'est plus une loi gaussienne, mais une loi de Student à $n-1$ paramètres de liberté $\mathscr{T}_{n-1}$: le calcul de la densité est fait en détails dans @sec-student1 - @sec-student2. 
-Les quantiles des lois de Student ont été calculés avec précision. On notera $t_{k,\alpha}$ le quantile symétrique de niveau $\alpha$ de $\mathscr{T}_k$. Alors, 
+Sa loi n'est plus une loi gaussienne, mais une loi de Student à $n-1$ paramètres de liberté $\mathscr{T}(n-1)$: le calcul de la densité est fait en détails dans @sec-student1 - @sec-student2. 
+Les quantiles des lois de Student ont été calculés avec précision. On notera $t_{k,\alpha}$ le quantile symétrique de niveau $\alpha$ de $\mathscr{T}(k)$. Alors, 
 $$ P_{\mu, \sigma^2}(|T_n|> t_{n-1,\alpha})\leqslant \alpha .$$
 Par le même raisonnement que tout à l'heure, l'inégalité 
 $$ \left|\frac{\sqrt{n}}{\hat{\sigma}^2_n}(\bar{X}_n - \mu)\right| > t_{n-1,\alpha}$$
@@ -69,7 +69,7 @@ et les deux côtés de ces inégalités sont des statistiques; en les notant $A
 
 Un intervalle de confiance de niveau $1-\alpha$ pour l'estimation de $\mu$ lorsque $\sigma$ n'est pas connue est donné par
 
-$$\left[\bar{X}_n - \frac{t_{1-\alpha}\hat{\sigma}_n}{\sqrt{n}}~~;~~\bar{X}_n + \frac{t_{1-\alpha}\hat{\sigma}_n}{\sqrt{n}} \right].$$
+$$\left[\bar{X}_n - \frac{t_{n-1, 1-\alpha}\hat{\sigma}_n}{\sqrt{n}}~~;~~\bar{X}_n + \frac{t_{n-1, 1-\alpha}\hat{\sigma}_n}{\sqrt{n}} \right].$$
 :::
 
 ### Estimation de $\sigma$
