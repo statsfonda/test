@@ -95,8 +95,54 @@ $$\left[\frac{(n-1)\hat{\sigma}_n^2}{k^+_{n-1,\alpha}} ~~;~~ \frac{(n-1)\hat{\si
 
 ## Exemples asymptotiques
 
-À écrire. 
 
-### Estimation du paramètre $p$ dans un modèle de Bernoulli. 
+### Estimation du paramètre $p$ dans un modèle de Bernoulli. {#sec-icber}
+
+Soient $X_1, \dotsc, X_n$ des variables indépendantes de loi $\mathscr{B}(p)$, dont on cherche à estimer le paramètre $p\in ]0,1[$. Un estimateur naturel est donné par la moyenne empirique, $\hat{p}_n = (X_1 + \dotsb + X_n)/n$. Cet estimateur est non biaisé et son risque quadratique est égal à $p(1-p)/n$. De plus, la loi de $\hat{p}_n$ est connue : $n\hat{p}_n \sim \mathrm{Bin}(n,p)$. Par conséquent, si l'on connaît les quantiles de $\mathscr{Bin}(n,p)-p$, on pourra construire des intervalles de confiance de niveau $1-\alpha$. Ces quantiles peuvent être calculés par des méthodes numériques, mais il existe des façons plus simples de faire. 
+
+**Inégalité BT. ** L'inégalité de Bienaymé-Tchebychev dit que 
+$$P_p(|\hat{p}_n - p|>t)\leqslant \frac{p(1-p)}{nt^2}. $${#eq-btbin}
+Si l'on choisit $$t = \sqrt{\frac{p(1-p)}{n\alpha}},$$ cette probabilité est plus petite que $\alpha$. En pivotant, on en déduit que l'intervalle $[\hat{p_n} \pm \sqrt{p(1-p)/n\alpha}]$ contient $p$ avec une probabilité supérieure à $1-\alpha$. Mais les bornes de cet intervalle ne sont pas des statistiques, car elles dépendent de $p$ ! Fort heureusement, on sait que $p$ est entre $0$ et $1$, ce qui entraîne que $p(1-p)$ est plus petit que $1/4$, donc l'intervalle ci-dessus est contenu dans l'intervalle plus grand
+$$ \left[\hat{p}_n \pm \frac{1}{2\sqrt{n\alpha}}\right]. $$
+Ce dernier est bien un intervalle de confiance de niveau $1-\alpha$ pour l'estimation de $p$. 
+
+**TCL. ** On a mentionné que les quantiles des lois binomiales pourraient être calculés ; or, ils peuvent également être approchés grâce au théorème central-limite. Celui-ci dit que 
+$$ \frac{\sqrt{n}(\hat{p}_n - p)}{\sqrt{p(1-p)}} \to N(0,1).$${#eq-tclbin}
+Si $z_\alpha$ est le quantile symétrique d'ordre $\alpha$ de $N(0,1)$, alors on en déduit que 
+$$\mathbb{P}\left(\left|\frac{\sqrt{n}(\hat{p}_n - p)}{\sqrt{p(1-p)}} \right|>z_\alpha \right) \to \alpha. $$
+En pivotant, on voit alors que l'intervalle 
+$$\left[\hat{p}_n \pm z_\alpha \sqrt{p(1-p)/n}\right] $$
+contient $p$ avec une probabilité *qui tend lorsque $n\to\infty$ vers $1-\alpha$*. Là encore, cet intervalle n'est pas un intervalle de confiance. On pourrait utiliser deux techniques. 
+
+1. Comme tout à l'heure, l'intervalle ci-dessus est contenu dans l'intervalle plus grand $[\hat{p}_n \pm z_\alpha/2\sqrt{n}]$ qui est un intervalle de confiance *asymptotique* de niveau $1-\alpha$. 
+2. Il y a plus fin. Nous savons par la loi des grands nombres que $\hat{p}_n \to p$ en probabilité. Ainsi, $\sqrt{\hat{p}_n(1-\hat{p}_n)} \to \sqrt{p(1-p)}$ en probabilité. Le lemme de Slutsky nous assure alors que dans @eq-tclbin, on peut remplacer le dénominateur par $\sqrt{\hat{p}_n (1-\hat{p}_n)}$ pour obtenir
+$$ \frac{\sqrt{n}(\hat{p}_n - p)}{\sqrt{\hat{p}_n(1-\hat{p}_n)}} \to N(0,1).$${#eq-tclbin}
+Le reste du raisonnement est identique, et l'on obtient l'intervalle de confiance asymptotique de niveau $1-\alpha$ suivant : 
+$$\left[\hat{p}_n \pm z_\alpha \sqrt{\frac{\hat{p}_n(1-\hat{p}_n)}{n}}\right] $$
+
+
+
+**Hoeffding.** L'inégalité de Bienaymé-Tchebychev n'est pas très fine. Il existe de nombreuses autres inégalités de concentration : l'inégalité de Hoeffding (@thm-hoeffding) concerne les variables bornées, comme ici où les $X_i$ sont dans $[0,1]$ . Cette inégalité dit que 
+$$\mathbb{P}(|\hat{p}_n - p|>t)\leqslant 2 e^{-2nt^2}. $$ 
+Le choix
+$$ t = \sqrt{\frac{1}{2n}\ln\left(\frac{1}{\alpha}\right)}$$ donne une probabilité inférieure à $\alpha$, et fournit donc l'intervalle de confiance **non-asymptotique** de niveau $1-\alpha$ suivant : 
+$$ \left[\bar{X}_n \pm \frac{\ln(1/\alpha)}{\sqrt{2n}}\right].$$
 
 ### Estimation de moyenne dans un modèle non-gaussien. 
+
+Les deux techniques ci-dessus n'ont rien de spécifique au cas de variables de Bernoulli. En fait, elles s'appliquent à tout modèle statistique iid dont on cherche à estimer la moyenne $\mu$, pourvu que la variance existe. 
+
+La première méthode utilisant Bienaymé-Tchebychev nécessite de borner la variance. Cela peut se faire dans certains cas, mais pas dans tous. 
+
+La seconde méthode s'applique systématiquement en utilisant l'estimateur de la variance empirique $\hat{\sigma}_n^2$. En effet, la convergence 
+$$\frac{\sqrt{n}}{\hat{\sigma}_n}(\bar{X}_n - \mu) \to N(0,1)$$
+est toujours vraie d'après le théorème de Slutsky. 
+
+:::{#thm-icasymptcl}
+
+Soient $X_1, \dotsc, X_n$ des variables iid possédant une variance. L'intervalle 
+$$ \left[ \bar{X}_n \pm \frac{z_\alpha \hat{\sigma}_n}{\sqrt{n}} \right]$$
+est un intervalle de confiance asymptotique de niveau $\alpha$ pour l'estimation de la moyenne des $X_i$. 
+
+:::
+
