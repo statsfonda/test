@@ -314,7 +314,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="5.5" class="anchored" data-anchor-id="inégalité-de-hoeffding"><span class="header-section-number">5.5</span> Inégalité de Hoeffding</h2>
 <div id="thm-hoeffding" class="theorem">
 <p><span class="theorem-title"><strong>Théorème 5.4 (Inégalité de Hoeffding) </strong></span>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> des variables aléatoires indépendantes, pas forcément de même loi. On suppose que chaque <span class="math inline">\(X_i\)</span> est à valeurs dans un intervalle borné <span class="math inline">\([a_i, b_i]\)</span> et on pose <span class="math inline">\(S_n = X_1 + \dotsc + X_n\)</span>. Pour tout <span class="math inline">\(t&gt;0\)</span>,</p>
-<p><span id="eq-hoeffding"><span class="math display">\[\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant x) \leqslant e^{-\frac{2x^2}{\sum_{i=1}^n(b_i - a_i)^2}} \tag{5.2}\]</span></span> et <span id="eq-hoeffdingsym"><span class="math display">\[\mathbb{P}(|S_n - \mathbb{E}[S_n]| \geqslant x) \leqslant 2e^{-\frac{2x^2}{\sum_{i=1}^n(b_i - a_i)^2}}.  \tag{5.3}\]</span></span></p>
+<p><span id="eq-hoeffding"><span class="math display">\[\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant t) \leqslant e^{-\frac{2t^2}{\sum_{i=1}^n(b_i - a_i)^2}} \tag{5.2}\]</span></span> et <span id="eq-hoeffdingsym"><span class="math display">\[\mathbb{P}(|S_n - \mathbb{E}[S_n]| \geqslant t) \leqslant 2e^{-\frac{2t^2}{\sum_{i=1}^n(b_i - a_i)^2}}.  \tag{5.3}\]</span></span></p>
 </div>
 <p>La démonstration se fonde sur le lemme suivant.</p>
 <div id="lem-hoeffding" class="theorem lemma">
