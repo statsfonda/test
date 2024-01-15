@@ -139,9 +139,9 @@ $$ \mathbb{P}(|X - \mathbb{E}[X]|\geqslant x)\leqslant \frac{\mathrm{Var}(X)}{x^
 
 Soient $X_1, \dotsc, X_n$ des variables aléatoires indépendantes, pas forcément de même loi. On suppose que chaque $X_i$ est à valeurs dans un intervalle borné $[a_i, b_i]$ et on pose $S_n = X_1 + \dotsc + X_n$. Pour tout $t>0$, 
 
-$$\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant x) \leqslant e^{-\frac{2x^2}{\sum_{i=1}^n(b_i - a_i)^2}}$${#eq-hoeffding}
+$$\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant t) \leqslant e^{-\frac{2t^2}{\sum_{i=1}^n(b_i - a_i)^2}}$${#eq-hoeffding}
 et
-$$\mathbb{P}(|S_n - \mathbb{E}[S_n]| \geqslant x) \leqslant 2e^{-\frac{2x^2}{\sum_{i=1}^n(b_i - a_i)^2}}. $${#eq-hoeffdingsym}
+$$\mathbb{P}(|S_n - \mathbb{E}[S_n]| \geqslant t) \leqslant 2e^{-\frac{2t^2}{\sum_{i=1}^n(b_i - a_i)^2}}. $${#eq-hoeffdingsym}
 
 
 :::

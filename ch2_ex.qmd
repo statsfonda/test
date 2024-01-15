@@ -24,7 +24,7 @@ On se donne $Y_1, \dots, Y_n$, i.i.d de moyenne $\mu$ et variance $\sigma^2$.
 
 
 
-:::{#exr-estimasse}
+:::{#exr-tanks}
 
 ## Estimation de masse
 
@@ -33,7 +33,7 @@ Au cours de la seconde guerre mondiale, l'armée alliée notait les numéros de 
 1. Proposer un modèle pour le tirage de $X_1, \dots, X_n$. 
 2. Calculer l'espérance de $\bar X_n$. En déduire un estimateur non biaisé de $N$. Indication: la loi de $n$ tirages sans remise est échangeable.
 3. Étudier la loi de $X_{(n)}$ et en déduire un estimateur non biaisé de $N$. 
-4.   Proposer deux intervalles de confiance de niveau $\alpha$. %de la forme $[aS, bS]$ avec $a, b\in\mathbb{R}$ et $S$ une statistique résumée.
+4.   Proposer deux intervalles de confiance de niveau $1-\alpha$ de la forme $[aS, bS]$ avec $a, b\in\mathbb{R}$ et $S$ une statistique.
 On pourra utiliser le fait que l'inégalité de Hoeffding s'applique également aux tirages sans remise.
 
 Selon Ruggles et Broodie (1947, JASA), la méthode statistique a fourni comme estimation une production moyenne de 246 tanks/mois entre juin 1940 et septembre 1942. Des méthodes d'espionnage traditionnelles donnaient une estimation de 1400 tanks/mois. Les chiffres officiels du ministère nazi des Armements ont montré après la guerre que la production moyenne était de 245 tanks/mois.

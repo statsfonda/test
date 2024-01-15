@@ -14,6 +14,7 @@
 10. L'intervalle de confiance de niveau $1-\alpha$ pour la moyenne d'un modèle $N(\mu, 1)$ avec $n$ observations est $I_n = [\bar{X}_n \pm z_\alpha /\sqrt{n}]$. Supposons qu'on obtienne une nouvelle observation indépendante des autres, disons $Z$. La probabilité $\mathbb{P}(Z \in I_n)$ est-elle plus grande ou plus petite que $1-\alpha$ ?
 11. Comparer la longueur des intervalles de confiance obtenus par les différentes méthodes de la section @sec-icber. 
 
+
 ## Exercices 
 
 :::{#exr-poisson} 
@@ -58,5 +59,17 @@ Soit $X_1, \dotsc, X_n$ des variables aléatoires iid exponentielles de paramèt
 
 1. Quelle est la loi de $S_n = X_1 + \dotsb + X_n$ ?
 2. Construire un intervalle de confiance de niveau $1-\alpha$ pour $\lambda$. 
+
+:::
+
+:::{#exr-azuma}
+
+## Inégalité d'Azuma
+
+Montrer que l'inégalité de Hoeffding reste valable lorsque les $X_i$ ne sont plus supposés indépendants, mais que la suite $S_k = X_1 + \dotsb + X_k$ est une martingale. Indice : $\mathbb{E}[e^{\lambda S_{n+1}}] = \mathbb{E}[e^{\lambda S_n}\mathbb{E}[e^{\lambda X_{n+1}}|S_n]]$. 
+
+Ce raffinement s'appelle *inégalite de Hoeffding-Azuma*. C'est celui que nous avons utilisé dans l'exercice @ex-tanks, lorsque les $X_1, \dotsc, X_n$ sont des tirages *sans remise* dans une urne à $N$ éléments. 
+
+
 
 :::
