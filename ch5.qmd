@@ -1,3 +1,80 @@
-# Économétrie
+# Modèle linéaire
 
-Cours 5-6-7
+
+
+## Ajustement affine en une dimension. 
+
+On dispose de variables $x_i$, dites *explicatives*, et de variables $y_i$, dites *à expliquer*. On suppose qu'il existe une relation, peut-être imparfaite, de la forme 
+$$ y_i \approx \alpha + \beta x_i$$
+où $\alpha, \beta$ sont deux nombres réels. Pour trouver les meilleurs $\alpha, \beta$ possibles, on calcule la distance entre le nuage de points $(x_i, y_i)$ et la droite d'équation $y = \alpha + \beta x$. Cette distance au carré est donnée par 
+$$ \sum_{i=1}^n (y_i - \alpha - \beta x_i)^2.$$
+
+On cherchera donc à minimiser la fonction de deux variables 
+$$(\alpha, \beta) \mapsto \sum_{i=1}^n (y_i - \alpha - \beta x_i)^2.$$
+Appelons cette fonction $L$. C'est manifestement une fonction quadratique qui tend vers $+\infty$ lorsque $(\alpha, \beta) \to \infty$, par conséquent cette fonction possède un unique minimiseur $(\hat{\alpha}, \hat{\beta})$, et ce minimiseur est le seul point en lequel les dérivées partielles s'annulent (*conditions de premier ordre*) : $\partial_\alpha L(\hat{\alpha}, \hat{\beta}) = 0$ et $\partial_\beta L(\hat{\alpha}, \hat{\beta})=0$. Or, 
+$$\partial_\alpha L(\alpha, \beta)  = \sum_{i=1}^n (\alpha + \beta x_i - y_i)$$
+$$ \partial_\beta L(\alpha, \beta) = \sum_{i=1}^n x_i(\alpha + \beta x_i - y_i).$$
+Les conditions de premier ordre deviennent donc $n\alpha + \beta (x_1 + \dotsc + x_n) - (y_1 + \dotsb + y_n) =0$ soit encore $\alpha + \beta \bar{x} - \bar{y}=0$, et d'autre part $\alpha (x_1 + \dotsb + x_n) + \beta(x_1^2 + \dotsb + x_n^2) - (x_1y_1 + \dotsb + x_ny_n) = 0$, soit $\alpha \bar{x}+ \beta \overline{xx} - \overline{xy} = 0$, où $\overline{xx}$ est la moyenne des carrés des $x_i$ et $\overline{xy}$ la moyenne des $x_iy_i$. En résolvant ces équations, on trouve d'abord $\alpha$ puis $\beta$ : 
+$$\beta = \frac{\overline{xy}-\bar{x}\bar{y}}{\overline{xx} - \bar{x}\bar{x}} ,~~\quad\alpha = \bar{y} - \hat{\beta}\bar{x}.$$
+Le coefficient $\beta$ n'est rien d'autre que la covariance empirique des $x_i$ et des $y_i$, normalisé par la variance empirique des $x_i$. 
+
+
+
+L'inégalité de Cauchy-Schwartz dit que $\left|\overline{xy} - \bar{x}{\bar{y}}\right| \leqslant \tilde{\sigma}_x \tilde{\sigma}_y$, où l'on a noté
+$$\tilde{\sigma}_x^2 = \frac{1}{n}\sum_{i=1}^n x_i^2 - \left(\frac{1}{n}\sum_{i=1}^n x_i\right)^2$$
+l'estimateur naïf de la variance[^1]. L'inégalité n'est une égalité que si $x$ et $y$ sont effectivement colinéaires, c'est-à-dire si $y_i = \hat{\alpha} + x_i \hat{\beta}$ pour tous les $i$. La qualité de l'ajustement affine est donc bien mesurée par la quantité 
+$$ r^2 = \frac{\overline{xy}-\bar{x}\bar{x}}{\tilde{\sigma}_x \tilde{\sigma}_y}.$$
+
+
+## Cadre général 
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bt}{\boldsymbol{\theta}}
+\newcommand{\argmin}{\mathrm{argmin}~}
+Dans le cadre général, les variables explicatives ne sont pas de dimension 1 mais $d$. On notera $\bx = (x_1, \dotsc, x_d)$
+un élément de $\mathbb{R}^d$ ; les variables explicatives seront alors $\bx_1,\dotsc, \bx_n$. On cherchera des nombres $\theta_i$ tels que $y_i$ est aussi proche que possible de $$\theta_1 \bx_{i,1} + \dotsb + \theta_d \bx_{i,d} = \langle \bt, \bx\rangle = \bx_i \theta^\top $$
+On pose $X$ la matrice $n\times d$ dont la $i$-ème ligne est $\bx_i$. On cherche à trouver le $\bt$ qui minimise $|Y - X\theta|^2$, autrement dit
+
+
+$$\hat{\bt} = \arg \min_{\theta} |Y - X\theta|^2. $$
+
+:::{#thm-reg}
+
+Si $d\leqslant n$ et si $X$ est de rang $d$, alors
+
+$$\hat{\bt} = (X^\top X)^{-1}X^\top Y.$${#eq-mco}
+
+:::
+
+:::{.proof}
+
+La projection orthogonale sur le sous-espace vectoriel engendré par les colonnes d'une matrice $X$ est la matrice $X(X^\top X)^{-1}X^\top$. Ainsi, la projection de $Y$ sur ce sous-espace est $X(X^\top X)^{-1}X^\top Y$, et c'est aussi (par définition de l'argmin) $X \hat{\bt}$. Comme $X$ est injective en vertu du théorème du rang, on en déduit le résultat. 
+
+:::
+
+Le vecteur $\hat{\varepsilon} = Y - X\hat{\bt}$ est appelé *vecteur des résidus*. S'il est nul ou très petit, cela veut dire que les $Y$ sont presque parfaitement des fonctions linéaires des $X$. 
+
+
+
+## Modèle gaussien
+
+À ce stade, nous n'avons fait aucune hypothèse statistique ni probabiliste sur le modèle : les $\bx_i, y_i$ étaient donnés tels quels. Dans le *modèle linéaire gaussien* avec variables explicatives $\bx_1, \dotsc, \bx_n$ exogènes consiste à supposer que $Y = X\bt + \varepsilon$, où $\varepsilon = N(0,\sigma^2 I_n)$. Formellement, le modèle est indexé par $\bt$ et $\sigma^2$, et donné par 
+$$P_{\bt, \sigma^2} = N(X\bt, \sigma^2 I_d).$$ 
+Dans ce modèle, la loi de l'estimateur @eq-mco est connue. 
+
+:::{#thm-glm}
+
+Sous le modèle linéaire gaussien $P_{\bt, \sigma^2}$, 
+$$\hat{\bt} \sim N(\bt, \sigma^2 (X^\top X)^{-1}), $$
+$$\hat{\varepsilon} \sim N(0,\sigma^2(I_n - H)), $$
+et ces deux variables aléatoires sont indépendantes. En particulier, $|\hat\varepsilon|^2 / \sigma^2  \sim \chi_2(d)$. 
+
+:::
+
+:::{.proof} 
+
+Ce n'est rien de plus que le théorème de Cochran appliqué à notre problème. 
+
+:::
+
+
+[^1]:Celui qui est biaisé, contrairement à $\hat{\sigma}^2_n$. 

@@ -1,0 +1,46 @@
+# Outils gaussiens
+
+## Théorème de Cochran
+
+
+:::{#thm-cochran}
+
+## Théorème de Cochran
+
+Soit $X \sim N(0,I_d)$ et soient $E_1, \dotsc, E_k$ des sous-espaces orthogonaux de $\mathbb{R}^n$ tels que $\mathbb{R}^n = \oplus_{j=1}^k E_j$. On note $\pi_j(X)$ la projection orthogonale de $X$ sur $E_j$. Alors, la famille $(\pi_j(X))_{j = 1, \dotsc, k}$ est une famille de vecteurs gaussiens indépendants. De plus, 
+$$ |\pi_j(X)|^2 \sim \chi_2(\dim E_j).$$
+
+:::
+
+
+:::{.proof}
+
+
+À écrire. 
+
+:::
+
+
+
+## Loi de Fisher
+
+Soient $X,Y$ deux variables aléatoires indépendantes, de lois respectives $\chi_2(p)$ et $\chi_2(q)$. 
+
+
+:::{#thm-fisher}
+
+La loi du rapport $(X/p)/(Y/q)$ s'appelle loi de Fisher de paramètres $p,q$. Sa densité est donnée par 
+$$ f_{p,q}(x) = \frac{\mathbf{1}_{x>0}}{Z_{p,q}}\frac{\left(\frac{px}{px + q}\right)^{\frac{p}{2}} \left(1 - \frac{px}{px + q}\right)^{\frac{q}{2}}}{x}$${#eq-fisherdensity}
+où la constante $Z_{p,q}$ est $B(p/2, q/2)$, c'est-à-dire
+$$ Z_{p,q} =  \int_0^1 u^{\frac{p}{2}-1}(1-u)^{\frac{q}{2}-1}du.$$
+:::
+
+Le calcul est facile, puisque les lois du $\chi_2$ ont une densité connue donnée par @eq-chideuxdensity. Soit $\varphi$ une fonction test et soit $F = (X/p)/(Y/q)$. Alors, $\mathbb{E}[\varphi(F)]$ vaut
+$$\frac{1}{C_p C_q}\int_0^\infty \int_0^\infty \varphi\left(\frac{uq}{vp}\right)e^{-\frac{u}{2}-\frac{v}{2}}u^{\frac{p}{2}-1}v^{\frac{q}{2}-1}dudv $$
+avec $C_n = 2^{n/2}\Gamma(n/2)$. 
+Dans l'intégrale en $v$, on pose $x = uq/vp$, de sorte que l'intégrale ci-dessus devient 
+$$\frac{(p/q)^{\frac{p}{2}}}{C_p C_q}\int_0^\infty \varphi(x) x^{\frac{p}{2}-1}\int_0^\infty e^{-\frac{vpx}{2q}-\frac{v}{2}}v^{\frac{p}{2}-1}v^{\frac{q}{2}}dv dx. $$
+On reconnaît dans l'intégrale en $v$ une fonction Gamma ; son intégrale est égale à $$\frac{\Gamma(p/2 + q/2)}{\left(\frac{px+q}{2q}\right)^{\frac{p+q}{2}}}.$$
+L'espérance $\mathbb{E}[\varphi(F)]$ vaut donc 
+$$\frac{(p/q)^{p/2}\Gamma\left(\frac{p+q}{2}\right)}{C_p C_q (2q)^{\frac{p+q}{2}}}\int_0^\infty \varphi(x)\frac{x^{\frac{p}{2}-1}}{(px + q)^{\frac{p+q}{2}}}dx. $$
+En simplifiant, on trouve exactement la densité donnée par @eq-fisherdensity. 
