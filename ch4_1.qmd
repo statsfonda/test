@@ -44,8 +44,9 @@ ce qui montre la première égalité de @eq-dtvformule. La seconde égalité ré
 
 :::
 
+Dans la suite, on supposera toujours que les diverses lois possèdent toutes une densité par rapport à une mesure de référence $\nu$. C'est le cas dans de très nombreux modèles --- pas tous, hélas. Les lettres majuscules désigneront les mesures, tandis que les lettres minuscules désigneront leurs densités. 
 
-## Meilleur test possible au sens de l'affinité
+## Test optimal au sens de l'affinité
 
 
 L'affinité d'un test est la somme de ses erreurs de première et seconde espèce : c'est la probabilité de « se tromper » en général, quelle que soit l'hypothèse. 
@@ -70,7 +71,7 @@ $$ \frac{P_1(x_1, \dotsc, x_n)}{P_0(x_1, \dotsc, x_n)}>1. $$
 Le terme de droite s'appelle **rapport de vraisemblance**. 
 Pourtant, ce test ne permet pas de contrôler l'erreur de première espèce. Il peut tout à fait exister d'autres tests qui ont un niveau plus élevé. Il est donc naturel de se demander si, parmi les tests ayant un niveau fixé $1-\alpha$, il existe un autre critère d'optimalité. 
 
-## Théorème de Jerzy-Neymann
+## Théorème de Neyman-Pearson
 
 On se place toujours dans un cadre où les deux lois $P_0$ et $P_1$ possèdent deux densités (disons, $p_0, p_1$) par rapport à une mesure commune $\nu$. 
 
@@ -86,7 +87,7 @@ Le test optimal au sens de l'affinité est un test de rapport de vraisemblance (
 
 :::{#thm-jerzy}
 
-## Théorème de Jerzy-Neymann
+## Théorème de Neyman-Pearson
 
 Tout test de même niveau qu'un test du rapport de vraisemblance est moins puissant que celui-ci. 
 
