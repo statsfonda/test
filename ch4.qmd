@@ -1,4 +1,4 @@
-# Test d'hypothèse 
+# Test d'hypothèses
 
 Si l'on essaie d'estimer le rendement $\mu$ d'un actif financier, on cherche implicitement à savoir si l'on va investir ou pas. Cette décision dépendra de notre estimation : pour faire simple, on peut considérer que si nous estimons que le rendement est positif ($\hat{\mu}>0$), alors il faut investir. Sinon, on n'investira pas. 
 
@@ -18,6 +18,9 @@ Un test est un événement qui, s'il survient, nous incite à rejeter l'hypothè
 - L'erreur de première espèce est la probabilité de rejeter l'hypothèse nulle à tort : $\alpha = \sup_{\theta \in H_0}P_\theta(\rejet)$. Le **niveau d'un test** est $1-\alpha$. C'est la probabilité d'accepter l'hypothèse nulle à raison. 
 
 - L'erreur de seconde espèce est la probabilité de ne pas rejeter l'hypothèse nulle, à tort : $\beta = \sup_{\theta \in H_1}P_\theta(\accept)$. La **puissance d'un test** est $1-\beta$. C'est la probabilité de « détecter » l'hypothèse alternative à raison. 
+
+- L'affinité d'un test est la somme des erreurs de première et seconde espèce. 
+- 
 :::
 
 Par « événement », on veut bien dire « un élément de $\mathscr{F}$ », c'est-à-dire qui n'est déterminé que par les observations et pas par $\theta$. Formellement on écrit souvent qu'un test est une statistique, disons $T$, à valeurs dans $\{0,1\}$. L'événement $\{T=0\}$ est $\rejet$, l'événement $\{T=1\}$ est $\accept$.
