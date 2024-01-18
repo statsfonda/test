@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Simon Coste">
 
-<title>Statistiques Fondamentales</title>
+<title>Statistiques Fondamentales - 7&nbsp; Test d’hypothèses</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch1.html" rel="next">
+<link href="./ch4_1.html" rel="next">
+<link href="./ch3_ex.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -64,6 +64,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -77,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Organisation</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch4_0.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d'hypothèses</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -112,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Organisation</span></a>
   </div>
 </li>
@@ -154,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch4_0.html" class="sidebar-item-text sidebar-link">
+  <a href="./ch4_0.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d’hypothèses</span></span></a>
   </div>
 </li>
@@ -210,8 +212,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#organisation" id="toc-organisation" class="nav-link active" data-scroll-target="#organisation">Organisation</a></li>
-  <li><a href="#utiliser-ce-site" id="toc-utiliser-ce-site" class="nav-link" data-scroll-target="#utiliser-ce-site">Utiliser ce site</a></li>
+  <li><a href="#exemples-de-tests-gaussiens" id="toc-exemples-de-tests-gaussiens" class="nav-link active" data-scroll-target="#exemples-de-tests-gaussiens"><span class="header-section-number">7.1</span> Exemples de tests gaussiens</a>
+  <ul class="collapse">
+  <li><a href="#construction-du-test" id="toc-construction-du-test" class="nav-link" data-scroll-target="#construction-du-test"><span class="header-section-number">7.1.1</span> Construction du test</a></li>
+  <li><a href="#calcul-de-la-puissance-et-hypothèse-alternative" id="toc-calcul-de-la-puissance-et-hypothèse-alternative" class="nav-link" data-scroll-target="#calcul-de-la-puissance-et-hypothèse-alternative"><span class="header-section-number">7.1.2</span> Calcul de la puissance et hypothèse alternative</a></li>
+  </ul></li>
+  <li><a href="#la-notion-de-p-valeur" id="toc-la-notion-de-p-valeur" class="nav-link" data-scroll-target="#la-notion-de-p-valeur"><span class="header-section-number">7.2</span> La notion de <span class="math inline">\(p\)</span>-valeur</a></li>
   </ul>
 </nav>
     </div>
@@ -220,26 +226,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Statistiques Fondamentales</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d’hypothèses</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Auteur·rice</div>
-    <div class="quarto-title-meta-contents">
-             <p>Simon Coste </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Date de publication</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">18 janvier 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -247,22 +241,55 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Bienvenue sur la page du cours de Statistiques Fondamentales (STF8) du master Mathématiques Fondamentales et Appliquées de l’Université Paris-Cité. Les notes de cours sont accessibles à tous. De nombreux auteurs s’y sont succédés ; je suis le dernier en date, mais les versions précédentes ont été travaillées par Clément Levrard, Stéphane Boucheron, Stéphane Gaïffas, Pierre Youssef.</p>
-<section id="organisation" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="organisation">Organisation</h2>
+<p>Si l’on essaie d’estimer le rendement <span class="math inline">\(\mu\)</span> d’un actif financier, on cherche implicitement à savoir si l’on va investir ou pas. Cette décision dépendra de notre estimation : pour faire simple, on peut considérer que si nous estimons que le rendement est positif (<span class="math inline">\(\hat{\mu}&gt;0\)</span>), alors il faut investir. Sinon, on n’investira pas.</p>
+<p>Les tests d’hypothèses visent à formaliser cela. Faire une <em>hypothèse</em> dans un modèle statistique <span class="math inline">\((\mathcal{X}, \mathscr{F}, (P_\theta)_{\theta \in \Theta_0})\)</span>, c’est supposer que <span class="math inline">\(\theta\)</span> appartient à une certaine région de <span class="math inline">\(H_0 \subset \Theta\)</span>. Les <em>tests</em> visent à construire des procédures pour tester une hypothèse nulle, que l’on notera <span class="math inline">\(H_0\)</span>, contre une hypothèse alternative, notée <span class="math inline">\(H_1\)</span>.</p>
+<p>Dans le cadre ci-dessus, on peut se placer dans un modèle où les rendements sont <span class="math inline">\(\mathscr{N}(\mu, \sigma^2)\)</span>. On veut tester l’hypothèse nulle <span class="math inline">\(H_0 :&nbsp;\mu \in ]-\infty, 0]\)</span> contre l’hypothèse alternative <span class="math inline">\(H_1 :&nbsp;\mu \in ]0,+\infty[\)</span>.</p>
+<div id="def-test" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 7.1 </strong></span>Un test est un événement qui, s’il survient, nous incite à rejeter l’hypothèse nulle. Cet événement sera noté <span class="math inline">\(\mathsf{rejeter}\)</span> et son complémentaire sera noté <span class="math inline">\(\mathsf{accepter}\)</span>.</p>
 <ul>
-<li>Les CM&nbsp;ont lieu les jeudi à (8h30 - 10h30), et les vendredi (10h45 - 12h45) <strong>sauf le premier cours qui a lieu lundi 8 janvier à 10h45-12h45</strong>.</li>
-<li>Les TD&nbsp;ont lieu lundi (13h45 - 16h45) et vendredi (13h30 - 15h30), de lundi 8 janvier à vendredi 16 février.</li>
-<li>Il y aura deux contrôles de 2h, le vendredi 26 janvier et lundi 12 février.</li>
-<li>L’examen a lieu le 1er mars de 13h30 à 16h30.</li>
-<li>Il y aura une interro de 5 minutes chaque semaine le jeudi.</li>
+<li><p>L’erreur de première espèce est la probabilité de rejeter l’hypothèse nulle à tort : <span class="math inline">\(\alpha = \sup_{\theta \in H_0}P_\theta(\mathsf{rejeter})\)</span>. Le <strong>niveau d’un test</strong> est <span class="math inline">\(1-\alpha\)</span>. C’est la probabilité d’accepter l’hypothèse nulle à raison.</p></li>
+<li><p>L’erreur de seconde espèce est la probabilité de ne pas rejeter l’hypothèse nulle, à tort : <span class="math inline">\(\beta = \sup_{\theta \in H_1}P_\theta(\mathsf{accepter})\)</span>. La <strong>puissance d’un test</strong> est <span class="math inline">\(1-\beta\)</span>. C’est la probabilité de « détecter » l’hypothèse alternative à raison.</p></li>
+<li><p>L’affinité d’un test est la somme des erreurs de première et seconde espèce.</p></li>
+<li></li>
 </ul>
+</div>
+<p>Par « événement », on veut bien dire « un élément de <span class="math inline">\(\mathscr{F}\)</span> », c’est-à-dire qui n’est déterminé que par les observations et pas par <span class="math inline">\(\theta\)</span>. Formellement on écrit souvent qu’un test est une statistique, disons <span class="math inline">\(T\)</span>, à valeurs dans <span class="math inline">\(\{0,1\}\)</span>. L’événement <span class="math inline">\(\{T=0\}\)</span> est <span class="math inline">\(\mathsf{rejeter}\)</span>, l’événement <span class="math inline">\(\{T=1\}\)</span> est <span class="math inline">\(\mathsf{accepter}\)</span>.</p>
+<p>Un des grands objectifs de la statistique mathématique est de construire des familles de tests qui, pour un niveau de confiance <span class="math inline">\(1-\alpha\)</span> fixé, ont la plus grande puissance possible ; autrement dit, <strong>trouver un événement hautement improbable sous l’hypothèse nulle, et hautement probable sous l’hypothèse alternative</strong>.</p>
+<p>Comme on verra dans les exemples, le rôle des deux hypothèses n’est pas interchangeable. Maximiser le niveau et la puissance ne reviennent pas au même. Le choix des hypothèses <span class="math inline">\(H_0\)</span> et <span class="math inline">\(H_1\)</span> n’est pas anodin :&nbsp;l’hypothèse <span class="math inline">\(H_0\)</span> est une hypothèse que l’on cherche implicitement à réfuter.</p>
+<ol type="1">
+<li>Si <span class="math inline">\(\theta \in H_0\)</span> quel qu’il soit, les probablités pour qu’un certain événement <span class="math inline">\(\mathsf{rejeter}\)</span> sont infimes – disons, 1%.</li>
+<li>Si cet événement arrive, par contraposée, on est amenés à rejeter l’hypothèse selon laquelle <span class="math inline">\(\theta\)</span> est dans <span class="math inline">\(H_0\)</span>.</li>
+</ol>
+<p>C’est pour cela que les tests sont une forme de logique statistique. Le raisonnement de base une contraposée :&nbsp;en logique, <span class="math inline">\(A \Rightarrow B\)</span> est équivalent à <span class="math inline">\(\neg B \Rightarrow \neg A\)</span>. En statistiques, on pourrait écrire <span class="math inline">\(\theta \in H_0 \Rightarrow \mathsf{accepter}\)</span> (avec grande probabilité), donc <span class="math inline">\(\mathsf{rejeter}\Rightarrow \theta \notin H_0\)</span> (probablement).</p>
+<section id="exemples-de-tests-gaussiens" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="exemples-de-tests-gaussiens"><span class="header-section-number">7.1</span> Exemples de tests gaussiens</h2>
+<p>On se place dans un modèle où <span class="math inline">\(X_1, \dotsc, X_n\)</span> sont des gaussiennes <span class="math inline">\(N(\mu, \sigma^2)\)</span>. Nous avons déjà vu plusieurs fois que <span class="math inline">\(\bar{X}_n \sim N(\mu, \sigma^2)\)</span>.</p>
+<section id="construction-du-test" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="construction-du-test"><span class="header-section-number">7.1.1</span> Construction du test</h3>
+<p>On cherche à réfuter l’hypothèse selon laquelle ces variables aléatoires sont centrées ; autrement dit, on posera <span class="math inline">\(H_0 = \{0\}\)</span>. Sous cette hypothèse, nos variables aléatoires sont donc des variables <span class="math inline">\(N(0,\sigma^2)\)</span>.</p>
+<p><strong>Supposons dans un premier temps que <span class="math inline">\(\sigma^2\)</span> est connue.</strong> Sous <span class="math inline">\(H_0\)</span>, on a donc <span class="math display">\[ \frac{\sqrt{n}\bar{X}_n}{\sigma} \sim N(0,1)\]</span> et par conséquent, <span class="math inline">\(P_0(|\bar{X}_n| &lt; z_{1-\alpha} \sigma / \sqrt{n}) = 1-\alpha\)</span>. Autrement dit, sous l’hypothèse <span class="math inline">\(\mu = 0\)</span>, on devrait observer l’événement <span class="math display">\[ \bar{X}_n \in \left[ \pm \frac{z_{1-\alpha} \sigma}{\sqrt{n}}\right]\]</span> avec probabilité élevée <span class="math inline">\(1-\alpha\)</span>. Si cet événement n’est pas observé, il est alors très douteux que <span class="math inline">\(\mu\)</span> soit effectivement égal à zéro !&nbsp;On pose donc <span class="math display">\[ \mathsf{rejeter}_\alpha = \{|\bar{X}_n | &gt; z_{1-\alpha} \sigma / \sqrt{n}\}.\]</span> Le niveau de ce test est bien <span class="math inline">\(1-\alpha\)</span> : nous l’avons construit pour cela.</p>
+<p><strong>Supposons maintenant que <span class="math inline">\(\sigma\)</span> n’est pas connue.</strong> En l’estimant via <span class="math inline">\(\hat{\sigma}_n\)</span>, nous savons que (toujours sous l’hypothèse selon laquelle <span class="math inline">\(\mu=0\)</span>) <span class="math display">\[ \frac{\sqrt{n}\bar{X}_n}{\hat{\sigma}_n} \sim \mathscr{T}(n-1).\]</span> On reproduit alors le raisonnement ci-dessus : comme <span class="math inline">\(\mathbb{P}(|\bar{X}_n| &lt; t_{n-1, 1-\alpha}\sqrt{\sigma}_n / \sqrt{n}) = \alpha\)</span> où <span class="math inline">\(t_{n-1,1-\alpha}\)</span> est le quantile symétrique de <span class="math inline">\(\mathscr{T}(n-1)\)</span>, on voit que l’événement <span class="math display">\[ \mathsf{rejeter}_\alpha = \{|\bar{X}_n| &gt; t_{n-1,1-\alpha}\hat{\sigma}_n / \sqrt{n}\}\]</span> est bien un test de niveau <span class="math inline">\(1-\alpha\)</span>.</p>
 </section>
-<section id="utiliser-ce-site" class="level2">
-<h2 class="anchored" data-anchor-id="utiliser-ce-site">Utiliser ce site</h2>
-<p>Chaque chapitre de ce livre contient une page dédiée au cours théorique, et contiendra dans un futur proche une page d’exercices.</p>
-<p>La saveur du cours est essentiellement mathématique et nous n’aurons pas de TP d’info ; cependant, je vous recommande vraiment d’essayer d’appliquer tout ça via votre langage de programmation favori, c’est-à-dire <del>Python</del> <del>R</del> <del>SAS</del> <del>C++</del> Julia. J’essaierai autant que possible de fournir des mini-jeux de données avec des petits challenges pour appliquer ce que vous apprenez en cours.</p>
-<p>Ces notes sont mises en lignes et totalement accessibles via <a href="https://quarto.org">Quarto</a>. Si vous savez comment utiliser <code>git</code>, n’hésitez pas à corriger toutes les erreurs que vous pourriez voir (et Dieu sait qu’elles seront nombreuses) via des pull requests.</p>
+<section id="calcul-de-la-puissance-et-hypothèse-alternative" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="calcul-de-la-puissance-et-hypothèse-alternative"><span class="header-section-number">7.1.2</span> Calcul de la puissance et hypothèse alternative</h3>
+<p>Nous n’avons pas encore eu besoin de spécifier une hypothèse alternative, mais nous allons en avoir besoin pour calculer la puissance du test. Pour commencer, on va supposer que, si <span class="math inline">\(\mu\)</span> n’est pas nulle, alors elle ne peut être égale qu’à 1. Autrement dit, <span class="math inline">\(H_1 = \{1\}\)</span>. Ce genre d’hypothèse alternative ne peut évidemment avoir de pertinence qu’en fonction du problème réel sous-jacent !</p>
+<p>Sous l’hypothèse alternative, donc, nous savons que <span class="math inline">\(\bar{X}_n \sim N(1, \sigma^2)\)</span>. La puissance du test est définie par <span class="math inline">\(1-\beta\)</span> où <span class="math inline">\(\beta=P_1(\mathsf{accepter}_\alpha)\)</span> c’est-à-dire <span class="math display">\[\begin{align}\beta &amp;= P_1(|\bar{X}_n|\leqslant z_{1-\alpha} \sigma / \sqrt{n}) \\
+&amp;= P_1 \left(-\frac{z_{1-\alpha} \sigma}{\sqrt{n}}\leqslant \bar{X}_n \leqslant \frac{z_{1-\alpha} \sigma}{\sqrt{n}} \right) \\
+&amp;= P_1 \left(-\frac{z_{1-\alpha} \sigma}{\sqrt{n}}-1\leqslant \bar{X}_n - 1 \leqslant \frac{z_{1-\alpha} \sigma}{\sqrt{n}} -1 \right)\\
+&amp;= \Phi(-\sqrt{n}/\sigma + z_{1-\alpha}) - \Phi(-\sqrt{n}/\sigma + z_{1-\alpha}).
+\end{align}\]</span> où <span class="math inline">\(\Phi(x) = \mathbb{P}(N(0,1)\leqslant x)\)</span>. Cette expression ne peut pas plus se simplifier, mais on peut quand même la borner par <span class="math inline">\(F(-\sqrt{n}/\sigma + z_{1-\alpha})\)</span>. Lorsque <span class="math inline">\(x\)</span> est grand, nous avons vu (<a href="ch31_outils.html#thm-gaussiantail">Théorème&nbsp;<span>5.1</span></a>) que <span class="math inline">\(F(x) &lt; e^{-x^2}/|x|\sqrt{2\pi}\)</span>. Ainsi, l’erreur de première espèce est bornée par <span class="math inline">\(O(e^{-n/\sigma^2/2} / \sqrt{n})\)</span>. Cela tend extrêmement vite vers 0 ;&nbsp;en fait, dès que <span class="math inline">\(n\)</span> est plus grand que 10 et <span class="math inline">\(\sigma=1\)</span>, cette erreur est inférieure à 0.1%, donc dans ce cas le test aura une puissance supérieure à <span class="math inline">\(99.9\%\)</span>.</p>
+<p>Que se serait-il passé si notre hypothèse alternative n’avait pas été <span class="math inline">\(\mu=1\)</span> mais <span class="math inline">\(\mu = m\)</span> pour n’importe quel <span class="math inline">\(m\neq 0\)</span> ? Dans ce cas, on aurait eu <span class="math inline">\(H_1 = \mathbb{R}\setminus \{0\}\)</span>. L’erreur de première espèce aurait alors été <span class="math inline">\(\beta = \sup_{m\neq 0}\beta_m\)</span> où <span class="math display">\[ \beta_m = P_m(\mathsf{accepter}_\alpha).\]</span> On revoyant les calculs ci-dessus, on voit que <span class="math display">\[\beta_m = \Phi(-m\sqrt{n}/\sigma + z_{1-\alpha}) - \Phi(-m\sqrt{n}/\sigma + z_{1-\alpha}).\]</span> En particulier, <span class="math display">\[\lim_{m\to 0}\beta_m =\Phi(-z_{1-\alpha}) - \Phi(-z_{1-\alpha}) =  1-\alpha\]</span> par continuité de <span class="math inline">\(\Phi\)</span> et par définition de <span class="math inline">\(z_{1-\alpha}\)</span>. Ainsi, <span class="math inline">\(1-\beta = \alpha\)</span> :&nbsp;pour cette seconde hypothèse alternative, la puissance de notre test… est extrêmement faible.</p>
+<p><strong>Cela vient du fait que notre hypothèse alternative contient des situations quasiment indiscernables de notre hypothèse nulle.</strong> Par exemple, il est quasiment impossible de distinguer <span class="math inline">\(\mu = 0\)</span> de <span class="math inline">\(\mu = 10^{-100}\)</span> par exemple. Cet exemple illustre la dissymétrie entre <span class="math inline">\(H_0\)</span> et <span class="math inline">\(H_1\)</span>.</p>
+</section>
+</section>
+<section id="la-notion-de-p-valeur" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="la-notion-de-p-valeur"><span class="header-section-number">7.2</span> La notion de <span class="math inline">\(p\)</span>-valeur</h2>
+<p>La construction d’un test dépend du niveau de risque <span class="math inline">\(\alpha\)</span>. Si le niveau de risque acceptable est de plus en petit, alors l’événement <span class="math inline">\(\mathsf{rejeter}_\alpha\)</span> devrait être de moins en moins probable. D’ailleurs, <span class="math inline">\(\mathsf{rejeter}_0 = \varnothing\)</span> et <span class="math inline">\(\mathsf{accepter}_0 = \Omega\)</span> : si l’on ne tolère aucun niveau de risque de première espèce, c’est qu’on ne veut pas rejeter l’hypothèse nulle.</p>
+<p>Très souvent, si <span class="math inline">\(\alpha&lt;\beta\)</span>, on a même <span class="math display">\[\mathsf{rejeter}_\alpha \subset \mathsf{rejeter}_\beta.  \]</span></p>
+<div id="def-pval" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 7.2 </strong></span>La <span class="math inline">\(p\)</span>-valeur d’une famille croissante de tests est le plus petit niveau de risque qui nous amène à rejeter l’hypothèse nulle compte tenu des observations. Formellement, <span class="math display">\[ p = \inf\{\alpha&gt;0 :&nbsp;\mathsf{rejeter}_\alpha\}.\]</span></p>
+<p>C’est donc une statistique.</p>
+</div>
 
 
 </section>
@@ -618,10 +645,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./ch3_ex.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exercices</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch4_1.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Théorie des tests simples</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

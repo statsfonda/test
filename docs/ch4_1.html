@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch5.html" rel="next">
-<link href="./ch4.html" rel="prev">
+<link href="./ch4_ex.html" rel="next">
+<link href="./ch4_0.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch4.html" class="sidebar-item-text sidebar-link">
+  <a href="./ch4_0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d’hypothèses</span></span></a>
   </div>
 </li>
@@ -168,26 +168,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./ch4_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercices</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./ch5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modèle linéaire</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modèle linéaire</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -208,7 +214,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#la-distance-en-variation-totale" id="toc-la-distance-en-variation-totale" class="nav-link active" data-scroll-target="#la-distance-en-variation-totale"><span class="header-section-number">8.1</span> La distance en variation totale</a></li>
   <li><a href="#meilleur-test-possible-au-sens-de-laffinité" id="toc-meilleur-test-possible-au-sens-de-laffinité" class="nav-link" data-scroll-target="#meilleur-test-possible-au-sens-de-laffinité"><span class="header-section-number">8.2</span> Meilleur test possible au sens de l’affinité</a></li>
-  <li><a href="#bornes-sur-la-variation-totale" id="toc-bornes-sur-la-variation-totale" class="nav-link" data-scroll-target="#bornes-sur-la-variation-totale"><span class="header-section-number">8.3</span> Bornes sur la variation totale</a></li>
+  <li><a href="#théorème-de-jerzy-neymann" id="toc-théorème-de-jerzy-neymann" class="nav-link" data-scroll-target="#théorème-de-jerzy-neymann"><span class="header-section-number">8.3</span> Théorème de Jerzy-Neymann</a></li>
+  <li><a href="#bornes-sur-la-variation-totale" id="toc-bornes-sur-la-variation-totale" class="nav-link" data-scroll-target="#bornes-sur-la-variation-totale"><span class="header-section-number">8.4</span> Bornes sur la variation totale</a></li>
   </ul>
 </nav>
     </div>
@@ -234,48 +241,64 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="la-distance-en-variation-totale" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="la-distance-en-variation-totale"><span class="header-section-number">8.1</span> La distance en variation totale</h2>
-<p>Lorsqu’on cherche à tester une hypothèse de type <span class="math inline">\(\text{loi} = P\)</span> contre une hypothèse de type <span class="math inline">\(\mathrm{loi} = Q\)</span> (c’est-à-dire, deux hypothèses simples), on en revient à chercher un événément très improbable sous la loi <span class="math inline">\(P\)</span>, et très probable sous la loi <span class="math inline">\(Q\)</span>. On peut se demander en toute généralité quels sont les événements <span class="math inline">\(A\)</span> pour lesquels ces probabilités diffèrent le plus, c’est-à-dire les événements qui maximisent <span class="math inline">\(P(A) - Q(A)\)</span>. Cela mène directement à la définition de la <em>variation totale</em>.</p>
+<p>Lorsqu’on cherche à tester une hypothèse de type <span class="math inline">\(\text{loi} = P\)</span> contre une hypothèse de type <span class="math inline">\(\mathrm{loi} = Q\)</span> (c’est-à-dire, deux hypothèses simples), on en revient à chercher un événément très improbable sous la loi <span class="math inline">\(P\)</span>, et très probable sous la loi <span class="math inline">\(Q\)</span>. On peut se demander en toute généralité quels sont les événements pour lesquels ces probabilités diffèrent le plus, c’est-à-dire les événements <span class="math inline">\(A\)</span> qui maximisent <span class="math inline">\(P(A) - Q(A)\)</span>. Cela mène directement à la définition de la <em>variation totale</em>.</p>
 <div id="def-dtv" class="theorem definition">
 <p><span class="theorem-title"><strong>Définition 8.1 (distance en variation totale) </strong></span>Soient <span class="math inline">\(P,Q\)</span> deux mesures de probabilité sur un même espace <span class="math inline">\((\mathcal{X}, \mathscr{F})\)</span>. Leur distance en variation totale est <span class="math display">\[ \mathrm{d}_{\mathrm{TV}}(P,Q) = \sup_{A \in \mathscr{F}}P(A) - Q(A). \]</span></p>
 </div>
-<p>La distance en variation totale est un objet important en probabilités, qui possède de nombreuses propriétés. Parmi elles,</p>
+<p>La distance en variation totale est un objet important en probabilités, qui possède de nombreuses propriétés. Parmi elles, voici les plus importantes.</p>
 <ol type="1">
 <li>C’est une distance sur l’espace des mesures de probabilité.</li>
 <li>Elle génère une topologie plus fine que celle de la convergence en loi ;&nbsp;autrement dit, si <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}(P_n, Q) \to 0\)</span> alors <span class="math inline">\(P_n\)</span> converge en loi vers <span class="math inline">\(Q\)</span> mais l’inverse n’est pas vrai.</li>
 </ol>
 <div id="prp-dtv" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.1 </strong></span>Soit <span class="math inline">\(\nu\)</span> une mesure telle que <span class="math inline">\(P\)</span> et <span class="math inline">\(Q\)</span> sont absolument continues par rapport à <span class="math inline">\(\nu\)</span>, de densités respectives <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> par rapport à <span class="math inline">\(\nu\)</span>. Alors,</p>
-<p><span id="eq-dtvformule"><span class="math display">\[\mathrm{d}_{\mathrm{TV}}(P,Q) = \int_{\mathcal{X}} (p(x) - q(x))_+d\nu = \frac{1}{2}\int_{\mathcal{X}} |p(x) - q(x)|d\nu. \tag{8.1}\]</span></span></p>
-<p>De plus, notons <span class="math inline">\(E\)</span> l’ensemble mesurable <span class="math inline">\(\{p(x)&gt;q(x)\}\)</span>. Alors, <span id="eq-dtv-2"><span class="math display">\[\mathrm{d}_{\mathrm{TV}}(P,Q) = P(E) - Q(E). \tag{8.2}\]</span></span></p>
+<p><span class="theorem-title"><strong>Proposition 8.1 </strong></span>Soit <span class="math inline">\(\nu\)</span> une mesure telle que <span class="math inline">\(P\)</span> et <span class="math inline">\(Q\)</span> sont absolument continues par rapport à <span class="math inline">\(\nu\)</span>, de densités respectives <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> par rapport à <span class="math inline">\(\nu\)</span>. Alors, <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}(P,Q)\)</span> est égale à chacune des quantités suivantes :</p>
+<p><span class="math display">\[\int_{\mathcal{X}} (p(x) - q(x))_+d\nu\]</span> <span id="eq-dtvformule"><span class="math display">\[ \frac{1}{2}\int_{\mathcal{X}} |p(x) - q(x)|d\nu. \tag{8.1}\]</span></span></p>
+<p>De plus, notons <span class="math inline">\(E\)</span> l’ensemble mesurable <span class="math inline">\(\{x \in \mathcal{X} : p(x)&gt;q(x)\}\)</span>. Alors, <span id="eq-dtv-2"><span class="math display">\[\mathrm{d}_{\mathrm{TV}}(P,Q) = P(E) - Q(E). \tag{8.2}\]</span></span></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>Pour tout événement <span class="math inline">\(A \in \mathscr{F}\)</span>, la différence <span class="math inline">\(P(A) - Q(A)\)</span> est égale à <span class="math inline">\(\int_A p(x) - q(x) d\nu\)</span>, qui peut elle-même s’écrire sous la forme <span class="math display">\[\int_{A \cap E} p(x) - q(x) d\nu + \int_{A \cap \bar{E}} p(x) - q(x) d\nu.\]</span> Le second terme est négatif, puisque si <span class="math inline">\(x \notin E\)</span> alors <span class="math inline">\(p(x)\leqslant q(x)\)</span>. Ainsi, <span class="math inline">\(P(A) - Q(A)\)</span> est plus petit que le premier terme, lequel est à son tour plus petit que <span class="math inline">\(\int_E (p-q)d\nu = P(E) - Q(E)\)</span>. Cela montre directement <a href="#eq-dtv-2">Équation&nbsp;<span>8.2</span></a>. Au passage, il est évident que <span class="math display">\[\int_E (p(x)-q(x))d\nu = \int_{\mathcal{X}}(p(x) - q(x))_+ d\nu,  \]</span> ce qui montre la première égalité de <a href="#eq-dtvformule">Équation&nbsp;<span>8.1</span></a>. La seconde égalité résulte de la première, puisque comme <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> sont des densités de probabilité, on a forcément <span class="math inline">\(\int (p-q)_+ = \int(p-q)_-\)</span>.</p>
+<p><span class="proof-title"><em>Preuve</em>. </span>Pour tout événement <span class="math inline">\(A \in \mathscr{F}\)</span>, la différence <span class="math inline">\(P(A) - Q(A)\)</span> est égale à <span class="math inline">\(\int_A p(x) - q(x) d\nu\)</span>, qui peut elle-même s’écrire sous la forme <span class="math display">\[\int_{A \cap E} (p - q) d\nu + \int_{A \cap \bar{E}} (p - q) d\nu.\]</span> Le second terme est négatif, puisque si <span class="math inline">\(x \notin E\)</span> alors <span class="math inline">\(p(x)\leqslant q(x)\)</span>. Ainsi, <span class="math inline">\(P(A) - Q(A)\)</span> est plus petit que le premier terme, lequel est à son tour plus petit que <span class="math inline">\(\int_E (p-q)d\nu = P(E) - Q(E)\)</span>. Cela montre directement <a href="#eq-dtv-2">Équation&nbsp;<span>8.2</span></a>. Au passage, il est évident que <span class="math display">\[\int_E (p(x)-q(x))d\nu = \int_{\mathcal{X}}(p(x) - q(x))_+ d\nu,  \]</span> ce qui montre la première égalité de <a href="#eq-dtvformule">Équation&nbsp;<span>8.1</span></a>. La seconde égalité résulte de la première, puisque comme <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> sont des densités de probabilité, on a forcément <span class="math inline">\(\int (p-q)_+ = \int(p-q)_-\)</span>.</p>
 </div>
 </section>
 <section id="meilleur-test-possible-au-sens-de-laffinité" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="meilleur-test-possible-au-sens-de-laffinité"><span class="header-section-number">8.2</span> Meilleur test possible au sens de l’affinité</h2>
 <p>L’affinité d’un test est la somme de ses erreurs de première et seconde espèce :&nbsp;c’est la probabilité de « se tromper » en général, quelle que soit l’hypothèse.</p>
 <div id="thm-affinity" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 8.1 </strong></span>Soit <span class="math inline">\(\mathfrak{T}\)</span> l’ensemble des tests possibles de l’hypothèse <span class="math inline">\(H_0 :&nbsp;P = P_0\)</span> contre l’hypothèse alternative <span class="math inline">\(H_1 :&nbsp;P = P_1\)</span>. Alors, le test possédant la meilleure affinité possible parmi tous les tests possibles vérifie <span class="math display">\[\inf_{T \in \mathfrak{T}}~\{\alpha_T + \beta_T \} = 1 - \mathrm{d}_{\mathrm{TV}}(P_0, P_1). \]</span> En particulier, le test optimal pour l’affinité est donné par la région de rejet <span class="math display">\[ \mathsf{rejeter}_\star = \{p(x) &gt; q(x)\}.\]</span></p>
+<p><span class="theorem-title"><strong>Théorème 8.1 </strong></span>Soit <span class="math inline">\(\mathfrak{T}\)</span> l’ensemble des tests possibles de l’hypothèse <span class="math inline">\(H_0 :&nbsp;P = P_0\)</span> contre l’hypothèse alternative <span class="math inline">\(H_1 :&nbsp;P = P_1\)</span>. Alors, le test possédant la meilleure affinité possible parmi tous les tests possibles vérifie <span class="math display">\[\inf_{T \in \mathfrak{T}}~\{\alpha_T + \beta_T \} = 1 - \mathrm{d}_{\mathrm{TV}}(P_0, P_1). \]</span> En particulier, le test optimal pour l’affinité est donné par la région de rejet <span class="math display">\[ \mathsf{rejeter}_\star = \{p(x) &lt; q(x)\}.\]</span></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>Soit <span class="math inline">\(T\)</span> n’importe quel test. Son affinité <span class="math inline">\(P_1(\{T=0\}) + P_0(\{T=1\})\)</span>. En passant au complémentaire dans le second terme, on obtient <span class="math display">\[1 - (P_0(\{T=0\}) - P_1(\{T=0\})). \]</span> Cette quantité est forcément plus petite que <span class="math inline">\(1 - \mathrm{d}_{\mathrm{TV}}(P_0, P_1)\)</span> par la définition même de la variation totale. De plus, cette borne est atteinte en choisissant le test <span class="math inline">\(T\)</span> donné dans l’énoncé, d’où l’égalité.</p>
+<p><span class="proof-title"><em>Preuve</em>. </span>Soit <span class="math inline">\(T\)</span> n’importe quel test. Son affinité est <span class="math inline">\(P_1(\{T=0\}) + P_0(\{T=1\})\)</span>. En passant au complémentaire dans le second terme, on obtient <span class="math display">\[1 - (P_0(\{T=0\}) - P_1(\{T=0\})). \]</span> Cette quantité est forcément plus petite que <span class="math inline">\(1 - \mathrm{d}_{\mathrm{TV}}(P_0, P_1)\)</span> par la définition même de la variation totale. De plus, cette borne est atteinte en choisissant le test <span class="math inline">\(T\)</span> donné dans l’énoncé, d’où l’égalité.</p>
+</div>
+<p><strong>Commentaire.</strong> Le théorème précédent semble donner au problème de la construction de tests une réponse définitive :&nbsp;il donne le test optimal au sens de l’affinité, test qui est élémentaire et intuitif. En effet, si <span class="math inline">\(P_0, P_1\)</span> sont les deux lois et si <span class="math inline">\((x_1, \dotsc, x_n)\)</span> est l’échantillon observé, alors on rejette l’hypothèse nulle si la probabilité de cette observation est plus grande sous <span class="math inline">\(P_1\)</span> que sous <span class="math inline">\(P_0\)</span> : autrement dit, si <span class="math display">\[ \frac{P_1(x_1, \dotsc, x_n)}{P_0(x_1, \dotsc, x_n)}&gt;1. \]</span> Le terme de droite s’appelle <strong>rapport de vraisemblance</strong>. Pourtant, ce test ne permet pas de contrôler l’erreur de première espèce. Il peut tout à fait exister d’autres tests qui ont un niveau plus élevé. Il est donc naturel de se demander si, parmi les tests ayant un niveau fixé <span class="math inline">\(1-\alpha\)</span>, il existe un autre critère d’optimalité.</p>
+</section>
+<section id="théorème-de-jerzy-neymann" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="théorème-de-jerzy-neymann"><span class="header-section-number">8.3</span> Théorème de Jerzy-Neymann</h2>
+<p>On se place toujours dans un cadre où les deux lois <span class="math inline">\(P_0\)</span> et <span class="math inline">\(P_1\)</span> possèdent deux densités (disons, <span class="math inline">\(p_0, p_1\)</span>) par rapport à une mesure commune <span class="math inline">\(\nu\)</span>.</p>
+<div id="def-testRV" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 8.2 </strong></span>Un <em>test du rapport de vraisemblance</em> est un test dont la région de rejet est de la forme <span id="eq-rejetMV"><span class="math display">\[\mathsf{rejeter}= \left\lbrace \frac{p_1(x)}{p_0(x)} &gt; z \right\rbrace  \tag{8.3}\]</span></span> pour un certain <span class="math inline">\(z&gt;0\)</span>.</p>
+</div>
+<p>Le test optimal au sens de l’affinité est un test de rapport de vraisemblance (<span class="math inline">\(z=1\)</span>).</p>
+<div id="thm-jerzy" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 8.2 (Théorème de Jerzy-Neymann) </strong></span>Tout test de même niveau qu’un test du rapport de vraisemblance est moins puissant que celui-ci.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span>On suppose que la région de rejet de <span class="math inline">\(T_\star\)</span> est de la forme <a href="#eq-rejetMV">Équation&nbsp;<span>8.3</span></a>. Soit <span class="math inline">\(T\)</span> un autre test de même niveau que <span class="math inline">\(T_\star\)</span>. La quantité <span class="math display">\[ \int_{\mathcal{X}} (T(x) - T_\star(x))(p_1(x) - z p_0(x))d\nu \]</span> est forcément négative ou nulle : en effet, si <span class="math inline">\(T_\star(x)=1\)</span>, alors <span class="math inline">\(T(x)-T_\star(x) = T(x)-1 \leqslant 0\)</span>, mais <span class="math inline">\(p_1(x)\)</span> est plus grand que <span class="math inline">\(zp_0(x)\)</span>, donc <span class="math inline">\((p_1(x) - zp_0(x))\geqslant 0\)</span>. De même, si <span class="math inline">\(T(x) = 0\)</span>, alors cette fois ce terme est négatif. Dans les deux cas, la fonction dans l’intégrale est toujours le produit de deux nombres de signes opposés : elle est donc négative. Or, en développant cette intégrale, on constate qu’elle vaut aussi <span class="math display">\[P_1(T=1) - P_1(T_\star=1) - zP_0(T=1)+zP_0(T_\star=1). \]</span> Tout ceci n’est rien d’autre que <span class="math inline">\(\beta_\star-\beta - z(\alpha-\alpha_\star)\)</span>, où <span class="math inline">\(\alpha, \beta\)</span> désignent les deux types d’erreurs du test <span class="math inline">\(T\)</span> et <span class="math inline">\(\alpha_\star, \beta_\star\)</span> celles de <span class="math inline">\(T_\star\)</span>. Mais nous avons supposé que <span class="math inline">\(\alpha = \alpha_\star\)</span> : des deux termes ci-dessus, ne reste que le premier, à savoir <span class="math inline">\(\beta_\star - \beta\)</span>, qui est bien négatif comme demandé.</p>
 </div>
 </section>
-<section id="bornes-sur-la-variation-totale" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="bornes-sur-la-variation-totale"><span class="header-section-number">8.3</span> Bornes sur la variation totale</h2>
-<p>Le théorème précédent semble donner au problème de la construction de tests une réponse définitive :&nbsp;il donne le test optimal au sens de l’affinité. C’est pourtant trompeur, car la construction de ce test nécessite le calcul de la distance en variation totale, laquelle peut être notoirement difficile. En pratique, on cherche plutôt à <em>borner</em> cette distance par d’autres quantités plus faciles à calculer. Parmi ces quantités, la <em>divergence de Kullback-Leibler</em> joue un rôle extrêmement important, notamment pour son lien avec le maximum de vraisemblance que nous verrons plus tard.</p>
+<section id="bornes-sur-la-variation-totale" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="bornes-sur-la-variation-totale"><span class="header-section-number">8.4</span> Bornes sur la variation totale</h2>
+<p>La construction du test optimal au sens de l’affinité nécessite le calcul de la distance en variation totale, laquelle peut être notoirement difficile : - d’abord, parce que la formule <a href="#eq-dtvformule">Équation&nbsp;<span>8.1</span></a> peut être impossible à calculer même si <span class="math inline">\(P\)</span> et <span class="math inline">\(Q\)</span> sont connues ; - ensuite, parce que <span class="math inline">\(Q\)</span> elle-même peut parfois être très difficile à calculer (le calcul peut être de complexité exponentielle).</p>
+<p>En pratique, on peut chercher à <em>borner</em> cette distance par d’autres quantités plus faciles à calculer. Parmi ces quantités, la <em>divergence de Kullback-Leibler</em> joue un rôle extrêmement important, notamment pour son lien avec le maximum de vraisemblance que nous verrons plus tard.</p>
 <div id="def-dkl" class="theorem definition">
-<p><span class="theorem-title"><strong>Définition 8.2 </strong></span>Soient <span class="math inline">\(P\)</span> et <span class="math inline">\(Q\)</span> deux mesures, <span class="math inline">\(P\)</span> étant absolument continue par rapport à <span class="math inline">\(Q\)</span>. Alors,</p>
+<p><span class="theorem-title"><strong>Définition 8.3 </strong></span>Soient <span class="math inline">\(P\)</span> et <span class="math inline">\(Q\)</span> deux mesures, <span class="math inline">\(P\)</span> étant absolument continue par rapport à <span class="math inline">\(Q\)</span>. Alors,</p>
 <p><span class="math display">\[ \mathrm{d}_{\mathrm{KL}}(P \mid Q) = \int \ln \left(\frac{\mathrm{d}P}{\mathrm{d}Q}\right)dP. \]</span></p>
 </div>
 <p>Cette quantité n’est pas une distance, et c’est pour cela qu’on l’appelle <em>divergence</em> et qu’on la note avec une barre plutôt qu’une virgule :&nbsp;elle n’est pas symétrique en général. Cependant, elle est toujours positive, et n’est nulle que si <span class="math inline">\(P=Q\)</span>.</p>
 <div id="thm-BH" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 8.2 (Borne de Bretagnole-Huber-Pinsker) </strong></span><span id="eq-bh"><span class="math display">\[ \mathrm{d}_{\mathrm{TV}}(P,Q) \leqslant \sqrt{1 - e^{-\mathrm{d}_{\mathrm{KL}}(P \mid Q)}}. \tag{8.3}\]</span></span></p>
+<p><span class="theorem-title"><strong>Théorème 8.3 (Borne de Bretagnole-Huber-Pinsker) </strong></span><span id="eq-bh"><span class="math display">\[ \mathrm{d}_{\mathrm{TV}}(P,Q) \leqslant \sqrt{1 - e^{-\mathrm{d}_{\mathrm{KL}}(P \mid Q)}}. \tag{8.4}\]</span></span></p>
 </div>
-<p>Il est très facile de vérifier que <span class="math inline">\(\sqrt{1-e^{-x}}\leqslant \sqrt{x}\)</span> lorsque <span class="math inline">\(x&gt;0\)</span>. Ainsi, <a href="#eq-bh">Équation&nbsp;<span>8.3</span></a> entraîne la borne plus simple <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}\leqslant \sqrt{\mathrm{d}_{\mathrm{KL}}}\)</span>. La borne <em>classique</em> de Pinsker dit qu’en fait, on a légèrement mieux, puisqu’en toute généralité <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}\leqslant \sqrt{\mathrm{d}_{\mathrm{KL}}/2}\)</span>.</p>
+<p>Il est très facile de vérifier que <span class="math inline">\(\sqrt{1-e^{-x}}\leqslant \sqrt{x}\)</span> lorsque <span class="math inline">\(x&gt;0\)</span>. Ainsi, <a href="#eq-bh">Équation&nbsp;<span>8.4</span></a> entraîne la borne plus simple <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}\leqslant \sqrt{\mathrm{d}_{\mathrm{KL}}}\)</span>. La borne <em>classique</em> de Pinsker dit qu’en fait, on a légèrement mieux, puisqu’en toute généralité <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}\leqslant \sqrt{\mathrm{d}_{\mathrm{KL}}/2}\)</span>.</p>
 <div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>À&nbsp;écrire.</p>
+<p><span class="proof-title"><em>Preuve</em>. </span>On pose <span class="math inline">\(r = p/q\)</span>, <span class="math inline">\(v = 1+(r-1)_+\)</span> et <span class="math inline">\(w = 1 - (r-1)_-\)</span>.</p>
 </div>
 
 
@@ -632,13 +655,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch4.html" class="pagination-link">
+      <a href="./ch4_0.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d’hypothèses</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch5.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modèle linéaire</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch4_ex.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercices</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

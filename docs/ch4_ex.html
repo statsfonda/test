@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Simon Coste">
 
-<title>Statistiques Fondamentales</title>
+<title>Statistiques Fondamentales - 9&nbsp; Exercices</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch1.html" rel="next">
+<link href="./ch5.html" rel="next">
+<link href="./ch4_1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -64,6 +64,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -77,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Organisation</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch4_ex.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercices</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -112,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Organisation</span></a>
   </div>
 </li>
@@ -166,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch4_ex.html" class="sidebar-item-text sidebar-link">
+  <a href="./ch4_ex.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercices</span></span></a>
   </div>
 </li>
@@ -210,8 +212,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#organisation" id="toc-organisation" class="nav-link active" data-scroll-target="#organisation">Organisation</a></li>
-  <li><a href="#utiliser-ce-site" id="toc-utiliser-ce-site" class="nav-link" data-scroll-target="#utiliser-ce-site">Utiliser ce site</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link active" data-scroll-target="#questions"><span class="header-section-number">9.1</span> Questions</a></li>
+  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices"><span class="header-section-number">9.2</span> Exercices</a></li>
   </ul>
 </nav>
     </div>
@@ -220,26 +222,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Statistiques Fondamentales</h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercices</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Auteur·rice</div>
-    <div class="quarto-title-meta-contents">
-             <p>Simon Coste </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Date de publication</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">18 janvier 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -247,22 +237,56 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Bienvenue sur la page du cours de Statistiques Fondamentales (STF8) du master Mathématiques Fondamentales et Appliquées de l’Université Paris-Cité. Les notes de cours sont accessibles à tous. De nombreux auteurs s’y sont succédés ; je suis le dernier en date, mais les versions précédentes ont été travaillées par Clément Levrard, Stéphane Boucheron, Stéphane Gaïffas, Pierre Youssef.</p>
-<section id="organisation" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="organisation">Organisation</h2>
+<section id="questions" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="questions"><span class="header-section-number">9.1</span> Questions</h2>
 <ul>
-<li>Les CM&nbsp;ont lieu les jeudi à (8h30 - 10h30), et les vendredi (10h45 - 12h45) <strong>sauf le premier cours qui a lieu lundi 8 janvier à 10h45-12h45</strong>.</li>
-<li>Les TD&nbsp;ont lieu lundi (13h45 - 16h45) et vendredi (13h30 - 15h30), de lundi 8 janvier à vendredi 16 février.</li>
-<li>Il y aura deux contrôles de 2h, le vendredi 26 janvier et lundi 12 février.</li>
-<li>L’examen a lieu le 1er mars de 13h30 à 16h30.</li>
-<li>Il y aura une interro de 5 minutes chaque semaine le jeudi.</li>
+<li>Quelles sont les erreurs du test consistant à toujours accepter l’hypothèse nulle ?</li>
+<li>Quelles sont les erreurs du test consistant à toujours refuser l’hypothèse nulle ?</li>
+<li>Montrer que la distance en variation totale entre deux mesures <span class="math inline">\(p,q\)</span> peut aussi s’écrire <span class="math inline">\(\int(p/q-1)_+ dp\)</span>.</li>
+<li>Montrer que si <span class="math inline">\(\mathrm{d}_{\mathrm{KL}}(P_n \mid Q) \to 0\)</span>, alors <span class="math inline">\(P_n\)</span> converge en loi vers <span class="math inline">\(Q\)</span>.</li>
+<li>Calculer la distance en variation totale entre deux lois de Bernoulli de paramètres respectifs <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span>.</li>
+<li>Calculer la distance en variation totale entre une loi <span class="math inline">\(\mathrm{Bin}(n,p)\)</span> et une loi <span class="math inline">\(N(\mu,\sigma^2)\)</span>.</li>
 </ul>
 </section>
-<section id="utiliser-ce-site" class="level2">
-<h2 class="anchored" data-anchor-id="utiliser-ce-site">Utiliser ce site</h2>
-<p>Chaque chapitre de ce livre contient une page dédiée au cours théorique, et contiendra dans un futur proche une page d’exercices.</p>
-<p>La saveur du cours est essentiellement mathématique et nous n’aurons pas de TP d’info ; cependant, je vous recommande vraiment d’essayer d’appliquer tout ça via votre langage de programmation favori, c’est-à-dire <del>Python</del> <del>R</del> <del>SAS</del> <del>C++</del> Julia. J’essaierai autant que possible de fournir des mini-jeux de données avec des petits challenges pour appliquer ce que vous apprenez en cours.</p>
-<p>Ces notes sont mises en lignes et totalement accessibles via <a href="https://quarto.org">Quarto</a>. Si vous savez comment utiliser <code>git</code>, n’hésitez pas à corriger toutes les erreurs que vous pourriez voir (et Dieu sait qu’elles seront nombreuses) via des pull requests.</p>
+<section id="exercices" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="exercices"><span class="header-section-number">9.2</span> Exercices</h2>
+<div id="exr-testchideux" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 9.1 </strong></span>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> des variables indépendantes de loi <span class="math inline">\(\chi_2(n)\)</span>. On cherche à tester l’hypothèse nulle <span class="math inline">\(n=1\)</span> contre l’hypothèse alternative <span class="math inline">\(n=2\)</span>.</p>
+<ol type="1">
+<li>Écrire le test ayant la plus grande affinité possible.</li>
+<li>Essayer de calculer l’affinité de ce test ; si ce n’est pas possible, essayer de la borner.</li>
+</ol>
+</div>
+<div id="exr-testvar" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 9.2 </strong></span>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> des variables indépendantes de loi <span class="math inline">\(N(0,\sigma^2)\)</span>. Proposer un test de niveau <span class="math inline">\(\alpha\)</span> de l’hypothèse <span class="math inline">\(\sigma^2=1\)</span> contre l’hypothèse <span class="math inline">\(\sigma^2 = 1+\varepsilon\)</span>, et estimer sa puissance. Comment varie-t-elle en fonction de <span class="math inline">\(n\)</span> et de <span class="math inline">\(\varepsilon\)</span> ?</p>
+</div>
+<div id="exr-testrandom" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 9.3 </strong></span>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> des variables indépendantes de même loi <span class="math inline">\(P\)</span>. On cherche à tester l’hypothèse nulle <span class="math inline">\(P = N(0,1)\)</span> contre l’hypothèse alternative <span class="math inline">\(P = \mathscr{T}(n)\)</span>.</p>
+<ol type="1">
+<li>Donner le test optimal au sens de l’affinité.</li>
+<li>Donner un autre test, de niveau <span class="math inline">\(1-\alpha\)</span>, et calculer sa puissance.</li>
+<li>Comparer ces deux tests, en particulier dans le régime où <span class="math inline">\(n\)</span> est grand.</li>
+</ol>
+</div>
+<div id="exr-samplecomplexity" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 9.4 </strong></span>Montrer que le nombre de lancers nécessaire pour distinguer une pièce équilibrée <span class="math inline">\((p=1/2)\)</span> d’une pièce légèrement déséquilibrée (<span class="math inline">\(p_1 = 1/2 + \varepsilon\)</span>) est d’ordre <span class="math inline">\(1/\varepsilon^2\)</span>.</p>
+</div>
+<div id="exr-bintest" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 9.5 </strong></span>On note <span class="math inline">\(p\)</span> la probabilité qu’un enfant né vivant soit un garçon. On suppose que les enfants sont de sexe indépendants, et que cette probabilité est la même pour toutes les grossesses.</p>
+<ol type="1">
+<li>Il y a eu en France métropolitaine en 2015 <span class="math inline">\(n=760\,421\)</span> naissances. , dont <span class="math inline">\(389\,181\)</span> garçons. Tester l’hypothèse <span class="math inline">\(p=\frac12\)</span> contre l’alternative pertinente.</li>
+<li>En 1920, il y a eu <span class="math inline">\(838\,137\)</span> naissances dont <span class="math inline">\(432\,044\)</span> garçons. Tester l’hypothèse <span class="math inline">\(p_{2015}=p_{1920}\)</span>.</li>
+</ol>
+</div>
+<div id="exr-testsdivers" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 9.6 </strong></span>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> i.i.d de loi <span class="math inline">\(N(\theta,1)\)</span>, où <span class="math inline">\(\theta\)</span> est un paramètre réel.</p>
+<ol type="1">
+<li>Donner un intervalle de confiance pour <span class="math inline">\(\theta\)</span> au niveau de risque <span class="math inline">\(5\%\)</span> de la forme <span class="math inline">\([\hat{\theta}_n^-, +\infty[\)</span>.</li>
+<li>En déduire un test de niveau <span class="math inline">\(5\%\)</span> pour les hypothèses $ H_0: = 0$ et <span class="math inline">\(H_1: \theta &gt;0\)</span>.</li>
+<li>Donner le modèle de l’expérience statistique. Donner l’expression du test de rapport de vraisemblance <span class="math inline">\(T_{0,\mu}\)</span> pour les hypothèses <span class="math inline">\(H_0: \theta =0\)</span> et <span class="math inline">\(H_1: \theta = \mu\)</span>, où <span class="math inline">\(\mu &gt;0\)</span>. Quel test retrouve-t-on?</li>
+<li>Construire le test de rapport de vraisemblance au niveau <span class="math inline">\(5\%\)</span> pour les hypothèses $ H_0: = 0$ et <span class="math inline">\(H_1: \theta &gt;0\)</span>.</li>
+</ol>
+</div>
 
 
 </section>
@@ -618,10 +642,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./ch4_1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Théorie des tests simples</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch5.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modèle linéaire</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
