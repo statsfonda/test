@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistiques Fondamentales - 7&nbsp; Test d’hypothèse</title>
+<title>Statistiques Fondamentales - 7&nbsp; Test d’hypothèses</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch5.html" rel="next">
+<link href="./ch4_1.html" rel="next">
 <link href="./ch3_ex.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch4.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d'hypothèse</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch4.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d'hypothèses</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -157,31 +157,37 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch4.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d’hypothèse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d’hypothèses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch4_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Théorie des tests simples</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modèle linéaire</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modèle linéaire</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -214,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d’hypothèse</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test d’hypothèses</span></h1>
 </div>
 
 
@@ -237,6 +243,8 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><p>L’erreur de première espèce est la probabilité de rejeter l’hypothèse nulle à tort : <span class="math inline">\(\alpha = \sup_{\theta \in H_0}P_\theta(\mathsf{rejeter})\)</span>. Le <strong>niveau d’un test</strong> est <span class="math inline">\(1-\alpha\)</span>. C’est la probabilité d’accepter l’hypothèse nulle à raison.</p></li>
 <li><p>L’erreur de seconde espèce est la probabilité de ne pas rejeter l’hypothèse nulle, à tort : <span class="math inline">\(\beta = \sup_{\theta \in H_1}P_\theta(\mathsf{accepter})\)</span>. La <strong>puissance d’un test</strong> est <span class="math inline">\(1-\beta\)</span>. C’est la probabilité de « détecter » l’hypothèse alternative à raison.</p></li>
+<li><p>L’affinité d’un test est la somme des erreurs de première et seconde espèce.</p></li>
+<li></li>
 </ul>
 </div>
 <p>Par « événement », on veut bien dire « un élément de <span class="math inline">\(\mathscr{F}\)</span> », c’est-à-dire qui n’est déterminé que par les observations et pas par <span class="math inline">\(\theta\)</span>. Formellement on écrit souvent qu’un test est une statistique, disons <span class="math inline">\(T\)</span>, à valeurs dans <span class="math inline">\(\{0,1\}\)</span>. L’événement <span class="math inline">\(\{T=0\}\)</span> est <span class="math inline">\(\mathsf{rejeter}\)</span>, l’événement <span class="math inline">\(\{T=1\}\)</span> est <span class="math inline">\(\mathsf{accepter}\)</span>.</p>
@@ -636,8 +644,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch5.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modèle linéaire</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch4_1.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Théorie des tests simples</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
