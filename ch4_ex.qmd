@@ -1,0 +1,67 @@
+# Exercices
+
+## Questions
+
+- Quelles sont les erreurs du test consistant à toujours accepter l'hypothèse nulle ?
+- Quelles sont les erreurs du test consistant à toujours refuser l'hypothèse nulle ?
+- Montrer que la distance en variation totale entre deux mesures $p,q$ peut aussi s'écrire $\int(p/q-1)_+ dp$. 
+- Montrer que si $\mathrm{d}_{\mathrm{KL}}(P_n \mid Q) \to 0$, alors $P_n$ converge en loi vers $Q$. 
+- Calculer la distance en variation totale entre deux lois de Bernoulli de paramètres respectifs $p$ et $q$.
+- Calculer la distance en variation totale entre une loi $\mathrm{Bin}(n,p)$ et une loi $N(\mu,\sigma^2)$. 
+
+
+
+## Exercices
+
+:::{#exr-testchideux}
+
+Soient $X_1, \dotsc, X_n$ des variables indépendantes de loi $\chi_2(n)$. On cherche à tester l'hypothèse nulle $n=1$ contre l'hypothèse alternative $n=2$. 
+
+1. Écrire le test ayant la plus grande affinité possible. 
+2. Essayer de calculer l'affinité de ce test ; si ce n'est pas possible, essayer de la borner. 
+
+:::
+
+:::{#exr-testvar}
+
+Soient $X_1, \dotsc, X_n$ des variables indépendantes de loi $N(0,\sigma^2)$. Proposer un test de niveau $\alpha$ de l'hypothèse $\sigma^2=1$ contre l'hypothèse $\sigma^2 = 1+\varepsilon$, et estimer sa puissance. Comment varie-t-elle en fonction de $n$ et de $\varepsilon$ ?
+
+:::
+
+:::{#exr-testrandom}
+
+Soient $X_1, \dotsc, X_n$ des variables indépendantes de même loi $P$. On cherche à tester l'hypothèse nulle $P = N(0,1)$ contre l'hypothèse alternative $P = \mathscr{T}(n)$. 
+
+1. Donner le test optimal au sens de l'affinité. 
+2. Donner un autre test, de niveau $1-\alpha$, et calculer sa puissance. 
+3. Comparer ces deux tests, en particulier dans le régime où $n$ est grand. 
+:::
+
+:::{#exr-samplecomplexity}
+
+Montrer que le nombre de lancers nécessaire pour distinguer une pièce équilibrée $(p=1/2)$ d'une pièce légèrement déséquilibrée ($p_1 = 1/2 + \varepsilon$) est d'ordre $1/\varepsilon^2$. 
+
+:::
+
+:::{#exr-bintest}
+
+On note $p$ la probabilité qu'un enfant né vivant soit un garçon. On suppose que les enfants sont de sexe indépendants, et que cette probabilité est la même pour toutes les grossesses.
+
+1. Il y a eu en France métropolitaine en 2015 $n=760\,421$ naissances.
+, dont $389\,181$ garçons. Tester l'hypothèse $p=\frac12$ contre l'alternative pertinente.
+1. En 1920, il y a eu $838\,137$ naissances dont $432\,044$ garçons. Tester l'hypothèse $p_{2015}=p_{1920}$.
+
+:::
+
+
+:::{#exr-testsdivers}
+
+
+Soient $X_1, \dotsc, X_n$ i.i.d de loi $N(\theta,1)$, où $\theta$ est un paramètre réel. 
+
+1. Donner un intervalle de confiance pour $\theta$ au niveau de risque $5\%$ de la forme $[\hat{\theta}_n^-, +\infty[$. 
+2. En déduire un test de niveau $5\%$ pour les hypothèses $ H_0: \theta = 0$ et $H_1: \theta >0$.
+3. Donner le modèle de l'expérience statistique. Donner l'expression du test de rapport de vraisemblance $T_{0,\mu}$ pour les hypothèses $H_0: \theta =0$ et $H_1: \theta = \mu$, où $\mu >0$. Quel test retrouve-t-on? 
+4. Construire le test de rapport de vraisemblance au niveau $5\%$ pour les hypothèses $ H_0: \theta = 0$ et $H_1: \theta >0$.
+
+:::
