@@ -6,7 +6,7 @@
 \newcommand{\E}{\mathbb{E}}
 
 
-Les tests du $\chi_2$ sont une vaste famille de tests assez variés qui visent, pour la plupart, à tester si un échantillon *discret* a été généré par une loi précise ; on parle souvent de test d'ajustement. 
+Les tests du $\chi_2$ sont une vaste famille de tests assez variés qui visent, pour la plupart, à tester si un échantillon (souvent discret) a été généré par une loi précise ; on parle souvent de test d'ajustement. 
 
 Soit $\Omega$ un ensemble fini à $k$ éléments, disons pour simplifier $\{1, \dotsc, k\}$. On notera $S_k$ l'ensemble des lois de probabilités sur cet ensemble, c'est-à-dire les $k$-uplets $\mathbf{p} = (p_1, \dotsc, p_k)$ de nombres positifs dont la somme vaut 1. On observe $n$ tirages indépendants et identiquement distribués selon une même loi sur $\Omega$. Formellement, le modèle statistique est donné par $(\mathbf{p}^{\otimes n} : \mathbf{p} \in S_k)$. 
 
@@ -45,25 +45,39 @@ pour une valeur de $\mathbf{p}_0$ fixée au préalable.
 
 
 Sous $H_0$, le théorème précédent dit que $\sqrt{n}(\frac{N}{n}- \mathbf{p}_0) \approx N(0, \Sigma_0)$ dès que $n \mathbf{p}_0 \geq (5,\dotsc, 5)$. Il reste à trouver une quantité pivotale. Pour cela, il suffit de remarquer que, sous $H_0$,  $\mathrm{diag}(1/\sqrt{\mathbf{p}_0}) \sqrt{n}(\frac{N}{n}- \mathbf{p}_0)$ converge en loi vers  ${N}(0, I_k - \sqrt{\mathbf{p}_0} \sqrt{\mathbf{p}_0}^T)$
-(en supposant tout de même que pour tout $p_{j,0} > 0$ pour chaque $j$). Or, la matrice $$\pi_0=I_k -\sqrt{\mathbf{p}_0} \sqrt{\mathbf{p}_0}^T$$ est la matrice de projection sur l'orthogonal du vecteur $\sqrt{\mathbf{p}_0}$. Le théorème de Cochran (@thm-cochran) implique alors que la statistique 
-$$
-\left| \mathrm{diag}(1/\sqrt{\mathbf{p}_0}) \sqrt{n}\left(\frac{N}{n}- \mathbf{p}_0\right) \right |^2$${#eq-contraste1}
-converge en loi vers la norme de la projection d'une gaussienne $N(0,I_k)$ sur un sous-espace de dimension $k-1$, c'est-à-dire une loi $\chi_2(k-1)$. En manipulant légèrement @eq-contraste1, on obtient sa forme usuelle. 
+(en supposant tout de même que pour tout $p_{j,0} > 0$ pour chaque $j$). En manipulant légèrement cette expression, on obtient sa forme usuelle. 
+
 
 :::{#def-contraste}
+
+## Contraste du $\chi_2$
 
 Dans le contexte ci-dessus, le *contraste du $\chi_2$* associé à la loi $\mathbf{p}$ est la statistique
 
 $$ D_n(\mathbf{p}) = \sum_{j=1}^k \frac{(N_j - n{p}_j)^2}{n{p}_j}.$$
-
-
 :::
 
+Pour faire des tests, il suffit donc de trouver la loi asymptotique de cette statistique. 
+
+:::{#thm-loicontraste}
+
+Sous l'hypothèse nulle @eq-chi2nul, la statistique $D_n$ converge en loi vers $\chi_2(k-1)$. De plus, sous l'hypothèse alternative @eq-chi2alt, $D_n$ tend vers $+\infty$ presque sûrement. 
+:::
+
+
+:::{.proof}
+
+La matrice $\pi_0=I_k -\sqrt{\mathbf{p}_0} \sqrt{\mathbf{p}_0}^T$ est la matrice de projection sur l'orthogonal du vecteur $\sqrt{\mathbf{p}_0}$. Le théorème de Cochran (@thm-cochran) implique alors que la statistique $D_n$, qui est égale à 
+$$
+\left| \mathrm{diag}(1/\sqrt{\mathbf{p}_0}) \sqrt{n}\left(\frac{N}{n}- \mathbf{p}_0\right) \right |^2, $${#eq-contraste1}
+converge en loi vers la norme de la projection d'une gaussienne $N(0,I_k)$ sur un sous-espace de dimension $k-1$, c'est-à-dire une loi $\chi_2(k-1)$. Sous l'hypothèse alternative, il y a au moins un $p_i$ non nul tel que $p_i \neq (p_0)_i$. Ainsi, @eq-contraste1 est plus grand que $n(N_i/n - (p_0)_i)^2 / p_i$, mais $N_i$ suit une loi $\mathrm{Bin}(n,p_i)$ et donc $N_i / n$ converge en probabilité vers $p_i$. Il est alors clair que $n(N_i/n - (p_0)_i)$ converge vers $+\infty$.
+
+:::
 
 Un test de niveau $1-\alpha$ pour l'hypothèse @eq-chi2nul est alors donné par la région de rejet
 $$ \{ D_n(\mathbf{p}_0) > \kappa_{k-1, 1-\alpha} \}$$
 
- où $\kappa_{k-1, 1-\alpha}$ est le quantile d'ordre $1-\alpha$ d'une $\chi^2(k-1)$. 
+ où $\kappa_{k-1, 1-\alpha}$ est le quantile d'ordre $1-\alpha$ d'une $\chi^2(k-1)$. Si $\bp$ n'est pas égal à $\bp_0$, le contraste $D_n$ tend vers l'infini, donc le test sera forcément dans la zone de rejet : si l'hypothèse alternative est simple, la puissance du test tend donc vers 1. 
 
 
 ## Test d'indépendance
@@ -75,15 +89,29 @@ $$ H_0 : \mathbf{p}\in I_{k,h}$${#eq-chi2indepnul}
 contre l'hypothèse alternative 
 $$ H_1 : \mathbf{p} \notin I_{k,h}.$$
 
+La procédure pour effectuer un tel test nécessite plusieurs étapes. 
+\newcommand{\bp}{\mathbf{p}}
+
+Si $\mathbf{p}$ était effectivement la loi de deux variables indépendantes $\bp^x$ et $\bp^y$, alors ses marginales seraient précisément $\bp^x$ et $\bp^y$, que l'on pourrait facilement estimer. Pour chaque $i$ et chaque $j$, les estimateurs $\hat{\bp}^x$ et $\hat{\bp}^y$ définis par
+$$\hat{p}^x_i = \frac{\sum_{j=1}^h N_{i,j}}{n}$$
+et 
+$$\hat{p}^y_j = \frac{\sum_{i=1}^k N_{i,j}}{n}$$
+sont effectivement des estimateurs sans biais et convergents des quantités $p^x_i, p^y_j$. De plus, sous l'hypothèse nulle, $\hat{p}^x_i \hat{p}^y_i$ serait effectivement un estimateur convergent de $p_{i,j}$. 
+
+De plus, si $\bp$ était effectivement de la forme $\hat{\bp}^x\hat{\bp}^y$, alors la moyenne théorique des éléments de classe $(i,j)$ serait $n\hat{p}^x_i \hat{p}^y_j$. Cette quantité, notée $\check{N}_{i,j}$, s'appelle *effectif théorique*. Nous pouvons maintenant construire la statistique qui nous servira à tester tout cela. 
+
 :::{#def-statpearson}
 
 ## Statistique de Pearson
 
-$$C_n = \sum_{i=1}^k \sum_{j=1}^k \frac{(N_{i,j} - \hat{N}_{i,j})^2}{\hat{N}_{i,j}}. $$
+La statistique de Pearson est définie par 
+
+$$C_n = \sum_{i=1}^k \sum_{j=1}^k \frac{(N_{i,j} - \check{N}_{i,j})^2}{\hat{N}_{i,j}}. $$
 
 :::
 
-Cette statistique possède une loi limite connue, encore en vertu du théorème de Cochran. 
+Cette statistique possède une loi limite connue, encore en vertu du théorème de Cochran. Noter que la statistique de Pearson possède une expression alternative, 
+$$C_n = \sum\sum \frac{n(\hat{p}_{i,j} - \hat{p}^x_i \hat{p}^y_j)^2}{\hat{p}^x_i \hat{p}^y_j}.  $$
 
 :::{#thm-testindepchi2}
 
@@ -91,9 +119,17 @@ Cette statistique possède une loi limite connue, encore en vertu du théorème 
 
 Sous l'hypothèse nulle @eq-chi2indepnul, $C_n$ converge en loi vers 
 $$ \chi_2((k-1)(h-1)).$$
+De plus, pour n'importe quelle loi $\bp_1$ qui n'est pas dans $I_{k,h}$, $C_n \to +\infty$ presque sûrement. 
+:::
+
+:::{.proof}
+C'est une conséquence un peu plus technique du théorème de Cochran. 
 
 :::
 
+Tout cela permet encore une fois d'obtenir des tests très efficacement : en abrégeant $\kappa_{1 - \alpha} = \kappa_{(k-1)(h-1), 1-\alpha}$, on obtient que $\mathbb{P}(C_n > \kappa_{1-\alpha}) \to \alpha$. Ainsi, la région de rejet 
+$$\{C_n > \kappa_{1-\alpha}\} $$
+fournit un test de niveau asymptotique $1-\alpha$. La seconde partie du théorème dit que si la véritable loi sous-jacente n'est effectivement pas la loi de deux variables indépendantes, alors ce test sera systématiquement rejeté --- autrement dit, si l'hypothèse alternative est simple, la puissance de ce test tend vers 1. 
 
 <!-- 
 ## Test d'homogénéité

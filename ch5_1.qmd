@@ -1,5 +1,7 @@
 # Outils gaussiens
 
+## Vecteurs gaussiens
+
 ## Théorème de Cochran
 
 
@@ -44,3 +46,5 @@ On reconnaît dans l'intégrale en $v$ une fonction Gamma ; son intégrale est �
 L'espérance $\mathbb{E}[\varphi(F)]$ vaut donc 
 $$\frac{(p/q)^{p/2}\Gamma\left(\frac{p+q}{2}\right)}{C_p C_q (2q)^{\frac{p+q}{2}}}\int_0^\infty \varphi(x)\frac{x^{\frac{p}{2}-1}}{(px + q)^{\frac{p+q}{2}}}dx. $$
 En simplifiant, on trouve exactement la densité donnée par @eq-fisherdensity. 
+
+## Conditionnement gaussien

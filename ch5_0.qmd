@@ -76,5 +76,9 @@ Ce n'est rien de plus que le théorème de Cochran appliqué à notre problème.
 
 :::
 
+## Modèle linéaire général
+
+
+
 
 [^1]:Celui qui est biaisé, contrairement à $\hat{\sigma}^2_n$. 

@@ -1,0 +1,5 @@
+# Références {.unnumbered}
+
+- [Statistics done Wrong](https://www.statisticsdonewrong.com/)
+- [The earth is round (p<.05)](https://www.sjsu.edu/faculty/gerstman/misc/Cohen1994.pdf)
+- [Statistiques mathématiques en action](https://www.deboecksuperieur.com/ouvrage/9782311007206-statistique-mathematique-en-action), pour ceux qui vont passer l'agreg. 

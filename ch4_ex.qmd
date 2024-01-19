@@ -1,4 +1,4 @@
-# Exercices
+# $\star$ Exercices
 \newcommand{\dkl}{\mathrm{d}_{\mathrm{KL}}}
 ## Questions
 
@@ -10,12 +10,20 @@
 - Calculer la distance en variation totale entre une loi $\mathrm{Bin}(n,p)$ et une loi $N(\mu,\sigma^2)$. 
 - Soient $P,Q$ deux mesures. Montrer que $\dkl(P^{\otimes n} \mid Q^{\otimes n}) = n \dkl(P \mid Q)$. 
 
+## Tests simples
+
+Pour tous les cas suivants, il faut savoir réaliser rapidement un test puissant, voire même optimal au sens qu'il vous plaira. 
+
+- Tester $\mu = \mu_0$ contre $\mu = \mu_1$ dans un échantillon $N(\mu, \sigma^2)$ lorsque $\mu$ est connu. 
+- Même question lorsque $\mu$ est inconnu. 
+- Soient $X_1, \dotsc, X_n$ un échantillon iid $N(\mu_1,\sigma_1^2)$ et $Y_1, \dotsc, Y_m$ ($m$ et $n$ ne sont pas forcément égaux) un échantillon iid de loi $N(\mu_2,\sigma_2^2)$. Tester $\sigma_1 = \sigma_2$ lorsque $\mu_1$ et $\mu_2$ sont connues. 
+- Même question lorsque $\mu_1$ et $\mu_2$ ne sont pas connues. 
 
 ## Exercices
 
 :::{#exr-testchideux}
 
-Soient $X_1, \dotsc, X_n$ des variables indépendantes de loi $\chi_2(n)$. On cherche à tester l'hypothèse nulle $n=1$ contre l'hypothèse alternative $n=2$. 
+Soient $X_1, \dotsc, X_n$ des variables indépendantes de loi $\chi_2(p)$. On cherche à tester l'hypothèse nulle $p=1$ contre l'hypothèse alternative $p=2$. 
 
 1. Écrire le test ayant la plus grande affinité possible. 
 2. Essayer de calculer l'affinité de ce test ; si ce n'est pas possible, essayer de la borner. 
@@ -40,21 +48,6 @@ Soient $X_1, \dotsc, X_n$ des variables indépendantes de même loi $P$. On cher
 :::{#exr-samplecomplexity}
 
 Montrer que le nombre de lancers nécessaire pour distinguer une pièce équilibrée $(p=1/2)$ d'une pièce légèrement déséquilibrée ($p_1 = 1/2 + \varepsilon$) est d'ordre $1/\varepsilon^2$. 
-
-:::
-
-:::{#exr-testdé}
-
-
-On lance $60$ fois un dé et on obtient les résultats suivants :
-
-| **Face $k$** | 1 | 2 | 3 | 4 | 5 | 6 |
-|---------|:-:|:-:|:-:|:-:|:-:|:-:|
-| **Effectif $N_k$**      | 10   |    13 |   8   | 12 | 9 | 8 |
-
-
-
-Le dé est-il bien équilibré ? À titre indicatif, le quantile d'une loi $\chi^2(5)$ d'ordre $95\%$ est $11.07$.
 
 :::
 
@@ -87,14 +80,53 @@ Soient $X_1, \dotsc, X_n$ i.i.d de loi $N(\theta,1)$, où $\theta$ est un param�
 
 ## Test sur des lois uniformes 
 
-On se donne $X_1, \dots, X_n$ i.i.d de loi $\mathscr{U}(0,\theta)$, et on note $M_n = \max_{j=1, \dots, n} X_i$.
+On se donne $X_1, \dots, X_n$ iid de loi $\mathscr{U}(0,\theta)$, et on note $M_n = \max_{j=1, \dots, n} X_i$.
 
-1. Si $\theta =1$ et $t<1$, que vaut $P_1(M_n \leq 1-t)$? En déduire un test $T$ de niveau $1-\alpha$ pour les hypothèses $H_0: \theta = 1$ contre $H_1: \theta < 1$.
-2. Donner le test du rapport de vraisemblance pour pour les hypothèses $H_0: \theta = 1$ contre $H_1: \theta<1$, au niveau $1-\alpha$. 
-3. Soit $\theta <1$. Que vaut $P_{\theta}(\{T =1 \})$? En déduire que la puissance uniforme de $T$ sur $\{ \theta <1 \}$ vaut $1-\alpha$.
-4. Donner le test du rapport de vraisemblance pour pour les hypothèses $H_0: \theta = 1$ contre $H_1: \theta>1$, noté $T'$, au niveau $\alpha$. Quelle est sa puissance minimale sur $\{\theta >1 \}$?
-5. Donner un test de niveau $1-\alpha$ pour $H_0: \theta = 1$ contre $H_1: \theta>1$, plus puissant que $T'$ (à même puissance, et pour n'importe quel $\theta >1$). 
+1. Écrire la fonction de répartition de $M_n$, puis en déduire un test $T$ de niveau $1-\alpha$ pour les hypothèses $H_0: \theta = 1$ contre $H_1: \theta < 1$.
+2. Donner le test du rapport de vraisemblance pour pour les hypothèses $H_0: \theta = 1$ contre $H_1: \theta = \theta_0$, où $\theta_0<1$. Calculer sa puissance. 
+3. On cherche à tester $H_0: \theta = 1$ contre $H_1: \theta < 1$. Comme la seconde hypothèse est composite, on ne peut pas directement appliquer le test du rapport de vraisemblance ; à la place, on utilise un test du *maximum* de vraisemblance, qui est de la forme 
+   $$ \frac{\sup_{\theta < 1}\rho_\theta(x_1, \dotsc, x_n)}{\rho_1(x_1, \dotsc, x_n)} > z$$
+   où $\rho_\theta$ est la densité d'un échantillon iid de lois $\mathscr{U}[0,\theta]$. Calculer le supremum dans cette expression, et en déduire la région de rejet. 
+4. Montrer que la puissance de $T$ vaut $1-\alpha$.
+5. En utilisant la même technique, construire le test du rapport de maximum de vraisemblance pour pour les hypothèses $H_0: \theta = 1$ contre $H_1: \theta>1$, noté $T'$, au niveau $1-\alpha$. Calculer sa puissance. 
+6. Donner un test de niveau $1-\alpha$ pour $H_0: \theta = 1$ contre $H_1: \theta>1$, plus puissant que $T'$ pour n'importe quel $\theta >1$. 
 
 :::
+
+
+
+:::{#exr-testdé}
+
+## Test d'adéquation du $\chi_2$
+
+On lance $60$ fois un dé et on obtient les résultats suivants :
+
+| **Face $k$** | 1 | 2 | 3 | 4 | 5 | 6 |
+|---------|:-:|:-:|:-:|:-:|:-:|:-:|
+| **Effectif $N_k$**      | 10   |    13 |   8   | 12 | 9 | 8 |
+
+
+
+Le dé est-il bien équilibré ? À titre indicatif, le quantile d'une loi $\chi^2(5)$ d'ordre $95\%$ est $11.07$.
+
+:::
+
+:::{#exr-testind}
+
+## Test d'indépendance du $\chi_2$
+
+On cherche à savoir si les variables « être riche » et « être heureux » sont indépendantes. On interroge un grand échantillon de personnes à ce sujet, et l'on récolte les données suivantes : 
+
+| | riche | pauvre | 
+|-|-|-|-|
+| **heureux** |344 | 700|
+| **triste**| 257| 705 | 
+
+
+L'argent fait-il le bonheur ?
+
+:::
+
+
 
 

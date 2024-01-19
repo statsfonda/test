@@ -1,7 +1,7 @@
 # Théorie des tests simples
 
 \newcommand{\dtv}{\mathrm{d}_{\mathrm{TV}}}
-\newcommand{\dkll}{\mathrm{d}}
+\newcommand{\dkll}{\mathrm{d}_{\mathrm{KL}}}
 
 
 ## La distance en variation totale

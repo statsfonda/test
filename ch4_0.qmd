@@ -88,8 +88,12 @@ $$\rejet_\alpha \subset \rejet_\beta.  $$
 :::{#def-pval}
 
 La $p$-valeur d'une famille croissante de tests est le plus petit niveau de risque qui nous amène à rejeter l'hypothèse nulle compte tenu des observations. Formellement, 
-$$ p = \inf\{\alpha>0 : \rejet_\alpha\}.$$
-
-C'est donc une statistique. 
+$$ p_\star = \inf\{\alpha>0 : \rejet_\alpha\} = \sup\{\alpha>0 : \accept_\alpha\}.$$
+ 
 :::
+
+**La $p$-valeur dépend des observations.** C'est une observation cruciale : la $p$-valeur n'est pas une propriété intrinsèque d'un test. Sur deux ensembles différents d'observations, la $p$-valeur ne sera pas la même en général.
+
+**Calcul de $p$-valeur.** Dans de nombreux tests, la construction d'un test se fonde sur une statistique, disons $S$, qui sous l'hypothèse nulle suit une loi particulière (par exemple, $\sqrt{n}\bar{X}_n / \hat{\sigma}_n \sim \mathscr{T}(n-1)$ sous l'hypothèse $X_i \sim N(\mu,\sigma^2)$ avec $\mu=0$ dans le cas d'un test de Student). Si le test est de la forme $S < q_{1-\alpha}$, ce qui équivaut à $F(S)<1-\alpha$. La $p$-valeur est donnée par
+$$p_\star = \sup\{\alpha > 0 : S < q_{1-\alpha}\} = \sup\{\alpha : F(S)<1-\alpha\} = 1 - F(S).$$
 
