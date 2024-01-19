@@ -1,6 +1,8 @@
 # Théorie des tests simples
 
 \newcommand{\dtv}{\mathrm{d}_{\mathrm{TV}}}
+\newcommand{\dkll}{\mathrm{d}}
+
 
 ## La distance en variation totale
 
@@ -26,20 +28,23 @@ La distance en variation totale est un objet important en probabilités, qui pos
 
 :::{#prp-dtv}
 
-Soit $\nu$ une mesure telle que $P$ et $Q$ sont absolument continues par rapport à $\nu$, de densités respectives $p$ et $q$ par rapport à $\nu$. Alors, $\dtv(P,Q)$ est égale à chacune des quantités suivantes : 
+Soit $\nu$ une mesure telle que $P$ et $Q$ sont absolument continues[^1] par rapport à $\nu$, de densités respectives $p$ et $q$ par rapport à $\nu$. Alors, $\dtv(P,Q)$ est égale à chacune des quantités suivantes : 
 
-$$\int_{\mathcal{X}} (p(x) - q(x))_+d\nu$$
-$$ \frac{1}{2}\int_{\mathcal{X}} |p(x) - q(x)|d\nu.$$ {#eq-dtvformule}
+$$\int_{\mathcal{X}} (p(x) - q(x))_+\mathrm{d}\nu$$
+$$ \frac{1}{2}\int_{\mathcal{X}} |p(x) - q(x)|\mathrm{d}\nu.$$ {#eq-dtvformule}
 
 De plus, notons $E$ l'ensemble mesurable $\{x \in \mathcal{X} : p(x)>q(x)\}$. Alors, 
 $$\dtv(P,Q) = P(E) - Q(E).$${#eq-dtv-2}
 :::
 
+L'hypothèse selon laquelle $P,Q$ sont a.c. par rapport à $\nu$ est toujours vérifiée pour $\nu = (P+Q)/2$, et n'est donc pas restrictive. 
+
+
 :::{.proof}
 
-Pour tout événement $A \in \mathscr{F}$, la différence $P(A) - Q(A)$ est égale à $\int_A p(x) - q(x) d\nu$, qui peut elle-même s'écrire sous la forme $$\int_{A \cap E} (p - q) d\nu + \int_{A \cap \bar{E}} (p - q) d\nu.$$
+Pour tout événement $A \in \mathscr{F}$, la différence $P(A) - Q(A)$ est égale à $\int_A p(x) - q(x) \mathrm{d}\nu$, qui peut elle-même s'écrire sous la forme $$\int_{A \cap E} (p - q) \mathrm{d}\nu + \int_{A \cap \bar{E}} (p - q) \mathrm{d}\nu.$$
 Le second terme est négatif, puisque si $x \notin E$ alors $p(x)\leqslant q(x)$. Ainsi, $P(A) - Q(A)$ est plus petit que le premier terme, lequel est à son tour plus petit que $\int_E (p-q)d\nu = P(E) - Q(E)$. Cela montre directement @eq-dtv-2. Au passage, il est évident que 
-$$\int_E (p(x)-q(x))d\nu = \int_{\mathcal{X}}(p(x) - q(x))_+ d\nu,  $$
+$$\int_E (p(x)-q(x))\mathrm{d}\nu = \int_{\mathcal{X}}(p(x) - q(x))_+ \mathrm{d}\nu,  $$
 ce qui montre la première égalité de @eq-dtvformule. La seconde égalité résulte de la première, puisque comme $p$ et $q$ sont des densités de probabilité, on a forcément $\int (p-q)_+ = \int(p-q)_-$. 
 
 :::
@@ -58,7 +63,7 @@ L'affinité d'un test est la somme de ses erreurs de première et seconde espèc
 Soit $\mathfrak{T}$ l'ensemble des tests possibles de l'hypothèse $H_0 : P = P_0$ contre l'hypothèse alternative $H_1 : P = P_1$. Alors, le test possédant la meilleure affinité possible parmi tous les tests possibles vérifie
 $$\inf_{T \in \mathfrak{T}}~\{\alpha_T + \beta_T \} = 1 - \dtv(P_0, P_1). $$
 En particulier, le test optimal pour l'affinité est donné par la région de rejet
-$$ \reject_\star = \{p(x) < q(x)\}.$$
+$$ \reject_\star = \{p_0(x) < p_1(x)\}.$$
 :::
 
 :::{.proof}
@@ -67,13 +72,13 @@ Cette quantité est forcément plus petite que $1 - \dtv(P_0, P_1)$ par la défi
 :::
 
 **Commentaire.** Le théorème précédent semble donner au problème de la construction de tests une réponse définitive : il donne le test optimal au sens de l'affinité, test qui est élémentaire et intuitif. En effet, si $P_0, P_1$ sont les deux lois et si $(x_1, \dotsc, x_n)$ est l'échantillon observé, alors on rejette l'hypothèse nulle si la probabilité de cette observation est plus grande sous $P_1$ que sous $P_0$ : autrement dit, si 
-$$ \frac{P_1(x_1, \dotsc, x_n)}{P_0(x_1, \dotsc, x_n)}>1. $$
+$$ \frac{p_1(x_1, \dotsc, x_n)}{p_0(x_1, \dotsc, x_n)}>1. $$
 Le terme de droite s'appelle **rapport de vraisemblance**. 
 Pourtant, ce test ne permet pas de contrôler l'erreur de première espèce. Il peut tout à fait exister d'autres tests qui ont un niveau plus élevé. Il est donc naturel de se demander si, parmi les tests ayant un niveau fixé $1-\alpha$, il existe un autre critère d'optimalité. 
 
 ## Théorème de Neyman-Pearson
 
-On se place toujours dans un cadre où les deux lois $P_0$ et $P_1$ possèdent deux densités (disons, $p_0, p_1$) par rapport à une mesure commune $\nu$. 
+On se place toujours dans un cadre où les deux lois $P_0$ et $P_1$ possèdent deux densités $p_0, p_1$ par rapport à une mesure commune $\nu$. 
 
 :::{#def-testRV}
 
@@ -95,7 +100,7 @@ Tout test de même niveau qu'un test du rapport de vraisemblance est moins puiss
 
 :::{.proof}
 On suppose que la région de rejet de $T_\star$ est de la forme @eq-rejetMV. Soit $T$ un autre test de même niveau que $T_\star$. La quantité
-$$ \int_{\mathcal{X}} (T(x) - T_\star(x))(p_1(x) - z p_0(x))d\nu $$
+$$ \int_{\mathcal{X}} (T(x) - T_\star(x))(p_1(x) - z p_0(x))\mathrm{d}\nu $$
 est forcément négative ou nulle : en effet, si $T_\star(x)=1$, alors $T(x)-T_\star(x) = T(x)-1 \leqslant 0$,  mais $p_1(x)$ est plus grand que $zp_0(x)$, donc $(p_1(x) - zp_0(x))\geqslant 0$. De même, si $T(x) = 0$, alors cette fois ce terme est négatif. Dans les deux cas, la fonction dans l'intégrale est toujours le produit de deux nombres de signes opposés : elle est donc négative. Or, en développant cette intégrale, on constate qu'elle vaut aussi
 $$P_1(T=1) - P_1(T_\star=1) - zP_0(T=1)+zP_0(T_\star=1). $$ 
 Tout ceci n'est rien d'autre que $\beta_\star-\beta - z(\alpha-\alpha_\star)$, 
@@ -111,30 +116,49 @@ La construction du test optimal au sens de l'affinité nécessite le calcul de l
 
 En pratique, on peut chercher à *borner* cette distance par d'autres quantités plus faciles à calculer. Parmi ces quantités, la *divergence de Kullback-Leibler* joue un rôle extrêmement important, notamment pour son lien avec le maximum de vraisemblance que nous verrons plus tard. 
 
-\newcommand{\dkl}{\mathrm{d}_{\mathrm{KL}}}
 
 :::{#def-dkl}
 
 Soient $P$ et $Q$ deux mesures, $P$ étant absolument continue par rapport à $Q$. Alors, 
 
-$$ \dkl(P \mid Q) = \int \ln \left(\frac{\mathrm{d}P}{\mathrm{d}Q}\right)dP. $$
+$$ \dkll(P \mid Q) = \int \ln \left(\frac{\mathrm{d}P}{\mathrm{d}Q}\right)dP. $$
+
+Si $P$ n'est pas absolument continue par rapport à $Q$, on pose simplement $\dkll(P \mid Q) = +\infty$. 
 
 :::
 
-Cette quantité n'est pas une distance, et c'est pour cela qu'on l'appelle *divergence* et qu'on la note avec une barre plutôt qu'une virgule : elle n'est pas symétrique en général. Cependant, elle est toujours positive, et n'est nulle que si $P=Q$. 
+La notation $\mathrm{d}P/\mathrm{d}Q$ désigne la densité de $P$ par rapport à $Q$. Formellement, c'est la dérivée de Radon-Nikodym. Dans le cas de variables aléatoires continues sur $\mathbb{R}^d$, c'est le rapport des densités de $P$ et de $Q$. 
+
+La divergence $\dkll$ n'est pas une distance, et c'est pour cela qu'on l'appelle *divergence* et qu'on la note avec une barre plutôt qu'une virgule : elle n'est pas symétrique en général. Cependant, elle est toujours positive (éventuellement égale à $+\infty$ même si $P\ll Q$), et n'est nulle que si $P=Q$. 
 
 :::{#thm-BH}
 
 ## Borne de Bretagnole-Huber-Pinsker
 
-$$ \dtv(P,Q) \leqslant \sqrt{1 - e^{-\dkl(P \mid Q)}}.$${#eq-bh}
+$$ \dtv(P,Q) \leqslant \sqrt{1 - e^{-\dkll(P \mid Q)}}.$${#eq-bh}
 
 :::
 
-Il est très facile de vérifier que $\sqrt{1-e^{-x}}\leqslant \sqrt{x}$ lorsque $x>0$. Ainsi, @eq-bh entraîne la borne plus simple $\dtv \leqslant \sqrt{\dkl}$. La borne *classique* de Pinsker dit qu'en fait, on a légèrement mieux, puisqu'en toute généralité $\dtv \leqslant \sqrt{\dkl/2}$. 
+$$~~$$
+
+**Remarque.** Il est facile de vérifier que $\sqrt{1-e^{-x}}\leqslant \sqrt{x}$ lorsque $x>0$. Ainsi, @eq-bh entraîne la borne plus simple $\dtv \leqslant \sqrt{\dkll}$. La borne *classique* de Pinsker améliore légèrement ce résultat, puisqu'elle dit que $\dtv \leqslant \sqrt{\dkll/2}$. 
+
 
 :::{.proof} 
-
-On pose $r = p/q$, $v = 1+(r-1)_+$ et $w = 1 - (r-1)_-$. 
-
+Si $P$ n'est pas absolument continue par rapport à $Q$, alors $\dkll(P \mid Q)=+\infty$ et la borne demandée est vraie. Sinon, on note $\rho$ la densité de $P$ par rapport à $Q$, de sorte que $\dkll(P\mid Q) = -\int \ln \rho(x) \mathrm{d}P$. On définit ensuite $v = (\rho-1)_+$ et $w = (\rho-1)_-$, de sorte que $vw$ vaut toujours 0, et donc $(1 + v)(1-w) = 1 - w + v = \rho$. En particulier, $\dkll(P\mid Q)$ vaut
+$$\int(-\ln(1+v))dP + \int (-\ln(1-w))dP.$$
+Or, les deux fonctions $x\mapsto -\ln(1+x)$ et $x\mapsto -\ln(1-x)$ sont concaves sur leurs ensembles de définition. Ainsi, l'inégalité de Jensen entraîne d'une part 
+$$ \int(-\ln(1+v))\mathrm{d}P \leqslant - \ln \left(1 + \int v \mathrm{d}P\right)$$
+et d'autre part
+$$ \int(-\ln(1-w))\mathrm{d}P \leqslant - \ln \left(1 - \int w \mathrm{d}P\right).$$
+Or, la formule @eq-dtvformule montre que $\int v\mathrm{d}P =  \dtv(P,Q)$, et de même pour $\int w \mathrm{d}P$. En additionnant les deux inégalités ci-dessus, on obtient Alors
+$$-\dkll \leqslant - \ln \left((1 + \dtv)(1 - \dtv\right)$$
+soit $-\dkll \leqslant -\ln(1 - \dtv^2)$, c'est-à-dire @eq-bh.
 :::
+
+
+
+
+
+[^1]: Si $P$ est [absolument continue](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Radon-Nikodym-Lebesgue) par rapport à $Q$ (ce qu'on note $P \ll Q$), alors la dérivée de Radon-Nikodym existe, et c'est une fonction mesurable positive $f$ (unique à un ensemble $Q$-négligeable près) qui vérifie $P(A) = \int f(x)\mathbf{1}_{x\in A}\mathrm{d}Q$. On appelle cette fonction *densité* de $P$ par rapport à $Q$. 
+

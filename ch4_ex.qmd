@@ -1,14 +1,14 @@
 # Exercices
-
+\newcommand{\dkl}{\mathrm{d}_{\mathrm{KL}}}
 ## Questions
 
 - Quelles sont les erreurs du test consistant à toujours accepter l'hypothèse nulle ?
 - Quelles sont les erreurs du test consistant à toujours refuser l'hypothèse nulle ?
-- Montrer que la distance en variation totale entre deux mesures $p,q$ peut aussi s'écrire $\int(p/q-1)_+ dp$. 
+- Montrer que la distance en variation totale entre deux mesures de densités $p,q$ peut aussi s'écrire $\int(p/q-1)_+ \mathrm{d}p$. 
 - Montrer que si $\mathrm{d}_{\mathrm{KL}}(P_n \mid Q) \to 0$, alors $P_n$ converge en loi vers $Q$. 
 - Calculer la distance en variation totale entre deux lois de Bernoulli de paramètres respectifs $p$ et $q$.
 - Calculer la distance en variation totale entre une loi $\mathrm{Bin}(n,p)$ et une loi $N(\mu,\sigma^2)$. 
-
+- Soient $P,Q$ deux mesures. Montrer que $\dkl(P^{\otimes n} \mid Q^{\otimes n}) = n \dkl(P \mid Q)$. 
 
 
 ## Exercices
@@ -43,6 +43,22 @@ Montrer que le nombre de lancers nécessaire pour distinguer une pièce équilib
 
 :::
 
+:::{#exr-testdé}
+
+
+On lance $60$ fois un dé et on obtient les résultats suivants :
+
+| **Face $k$** | 1 | 2 | 3 | 4 | 5 | 6 |
+|---------|:-:|:-:|:-:|:-:|:-:|:-:|
+| **Effectif $N_k$**      | 10   |    13 |   8   | 12 | 9 | 8 |
+
+
+
+Le dé est-il bien équilibré ? À titre indicatif, le quantile d'une loi $\chi^2(5)$ d'ordre $95\%$ est $11.07$.
+
+:::
+
+
 :::{#exr-bintest}
 
 On note $p$ la probabilité qu'un enfant né vivant soit un garçon. On suppose que les enfants sont de sexe indépendants, et que cette probabilité est la même pour toutes les grossesses.
@@ -59,9 +75,26 @@ On note $p$ la probabilité qu'un enfant né vivant soit un garçon. On suppose 
 
 Soient $X_1, \dotsc, X_n$ i.i.d de loi $N(\theta,1)$, où $\theta$ est un paramètre réel. 
 
-1. Donner un intervalle de confiance pour $\theta$ au niveau de risque $5\%$ de la forme $[\hat{\theta}_n^-, +\infty[$. 
-2. En déduire un test de niveau $5\%$ pour les hypothèses $ H_0: \theta = 0$ et $H_1: \theta >0$.
-3. Donner le modèle de l'expérience statistique. Donner l'expression du test de rapport de vraisemblance $T_{0,\mu}$ pour les hypothèses $H_0: \theta =0$ et $H_1: \theta = \mu$, où $\mu >0$. Quel test retrouve-t-on? 
-4. Construire le test de rapport de vraisemblance au niveau $5\%$ pour les hypothèses $ H_0: \theta = 0$ et $H_1: \theta >0$.
+1. Donner un intervalle de confiance pour $\theta$ au niveau de risque $5\%$ de la forme $[\hat{\theta}_n, +\infty[$. 
+2. En déduire un test de niveau $5\%$ pour les hypothèses $H_0: \theta = 0$ et $H_1: \theta >0$.
+3. Donner le modèle de l'expérience statistique. Donner l'expression du test de rapport de vraisemblance $T$ pour les hypothèses $H_0: \theta =0$ et $H_1: \theta = \mu$, où $\mu >0$. Quel test retrouve-t-on? 
+4. Construire le test de rapport de vraisemblance au niveau $5\%$ pour les hypothèses $H_0: \theta = 0$ et $H_1: \theta >0$.
 
 :::
+
+:::{#exr-testunif}
+
+
+## Test sur des lois uniformes 
+
+On se donne $X_1, \dots, X_n$ i.i.d de loi $\mathscr{U}(0,\theta)$, et on note $M_n = \max_{j=1, \dots, n} X_i$.
+
+1. Si $\theta =1$ et $t<1$, que vaut $P_1(M_n \leq 1-t)$? En déduire un test $T$ de niveau $1-\alpha$ pour les hypothèses $H_0: \theta = 1$ contre $H_1: \theta < 1$.
+2. Donner le test du rapport de vraisemblance pour pour les hypothèses $H_0: \theta = 1$ contre $H_1: \theta<1$, au niveau $1-\alpha$. 
+3. Soit $\theta <1$. Que vaut $P_{\theta}(\{T =1 \})$? En déduire que la puissance uniforme de $T$ sur $\{ \theta <1 \}$ vaut $1-\alpha$.
+4. Donner le test du rapport de vraisemblance pour pour les hypothèses $H_0: \theta = 1$ contre $H_1: \theta>1$, noté $T'$, au niveau $\alpha$. Quelle est sa puissance minimale sur $\{\theta >1 \}$?
+5. Donner un test de niveau $1-\alpha$ pour $H_0: \theta = 1$ contre $H_1: \theta>1$, plus puissant que $T'$ (à même puissance, et pour n'importe quel $\theta >1$). 
+
+:::
+
+

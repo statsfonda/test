@@ -1,0 +1,136 @@
+# Tests du $\chi_2$
+
+
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+
+
+Les tests du $\chi_2$ sont une vaste famille de tests assez variés qui visent, pour la plupart, à tester si un échantillon *discret* a été généré par une loi précise ; on parle souvent de test d'ajustement. 
+
+Soit $\Omega$ un ensemble fini à $k$ éléments, disons pour simplifier $\{1, \dotsc, k\}$. On notera $S_k$ l'ensemble des lois de probabilités sur cet ensemble, c'est-à-dire les $k$-uplets $\mathbf{p} = (p_1, \dotsc, p_k)$ de nombres positifs dont la somme vaut 1. On observe $n$ tirages indépendants et identiquement distribués selon une même loi sur $\Omega$. Formellement, le modèle statistique est donné par $(\mathbf{p}^{\otimes n} : \mathbf{p} \in S_k)$. 
+
+## Loi multinomiale
+
+
+
+
+On note $N_j$ le nombre d'observations égales à $j$. Le vecteur $N=(N_1, \dotsc, N_k)$ suit alors une loi multinomiale de paramètres $n$ et $\mathbf{p}$, donnée par 
+\begin{align*}
+\PP(N = (n_1, \dotsc, n_k)) = \frac{n!}{n_1! \dotsc n_k!} \prod_{j=1}^k {p}_j^{n_j},
+\end{align*} 
+où $\sum_{j=1}^k n_j = n$. Cette loi sera notée $\mathrm{Mult}(n, \mathbf{p})$. 
+
+:::{#thm-cvloimult}
+
+Soit $N \sim \mathrm{Mult}(n,\mathbf{p})$. Alors, $\sqrt{n}(\frac{N}{n}- \mathbf{p})$ converge en loi lorsque $n\to\infty$ vers $\mathcal{N}(0, \Sigma)$, où 
+$$ \Sigma = \mathrm{diag}(\mathbf{p}) - \mathbf{p}\mathbf{p}^\top.$${#eq-covarmultin}
+
+::: 
+
+:::{.proof}
+
+On commence par remarquer que $N = \sum_{i=1}^n Z_i$, où $Z_i=(\1_{X_i=1}, \dotsc, \1_{X_i=k})$, les $Z_i$ étant i.i.d., de vecteur moyenne $\mathbf{p}$, et de matrice de covariance @eq-covarmultin. Comme $\E[|Z_1|^2]=1$, il suffit d'appliquer le TCL. 
+
+:::
+
+
+**Remarque.** On considère que cette approximation normale est correcte dès que $\mathbb{E}[N_j]$ est plus grand que $5$ pour tout $j$. 
+
+## Test d'adéquation 
+
+Le test du $\chi^2$ d'adéquation consiste à tester l'hypothèse nulle $$H_0: \mathbf{p}= \mathbf{p}_0$${#eq-chi2nul} contre l'hypothèse alternative
+$$H_1:\mathbf{p} \neq \mathbf{p}_0,$${#eq-chi2alt}
+pour une valeur de $\mathbf{p}_0$ fixée au préalable. 
+
+
+Sous $H_0$, le théorème précédent dit que $\sqrt{n}(\frac{N}{n}- \mathbf{p}_0) \approx N(0, \Sigma_0)$ dès que $n \mathbf{p}_0 \geq (5,\dotsc, 5)$. Il reste à trouver une quantité pivotale. Pour cela, il suffit de remarquer que, sous $H_0$,  $\mathrm{diag}(1/\sqrt{\mathbf{p}_0}) \sqrt{n}(\frac{N}{n}- \mathbf{p}_0)$ converge en loi vers  ${N}(0, I_k - \sqrt{\mathbf{p}_0} \sqrt{\mathbf{p}_0}^T)$
+(en supposant tout de même que pour tout $p_{j,0} > 0$ pour chaque $j$). Or, la matrice $$\pi_0=I_k -\sqrt{\mathbf{p}_0} \sqrt{\mathbf{p}_0}^T$$ est la matrice de projection sur l'orthogonal du vecteur $\sqrt{\mathbf{p}_0}$. Le théorème de Cochran (@thm-cochran) implique alors que la statistique 
+$$
+\left| \mathrm{diag}(1/\sqrt{\mathbf{p}_0}) \sqrt{n}\left(\frac{N}{n}- \mathbf{p}_0\right) \right |^2$${#eq-contraste1}
+converge en loi vers la norme de la projection d'une gaussienne $N(0,I_k)$ sur un sous-espace de dimension $k-1$, c'est-à-dire une loi $\chi_2(k-1)$. En manipulant légèrement @eq-contraste1, on obtient sa forme usuelle. 
+
+:::{#def-contraste}
+
+Dans le contexte ci-dessus, le *contraste du $\chi_2$* associé à la loi $\mathbf{p}$ est la statistique
+
+$$ D_n(\mathbf{p}) = \sum_{j=1}^k \frac{(N_j - n{p}_j)^2}{n{p}_j}.$$
+
+
+:::
+
+
+Un test de niveau $1-\alpha$ pour l'hypothèse @eq-chi2nul est alors donné par la région de rejet
+$$ \{ D_n(\mathbf{p}_0) > \kappa_{k-1, 1-\alpha} \}$$
+
+ où $\kappa_{k-1, 1-\alpha}$ est le quantile d'ordre $1-\alpha$ d'une $\chi^2(k-1)$. 
+
+
+## Test d'indépendance
+
+Les tests du $\chi_2$ d'indépendance sont omniprésents en sciences humaines. Dans ces tests, on observe des variables aléatoires qui sont des *couples* à valeur dans deux espaces discrets ; disons, pour simplifier, que cet espace est $\Omega = \{1, \dotsc, k\}\times \{1, \dotsc, h\}$. Les observations $(x_i, y_i)$ sont des réalisations d'une variable aléatoire $(X,Y)$. Ici, le modèle statistique sera donc $(\mathbf{p}^{\otimes n} : \mathbf{p} \in S_{k,h})$, où $S_{k,h}$ est l'ensemble des $\mathbf{p} = (p_{i,j}, i \in \{1,\dots, k\}, j\in \{1, \dots, h\})$ qui sont des lois de probabilité. 
+
+Si $\mathbf{p}$ est la loi de $(X,Y)$, alors $X$ et $Y$ sont indépendantes si et seulement si $\mathbf{p}$ peut s'écrire sous la forme $p_{i,j} = p^x_i p^y_j$, où $\mathbf{p}^x \in S_k$ et $\mathbf{p}^y \in S_h$. L'ensemble de ces lois sera noté $I_{k,h}$ (« I » pour « Indépendant » ). Les tests d'indépendance visent à tester l'hypothèse nulle 
+$$ H_0 : \mathbf{p}\in I_{k,h}$${#eq-chi2indepnul}
+contre l'hypothèse alternative 
+$$ H_1 : \mathbf{p} \notin I_{k,h}.$$
+
+:::{#def-statpearson}
+
+## Statistique de Pearson
+
+$$C_n = \sum_{i=1}^k \sum_{j=1}^k \frac{(N_{i,j} - \hat{N}_{i,j})^2}{\hat{N}_{i,j}}. $$
+
+:::
+
+Cette statistique possède une loi limite connue, encore en vertu du théorème de Cochran. 
+
+:::{#thm-testindepchi2}
+
+## Loi de la statistique de Pearson
+
+Sous l'hypothèse nulle @eq-chi2indepnul, $C_n$ converge en loi vers 
+$$ \chi_2((k-1)(h-1)).$$
+
+:::
+
+
+<!-- 
+## Test d'homogénéité
+
+On suppose cette fois-ci que l'on observe à la fois $X_1, \dotsc, X_n$ et $Y_1, \dotsc, Y_m$, les deux étant iid. La question que l'on se pose est celle de l'égalité en loi des $Y$ et des $X$. 
+
+Une manière de s'en sortir est de passer par un test du $\chi^2$ d'indépendance (plus tard). On peut aussi passer par un test du $\chi^2$ d'appartenance à un sous-espace. Pour se faire, on dissocie les deux espaces d'arrivée pour obtenir $[\![1,2k]\!]$, et on regroupe les observations en supposant que l'on observe $\tilde{X}_1, \dotsc, \tilde{X}_{n+m}$ i.i.d. à valeurs dans $[\![1,2k]\!]$, où les $n$ premières observations correspondent aux $X_i$, les $m$ dernières aux $Y_i+k$. 
+
+Avec ce bidouillage, on a, pour $1 \leq j \leq k$, $\P(\tilde{X}_i=j) = \frac{n}{n+m} \P(X_1=j)$, et $\P(\tilde{X}_i = j) = \frac{m}{n+m} \P(Y_1=j)$ si $k+1\leq j \leq 2k$. Si on note $Z_i = (\1_{\tilde{X}_i=j})_{j=1, \dotsc, 2k}$, $Z_i$ suit une loi multinomiale $\mathcal{M}(n+m, (\frac{n}{n+m} \mathbf{p}_X, \frac{m}{m+n} \mathbf{p}_Y))$. On supposera dans la suite que toutes les proportions sont non nulles. 
+
+En notant les proportions $\alpha_n = \frac{n}{n+m}$, $\alpha_m = \frac{m}{m+n}$ et $\mathbf{p}_{\tilde{X}}$ le vecteur moyenne de $\tilde{X}$, on a, sous $H_0$, 
+\begin{align*}
+A \mathbf{p}_{\tilde{X}} = 0_k,
+\end{align*}
+où $A$ est la matrice $(\mathrm{diag}(\alpha_n^{-1},k) | \mathrm{diag}(-\alpha_m^{-1},k)) \in M_{k,2k}$. Toujours sous $H_0$, on en déduit alors
+\begin{align*}
+A(Z_1-\mathbf{p}_{\tilde{X}}) = AZ_1.
+\end{align*}
+Une application du théorème central limite donne alors
+\begin{align*}
+\sqrt{n+m} A \bar{Z}_{n+m} \leadsto \mathcal{N}(0_k, A \Sigma A^T),
+\end{align*}
+avec $\Sigma = \mathrm{diag}(\mathbf{p}_{\tilde{X}}) - \mathbf{p}_{\tilde{X}} \mathbf{p}_{\tilde{X}}^T$. Comme $A \mathbf{p}_{\tilde{X}} = 0_k$, un calcul matriciel donne
+\begin{align*}
+A \Sigma A^T = A \mathrm{diag}(\mathbf{p}_{\tilde{X}}) A^T = (\alpha_n^{-1} + \alpha_m^{-1}) \mathrm{diag}(\mathbf{p}) \in M_{k,k},
+\end{align*}
+où $\mathbf{p} = \mathbf{p}_{X} = \mathbf{p}_Y$ (rappelons que l'on travaille sous $H_0$).
+
+On en déduit alors que, sous $H_0$, 
+\begin{align*}
+\mathrm{diag}(\mathbf{p})^{-\frac{1}{2}} \frac{A\bar{Z}_{n+m}}{\sqrt{\frac{1}{n} + \frac{1}{m}}} \leadsto \mathcal{N}(0,I_k).
+\end{align*}
+On peut estimer $\mathrm{diag}(\mathbf{p})$ via $\frac{1}{n+m}  (N_{j,X} + N_{j,Y})_{j=1, \dotsc, k}$, où $N_{j,X} = \sum_{i=1}^n \1_{X_i=j}$ et $N_{j,Y} = \sum_{i=1}^m \1_{Y_i=j}$. La convergence en proba étant assurée par la loi des grands nombres, le lemme de Slustsky donne alors en prenant la norme au carré
+\begin{align*}
+\sum_{j=1}^k \frac{nm \left ( \frac{N_{j,X}}{n} - \frac{N_{j,Y}}{m} \right )^2}{N_{j,X} + N_{j,Y}} \leadsto \chi^2(k),
+\end{align*}
+sous $H_0$. Ce dont on peut déduire un test de niveau $\alpha$.
+
+-->
+
