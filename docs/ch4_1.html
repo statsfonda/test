@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch4_ex.html" rel="next">
+<link href="./ch4_2.html" rel="next">
 <link href="./ch4_0.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -168,32 +168,38 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./ch4_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Tests du <span class="math inline">\(\chi_2\)</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./ch4_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exercices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modèle linéaire</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modèle linéaire</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -251,12 +257,13 @@ ul.task-list li input[type="checkbox"] {
 <li>Elle génère une topologie plus fine que celle de la convergence en loi ;&nbsp;autrement dit, si <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}(P_n, Q) \to 0\)</span> alors <span class="math inline">\(P_n\)</span> converge en loi vers <span class="math inline">\(Q\)</span> mais l’inverse n’est pas vrai.</li>
 </ol>
 <div id="prp-dtv" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.1 </strong></span>Soit <span class="math inline">\(\nu\)</span> une mesure telle que <span class="math inline">\(P\)</span> et <span class="math inline">\(Q\)</span> sont absolument continues par rapport à <span class="math inline">\(\nu\)</span>, de densités respectives <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> par rapport à <span class="math inline">\(\nu\)</span>. Alors, <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}(P,Q)\)</span> est égale à chacune des quantités suivantes :</p>
-<p><span class="math display">\[\int_{\mathcal{X}} (p(x) - q(x))_+d\nu\]</span> <span id="eq-dtvformule"><span class="math display">\[ \frac{1}{2}\int_{\mathcal{X}} |p(x) - q(x)|d\nu. \tag{8.1}\]</span></span></p>
+<p><span class="theorem-title"><strong>Proposition 8.1 </strong></span>Soit <span class="math inline">\(\nu\)</span> une mesure telle que <span class="math inline">\(P\)</span> et <span class="math inline">\(Q\)</span> sont absolument continues<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> par rapport à <span class="math inline">\(\nu\)</span>, de densités respectives <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> par rapport à <span class="math inline">\(\nu\)</span>. Alors, <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}(P,Q)\)</span> est égale à chacune des quantités suivantes :</p>
+<p><span class="math display">\[\int_{\mathcal{X}} (p(x) - q(x))_+\mathrm{d}\nu\]</span> <span id="eq-dtvformule"><span class="math display">\[ \frac{1}{2}\int_{\mathcal{X}} |p(x) - q(x)|\mathrm{d}\nu. \tag{8.1}\]</span></span></p>
 <p>De plus, notons <span class="math inline">\(E\)</span> l’ensemble mesurable <span class="math inline">\(\{x \in \mathcal{X} : p(x)&gt;q(x)\}\)</span>. Alors, <span id="eq-dtv-2"><span class="math display">\[\mathrm{d}_{\mathrm{TV}}(P,Q) = P(E) - Q(E). \tag{8.2}\]</span></span></p>
 </div>
+<p>L’hypothèse selon laquelle <span class="math inline">\(P,Q\)</span> sont a.c. par rapport à <span class="math inline">\(\nu\)</span> est toujours vérifiée pour <span class="math inline">\(\nu = (P+Q)/2\)</span>, et n’est donc pas restrictive.</p>
 <div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>Pour tout événement <span class="math inline">\(A \in \mathscr{F}\)</span>, la différence <span class="math inline">\(P(A) - Q(A)\)</span> est égale à <span class="math inline">\(\int_A p(x) - q(x) d\nu\)</span>, qui peut elle-même s’écrire sous la forme <span class="math display">\[\int_{A \cap E} (p - q) d\nu + \int_{A \cap \bar{E}} (p - q) d\nu.\]</span> Le second terme est négatif, puisque si <span class="math inline">\(x \notin E\)</span> alors <span class="math inline">\(p(x)\leqslant q(x)\)</span>. Ainsi, <span class="math inline">\(P(A) - Q(A)\)</span> est plus petit que le premier terme, lequel est à son tour plus petit que <span class="math inline">\(\int_E (p-q)d\nu = P(E) - Q(E)\)</span>. Cela montre directement <a href="#eq-dtv-2">Équation&nbsp;<span>8.2</span></a>. Au passage, il est évident que <span class="math display">\[\int_E (p(x)-q(x))d\nu = \int_{\mathcal{X}}(p(x) - q(x))_+ d\nu,  \]</span> ce qui montre la première égalité de <a href="#eq-dtvformule">Équation&nbsp;<span>8.1</span></a>. La seconde égalité résulte de la première, puisque comme <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> sont des densités de probabilité, on a forcément <span class="math inline">\(\int (p-q)_+ = \int(p-q)_-\)</span>.</p>
+<p><span class="proof-title"><em>Preuve</em>. </span>Pour tout événement <span class="math inline">\(A \in \mathscr{F}\)</span>, la différence <span class="math inline">\(P(A) - Q(A)\)</span> est égale à <span class="math inline">\(\int_A p(x) - q(x) \mathrm{d}\nu\)</span>, qui peut elle-même s’écrire sous la forme <span class="math display">\[\int_{A \cap E} (p - q) \mathrm{d}\nu + \int_{A \cap \bar{E}} (p - q) \mathrm{d}\nu.\]</span> Le second terme est négatif, puisque si <span class="math inline">\(x \notin E\)</span> alors <span class="math inline">\(p(x)\leqslant q(x)\)</span>. Ainsi, <span class="math inline">\(P(A) - Q(A)\)</span> est plus petit que le premier terme, lequel est à son tour plus petit que <span class="math inline">\(\int_E (p-q)d\nu = P(E) - Q(E)\)</span>. Cela montre directement <a href="#eq-dtv-2">Équation&nbsp;<span class="quarto-unresolved-ref">eq-dtv-2</span></a>. Au passage, il est évident que <span class="math display">\[\int_E (p(x)-q(x))\mathrm{d}\nu = \int_{\mathcal{X}}(p(x) - q(x))_+ \mathrm{d}\nu,  \]</span> ce qui montre la première égalité de <a href="#eq-dtvformule">Équation&nbsp;<span class="quarto-unresolved-ref">eq-dtvformule</span></a>. La seconde égalité résulte de la première, puisque comme <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span> sont des densités de probabilité, on a forcément <span class="math inline">\(\int (p-q)_+ = \int(p-q)_-\)</span>.</p>
 </div>
 <p>Dans la suite, on supposera toujours que les diverses lois possèdent toutes une densité par rapport à une mesure de référence <span class="math inline">\(\nu\)</span>. C’est le cas dans de très nombreux modèles — pas tous, hélas. Les lettres majuscules désigneront les mesures, tandis que les lettres minuscules désigneront leurs densités.</p>
 </section>
@@ -273,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="théorème-de-neyman-pearson" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="théorème-de-neyman-pearson"><span class="header-section-number">8.3</span> Théorème de Neyman-Pearson</h2>
-<p>On se place toujours dans un cadre où les deux lois <span class="math inline">\(P_0\)</span> et <span class="math inline">\(P_1\)</span> possèdent deux densités (disons, <span class="math inline">\(p_0, p_1\)</span>) par rapport à une mesure commune <span class="math inline">\(\nu\)</span>.</p>
+<p>On se place toujours dans un cadre où les deux lois <span class="math inline">\(P_0\)</span> et <span class="math inline">\(P_1\)</span> possèdent deux densités <span class="math inline">\(p_0, p_1\)</span> par rapport à une mesure commune <span class="math inline">\(\nu\)</span>.</p>
 <div id="def-testRV" class="theorem definition">
 <p><span class="theorem-title"><strong>Définition 8.2 </strong></span>Un <em>test du rapport de vraisemblance</em> est un test dont la région de rejet est de la forme <span id="eq-rejetMV"><span class="math display">\[\mathsf{rejeter}= \left\lbrace \frac{p_1(x)}{p_0(x)} &gt; z \right\rbrace  \tag{8.3}\]</span></span> pour un certain <span class="math inline">\(z&gt;0\)</span>.</p>
 </div>
@@ -282,27 +289,36 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="theorem-title"><strong>Théorème 8.2 (Théorème de Neyman-Pearson) </strong></span>Tout test de même niveau qu’un test du rapport de vraisemblance est moins puissant que celui-ci.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>On suppose que la région de rejet de <span class="math inline">\(T_\star\)</span> est de la forme <a href="#eq-rejetMV">Équation&nbsp;<span>8.3</span></a>. Soit <span class="math inline">\(T\)</span> un autre test de même niveau que <span class="math inline">\(T_\star\)</span>. La quantité <span class="math display">\[ \int_{\mathcal{X}} (T(x) - T_\star(x))(p_1(x) - z p_0(x))d\nu \]</span> est forcément négative ou nulle : en effet, si <span class="math inline">\(T_\star(x)=1\)</span>, alors <span class="math inline">\(T(x)-T_\star(x) = T(x)-1 \leqslant 0\)</span>, mais <span class="math inline">\(p_1(x)\)</span> est plus grand que <span class="math inline">\(zp_0(x)\)</span>, donc <span class="math inline">\((p_1(x) - zp_0(x))\geqslant 0\)</span>. De même, si <span class="math inline">\(T(x) = 0\)</span>, alors cette fois ce terme est négatif. Dans les deux cas, la fonction dans l’intégrale est toujours le produit de deux nombres de signes opposés : elle est donc négative. Or, en développant cette intégrale, on constate qu’elle vaut aussi <span class="math display">\[P_1(T=1) - P_1(T_\star=1) - zP_0(T=1)+zP_0(T_\star=1). \]</span> Tout ceci n’est rien d’autre que <span class="math inline">\(\beta_\star-\beta - z(\alpha-\alpha_\star)\)</span>, où <span class="math inline">\(\alpha, \beta\)</span> désignent les deux types d’erreurs du test <span class="math inline">\(T\)</span> et <span class="math inline">\(\alpha_\star, \beta_\star\)</span> celles de <span class="math inline">\(T_\star\)</span>. Mais nous avons supposé que <span class="math inline">\(\alpha = \alpha_\star\)</span> : des deux termes ci-dessus, ne reste que le premier, à savoir <span class="math inline">\(\beta_\star - \beta\)</span>, qui est bien négatif comme demandé.</p>
+<p><span class="proof-title"><em>Preuve</em>. </span>On suppose que la région de rejet de <span class="math inline">\(T_\star\)</span> est de la forme <a href="#eq-rejetMV">Équation&nbsp;<span class="quarto-unresolved-ref">eq-rejetMV</span></a>. Soit <span class="math inline">\(T\)</span> un autre test de même niveau que <span class="math inline">\(T_\star\)</span>. La quantité <span class="math display">\[ \int_{\mathcal{X}} (T(x) - T_\star(x))(p_1(x) - z p_0(x))\mathrm{d}\nu \]</span> est forcément négative ou nulle : en effet, si <span class="math inline">\(T_\star(x)=1\)</span>, alors <span class="math inline">\(T(x)-T_\star(x) = T(x)-1 \leqslant 0\)</span>, mais <span class="math inline">\(p_1(x)\)</span> est plus grand que <span class="math inline">\(zp_0(x)\)</span>, donc <span class="math inline">\((p_1(x) - zp_0(x))\geqslant 0\)</span>. De même, si <span class="math inline">\(T(x) = 0\)</span>, alors cette fois ce terme est négatif. Dans les deux cas, la fonction dans l’intégrale est toujours le produit de deux nombres de signes opposés : elle est donc négative. Or, en développant cette intégrale, on constate qu’elle vaut aussi <span class="math display">\[P_1(T=1) - P_1(T_\star=1) - zP_0(T=1)+zP_0(T_\star=1). \]</span> Tout ceci n’est rien d’autre que <span class="math inline">\(\beta_\star-\beta - z(\alpha-\alpha_\star)\)</span>, où <span class="math inline">\(\alpha, \beta\)</span> désignent les deux types d’erreurs du test <span class="math inline">\(T\)</span> et <span class="math inline">\(\alpha_\star, \beta_\star\)</span> celles de <span class="math inline">\(T_\star\)</span>. Mais nous avons supposé que <span class="math inline">\(\alpha = \alpha_\star\)</span> : des deux termes ci-dessus, ne reste que le premier, à savoir <span class="math inline">\(\beta_\star - \beta\)</span>, qui est bien négatif comme demandé.</p>
 </div>
 </section>
 <section id="bornes-sur-la-variation-totale" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="bornes-sur-la-variation-totale"><span class="header-section-number">8.4</span> Bornes sur la variation totale</h2>
-<p>La construction du test optimal au sens de l’affinité nécessite le calcul de la distance en variation totale, laquelle peut être notoirement difficile : - d’abord, parce que la formule <a href="#eq-dtvformule">Équation&nbsp;<span>8.1</span></a> peut être impossible à calculer même si <span class="math inline">\(P\)</span> et <span class="math inline">\(Q\)</span> sont connues ; - ensuite, parce que <span class="math inline">\(Q\)</span> elle-même peut parfois être très difficile à calculer (le calcul peut être de complexité exponentielle).</p>
+<p>La construction du test optimal au sens de l’affinité nécessite le calcul de la distance en variation totale, laquelle peut être notoirement difficile : - d’abord, parce que la formule <a href="#eq-dtvformule">Équation&nbsp;<span class="quarto-unresolved-ref">eq-dtvformule</span></a> peut être impossible à calculer même si <span class="math inline">\(P\)</span> et <span class="math inline">\(Q\)</span> sont connues ; - ensuite, parce que <span class="math inline">\(Q\)</span> elle-même peut parfois être très difficile à calculer (le calcul peut être de complexité exponentielle).</p>
 <p>En pratique, on peut chercher à <em>borner</em> cette distance par d’autres quantités plus faciles à calculer. Parmi ces quantités, la <em>divergence de Kullback-Leibler</em> joue un rôle extrêmement important, notamment pour son lien avec le maximum de vraisemblance que nous verrons plus tard.</p>
 <div id="def-dkl" class="theorem definition">
 <p><span class="theorem-title"><strong>Définition 8.3 </strong></span>Soient <span class="math inline">\(P\)</span> et <span class="math inline">\(Q\)</span> deux mesures, <span class="math inline">\(P\)</span> étant absolument continue par rapport à <span class="math inline">\(Q\)</span>. Alors,</p>
 <p><span class="math display">\[ \mathrm{d}_{\mathrm{KL}}(P \mid Q) = \int \ln \left(\frac{\mathrm{d}P}{\mathrm{d}Q}\right)dP. \]</span></p>
+<p>Si <span class="math inline">\(P\)</span> n’est pas absolument continue par rapport à <span class="math inline">\(Q\)</span>, on pose simplement <span class="math inline">\(\mathrm{d}_{\mathrm{KL}}(P \mid Q) = +\infty\)</span>.</p>
 </div>
-<p>Cette quantité n’est pas une distance, et c’est pour cela qu’on l’appelle <em>divergence</em> et qu’on la note avec une barre plutôt qu’une virgule :&nbsp;elle n’est pas symétrique en général. Cependant, elle est toujours positive, et n’est nulle que si <span class="math inline">\(P=Q\)</span>.</p>
+<p>La notation <span class="math inline">\(\mathrm{d}P/\mathrm{d}Q\)</span> désigne la densité de <span class="math inline">\(P\)</span> par rapport à <span class="math inline">\(Q\)</span>. Formellement, c’est la dérivée de Radon-Nikodym. Dans le cas de variables aléatoires continues sur <span class="math inline">\(\mathbb{R}^d\)</span>, c’est le rapport des densités de <span class="math inline">\(P\)</span> et de <span class="math inline">\(Q\)</span>.</p>
+<p>La divergence <span class="math inline">\(\mathrm{d}_{\mathrm{KL}}\)</span> n’est pas une distance, et c’est pour cela qu’on l’appelle <em>divergence</em> et qu’on la note avec une barre plutôt qu’une virgule :&nbsp;elle n’est pas symétrique en général. Cependant, elle est toujours positive (éventuellement égale à <span class="math inline">\(+\infty\)</span> même si <span class="math inline">\(P\ll Q\)</span>), et n’est nulle que si <span class="math inline">\(P=Q\)</span>.</p>
 <div id="thm-BH" class="theorem">
 <p><span class="theorem-title"><strong>Théorème 8.3 (Borne de Bretagnole-Huber-Pinsker) </strong></span><span id="eq-bh"><span class="math display">\[ \mathrm{d}_{\mathrm{TV}}(P,Q) \leqslant \sqrt{1 - e^{-\mathrm{d}_{\mathrm{KL}}(P \mid Q)}}. \tag{8.4}\]</span></span></p>
 </div>
-<p>Il est très facile de vérifier que <span class="math inline">\(\sqrt{1-e^{-x}}\leqslant \sqrt{x}\)</span> lorsque <span class="math inline">\(x&gt;0\)</span>. Ainsi, <a href="#eq-bh">Équation&nbsp;<span>8.4</span></a> entraîne la borne plus simple <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}\leqslant \sqrt{\mathrm{d}_{\mathrm{KL}}}\)</span>. La borne <em>classique</em> de Pinsker dit qu’en fait, on a légèrement mieux, puisqu’en toute généralité <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}\leqslant \sqrt{\mathrm{d}_{\mathrm{KL}}/2}\)</span>.</p>
+<p><span class="math display">\[~~\]</span></p>
+<p><strong>Remarque.</strong> Il est facile de vérifier que <span class="math inline">\(\sqrt{1-e^{-x}}\leqslant \sqrt{x}\)</span> lorsque <span class="math inline">\(x&gt;0\)</span>. Ainsi, <a href="#eq-bh">Équation&nbsp;<span class="quarto-unresolved-ref">eq-bh</span></a> entraîne la borne plus simple <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}\leqslant \sqrt{\mathrm{d}_{\mathrm{KL}}}\)</span>. La borne <em>classique</em> de Pinsker améliore légèrement ce résultat, puisqu’elle dit que <span class="math inline">\(\mathrm{d}_{\mathrm{TV}}\leqslant \sqrt{\mathrm{d}_{\mathrm{KL}}/2}\)</span>.</p>
 <div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>On pose <span class="math inline">\(r = p/q\)</span>, <span class="math inline">\(v = 1+(r-1)_+\)</span> et <span class="math inline">\(w = 1 - (r-1)_-\)</span>.</p>
+<p><span class="proof-title"><em>Preuve</em>. </span>Si <span class="math inline">\(P\)</span> n’est pas absolument continue par rapport à <span class="math inline">\(Q\)</span>, alors <span class="math inline">\(\mathrm{d}_{\mathrm{KL}}(P \mid Q)=+\infty\)</span> et la borne demandée est vraie. Sinon, on note <span class="math inline">\(\rho\)</span> la densité de <span class="math inline">\(P\)</span> par rapport à <span class="math inline">\(Q\)</span>, de sorte que <span class="math inline">\(\mathrm{d}_{\mathrm{KL}}(P\mid Q) = -\int \ln \rho(x) \mathrm{d}P\)</span>. On définit ensuite <span class="math inline">\(v = (\rho-1)_+\)</span> et <span class="math inline">\(w = (\rho-1)_-\)</span>, de sorte que <span class="math inline">\(vw\)</span> vaut toujours 0, et donc <span class="math inline">\((1 + v)(1-w) = 1 - w + v = \rho\)</span>. En particulier, <span class="math inline">\(\mathrm{d}_{\mathrm{KL}}(P\mid Q)\)</span> vaut <span class="math display">\[\int(-\ln(1+v))dP + \int (-\ln(1-w))dP.\]</span> Or, les deux fonctions <span class="math inline">\(x\mapsto -\ln(1+x)\)</span> et <span class="math inline">\(x\mapsto -\ln(1-x)\)</span> sont concaves sur leurs ensembles de définition. Ainsi, l’inégalité de Jensen entraîne d’une part <span class="math display">\[ \int(-\ln(1+v))\mathrm{d}P \leqslant - \ln \left(1 + \int v \mathrm{d}P\right)\]</span> et d’autre part <span class="math display">\[ \int(-\ln(1-w))\mathrm{d}P \leqslant - \ln \left(1 - \int w \mathrm{d}P\right).\]</span> Or, la formule <a href="#eq-dtvformule">Équation&nbsp;<span class="quarto-unresolved-ref">eq-dtvformule</span></a> montre que <span class="math inline">\(\int v\mathrm{d}P = \mathrm{d}_{\mathrm{TV}}(P,Q)\)</span>, et de même pour <span class="math inline">\(\int w \mathrm{d}P\)</span>. En additionnant les deux inégalités ci-dessus, on obtient Alors <span class="math display">\[-\mathrm{d}_{\mathrm{KL}}\leqslant - \ln \left((1 + \mathrm{d}_{\mathrm{TV}})(1 - \mathrm{d}_{\mathrm{TV}}\right)\]</span> soit <span class="math inline">\(-\mathrm{d}_{\mathrm{KL}}\leqslant -\ln(1 - \mathrm{d}_{\mathrm{TV}}^2)\)</span>, c’est-à-dire <a href="#eq-bh">Équation&nbsp;<span class="quarto-unresolved-ref">eq-bh</span></a>.</p>
 </div>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Si <span class="math inline">\(P\)</span> est <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Radon-Nikodym-Lebesgue">absolument continue</a> par rapport à <span class="math inline">\(Q\)</span> (ce qu’on note <span class="math inline">\(P \ll Q\)</span>), alors la dérivée de Radon-Nikodym existe, et c’est une fonction mesurable positive <span class="math inline">\(f\)</span> (unique à un ensemble <span class="math inline">\(Q\)</span>-négligeable près) qui vérifie <span class="math inline">\(P(A) = \int f(x)\mathbf{1}_{x\in A}\mathrm{d}Q\)</span>. On appelle cette fonction <em>densité</em> de <span class="math inline">\(P\)</span> par rapport à <span class="math inline">\(Q\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -661,8 +677,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch4_ex.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercices</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch4_2.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Tests du <span class="math inline">\(\chi_2\)</span></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

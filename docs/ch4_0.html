@@ -168,32 +168,38 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./ch4_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Tests du <span class="math inline">\(\chi_2\)</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./ch4_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercices</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exercices</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modèle linéaire</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modèle linéaire</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Théorie de l’information</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -277,7 +283,7 @@ ul.task-list li input[type="checkbox"] {
 &amp;= P_1 \left(-\frac{z_{1-\alpha} \sigma}{\sqrt{n}}\leqslant \bar{X}_n \leqslant \frac{z_{1-\alpha} \sigma}{\sqrt{n}} \right) \\
 &amp;= P_1 \left(-\frac{z_{1-\alpha} \sigma}{\sqrt{n}}-1\leqslant \bar{X}_n - 1 \leqslant \frac{z_{1-\alpha} \sigma}{\sqrt{n}} -1 \right)\\
 &amp;= \Phi(-\sqrt{n}/\sigma + z_{1-\alpha}) - \Phi(-\sqrt{n}/\sigma + z_{1-\alpha}).
-\end{align}\]</span> où <span class="math inline">\(\Phi(x) = \mathbb{P}(N(0,1)\leqslant x)\)</span>. Cette expression ne peut pas plus se simplifier, mais on peut quand même la borner par <span class="math inline">\(F(-\sqrt{n}/\sigma + z_{1-\alpha})\)</span>. Lorsque <span class="math inline">\(x\)</span> est grand, nous avons vu (<a href="ch31_outils.html#thm-gaussiantail">Théorème&nbsp;<span>5.1</span></a>) que <span class="math inline">\(F(x) &lt; e^{-x^2}/|x|\sqrt{2\pi}\)</span>. Ainsi, l’erreur de première espèce est bornée par <span class="math inline">\(O(e^{-n/\sigma^2/2} / \sqrt{n})\)</span>. Cela tend extrêmement vite vers 0 ;&nbsp;en fait, dès que <span class="math inline">\(n\)</span> est plus grand que 10 et <span class="math inline">\(\sigma=1\)</span>, cette erreur est inférieure à 0.1%, donc dans ce cas le test aura une puissance supérieure à <span class="math inline">\(99.9\%\)</span>.</p>
+\end{align}\]</span> où <span class="math inline">\(\Phi(x) = \mathbb{P}(N(0,1)\leqslant x)\)</span>. Cette expression ne peut pas plus se simplifier, mais on peut quand même la borner par <span class="math inline">\(F(-\sqrt{n}/\sigma + z_{1-\alpha})\)</span>. Lorsque <span class="math inline">\(x\)</span> est grand, nous avons vu (<a href="#thm-gaussiantail">Théorème&nbsp;<span class="quarto-unresolved-ref">thm-gaussiantail</span></a>) que <span class="math inline">\(F(x) &lt; e^{-x^2}/|x|\sqrt{2\pi}\)</span>. Ainsi, l’erreur de première espèce est bornée par <span class="math inline">\(O(e^{-n/\sigma^2/2} / \sqrt{n})\)</span>. Cela tend extrêmement vite vers 0 ;&nbsp;en fait, dès que <span class="math inline">\(n\)</span> est plus grand que 10 et <span class="math inline">\(\sigma=1\)</span>, cette erreur est inférieure à 0.1%, donc dans ce cas le test aura une puissance supérieure à <span class="math inline">\(99.9\%\)</span>.</p>
 <p>Que se serait-il passé si notre hypothèse alternative n’avait pas été <span class="math inline">\(\mu=1\)</span> mais <span class="math inline">\(\mu = m\)</span> pour n’importe quel <span class="math inline">\(m\neq 0\)</span> ? Dans ce cas, on aurait eu <span class="math inline">\(H_1 = \mathbb{R}\setminus \{0\}\)</span>. L’erreur de première espèce aurait alors été <span class="math inline">\(\beta = \sup_{m\neq 0}\beta_m\)</span> où <span class="math display">\[ \beta_m = P_m(\mathsf{accepter}_\alpha).\]</span> On revoyant les calculs ci-dessus, on voit que <span class="math display">\[\beta_m = \Phi(-m\sqrt{n}/\sigma + z_{1-\alpha}) - \Phi(-m\sqrt{n}/\sigma + z_{1-\alpha}).\]</span> En particulier, <span class="math display">\[\lim_{m\to 0}\beta_m =\Phi(-z_{1-\alpha}) - \Phi(-z_{1-\alpha}) =  1-\alpha\]</span> par continuité de <span class="math inline">\(\Phi\)</span> et par définition de <span class="math inline">\(z_{1-\alpha}\)</span>. Ainsi, <span class="math inline">\(1-\beta = \alpha\)</span> :&nbsp;pour cette seconde hypothèse alternative, la puissance de notre test… est extrêmement faible.</p>
 <p><strong>Cela vient du fait que notre hypothèse alternative contient des situations quasiment indiscernables de notre hypothèse nulle.</strong> Par exemple, il est quasiment impossible de distinguer <span class="math inline">\(\mu = 0\)</span> de <span class="math inline">\(\mu = 10^{-100}\)</span> par exemple. Cet exemple illustre la dissymétrie entre <span class="math inline">\(H_0\)</span> et <span class="math inline">\(H_1\)</span>.</p>
 </section>
