@@ -22,11 +22,16 @@ book:
     - ch4_1.qmd
     - ch4_2.qmd
     - ch4_ex.qmd
-    - ch5.qmd 
+    - ch5_0.qmd 
     - ch5_1.qmd
-    - ch6.qmd
+    - ch5_2.qmd
+    - ch5_ex.qmd
+    - ch6_0.qmd
+    - ch6_1.qmd
+    - ch6_2.qmd
     - ch7.qmd
     - references.qmd
+    - ref.qmd
   sidebar:
     style: docked
     logo: "images/logoUP.png"

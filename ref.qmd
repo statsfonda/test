@@ -2,4 +2,7 @@
 
 - [Statistics done Wrong](https://www.statisticsdonewrong.com/)
 - [The earth is round (p<.05)](https://www.sjsu.edu/faculty/gerstman/misc/Cohen1994.pdf)
-- [Statistiques mathématiques en action](https://www.deboecksuperieur.com/ouvrage/9782311007206-statistique-mathematique-en-action), pour ceux qui vont passer l'agreg. 
+- [Statistiques mathématiques en action](https://www.deboecksuperieur.com/ouvrage/9782311007206-statistique-mathematique-en-action), pour ceux qui vont passer l'agrégation. 
+- [Introduction à l'économétrie](https://www.eyrolles.com/Entreprise/Livre/introduction-a-l-econometrie-9782707613981/) de Brigitte Dormont est un excellent livre, écrit en français, sur les modèles linéaires. 
+- [Méthodes statistiques](https://www.eyrolles.com/Sciences/Livre/methodes-statistiques-9782717848595/) de Philippe Tassi est un bon livre général. 
+- [All of statistics](https://egrcc.github.io/docs/math/all-of-statistics.pdf) de Larry Wasserman est un ouvrage de référence. 

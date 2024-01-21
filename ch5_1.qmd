@@ -2,6 +2,47 @@
 
 ## Vecteurs gaussiens
 
+Un vecteur aléatoire $X$ à valeurs dans $\mathbb{R}^n$ est un vecteur gaussien de loi $N(\mu,\Sigma)$ si sa densité est donnée par $$ \frac{1}{(2\pi \det(\Sigma))^{n/2}}\exp\left\lbrace - \frac{1}{2}\left\langle x-\mu, \Sigma^{-1}(x-\mu)\right\rangle \right\rbrace.$$
+Ici, le vecteur $\mu \in \mathbb{R}^n$ est appelé *moyenne* de $X$ parce que 
+$$\mathbb{E}[X] = \mu. $$
+La matrice $\Sigma$, qui est toujours supposée symétrique et à valeurs propres strictement positives (on dit *définie positive*), est appelée *matrice de covariance*, parce que
+$$\mathbb{E}[(X-\mu)(X-\mu)^\top] = \Sigma. $$
+
+De même que la transformée de Fourier d'une variable gaussienne réelle $N(m, \sigma^2)$ est égale à $e^{imt - \frac{t^2\sigma^2}{2}}$, la transformée de Fourier d'un vecteur gaussien $N(\mu,\Sigma)$ est 
+$$\mathbb{E}[e^{i\langle t, X\rangle}] = \exp\left\lbrace i\langle t, \mu\rangle - \frac{\langle(t-\mu), \Sigma (t-\mu) \rangle}{2} \right\rbrace. $$
+
+:::{#thm-vecgauss}
+
+1. 
+Toute fonction linéaire d'un vecteur gaussien est encore un vecteur gaussien. Si $M$ est une matrice et $X \sim N(\mu,\Sigma)$, 
+$$MX \sim N(M\mu, M\Sigma M^\top). $$
+
+2.
+Si le couple $(X,Y)$ forme un vecteur gaussien, alors $X$ et $Y$ sont indépendants si et seulement si leur covariance $\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])^\top]$ est la matrice nulle.
+
+:::
+
+## Conditionnement gaussien
+
+Soit $(X,Y)$ un vecteur gaussien de dimension $n+m$, avec $X \in \mathbb{R}^n$ et $Y \in \mathbb{R}^m$. On peut écrire sa moyenne $\mu$ en deux blocs
+$$ \mu = \begin{bmatrix}\mu_1 \\ \mu_2 \end{bmatrix}$$
+et sa covariance $\Sigma$ en quatre blocs 
+$$ \Sigma = \begin{bmatrix}\Sigma_{1,1} & \Sigma_{1,2} \\ \Sigma_{2,1} & \Sigma_{2,2} \end{bmatrix}$$
+où , par symétrie, $\Sigma_{2,1} = \Sigma_{1,2}^\top$. 
+
+:::{#thm-condgaussien}
+
+La loi de $X$ conditionnellement à $Y$ est une loi gaussienne de moyenne
+$$\mu_1 + \Sigma_{1,2}\Sigma_{2,2}^{-1}(X_2-\mu_2) $$
+et de covariance
+$$ \Sigma_{1,1} - \Sigma_{2,1}\Sigma_{2,2}^{-1}\Sigma_{1,2}.$$
+:::
+
+L'expression *loi conditionnelle* signifie ici que, pour toute fonction test $\varphi : \mathbb{R}^n \to \mathbb{R}$, l'espérance conditionnelle $\mathbb{E}[\varphi(X)\mid Y]$, qui est une variable aléatoire $Y$-mesurable, vaut
+$$\frac{1}{(2\pi \det(S^{-1}))^{n/2}}\int_{\mathbb{R}^n} \varphi(x) e^{-\frac{\langle X-1 - (\mu_1 + \Sigma_{1,2}\Sigma_{2,2}^{-1}(X_2-\mu_2)) S^{-1}(X_1 - (\mu_1 + \Sigma_{1,2}\Sigma_{2,2}^{-1}(X_2-\mu_2)))\rangle}{2}}dx $$
+où $S = \Sigma_{1,1} - \Sigma_{2,1}\Sigma_{2,2}^{-1}\Sigma_{1,2}$. 
+
+
 ## Théorème de Cochran
 
 
@@ -18,20 +59,26 @@ $$ |\pi_j(X)|^2 \sim \chi_2(\dim E_j).$$
 :::{.proof}
 
 
-À écrire. 
+Pour chaque $E_i$, notons $d_i$ sa dimension et choisissons-lui une base orthonormale $e^i_1, \dotsc, e^i_{d_i}$. La projection orthogonale de $X$ sur $E_i$ est $\pi_i(X)= \sum_{t=1}^{d_i} \langle X, e^i_t\rangle e^i_t$. Notons $X^i_t=\langle X, e^i_t\rangle$. Le vecteur $(X^i_t)$, qui contient bien $d_1+\dotsb+d_k=n$ éléments, est une fonction linéaire du vecteur gaussien centré $X$, donc est lui-même un vecteur gaussien centré. Calculons sa covariance : de façon générale, si $e,f$ sont deux vecteurs fixés, 
+$$\mathbb{E}[\langle X, e\rangle \langle X, f\rangle] = \sum_{i,j}e_if_j \mathrm{Cov}(X_i, X_j) = \langle e, f\rangle.$$
+Il est alors immédiat que la matrice de covariance du vecteur gaussien $(X^i_t)$ n'est autre que la matrice $(\langle e^i_t, e^j_s \rangle)$, c'est-à-dire l'identité puisque les $(e^i_t)$ forment une base orthonormale de $\mathbb{R}^n$. Il en résulte les deux points de l'énoncé.
 
+1. Les $\pi_i(X)$ sont des variables indépendantes, puisque fonctions linéaires de variables indépendantes entre elles. 
+2. La formule de Parseval dit que 
+$$|\pi_i(X)|^2 = \sum_{t=1}^{d_i}|X^i_t|^2 $$
+ce qui est bien une somme de $d_i$ gaussiennes $N(0,1)$ indépendantes, donc une $\chi_2(d_i)$. 
 :::
 
 
 
 ## Loi de Fisher
 
-Soient $X,Y$ deux variables aléatoires indépendantes, de lois respectives $\chi_2(p)$ et $\chi_2(q)$. 
+Si $N$ est un vecteur et $X,Y$ sont les projections de $N$ sur deux sous-espaces vectoriels orthogonaux, le théorème de Cochran dit que $X$ et $Y$ sont des lois du $\chi_2$ indépendantes de paramètres $p=\dim  E, q = \dim F$. La loi de leur rapport $X/Y$ est connue et fréquemment utilisée en statistiques. 
 
 
 :::{#thm-fisher}
 
-La loi du rapport $(X/p)/(Y/q)$ s'appelle loi de Fisher de paramètres $p,q$. Sa densité est donnée par 
+Soient $X,Y$ deux variables aléatoires indépendantes, de lois respectives $\chi_2(p)$ et $\chi_2(q)$. La loi du rapport $(X/p)/(Y/q)$ s'appelle loi de Fisher de paramètres $p,q$. Sa densité est donnée par 
 $$ f_{p,q}(x) = \frac{\mathbf{1}_{x>0}}{Z_{p,q}}\frac{\left(\frac{px}{px + q}\right)^{\frac{p}{2}} \left(1 - \frac{px}{px + q}\right)^{\frac{q}{2}}}{x}$${#eq-fisherdensity}
 où la constante $Z_{p,q}$ est $B(p/2, q/2)$, c'est-à-dire
 $$ Z_{p,q} =  \int_0^1 u^{\frac{p}{2}-1}(1-u)^{\frac{q}{2}-1}du.$$
@@ -42,9 +89,8 @@ $$\frac{1}{C_p C_q}\int_0^\infty \int_0^\infty \varphi\left(\frac{uq}{vp}\right)
 avec $C_n = 2^{n/2}\Gamma(n/2)$. 
 Dans l'intégrale en $v$, on pose $x = uq/vp$, de sorte que l'intégrale ci-dessus devient 
 $$\frac{(p/q)^{\frac{p}{2}}}{C_p C_q}\int_0^\infty \varphi(x) x^{\frac{p}{2}-1}\int_0^\infty e^{-\frac{vpx}{2q}-\frac{v}{2}}v^{\frac{p}{2}-1}v^{\frac{q}{2}}dv dx. $$
-On reconnaît dans l'intégrale en $v$ une fonction Gamma ; son intégrale est égale à $$\frac{\Gamma(p/2 + q/2)}{\left(\frac{px+q}{2q}\right)^{\frac{p+q}{2}}}.$$
+On reconnaît dans l'intégrale en $v$ une fonction Gamma, égale à $$\frac{\Gamma(p/2 + q/2)}{\left(\frac{px+q}{2q}\right)^{\frac{p+q}{2}}}.$$
 L'espérance $\mathbb{E}[\varphi(F)]$ vaut donc 
 $$\frac{(p/q)^{p/2}\Gamma\left(\frac{p+q}{2}\right)}{C_p C_q (2q)^{\frac{p+q}{2}}}\int_0^\infty \varphi(x)\frac{x^{\frac{p}{2}-1}}{(px + q)^{\frac{p+q}{2}}}dx. $$
 En simplifiant, on trouve exactement la densité donnée par @eq-fisherdensity. 
 
-## Conditionnement gaussien

@@ -93,6 +93,16 @@ On se donne $X_1, \dots, X_n$ iid de loi $\mathscr{U}(0,\theta)$, et on note $M_
 
 :::
 
+:::{#exr-binomtest}
+
+Une réalisation d'une variable aléatoire $X \sim \mathrm{Bin}(20,p)$ donne $X = 8$. 
+
+1. Proposer un test du rapport de vraisemblance de l'hypothèse nulle $p=p_0=1/2$ contre l'hypothèse alternative $p=p_1=1/3$. Donner l'expression de la $p$-valeur du test.
+2. On tire des variables aléatoires iid de Bernoulli jusqu'à obtenir 8 succès. Écrire la loi de probabilité du nombre de lancers $N$.
+3. Il se trouve que le nombre de lancers nécessaires pour cela était $N=20$.  Proposer un test du rapport de vraisemblance de l'hypothèse nulle $p=p_0=1/2$ contre l'hypothèse alternative $p=p_1=1/3$. Donner l'expression de la $p$-valeur du test. 
+4. Pourquoi les deux $p$-valeurs sont-elles différentes, alors que les deux tests sont identiques ?
+
+:::
 
 
 :::{#exr-testdé}

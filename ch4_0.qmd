@@ -19,8 +19,8 @@ Un test est un événement qui, s'il survient, nous incite à rejeter l'hypothè
 
 - L'erreur de seconde espèce est la probabilité de ne pas rejeter l'hypothèse nulle, à tort : $\beta = \sup_{\theta \in H_1}P_\theta(\accept)$. La **puissance d'un test** est $1-\beta$. C'est la probabilité de « détecter » l'hypothèse alternative à raison. 
 
-- L'affinité d'un test est la somme des erreurs de première et seconde espèce. 
-- 
+- L'affinité d'un test est la somme des erreurs de première et seconde espèce. On parle aussi de l'*erreur totale*. 
+  
 :::
 
 Par « événement », on veut bien dire « un élément de $\mathscr{F}$ », c'est-à-dire qui n'est déterminé que par les observations et pas par $\theta$. Formellement on écrit souvent qu'un test est une statistique, disons $T$, à valeurs dans $\{0,1\}$. L'événement $\{T=0\}$ est $\rejet$, l'événement $\{T=1\}$ est $\accept$.
@@ -37,7 +37,7 @@ C'est pour cela que les tests sont une forme de logique statistique. Le raisonne
 
 ## Exemples de tests gaussiens
 
-On se place dans un modèle où $X_1, \dotsc, X_n$ sont des gaussiennes $N(\mu, \sigma^2)$. Nous avons déjà vu plusieurs fois que $\bar{X}_n \sim N(\mu, \sigma^2)$. 
+On se place dans un modèle où $X_1, \dotsc, X_n$ sont des gaussiennes $N(\mu, \sigma^2)$. Nous avons déjà vu plusieurs fois que $\bar{X}_n \sim N(\mu, \sigma^2/n)$. 
 
 ### Construction du test
 
