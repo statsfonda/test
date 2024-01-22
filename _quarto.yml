@@ -60,7 +60,7 @@ format:
     margin-bottom: 3cm
     margin-top: 2cm
     include-in-header:
-     - macros.tex
+      - macros.tex
     
 
 
