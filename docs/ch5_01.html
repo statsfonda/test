@@ -260,6 +260,14 @@ ul.task-list li input[type="checkbox"] {
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+<div style="display:&nbsp;none;"><p style="display: none;">
+$$
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bt}{\boldsymbol{\theta}}
+\newcommand{\dkl}{\mathrm{d}_{\mathrm{KL}}}
+\newcommand{\dtv}{\mathrm{d}_{\mathrm{TV}}}
+$$
+</p></div>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -288,7 +296,14 @@ ul.task-list li input[type="checkbox"] {
 <p>La variable aléatoire <span class="math inline">\(|\hat\varepsilon|^2\)</span> est souvent appelée <em>Somme des Carrés des Résidus</em> (SCR). Le théorème précédent implique que <span class="math display">\[\hat{\sigma}^2_n = \frac{|\hat\varepsilon|^2}{n-d}\]</span> est un estimateur sans biais de <span class="math inline">\(\sigma^2\)</span>. et ces deux variables aléatoires sont indépendantes. En particulier, <span class="math inline">\((n-d)\hat{\sigma}^2_n/\sigma^2 \sim \chi_2(n-d)\)</span>.</p>
 <section id="modèle-linéaire-général" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="modèle-linéaire-général"><span class="header-section-number">12.1</span> Modèle linéaire général</h2>
-<p>Il est possible de ne pas faire d’hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, où les <span class="math inline">\(\varepsilon_i\)</span> sont centrés, indépendants, et de même variance <span class="math inline">\(\sigma^2\)</span> — sous cette dernière hypothèse, on parle de modèle <em>homoscédastique</em>. Sous ces hypothèses, <span class="math inline">\(\hat{\bt}\)</span> est toujours un estimateur sans biais de <span class="math inline">\(\bt\)</span> : cela se voit directement en prenant l’espérance de <a href="ch5_0.html#eq-mco-alt">Équation&nbsp;<span>11.2</span></a>.</p>
+<p>Il est possible de ne pas faire d’hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, où les <span class="math inline">\(\varepsilon_i\)</span> sont centrés, indépendants, et de même variance <span class="math inline">\(\sigma^2\)</span> — sous cette dernière hypothèse, on parle de modèle <em>homoscédastique</em>.</p>
+<p>Sous ces hypothèses, <span class="math inline">\(\hat{\bt}\)</span> est toujours un estimateur sans biais de <span class="math inline">\(\bt\)</span> : cela se voit directement en prenant l’espérance de <a href="ch5_0.html#eq-mco-alt">Équation&nbsp;<span>11.2</span></a>. De plus, la loi de <span class="math inline">\(\bt\)</span> n’est plus gaussienne, mais <span class="math inline">\(\bt\)</span> est asymptotiquement normal sous des hypothèses supplémentaires sur <span class="math inline">\(X\)</span>. Ces hypothèses sont les suivantes.</p>
+<div class="{#hyp-?}">
+<p>On suppose que les variables explicatives <span class="math inline">\(\bx_i\)</span> vérifient les propriétés suivantes :&nbsp; <span class="math display">\[ \lim_{n\to \infty} \frac{1}{n}\sum_{i=1}^n \bx_i = \mu_x\]</span> <span class="math display">\[ \lim_{n \to \infty}\frac{1}{n}\sum_{i=1}^n \bx_i \bx_i^\top = \Sigma_x.\]</span></p>
+</div>
+<div id="thm-mco-an" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 12.2 </strong></span>&nbsp;</p>
+</div>
 
 
 </section>

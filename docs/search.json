@@ -277,7 +277,7 @@
     "href": "ch5_01.html#modèle-linéaire-général",
     "title": "12  Modèles linéaires",
     "section": "12.1 Modèle linéaire général",
-    "text": "12.1 Modèle linéaire général\nIl est possible de ne pas faire d’hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que \\(Y = X\\bt + \\varepsilon\\), où les \\(\\varepsilon_i\\) sont centrés, indépendants, et de même variance \\(\\sigma^2\\) — sous cette dernière hypothèse, on parle de modèle homoscédastique. Sous ces hypothèses, \\(\\hat{\\bt}\\) est toujours un estimateur sans biais de \\(\\bt\\) : cela se voit directement en prenant l’espérance de Équation 11.2."
+    "text": "12.1 Modèle linéaire général\nIl est possible de ne pas faire d’hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que \\(Y = X\\bt + \\varepsilon\\), où les \\(\\varepsilon_i\\) sont centrés, indépendants, et de même variance \\(\\sigma^2\\) — sous cette dernière hypothèse, on parle de modèle homoscédastique.\nSous ces hypothèses, \\(\\hat{\\bt}\\) est toujours un estimateur sans biais de \\(\\bt\\) : cela se voit directement en prenant l’espérance de Équation 11.2. De plus, la loi de \\(\\bt\\) n’est plus gaussienne, mais \\(\\bt\\) est asymptotiquement normal sous des hypothèses supplémentaires sur \\(X\\). Ces hypothèses sont les suivantes.\n\nOn suppose que les variables explicatives \\(\\bx_i\\) vérifient les propriétés suivantes :  \\[ \\lim_{n\\to \\infty} \\frac{1}{n}\\sum_{i=1}^n \\bx_i = \\mu_x\\] \\[ \\lim_{n \\to \\infty}\\frac{1}{n}\\sum_{i=1}^n \\bx_i \\bx_i^\\top = \\Sigma_x.\\]\n\n\nThéorème 12.2"
   },
   {
     "objectID": "ch5_1.html#vecteurs-gaussiens",
@@ -308,6 +308,13 @@
     "text": "13.4 Loi de Fisher\nSi \\(N\\) est un vecteur et \\(X,Y\\) sont les projections de \\(N\\) sur deux sous-espaces vectoriels orthogonaux, le théorème de Cochran dit que \\(X\\) et \\(Y\\) sont des lois du \\(\\chi_2\\) indépendantes de paramètres \\(p=\\dim E, q = \\dim F\\). La loi de leur rapport \\(X/Y\\) est connue et fréquemment utilisée en statistiques.\n\nThéorème 13.4 Soient \\(X,Y\\) deux variables aléatoires indépendantes, de lois respectives \\(\\chi_2(p)\\) et \\(\\chi_2(q)\\). La loi du rapport \\((X/p)/(Y/q)\\) s’appelle loi de Fisher de paramètres \\(p,q\\). Sa densité est donnée par \\[ f_{p,q}(x) = \\frac{\\mathbf{1}_{x&gt;0}}{Z_{p,q}}\\frac{\\left(\\frac{px}{px + q}\\right)^{\\frac{p}{2}} \\left(1 - \\frac{px}{px + q}\\right)^{\\frac{q}{2}}}{x} \\tag{13.1}\\] où la constante \\(Z_{p,q}\\) est \\(B(p/2, q/2)\\), c’est-à-dire \\[ Z_{p,q} =  \\int_0^1 u^{\\frac{p}{2}-1}(1-u)^{\\frac{q}{2}-1}du.\\]\n\nLe calcul est facile, puisque les lois du \\(\\chi_2\\) ont une densité connue donnée par Équation 5.2. Soit \\(\\varphi\\) une fonction test et soit \\(F = (X/p)/(Y/q)\\). Alors, \\(\\mathbb{E}[\\varphi(F)]\\) vaut \\[\\frac{1}{C_p C_q}\\int_0^\\infty \\int_0^\\infty \\varphi\\left(\\frac{uq}{vp}\\right)e^{-\\frac{u}{2}-\\frac{v}{2}}u^{\\frac{p}{2}-1}v^{\\frac{q}{2}-1}dudv \\] avec \\(C_n = 2^{n/2}\\Gamma(n/2)\\). Dans l’intégrale en \\(v\\), on pose \\(x = uq/vp\\), de sorte que l’intégrale ci-dessus devient \\[\\frac{(p/q)^{\\frac{p}{2}}}{C_p C_q}\\int_0^\\infty \\varphi(x) x^{\\frac{p}{2}-1}\\int_0^\\infty e^{-\\frac{vpx}{2q}-\\frac{v}{2}}v^{\\frac{p}{2}-1}v^{\\frac{q}{2}}dv dx. \\] On reconnaît dans l’intégrale en \\(v\\) une fonction Gamma, égale à \\[\\frac{\\Gamma(p/2 + q/2)}{\\left(\\frac{px+q}{2q}\\right)^{\\frac{p+q}{2}}}.\\] L’espérance \\(\\mathbb{E}[\\varphi(F)]\\) vaut donc \\[\\frac{(p/q)^{p/2}\\Gamma\\left(\\frac{p+q}{2}\\right)}{C_p C_q (2q)^{\\frac{p+q}{2}}}\\int_0^\\infty \\varphi(x)\\frac{x^{\\frac{p}{2}-1}}{(px + q)^{\\frac{p+q}{2}}}dx. \\] En simplifiant, on trouve exactement la densité donnée par Équation 13.1."
   },
   {
+    "objectID": "ch5_2.html",
+    "href": "ch5_2.html",
+    "title": "14  Tests linéaires",
+    "section": "",
+    "text": "$$\n\\newcommand{\\bx}{\\boldsymbol{x}}\n\\newcommand{\\bt}{\\boldsymbol{\\theta}}\n\\newcommand{\\dkl}{\\mathrm{d}_{\\mathrm{KL}}}\n\\newcommand{\\dtv}{\\mathrm{d}_{\\mathrm{TV}}}\n$$"
+  },
+  {
     "objectID": "ch5_ex.html#questions",
     "href": "ch5_ex.html#questions",
     "title": "15  ٭ Exercices",
@@ -319,20 +326,41 @@
     "href": "ch6_0.html",
     "title": "16  Modèles exponentiels",
     "section": "",
-    "text": "Cours 8-9-10"
+    "text": "$$\n\\newcommand{\\bx}{\\boldsymbol{x}}\n\\newcommand{\\bt}{\\boldsymbol{\\theta}}\n\\newcommand{\\dkl}{\\mathrm{d}_{\\mathrm{KL}}}\n\\newcommand{\\dtv}{\\mathrm{d}_{\\mathrm{TV}}}\n$$\n\n\n\n\nCours 8-9-10"
+  },
+  {
+    "objectID": "ch6_1.html",
+    "href": "ch6_1.html",
+    "title": "17  Maximum de vraisemblance",
+    "section": "",
+    "text": "$$\n\\newcommand{\\bx}{\\boldsymbol{x}}\n\\newcommand{\\bt}{\\boldsymbol{\\theta}}\n\\newcommand{\\dkl}{\\mathrm{d}_{\\mathrm{KL}}}\n\\newcommand{\\dtv}{\\mathrm{d}_{\\mathrm{TV}}}\n$$"
+  },
+  {
+    "objectID": "ch6_2.html",
+    "href": "ch6_2.html",
+    "title": "18  Information et entropie",
+    "section": "",
+    "text": "$$\n\\newcommand{\\bx}{\\boldsymbol{x}}\n\\newcommand{\\bt}{\\boldsymbol{\\theta}}\n\\newcommand{\\dkl}{\\mathrm{d}_{\\mathrm{KL}}}\n\\newcommand{\\dtv}{\\mathrm{d}_{\\mathrm{TV}}}\n$$"
   },
   {
     "objectID": "ch7.html",
     "href": "ch7.html",
     "title": "19  Estimation de densité",
     "section": "",
-    "text": "Cours 11-12"
+    "text": "$$\n\\newcommand{\\bx}{\\boldsymbol{x}}\n\\newcommand{\\bt}{\\boldsymbol{\\theta}}\n\\newcommand{\\dkl}{\\mathrm{d}_{\\mathrm{KL}}}\n\\newcommand{\\dtv}{\\mathrm{d}_{\\mathrm{TV}}}\n$$\n\n\n\n\nCours 11-12"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Et après ?",
+    "section": "",
+    "text": "$$\n\\newcommand{\\bx}{\\boldsymbol{x}}\n\\newcommand{\\bt}{\\boldsymbol{\\theta}}\n\\newcommand{\\dkl}{\\mathrm{d}_{\\mathrm{KL}}}\n\\newcommand{\\dtv}{\\mathrm{d}_{\\mathrm{TV}}}\n$$"
   },
   {
     "objectID": "ref.html",
     "href": "ref.html",
     "title": "Références",
     "section": "",
-    "text": "Statistics done Wrong\nThe earth is round (p&lt;.05)\nStatistiques mathématiques en action, pour ceux qui vont passer l’agrégation.\nIntroduction à l’économétrie de Brigitte Dormont est un excellent livre, écrit en français, sur les modèles linéaires.\nEn anglais, la référence sur les modèles linéaires est Econometric analysis de Greene.\nMéthodes statistiques de Philippe Tassi est un bon livre général.\nAll of statistics de Larry Wasserman est un ouvrage de référence."
+    "text": "$$\n\\newcommand{\\bx}{\\boldsymbol{x}}\n\\newcommand{\\bt}{\\boldsymbol{\\theta}}\n\\newcommand{\\dkl}{\\mathrm{d}_{\\mathrm{KL}}}\n\\newcommand{\\dtv}{\\mathrm{d}_{\\mathrm{TV}}}\n$$\n\n\n\n\n\nStatistics done Wrong\nThe earth is round (p&lt;.05)\nStatistiques mathématiques en action, pour ceux qui vont passer l’agrégation.\nIntroduction à l’économétrie de Brigitte Dormont est un excellent livre, écrit en français, sur les modèles linéaires.\nEn anglais, la référence sur les modèles linéaires est Econometric analysis de Greene.\nMéthodes statistiques de Philippe Tassi est un bon livre général.\nAll of statistics de Larry Wasserman est un ouvrage de référence."
   }
 ]
