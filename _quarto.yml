@@ -46,6 +46,10 @@ format:
       light: simplex
       dark: solar
     css: styles.css
+    include-before-body:
+      - macros
+
+
 
   pdf:
     documentclass: scrreport
@@ -54,6 +58,8 @@ format:
     margin-right: 2cm
     margin-bottom: 3cm
     margin-top: 2cm
+    include-in-header:
+     - macros.tex
     
 
 

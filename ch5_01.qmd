@@ -27,7 +27,21 @@ est un estimateur sans biais de $\sigma^2$. et ces deux variables aléatoires so
 
 ## Modèle linéaire général
 
-Il est possible de ne pas faire d'hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que $Y = X\bt + \varepsilon$, où les $\varepsilon_i$ sont centrés, indépendants, et de même variance $\sigma^2$ --- sous cette dernière hypothèse, on parle de modèle *homoscédastique*. Sous ces hypothèses, $\hat{\bt}$ est toujours un estimateur sans biais de $\bt$ : cela se voit directement en prenant l'espérance de @eq-mco-alt. 
+Il est possible de ne pas faire d'hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que $Y = X\bt + \varepsilon$, où les $\varepsilon_i$ sont centrés, indépendants, et de même variance $\sigma^2$ --- sous cette dernière hypothèse, on parle de modèle *homoscédastique*. 
+
+Sous ces hypothèses, $\hat{\bt}$ est toujours un estimateur sans biais de $\bt$ : cela se voit directement en prenant l'espérance de @eq-mco-alt. De plus, la loi de $\bt$ n'est plus gaussienne, mais $\bt$ est asymptotiquement normal sous des hypothèses supplémentaires sur $X$. Ces hypothèses sont les suivantes. 
+
+:::{#hyp-?}
+On suppose que les variables explicatives $\bx_i$ vérifient les propriétés suivantes : 
+$$ \lim_{n\to \infty} \frac{1}{n}\sum_{i=1}^n \bx_i = \mu_x$$
+$$ \lim_{n \to \infty}\frac{1}{n}\sum_{i=1}^n \bx_i \bx_i^\top = \Sigma_x.$$
+
+:::
+
+
+:::{#thm-mco-an}
+
+:::
   
 
 
