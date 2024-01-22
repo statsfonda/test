@@ -1,8 +1,8 @@
-# Modèle linéaire
+# Moindres carrés
 
 Les modèles *linéaires* sont les modèles les plus simples dans lesquels on raisonne en termes d'*entrées* et de *sorties*. Dans ces modèles, on dispose de variables $x_i$, dites *explicatives*, et de variables $y_i$, dites *à expliquer*, et l'on suppose qu'il existe une fonction inconnue $f$ telle que 
 $$y_i \approx f(x_i),$$
-et que l'on voudrait estimer. Les modèles linéaires consistent à suppose que $f$ est affine. Les modèles plus complexes, commes les réseaux de neurones, placent $f$ dans des classes plus riches. 
+et que l'on voudrait estimer. Les modèles linéaires consistent à suppose que $f$ est affine. Les modèles plus complexes, commes les réseaux de neurones, placent $f$ dans des classes plus riches. L'objectif de la méthode des moindres carrés est de trouver la meilleure approximation de $f$ possible dans la classe des fonctions affines. 
 
 ## Ajustement affine en une dimension. 
 
@@ -27,10 +27,8 @@ l'estimateur naïf de la variance[^1]. L'inégalité n'est une égalité que si 
 $$ r^2 = \frac{\overline{xy}-\bar{x}\bar{x}}{\tilde{\sigma}_x \tilde{\sigma}_y}.$$
 
 
-## Cadre général 
-\newcommand{\bx}{\boldsymbol{x}}
-\newcommand{\bt}{\boldsymbol{\theta}}
-\newcommand{\argmin}{\mathrm{argmin}~}
+## Moindres carrés généraux
+
 
 Dans le cadre général, les variables explicatives ne sont pas de dimension 1 mais $d$. On notera $\bx = (x_1, \dotsc, x_d)$
 un élément de $\mathbb{R}^d$ ; les variables explicatives seront alors $\bx_1,\dotsc, \bx_n$. On cherchera des nombres $\theta_i$ tels que $y_i$ est aussi proche que possible de $$\theta_1 \bx_{i,1} + \dotsb + \theta_d \bx_{i,d} = \langle \bt, \bx_i\rangle = \bt^\top \bx_i. $$
@@ -60,39 +58,3 @@ Le vecteur $\hat{Y} = X\hat{\bt}$ est appelé *vecteur des prédictions*. Le vec
 L'expression @eq-mco possède de nombreuses expressions alternatives. Parmi elles, on pourra noter que 
 $$\hat{\bt} = \bt + \left(\frac{1}{n}\sum_{i=1}^n \bx_i\bx_i^\top\right)^{-1}\frac{1}{n}\sum_{i=1}^n \bx_i \varepsilon_i. $${#eq-mco-alt}
 
-
-
-## Modèle gaussien
-
-À ce stade, nous n'avons fait aucune hypothèse statistique ni probabiliste sur le modèle : les $\bx_i, y_i$ étaient donnés tels quels. Le *modèle linéaire gaussien* avec variables explicatives $\bx_1, \dotsc, \bx_n$ exogènes consiste à supposer que $Y = X\bt + \varepsilon$, où $\varepsilon = N(0,\sigma^2 I_n)$. Formellement, le modèle est indexé par $\bt$ et $\sigma^2$, et donné par 
-$$P_{\bt, \sigma^2} = N(X\bt, \sigma^2 I_d).$$ 
-Dans ce modèle, la loi de l'estimateur @eq-mco est connue. Par simplicité, je note $H = X(X^\top X)^{-1}X^\top$ la matrice de projection orthogonale sur l'espace vectoriel engendré par les colonnes de $X$, qui est de dimension $d$.
-
-:::{#thm-glm}
-
-Sous le modèle linéaire gaussien $P_{\bt, \sigma^2}$, 
-$$\hat{\bt} \sim N(\bt, \sigma^2 (X^\top X)^{-1}), $$
-$$\frac{|\hat{\varepsilon}|^2}{\sigma^2} \sim \chi_2(n-d), $$
-et ces deux variables aléatoires sont indépendantes. 
-
-:::
-
-:::{.proof} 
-
-Ce n'est rien de plus que le théorème de Cochran appliqué à notre problème : en effet, le vecteur des résidus est la projection orthogonale de $Y$ sur le sous-espace orthogonal à l'espace des colonnes de $X$. 
-
-:::
-
-La variable aléatoire $|\hat\varepsilon|^2$ est souvent appelée *Somme des Carrés des Résidus* (SCR). Le théorème précédent implique que 
-$$\hat{\sigma}^2_n = \frac{|\hat\varepsilon|^2}{n-d}$$
-est un estimateur sans biais de $\sigma^2$. et ces deux variables aléatoires sont indépendantes. En particulier, $(n-d)\hat{\sigma}^2_n/\sigma^2 \sim \chi_2(n-d)$. 
-
-
-## Modèle linéaire général
-
-Il est possible de ne pas faire d'hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que $Y = X\bt + \varepsilon$, où les $\varepsilon_i$ sont centrés, indépendants, et de même variance $\sigma^2$ --- sous cette dernière hypothèse, on parle de modèle *homoscédastique*. Sous ces hypothèses, $\hat{\bt}$ est toujours un estimateur sans biais de $\bt$ : cela se voit directement en prenant l'espérance de @eq-mco-alt. 
-  
-
-
-
-[^1]:Celui qui est biaisé, contrairement à $\hat{\sigma}^2_n$. 

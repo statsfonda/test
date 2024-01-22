@@ -1,7 +1,5 @@
 # Théorie des tests simples
 
-\newcommand{\dtv}{\mathrm{d}_{\mathrm{TV}}}
-\newcommand{\dkll}{\mathrm{d}_{\mathrm{KL}}}
 
 
 ## La distance en variation totale
@@ -121,39 +119,39 @@ En pratique, on peut chercher à *borner* cette distance par d'autres quantités
 
 Soient $P$ et $Q$ deux mesures, $P$ étant absolument continue par rapport à $Q$. Alors, 
 
-$$ \dkll(P \mid Q) = \int \ln \left(\frac{\mathrm{d}P}{\mathrm{d}Q}\right)dP. $$
+$$ \dkl(P \mid Q) = \int \ln \left(\frac{\mathrm{d}P}{\mathrm{d}Q}\right)dP. $$
 
-Si $P$ n'est pas absolument continue par rapport à $Q$, on pose simplement $\dkll(P \mid Q) = +\infty$. 
+Si $P$ n'est pas absolument continue par rapport à $Q$, on pose simplement $\dkl(P \mid Q) = +\infty$. 
 
 :::
 
 La notation $\mathrm{d}P/\mathrm{d}Q$ désigne la densité de $P$ par rapport à $Q$. Formellement, c'est la dérivée de Radon-Nikodym. Dans le cas de variables aléatoires continues sur $\mathbb{R}^d$, c'est le rapport des densités de $P$ et de $Q$. 
 
-La divergence $\dkll$ n'est pas une distance, et c'est pour cela qu'on l'appelle *divergence* et qu'on la note avec une barre plutôt qu'une virgule : elle n'est pas symétrique en général. Cependant, elle est toujours positive (éventuellement égale à $+\infty$ même si $P\ll Q$), et n'est nulle que si $P=Q$. 
+La divergence $\dkl$ n'est pas une distance, et c'est pour cela qu'on l'appelle *divergence* et qu'on la note avec une barre plutôt qu'une virgule : elle n'est pas symétrique en général. Cependant, elle est toujours positive (éventuellement égale à $+\infty$ même si $P\ll Q$), et n'est nulle que si $P=Q$. 
 
 :::{#thm-BH}
 
 ## Borne de Bretagnole-Huber-Pinsker
 
-$$ \dtv(P,Q) \leqslant \sqrt{1 - e^{-\dkll(P \mid Q)}}.$${#eq-bh}
+$$ \dtv(P,Q) \leqslant \sqrt{1 - e^{-\dkl(P \mid Q)}}.$${#eq-bh}
 
 :::
 
 $$~~$$
 
-**Remarque.** Il est facile de vérifier que $\sqrt{1-e^{-x}}\leqslant \sqrt{x}$ lorsque $x>0$. Ainsi, @eq-bh entraîne la borne plus simple $\dtv \leqslant \sqrt{\dkll}$. La borne *classique* de Pinsker améliore légèrement ce résultat, puisqu'elle dit que $\dtv \leqslant \sqrt{\dkll/2}$. 
+**Remarque.** Il est facile de vérifier que $\sqrt{1-e^{-x}}\leqslant \sqrt{x}$ lorsque $x>0$. Ainsi, @eq-bh entraîne la borne plus simple $\dtv \leqslant \sqrt{\dkl}$. La borne *classique* de Pinsker améliore légèrement ce résultat, puisqu'elle dit que $\dtv \leqslant \sqrt{\dkl/2}$. 
 
 
 :::{.proof} 
-Si $P$ n'est pas absolument continue par rapport à $Q$, alors $\dkll(P \mid Q)=+\infty$ et la borne demandée est vraie. Sinon, on note $\rho$ la densité de $P$ par rapport à $Q$, de sorte que $\dkll(P\mid Q) = -\int \ln \rho(x) \mathrm{d}P$. On définit ensuite $v = (\rho-1)_+$ et $w = (\rho-1)_-$, de sorte que $vw$ vaut toujours 0, et donc $(1 + v)(1-w) = 1 - w + v = \rho$. En particulier, $\dkll(P\mid Q)$ vaut
+Si $P$ n'est pas absolument continue par rapport à $Q$, alors $\dkl(P \mid Q)=+\infty$ et la borne demandée est vraie. Sinon, on note $\rho$ la densité de $P$ par rapport à $Q$, de sorte que $\dkl(P\mid Q) = -\int \ln \rho(x) \mathrm{d}P$. On définit ensuite $v = (\rho-1)_+$ et $w = (\rho-1)_-$, de sorte que $vw$ vaut toujours 0, et donc $(1 + v)(1-w) = 1 - w + v = \rho$. En particulier, $\dkl(P\mid Q)$ vaut
 $$\int(-\ln(1+v))dP + \int (-\ln(1-w))dP.$$
 Or, les deux fonctions $x\mapsto -\ln(1+x)$ et $x\mapsto -\ln(1-x)$ sont concaves sur leurs ensembles de définition. Ainsi, l'inégalité de Jensen entraîne d'une part 
 $$ \int(-\ln(1+v))\mathrm{d}P \leqslant - \ln \left(1 + \int v \mathrm{d}P\right)$$
 et d'autre part
 $$ \int(-\ln(1-w))\mathrm{d}P \leqslant - \ln \left(1 - \int w \mathrm{d}P\right).$$
 Or, la formule @eq-dtvformule montre que $\int v\mathrm{d}P =  \dtv(P,Q)$, et de même pour $\int w \mathrm{d}P$. En additionnant les deux inégalités ci-dessus, on obtient Alors
-$$-\dkll \leqslant - \ln \left((1 + \dtv)(1 - \dtv\right)$$
-soit $-\dkll \leqslant -\ln(1 - \dtv^2)$, c'est-à-dire @eq-bh.
+$$-\dkl \leqslant - \ln \left((1 + \dtv)(1 - \dtv\right)$$
+soit $-\dkl \leqslant -\ln(1 - \dtv^2)$, c'est-à-dire @eq-bh.
 :::
 
 

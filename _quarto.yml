@@ -23,6 +23,7 @@ book:
     - ch4_2.qmd
     - ch4_ex.qmd
     - ch5_0.qmd 
+    - ch5_01.qmd
     - ch5_1.qmd
     - ch5_2.qmd
     - ch5_ex.qmd
@@ -53,5 +54,7 @@ format:
     margin-right: 2cm
     margin-bottom: 3cm
     margin-top: 2cm
+    
+
 
 jupyter: julia-1.9

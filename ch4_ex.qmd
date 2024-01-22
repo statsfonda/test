@@ -1,5 +1,5 @@
-# $\star$ Exercices
-\newcommand{\dkl}{\mathrm{d}_{\mathrm{KL}}}
+# ٭ Exercices
+
 ## Questions
 
 - Quelles sont les erreurs du test consistant à toujours accepter l'hypothèse nulle ?

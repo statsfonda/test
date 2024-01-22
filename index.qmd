@@ -18,3 +18,10 @@ La saveur du cours est essentiellement mathématique et nous n'aurons pas de TP 
 
 Ces notes sont mises en lignes et totalement accessibles via [Quarto](https://quarto.org). Si vous savez comment utiliser `git`, n'hésitez pas à corriger toutes les erreurs que vous pourriez voir (et Dieu sait qu'elles seront nombreuses) via des pull requests. 
 
+
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bt}{\boldsymbol{\theta}}
+\newcommand{\dkl}{\mathrm{d}_{\mathrm{KL}}}
+\newcommand{\dtv}{\mathrm{d}_{\mathrm{TV}}}
+
+

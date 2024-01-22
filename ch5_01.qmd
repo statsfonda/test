@@ -1,0 +1,35 @@
+
+## Modèles linéaires
+
+À ce stade, nous n'avons fait aucune hypothèse statistique ni probabiliste sur le modèle : les $\bx_i, y_i$ étaient donnés tels quels. Le *modèle linéaire gaussien* avec variables explicatives $\bx_1, \dotsc, \bx_n$ exogènes consiste à supposer que $Y = X\bt + \varepsilon$, où $\varepsilon = N(0,\sigma^2 I_n)$. Formellement, le modèle est indexé par $\bt$ et $\sigma^2$, et donné par 
+$$P_{\bt, \sigma^2} = N(X\bt, \sigma^2 I_d).$$ 
+Dans ce modèle, la loi de l'estimateur @eq-mco est connue. Par simplicité, je note $H = X(X^\top X)^{-1}X^\top$ la matrice de projection orthogonale sur l'espace vectoriel engendré par les colonnes de $X$, qui est de dimension $d$.
+
+:::{#thm-glm}
+
+Sous le modèle linéaire gaussien $P_{\bt, \sigma^2}$, 
+$$\hat{\bt} \sim N(\bt, \sigma^2 (X^\top X)^{-1}), $$
+$$\frac{|\hat{\varepsilon}|^2}{\sigma^2} \sim \chi_2(n-d), $$
+et ces deux variables aléatoires sont indépendantes. 
+
+:::
+
+:::{.proof} 
+
+Ce n'est rien de plus que le théorème de Cochran appliqué à notre problème : en effet, le vecteur des résidus est la projection orthogonale de $Y$ sur le sous-espace orthogonal à l'espace des colonnes de $X$. 
+
+:::
+
+La variable aléatoire $|\hat\varepsilon|^2$ est souvent appelée *Somme des Carrés des Résidus* (SCR). Le théorème précédent implique que 
+$$\hat{\sigma}^2_n = \frac{|\hat\varepsilon|^2}{n-d}$$
+est un estimateur sans biais de $\sigma^2$. et ces deux variables aléatoires sont indépendantes. En particulier, $(n-d)\hat{\sigma}^2_n/\sigma^2 \sim \chi_2(n-d)$. 
+
+
+## Modèle linéaire général
+
+Il est possible de ne pas faire d'hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que $Y = X\bt + \varepsilon$, où les $\varepsilon_i$ sont centrés, indépendants, et de même variance $\sigma^2$ --- sous cette dernière hypothèse, on parle de modèle *homoscédastique*. Sous ces hypothèses, $\hat{\bt}$ est toujours un estimateur sans biais de $\bt$ : cela se voit directement en prenant l'espérance de @eq-mco-alt. 
+  
+
+
+
+[^1]:Celui qui est biaisé, contrairement à $\hat{\sigma}^2_n$. 
