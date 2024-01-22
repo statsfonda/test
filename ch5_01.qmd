@@ -1,5 +1,7 @@
 
-## Modèles linéaires
+# Modèles linéaires
+
+## Modèle gaussien
 
 À ce stade, nous n'avons fait aucune hypothèse statistique ni probabiliste sur le modèle : les $\bx_i, y_i$ étaient donnés tels quels. Le *modèle linéaire gaussien* avec variables explicatives $\bx_1, \dotsc, \bx_n$ exogènes consiste à supposer que $Y = X\bt + \varepsilon$, où $\varepsilon = N(0,\sigma^2 I_n)$. Formellement, le modèle est indexé par $\bt$ et $\sigma^2$, et donné par 
 $$P_{\bt, \sigma^2} = N(X\bt, \sigma^2 I_d).$$ 
@@ -27,23 +29,31 @@ est un estimateur sans biais de $\sigma^2$. et ces deux variables aléatoires so
 
 ## Modèle linéaire général
 
-Il est possible de ne pas faire d'hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que $Y = X\bt + \varepsilon$, où les $\varepsilon_i$ sont centrés, indépendants, et de même variance $\sigma^2$ --- sous cette dernière hypothèse, on parle de modèle *homoscédastique*. 
+Il est possible de ne pas faire d'hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que $Y = X\bt + \varepsilon$, où les $\varepsilon_i$ sont iid, centrés, et de même variance $\sigma^2$ --- sous cette dernière hypothèse, on parle de modèle *homoscédastique*. 
 
 Sous ces hypothèses, $\hat{\bt}$ est toujours un estimateur sans biais de $\bt$ : cela se voit directement en prenant l'espérance de @eq-mco-alt. De plus, la loi de $\bt$ n'est plus gaussienne, mais $\bt$ est asymptotiquement normal sous des hypothèses supplémentaires sur $X$. Ces hypothèses sont les suivantes. 
 
 :::{#hyp-?}
-On suppose que les variables explicatives $\bx_i$ vérifient les propriétés suivantes : 
-$$ \lim_{n\to \infty} \frac{1}{n}\sum_{i=1}^n \bx_i = \mu_x$$
-$$ \lim_{n \to \infty}\frac{1}{n}\sum_{i=1}^n \bx_i \bx_i^\top = \Sigma_x.$$
+On suppose que les variables explicatives $\bx_i$ vérifient la propriété suivante : 
+$$ \lim_{n \to \infty}\frac{1}{n}\sum_{i=1}^n \bx_i \bx_i^\top = \Sigma_x,$${#eq-hyp-mco-x}
+où $\Sigma_x$ est inversible. Cette propriété s'écrit aussi $X^\top X / n \to \Sigma_x$. 
 
 :::
 
 
 :::{#thm-mco-an}
 
-:::
-  
+Sous les hypothèses précédentes, $\sqrt{n}(\hat{\bt} - \bt)$ converge en loi lorsque $n\to\infty$ vers $N(0,\sigma^2\Sigma_x^{-1}).$
 
+:::
+
+:::{.proof}
+  
+Rappelons que $\hat{\bt}$ peut s'écrire $\bt + (X^\top X/n)^{-1}\frac{1}{n}\sum_{i=1}^n \bx_i \varepsilon_i$. 
+Pour montrer que $\sqrt{n}(\hat{\bt}-\bt)$ converge, il suffit donc de démontrer que 
+$$\sqrt{n}\frac{1}{n}\sum_{i=1}^n \bx_i \varepsilon_i $${#eq-proof-tcl-mco}
+converge en loi vers $N(0,\Sigma_x^2)$ : comme le terme $(X^\top X/n)^{-1}$ converge vers $\Sigma_x^{-1}$ par hypothèse, la limite de $\sqrt{n}(\hat{\bt} - \bt)$ sera bien $N(0,\Sigma_x^{-1}\Sigma_x\Sigma_x^{-1}) = N(0,\Sigma_x^{-1})$. Malheureusement, on ne peut pas directement appliquer le TCL classique à @eq-proof-tcl-mco : en effet, les variables aléatoires $X_i = \bx_i \varepsilon_i$ ne sont pas identiquement distribuées. On doit pour cela appliquer une version plus générale du TCL, dite *de Linbeberg*, que je détaillerai plus tard. 
+:::
 
 
 [^1]:Celui qui est biaisé, contrairement à $\hat{\sigma}^2_n$. 

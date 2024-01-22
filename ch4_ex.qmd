@@ -10,7 +10,7 @@
 - Calculer la distance en variation totale entre une loi $\mathrm{Bin}(n,p)$ et une loi $N(\mu,\sigma^2)$. 
 - Soient $P,Q$ deux mesures. Montrer que $\dkl(P^{\otimes n} \mid Q^{\otimes n}) = n \dkl(P \mid Q)$. 
 
-## Tests simples
+## Tests élémentaires
 
 Pour tous les cas suivants, il faut savoir réaliser rapidement un test puissant, voire même optimal au sens qu'il vous plaira. 
 
@@ -18,7 +18,9 @@ Pour tous les cas suivants, il faut savoir réaliser rapidement un test puissant
 - Même question lorsque $\mu$ est inconnu. 
 - Soient $X_1, \dotsc, X_n$ un échantillon iid $N(\mu_1,\sigma_1^2)$ et $Y_1, \dotsc, Y_m$ ($m$ et $n$ ne sont pas forcément égaux) un échantillon iid de loi $N(\mu_2,\sigma_2^2)$. Tester $\sigma_1 = \sigma_2$ lorsque $\mu_1$ et $\mu_2$ sont connues. 
 - Même question lorsque $\mu_1$ et $\mu_2$ ne sont pas connues. 
-
+- Donner la forme d'un test sur la valeur de $p$ pour une réalisation d'une loi $\mathrm{Bin}(n,p)$ et calculer son niveau asymptotique quand $n\to\infty$. 
+- Donner la forme d'un test sur la valeur de $\lambda$ dans un échantillon de $n$ variables aléatoires de Poisson de paramètre $\lambda$. 
+  
 ## Exercices
 
 :::{#exr-testchideux}

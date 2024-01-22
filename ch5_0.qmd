@@ -32,12 +32,16 @@ $$ r^2 = \frac{\overline{xy}-\bar{x}\bar{x}}{\tilde{\sigma}_x \tilde{\sigma}_y}.
 
 Dans le cadre général, les variables explicatives ne sont pas de dimension 1 mais $d$. On notera $\bx = (x_1, \dotsc, x_d)$
 un élément de $\mathbb{R}^d$ ; les variables explicatives seront alors $\bx_1,\dotsc, \bx_n$. On cherchera des nombres $\theta_i$ tels que $y_i$ est aussi proche que possible de $$\theta_1 \bx_{i,1} + \dotsb + \theta_d \bx_{i,d} = \langle \bt, \bx_i\rangle = \bt^\top \bx_i. $$
-On pourrait reproduire la méthode analytique ci-dessus pour trouver les paramètres optimaux. Cependant, une interprétation géométrique simplifie la tâche. 
-
-On pose $X$ la matrice $n\times d$ dont la $i$-ème ligne est $\bx_i$. La distance entre le nuage de points $(X,Y)$ et la droite d'équation $Y = X\theta$ est $|Y - X\theta|$. On cherchera donc à trouver le $\bt$ qui minimise $\theta \mapsto |Y - X\theta|^2$, autrement dit
 
 
-$$\hat{\bt} = \arg \min_{\theta} |Y - X\theta|^2. $$
+
+**Remarque : où est passée la constante ?** *Dans l'équation ci-dessus, on a l'impression que le terme constant, qui correspondait à $\alpha$ dans l'exemple en dimension 1, a disparu. Ce n'est pas le cas : intégrer la constante au modèle revient à considérer que la variable constante égale à 1 fait partie des variables explicatives. En pratique, cela revient à poser, par exemple, $\bx_{i,1} = 1$ pour tout $i$*. 
+
+
+On pose $X$ la matrice $n\times d$ dont la $i$-ème ligne est $\bx_i$.  La matrice dont les lignes sont composées des $\bt\top \bx_i$ n'est autre que la matrice $X\bt$. La distance entre le nuage de points $(X,Y)$ et la droite d'équation $Y = X\theta$ est alors $|Y - X\theta|$. On pourrait reproduire la méthode analytique ci-dessus pour trouver les paramètres optimaux, à savoir 
+$$\hat{\bt} = \arg \min_{\theta} |Y - X\theta|^2. $${#eq-mcoargmin}
+ Cependant, une interprétation géométrique simplifie la tâche : le $\hat{\bt}$ qui minimise @eq-mcoargmin est précisément celui qui garantit que $X\hat{\bt}$ est la projection orthogonale de $Y$ sur le sous-espace vectoriel $\mathscr{V}_X = \{X\theta : \theta \in \mathbb{R}^d\}$. 
+
 
 :::{#thm-reg}
 

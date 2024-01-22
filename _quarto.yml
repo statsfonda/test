@@ -14,6 +14,7 @@ book:
     - index.qmd
     - ch1.qmd
     - ch2.qmd
+    - ch2_1.qmd
     - ch2_ex.qmd
     - ch3.qmd
     - ch31_outils.qmd

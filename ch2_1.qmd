@@ -1,0 +1,38 @@
+
+# La méthode des moments
+
+
+Il existe plusieurs techniques générales pour *construire* des estimateurs. Deux se démarquent : la méthode des moments, et la méthode du maximum de vraisemblance. La méthode des moments est naturelle et donne beaucoup des estimateurs avec de bonnes propriétés, mais elle est moins puissante que la méthode du maximum de vraisemblance que nous verrons plus tard. 
+
+## Qu'est-ce qu'un *moment* ?
+
+Dans un modèle statistique, supposons qu'on dispose d'une statistiques intégrable $T$ (pas forcément réelle), dont la moyenne n'est pas le paramètre $\theta$ lui-même, mais plutôt une *fonction* de $\theta$ :  
+$$\mathbb{E}_\theta[T(X)] = \varphi(\theta).$$ 
+C'est cette fonction $\varphi$ qu'on appelle *moment*. Typiquement, 
+
+- la moyenne d'une loi $\mathscr{E}(\theta)$ n'est pas $\theta$ mais $1/\theta$. 
+- la moyenne d'une loi log-normale de paramètres $(0, \sigma^2)$ est $e^{\sigma^2/2}$. 
+
+Prenons la moyenne empirique associée à cet estimateur, $\bar{T}_n$. Par la loi des grands nombres, 
+$$\bar{T}_n = \frac{1}{n}\sum_{i=1}^n T(X_i) \to \varphi(\theta) \qquad P_\theta-ps, $$
+ce qui permet d'estimer $\varphi(\theta)$. Peut-on alors estimer $\theta$ ? 
+
+
+## Estimateur des moments
+
+Si la fonction $\varphi$ est inversible et si $\bar{T}_n$ appartient presque sûrement à l'ensemble de définition de $\varphi^{-1}$, alors $\varphi^{-1}(\bar{T_n})$ est bien définie. Pour qu'en plus cette quantité converge presque sûrement vers $\theta$, il faut s'assurer que $\varphi^{-1}$ est continue. C'est par exemple le cas lorsque l'ensemble des paramètres $\Theta$ est un ouvert, et que $\varphi$ est un difféomorphisme sur son image --- une situation si fréquente qu'elle mérite son propre théorème, et si agréable qu'elle garantit que l'estimateur associé est asymptotiquement normal. 
+
+:::{#thm-mom}
+
+## Estimation par moments
+
+
+Sous l'hypothèse mentionnée ci-dessus (la fonction $\varphi$ est un difféomorphisme), l'estimateur $$\hat{\theta}_n = \varphi^{-1}(\bar{T}_n)$$ est presque sûrement bien défini pour tout $n$ suffisamment grand ; il est également consistant pour l'estimation de $\theta$. En outre, si $T$ est de carré intégrable, cet estimateur est asymptotiquement normal, au sens où $\sqrt{n}(\hat{\theta}_n - \theta)$ converge en loi vers une gaussienne centrée de matrice de covariance
+$$ (D\varphi(\theta))^{-1}\mathrm{Cov}_\theta(T)(D\varphi(\theta)^\top)^{-1}.$$
+
+:::
+
+:::{.proof}
+La première partie a essentiellement été démontrée un peu plus haut. Pour la seconde, il faut d'abord remarquer que si $T$ est de carré intégrable, alors $\sqrt{n}(\bar{T}_n - \varphi(\theta))$ converge vers une loi $N(0, \mathrm{Cov}_\theta(T))$ par le TCL. Une simple application de la delta-méthode (@thm-deltamethod) donne alors le résultat, puisque la matrice jacobienne de $\varphi^{-1}$ en $\varphi(\theta)$ n'est autre que l'inverse de la matrice jacobienne de $\varphi$ en $\theta$. 
+
+:::

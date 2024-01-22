@@ -1,1 +1,12 @@
-## Tests linéaires
+# Tests linéaires
+
+## Significativité d'un coefficient
+
+
+
+
+## Significativité de la régression
+
+
+## Test d'une contrainte
+

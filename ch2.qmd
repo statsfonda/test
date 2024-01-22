@@ -6,8 +6,6 @@ On fixe un modèle statistique $(\mathcal{X}, \mathscr{F}, (P_\theta))$, et l'on
 ## Précision d'un estimateur
 
 
-
-
 :::{#def-biais}
 
 ## Biais , risque quadratique
@@ -19,7 +17,7 @@ L'estimateur est dit *sans biais* s'il est de biais nul.
 
 En pratique, on peut vouloir estimer non pas $\theta$ lui-même, mais un paramètre $\psi = \psi_\theta$ qui dépend de $\theta$, comme $\cos(\theta)$ ou $|\theta|$ par exemple. Dans ce cas, si $\hat{\psi}$ est un estimateur de $\psi$ alors le biais est défini par $\mathbb{E}_\theta[\hat{\psi} - \psi_\theta]$ et le risque quadratique par $\mathbb{E}_\theta [ |\hat\psi^2 - \psi_\theta|^2]$. 
 
-La dépendance du risque  quadratique vis à vis de la taille de l'échantillon est une question importante en statistique mathématique. Elle concerne la vitesse d'estimation (pour une suite d'expériences donnée, quelles sont les meilleures vitesses envisageables, et comment les obtenir ?).
+La dépendance du risque  quadratique vis à vis de la taille de l'échantillon est une question importante : pour une suite d'expériences donnée, quelles sont les meilleures vitesses envisageables, et comment les obtenir ?
 
 :::{#thm-biaisvar}
 
@@ -32,38 +30,33 @@ $$
 :::
 
 
-## Consistances 
+## Convergence 
 
-Pour introduire la notion de consistance d'une suite d'estimateurs,  nous aurons besoin des notions de convergence en probabilité et de convergence presque sûre.
-
-:::{#def-cv}
-Une suite de variables aléatoires $X_n$ à valeurs dans
-$\mathbb{R}^k$ converge en probabilité vers une
+Rappelons brièvement deux notions de convergence des variables aléatoires. Une suite de variables aléatoires $X_n$ à valeurs dans
+$\mathbb{R}^d$ converge en probabilité vers une
 variable aléatoire $X$ à valeurs dans
-$\mathbb{R}^k$, vivant sur cet espace probabilisé si et seulement
-si, pour tout $\epsilon >0$
+$\mathbb{R}^d$ si pour tout $\varepsilon >0$, 
 $$
-\lim_{n\to\infty} \mathbb{P} (| X_n -X|> \epsilon ) = 0 \, .
+\lim_{n\to\infty} \mathbb{P} (| X_n -X|> \varepsilon ) = 0 \, .
 $$
-:::
+
 
 :::{#def-consistance}
 
 ## consistance d'un estimateur
-Une suite d'estimateurs $(\widehat{\theta}_n)$ est consistante pour l'estimation de $\theta$ lorsque, pour tout $\theta \in \Theta$, 
+Une suite d'estimateurs $(\widehat{\theta}_n)$ est convergente pour l'estimation de $\theta$ lorsque, pour tout $\theta \in \Theta$, sous $P_\theta$, la suite $(\hat{\theta}_n)$ converge en probabilité vers $\theta$ ; autrement dit, lorsque 
  $$ \forall \varepsilon>0, \qquad \lim_n     P_\theta ( | \widehat{\theta}_n-\theta| > \varepsilon ) =0.
 $$
-La suite est fortement consistante si, pour tout $\theta \in \Theta$, $$
-\hat{\theta}_n \to \theta \quad P_\theta-\text{p.s.}
+La suite est fortement convergente si, pour tout $\theta$, la convergence a lieu $P_\theta$-presque sûrement. 
 $$
 
 :::
 
-
+On voit parfois le mot *consistant* utilisé au lieu de *convergent*. Je pense que c'est un anglicisme.  
 
 ## Normalité asymptotique
 
-Lorsqu'un estimateur est consistant, on peut se demander à quoi ressemblent ses fluctuations autour de sa valeur limite. Le théorème central limite indique que le comportement asymptotique gaussiens est relativement fréquent, et beaucoup d'estimateurs sont des sommes de réalisations de variables indépendantes. 
+Lorsqu'un estimateur est convergent, on peut se demander à quoi ressemblent ses fluctuations autour de sa valeur limite. Le théorème central limite indique que le comportement asymptotique gaussiens est relativement fréquent, et beaucoup d'estimateurs sont des sommes de réalisations de variables indépendantes. 
 
 ::: {#def-normasymp}
 
@@ -76,10 +69,20 @@ où $\Sigma$ est une matrice de covariance qui dépend peut-être de $\theta$ --
 
 
 
-## Deux outils sur la normalité asymptotique
+## Trois outils sur la normalité asymptotique
 
-La normalité asymptotique n'est pas intéressante en elle-même ; l'idée est plutôt de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d'intervalle de confiance. Nous utiliserons cela de nombreuses fois dans la suite ; la normalité asymptotique sera par exemple la clé de la construction de nombreux intervalles de confiance. Aussi, prouver que des estimateurs sont asymptotiquement normaux est une tache importante, qui est grandement simplifiée par les deux outils suivants. 
+La normalité asymptotique n'est pas intéressante en elle-même ; l'idée est plutôt de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d'intervalle de confiance. Nous utiliserons cela de nombreuses fois dans la suite ; la normalité asymptotique sera par exemple utilisée dans la construction des intervalles de confiance. Aussi, prouver que des estimateurs sont asymptotiquement normaux est une tache importante, qui est grandement simplifiée par les deux outils suivants. On commence par rappeler le théorème centra-limite. 
 
+:::{#thm-tcl}
+
+## Théorème Central-Limite
+
+Soit $(X_i)$ une suite de variables aléatoires réelles, indépendantes et identiquement distribuées. On suppose que ces variables ont une variance $\sigma^2$ finie. Alors, la variable aléatoire 
+$$ \sqrt{n}\left(\frac{1}{n}\sum_{i=1}^n X_i - \mathbb{E}[X]\right)$$
+converge en loi vers une loi $N(0,\sigma^2)$. 
+:::
+
+Le Lemme de Slutsky sera fréquemment utilisé pour combiner convergence en loi et convergence en probabilité. 
 
 :::{#thm-slutsky}
 
@@ -117,35 +120,6 @@ où $Dg(x)$ est la [matrice jacobienne](https://fr.wikipedia.org/wiki/Matrice_ja
 À écrire. 
 :::
 
-## La méthode des moments
-
-Il existe plusieurs techniques générales pour *construire* des estimateurs. La méthode des moments est la plus naturelle, et donne beaucoup des estimateurs avec de bonnes propriétés. 
-
-Dans un modèle statistique, supposons qu'on dispose d'une statistiques intégrable $T$ (pas forcément réelle), dont la moyenne n'est pas le paramètre $\theta$ lui-même, mais plutôt une *fonction* de $\theta$ :  
-$$\mathbb{E}_\theta[T(X)] = \varphi(\theta).$$ 
-C'est cette fonction $\varphi$ qu'on appelle *moment*. Typiquement, 
-
-- la moyenne d'une loi $\mathscr{E}(\theta)$ n'est pas $\theta$ mais $1/\theta$. 
-- la moyenne d'une loi log-normale de paramètres $(0, \sigma^2)$ est $e^{\sigma^2/2}$. 
-
-Prenons la moyenne empirique associée à cet estimateur, $\bar{T}_n$. Par la loi des grands nombres, 
-$$\bar{T}_n = \frac{1}{n}\sum_{i=1}^n T(X_i) \to \varphi(\theta) \qquad P_\theta-ps, $$
-ce qui permet d'estimer $\varphi(\theta)$. Peut-on alors estimer $\theta$ ? Si la fonction $\varphi$ est inversible et si $\bar{T}_n$ appartient presque sûrement à l'ensemble de définition de $\varphi^{-1}$, alors $\varphi^{-1}(\bar{T_n})$ est bien définie. Pour qu'en plus cette quantité converge presque sûrement vers $\theta$, il faut s'assurer que $\varphi^{-1}$ est continue. C'est par exemple le cas lorsque l'ensemble des paramètres $\Theta$ est un ouvert, et que $\varphi$ est un difféomorphisme sur son image --- une situation si fréquente qu'elle mérite son propre théorème, et si agréable qu'elle garantit que l'estimateur associé est asymptotiquement normal. 
-
-:::{#thm-mom}
-
-## Estimation par moments
-
-
-Sous l'hypothèse mentionnée ci-dessus (la fonction $\varphi$ est un difféomorphisme), l'estimateur $$\hat{\theta}_n = \varphi^{-1}(\bar{T}_n)$$ est presque sûrement bien défini pour tout $n$ suffisamment grand ; il est également consistant pour l'estimation de $\theta$. En outre, si $T$ est de carré intégrable, cet estimateur est asymptotiquement normal, au sens où $\sqrt{n}(\hat{\theta}_n - \theta)$ converge en loi vers une gaussienne centrée de matrice de covariance
-$$ (D\varphi(\theta))^{-1}\mathrm{Cov}_\theta(T)(D\varphi(\theta)^\top)^{-1}.$$
-
-:::
-
-:::{.proof}
-La première partie a essentiellement été démontrée un peu plus haut. Pour la seconde, il faut d'abord remarquer que si $T$ est de carré intégrable, alors $\sqrt{n}(\bar{T}_n - \varphi(\theta))$ converge vers une loi $N(0, \mathrm{Cov}_\theta(T))$ par le TCL. Une simple application de la delta-méthode (@thm-deltamethod) donne alors le résultat, puisque la matrice jacobienne de $\varphi^{-1}$ en $\varphi(\theta)$ n'est autre que l'inverse de la matrice jacobienne de $\varphi$ en $\theta$. 
-
-:::
 
 ## Deux estimateurs importants
 
