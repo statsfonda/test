@@ -267,8 +267,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#significativité-dun-coefficient" id="toc-significativité-dun-coefficient" class="nav-link active" data-scroll-target="#significativité-dun-coefficient"><span class="header-section-number">15.1</span> Significativité d’un coefficient</a></li>
-  <li><a href="#significativité-de-la-régression" id="toc-significativité-de-la-régression" class="nav-link" data-scroll-target="#significativité-de-la-régression"><span class="header-section-number">15.2</span> Significativité de la régression</a></li>
-  <li><a href="#test-dune-contrainte" id="toc-test-dune-contrainte" class="nav-link" data-scroll-target="#test-dune-contrainte"><span class="header-section-number">15.3</span> Test d’une contrainte</a></li>
+  <li><a href="#test-dune-contrainte" id="toc-test-dune-contrainte" class="nav-link" data-scroll-target="#test-dune-contrainte"><span class="header-section-number">15.2</span> Test d’une contrainte</a></li>
+  <li><a href="#significativité-de-la-régression-test-de-fisher" id="toc-significativité-de-la-régression-test-de-fisher" class="nav-link" data-scroll-target="#significativité-de-la-régression-test-de-fisher"><span class="header-section-number">15.3</span> Significativité de la régression : test de Fisher</a></li>
   </ul>
 </nav>
     </div>
@@ -302,12 +302,21 @@ $$
 
 <section id="significativité-dun-coefficient" class="level2" data-number="15.1">
 <h2 data-number="15.1" class="anchored" data-anchor-id="significativité-dun-coefficient"><span class="header-section-number">15.1</span> Significativité d’un coefficient</h2>
+<p>Dans une régression de la forme <span class="math inline">\(y_i = \theta_1 \bx_{i,1}+ \dotsb + \theta_d \bx_{i,d}\)</span>, si le <span class="math inline">\(j\)</span>-ème coefficient <span class="math inline">\(\theta_j\)</span> est nul, alors cela veut dire que la <span class="math inline">\(j\)</span>-ème variable explicative n’a <em>aucun effet</em> sur la variable expliquée : en effet, <span class="math inline">\(x_{i,j}\)</span> pourrait avoir une toute autre valeur sans modifier la sortie <span class="math inline">\(y_i\)</span>. Pour cette raison, le test d’une hypothèse de type <span class="math inline">\(\theta_j = 0\)</span> s’appelle <em>test de significativité</em>.</p>
+<p>Dans un modèle gaussien comme <a href="ch5_01.html#sec-mlg"><span>Section&nbsp;13.1</span></a>, nous savons que <span class="math inline">\(\hat{\bt}\sim N(\bt, \sigma^2(X^\top X)^{-1})\)</span>. Notons <span class="math inline">\(\ell_j^2\)</span> le <span class="math inline">\(j\)</span>-ème coefficient diagonal de la matrice <span class="math inline">\((X^\top X)^{-1}\)</span> ; ce nombre est fréquemment appelé <em>levier</em>. Il est explicitement calculable, car il ne dépend que des données d’entrée <span class="math inline">\(\bx_t\)</span> ; de plus, <span class="math inline">\(\hat{\theta}_j \sim N(\theta_j, \sigma^2 \ell_{j})\)</span>, et l’on en déduit (comme dans un test de Student) que sous l’hypothèse nulle <span class="math inline">\(\theta_j=0\)</span>, la statistique <span class="math display">\[\frac{ \hat{\theta}_j}{\ell_j \hat{\sigma}_n} \]</span> suit une loi de Student <span class="math inline">\(\mathscr{T}(n-d)\)</span>. Il est fréquent d’utiliser la notation <span class="math display">\[ \hat{\sigma}(\hat{\theta}_j) = \ell_j \hat{\sigma}_n\]</span> car c’est un estimateur de la variance de <span class="math inline">\(\theta_j\)</span>.</p>
+<div id="thm-teststudent" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 15.1 </strong></span>Soit <span class="math inline">\(t_{n-d, 1-\alpha}\)</span> le quantile symétrique d’ordre <span class="math inline">\(1-\alpha\)</span> de la loi <span class="math inline">\(\mathscr{T}(n-d)\)</span>. Dans un modèle gaussien, le test ayant pour région de rejet <span class="math display">\[\{ \frac{|\hat{\theta_j}|}{\hat{\sigma}_n \ell_j }&gt; t_{n-d, 1-\alpha}\}\]</span> est un test de significativité de <span class="math inline">\(\theta_j\)</span> au niveau <span class="math inline">\(1-\alpha\)</span>.</p>
+<p>Lorsque le modèle n’est pas gaussien mais vérifie les conditions de <a href="ch5_01.html#sec-mlgen"><span>Section&nbsp;13.2</span></a>, ce test est asymptotiquement de niveau <span class="math inline">\(1-\alpha\)</span>.</p>
+</div>
+<p>La statistique <span class="math inline">\(|\hat{\theta}_j|/\hat{\sigma}(\hat{\theta}_j)\)</span> qui apparaît ci-dessus est appelée <em><span class="math inline">\(\mathsf{t}\)</span> de Student</em>. Les outils usuels de statistique donnent fréquemment la valeur de cette statistique pour chaque coefficient d’une régression, ainsi que la <span class="math inline">\(p\)</span>-valeur du test qui est égale à <span class="math display">\[1-F_{n-d}(\mathsf{t}), \]</span> et qui est fréquemment notée ‘Prob&gt;t’.</p>
 </section>
-<section id="significativité-de-la-régression" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="significativité-de-la-régression"><span class="header-section-number">15.2</span> Significativité de la régression</h2>
+<section id="test-dune-contrainte" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="test-dune-contrainte"><span class="header-section-number">15.2</span> Test d’une contrainte</h2>
+<p>Soit <span class="math inline">\(C\)</span> une matrice <span class="math inline">\(r \times d\)</span> et <span class="math inline">\(c\)</span> un vecteur de taille <span class="math inline">\(r\)</span>. On cherche à tester si <span class="math inline">\(\bt\)</span> vérifie les <span class="math inline">\(r\)</span> contraintes linéaires <span class="math display">\[C\bt = c.\]</span> Sous cette hypothèse nulle, <span class="math display">\[C\hat{\bt}-c \sim N(0, \sigma^2 C(X^\top X)^{-1}C^\top).\]</span> En multipliant des deux côtés par la matrice <span class="math inline">\([C(X^\top X)^{-1}C^\top]^{1/2}\)</span> puis en prenant la norme au carré et en simplifiant l’expression, on voit que <span class="math display">\[ \frac{1}{\sigma^2}\langle C\hat{\bt}-c, C(X^\top X)^{-1}C^\top (C\hat{\bt}-c)\rangle \sim \chi^2(r).\]</span> Maintenant, si l’on estime le terme <span class="math inline">\(\sigma^2\)</span> comme d’habitude, on obtient la statistique de test suivante : <span class="math display">\[ \frac{\langle C\hat{\bt}-c, C(X^\top X)^{-1}C^\top (C\hat{\bt}-c)\rangle /r}{\hat{\sigma}_n^2} \sim \mathscr{F}_{r, n-d}.\]</span></p>
 </section>
-<section id="test-dune-contrainte" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="test-dune-contrainte"><span class="header-section-number">15.3</span> Test d’une contrainte</h2>
+<section id="significativité-de-la-régression-test-de-fisher" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="significativité-de-la-régression-test-de-fisher"><span class="header-section-number">15.3</span> Significativité de la régression : test de Fisher</h2>
+<p>La significativité <em>globale</em> de la régression consiste à tester si tous les coefficients sont significatifs, sauf la constante. Il s’agit donc du test de l’hypothèse nulle <span class="math display">\[ \theta_2 = \dotsb = \theta_d = 0.\]</span></p>
 
 
 </section>
