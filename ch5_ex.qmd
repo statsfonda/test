@@ -3,6 +3,7 @@
 ## Questions
 
 - Retrouver la formule des MCO par une méthode analytique. 
+- Construire un intervalle de confiance de niveau $1-\alpha$ pour le coefficient $\theta_j$ d'une régression. 
 
 ## Exercices
 

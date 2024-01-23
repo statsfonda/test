@@ -2,11 +2,41 @@
 
 ## Significativité d'un coefficient
 
+Dans une régression de la forme $y_i = \theta_1 \bx_{i,1}+ \dotsb + \theta_d \bx_{i,d}$, si le $j$-ème coefficient $\theta_j$ est nul, alors cela veut dire que la $j$-ème variable explicative n'a *aucun effet* sur la variable expliquée : en effet, $x_{i,j}$ pourrait avoir une toute autre valeur sans modifier la sortie $y_i$. Pour cette raison, le test d'une hypothèse de type $\theta_j = 0$ s'appelle *test de significativité*. 
 
+Dans un modèle gaussien comme @sec-mlg, nous savons que $\hat{\bt}\sim N(\bt, \sigma^2(X^\top X)^{-1})$. Notons $\ell_j^2$ le $j$-ème coefficient diagonal de la matrice $(X^\top X)^{-1}$ ; ce nombre est fréquemment appelé *levier*. Il est explicitement calculable, car il ne dépend que des données d'entrée $\bx_t$ ; de plus, $\hat{\theta}_j \sim N(\theta_j, \sigma^2 \ell_{j})$, et l'on en déduit (comme dans un test de Student) que sous l'hypothèse nulle $\theta_j=0$, la statistique 
+$$\frac{ \hat{\theta}_j}{\ell_j \hat{\sigma}_n} $$
+suit une loi de Student $\mathscr{T}(n-d)$. Il est fréquent d'utiliser la notation 
+$$ \hat{\sigma}(\hat{\theta}_j) = \ell_j \hat{\sigma}_n$$
+car c'est un estimateur de la variance de $\theta_j$. 
 
+:::{#thm-teststudent}
 
-## Significativité de la régression
+Soit $t_{n-d, 1-\alpha}$ le quantile symétrique d'ordre $1-\alpha$ de la loi $\mathscr{T}(n-d)$. Dans un modèle gaussien, le test ayant pour région de rejet
+$$\{ \frac{|\hat{\theta_j}|}{\hat{\sigma}_n \ell_j }> t_{n-d, 1-\alpha}\}$$
+est un test de significativité de $\theta_j$ au niveau $1-\alpha$. 
+
+Lorsque le modèle n'est pas gaussien mais vérifie les conditions de @sec-mlgen, ce test est asymptotiquement de niveau $1-\alpha$. 
+:::
+
+La statistique $|\hat{\theta}_j|/\hat{\sigma}(\hat{\theta}_j)$ qui apparaît ci-dessus est appelée *$\mathsf{t}$ de Student*. Les outils usuels de statistique donnent fréquemment la valeur de cette statistique pour chaque coefficient d'une régression, ainsi que la $p$-valeur du test qui est égale à 
+$$1-F_{n-d}(\mathsf{t}), $$
+et qui est fréquemment notée 'Prob>t'. 
+
 
 
 ## Test d'une contrainte
+Soit $C$ une matrice $r \times d$ et $c$ un vecteur de taille $r$. On cherche à tester si $\bt$ vérifie les $r$ contraintes linéaires
+$$C\bt = c.$$
+Sous cette hypothèse nulle, 
+$$C\hat{\bt}-c \sim N(0, \sigma^2 C(X^\top X)^{-1}C^\top).$$
+En multipliant des deux côtés par la matrice $[C(X^\top X)^{-1}C^\top]^{1/2}$ puis en prenant la norme au carré et en simplifiant l'expression, on voit que
+$$ \frac{1}{\sigma^2}\langle C\hat{\bt}-c, C(X^\top X)^{-1}C^\top (C\hat{\bt}-c)\rangle \sim \chi^2(r).$$
+Maintenant, si l'on estime le terme $\sigma^2$ comme d'habitude, on obtient la statistique de test suivante : 
+$$ \frac{\langle C\hat{\bt}-c, C(X^\top X)^{-1}C^\top (C\hat{\bt}-c)\rangle /r}{\hat{\sigma}_n^2} \sim \mathscr{F}_{r, n-d}.$$
 
+
+## Significativité de la régression : test de Fisher
+
+La significativité *globale* de la régression consiste à tester si tous les coefficients sont significatifs, sauf la constante. Il s'agit donc du test de l'hypothèse nulle
+$$ \theta_2 = \dotsb = \theta_d = 0.$$

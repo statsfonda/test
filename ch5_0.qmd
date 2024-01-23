@@ -35,7 +35,7 @@ un élément de $\mathbb{R}^d$ ; les variables explicatives seront alors $\bx_1
 
 
 
-**Remarque : où est passée la constante ?** *Dans l'équation ci-dessus, on a l'impression que le terme constant, qui correspondait à $\alpha$ dans l'exemple en dimension 1, a disparu. Ce n'est pas le cas : intégrer la constante au modèle revient à considérer que la variable constante égale à 1 fait partie des variables explicatives. En pratique, cela revient à poser, par exemple, $\bx_{i,1} = 1$ pour tout $i$*. 
+**Remarque : où est passée la constante ?** *Dans l'équation ci-dessus, on a l'impression que le terme constant, qui correspondait à $\alpha$ dans l'exemple en dimension 1, a disparu. Ce n'est pas le cas : intégrer la constante au modèle revient à considérer que la variable constante égale à 1 fait partie des variables explicatives. En pratique, cela revient à poser, par exemple, $\bx_{i,1} = 1$ pour tout $i$. Ainsi, la constante correspondra toujours à $\theta_1$.* 
 
 
 On pose $X$ la matrice $n\times d$ dont la $i$-ème ligne est $\bx_i$.  La matrice dont les lignes sont composées des $\bt\top \bx_i$ n'est autre que la matrice $X\bt$. La distance entre le nuage de points $(X,Y)$ et la droite d'équation $Y = X\theta$ est alors $|Y - X\theta|$. On pourrait reproduire la méthode analytique ci-dessus pour trouver les paramètres optimaux, à savoir 
