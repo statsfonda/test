@@ -2,7 +2,7 @@
 # La méthode des moments
 
 
-Il existe plusieurs techniques générales pour *construire* des estimateurs. Deux se démarquent : la méthode des moments, et la méthode du maximum de vraisemblance. La méthode des moments est naturelle et donne beaucoup des estimateurs avec de bonnes propriétés, mais elle est moins puissante que la méthode du maximum de vraisemblance que nous verrons plus tard. 
+Il existe plusieurs techniques générales pour *construire* des estimateurs. Deux se démarquent : la méthode des moments, et la méthode du maximum de vraisemblance. La méthode des moments est naturelle et donne des estimateurs avec de bonnes propriétés, mais elle est moins automatique que la méthode du maximum de vraisemblance que nous verrons plus tard. 
 
 ## Qu'est-ce qu'un *moment* ?
 
@@ -27,12 +27,12 @@ Si la fonction $\varphi$ est inversible et si $\bar{T}_n$ appartient presque sû
 ## Estimation par moments
 
 
-Sous l'hypothèse mentionnée ci-dessus (la fonction $\varphi$ est un difféomorphisme), l'estimateur $$\hat{\theta}_n = \varphi^{-1}(\bar{T}_n)$$ est presque sûrement bien défini pour tout $n$ suffisamment grand ; il est également consistant pour l'estimation de $\theta$. En outre, si $T$ est de carré intégrable, cet estimateur est asymptotiquement normal, au sens où $\sqrt{n}(\hat{\theta}_n - \theta)$ converge en loi vers une gaussienne centrée de matrice de covariance
-$$ (D\varphi(\theta))^{-1}\mathrm{Cov}_\theta(T)(D\varphi(\theta)^\top)^{-1}.$$
+Sous l'hypothèse mentionnée ci-dessus (la fonction $\varphi$ est un difféomorphisme), l'estimateur $$\hat{\theta}_n = \varphi^{-1}(\bar{T}_n)$$ est presque sûrement bien défini pour tout $n$ suffisamment grand ; il est également consistant pour l'estimation de $\theta$. En outre, si $T$ est de carré intégrable, cet estimateur est asymptotiquement normal, au sens où $\sqrt{n}(\hat{\theta}_n - \theta)$ converge en loi vers une gaussienne centrée de matrice de variance
+$$ (D\varphi(\theta))^{-1}\mathrm{Var}_\theta(T)(D\varphi(\theta)^\top)^{-1}.$$
 
 :::
 
 :::{.proof}
-La première partie a essentiellement été démontrée un peu plus haut. Pour la seconde, il faut d'abord remarquer que si $T$ est de carré intégrable, alors $\sqrt{n}(\bar{T}_n - \varphi(\theta))$ converge vers une loi $N(0, \mathrm{Cov}_\theta(T))$ par le TCL. Une simple application de la delta-méthode (@thm-deltamethod) donne alors le résultat, puisque la matrice jacobienne de $\varphi^{-1}$ en $\varphi(\theta)$ n'est autre que l'inverse de la matrice jacobienne de $\varphi$ en $\theta$. 
+La première partie a essentiellement été démontrée un peu plus haut. Pour la seconde, il faut d'abord remarquer que si $T$ est de carré intégrable, alors $\sqrt{n}(\bar{T}_n - \varphi(\theta))$ converge vers une loi $N(0, \mathrm{Var}_\theta(T))$ par le TCL. Une simple application de la delta-méthode (@thm-deltamethod) donne alors le résultat, puisque la matrice jacobienne de $\varphi^{-1}$ en $\varphi(\theta)$ n'est autre que l'inverse de la matrice jacobienne de $\varphi$ en $\theta$. 
 
 :::

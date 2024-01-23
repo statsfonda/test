@@ -11,11 +11,11 @@ $$P = \frac{1}{|v|^2}vv^\top \in \mathscr{M}_{n,n}. $$
 Appliquons cette matrice à $x$. Par linéarité, $Px = Px + Pz$. Calculons ces deux termes. 
 
 1. $Pz = |v|^{-1}v v^\top z = |v|^{-1}v \langle v, z\rangle$. Comme $z$ est orthogonal à $v$, cela vaut 0. 
-2. $Py = P(tv) = tPv = t|v|^{-2}v v^\top v = t|v|^{-2}v |v|^2 = tv = y$. 
+2. $Py = tPv$. Par définition de $P$, ceci est donc égal à  $t|v|^{-2}v v^\top v = t|v|^{-2}v |v|^2 = tv$, c'est-à-dire $y$. 
    
 Nous avons montré plusieurs choses. D'abord, l'application qui à $x$ associe $y$ est effectivement linéaire, et une de ses matrices est $P$. On dit que $P$ est la matrice de projection sur $\mathscr{V}$. De même, comme $(I - P)x = y+z - y = z$, la matrice $I-P$ est la matrice de projection sur $\mathscr{V}^\perp$. 
 
-Le cas d'un sous-espace vectoriel généré, non pas par un unique vecteur $v$, mais par plusieurs vecteurs $v_1, \dotsc, v_d$ non-colinéaires se traite de la même façon. Soit $V = [v_1, \dotsc, v_d]$ la matrice $n \times d$ dont les colonnes sont les $v_i$. Tout à l'heure, la norme $|v|^{-1}$ aurait pu s'écrire $(v^\top v)^{-1}$. L'analogue avec $V$ est donc naturellement $(V^\top V)^{-1}$, donnant naissance au théorème suivant. 
+Le cas d'un sous-espace vectoriel généré par *plusieurs* vecteurs $v_1, \dotsc, v_d$ linéairement indépendants se traite de la même façon. Soit $V = [v_1, \dotsc, v_d]$ la matrice $n \times d$ dont les colonnes sont les $v_i$. Tout à l'heure, $|v|^{-2}$ aurait pu s'écrire $(v^\top v)^{-1}$. L'analogue avec $V$ est donc naturellement $(V^\top V)^{-1}$, donnant naissance au théorème suivant. 
 
 :::{#thm-projortho}
 
@@ -29,6 +29,7 @@ est la matrice de projection orthogonale sur le sous-espace $\mathscr{V}$ engend
 Si $x=y+z$ est la décomposition de $x$ en somme d'un élément $y\in\mathscr{V}$ et d'un élément $z \in \mathscr{V}^\perp$, alors $Px = Py + Pz$ et 
 $$ Pz = V(V^\top V)^{-1}V^\top z.$$
 Or, les $d$ lignes de $V^\top z$ sont les produits scalaires $\langle v_i, z\rangle$, qui sont tous nuls car $z$ est orthogonal à tous les $v_i$. Ainsi, $Pz = 0$. 
+
 D'autre part, comme $y$ est dans l'espace engendré par les $v_i$, il s'écrit sous la forme $t_1 v_1 + \dotsc + t_d v_d$. Cela peut se récrire en disant que $y = V t$, où $t$ est le vecteur colonne des $t_i$. Mais alors, 
 $$ Py = V(V^\top V)^{-1}V^\top V t = Vt = y.$$
 On conclut comme dans le cas $d=1$ exposé ci-dessus. Il reste cependant un point de détail : nous devons nous assurer que $V^\top V$ est effectivement inversible ! C'est le cas, je le jure. 

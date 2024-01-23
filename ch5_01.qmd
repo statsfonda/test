@@ -73,12 +73,12 @@ $$ \mathbb{P}(\mu \in \Sigma^{1/2} B(\xi, \sqrt{\kappa})) = 1-\alpha.$$
 La région de confiance est donc l'image de la boule $B(\xi, \sqrt{\kappa})$ par la matrice symétrique $\Sigma^{1/2}$ : c'est une ellipse. Par ailleurs, l'ensemble $\Sigma B(x, \delta)$ peut aussi s'écrire $\{y \in \mathbb{R}^d : |\Sigma^{1/2}(x - y)|^2 \leqslant \delta\}$. 
 
 En combinant ce résultat avec la loi de $\hat{\bt}$ donnée dans @thm-glm, on obtient la région de confiance 
-<!--$$ \left\lbrace \theta \in \mathbb{R}^d : \left|\frac{1}{\sigma}(X^{\top} X)^{1/2}(\hat{\bt} - \theta) \right|^2 < \kappa_{d,1-\alpha} \right\rbrace.$$
-Malheureusement, cette région nécessite de connaître $\sigma$. Lorsqu'on ne le connaît pas, il faut l'estimer. -->
+$$ \left\lbrace \theta \in \mathbb{R}^d : \left|\frac{1}{\sigma}(X^{\top} X)^{1/2}(\hat{\bt} - \theta) \right|^2 < \kappa_{d,1-\alpha} \right\rbrace.$$
+Malheureusement, cette région nécessite de connaître $\sigma$. Lorsqu'on ne le connaît pas, il faut l'estimer. 
 
 ### Cas général {.unnumbered}
 
-Toujours sous le modèle linéaire gaussien, nous avons vu que la loi de $\left|\frac{1}{\sigma}(X^{\top} X)^{1/2}(\hat{\bt} - \bt)\right|^2 $ est une $\chi_2(d)$, et que la loi de $ \frac{(n-d)\hat{\sigma}_n^2}{\sigma^2}$
+Toujours sous le modèle linéaire gaussien, nous avons vu que la loi de $|\sigma^{-1}(X^{\top} X)^{1/2}(\hat{\bt} - \bt)|^2$ est une $\chi_2(d)$, et que la loi de $(n-d)\hat{\sigma}_n^2\sigma^{-2}$
 est une $\chi_2(n-d)$. Par conséquent, la variable aléatoire 
 $$\frac{|(X^\top X)^{1/2}(\hat{\bt} - \bt)|^2}{\hat{\sigma}_n^2}$$
 a pour loi le rapport de lois du $\chi_2$ indépendantes de paramètres $d$ et $n-d$. Cette loi est connue : elle est égale à $(n-d)/d$ fois une *loi de Fisher* dont les propriétés sont données dans @sec-fisher. Cela donne directement le théorème suivant. 
