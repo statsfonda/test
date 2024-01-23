@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistiques Fondamentales - 8&nbsp; Test d’hypothèses</title>
+<title>Statistiques Fondamentales - 21&nbsp; Algèbre linéaire</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch4_1.html" rel="next">
-<link href="./ch3_ex.html" rel="prev">
+<link href="./ref.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch4_0.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Test d'hypothèses</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app1.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -162,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch4_0.html" class="sidebar-item-text sidebar-link active">
+  <a href="./ch4_0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Test d’hypothèses</span></span></a>
   </div>
 </li>
@@ -252,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app1.html" class="sidebar-item-text sidebar-link">
+  <a href="./app1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></span></a>
   </div>
 </li>
@@ -266,12 +265,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#exemples-de-tests-gaussiens" id="toc-exemples-de-tests-gaussiens" class="nav-link active" data-scroll-target="#exemples-de-tests-gaussiens"><span class="header-section-number">8.1</span> Exemples de tests gaussiens</a>
-  <ul class="collapse">
-  <li><a href="#construction-du-test" id="toc-construction-du-test" class="nav-link" data-scroll-target="#construction-du-test"><span class="header-section-number">8.1.1</span> Construction du test</a></li>
-  <li><a href="#calcul-de-la-puissance-et-hypothèse-alternative" id="toc-calcul-de-la-puissance-et-hypothèse-alternative" class="nav-link" data-scroll-target="#calcul-de-la-puissance-et-hypothèse-alternative"><span class="header-section-number">8.1.2</span> Calcul de la puissance et hypothèse alternative</a></li>
-  </ul></li>
-  <li><a href="#la-notion-de-p-valeur" id="toc-la-notion-de-p-valeur" class="nav-link" data-scroll-target="#la-notion-de-p-valeur"><span class="header-section-number">8.2</span> La notion de <span class="math inline">\(p\)</span>-valeur</a></li>
+  <li><a href="#projections-orthogonales" id="toc-projections-orthogonales" class="nav-link active" data-scroll-target="#projections-orthogonales"><span class="header-section-number">21.1</span> Projections orthogonales</a></li>
   </ul>
 </nav>
     </div>
@@ -288,7 +282,7 @@ $$
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Test d’hypothèses</span></h1>
+<h1 class="title"><span id="sec-al" class="quarto-section-identifier"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></span></h1>
 </div>
 
 
@@ -303,55 +297,22 @@ $$
 
 </header>
 
-<p>Si l’on essaie d’estimer le rendement <span class="math inline">\(\mu\)</span> d’un actif financier, on cherche implicitement à savoir si l’on va investir ou pas. Cette décision dépendra de notre estimation : pour faire simple, on peut considérer que si nous estimons que le rendement est positif (<span class="math inline">\(\hat{\mu}&gt;0\)</span>), alors il faut investir. Sinon, on n’investira pas.</p>
-<p>Les tests d’hypothèses visent à formaliser cela. Faire une <em>hypothèse</em> dans un modèle statistique <span class="math inline">\((\mathcal{X}, \mathscr{F}, (P_\theta)_{\theta \in \Theta_0})\)</span>, c’est supposer que <span class="math inline">\(\theta\)</span> appartient à une certaine région de <span class="math inline">\(H_0 \subset \Theta\)</span>. Les <em>tests</em> visent à construire des procédures pour tester une hypothèse nulle, que l’on notera <span class="math inline">\(H_0\)</span>, contre une hypothèse alternative, notée <span class="math inline">\(H_1\)</span>.</p>
-<p>Dans le cadre ci-dessus, on peut se placer dans un modèle où les rendements sont <span class="math inline">\(\mathscr{N}(\mu, \sigma^2)\)</span>. On veut tester l’hypothèse nulle <span class="math inline">\(H_0 :&nbsp;\mu \in ]-\infty, 0]\)</span> contre l’hypothèse alternative <span class="math inline">\(H_1 :&nbsp;\mu \in ]0,+\infty[\)</span>.</p>
-<div id="def-test" class="theorem definition">
-<p><span class="theorem-title"><strong>Définition 8.1 </strong></span>Un test est un événement qui, s’il survient, nous incite à rejeter l’hypothèse nulle. Cet événement sera noté <span class="math inline">\(\mathsf{rejeter}\)</span> et son complémentaire sera noté <span class="math inline">\(\mathsf{accepter}\)</span>.</p>
-<ul>
-<li><p>L’erreur de première espèce est la probabilité de rejeter l’hypothèse nulle à tort : <span class="math inline">\(\alpha = \sup_{\theta \in H_0}P_\theta(\mathsf{rejeter})\)</span>. Le <strong>niveau d’un test</strong> est <span class="math inline">\(1-\alpha\)</span>. C’est la probabilité d’accepter l’hypothèse nulle à raison.</p></li>
-<li><p>L’erreur de seconde espèce est la probabilité de ne pas rejeter l’hypothèse nulle, à tort : <span class="math inline">\(\beta = \sup_{\theta \in H_1}P_\theta(\mathsf{accepter})\)</span>. La <strong>puissance d’un test</strong> est <span class="math inline">\(1-\beta\)</span>. C’est la probabilité de « détecter » l’hypothèse alternative à raison.</p></li>
-<li><p>L’affinité d’un test est la somme des erreurs de première et seconde espèce. On parle aussi de l’<em>erreur totale</em>.</p></li>
-</ul>
-</div>
-<p>Par « événement », on veut bien dire « un élément de <span class="math inline">\(\mathscr{F}\)</span> », c’est-à-dire qui n’est déterminé que par les observations et pas par <span class="math inline">\(\theta\)</span>. Formellement on écrit souvent qu’un test est une statistique, disons <span class="math inline">\(T\)</span>, à valeurs dans <span class="math inline">\(\{0,1\}\)</span>. L’événement <span class="math inline">\(\{T=0\}\)</span> est <span class="math inline">\(\mathsf{rejeter}\)</span>, l’événement <span class="math inline">\(\{T=1\}\)</span> est <span class="math inline">\(\mathsf{accepter}\)</span>.</p>
-<p>Un des grands objectifs de la statistique mathématique est de construire des familles de tests qui, pour un niveau de confiance <span class="math inline">\(1-\alpha\)</span> fixé, ont la plus grande puissance possible ; autrement dit, <strong>trouver un événement hautement improbable sous l’hypothèse nulle, et hautement probable sous l’hypothèse alternative</strong>.</p>
-<p>Comme on verra dans les exemples, le rôle des deux hypothèses n’est pas interchangeable. Maximiser le niveau et la puissance ne reviennent pas au même. Le choix des hypothèses <span class="math inline">\(H_0\)</span> et <span class="math inline">\(H_1\)</span> n’est pas anodin :&nbsp;l’hypothèse <span class="math inline">\(H_0\)</span> est une hypothèse que l’on cherche implicitement à réfuter.</p>
+<section id="projections-orthogonales" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="projections-orthogonales"><span class="header-section-number">21.1</span> Projections orthogonales</h2>
+<p>Soit <span class="math inline">\(v\)</span> un vecteur non nul de <span class="math inline">\(\mathbb{R}^n\)</span>. L’espace vectoriel engendré par <span class="math inline">\(v\)</span> est l’ensemble <span class="math inline">\(\mathscr{V}=\{tv : t \in \mathbb{R}\}\)</span>, et son orthogonal est l’hyperplan <span class="math inline">\(\mathscr{V}^\perp = \{x :&nbsp;\langle x, v \rangle = 0\}\)</span>. Les résultats élémentaires d’algèbre linéaire disent que tout vecteur <span class="math inline">\(x\)</span> se décompose <em>de façon unique</em> sous la forme <span class="math display">\[ x = y + z\]</span> avec <span class="math inline">\(y\)</span> dans l’espace vectoriel engendré par <span class="math inline">\(x\)</span>, et <span class="math inline">\(z\)</span> dans son complémentaire. En particulier, il existe un <span class="math inline">\(t\)</span> tel que <span class="math inline">\(y = tv\)</span>.</p>
+<p>Considérons maintenant la matrice <span class="math display">\[P = \frac{1}{|v|^2}vv^\top \in \mathscr{M}_{n,n}. \]</span> Appliquons cette matrice à <span class="math inline">\(x\)</span>. Par linéarité, <span class="math inline">\(Px = Px + Pz\)</span>. Calculons ces deux termes.</p>
 <ol type="1">
-<li>Si <span class="math inline">\(\theta \in H_0\)</span> quel qu’il soit, les probablités pour qu’un certain événement <span class="math inline">\(\mathsf{rejeter}\)</span> sont infimes – disons, 1%.</li>
-<li>Si cet événement arrive, par contraposée, on est amenés à rejeter l’hypothèse selon laquelle <span class="math inline">\(\theta\)</span> est dans <span class="math inline">\(H_0\)</span>.</li>
+<li><span class="math inline">\(Pz = |v|^{-1}v v^\top z = |v|^{-1}v \langle v, z\rangle\)</span>. Comme <span class="math inline">\(z\)</span> est orthogonal à <span class="math inline">\(v\)</span>, cela vaut 0.</li>
+<li><span class="math inline">\(Py = P(tv) = tPv = t|v|^{-2}v v^\top v = t|v|^{-2}v |v|^2 = tv = y\)</span>.</li>
 </ol>
-<p>C’est pour cela que les tests sont une forme de logique statistique. Le raisonnement de base une contraposée :&nbsp;en logique, <span class="math inline">\(A \Rightarrow B\)</span> est équivalent à <span class="math inline">\(\neg B \Rightarrow \neg A\)</span>. En statistiques, on pourrait écrire <span class="math inline">\(\theta \in H_0 \Rightarrow \mathsf{accepter}\)</span> (avec grande probabilité), donc <span class="math inline">\(\mathsf{rejeter}\Rightarrow \theta \notin H_0\)</span> (probablement).</p>
-<section id="exemples-de-tests-gaussiens" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="exemples-de-tests-gaussiens"><span class="header-section-number">8.1</span> Exemples de tests gaussiens</h2>
-<p>On se place dans un modèle où <span class="math inline">\(X_1, \dotsc, X_n\)</span> sont des gaussiennes <span class="math inline">\(N(\mu, \sigma^2)\)</span>. Nous avons déjà vu plusieurs fois que <span class="math inline">\(\bar{X}_n \sim N(\mu, \sigma^2/n)\)</span>.</p>
-<section id="construction-du-test" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="construction-du-test"><span class="header-section-number">8.1.1</span> Construction du test</h3>
-<p>On cherche à réfuter l’hypothèse selon laquelle ces variables aléatoires sont centrées ; autrement dit, on posera <span class="math inline">\(H_0 = \{0\}\)</span>. Sous cette hypothèse, nos variables aléatoires sont donc des variables <span class="math inline">\(N(0,\sigma^2)\)</span>.</p>
-<p><strong>Supposons dans un premier temps que <span class="math inline">\(\sigma^2\)</span> est connue.</strong> Sous <span class="math inline">\(H_0\)</span>, on a donc <span class="math display">\[ \frac{\sqrt{n}\bar{X}_n}{\sigma} \sim N(0,1)\]</span> et par conséquent, <span class="math inline">\(P_0(|\bar{X}_n| &lt; z_{1-\alpha} \sigma / \sqrt{n}) = 1-\alpha\)</span>. Autrement dit, sous l’hypothèse <span class="math inline">\(\mu = 0\)</span>, on devrait observer l’événement <span class="math display">\[ \bar{X}_n \in \left[ \pm \frac{z_{1-\alpha} \sigma}{\sqrt{n}}\right]\]</span> avec probabilité élevée <span class="math inline">\(1-\alpha\)</span>. Si cet événement n’est pas observé, il est alors très douteux que <span class="math inline">\(\mu\)</span> soit effectivement égal à zéro !&nbsp;On pose donc <span class="math display">\[ \mathsf{rejeter}_\alpha = \{|\bar{X}_n | &gt; z_{1-\alpha} \sigma / \sqrt{n}\}.\]</span> Le niveau de ce test est bien <span class="math inline">\(1-\alpha\)</span> : nous l’avons construit pour cela.</p>
-<p><strong>Supposons maintenant que <span class="math inline">\(\sigma\)</span> n’est pas connue.</strong> En l’estimant via <span class="math inline">\(\hat{\sigma}_n\)</span>, nous savons que (toujours sous l’hypothèse selon laquelle <span class="math inline">\(\mu=0\)</span>) <span class="math display">\[ \frac{\sqrt{n}\bar{X}_n}{\hat{\sigma}_n} \sim \mathscr{T}(n-1).\]</span> On reproduit alors le raisonnement ci-dessus : comme <span class="math inline">\(\mathbb{P}(|\bar{X}_n| &lt; t_{n-1, 1-\alpha}\sqrt{\sigma}_n / \sqrt{n}) = \alpha\)</span> où <span class="math inline">\(t_{n-1,1-\alpha}\)</span> est le quantile symétrique de <span class="math inline">\(\mathscr{T}(n-1)\)</span>, on voit que l’événement <span class="math display">\[ \mathsf{rejeter}_\alpha = \{|\bar{X}_n| &gt; t_{n-1,1-\alpha}\hat{\sigma}_n / \sqrt{n}\}\]</span> est bien un test de niveau <span class="math inline">\(1-\alpha\)</span>.</p>
-</section>
-<section id="calcul-de-la-puissance-et-hypothèse-alternative" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="calcul-de-la-puissance-et-hypothèse-alternative"><span class="header-section-number">8.1.2</span> Calcul de la puissance et hypothèse alternative</h3>
-<p>Nous n’avons pas encore eu besoin de spécifier une hypothèse alternative, mais nous allons en avoir besoin pour calculer la puissance du test. Pour commencer, on va supposer que, si <span class="math inline">\(\mu\)</span> n’est pas nulle, alors elle ne peut être égale qu’à 1. Autrement dit, <span class="math inline">\(H_1 = \{1\}\)</span>. Ce genre d’hypothèse alternative ne peut évidemment avoir de pertinence qu’en fonction du problème réel sous-jacent !</p>
-<p>Sous l’hypothèse alternative, donc, nous savons que <span class="math inline">\(\bar{X}_n \sim N(1, \sigma^2)\)</span>. La puissance du test est définie par <span class="math inline">\(1-\beta\)</span> où <span class="math inline">\(\beta=P_1(\mathsf{accepter}_\alpha)\)</span> c’est-à-dire <span class="math display">\[\begin{align}\beta &amp;= P_1(|\bar{X}_n|\leqslant z_{1-\alpha} \sigma / \sqrt{n}) \\
-&amp;= P_1 \left(-\frac{z_{1-\alpha} \sigma}{\sqrt{n}}\leqslant \bar{X}_n \leqslant \frac{z_{1-\alpha} \sigma}{\sqrt{n}} \right) \\
-&amp;= P_1 \left(-\frac{z_{1-\alpha} \sigma}{\sqrt{n}}-1\leqslant \bar{X}_n - 1 \leqslant \frac{z_{1-\alpha} \sigma}{\sqrt{n}} -1 \right)\\
-&amp;= \Phi(-\sqrt{n}/\sigma + z_{1-\alpha}) - \Phi(-\sqrt{n}/\sigma + z_{1-\alpha}).
-\end{align}\]</span> où <span class="math inline">\(\Phi(x) = \mathbb{P}(N(0,1)\leqslant x)\)</span>. Cette expression ne peut pas plus se simplifier, mais on peut quand même la borner par <span class="math inline">\(F(-\sqrt{n}/\sigma + z_{1-\alpha})\)</span>. Lorsque <span class="math inline">\(x\)</span> est grand, nous avons vu (<a href="#thm-gaussiantail">Théorème&nbsp;<span class="quarto-unresolved-ref">thm-gaussiantail</span></a>) que <span class="math inline">\(F(x) &lt; e^{-x^2}/|x|\sqrt{2\pi}\)</span>. Ainsi, l’erreur de première espèce est bornée par <span class="math inline">\(O(e^{-n/\sigma^2/2} / \sqrt{n})\)</span>. Cela tend extrêmement vite vers 0 ;&nbsp;en fait, dès que <span class="math inline">\(n\)</span> est plus grand que 10 et <span class="math inline">\(\sigma=1\)</span>, cette erreur est inférieure à 0.1%, donc dans ce cas le test aura une puissance supérieure à <span class="math inline">\(99.9\%\)</span>.</p>
-<p>Que se serait-il passé si notre hypothèse alternative n’avait pas été <span class="math inline">\(\mu=1\)</span> mais <span class="math inline">\(\mu = m\)</span> pour n’importe quel <span class="math inline">\(m\neq 0\)</span> ? Dans ce cas, on aurait eu <span class="math inline">\(H_1 = \mathbb{R}\setminus \{0\}\)</span>. L’erreur de première espèce aurait alors été <span class="math inline">\(\beta = \sup_{m\neq 0}\beta_m\)</span> où <span class="math display">\[ \beta_m = P_m(\mathsf{accepter}_\alpha).\]</span> On revoyant les calculs ci-dessus, on voit que <span class="math display">\[\beta_m = \Phi(-m\sqrt{n}/\sigma + z_{1-\alpha}) - \Phi(-m\sqrt{n}/\sigma + z_{1-\alpha}).\]</span> En particulier, <span class="math display">\[\lim_{m\to 0}\beta_m =\Phi(-z_{1-\alpha}) - \Phi(-z_{1-\alpha}) =  1-\alpha\]</span> par continuité de <span class="math inline">\(\Phi\)</span> et par définition de <span class="math inline">\(z_{1-\alpha}\)</span>. Ainsi, <span class="math inline">\(1-\beta = \alpha\)</span> :&nbsp;pour cette seconde hypothèse alternative, la puissance de notre test… est extrêmement faible.</p>
-<p><strong>Cela vient du fait que notre hypothèse alternative contient des situations quasiment indiscernables de notre hypothèse nulle.</strong> Par exemple, il est quasiment impossible de distinguer <span class="math inline">\(\mu = 0\)</span> de <span class="math inline">\(\mu = 10^{-100}\)</span> par exemple. Cet exemple illustre la dissymétrie entre <span class="math inline">\(H_0\)</span> et <span class="math inline">\(H_1\)</span>.</p>
-</section>
-</section>
-<section id="la-notion-de-p-valeur" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="la-notion-de-p-valeur"><span class="header-section-number">8.2</span> La notion de <span class="math inline">\(p\)</span>-valeur</h2>
-<p>La construction d’un test dépend du niveau de risque <span class="math inline">\(\alpha\)</span>. Si le niveau de risque acceptable est de plus en petit, alors l’événement <span class="math inline">\(\mathsf{rejeter}_\alpha\)</span> devrait être de moins en moins probable. D’ailleurs, <span class="math inline">\(\mathsf{rejeter}_0 = \varnothing\)</span> et <span class="math inline">\(\mathsf{accepter}_0 = \Omega\)</span> : si l’on ne tolère aucun niveau de risque de première espèce, c’est qu’on ne veut pas rejeter l’hypothèse nulle.</p>
-<p>Très souvent, si <span class="math inline">\(\alpha&lt;\beta\)</span>, on a même <span class="math display">\[\mathsf{rejeter}_\alpha \subset \mathsf{rejeter}_\beta.  \]</span></p>
-<div id="def-pval" class="theorem definition">
-<p><span class="theorem-title"><strong>Définition 8.2 </strong></span>La <span class="math inline">\(p\)</span>-valeur d’une famille croissante de tests est le plus petit niveau de risque qui nous amène à rejeter l’hypothèse nulle compte tenu des observations. Formellement, <span class="math display">\[ p_\star = \inf\{\alpha&gt;0 :&nbsp;\mathsf{rejeter}_\alpha\} = \sup\{\alpha&gt;0 :&nbsp;\mathsf{accepter}_\alpha\}.\]</span></p>
+<p>Nous avons montré plusieurs choses. D’abord, l’application qui à <span class="math inline">\(x\)</span> associe <span class="math inline">\(y\)</span> est effectivement linéaire, et une de ses matrices est <span class="math inline">\(P\)</span>. On dit que <span class="math inline">\(P\)</span> est la matrice de projection sur <span class="math inline">\(\mathscr{V}\)</span>. De même, comme <span class="math inline">\((I - P)x = y+z - y = z\)</span>, la matrice <span class="math inline">\(I-P\)</span> est la matrice de projection sur <span class="math inline">\(\mathscr{V}^\perp\)</span>.</p>
+<p>Le cas d’un sous-espace vectoriel généré, non pas par un unique vecteur <span class="math inline">\(v\)</span>, mais par plusieurs vecteurs <span class="math inline">\(v_1, \dotsc, v_d\)</span> non-colinéaires se traite de la même façon. Soit <span class="math inline">\(V = [v_1, \dotsc, v_d]\)</span> la matrice <span class="math inline">\(n \times d\)</span> dont les colonnes sont les <span class="math inline">\(v_i\)</span>. Tout à l’heure, la norme <span class="math inline">\(|v|^{-1}\)</span> aurait pu s’écrire <span class="math inline">\((v^\top v)^{-1}\)</span>. L’analogue avec <span class="math inline">\(V\)</span> est donc naturellement <span class="math inline">\((V^\top V)^{-1}\)</span>, donnant naissance au théorème suivant.</p>
+<div id="thm-projortho" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 21.1 </strong></span>Soient <span class="math inline">\(v_1, \dotsc, v_d\)</span> des vecteurs non-colinéaires de <span class="math inline">\(\mathbb{R}^n\)</span>, et soit <span class="math inline">\(V = [v_1, \dotsc, v_d]\)</span> la matrice <span class="math inline">\(n \times d\)</span> dont les colonnes sont les <span class="math inline">\(v_i\)</span>. La matrice de taille <span class="math inline">\(n\times n\)</span> <span class="math display">\[P_V = V (V^\top V)^{-1}V^\top \]</span> est la matrice de projection orthogonale sur le sous-espace <span class="math inline">\(\mathscr{V}\)</span> engendré par les <span class="math inline">\(v_i\)</span>. De plus, la matrice <span class="math inline">\(I - P_V\)</span> est la matrice de projection orthogonale sur le sous-espace <span class="math inline">\(\mathscr{V}^\perp\)</span>.</p>
 </div>
-<p><strong>La <span class="math inline">\(p\)</span>-valeur dépend des observations.</strong> C’est une observation cruciale : la <span class="math inline">\(p\)</span>-valeur n’est pas une propriété intrinsèque d’un test. Sur deux ensembles différents d’observations, la <span class="math inline">\(p\)</span>-valeur ne sera pas la même en général.</p>
-<p><strong>Calcul de <span class="math inline">\(p\)</span>-valeur.</strong> Dans de nombreux tests, la construction d’un test se fonde sur une statistique, disons <span class="math inline">\(S\)</span>, qui sous l’hypothèse nulle suit une loi particulière (par exemple, <span class="math inline">\(\sqrt{n}\bar{X}_n / \hat{\sigma}_n \sim \mathscr{T}(n-1)\)</span> sous l’hypothèse <span class="math inline">\(X_i \sim N(\mu,\sigma^2)\)</span> avec <span class="math inline">\(\mu=0\)</span> dans le cas d’un test de Student). Si le test est de la forme <span class="math inline">\(S &lt; q_{1-\alpha}\)</span>, ce qui équivaut à <span class="math inline">\(F(S)&lt;1-\alpha\)</span>. La <span class="math inline">\(p\)</span>-valeur est donnée par <span class="math display">\[p_\star = \sup\{\alpha &gt;&nbsp;0 : S &lt; q_{1-\alpha}\} = \sup\{\alpha : F(S)&lt;1-\alpha\} = 1 - F(S).\]</span></p>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span>Si <span class="math inline">\(x=y+z\)</span> est la décomposition de <span class="math inline">\(x\)</span> en somme d’un élément <span class="math inline">\(y\in\mathscr{V}\)</span> et d’un élément <span class="math inline">\(z \in \mathscr{V}^\perp\)</span>, alors <span class="math inline">\(Px = Py + Pz\)</span> et <span class="math display">\[ Pz = V(V^\top V)^{-1}V^\top z.\]</span> Or, les <span class="math inline">\(d\)</span> lignes de <span class="math inline">\(V^\top z\)</span> sont les produits scalaires <span class="math inline">\(\langle v_i, z\rangle\)</span>, qui sont tous nuls car <span class="math inline">\(z\)</span> est orthogonal à tous les <span class="math inline">\(v_i\)</span>. Ainsi, <span class="math inline">\(Pz = 0\)</span>. D’autre part, comme <span class="math inline">\(y\)</span> est dans l’espace engendré par les <span class="math inline">\(v_i\)</span>, il s’écrit sous la forme <span class="math inline">\(t_1 v_1 + \dotsc + t_d v_d\)</span>. Cela peut se récrire en disant que <span class="math inline">\(y = V t\)</span>, où <span class="math inline">\(t\)</span> est le vecteur colonne des <span class="math inline">\(t_i\)</span>. Mais alors, <span class="math display">\[ Py = V(V^\top V)^{-1}V^\top V t = Vt = y.\]</span> On conclut comme dans le cas <span class="math inline">\(d=1\)</span> exposé ci-dessus. Il reste cependant un point de détail :&nbsp;nous devons nous assurer que <span class="math inline">\(V^\top V\)</span> est effectivement inversible ! C’est le cas, je le jure.</p>
+</div>
 
 
 </section>
@@ -707,14 +668,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch3_ex.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">٭ Exercices</span></span>
+      <a href="./ref.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Références</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch4_1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Théorie des tests simples</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
