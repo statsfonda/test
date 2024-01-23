@@ -53,7 +53,7 @@ $$\hat{\bt} = (X^\top X)^{-1}X^\top Y.$${#eq-mco}
 
 :::{.proof}
 
-La projection orthogonale sur le sous-espace vectoriel engendré par les colonnes d'une matrice $X$ est la matrice $X(X^\top X)^{-1}X^\top$. Ainsi, la projection de $Y$ sur ce sous-espace est $X(X^\top X)^{-1}X^\top Y$, et c'est aussi (par définition de l'argmin) $X \hat{\bt}$. Comme $X$ est injective en vertu du théorème du rang, on en déduit le résultat. 
+La projection orthogonale sur le sous-espace vectoriel engendré par les colonnes d'une matrice $X$ est la matrice $X(X^\top X)^{-1}X^\top$, comme démontré dans l'appendice @sec-al. Ainsi, la projection de $Y$ sur ce sous-espace est $X(X^\top X)^{-1}X^\top Y$, et c'est aussi (par définition de l'argmin) $X \hat{\bt}$. Comme $X$ est injective en vertu du théorème du rang, on en déduit le résultat. 
 
 :::
 

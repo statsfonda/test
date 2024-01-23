@@ -34,6 +34,7 @@ book:
     - ch7.qmd
     - references.qmd
     - ref.qmd
+    - app1.qmd
   sidebar:
     style: docked
     logo: "images/logoUP.png"

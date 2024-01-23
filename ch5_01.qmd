@@ -27,7 +27,7 @@ $$\hat{\sigma}^2_n = \frac{|\hat\varepsilon|^2}{n-d}$$
 est un estimateur sans biais de $\sigma^2$. et ces deux variables aléatoires sont indépendantes. En particulier, $(n-d)\hat{\sigma}^2_n/\sigma^2 \sim \chi_2(n-d)$. 
 
 
-## Modèle linéaire général
+## Modèle linéaire général {#sec-mlgen}
 
 Il est possible de ne pas faire d'hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que $Y = X\bt + \varepsilon$, où les $\varepsilon_i$ sont iid, centrés, et de même variance $\sigma^2$ --- sous cette dernière hypothèse, on parle de modèle *homoscédastique*. 
 
@@ -57,3 +57,42 @@ converge en loi vers $N(0,\Sigma_x^2)$ : comme le terme $(X^\top X/n)^{-1}$ con
 
 
 [^1]:Celui qui est biaisé, contrairement à $\hat{\sigma}^2_n$. 
+
+## Ellipsoïde de confiance
+
+Les deux théorèmes énoncés ci-dessus permettent de définir des régions de confiance associées à $\bt$ ; ici, $\bt$ n'est plus un nombre réel mais un vecteur, d'où le terme de *région* et plus simplement d'*intervalle*. 
+
+### Préliminaire : la variance est connue {.unnumbered}
+
+Commençons par construire une région probable pour un vecteur gaussien $\xi \sim N(0,I_d)$. Nous savons que $|\xi|^2 \sim \chi_2(d)$. Si $\kappa_{d,1-\alpha}$ désigne le quantile d'ordre $1-\alpha$ de cette loi, on en déduit que $\xi$ est de norme inférieure à $\sqrt{\kappa_{d,1-\alpha}}$ avec probabilité $1-\alpha$ ; autrement dit, 
+$$ \mathbb{P}(0 \in B(\xi, \sqrt{\kappa})) = 1-\alpha.$$
+Il est immédiat d'en déduire que si $\xi \sim N(\mu, I_d)$, alors comme $\xi - \mu \sim N(0,I_d)$, on a
+$$ \mathbb{P}(\mu \in B(\xi, \sqrt{\kappa})) = 1-\alpha. $$
+Maintenant, en toute généralité, si $\xi \sim N(\mu,\Sigma)$, alors $\Sigma^{-1/2}(\xi - \mu) \sim N(0,I_d)$. On en déduit donc que 
+$$ \mathbb{P}(\mu \in \Sigma^{1/2} B(\xi, \sqrt{\kappa})) = 1-\alpha.$$
+La région de confiance est donc l'image de la boule $B(\xi, \sqrt{\kappa})$ par la matrice symétrique $\Sigma^{1/2}$ : c'est une ellipse. Par ailleurs, l'ensemble $\Sigma B(x, \delta)$ peut aussi s'écrire $\{y \in \mathbb{R}^d : |\Sigma^{1/2}(x - y)|^2 \leqslant \delta\}$. 
+
+En combinant ce résultat avec la loi de $\hat{\bt}$ donnée dans @thm-glm, on obtient la région de confiance 
+<!--$$ \left\lbrace \theta \in \mathbb{R}^d : \left|\frac{1}{\sigma}(X^{\top} X)^{1/2}(\hat{\bt} - \theta) \right|^2 < \kappa_{d,1-\alpha} \right\rbrace.$$
+Malheureusement, cette région nécessite de connaître $\sigma$. Lorsqu'on ne le connaît pas, il faut l'estimer. -->
+
+### Cas général {.unnumbered}
+
+Toujours sous le modèle linéaire gaussien, nous avons vu que la loi de $\left|\frac{1}{\sigma}(X^{\top} X)^{1/2}(\hat{\bt} - \bt)\right|^2 $ est une $\chi_2(d)$, et que la loi de $ \frac{(n-d)\hat{\sigma}_n^2}{\sigma^2}$
+est une $\chi_2(n-d)$. Par conséquent, la variable aléatoire 
+$$\frac{|(X^\top X)^{1/2}(\hat{\bt} - \bt)|^2}{\hat{\sigma}_n^2}$$
+a pour loi le rapport de lois du $\chi_2$ indépendantes de paramètres $d$ et $n-d$. Cette loi est connue : elle est égale à $(n-d)/d$ fois une *loi de Fisher* dont les propriétés sont données dans @sec-fisher. Cela donne directement le théorème suivant. 
+
+:::{#thm-ellipse}
+
+## Ellipse de confiance
+
+Soit $\hat{\bt}$ l'estimateur des MCO dans un modèle linéaire gaussien. 
+
+Si $f_{d,n-d,1-\alpha}$ est le quantile d'ordre $1-\alpha$ d'une loi $\mathscr{F}_{d,n-d}$, alors la région 
+$$ \left\lbrace \theta \in \mathbb{R}^d : \frac{|(X^\top X)^{1/2}(\hat{\bt} - \theta) |^2 / d}{\hat{\sigma}_n^2 / (n-d)} <  f_{d,n-d,1-\alpha} \right\rbrace $$
+est une région de confiance de niveau $1-\alpha$ pour $\bt$. 
+
+Lorsque le modèle n'est pas gaussien, mais qu'il vérifie les hypothèses de la section @sec-mlgen, le même résultat est valable mais le niveau de confiance de la région ci-dessus est *asymptotiquement* égal à $1-\alpha$. 
+
+:::

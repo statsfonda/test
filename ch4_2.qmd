@@ -33,7 +33,7 @@ $$ \Sigma = \mathrm{diag}(\mathbf{p}) - \mathbf{p}\mathbf{p}^\top.$${#eq-covarmu
 
 On commence par remarquer que $N = \sum_{i=1}^n Z_i$, où $Z_i=(\1_{X_i=1}, \dotsc, \1_{X_i=k})$. Les $Z_i$ sont iid de moyenne $\mathbf{p}$. Les covariances des entrées $i$ et $j$ de $Z_k$ sont données par 
 $$\mathbb{E}[\mathbf{1}_{X_k=i}\mathbf{1}_{X_k=j}] - p_i p_j = \delta_{i,j}p_i - p_i p_j,$$
-ce qui montre que la matrice de covariance des $Z_k$ est @eq-covarmultin. Comme $\E[|Z_1|^2]=1$, il suffit d'appliquer le TCL. 
+ce qui montre que la matrice de covariance des $Z_k$ est @eq-covarmultin. Il suffit alors d'appliquer le TCL. 
 
 :::
 
@@ -44,7 +44,7 @@ ce qui montre que la matrice de covariance des $Z_k$ est @eq-covarmultin. Comme 
 
 Le test du $\chi^2$ d'adéquation consiste à tester l'hypothèse nulle $$H_0: \mathbf{p}= \mathbf{p}_0$${#eq-chi2nul} contre l'hypothèse alternative
 $$H_1:\mathbf{p} \neq \mathbf{p}_0,$${#eq-chi2alt}
-pour une valeur de $\mathbf{p}_0$ fixée au préalable. 
+pour une valeur de $\mathbf{p}_0$ fixée au préalable. À partir de maintenant, on supposera implicitement que toutes les entrées de $\bp_0$ sont non nulles --- cela garantira que les limites en loi trouvées ci-dessous ne sont  pas dégénérées.  
 
 
 :::{#exm-testadeq}
@@ -57,8 +57,13 @@ Ce n'est pas le cas et cette hypothèse est très fréquemment réfutée : le pr
 
 :::
 
-Le théorème précédent dit que $\sqrt{n}(\frac{N}{n}- \mathbf{p}) \approx N(0, \Sigma)$. Ainsi, sous $H_0$,  $\mathrm{diag}(1/\sqrt{\mathbf{p}_0}) \sqrt{n}(\frac{N}{n}- \mathbf{p}_0)$ converge en loi vers  ${N}(0, I_k - \sqrt{\mathbf{p}_0} \sqrt{\mathbf{p}_0}^T)$
-(en supposant tout de même que pour tout $p_{j,0} > 0$ pour chaque $j$). En manipulant légèrement cette expression, on obtient la forme classique donnée dans la définition suivante. 
+Le théorème @thm-cvloimult dit que $\sqrt{n}(\frac{N}{n}- \mathbf{p}) \approx N(0, \Sigma)$. Notons $\sqrt{\bp_0} = (\sqrt{p_1}, \dotsc, \sqrt{p_k})$ et $D = \mathrm{diag}(\sqrt{\bp}_0)$. Sous $H_0$,  $D^{-1} \sqrt{n}(\frac{N}{n}- \mathbf{p}_0)$ converge en loi vers  $D^{-1}N(0,\Sigma) = N(0,D^{-1}\Sigma (D^{-1})^\top)$. Que vaut cette matrice de covariance ? 
+
+D'abord, comme $D$ est diagonale, $D^{-1}$ l'est aussi et $(D^{-1})^\top$ vaut $D^{-1}$. De plus, $D^2$ est égal à $\mathrm{diag}(\bp_0)$. Enfin, en faisant la multiplication on voit vite que $D^{-1}\bp_0 = \sqrt{\bp}_0$. Ainsi, on voit que $D^{-1}\Sigma D^{-1}$ vaut également 
+$$D^{-1}D^2 D^{-1} - D^{-1}\bp_0 \bp_0 D^{-1} = I_k - \sqrt{\bp}_0 \bp_0^{\top}.$$
+En regroupant tout cela, on obtient donc que $D^{-1}\sqrt{n}(N/n - \bp_0)$ converge en loi vers
+$$N(0, I_k - \sqrt{\mathbf{p}_0} \sqrt{\mathbf{p}_0}^T).$$
+La statistique qui va nous servir à faire des tests est tout simplement la norme au carré de $D^{-1}\sqrt{n}(N/n - \bp_0)$. En manipulant légèrement cette expression, on obtient sa forme usuelle, le *contraste du $\chi_2$*. 
 
 
 :::{#def-contraste}
@@ -80,7 +85,7 @@ Sous l'hypothèse nulle @eq-chi2nul, la statistique $D_n$ converge en loi vers $
 
 :::{.proof}
 
-La matrice $\pi_0=I_k -\sqrt{\mathbf{p}_0} \sqrt{\mathbf{p}_0}^T$ est la matrice de projection sur l'orthogonal du vecteur $\sqrt{\mathbf{p}_0}$. Le théorème de Cochran (@thm-cochran) implique alors que la statistique $D_n$, qui est égale à 
+Comme $|\sqrt{\bp_0}|$ vaut 1, la matrice $\pi_0=I_k -\sqrt{\mathbf{p}_0} \sqrt{\mathbf{p}_0}^T$ est la matrice de projection sur l'orthogonal du vecteur $\sqrt{\mathbf{p}_0}$ (je vous renvoie à l'appendice @sec-al). Le théorème de Cochran (@thm-cochran) implique alors que la statistique $D_n$, qui est égale à 
 $$
 \left| \mathrm{diag}(1/\sqrt{\mathbf{p}_0}) \sqrt{n}\left(\frac{N}{n}- \mathbf{p}_0\right) \right |^2, $${#eq-contraste1}
 converge en loi vers la norme de la projection d'une gaussienne $N(0,I_k)$ sur un sous-espace de dimension $k-1$, c'est-à-dire une loi $\chi_2(k-1)$. Sous l'hypothèse alternative, il y a au moins un $p_i$ non nul tel que $p_i \neq (p_0)_i$. Ainsi, @eq-contraste1 est plus grand que $n(N_i/n - (p_0)_i)^2 / p_i$, mais $N_i$ suit une loi $\mathrm{Bin}(n,p_i)$ et donc $N_i / n$ converge en probabilité vers $p_i$. Il est alors clair que $n(N_i/n - (p_0)_i)$ converge vers $+\infty$.

@@ -27,8 +27,8 @@ Pour tous les cas suivants, il faut savoir réaliser rapidement un test puissant
 
 Soient $X_1, \dotsc, X_n$ des variables indépendantes de loi $\chi_2(p)$. On cherche à tester l'hypothèse nulle $p=1$ contre l'hypothèse alternative $p=2$. 
 
-1. Écrire le test ayant la plus grande affinité possible. 
-2. Essayer de calculer l'affinité de ce test ; si ce n'est pas possible, essayer de la borner. 
+1. Écrire la forme de la région de rejet des tests de rapport de vraisemblance. 
+2. Essayer de calculer le niveau de ce test ; si ce n'est pas possible, essayer de le borner. 
 
 :::
 
@@ -139,7 +139,7 @@ L'argent fait-il le bonheur ?
 
 :::
 
-## Annales de partiel
+# Annales de partiel
 
 Je ne garantis pas que les notations et les concepts utilisés dans ces annales soient en phase avec le cours de cette année !
 

@@ -2,4 +2,13 @@
 
 ## Questions
 
-auinesanea
+- Retrouver la formule des MCO par une méthode analytique. 
+
+## Exercices
+
+:::{#exr-regl2}
+
+Montrer que pour tout $\lambda\geqslant 0$, la solution au problème 
+$$ \arg \min |Y - X\theta|^2 + \lambda |\theta|^2$$
+est donnée par $(X^\top X + \lambda I_d)^{-1}X^\top Y$. 
+:::
