@@ -1,0 +1,7 @@
+# ٭ Exercices
+
+:::{exr-mlef}
+
+Soit $\hat{\theta}$ l'estimateur du maximum de vraisemblance d'un paramètre $\theta$ dans un modèle régulier. Montrer que $f(\hat{\theta})$ est l'estimateur du maximum de vraisemblance de $f(\theta)$, pour n'importe quelle fonction $\theta$ raisonnable. 
+
+:::
