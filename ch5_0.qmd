@@ -57,8 +57,24 @@ La projection orthogonale sur le sous-espace vectoriel engendré par les colonne
 
 :::
 
-Le vecteur $\hat{Y} = X\hat{\bt}$ est appelé *vecteur des prédictions*. Le vecteur $\hat{\varepsilon} = Y-\hat{Y} = Y - X\hat{\bt}$ est appelé *vecteur des résidus*. Si ce dernier est nul ou très petit, cela veut dire que les $Y$ sont presque parfaitement des fonctions linéaires des $X$. 
 
 L'expression @eq-mco possède de nombreuses expressions alternatives. Parmi elles, on pourra noter que 
 $$\hat{\bt} = \bt + \left(\frac{1}{n}\sum_{i=1}^n \bx_i\bx_i^\top\right)^{-1}\frac{1}{n}\sum_{i=1}^n \bx_i \varepsilon_i. $${#eq-mco-alt}
 
+**Remarque générale.** Si, en dimension 1, on cherche à trouver le $\theta$ qui résout l'équation $y = x\theta$, on trouve évidemment $\theta = y/x$, c'est-à-dire qu'on *divise* $y$ par $x$, ou encore qu'on multiplie $y$ par l'inverse de $x$. En dimension supérieure, quand on veut résoudre en $\theta$ l'équation $Y = X\theta$, c'est pareil. Le problème, c'est qu'on ne sait pas forcément *inverser* $X$. La formule @eq-mco dit que même si $X$ n'est pas inversible, on peut quand même "diviser par $X$" : c'est pour cela que la matrice $(X^\top X)^{-1} X^\top$ est appelée *pseudo-inverse à gauche* de $X$ -- parfois associée au nom de Moore-Penrose. Multiplier $Y$ par $(X^\top X)^{-1}X^\top$ donne $(X^\top X)^{-1}X^\top Y = \hat{\bt}$ : ce vecteur ne vérifier par forcément $X{\hat{\bt}} = Y$, mais parmi tous les vecteurs possibles, c'est celui qui rend $X\bt$ le plus proche possible de $Y$.
+
+
+## Résidus et $R^2$
+
+Le vecteur $\hat{Y} = X\hat{\bt}$ est appelé *vecteur des prédictions*. Le vecteur $\hat{\varepsilon} = Y-\hat{Y} = Y - X\hat{\bt}$ est appelé *vecteur des résidus*. Si ce dernier est nul ou très petit, cela veut dire que les $Y$ sont presque parfaitement des fonctions linéaires des $X$. 
+
+
+
+:::{#def-rdeux}
+
+Le coefficient de détermination de la régression @eq-mco est défini par 
+$$R^2 = \frac{\sum_{i=1}^n |\hat{y}_i - \bar{y}|^2}{\sum_{i=1}^n |y_i - \bar{y}|^2}. $$
+C'est un nombre entre 0 et 1. 
+:::
+
+Plus le coefficient de détermination est proche de 1, meilleure est la régression -- attention, cet indicateur possède de nombreuses limites. 

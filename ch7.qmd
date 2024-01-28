@@ -1,3 +1,27 @@
 # Estimation de densité
 
-Cours 11-12
+:::{#thm-glivenko}
+
+# Glivenko-Cantelli
+
+Soient $X_1, \dotsc, X_n$ des variables iid, de fonction de répartition $F$, et soit $F_n$ leur fonction de répartition empirique. Alors, $\mathbb{P}$-presque sûrement lorsque $n \to \infty on a $|\hat{F}_n - F|_\infty \to 0$. 
+
+:::
+
+
+:::{#thm-DKW}
+
+## Dvoretzky-Kiefer-Wolfowitz
+Dans le même contexte, pour tout $t>0$ on a 
+$$\mathbb{P}(|F_n - F|_\infty > t) \leqslant 2e^{-2nt^2}.$$
+
+:::
+
+:::{#thm-kolmo-smirnov}
+
+## Kolmogorov-Smirnov
+
+Toujours sous les hypothèses précédentes, $\sqrt{n}|F_n - F|_\infty$ converge en loi vers $|B|_\infty$, où $(B_t)_{t\in [0,1]}$ est un mouvement Brownien standard. Cette variable aléatoire possède une loi connue, appelée *loi de Kolmogorov-Smirnov*, de fonction de répartition
+$$\mathbb{P}(|B|_\infty \leqslant x) = 1 - 2\sum_{k=0}^\infty (-1)^k e^{-2x^2 (k+1)^2}.$$
+
+:::

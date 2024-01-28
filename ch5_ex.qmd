@@ -4,8 +4,25 @@
 
 - Retrouver la formule des MCO par une méthode analytique. 
 - Construire un intervalle de confiance de niveau $1-\alpha$ pour le coefficient $\theta_j$ d'une régression. 
+- Pourquoi les nombres $\ell^2_j = ((X^\top X)^{-1})_{j,j}$ sont-ils toujours des nombres positifs ?
+- Écrire explicitement les deux leviers dans un modèle linéaire simple en une dimension. 
+- Concrètement, comment s'interprète la condition "la matrice des variables explicatives $X$ est de rang $d$" ? Qu'est-ce qui ne va pas lorsque ce n'est pas le cas ?
+- Au lieu de faire un test de significativité sur un coefficient d'une régression linéaire (@thm-teststudent), tester $\theta_j=x$ pour n'importe quel $x$ (pas forcément $0$). 
+- Dans un ajustement affine sans constante $y_i=\beta x_i$, monter que $\hat{\beta} = \sum_{i=1}^n p_i y_i$ où $p_i = x_i/|x|^2$. 
+- Calculer la limite en loi de $\mathscr{F}_{r,n}$ lorsque $r$ est fixé et $n \to \infty$. 
+- Calculer la limite en loi de $\mathscr{F}_{n,n}$ lorsque $n \to \infty$. 
 
 ## Exercices
+
+
+:::{#exr-corrcaus}
+
+## Les limites du coefficient de détermination
+
+1. Construire un jeu de variables explicatives $x_i$ et expliquées $y_i$ tel que l'ajustement affine des $x$ vers les $y$ possède un $R^2$ égal à 0 (aucune significativité linéaire), mais tel que les $y_i$ sont parfaitement déterminés par les $x_i$ (c'est-à-dire tels qu'il y a une fonction $f$ avec $f(x_i)=y_i$ pour tout $i$). 
+2. Montrer qu'ajouter des variables explicatives dans un modèle augmente le coefficient de détermination. 
+
+:::
 
 :::{#exr-regl2}
 
@@ -13,3 +30,47 @@ Montrer que pour tout $\lambda\geqslant 0$, la solution au problème
 $$ \arg \min |Y - X\theta|^2 + \lambda |\theta|^2$$
 est donnée par $(X^\top X + \lambda I_d)^{-1}X^\top Y$. 
 :::
+
+:::{#exr-uniquecontrainte}
+
+Dans un modèle linéaire $Y = X\bt + \varepsilon$, on cherche à tester une unique contrainte linéaire, à savoir $\langle z, \bt \rangle = c$ où $z \in \mathbb{R}^d$ et $c \in \mathbb{R}$. 
+
+1. Montrer que dans ce cas, la statistique de Wald s'écrit $$ |\langle z, \hat{\bt}\rangle - c|^2/\hat{\sigma}_n^2\langle z, (X^\top X)^{-1}z\rangle.$$
+Écrire le test associé à cette statistique. 
+1. Trouver un estimateur $\hat{\tau}^2$ de la variance de $\langle z, \hat{\bt}\rangle -c$. Sous l'hypothèse nulle, quelle est la loi de $(\langle z, \hat{\bt}\rangle -c)/\hat{\tau}_n$ ? En déduire un test associé à cette statistique. 
+2. Montrer que les deux tests sont équivalents. 
+
+:::
+
+
+:::{#exr-aju}
+
+Soient $(x_1, y_1), \dotsc, (x_n, y_n)$ des points dans $\mathbb{R}^2$. Comparer l'ajustement affine des $x$ vers les $y$, et l'ajustement affine des $y$ vers les $x$. 
+
+:::
+
+
+:::{#exr-chow}
+
+## Test de Chow
+
+On dispose de deux jeux de données, disons $(X^1_1, Y^1_1), \dotsc, (X^1_n, Y^2_n)$ et $(X^2_{1}, Y^2_{1}), \dotsc, (X^2_m, Y^2_m)$. Dans les deux régressions $Y^1 = X^1 \bt^1+ \varepsilon^1$ et $Y^2 = X^2\bt^2+\varepsilon^2$, on souhaite tester si $\bt^1 = \bt^2$. 
+
+1. On suppose dans un premier temps que les erreurs $\varepsilon^1, \varepsilon^2$ ont la même loi, avec une variance $\sigma^2$ connue. Proposer un test simple de l'hypothèse nulle. 
+2. Même question lorsque $\sigma$ n'est pas connue.
+3. Même question lorsque $\varepsilon^1,\varepsilon^2$ n'ont pas la même variance. 
+
+:::
+
+:::{#exr-covnonscal}
+
+On se place dans un modèle linéaire *gaussien* de la forme $Y = X\bt + \varepsilon$, mais on suppose que les entrées de $\varepsilon_i$ ne sont plus iid, mais possèdent une covariance $\Sigma$ non scalaire. 
+
+1. Si l'on connaît $\Sigma$, on pose $Y' = \Sigma^{-1/2}Y$ et $X' = \Omega^{-1/2}X$. Montrer que $$\hat{\bt}_{\mathrm{MCG}}= (X^\top \Sigma^{-1} X)^{-1}X^\top \Sigma^{-1}Y$$
+est un estimateur sans biais de $\bt$, appelé *estimateur des moindres carrés généralisés*. 
+2. On suppose qu'on dispose d'un estimateur $\hat{\Sigma}$ de $\Sigma$. Montrer que 
+$$(X^\top \hat{\Sigma}^{-1} X)^{-1}X^\top \hat{\Sigma}^{-1}Y$$
+est un estimateur asymptotiquement normal et sans biais de $\bt$. 
+:::
+
+

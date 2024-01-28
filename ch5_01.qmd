@@ -9,6 +9,8 @@ Dans ce modèle, la loi de l'estimateur @eq-mco est connue. Par simplicité, je 
 
 :::{#thm-glm}
 
+## Loi de $\hat{\theta}$
+
 Sous le modèle linéaire gaussien $P_{\bt, \sigma^2}$, 
 $$\hat{\bt} \sim N(\bt, \sigma^2 (X^\top X)^{-1}), $$
 $$\frac{|\hat{\varepsilon}|^2}{\sigma^2} \sim \chi_2(n-d), $$
