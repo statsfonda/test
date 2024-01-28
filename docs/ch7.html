@@ -292,7 +292,15 @@ $$
 
 </header>
 
-<p>Cours 11-12</p>
+<div id="thm-glivenko" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 20.1 (Glivenko-Cantelli) </strong></span>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> des variables iid, de fonction de répartition <span class="math inline">\(F\)</span>, et soit <span class="math inline">\(F_n\)</span> leur fonction de répartition empirique. Alors, <span class="math inline">\(\mathbb{P}\)</span>-presque sûrement lorsque $n on a <span class="math inline">\(|\hat{F}_n - F|_\infty \to 0\)</span>.</p>
+</div>
+<div id="thm-DKW" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 20.2 (Dvoretzky-Kiefer-Wolfowitz) </strong></span>Dans le même contexte, pour tout <span class="math inline">\(t&gt;0\)</span> on a <span class="math display">\[\mathbb{P}(|F_n - F|_\infty &gt; t) \leqslant 2e^{-2nt^2}.\]</span></p>
+</div>
+<div id="thm-kolmo-smirnov" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 20.3 (Kolmogorov-Smirnov) </strong></span>Toujours sous les hypothèses précédentes, <span class="math inline">\(\sqrt{n}|F_n - F|_\infty\)</span> converge en loi vers <span class="math inline">\(|B|_\infty\)</span>, où <span class="math inline">\((B_t)_{t\in [0,1]}\)</span> est un mouvement Brownien standard. Cette variable aléatoire possède une loi connue, appelée <em>loi de Kolmogorov-Smirnov</em>, de fonction de répartition <span class="math display">\[\mathbb{P}(|B|_\infty \leqslant x) = 1 - 2\sum_{k=0}^\infty (-1)^k e^{-2x^2 (k+1)^2}.\]</span></p>
+</div>
 
 
 

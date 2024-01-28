@@ -304,12 +304,52 @@ $$
 <ul>
 <li>Retrouver la formule des MCO par une méthode analytique.</li>
 <li>Construire un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour le coefficient <span class="math inline">\(\theta_j\)</span> d’une régression.</li>
+<li>Pourquoi les nombres <span class="math inline">\(\ell^2_j = ((X^\top X)^{-1})_{j,j}\)</span> sont-ils toujours des nombres positifs ?</li>
+<li>Écrire explicitement les deux leviers dans un modèle linéaire simple en une dimension.</li>
+<li>Concrètement, comment s’interprète la condition “la matrice des variables explicatives <span class="math inline">\(X\)</span> est de rang <span class="math inline">\(d\)</span>” ? Qu’est-ce qui ne va pas lorsque ce n’est pas le cas ?</li>
+<li>Au lieu de faire un test de significativité sur un coefficient d’une régression linéaire (<a href="ch5_2.html#thm-teststudent">Théorème&nbsp;<span>15.1</span></a>), tester <span class="math inline">\(\theta_j=x\)</span> pour n’importe quel <span class="math inline">\(x\)</span> (pas forcément <span class="math inline">\(0\)</span>).</li>
+<li>Dans un ajustement affine sans constante <span class="math inline">\(y_i=\beta x_i\)</span>, monter que <span class="math inline">\(\hat{\beta} = \sum_{i=1}^n p_i y_i\)</span> où <span class="math inline">\(p_i = x_i/|x|^2\)</span>.</li>
+<li>Calculer la limite en loi de <span class="math inline">\(\mathscr{F}_{r,n}\)</span> lorsque <span class="math inline">\(r\)</span> est fixé et <span class="math inline">\(n \to \infty\)</span>.</li>
+<li>Calculer la limite en loi de <span class="math inline">\(\mathscr{F}_{n,n}\)</span> lorsque <span class="math inline">\(n \to \infty\)</span>.</li>
 </ul>
 </section>
 <section id="exercices" class="level2" data-number="16.2">
 <h2 data-number="16.2" class="anchored" data-anchor-id="exercices"><span class="header-section-number">16.2</span> Exercices</h2>
+<div id="exr-corrcaus" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 16.1 (Les limites du coefficient de détermination) </strong></span>&nbsp;</p>
+<ol type="1">
+<li>Construire un jeu de variables explicatives <span class="math inline">\(x_i\)</span> et expliquées <span class="math inline">\(y_i\)</span> tel que l’ajustement affine des <span class="math inline">\(x\)</span> vers les <span class="math inline">\(y\)</span> possède un <span class="math inline">\(R^2\)</span> égal à 0 (aucune significativité linéaire), mais tel que les <span class="math inline">\(y_i\)</span> sont parfaitement déterminés par les <span class="math inline">\(x_i\)</span> (c’est-à-dire tels qu’il y a une fonction <span class="math inline">\(f\)</span> avec <span class="math inline">\(f(x_i)=y_i\)</span> pour tout <span class="math inline">\(i\)</span>).</li>
+<li>Montrer qu’ajouter des variables explicatives dans un modèle augmente le coefficient de détermination.</li>
+</ol>
+</div>
 <div id="exr-regl2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 16.1 </strong></span>Montrer que pour tout <span class="math inline">\(\lambda\geqslant 0\)</span>, la solution au problème <span class="math display">\[ \arg \min |Y - X\theta|^2 + \lambda |\theta|^2\]</span> est donnée par <span class="math inline">\((X^\top X + \lambda I_d)^{-1}X^\top Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercice 16.2 </strong></span>Montrer que pour tout <span class="math inline">\(\lambda\geqslant 0\)</span>, la solution au problème <span class="math display">\[ \arg \min |Y - X\theta|^2 + \lambda |\theta|^2\]</span> est donnée par <span class="math inline">\((X^\top X + \lambda I_d)^{-1}X^\top Y\)</span>.</p>
+</div>
+<div id="exr-uniquecontrainte" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 16.3 </strong></span>Dans un modèle linéaire <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, on cherche à tester une unique contrainte linéaire, à savoir <span class="math inline">\(\langle z, \bt \rangle = c\)</span> où <span class="math inline">\(z \in \mathbb{R}^d\)</span> et <span class="math inline">\(c \in \mathbb{R}\)</span>.</p>
+<ol type="1">
+<li>Montrer que dans ce cas, la statistique de Wald s’écrit <span class="math display">\[ |\langle z, \hat{\bt}\rangle - c|^2/\hat{\sigma}_n^2\langle z, (X^\top X)^{-1}z\rangle.\]</span> Écrire le test associé à cette statistique.</li>
+<li>Trouver un estimateur <span class="math inline">\(\hat{\tau}^2\)</span> de la variance de <span class="math inline">\(\langle z, \hat{\bt}\rangle -c\)</span>. Sous l’hypothèse nulle, quelle est la loi de <span class="math inline">\((\langle z, \hat{\bt}\rangle -c)/\hat{\tau}_n\)</span> ? En déduire un test associé à cette statistique.</li>
+<li>Montrer que les deux tests sont équivalents.</li>
+</ol>
+</div>
+<div id="exr-aju" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 16.4 </strong></span>Soient <span class="math inline">\((x_1, y_1), \dotsc, (x_n, y_n)\)</span> des points dans <span class="math inline">\(\mathbb{R}^2\)</span>. Comparer l’ajustement affine des <span class="math inline">\(x\)</span> vers les <span class="math inline">\(y\)</span>, et l’ajustement affine des <span class="math inline">\(y\)</span> vers les <span class="math inline">\(x\)</span>.</p>
+</div>
+<div id="exr-chow" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 16.5 (Test de Chow) </strong></span>On dispose de deux jeux de données, disons <span class="math inline">\((X^1_1, Y^1_1), \dotsc, (X^1_n, Y^2_n)\)</span> et <span class="math inline">\((X^2_{1}, Y^2_{1}), \dotsc, (X^2_m, Y^2_m)\)</span>. Dans les deux régressions <span class="math inline">\(Y^1 = X^1 \bt^1+ \varepsilon^1\)</span> et <span class="math inline">\(Y^2 = X^2\bt^2+\varepsilon^2\)</span>, on souhaite tester si <span class="math inline">\(\bt^1 = \bt^2\)</span>.</p>
+<ol type="1">
+<li>On suppose dans un premier temps que les erreurs <span class="math inline">\(\varepsilon^1, \varepsilon^2\)</span> ont la même loi, avec une variance <span class="math inline">\(\sigma^2\)</span> connue. Proposer un test simple de l’hypothèse nulle.</li>
+<li>Même question lorsque <span class="math inline">\(\sigma\)</span> n’est pas connue.</li>
+<li>Même question lorsque <span class="math inline">\(\varepsilon^1,\varepsilon^2\)</span> n’ont pas la même variance.</li>
+</ol>
+</div>
+<div id="exr-covnonscal" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 16.6 </strong></span>On se place dans un modèle linéaire <em>gaussien</em> de la forme <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, mais on suppose que les entrées de <span class="math inline">\(\varepsilon_i\)</span> ne sont plus iid, mais possèdent une covariance <span class="math inline">\(\Sigma\)</span> non scalaire.</p>
+<ol type="1">
+<li>Si l’on connaît <span class="math inline">\(\Sigma\)</span>, on pose <span class="math inline">\(Y' = \Sigma^{-1/2}Y\)</span> et <span class="math inline">\(X' = \Omega^{-1/2}X\)</span>. Montrer que <span class="math display">\[\hat{\bt}_{\mathrm{MCG}}= (X^\top \Sigma^{-1} X)^{-1}X^\top \Sigma^{-1}Y\]</span> est un estimateur sans biais de <span class="math inline">\(\bt\)</span>, appelé <em>estimateur des moindres carrés généralisés</em>.</li>
+<li>On suppose qu’on dispose d’un estimateur <span class="math inline">\(\hat{\Sigma}\)</span> de <span class="math inline">\(\Sigma\)</span>. Montrer que <span class="math display">\[(X^\top \hat{\Sigma}^{-1} X)^{-1}X^\top \hat{\Sigma}^{-1}Y\]</span> est un estimateur asymptotiquement normal et sans biais de <span class="math inline">\(\bt\)</span>.</li>
+</ol>
 </div>
 
 
