@@ -71,6 +71,27 @@ est un estimateur sans biais de $\bt$, appelé *estimateur des moindres carrés 
 2. On suppose qu'on dispose d'un estimateur $\hat{\Sigma}$ de $\Sigma$. Montrer que 
 $$(X^\top \hat{\Sigma}^{-1} X)^{-1}X^\top \hat{\Sigma}^{-1}Y$$
 est un estimateur asymptotiquement normal et sans biais de $\bt$. 
+
 :::
 
+
+:::{#exr-prediction}
+
+On considère le modèle de régression linéaire $y_i=b_0+b_1x_i+\varepsilon_i$ où $i = 1, \dotsc, n$ et les $\varepsilon_i$ sont des variables aléatoires indépendantes ${\mathcal N}(0,\sigma^2)$ et 
+$b_0,b_1$ et $\sigma^2$ sont inconnus.
+
+1. Donner les estimateurs des moindres carrés ordinaires $\hat{b}_0,\hat{b}_1$ et $\hat{\sigma}^2$ et leur loi jointe.
+2. On dispose d'une nouvelle observation, disons $y_0$, pour laquelle la valeur de $x_0$ de la variable explicative est inconnue. L'objectif est d'estimer $x_0$.  On suppose que $y_0$ est une réalisation d'une variable aléatoire $Y_0$ s'écrivant $Y_0=b_0+b_1x_0+\eta$, avec $\eta$ une erreur d'observation de loi $N(0,\sigma^2)$ indépendante des $\varepsilon_i$. 
+On suppose en outre que la variable que l'on cherche, $x_0$, n'est pas trop éloignée des autres $x_i$ : $|x_0- \bar x| \leq 1$. 
+    i) Quelle est la loi de $Y_0-\hat{b}_0-\hat{b}_1x_0$ ?
+    ii) En utilisant l'estimateur $\hat{\sigma}$ de ${\sigma}$, déterminer un intervalle de confiance de niveau $1-\alpha$ pour $x_0$.
+1.  On dispose maintenant de $m$ observations $y_{0,1},\dots,y_{0,m}$ correspondant à la valeur $x_0$ inconnue ; ce sont des réalisations de copies indépendantes $Y_{0,j}$ de $Y_0$. 
+    i) Montrer que 
+    $$\tilde{\sigma}^2=\frac{(n-2)\hat{\sigma}^2+\sum_{j=1}^{m}(Y_{0j}-\bar{Y}_0)^2}{n+m-3}$$
+    est un estimateur sans biais de $\sigma^2$. Quelle est sa loi ?
+    ii) Quelle est la loi de $\bar{Y}_0-\hat{b}_0-\hat{b}_1x_0$ ?
+    iii) A l'aide de $\tilde{\sigma}^2$ et de $\bar{Y}_0$, donner un intervalle de confiance pour $x_0$ de niveau $1-\alpha$.
+    iv) Aurait-on pu construire un intervalle de confiance pour $x_0$ à l'aide de $\hat{\sigma}^2$ et de $\bar{Y}_0$ ?
+
+:::
 
