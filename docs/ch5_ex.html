@@ -351,6 +351,24 @@ $$
 <li>On suppose qu’on dispose d’un estimateur <span class="math inline">\(\hat{\Sigma}\)</span> de <span class="math inline">\(\Sigma\)</span>. Montrer que <span class="math display">\[(X^\top \hat{\Sigma}^{-1} X)^{-1}X^\top \hat{\Sigma}^{-1}Y\]</span> est un estimateur asymptotiquement normal et sans biais de <span class="math inline">\(\bt\)</span>.</li>
 </ol>
 </div>
+<div id="exr-prediction" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 16.7 </strong></span>On considère le modèle de régression linéaire <span class="math inline">\(y_i=b_0+b_1x_i+\varepsilon_i\)</span> où <span class="math inline">\(i = 1, \dotsc, n\)</span> et les <span class="math inline">\(\varepsilon_i\)</span> sont des variables aléatoires indépendantes <span class="math inline">\({\mathcal N}(0,\sigma^2)\)</span> et <span class="math inline">\(b_0,b_1\)</span> et <span class="math inline">\(\sigma^2\)</span> sont inconnus.</p>
+<ol type="1">
+<li>Donner les estimateurs des moindres carrés ordinaires <span class="math inline">\(\hat{b}_0,\hat{b}_1\)</span> et <span class="math inline">\(\hat{\sigma}^2\)</span> et leur loi jointe.</li>
+<li>On dispose d’une nouvelle observation, disons <span class="math inline">\(y_0\)</span>, pour laquelle la valeur de <span class="math inline">\(x_0\)</span> de la variable explicative est inconnue. L’objectif est d’estimer <span class="math inline">\(x_0\)</span>. On suppose que <span class="math inline">\(y_0\)</span> est une réalisation d’une variable aléatoire <span class="math inline">\(Y_0\)</span> s’écrivant <span class="math inline">\(Y_0=b_0+b_1x_0+\eta\)</span>, avec <span class="math inline">\(\eta\)</span> une erreur d’observation de loi <span class="math inline">\(N(0,\sigma^2)\)</span> indépendante des <span class="math inline">\(\varepsilon_i\)</span>. On suppose en outre que la variable que l’on cherche, <span class="math inline">\(x_0\)</span>, n’est pas trop éloignée des autres <span class="math inline">\(x_i\)</span> : <span class="math inline">\(|x_0- \bar x| \leq 1\)</span>.
+<ol type="i">
+<li>Quelle est la loi de <span class="math inline">\(Y_0-\hat{b}_0-\hat{b}_1x_0\)</span> ?</li>
+<li>En utilisant l’estimateur <span class="math inline">\(\hat{\sigma}\)</span> de <span class="math inline">\({\sigma}\)</span>, déterminer un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour <span class="math inline">\(x_0\)</span>.</li>
+</ol></li>
+<li>On dispose maintenant de <span class="math inline">\(m\)</span> observations <span class="math inline">\(y_{0,1},\dots,y_{0,m}\)</span> correspondant à la valeur <span class="math inline">\(x_0\)</span> inconnue ; ce sont des réalisations de copies indépendantes <span class="math inline">\(Y_{0,j}\)</span> de <span class="math inline">\(Y_0\)</span>.
+<ol type="i">
+<li>Montrer que <span class="math display">\[\tilde{\sigma}^2=\frac{(n-2)\hat{\sigma}^2+\sum_{j=1}^{m}(Y_{0j}-\bar{Y}_0)^2}{n+m-3}\]</span> est un estimateur sans biais de <span class="math inline">\(\sigma^2\)</span>. Quelle est sa loi ?</li>
+<li>Quelle est la loi de <span class="math inline">\(\bar{Y}_0-\hat{b}_0-\hat{b}_1x_0\)</span> ?</li>
+<li>A l’aide de <span class="math inline">\(\tilde{\sigma}^2\)</span> et de <span class="math inline">\(\bar{Y}_0\)</span>, donner un intervalle de confiance pour <span class="math inline">\(x_0\)</span> de niveau <span class="math inline">\(1-\alpha\)</span>.</li>
+<li>Aurait-on pu construire un intervalle de confiance pour <span class="math inline">\(x_0\)</span> à l’aide de <span class="math inline">\(\hat{\sigma}^2\)</span> et de <span class="math inline">\(\bar{Y}_0\)</span> ?</li>
+</ol></li>
+</ol>
+</div>
 
 
 </section>
