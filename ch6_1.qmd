@@ -1,2 +1,19 @@
 # Maximum de vraisemblance
 
+L'estimateur du maximum de vraisemblance est *le* paramètre pour lequel la vraisemblance des observations est maximale : 
+$$\hat{\theta} = \arg \max_{\theta \in \Theta} p_\theta(x_1, \dotsc, x_n).$${#eq-MV}
+Il n'est pas évident que ce maximum existe, ni que le minimeur soit unique. C'est en règle générale le cas, mais des cas limites existent où ça ne l'est pas -- parfois même dans des modèles exponentiels. Il existe un théorème général garantissant son existence et son unicité. 
+
+:::{#prp-maxvraisex}
+
+Dans un modèle exponentiel *identifiable* dont l'espace des paramètres est un ouvert convexe avec $\nu(\partial \Theta)=0$,  l'estimateur @eq-MV existe et il est unique. 
+
+:::
+
+La démonstration de ce théorème général repose sur des outils purement analytiques relativement simples : en particulier, sous les hypothèses ci-dessus, la fonction de log-vraisemblance $\theta \mapsto \ln p_\theta(x_1, \dotsc, x_n)$ est presque sûrement strictement concave et tend vers $0$ au bord du domaine : son maximum $\hat{\theta}$ est donc bien défini, grâce aux résultats généraux de convexité. 
+
+Trouver le maximum d'une fonction positive $f(x)$ et trouver le maximum de son logarithme $\ln f(x)$ reviennent au même : or, il est souvent bien plus facile dans les modèles exponentiels de maximiser le *logarithme* de la vraisemblance, qui dans un modèle exponentiel s'écrit 
+$$\ell(\theta | x_1, \dotsc, x_n) := \langle \theta, T(x)\rangle - \ln Z_\theta. $$
+On omettra presque systématiquement le fait que la log-vraisemblance dépend des observations $x_i$, et l'on notera simplement $\ell(\theta)$. Parfois, pour indiquer quand même que l'échantillon comporte $n$ éléments, on notera $\ell_n(\theta)$. 
+ En règle générale, @eq-MV est donc équivalent au problème du maximum de log-vraisemblance, 
+ $$ \hat{\theta} = \arg \max \ell(\theta)$$

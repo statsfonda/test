@@ -1,3 +1,38 @@
 # Modèles exponentiels
 
-Cours 8-9-10
+## Exemples 
+Jusqu'ici, nous avons vu de nombreux exemples de modèles statistiques. Dans la plupart des cas, les modèles en question modélisaient la loi de $n$ variables aléatoires indépendantes et identiquement distribuées selon une même loi $P$. Par exemple, la loi gaussienne a une densité par rapport à la mesure de Lebesgue : 
+$$ \frac{1}{\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2}}=\frac{1}{\sqrt{2\pi}e^{\frac{\mu^2}{2}}}e^{-\frac{x^2}{2}}e^{x\mu}.$$
+De même, la loi exponentielle a pour densité
+$$ \frac{1}{1/\lambda}e^{-\lambda x}$$
+Les lois discrètes ont une densité par rapport à la mesure de comptage : la loi de Bernoulli, par exemple, s'écrit 
+$$ p^n(1-p)^{1-n} = \frac{e^{n\ln(p/(1-p))}}{(1-p)^{-1}} $$
+avec $n$ valant zéro ou 1, ou encore la loi de Poisson 
+$$ e^{-\lambda}\frac{\lambda^n}{n!} = \frac{1}{e^{\lambda}}\frac{1}{n!}e^{-\lambda n}$$
+ou enfin la loi géométrique
+$$p^n(1-p) = \frac{e^{n\ln(p)}}{(1-p)^{-1}}.$$
+Dans tous ces exemples, j'ai volontairement écrit la densité de façon inhabituelle : tous ces modèles peuvent s'écrire sous la forme 
+$$ \frac{1}{Z(\theta)}h(x)e^{\theta \times f(x)}$$
+où $f$ et $g$ sont des fonctions qui ne dépendent pas de $\theta$, et où $Z$ est une constante qui ne dépend que de $\theta$. 
+
+## Modèles exponentiels
+
+Soit $\nu$ une mesure de référence ($\sigma$-finie) sur $\mathbb{R}^d$. Soit $\Theta \subset \mathbb{R}^p$ (l'espace des paramètres) et soit $T : \mathbb{R}^d \to \mathbb{R}^p$ une fonction mesurable. On suppose que pour tout $\theta \in \Theta$, la fonction $x \mapsto e^{-\langle \theta, T(x)\rangle}$ est intégrable par rapport à $\nu$ : son intégrale
+$$Z_\theta = \int e^{-\langle \theta, T(x)\rangle}\nu(dx)$$
+est appelée *fonction de partition*. 
+
+
+
+:::{#def-modele_expo}
+
+Le modèle exponentiel associé à $T$ est la famille de densités définie par 
+$$ p_\theta(x) = \frac{e^{\langle \theta, T(x)\rangle}}{Z_\theta}.$$
+
+:::
+
+
+## Statistiques exhaustives
+
+Une statistique $T$ est *exhaustive* lorsqu'il existe deux fonctions $g,h$ telles que
+$$ p_\theta(x) = g(x)h(T(x), \theta).$$ 
+Lorsqu'une statistique exhaustive existe, elle contient toute l'information sur $\theta$ que l'on peut obtenir à partir d'une observation $x$. 
