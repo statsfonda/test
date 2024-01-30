@@ -229,7 +229,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch6_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Information et entropie</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">L’information au sens de Fisher</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -272,6 +272,7 @@ $$
 \newcommand{\bt}{\boldsymbol{\theta}}
 \newcommand{\dkl}{\mathrm{d}_{\mathrm{KL}}}
 \newcommand{\dtv}{\mathrm{d}_{\mathrm{TV}}}
+\newcommand{\emv}{\hat{\theta}_{\mathrm{emv}}}
 $$
 </p></div>
 
@@ -292,6 +293,12 @@ $$
 
 </header>
 
+<p>L’estimateur du maximum de vraisemblance est <em>le</em> paramètre pour lequel la vraisemblance des observations est maximale : <span id="eq-MV"><span class="math display">\[\hat{\theta} = \arg \max_{\theta \in \Theta} p_\theta(x_1, \dotsc, x_n). \tag{18.1}\]</span></span> Il n’est pas évident que ce maximum existe, ni que le minimeur soit unique. C’est en règle générale le cas, mais des cas limites existent où ça ne l’est pas – parfois même dans des modèles exponentiels. Il existe un théorème général garantissant son existence et son unicité.</p>
+<div id="prp-maxvraisex" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 18.1 </strong></span>Dans un modèle exponentiel <em>identifiable</em> dont l’espace des paramètres est un ouvert convexe avec <span class="math inline">\(\nu(\partial \Theta)=0\)</span>, l’estimateur <a href="#eq-MV">Équation&nbsp;<span>18.1</span></a> existe et il est unique.</p>
+</div>
+<p>La démonstration de ce théorème général repose sur des outils purement analytiques relativement simples :&nbsp;en particulier, sous les hypothèses ci-dessus, la fonction de log-vraisemblance <span class="math inline">\(\theta \mapsto \ln p_\theta(x_1, \dotsc, x_n)\)</span> est presque sûrement strictement concave et tend vers <span class="math inline">\(0\)</span> au bord du domaine :&nbsp;son maximum <span class="math inline">\(\hat{\theta}\)</span> est donc bien défini, grâce aux résultats généraux de convexité.</p>
+<p>Trouver le maximum d’une fonction positive <span class="math inline">\(f(x)\)</span> et trouver le maximum de son logarithme <span class="math inline">\(\ln f(x)\)</span> reviennent au même : or, il est souvent bien plus facile dans les modèles exponentiels de maximiser le <em>logarithme</em> de la vraisemblance, qui dans un modèle exponentiel s’écrit <span class="math display">\[\ell(\theta | x_1, \dotsc, x_n) := \langle \theta, T(x)\rangle - \ln Z_\theta. \]</span> On omettra presque systématiquement le fait que la log-vraisemblance dépend des observations <span class="math inline">\(x_i\)</span>, et l’on notera simplement <span class="math inline">\(\ell(\theta)\)</span>. Parfois, pour indiquer quand même que l’échantillon comporte <span class="math inline">\(n\)</span> éléments, on notera <span class="math inline">\(\ell_n(\theta)\)</span>. En règle générale, <a href="#eq-MV">Équation&nbsp;<span>18.1</span></a> est donc équivalent au problème du maximum de log-vraisemblance, <span class="math display">\[ \hat{\theta} = \arg \max \ell(\theta)\]</span></p>
 
 
 
@@ -652,7 +659,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./ch6_2.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Information et entropie</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">L’information au sens de Fisher</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
