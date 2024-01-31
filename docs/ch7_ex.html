@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistiques Fondamentales - 10&nbsp; Modèles linéaires</title>
+<title>Statistiques Fondamentales - ٭ Exercices</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch5_1.html" rel="next">
-<link href="./ch5_0.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./ch7_1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch5_01.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modèles linéaires</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch7_ex.html">٭ Exercices</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -192,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch5_01.html" class="sidebar-item-text sidebar-link active">
+  <a href="./ch5_01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modèles linéaires</span></span></a>
   </div>
 </li>
@@ -252,7 +252,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch7_ex.html" class="sidebar-item-text sidebar-link">
+  <a href="./ch7_ex.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">٭ Exercices</span></a>
   </div>
 </li>
@@ -280,19 +280,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table des matières</h2>
-   
-  <ul>
-  <li><a href="#sec-mlg" id="toc-sec-mlg" class="nav-link active" data-scroll-target="#sec-mlg"><span class="header-section-number">10.1</span> Modèle gaussien</a></li>
-  <li><a href="#sec-mlgen" id="toc-sec-mlgen" class="nav-link" data-scroll-target="#sec-mlgen"><span class="header-section-number">10.2</span> Modèle linéaire général</a></li>
-  <li><a href="#ellipsoïde-de-confiance" id="toc-ellipsoïde-de-confiance" class="nav-link" data-scroll-target="#ellipsoïde-de-confiance"><span class="header-section-number">10.3</span> Ellipsoïde de confiance</a>
-  <ul class="collapse">
-  <li><a href="#préliminaire-la-variance-est-connue" id="toc-préliminaire-la-variance-est-connue" class="nav-link" data-scroll-target="#préliminaire-la-variance-est-connue">Préliminaire : la variance est connue</a></li>
-  <li><a href="#cas-général" id="toc-cas-général" class="nav-link" data-scroll-target="#cas-général">Cas général</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -308,7 +296,7 @@ $$
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modèles linéaires</span></h1>
+<h1 class="title">٭ Exercices</h1>
 </div>
 
 
@@ -323,51 +311,8 @@ $$
 
 </header>
 
-<section id="sec-mlg" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="sec-mlg"><span class="header-section-number">10.1</span> Modèle gaussien</h2>
-<p>À ce stade, nous n’avons fait aucune hypothèse statistique ni probabiliste sur le modèle :&nbsp;les <span class="math inline">\(\bx_i, y_i\)</span> étaient donnés tels quels. Le <em>modèle linéaire gaussien</em> avec variables explicatives <span class="math inline">\(\bx_1, \dotsc, \bx_n\)</span> exogènes consiste à supposer que <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, où <span class="math inline">\(\varepsilon = N(0,\sigma^2 I_n)\)</span>. Formellement, le modèle est indexé par <span class="math inline">\(\bt\)</span> et <span class="math inline">\(\sigma^2\)</span>, et donné par <span class="math display">\[P_{\bt, \sigma^2} = N(X\bt, \sigma^2 I_d).\]</span> Dans ce modèle, la loi de l’estimateur <a href="ch5_0.html#eq-mco">Équation&nbsp;<span>9.2</span></a> est connue. Par simplicité, je note <span class="math inline">\(H = X(X^\top X)^{-1}X^\top\)</span> la matrice de projection orthogonale sur l’espace vectoriel engendré par les colonnes de <span class="math inline">\(X\)</span>, qui est de dimension <span class="math inline">\(d\)</span>.</p>
-<div id="thm-glm" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 10.1 (Loi de <span class="math inline">\(\hat{\theta}\)</span>) </strong></span>Sous le modèle linéaire gaussien <span class="math inline">\(P_{\bt, \sigma^2}\)</span>, <span class="math display">\[\hat{\bt} \sim N(\bt, \sigma^2 (X^\top X)^{-1}), \]</span> <span class="math display">\[\frac{|\hat{\varepsilon}|^2}{\sigma^2} \sim \chi_2(n-d), \]</span> et ces deux variables aléatoires sont indépendantes.</p>
-</div>
-<div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>Ce n’est rien de plus que le théorème de Cochran appliqué à notre problème : en effet, le vecteur des résidus est la projection orthogonale de <span class="math inline">\(Y\)</span> sur le sous-espace orthogonal à l’espace des colonnes de <span class="math inline">\(X\)</span>.</p>
-</div>
-<p>La variable aléatoire <span class="math inline">\(|\hat\varepsilon|^2\)</span> est souvent appelée <em>Somme des Carrés des Résidus</em> (SCR). Le théorème précédent implique que <span class="math display">\[\hat{\sigma}^2_n = \frac{|\hat\varepsilon|^2}{n-d}\]</span> est un estimateur sans biais de <span class="math inline">\(\sigma^2\)</span>. et ces deux variables aléatoires sont indépendantes. En particulier, <span class="math inline">\((n-d)\hat{\sigma}^2_n/\sigma^2 \sim \chi_2(n-d)\)</span>.</p>
-</section>
-<section id="sec-mlgen" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="sec-mlgen"><span class="header-section-number">10.2</span> Modèle linéaire général</h2>
-<p>Il est possible de ne pas faire d’hypothèses gaussiennes sur le modèle. Dans ce cadre plus général, on supposera que <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, où les <span class="math inline">\(\varepsilon_i\)</span> sont iid, centrés, et de même variance <span class="math inline">\(\sigma^2\)</span> — sous cette dernière hypothèse, on parle de modèle <em>homoscédastique</em>.</p>
-<p>Sous ces hypothèses, <span class="math inline">\(\hat{\bt}\)</span> est toujours un estimateur sans biais de <span class="math inline">\(\bt\)</span> : cela se voit directement en prenant l’espérance de <a href="ch5_0.html#eq-mco-alt">Équation&nbsp;<span>9.3</span></a>. De plus, la loi de <span class="math inline">\(\bt\)</span> n’est plus gaussienne, mais <span class="math inline">\(\bt\)</span> est asymptotiquement normal sous des hypothèses supplémentaires sur <span class="math inline">\(X\)</span>. Ces hypothèses sont les suivantes.</p>
-<div class="{#hyp-?}">
-<p>On suppose que les variables explicatives <span class="math inline">\(\bx_i\)</span> vérifient la propriété suivante :&nbsp; <span id="eq-hyp-mco-x"><span class="math display">\[ \lim_{n \to \infty}\frac{1}{n}\sum_{i=1}^n \bx_i \bx_i^\top = \Sigma_x, \tag{10.1}\]</span></span> où <span class="math inline">\(\Sigma_x\)</span> est inversible. Cette propriété s’écrit aussi <span class="math inline">\(X^\top X / n \to \Sigma_x\)</span>.</p>
-</div>
-<div id="thm-mco-an" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 10.2 </strong></span>Sous les hypothèses précédentes, <span class="math inline">\(\sqrt{n}(\hat{\bt} - \bt)\)</span> converge en loi lorsque <span class="math inline">\(n\to\infty\)</span> vers <span class="math inline">\(N(0,\sigma^2\Sigma_x^{-1}).\)</span></p>
-</div>
-<div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>Rappelons que <span class="math inline">\(\hat{\bt}\)</span> peut s’écrire <span class="math inline">\(\bt + (X^\top X/n)^{-1}\frac{1}{n}\sum_{i=1}^n \bx_i \varepsilon_i\)</span>. Pour montrer que <span class="math inline">\(\sqrt{n}(\hat{\bt}-\bt)\)</span> converge, il suffit donc de démontrer que <span id="eq-proof-tcl-mco"><span class="math display">\[\sqrt{n}\frac{1}{n}\sum_{i=1}^n \bx_i \varepsilon_i  \tag{10.2}\]</span></span> converge en loi vers <span class="math inline">\(N(0,\Sigma_x^2)\)</span> :&nbsp;comme le terme <span class="math inline">\((X^\top X/n)^{-1}\)</span> converge vers <span class="math inline">\(\Sigma_x^{-1}\)</span> par hypothèse, la limite de <span class="math inline">\(\sqrt{n}(\hat{\bt} - \bt)\)</span> sera bien <span class="math inline">\(N(0,\Sigma_x^{-1}\Sigma_x\Sigma_x^{-1}) = N(0,\Sigma_x^{-1})\)</span>. Malheureusement, on ne peut pas directement appliquer le TCL classique à <a href="#eq-proof-tcl-mco">Équation&nbsp;<span>10.2</span></a> :&nbsp;en effet, les variables aléatoires <span class="math inline">\(X_i = \bx_i \varepsilon_i\)</span> ne sont pas identiquement distribuées. On doit pour cela appliquer une version plus générale du TCL, dite <em>de Linbeberg</em>, que je détaillerai plus tard.</p>
-</div>
-</section>
-<section id="ellipsoïde-de-confiance" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="ellipsoïde-de-confiance"><span class="header-section-number">10.3</span> Ellipsoïde de confiance</h2>
-<p>Les deux théorèmes énoncés ci-dessus permettent de définir des régions de confiance associées à <span class="math inline">\(\bt\)</span> ; ici, <span class="math inline">\(\bt\)</span> n’est plus un nombre réel mais un vecteur, d’où le terme de <em>région</em> et plus simplement d’<em>intervalle</em>.</p>
-<section id="préliminaire-la-variance-est-connue" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="préliminaire-la-variance-est-connue">Préliminaire : la variance est connue</h3>
-<p>Commençons par construire une région probable pour un vecteur gaussien <span class="math inline">\(\xi \sim N(0,I_d)\)</span>. Nous savons que <span class="math inline">\(|\xi|^2 \sim \chi_2(d)\)</span>. Si <span class="math inline">\(\kappa_{d,1-\alpha}\)</span> désigne le quantile d’ordre <span class="math inline">\(1-\alpha\)</span> de cette loi, on en déduit que <span class="math inline">\(\xi\)</span> est de norme inférieure à <span class="math inline">\(\sqrt{\kappa_{d,1-\alpha}}\)</span> avec probabilité <span class="math inline">\(1-\alpha\)</span> ;&nbsp;autrement dit, <span class="math display">\[ \mathbb{P}(0 \in B(\xi, \sqrt{\kappa})) = 1-\alpha.\]</span> Il est immédiat d’en déduire que si <span class="math inline">\(\xi \sim N(\mu, I_d)\)</span>, alors comme <span class="math inline">\(\xi - \mu \sim N(0,I_d)\)</span>, on a <span class="math display">\[ \mathbb{P}(\mu \in B(\xi, \sqrt{\kappa})) = 1-\alpha. \]</span> Maintenant, en toute généralité, si <span class="math inline">\(\xi \sim N(\mu,\Sigma)\)</span>, alors <span class="math inline">\(\Sigma^{-1/2}(\xi - \mu) \sim N(0,I_d)\)</span>. On en déduit donc que <span class="math display">\[ \mathbb{P}(\mu \in \Sigma^{1/2} B(\xi, \sqrt{\kappa})) = 1-\alpha.\]</span> La région de confiance est donc l’image de la boule <span class="math inline">\(B(\xi, \sqrt{\kappa})\)</span> par la matrice symétrique <span class="math inline">\(\Sigma^{1/2}\)</span> : c’est une ellipse. Par ailleurs, l’ensemble <span class="math inline">\(\Sigma B(x, \delta)\)</span> peut aussi s’écrire <span class="math inline">\(\{y \in \mathbb{R}^d :&nbsp;|\Sigma^{1/2}(x - y)|^2 \leqslant \delta\}\)</span>.</p>
-<p>En combinant ce résultat avec la loi de <span class="math inline">\(\hat{\bt}\)</span> donnée dans <a href="#thm-glm">Théorème&nbsp;<span>10.1</span></a>, on obtient la région de confiance <span class="math display">\[ \left\lbrace \theta \in \mathbb{R}^d : \left|\frac{1}{\sigma}(X^{\top} X)^{1/2}(\hat{\bt} - \theta) \right|^2 &lt; \kappa_{d,1-\alpha} \right\rbrace.\]</span> Malheureusement, cette région nécessite de connaître <span class="math inline">\(\sigma\)</span>. Lorsqu’on ne le connaît pas, il faut l’estimer.</p>
-</section>
-<section id="cas-général" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="cas-général">Cas général</h3>
-<p>Toujours sous le modèle linéaire gaussien, nous avons vu que la loi de <span class="math inline">\(|\sigma^{-1}(X^{\top} X)^{1/2}(\hat{\bt} - \bt)|^2\)</span> est une <span class="math inline">\(\chi_2(d)\)</span>, et que la loi de <span class="math inline">\((n-d)\hat{\sigma}_n^2\sigma^{-2}\)</span> est une <span class="math inline">\(\chi_2(n-d)\)</span>. Par conséquent, la variable aléatoire <span class="math display">\[\frac{|(X^\top X)^{1/2}(\hat{\bt} - \bt)|^2}{\hat{\sigma}_n^2}\]</span> a pour loi le rapport de lois du <span class="math inline">\(\chi_2\)</span> indépendantes de paramètres <span class="math inline">\(d\)</span> et <span class="math inline">\(n-d\)</span>. Cette loi est connue : elle est égale à <span class="math inline">\((n-d)/d\)</span> fois une <em>loi de Fisher</em> dont les propriétés sont données dans <a href="ch5_1.html#sec-fisher"><span>Section&nbsp;11.4</span></a>. Cela donne directement le théorème suivant.</p>
-<div id="thm-ellipse" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 10.3 (Ellipse de confiance) </strong></span>Soit <span class="math inline">\(\hat{\bt}\)</span> l’estimateur des MCO&nbsp;dans un modèle linéaire gaussien.</p>
-<p>Si <span class="math inline">\(f_{d,n-d,1-\alpha}\)</span> est le quantile d’ordre <span class="math inline">\(1-\alpha\)</span> d’une loi <span class="math inline">\(\mathscr{F}_{d,n-d}\)</span>, alors la région <span class="math display">\[ \left\lbrace \theta \in \mathbb{R}^d : \frac{|(X^\top X)^{1/2}(\hat{\bt} - \theta) |^2 / d}{\hat{\sigma}_n^2 / (n-d)} &lt;  f_{d,n-d,1-\alpha} \right\rbrace \]</span> est une région de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour <span class="math inline">\(\bt\)</span>.</p>
-<p>Lorsque le modèle n’est pas gaussien, mais qu’il vérifie les hypothèses de la section <a href="#sec-mlgen"><span>Section&nbsp;10.2</span></a>, le même résultat est valable mais le niveau de confiance de la région ci-dessus est <em>asymptotiquement</em> égal à <span class="math inline">\(1-\alpha\)</span>.</p>
-</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -720,13 +665,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch5_0.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Moindres carrés</span></span>
+      <a href="./ch7_1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Test de Kolmogorov-Smirnov</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch5_1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">Et après ?</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
