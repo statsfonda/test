@@ -1,12 +1,13 @@
-# L'information au sens de Fisher
+# L'information de Fisher
 
-## Score et information
+## Définitions
 
 
 :::{#def-score}
 
 ## Fonction de score
 
+Le score est la dérivée de la log-vraisemblance : 
 $$ s_\theta(x) = \nabla_\theta \ln p_\theta(x).$$
 
 :::
@@ -29,16 +30,15 @@ L'espérance du score est $\int p_\theta(x) \nabla_\theta \ln p_\theta(x) \nu(dx
 
 L'information de Fisher est la matrice de covariance du score : 
 
-$$ I(\theta) = E_\theta[\nabla \ell(\theta) \nabla \ell(\theta)^\top].$$
+$$I(\theta) = E_\theta[s_\theta(X) s_\theta(X)^\top].$$
 
 :::
 
-L'information de Fisher possède de nombreuses expressions alternatives. 
+L'information de Fisher possède de nombreuses expressions alternatives. Parmi elles, la suivante permet d'interpréter $I(\theta)$ comme la *courbure moyenne de l'entropie*. On note $\nabla^2_\theta f$ la matrice hessienne^[On rappelle que la Hessienne d'une fonction $f:\mathbb{R}^d \to \mathbb{R}$ est la matrice de ses dérivées secondes $$\frac{\partial^2}{\partial x_i \partial x_j}f(x_1, \dotsc, x_d)$$] d'une fonction $f$. 
 
 :::{#prp-courbure}
 
-L'information de Fisher est la moyenne de la hessienne : 
-$$ I(\theta) = - \mathbb{E}[\mathrm{Hessienne}\ln p_\theta(X)].$$
+$I(\theta) = - \nabla^2_\theta E_\theta[ \ln p_\theta(X)].$
 
 :::
 
@@ -46,16 +46,18 @@ $$ I(\theta) = - \mathbb{E}[\mathrm{Hessienne}\ln p_\theta(X)].$$
 
 L'intégrale en question est égale à $\int p_\theta \nabla_\theta^2\ln p_\theta$. Les règles de différentiation donnent 
 $$\nabla^2_\theta \ln p_\theta = \frac{p_\theta\nabla^2_\theta p_\theta}{p_\theta^2} -  \frac{\nabla_\theta p_\theta (\nabla_\theta p_\theta)^\top}{p_\theta^2}$$
-c'est-à-dire $\nabla^2_\theta p_\theta / p_\theta - s(\theta)s(\theta)^\top$. L'espérance de ceci par rapport à $p_\theta$ est donc égale à $\int \nabla^2_\theta p_\theta - I(\theta)$. Le premier terme est nul, encore par le théorème fondamental de l'analyse. 
+c'est-à-dire $\nabla^2_\theta p_\theta / p_\theta - s_\theta s_\theta^\top$. L'espérance de ceci par rapport à $p_\theta$ est donc égale à $\int \nabla^2_\theta p_\theta - I(\theta)$. Quant au premier terme, en intervertissant la dérivée seconde et l'intégrale, on voit qu'il est égal à la hessienne de la fonction constante égale à 1, donc il est nul. 
 :::
 
 ## L'EMV est asymptotiquement normal
+
+
 
 :::{#thm-emv-an}
 
 ## L'EMV est asymptotiquement normal
 
-$\sqrt{n}(\emv - \theta)$ converge en loi vers $N(0,I(\theta))$. 
+$\sqrt{n}(\emv - \theta)$ converge en loi vers $N(0,I(\theta)^{-1})$. 
 
 :::
 
@@ -67,11 +69,11 @@ $\sqrt{n}(\emv - \theta)$ converge en loi vers $N(0,I(\theta))$.
 
 ## Borne de Cramér-Rao
 
-Pour tout estimateur sans biais $\hat{\theta}$ de $\theta$, on a $I(\theta)^{-1} \preceq \mathrm{Cov}_\theta(\hat{\theta})$. 
+Pour tout estimateur sans biais $\hat{\theta}$ de $\theta$, on a^[Rappelons que, lorsque $A,B$ sont des matrices définies positives, $A \preceq B$ équivaut à ce que $\langle y, Ay\rangle \leqslant \langle y, By\rangle$ pour tout $y$. ] $I(\theta)^{-1} \preceq \mathrm{Cov}_\theta(\hat{\theta})$. 
 
 :::
 
-Rappelons que, lorsque $A,B$ sont des matrices définies positives, $A \preceq B$ équivaut à ce que $\langle y, Ay\rangle \leqslant \langle y, By\rangle$ pour tout $y$. 
+
 
 Lorsque le paramètre $\theta$ est réel, la borne de Cramér-Rao dit que le risque quadratique de n'importe quel estimateur sans biais ne peut pas être plus petit que $1/I(\theta)$. Les estimateurs sans biais qui atteignent cette borne sont appelés *efficaces*, ou asymptotiquement efficaces si leur risque quadratique converge vers cette borne.  
 
@@ -82,3 +84,5 @@ qui est le résultat voulu. Pour la dimension supérieure, il suffit d'appliquer
 $$\langle y, I(\theta)^{-1}y\rangle \leqslant \langle y, \mathrm{Cov}_\theta(T)y\rangle, $$
 qui montre bien que $I(\theta)^{-1} \preceq \mathrm{Cov}_\theta(T)$. 
 :::
+
+

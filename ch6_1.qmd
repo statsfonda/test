@@ -1,5 +1,7 @@
 # Maximum de vraisemblance
 
+## Définition
+
 L'estimateur du maximum de vraisemblance est *le* paramètre pour lequel la vraisemblance des observations est maximale : 
 $$\hat{\theta} = \arg \max_{\theta \in \Theta} p_\theta(x_1, \dotsc, x_n).$${#eq-MV}
 Il n'est pas évident que ce maximum existe, ni que le minimeur soit unique. C'est en règle générale le cas, mais des cas limites existent où ça ne l'est pas -- parfois même dans des modèles exponentiels. Il existe un théorème général garantissant son existence et son unicité. 
@@ -17,3 +19,32 @@ $$\ell(\theta | x_1, \dotsc, x_n) := \langle \theta, T(x)\rangle - \ln Z_\theta.
 On omettra presque systématiquement le fait que la log-vraisemblance dépend des observations $x_i$, et l'on notera simplement $\ell(\theta)$. Parfois, pour indiquer quand même que l'échantillon comporte $n$ éléments, on notera $\ell_n(\theta)$. 
  En règle générale, @eq-MV est donc équivalent au problème du maximum de log-vraisemblance, 
  $$ \hat{\theta} = \arg \max \ell(\theta)$$
+
+## L'EMV et les moments
+
+L'EMV maximise la log-vraisemblance. Lorsqu'il existe et qu'il est unique, il est donc l'unique solution de $\nabla_\theta \ell(\theta) = 0$. Cette équation s'écrit encore $T(x) = \nabla \ln Z_\theta$. Un calcul célèbre montre que 
+$$ \nabla \ln Z_\theta = E_\theta [T(X)].$$
+
+:::{.proof}
+
+Le gradient que l'on cherche à calculer vaut $\nabla Z_\theta / Z_\theta$. Or, en intervertissant le gradient et l'intégrale, on voit que le numérateur est égal à $\int T(x)e^{\langle \theta, T(x)\rangle}\nu(dx)$, ce qui donne l'égalité recherchée.
+
+:::
+
+Notons $\varphi(\theta) = E_\theta[T(X)]$. Le maximum de vraisemblance vérifie précisément l'équation des moments, $\varphi(\emv) = T(X)$. 
+
+:::{#thm-emv-mom}
+
+Dans un modèle iid, l'estimateur du maximum de vraisemblance vérifie 
+$$\emv = \varphi^{-1}(\bar{T}_n).$$
+:::
+
+Or, $\bar{T}_n$ est asymptotiquement normal. Plus précisément, sous $P_\theta$, 
+$$ \sqrt{n}(\bar{T}_n - \varphi(\theta))\to N(0,I(\theta))$$
+où l'on a défini 
+$$I(\theta) = \mathrm{Var}_\theta(T).$$
+En appliquant le théorème de la méthode des moments (@thm-mom), on voit donc que $\emv$ est asymptotiquement normal, au sens où $\sqrt{n}(\bar{T}_n - \theta)$ converge en loi vers une gaussienne centrée de matrice de variance
+$$ D\varphi(\theta)^{-1}\mathrm{Var}_\theta(T)(D\varphi(\theta)^{-1})^\top.$$
+Il se trouve que cette matrice est aisément calculable, et centrale dans la théorie des statistiques : il s'agit de la *matrice d'information de Fisher*, que nous étudierons dans la prochaine section. 
+
+

@@ -15,7 +15,7 @@ car c'est un estimateur de la variance de $\hat{\theta}_j$.
 :::{#thm-teststudent}
 
 Soit $t_{n-d, 1-\alpha}$ le quantile symétrique d'ordre $1-\alpha$ de la loi $\mathscr{T}(n-d)$. Dans un modèle gaussien, le test ayant pour région de rejet
-$$\left\lbrace  \frac{|\hat{\theta_j}|}{\hat{\sigma}_n \ell_j }> t_{n-d, 1-\alpha}\right\rbrace$$
+$$\left\lbrace  \frac{|\hat{\theta_j}|}{\hat{\sigma}(\hat{\theta}_j)}> t_{n-d, 1-\alpha}\right\rbrace$$
 est un test de significativité de $\theta_j$ au niveau $1-\alpha$. 
 
 Lorsque le modèle n'est pas gaussien mais vérifie les conditions de @sec-mlgen, ce test est asymptotiquement de niveau $1-\alpha$. 
@@ -23,14 +23,18 @@ Lorsque le modèle n'est pas gaussien mais vérifie les conditions de @sec-mlgen
 
 La statistique $|\hat{\theta}_j|/\hat{\sigma}(\hat{\theta}_j)$ qui apparaît ci-dessus est appelée *$\mathsf{t}$ de Student*. Les outils usuels de statistique donnent fréquemment la valeur de cette statistique pour chaque coefficient d'une régression, ainsi que la $p$-valeur du test qui est égale à 
 $$1-F_{n-d}(\mathsf{t}), $$
-et qui est fréquemment notée `Prob>t`. 
+où $F_{n-d}$ est la fonction de répartition d'une loi $\mathscr{T}(n-d)$. Cette quantité est fréquemment notée `Prob>t`. 
 
 
 
 ## Test de contraintes linéaires
 
-Soit $C$ une matrice $r \times d$ et $c$ un vecteur de taille $r$. On cherche à tester si $\bt$ vérifie les $r$ contraintes linéaires
+Les tests de contraintes linéaires consistent à tester si $\bt$ vérifie une équation linéaire. Le test de significativité est un test de contrainte linéaire : en notant $\delta_j$ le vecteur avec des zéro partout sauf en $j$, il s'agit du test de $\langle \delta_j, \bt\rangle = 0$. On pourrait cependant vouloir tester beaucoup d'autres contraintes de ce type : par exemple, savoir si l'influence de la variable $i$ et de la variable $j$ sont identiques se traduit par $\bt_i = \bt_j$, ou encore $\langle \delta_i - \delta_j, \bt\rangle = 0$. 
+
+Formellement, un test de contrainte linéaire consiste à tester si $\bt$
 $$C\bt = c.$$
+où $C$ une matrice $r \times d$ et $c$ un vecteur de taille $r$. Comme $r$ possède $r$ lignes, cela signifie que l'on test les $r$ contraintes $\langle C_i, \bt\rangle = c_i$, où $C_i$ est la $i$-ème ligne de $C$. 
+
 Sous cette hypothèse nulle, 
 $$C\hat{\bt}-c \sim N(0, \sigma^2 C(X^\top X)^{-1}C^\top).$$
 En multipliant par la matrice $[\sigma^{-2}C(X^\top X)^{-1}C^\top]^{-1/2}$ puis en prenant la norme au carré et en simplifiant l'expression, on voit que
@@ -46,17 +50,19 @@ $$ \frac{\langle C\hat{\bt}-c, C(X^\top X)^{-1}C^\top (C\hat{\bt}-c)\rangle /r}{
 
 :::
 
-La statistique @eq-wald est couramment appelée *statistique de Wald* associée au système linéaire $C\bt = c$. 
+La statistique @eq-wald est couramment appelée *statistique de Wald* associée au système linéaire $C\bt = c$. Formellement, la région de rejet du test de niveau $1-\alpha$ de ce l'hypothèse nulle $C\bt = c$ est donc donnée par 
+$$\left\lbrace \frac{\langle C\hat{\bt}-c, C(X^\top X)^{-1}C^\top (C\hat{\bt}-c)\rangle /r}{\hat{\sigma}_n^2}  > f^{r,n-d}_{1-\alpha} \right\rbrace$$
+où $f$ est le quantile d'ordre $1-\alpha$ de la loi $\mathscr{F}_{r,n-d}$. 
 
 ## Test de significativité globale de Fisher
 
 La significativité *globale* de la régression consiste à tester si tous les coefficients sont significatifs, sauf la constante. Il s'agit donc du test de l'hypothèse nulle
 $$ \theta_2 = \dotsb = \theta_d = 0.$$
-Il s'agit bien d'un test de contraintes linéaires : il y a exactement $d-1$ contraintes linéaires. En notant $C$ la matrice de taille $(d-1, d)$
+Il s'agit bien d'un test de contraintes linéaires au sens du paragraphe précédent : il y a exactement $d-1$ contraintes linéaires. En notant $C$ la matrice de taille $(d-1, d)$
 $$C = \begin{pmatrix}0 & 1 && 0 \\ \vdots \\ 0 & \dots && 1 \end{pmatrix}, $$
 on teste bien $C\bt = 0$. La matrice $C(X^\top X)^{-1}C^\top$ n'est autre que le bloc $B_X$ obtenu à partir de $(X^\top X)^{-1}$ en lui enlevant la première ligne et la première colonne (qui correspondent à la constante). La statistique de test devient alors 
 $$ \frac{\langle \hat{\bt'}, B_X \hat{\bt'} \rangle}{(d-1)\hat{\sigma}^2_n}.$${#eq-statfisher1}
-Cette quantité peut sembler difficile à calculer : elle ne l'est pas, et se simplifie remarquablement bien. 
+Cette quantité peut sembler difficile à calculer : elle ne l'est pas, et s'exprime à l'aide du coefficient de détermination @def-rdeux. 
 
 :::{#thm-fisher-sig}
 

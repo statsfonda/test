@@ -31,7 +31,10 @@ book:
     - ch6_0.qmd
     - ch6_1.qmd
     - ch6_2.qmd
-    - ch7.qmd
+    - ch6_ex.qmd
+    - ch7_0.qmd
+    - ch7_1.qmd
+    - ch7_ex.qmd
     - references.qmd
     - ref.qmd
     - app1.qmd

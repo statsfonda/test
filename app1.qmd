@@ -1,10 +1,37 @@
 # Algèbre linéaire {#sec-al}
 
+## Multiplication matricielle
+
+La pratique des régressions linéaires nécessite une certaine familiarité avec la multiplication des matrices. On rappelle que si $A$ est une matrice à $\ell$ lignes et $m$ colonnes, et que $B$ est une matrice à $m$ lignes et $n$ colonnes, alors il est possible de les multiplier entre elles. Il en résulte une matrice $AB$ avec $\ell$ lignes et $n$ colonnes, dont le terme $i,j$ est égal à 
+$$\sum_{k=1}^m A_{i,k}B_{k,j}. $$
+Ce terme peut aussi être vu comme $\langle A_{i, \cdot}, B_{\cdot, j}\rangle$, le produit scalaire entre la $i$-ème ligne de $A$ et la $j$-ème colonne de $B$. 
+
+De façon générale, le produit scalaire entre deux vecteurs de même taille, $\langle x, y\rangle$, est donc égal à la multiplication matricielle entre le vecteur ligne $x^\top$ et le vecteur colonne $y$. 
+
+Il est aussi possible de multiplier un vecteur ligne $x$ de taille $n$ et un vecteur colonne $y^\top$ de taille $m$, mais ici on n'a plus besoin que $n$ et $m$ soient égaux. Il en résulte une matrice de taille $n\times m$, 
+$$xy^\top = [x_i y_j]_{\substack{i=1, \dotsc, n\\ j=1,\dotsc, m}}.$$
+Si, comme tout à l'heure, $A$ est une matrice $\ell,n$ et $B$ une matrice $m,n$, notons $a_i$ les *colonnes* de $A$ (vecteurs colonnes) et $b_i$ les *lignes* de $B$ (vecteurs lignes). Alors, on peut écrire 
+$$ AB = \sum_{i=1}^m a_i b_i. $$
+En particulier, pour n'importe quelle matrice $X$ de taille $n,d$ dont les lignes sont $\bx_i$ (et donc, les colonnes de $X^\top$ sont les $\bx_i^\top$), alors on peut écrire
+$$X^\top X = \sum_{i=1}^n \bx_i^\top \bx_i.$$
+
+## Le théorème spectral
+
+Grâce aux manipulations ci-dessus, le théorème de décomposition en vecteurs propres prend une forme légèrement différente. Ce théorème dit habituellement que toute matrice $M$ symétrique réelle peut s'écrire $UDU^\top$, avec $U$ la matrice de passage dans la base des vecteurs propres et $D = \mathrm{diag}(\lambda_i)$ la matrice diagonale des valeurs propres. C'est donc la même chose que l'énoncé suivant. 
+
+:::{#thm-spectral}
+
+Soit $M$ une matrice symétrique réelle. Il existe une base orthonormale de vecteurs $u_1, \dotsc, u_n$ et des nombres réels $\lambda_1, \dotsc
+, \lambda_n$ tels que 
+$$ M = \sum_{i=1}^n \lambda_i u_i u_i^\top.$$
+
+:::
+
 ## Projections orthogonales
 
 Soit $v$ un vecteur non nul de $\mathbb{R}^n$. L'espace vectoriel engendré par $v$ est l'ensemble $\mathscr{V}=\{tv : t \in \mathbb{R}\}$, et son orthogonal est l'hyperplan $\mathscr{V}^\perp = \{x : \langle x, v \rangle = 0\}$. Les résultats élémentaires d'algèbre linéaire disent que tout vecteur $x$ se décompose *de façon unique* sous la forme 
 $$ x = y + z$$
-avec $y$ dans l'espace vectoriel engendré par $x$, et $z$ dans son complémentaire. En particulier, il existe un $t$ tel que $y = tv$. 
+avec $y$ dans $\mathscr{V}$ et $z$ dans $\mathscr{V}^\top$. En particulier, il existe un $t$ tel que $y = tv$. 
 
 Considérons maintenant la matrice 
 $$P = \frac{1}{|v|^2}vv^\top \in \mathscr{M}_{n,n}. $$
