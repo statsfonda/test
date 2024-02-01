@@ -274,6 +274,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">50&nbsp;nuances de TCL</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -346,9 +352,9 @@ $$
 <p>On se place dans un modèle où <span class="math inline">\(X_1, \dotsc, X_n\)</span> sont des gaussiennes <span class="math inline">\(N(\mu, \sigma^2)\)</span>. Nous avons déjà vu plusieurs fois que <span class="math inline">\(\bar{X}_n \sim N(\mu, \sigma^2/n)\)</span>.</p>
 <section id="construction-du-test" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="construction-du-test"><span class="header-section-number">6.1.1</span> Construction du test</h3>
-<p>On cherche à réfuter l’hypothèse selon laquelle ces variables aléatoires sont centrées ; autrement dit, on posera <span class="math inline">\(H_0 = \{0\}\)</span>. Sous cette hypothèse, nos variables aléatoires sont donc des variables <span class="math inline">\(N(0,\sigma^2)\)</span>.</p>
+<p>On cherche à réfuter l’hypothèse selon laquelle ces variables aléatoires sont centrées ; autrement dit, on posera <span class="math inline">\(H_0 = \{\mu=0\}\)</span>. Sous cette hypothèse, nos variables aléatoires sont donc des variables <span class="math inline">\(N(0,\sigma^2)\)</span>.</p>
 <p><strong>Supposons dans un premier temps que <span class="math inline">\(\sigma^2\)</span> est connue.</strong> Sous <span class="math inline">\(H_0\)</span>, on a donc <span class="math display">\[ \frac{\sqrt{n}\bar{X}_n}{\sigma} \sim N(0,1)\]</span> et par conséquent, <span class="math inline">\(P_0(|\bar{X}_n| &lt; z_{1-\alpha} \sigma / \sqrt{n}) = 1-\alpha\)</span>. Autrement dit, sous l’hypothèse <span class="math inline">\(\mu = 0\)</span>, on devrait observer l’événement <span class="math display">\[ \bar{X}_n \in \left[ \pm \frac{z_{1-\alpha} \sigma}{\sqrt{n}}\right]\]</span> avec probabilité élevée <span class="math inline">\(1-\alpha\)</span>. Si cet événement n’est pas observé, il est alors très douteux que <span class="math inline">\(\mu\)</span> soit effectivement égal à zéro !&nbsp;On pose donc <span class="math display">\[ \mathsf{rejeter}_\alpha = \{|\bar{X}_n | &gt; z_{1-\alpha} \sigma / \sqrt{n}\}.\]</span> Le niveau de ce test est bien <span class="math inline">\(1-\alpha\)</span> : nous l’avons construit pour cela.</p>
-<p><strong>Supposons maintenant que <span class="math inline">\(\sigma\)</span> n’est pas connue.</strong> En l’estimant via <span class="math inline">\(\hat{\sigma}_n\)</span>, nous savons que (toujours sous l’hypothèse selon laquelle <span class="math inline">\(\mu=0\)</span>) <span class="math display">\[ \frac{\sqrt{n}\bar{X}_n}{\hat{\sigma}_n} \sim \mathscr{T}(n-1).\]</span> On reproduit alors le raisonnement ci-dessus : comme <span class="math inline">\(\mathbb{P}(|\bar{X}_n| &lt; t_{n-1, 1-\alpha}\sqrt{\sigma}_n / \sqrt{n}) = \alpha\)</span> où <span class="math inline">\(t_{n-1,1-\alpha}\)</span> est le quantile symétrique de <span class="math inline">\(\mathscr{T}(n-1)\)</span>, on voit que l’événement <span class="math display">\[ \mathsf{rejeter}_\alpha = \{|\bar{X}_n| &gt; t_{n-1,1-\alpha}\hat{\sigma}_n / \sqrt{n}\}\]</span> est bien un test de niveau <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Supposons maintenant que <span class="math inline">\(\sigma\)</span> n’est pas connue.</strong> En l’estimant via <span class="math inline">\(\hat{\sigma}_n\)</span>, nous savons que (toujours sous l’hypothèse selon laquelle <span class="math inline">\(\mu=0\)</span>) <span class="math display">\[ \frac{\sqrt{n}\bar{X}_n}{\hat{\sigma}_n} \sim \mathscr{T}(n-1).\]</span> On reproduit alors le raisonnement ci-dessus : comme <span class="math inline">\(\mathbb{P}(|\bar{X}_n| &lt; t_{n-1, 1-\alpha}\hat{\sigma}_n / \sqrt{n}) = \alpha\)</span> où <span class="math inline">\(t_{n-1,1-\alpha}\)</span> est le quantile symétrique de <span class="math inline">\(\mathscr{T}(n-1)\)</span>, on voit que l’événement <span class="math display">\[ \mathsf{rejeter}_\alpha = \{|\bar{X}_n| &gt; t_{n-1,1-\alpha}\hat{\sigma}_n / \sqrt{n}\}\]</span> est bien un test de niveau <span class="math inline">\(1-\alpha\)</span>.</p>
 </section>
 <section id="calcul-de-la-puissance-et-hypothèse-alternative" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="calcul-de-la-puissance-et-hypothèse-alternative"><span class="header-section-number">6.1.2</span> Calcul de la puissance et hypothèse alternative</h3>
