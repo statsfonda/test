@@ -1,0 +1,74 @@
+# 50 nuances de TCL
+
+## La version classique
+
+
+Soit $(X_i)$ une suite de variables aléatoires iid possédant une moyenne $\mu$ et une variance $\sigma^2$. On note $\bar{X}_n$ leur moyenne empirique, 
+$$\bar{X}_n = \frac{1}{n}\sum_{i=1}^n X_i.$${#eq-tcl-app}
+Sous les hypothèses sur les $X_i$, il est clair que $\mathbb{E}[\bar{X}_n] = \mu$, et que $\mathrm{Var}(\bar{X}_n) = \sigma^2/n$. 
+
+:::{#thm-tcl_app}
+
+La variable aléatoire $$\frac{\bar{X}_n - \mu}{\sqrt{\sigma^2/n}}$$ converge en loi vers $N(0,1)$. 
+
+:::
+
+:::{.proof}
+Si $\varphi$ est la transformée de Fourier commune de la loi des $Y_i = (X_i - \mu)/\sigma$ et $\psi$ celle de @eq-tcl-app, alors 
+$$ \psi(t) = \varphi(t/\sqrt{n})^n.$$
+Comme $\varphi(x) \sim 1 - x^2/2 + o(x^2)$ par un développement de Taylor près de zéro, on voit que lorsque $n\to\infty$, alors $\psi(t) = (1 - t^2 / 2n + o(1/n))^n$ et ceci tend vers $e^{-t^2/2}$, qui est bien la transformée de Fourier de $N(0,1)$. 
+
+:::
+
+## La version de Lindeberg-Lévy
+
+On supposera maintenant les $X_i$ *indépendantes* (mais pas forcément de même loi). On pose $\bar{\mu} = \mathbb{E}[\bar{X}_n]$ et $s_n = \mathrm{Var}(\bar{X}_n)$, c'est-à-dire
+$$\bar{\mu}_n = \frac{\sum_{i=1}^n \mu_i}{n} $$
+$$\varsigma^2_n = \frac{\sum_{i=1}^n \sigma_i^2}{n^2} $$
+où $\mu_i= \mathbb{E}[X_i]$  et $\sigma_i^2 = \mathrm{Var}(X_i)$. 
+
+:::{#thm-tcl-ll}
+
+
+
+Si ces variables vérifient la *condition de Lindeberg*, à savoir que pour tout $\delta >0$, 
+$$ \frac{1}{\varsigma_n^2}\sum_{i=1}^n \mathbb{E}[|X_i - \mu_i|^2 \mathbf{1}_{|X_i - \mu_i| > \delta \varsigma_n}] \to 0$${#eq-condll}
+alors la variable aléatoire
+$$ \frac{\bar{X}_n - \bar{\mu}_n}{\varsigma_n}$$
+converge en loi vers $N(0,1)$. 
+
+:::
+
+
+## Le théorème de Mann-Wald^[J'ai l'impression que ce nom n'est guère répandu dans la littérature, mais je l'ai trouvé dans le livre *Introduction à l'économétrie* de Brigitte Dormont. ]
+
+C'est un cas particulier du précédent.
+
+Soient $(x_i)$ une suite de nombres réels, pas forcément aléatoires, et soient $\varepsilon_i$ des variables aléatoires iid de variance $\sigma^2$ et vérifiant $\mathbb{E}[|\varepsilon_i|^4]<c^2$ pour une certaine constante $c^2$. La moyenne pondérée
+$$\frac{1}{n}\sum_{i=1}^n x_i \varepsilon_i$$
+est clairement une variable aléatoire centrée, et sa variance est égale à 
+$$\sigma^2 \frac{\sum_{i=1}^n x_i^2}{n} = \frac{\sigma^2 s_n^2}{n}. $$
+Peut-on dire que la moyenne réduite 
+$$ \sqrt{n}\frac{\sum_{i=1}^n x_i \varepsilon_i}{\sigma s_n}$${#eq-moy-red-tcl}
+converge en loi vers une $N(0,1)$ ? La réponse est *oui* en général : cependant, en toute rigueur, on faire une hypothèse sur les $x_i$. On demande à ce que la variance $s_n^2$ ne soit pas dominée par un petit nombre de $x_i$:
+$$\max_{i=1, \dotsc, n} \frac{|x_i|^2}{s_n^2} \to 0. $${#eq-condmann}
+
+:::{#thm-mann-wald}
+
+Sous les hypothèses précédentes, @eq-moy-red-tcl converge en loi lorsque $n\to\infty$ vers une $N(0,1)$. 
+
+:::
+
+:::{.proof}
+
+
+La démonstration repose sur @thm-tcl-ll appliqué aux $X_i = x_i \varepsilon_i$ : ces variables sont centrées, et leur variance est $\sigma^2 x_i^2$. En particulier, 
+$$s_n^2 = \sigma^2 \sum_{i=1}^n x_i^2.$$
+Le terme $\mathbb{E}[|X_i|\mathbf{1}_{|X_i|>\delta s_n}]$ vaut $x_i^2 \mathbb{E}[\varepsilon^2 \mathbf{1}_{|\varepsilon|>\delta s_n / |x_i|}]$. Par l'inégalité de Cauchy-Schwarz, $\mathbb{E}[\varepsilon^2 \mathbf{1}_{|\varepsilon|>\delta s_n / |x_i|}]$ est borné par $\sqrt{\mathbb{E}[\varepsilon^4]\mathbb{P}(|\varepsilon|>\delta s_n / |x_i|)} = \sigma^2 c \sqrt{\mathbb{P}(|\varepsilon|> \delta s_n / |x_i|)}$, qui est également plus petit que $\sigma^2 c \sqrt{\mathbb{P}(|\varepsilon|>\delta m_n)}$ où $m_n$ est le plus petit des nombres $s_n/|x_1|, \dotsc, s_n/|x_n|$, c'est-à-dire l'inverse de la racine carrée de @eq-condmann. 
+
+
+En regroupant tout ceci, on voit que @eq-condll devient plus petite que 
+$$\frac{\sigma^2 c}{s_n^2}\sum_{i=1}^n x_i^2\sqrt{\mathbb{P}(|\varepsilon|>\delta m_n)}$$
+c'est-à-dire $c\times \sqrt{\mathbb{P}(|\varepsilon|>\delta m_n)}$. Comme $m_n\to \infty$ par @eq-condmann, ce terme tend vers zéro. 
+
+:::

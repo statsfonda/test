@@ -38,7 +38,7 @@ où $C$ une matrice $r \times d$ et $c$ un vecteur de taille $r$. Comme $r$ poss
 Sous cette hypothèse nulle, 
 $$C\hat{\bt}-c \sim N(0, \sigma^2 C(X^\top X)^{-1}C^\top).$$
 En multipliant par la matrice $[\sigma^{-2}C(X^\top X)^{-1}C^\top]^{-1/2}$ puis en prenant la norme au carré et en simplifiant l'expression, on voit que
-$$ \frac{1}{\sigma^2}\langle C\hat{\bt}-c, C(X^\top X)^{-1}C^\top (C\hat{\bt}-c)\rangle \sim \chi^2(r).$$
+$$ \frac{1}{\sigma^2}\langle C\hat{\bt}-c, [C(X^\top X)^{-1}C^\top]^{-1} (C\hat{\bt}-c)\rangle \sim \chi^2(r).$$
 Maintenant, si l'on estime le terme $\sigma^2$ comme d'habitude et que l'on utilise le théorème @thm-glm, on obtient la loi de la statistique de test (une loi de Fisher), résumée dans le théorème suivant. 
 
 :::{#thm-Wald}
@@ -46,12 +46,12 @@ Maintenant, si l'on estime le terme $\sigma^2$ comme d'habitude et que l'on util
 ## Test de contraintes linéaires
 
 Sous l'hypothèse nulle $C\bt = c$, on a 
-$$ \frac{\langle C\hat{\bt}-c, C(X^\top X)^{-1}C^\top (C\hat{\bt}-c)\rangle /r}{\hat{\sigma}_n^2} \sim \mathscr{F}_{r, n-d}.$${#eq-wald}
+$$ \frac{\langle C\hat{\bt}-c, [C(X^\top X)^{-1}C^\top]^{-1} (C\hat{\bt}-c)\rangle /r}{\hat{\sigma}_n^2} \sim \mathscr{F}_{r, n-d}.$${#eq-wald}
 
 :::
 
 La statistique @eq-wald est couramment appelée *statistique de Wald* associée au système linéaire $C\bt = c$. Formellement, la région de rejet du test de niveau $1-\alpha$ de ce l'hypothèse nulle $C\bt = c$ est donc donnée par 
-$$\left\lbrace \frac{\langle C\hat{\bt}-c, C(X^\top X)^{-1}C^\top (C\hat{\bt}-c)\rangle /r}{\hat{\sigma}_n^2}  > f^{r,n-d}_{1-\alpha} \right\rbrace$$
+$$\left\lbrace \frac{\langle C\hat{\bt}-c, [C(X^\top X)^{-1}C^\top]^{-1} (C\hat{\bt}-c)\rangle /r}{\hat{\sigma}_n^2}  > f^{r,n-d}_{1-\alpha} \right\rbrace$$
 où $f$ est le quantile d'ordre $1-\alpha$ de la loi $\mathscr{F}_{r,n-d}$. 
 
 ## Test de significativité globale de Fisher
@@ -61,7 +61,7 @@ $$ \theta_2 = \dotsb = \theta_d = 0.$$
 Il s'agit bien d'un test de contraintes linéaires au sens du paragraphe précédent : il y a exactement $d-1$ contraintes linéaires. En notant $C$ la matrice de taille $(d-1, d)$
 $$C = \begin{pmatrix}0 & 1 && 0 \\ \vdots \\ 0 & \dots && 1 \end{pmatrix}, $$
 on teste bien $C\bt = 0$. La matrice $C(X^\top X)^{-1}C^\top$ n'est autre que le bloc $B_X$ obtenu à partir de $(X^\top X)^{-1}$ en lui enlevant la première ligne et la première colonne (qui correspondent à la constante). La statistique de test devient alors 
-$$ \frac{\langle \hat{\bt'}, B_X \hat{\bt'} \rangle}{(d-1)\hat{\sigma}^2_n}.$${#eq-statfisher1}
+$$ \frac{\langle \hat{\bt'}, B_X^{-1} \hat{\bt'} \rangle}{(d-1)\hat{\sigma}^2_n}.$${#eq-statfisher1}
 Cette quantité peut sembler difficile à calculer : elle ne l'est pas, et s'exprime à l'aide du coefficient de détermination @def-rdeux. 
 
 :::{#thm-fisher-sig}

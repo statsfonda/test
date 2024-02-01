@@ -34,7 +34,7 @@ $$I(\theta) = E_\theta[s_\theta(X) s_\theta(X)^\top].$$
 
 :::
 
-L'information de Fisher possède de nombreuses expressions alternatives. Parmi elles, la suivante permet d'interpréter $I(\theta)$ comme la *courbure moyenne de l'entropie*. On note $\nabla^2_\theta f$ la matrice hessienne^[On rappelle que la Hessienne d'une fonction $f:\mathbb{R}^d \to \mathbb{R}$ est la matrice de ses dérivées secondes $$\frac{\partial^2}{\partial x_i \partial x_j}f(x_1, \dotsc, x_d)$$] d'une fonction $f$. 
+L'information de Fisher possède de nombreuses expressions alternatives. Parmi elles, la suivante permet d'interpréter $I(\theta)$ comme la *courbure moyenne de l'entropie*. On note $\nabla^2_\theta f$ la matrice hessienne d'une fonction $f$. 
 
 :::{#prp-courbure}
 

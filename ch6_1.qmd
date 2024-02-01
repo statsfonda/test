@@ -2,8 +2,8 @@
 
 ## Définition
 
-L'estimateur du maximum de vraisemblance est *le* paramètre pour lequel la vraisemblance des observations est maximale : 
-$$\hat{\theta} = \arg \max_{\theta \in \Theta} p_\theta(x_1, \dotsc, x_n).$${#eq-MV}
+L'estimateur du maximum de vraisemblance (EMV) est *le* paramètre pour lequel la vraisemblance des observations est maximale : 
+$$\emv = \arg \max_{\theta \in \Theta} p_\theta(x_1, \dotsc, x_n).$${#eq-MV}
 Il n'est pas évident que ce maximum existe, ni que le minimeur soit unique. C'est en règle générale le cas, mais des cas limites existent où ça ne l'est pas -- parfois même dans des modèles exponentiels. Il existe un théorème général garantissant son existence et son unicité. 
 
 :::{#prp-maxvraisex}

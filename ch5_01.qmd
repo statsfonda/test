@@ -54,7 +54,10 @@ Sous les hypothèses précédentes, $\sqrt{n}(\hat{\bt} - \bt)$ converge en loi 
 Rappelons que $\hat{\bt}$ peut s'écrire $\bt + (X^\top X/n)^{-1}\frac{1}{n}\sum_{i=1}^n \bx_i \varepsilon_i$. 
 Pour montrer que $\sqrt{n}(\hat{\bt}-\bt)$ converge, il suffit donc de démontrer que 
 $$\sqrt{n}\frac{1}{n}\sum_{i=1}^n \bx_i \varepsilon_i $${#eq-proof-tcl-mco}
-converge en loi vers $N(0,\Sigma_x^2)$ : comme le terme $(X^\top X/n)^{-1}$ converge vers $\Sigma_x^{-1}$ par hypothèse, la limite de $\sqrt{n}(\hat{\bt} - \bt)$ sera bien $N(0,\Sigma_x^{-1}\Sigma_x\Sigma_x^{-1}) = N(0,\Sigma_x^{-1})$. Malheureusement, on ne peut pas directement appliquer le TCL classique à @eq-proof-tcl-mco : en effet, les variables aléatoires $X_i = \bx_i \varepsilon_i$ ne sont pas identiquement distribuées. On doit pour cela appliquer une version plus générale du TCL, dite *de Linbeberg*, que je détaillerai plus tard. 
+converge en loi vers $N(0,\Sigma_x^2)$ : comme le terme $(X^\top X/n)^{-1}$ converge vers $\Sigma_x^{-1}$ par hypothèse, la limite de $\sqrt{n}(\hat{\bt} - \bt)$ sera bien $N(0,\Sigma_x^{-1}\Sigma_x\Sigma_x^{-1}) = N(0,\Sigma_x^{-1})$. Malheureusement, on ne peut pas directement appliquer le TCL classique à @eq-proof-tcl-mco : en effet, les variables aléatoires $X_i = \bx_i \varepsilon_i$ ne sont pas identiquement distribuées. On doit pour cela appliquer une version plus générale du TCL, que j'ai écrite en appendice (@thm-mann-wald). Pour appliquer ce théorème en toute rigueur, on a besoin d'une hypothèse supplémentaire sur les $\bx_i$ que je n'ai pas mentionnée --- c'est une hypothèse technique^[Il faut que la quantité $\max_{j=1, \dotsc, n}|\bx_j|^2 / \sum |\bx_i|^2$ tende vers zéro lorsque $n\to\infty$. Cela revient à dire que toute l'information apportée par les $x_i$ n'est pas concentrée sur une seule observation ou sur un très petit nombre d'observations.  ].
+
+
+
 :::
 
 
@@ -87,12 +90,12 @@ a pour loi le rapport de lois du $\chi_2$ indépendantes de paramètres $d$ et $
 
 :::{#thm-ellipse}
 
-## Ellipse de confiance
+## Ellipsoïde de confiance
 
 Soit $\hat{\bt}$ l'estimateur des MCO dans un modèle linéaire gaussien. 
 
 Si $f_{d,n-d,1-\alpha}$ est le quantile d'ordre $1-\alpha$ d'une loi $\mathscr{F}_{d,n-d}$, alors la région 
-$$ \left\lbrace \theta \in \mathbb{R}^d : \frac{|(X^\top X)^{1/2}(\hat{\bt} - \theta) |^2 / d}{\hat{\sigma}_n^2 / (n-d)} <  f_{d,n-d,1-\alpha} \right\rbrace $$
+$$ \left\lbrace \theta \in \mathbb{R}^d : \frac{|(X^\top X)^{1/2}(\hat{\bt} - \bt) |^2 / d}{\hat{\sigma}_n^2 / (n-d)} <  f_{d,n-d,1-\alpha} \right\rbrace $$
 est une région de confiance de niveau $1-\alpha$ pour $\bt$. 
 
 Lorsque le modèle n'est pas gaussien, mais qu'il vérifie les hypothèses de la section @sec-mlgen, le même résultat est valable mais le niveau de confiance de la région ci-dessus est *asymptotiquement* égal à $1-\alpha$. 

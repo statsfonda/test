@@ -38,6 +38,7 @@ book:
     - references.qmd
     - ref.qmd
     - app1.qmd
+    - app2.qmd
   sidebar:
     style: docked
     logo: "images/logoUP.png"
