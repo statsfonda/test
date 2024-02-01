@@ -41,7 +41,7 @@ On se place dans un modèle où $X_1, \dotsc, X_n$ sont des gaussiennes $N(\mu, 
 
 ### Construction du test
 
-On cherche à réfuter l'hypothèse selon laquelle ces variables aléatoires sont centrées ; autrement dit, on posera $H_0 = \{0\}$. Sous cette hypothèse, nos variables aléatoires sont donc des variables $N(0,\sigma^2)$. 
+On cherche à réfuter l'hypothèse selon laquelle ces variables aléatoires sont centrées ; autrement dit, on posera $H_0 = \{\mu=0\}$. Sous cette hypothèse, nos variables aléatoires sont donc des variables $N(0,\sigma^2)$. 
 
 **Supposons dans un premier temps que $\sigma^2$ est connue.** Sous $H_0$, on a donc 
 $$ \frac{\sqrt{n}\bar{X}_n}{\sigma} \sim N(0,1)$$
@@ -53,7 +53,7 @@ Le niveau de ce test est bien $1-\alpha$ : nous l'avons construit pour cela.
 
 **Supposons maintenant que $\sigma$ n'est pas connue.** En l'estimant via $\hat{\sigma}_n$, nous savons que (toujours sous l'hypothèse selon laquelle $\mu=0$)
 $$ \frac{\sqrt{n}\bar{X}_n}{\hat{\sigma}_n} \sim \mathscr{T}(n-1).$$
-On reproduit alors le raisonnement ci-dessus : comme $\mathbb{P}(|\bar{X}_n| < t_{n-1, 1-\alpha}\sqrt{\sigma}_n / \sqrt{n}) = \alpha$ où $t_{n-1,1-\alpha}$ est le quantile symétrique de $\mathscr{T}(n-1)$, on voit que l'événement
+On reproduit alors le raisonnement ci-dessus : comme $\mathbb{P}(|\bar{X}_n| < t_{n-1, 1-\alpha}\hat{\sigma}_n / \sqrt{n}) = \alpha$ où $t_{n-1,1-\alpha}$ est le quantile symétrique de $\mathscr{T}(n-1)$, on voit que l'événement
 $$ \rejet_\alpha = \{|\bar{X}_n| > t_{n-1,1-\alpha}\hat{\sigma}_n / \sqrt{n}\}$$
 est bien un test de niveau $1-\alpha$.  
 
@@ -96,4 +96,3 @@ $$ p_\star = \inf\{\alpha>0 : \rejet_\alpha\} = \sup\{\alpha>0 : \accept_\alph
 
 **Calcul de $p$-valeur.** Dans de nombreux tests, la construction d'un test se fonde sur une statistique, disons $S$, qui sous l'hypothèse nulle suit une loi particulière (par exemple, $\sqrt{n}\bar{X}_n / \hat{\sigma}_n \sim \mathscr{T}(n-1)$ sous l'hypothèse $X_i \sim N(\mu,\sigma^2)$ avec $\mu=0$ dans le cas d'un test de Student). Si le test est de la forme $S < q_{1-\alpha}$, ce qui équivaut à $F(S)<1-\alpha$. La $p$-valeur est donnée par
 $$p_\star = \sup\{\alpha > 0 : S < q_{1-\alpha}\} = \sup\{\alpha : F(S)<1-\alpha\} = 1 - F(S).$$
-
