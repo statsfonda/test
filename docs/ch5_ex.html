@@ -329,7 +329,7 @@ $$
 <ul>
 <li>Retrouver la formule des MCO par une méthode analytique.</li>
 <li>Construire un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour le coefficient <span class="math inline">\(\theta_j\)</span> d’une régression.</li>
-<li>Pourquoi les nombres <span class="math inline">\(\ell^2_j = ((X^\top X)^{-1})_{j,j}\)</span> sont-ils toujours des nombres positifs ?</li>
+<li>Soit <span class="math inline">\(X\)</span> une matrice. Pourquoi les nombres <span class="math inline">\(\ell^2_j = ((X^\top X)^{-1})_{j,j}\)</span> sont-ils toujours des nombres positifs ?</li>
 <li>Écrire explicitement les deux leviers dans un modèle linéaire simple en une dimension.</li>
 <li>Concrètement, comment s’interprète la condition “la matrice des variables explicatives <span class="math inline">\(X\)</span> est de rang <span class="math inline">\(d\)</span>” ? Qu’est-ce qui ne va pas lorsque ce n’est pas le cas ?</li>
 <li>Au lieu de faire un test de significativité sur un coefficient d’une régression linéaire (<a href="ch5_2.html#thm-teststudent">Théorème&nbsp;<span>12.1</span></a>), tester <span class="math inline">\(\theta_j=x\)</span> pour n’importe quel <span class="math inline">\(x\)</span> (pas forcément <span class="math inline">\(0\)</span>).</li>
@@ -348,7 +348,11 @@ $$
 </ol>
 </div>
 <div id="exr-regl2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 2 </strong></span>Montrer que pour tout <span class="math inline">\(\lambda\geqslant 0\)</span>, la solution au problème <span class="math display">\[ \arg \min |Y - X\theta|^2 + \lambda |\theta|^2\]</span> est donnée par <span class="math inline">\((X^\top X + \lambda I_d)^{-1}X^\top Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercice 2 (Pénalité <span class="math inline">\(\ell^2\)</span> (régression <em>ridge</em>)) </strong></span>Dans une régression de type <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, on s’intéresse au problème <span class="math display">\[ \arg \min |Y - X\theta|^2 + \lambda |\theta|^2.\]</span> Il s’agit du problème des moindres carrées, mais où la présence de la pénalité <span class="math inline">\(\lambda|\theta|^2\)</span> impose que les coefficients de <span class="math inline">\(\theta\)</span> ne soient pas trop grands au sens <span class="math inline">\(\ell^2\)</span>.</p>
+<ol type="1">
+<li>Montrer que la solution au problème est donnée par <span class="math inline">\(\hat{\bt}_{\lambda} = (X^\top X + \lambda I_d)^{-1}X^\top Y\)</span> sans aucune contrainte de rang sur <span class="math inline">\(X\)</span>.</li>
+<li>Calculer la loi de <span class="math inline">\(\hat{\bt}_{\lambda}\)</span> lorsque les résidus sont gaussiens. Quel est son biais ?</li>
+</ol>
 </div>
 <div id="exr-uniquecontrainte" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercice 3 </strong></span>Dans un modèle linéaire <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, on cherche à tester une unique contrainte linéaire, à savoir <span class="math inline">\(\langle z, \bt \rangle = c\)</span> où <span class="math inline">\(z \in \mathbb{R}^d\)</span> et <span class="math inline">\(c \in \mathbb{R}\)</span>.</p>
@@ -394,8 +398,21 @@ $$
 </ol></li>
 </ol>
 </div>
+<div id="exr-gaussmarkov" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 8 (Théorème de Gauss-Markov) </strong></span>On se place dans un modèle linéaire gaussien <span class="math inline">\(Y = X\bt + \varepsilon\)</span>. L’objectif est de montrer que <span class="math inline">\(\hat{\bt}\)</span>, l’estimateur des moindres carrés, est le meilleur estimateur linéaire de <span class="math inline">\(\bt\)</span> qui soit sans biais<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Soit donc <span class="math inline">\(\tilde{\bt}\)</span> un autre estimateur linéaire sans biais, disons <span class="math inline">\(\tilde{\bt} = MY\)</span>.</p>
+<ol type="1">
+<li>Montrer que <span class="math inline">\((M - (X^\top X)^{-1}X^\top)X= 0\)</span>.</li>
+<li>Calculer la matrice de variance de <span class="math inline">\(\tilde{\bt}\)</span> en fonction de <span class="math inline">\(M - (X^\top X)^{-1}X^\top\)</span> et conclure.</li>
+</ol>
+</div>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>BLUE, <em>best linear unbiased estimator</em>. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
