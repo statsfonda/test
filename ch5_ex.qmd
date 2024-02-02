@@ -4,7 +4,7 @@
 
 - Retrouver la formule des MCO par une méthode analytique. 
 - Construire un intervalle de confiance de niveau $1-\alpha$ pour le coefficient $\theta_j$ d'une régression. 
-- Pourquoi les nombres $\ell^2_j = ((X^\top X)^{-1})_{j,j}$ sont-ils toujours des nombres positifs ?
+- Soit $X$ une matrice. Pourquoi les nombres $\ell^2_j = ((X^\top X)^{-1})_{j,j}$ sont-ils toujours des nombres positifs ?
 - Écrire explicitement les deux leviers dans un modèle linéaire simple en une dimension. 
 - Concrètement, comment s'interprète la condition "la matrice des variables explicatives $X$ est de rang $d$" ? Qu'est-ce qui ne va pas lorsque ce n'est pas le cas ?
 - Au lieu de faire un test de significativité sur un coefficient d'une régression linéaire (@thm-teststudent), tester $\theta_j=x$ pour n'importe quel $x$ (pas forcément $0$). 
@@ -26,9 +26,15 @@
 
 :::{#exr-regl2}
 
-Montrer que pour tout $\lambda\geqslant 0$, la solution au problème 
-$$ \arg \min |Y - X\theta|^2 + \lambda |\theta|^2$$
-est donnée par $(X^\top X + \lambda I_d)^{-1}X^\top Y$. 
+## Pénalité $\ell^2$ (régression *ridge*)
+
+Dans une régression de type $Y = X\bt + \varepsilon$, on s'intéresse au problème 
+$$ \arg \min |Y - X\theta|^2 + \lambda |\theta|^2.$$
+Il s'agit du problème des moindres carrées, mais où la présence de la pénalité $\lambda|\theta|^2$ impose que les coefficients de $\theta$ ne soient pas trop grands au sens $\ell^2$. 
+
+1. Montrer que la solution au problème est donnée par $\hat{\bt}_{\lambda} = (X^\top X + \lambda I_d)^{-1}X^\top Y$ sans aucune contrainte de rang sur $X$. 
+2. Calculer la loi de $\hat{\bt}_{\lambda}$ lorsque les résidus sont gaussiens. Quel est son biais ?
+
 :::
 
 :::{#exr-uniquecontrainte}
@@ -92,6 +98,20 @@ On suppose en outre que la variable que l'on cherche, $x_0$, n'est pas trop élo
     ii) Quelle est la loi de $\bar{Y}_0-\hat{b}_0-\hat{b}_1x_0$ ?
     iii) A l'aide de $\tilde{\sigma}^2$ et de $\bar{Y}_0$, donner un intervalle de confiance pour $x_0$ de niveau $1-\alpha$.
     iv) Aurait-on pu construire un intervalle de confiance pour $x_0$ à l'aide de $\hat{\sigma}^2$ et de $\bar{Y}_0$ ?
+
+:::
+
+
+:::{#exr-gaussmarkov}
+
+## Théorème de Gauss-Markov
+
+On se place dans un modèle linéaire gaussien $Y = X\bt + \varepsilon$. L'objectif est de montrer que $\hat{\bt}$, l'estimateur des moindres carrés, est le meilleur estimateur linéaire de $\bt$ qui soit sans biais^[BLUE, *best linear unbiased estimator*. ]. Soit donc $\tilde{\bt}$ un autre estimateur linéaire sans biais, disons $\tilde{\bt} = MY$. 
+
+1. Montrer que $(M - (X^\top X)^{-1}X^\top)X= 0$. 
+2. Calculer la matrice de variance de $\tilde{\bt}$ en fonction de $M - (X^\top X)^{-1}X^\top$ et conclure. 
+
+
 
 :::
 

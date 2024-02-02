@@ -31,14 +31,16 @@ $$ R^2 = \frac{\overline{xy}-\bar{x}\bar{x}}{\tilde{\sigma}_x \tilde{\sigma}_y}.
 
 
 Dans le cadre général le nombre $d$ de variables explicatives est plus grand que 1. On notera $\bx = (x_1, \dotsc, x_d)$
-un élément de $\mathbb{R}^d$ ; les variables explicatives seront alors $\bx_1,\dotsc, \bx_n$. On cherchera des nombres $\theta_i$ tels que $y_i$ est aussi proche que possible de $$\theta_1 \bx_{i,1} + \dotsb + \theta_d \bx_{i,d} = \langle \bt, \bx_i\rangle = \bt^\top \bx_i. $$
+un élément de $\mathbb{R}^d$ ; les variables explicatives seront alors $\bx_1,\dotsc, \bx_n$. Avec mes notations, ces vecteurs sont **des vecteurs lignes**^[Ils sont de dimension $(1,d)$ si on les voit comme des matrices]. 
 
+On cherchera donc des nombres $\theta_i$ tels que $y_i$ est aussi proche que possible de $$\theta_1 \bx_{i,1} + \dotsb + \theta_d \bx_{i,d} = \bx_i \bt,  $$
+oùe paramètre $\bt$, sera toujours vu **comme le vecteur colonne**^[Donc, de dimension $(d,1)$ cette fois. ] des $\theta_i$. 
 
 
 **Remarque : où est passée la constante ?** *Dans l'équation ci-dessus, on a l'impression que le terme constant, qui correspondait à $\alpha$ dans l'exemple en dimension 1, a disparu. Ce n'est pas le cas : intégrer la constante au modèle revient à considérer que la variable constante égale à 1 fait partie des variables explicatives. En pratique, cela revient à poser, par exemple, $\bx_{i,1} = 1$ pour tout $i$. Ainsi, la constante correspondra toujours à $\theta_1$.* 
 
 
-On pose $X$ la matrice $n\times d$ dont la $i$-ème ligne est $\bx_i$ et $Y$ le vecteur colonne des $y_i$.  La matrice dont les lignes sont composées des $\bt\top \bx_i$ n'est autre que la matrice $X\bt$. La distance entre le nuage de points $(X,Y)$ et la droite d'équation $Y = X\theta$ est alors $|Y - X\theta|$. On pourrait reproduire la méthode analytique ci-dessus pour trouver les paramètres optimaux, à savoir 
+On pose $X$ la matrice $n\times d$ dont la $i$-ème ligne est $\bx_i$ et $Y$ le vecteur colonne des $y_i$.  La matrice dont les lignes sont composées des nombres réels $\bx_i \bt$ n'est autre que la matrice $X\bt$. De façon générale, pour n'importe quel $\theta \in \mathbb{R}^d$, la distance entre le nuage de points $(X,Y)$ et la droite d'équation $Y = X\theta$ est alors $|Y - X\theta|$. On pourrait reproduire la méthode analytique ci-dessus pour trouver les paramètres optimaux, à savoir 
 $$\hat{\bt} = \arg \min_{\theta} |Y - X\theta|^2. $${#eq-mcoargmin}
  Cependant, une interprétation géométrique simplifie la tâche : le $\hat{\bt}$ qui minimise @eq-mcoargmin est précisément celui qui garantit que $X\hat{\bt}$ est la projection orthogonale de $Y$ sur le sous-espace vectoriel $\mathscr{V}_X = \{X\theta : \theta \in \mathbb{R}^d\}$. 
 
@@ -59,7 +61,7 @@ La projection orthogonale sur le sous-espace vectoriel engendré par les colonne
 
 
 L'expression @eq-mco possède de nombreuses expressions alternatives. Parmi elles, on pourra noter que 
-$$\hat{\bt} = \bt + \left(\frac{1}{n}\sum_{i=1}^n \bx_i\bx_i^\top\right)^{-1}\frac{1}{n}\sum_{i=1}^n \bx_i \varepsilon_i. $${#eq-mco-alt}
+$$\hat{\bt} = \bt + \left(\frac{1}{n}\sum_{i=1}^n \bx_i^\top\bx_i \right)^{-1}\frac{1}{n}\sum_{i=1}^n \bx_i^\top \varepsilon_i. $${#eq-mco-alt}
 
 **Remarque générale.** Si, en dimension 1, on cherche à trouver le $\theta$ qui résout l'équation $y = x\theta$, on trouve évidemment $\theta = y/x$, c'est-à-dire qu'on *divise* $y$ par $x$, ou encore qu'on multiplie $y$ par l'inverse de $x$. En dimension supérieure, quand on veut résoudre en $\theta$ l'équation $Y = X\theta$, c'est pareil. Le problème, c'est qu'on ne sait pas forcément *inverser* $X$. La formule @eq-mco dit que même si $X$ n'est pas inversible, on peut quand même "diviser par $X$" : c'est pour cela que la matrice $(X^\top X)^{-1} X^\top$ est appelée *pseudo-inverse à gauche* de $X$ -- parfois associée au nom de Moore-Penrose. Multiplier $Y$ par $(X^\top X)^{-1}X^\top$ donne $(X^\top X)^{-1}X^\top Y = \hat{\bt}$ : ce vecteur ne vérifie par forcément $X{\hat{\bt}} = Y$, mais parmi tous les vecteurs possibles, c'est celui qui rend $X\bt$ le plus proche possible de $Y$.
 
@@ -72,7 +74,7 @@ Le vecteur $\hat{Y} = X\hat{\bt}$ est appelé *vecteur des prédictions*. Le vec
 
 :::{#def-rdeux}
 
-Le coefficient de détermination de la régression @eq-mco est défini par 
+Dans le cas d'une régression @eq-mco *avec constante*, le coefficient de détermination est défini par 
 $$R^2 = \frac{\sum_{i=1}^n |\hat{y}_i - \bar{y}|^2}{\sum_{i=1}^n |y_i - \bar{y}|^2}. $$
 C'est un nombre entre 0 et 1. 
 :::

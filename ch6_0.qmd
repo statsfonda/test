@@ -15,7 +15,7 @@ Dans tous ces exemples, j'ai volontairement écrit la densité de façon inhabit
 $$ \frac{1}{Z(\theta)}h(x)e^{\theta f(x)}$$
 où $f$ et $g$ sont des fonctions qui ne dépendent pas de $\theta$, et où $Z$ est une constante qui ne dépend que de $\theta$. Ces modèles appartiennent à la famille des *modèles exponentiels*. 
 
-## Définition
+## Définitions
 
 Soit $\nu$ une mesure de référence ($\sigma$-finie) sur $\mathbb{R}^d$. 
 
@@ -38,7 +38,9 @@ Lorsqu'on fixe un $x$ dans l'espace des observations, la fonction
 $$ \theta \mapsto p_\theta(x)$$
 est appelée *vraisemblance* et son logarithme
 $$\ell_\theta(x) = \ln p_\theta(x)$$
- est appelé *log-vraisemblance* (ces termes ne sont pas propres aux modèles exponentiels). On omet fréquemment de noter la dépendance en les observations, qu'on suppose fixées une bonne fois pour toutes. 
+ est appelé *log-vraisemblance*. Lorsqu'il est bien défini, le gradient (en $\theta$) de la log-vraisemblance 
+ $$ \nabla \ln p_\theta(x)$$
+ est appelé *fonction de score* du modèle. Ces termes ne sont pas propres aux modèles exponentiels. On omet fréquemment de noter la dépendance en les observations, qu'on suppose fixées une bonne fois pour toutes. 
 
 ## Retour sur des exemples
 
@@ -49,13 +51,12 @@ $$\ell_\theta(x) = \ln p_\theta(x)$$
 
 La densité de $N(\mu,\sigma^2)$ s'écrit 
 
-$$\frac{e^{-\frac{\mu^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}\exp\left( \frac{\mu}{\sigma^2} x - \frac{1}{2 \sigma^2} x^2 - \frac{\mu^2}{2 \sigma^2}\right).$$
+$$\frac{e^{-\frac{\mu^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}e^{ \frac{\mu}{\sigma^2} x - \frac{1}{2 \sigma^2} x^2 - \frac{\mu^2}{2 \sigma^2}}.$$
 La mesure $\nu$ est la mesure de Lebesgue sur $\mathbb{R}$. Le moment $T$ est
 $$T(x) = \begin{bmatrix}x \\ -x^2/2 \end{bmatrix} .$$
 Le bon paramètre $\theta$ est 
 $$ \theta = \begin{bmatrix}\mu/\sigma^2 \\ 1 / \sigma^2\end{bmatrix}.$$
-La fonction de partition est
-$$Z(\theta) = \exp\left(\frac{\mu^2}{2 \sigma^2} \right)\sqrt{2 \pi \sigma^2} = \exp(\theta_1 / 2)\sqrt{2\pi / \theta_2}. $$
+La fonction de partition $Z(\theta)$ s'écrit aussi $$\exp\left(\frac{\mu^2}{2 \sigma^2} \right)\sqrt{2 \pi \sigma^2} = \exp(\theta_1 / 2)\sqrt{2\pi / \theta_2}. $$
 
 :::
 
@@ -80,13 +81,14 @@ On supposera dorénavant que l'espace des paramètres $\Theta$ (qui est une part
 
 :::{#prp-reg}
 
-1. Pour tout $n$, $E_\theta[|T(X)|^n]$ est fini. 
+1) Pour tout $n$, $E_\theta[|T(X)|^n]$ est fini. 
 
-2. La fonction de partition d'un modèle exponentiel est infiniment différentiable. 
+2) La fonction de partition d'un modèle exponentiel est infiniment différentiable. 
 
-3. Le gradient de la log-partition est donné par 
+3) Le gradient de la log-partition est donné par 
 $$\nabla \ln Z(\theta) = E_\theta[T(X)]$${#eq-grad-exp}
-et sa matrice hessienne^[On rappelle que la Hessienne d'une fonction $f:\mathbb{R}^d \to \mathbb{R}$ est la matrice de ses dérivées secondes $$\frac{\partial^2}{\partial x_i \partial x_j}f(x_1, \dotsc, x_d)$$] par 
+et sa matrice hessienne^[On rappelle que la Hessienne d'une fonction $f:\mathbb{R}^d \to \mathbb{R}$ est la matrice de ses dérivées secondes $$\frac{\partial^2}{\partial x_i \partial x_j}f(x_1, \dotsc, x_d).$$
+Par abus de notation, on la note souvent $\nabla^2$, mais il serait plus juste de la noter $\nabla^\top \nabla$. ] par 
 $$ \nabla^2 \ln Z(\theta) = \mathrm{Var}_\theta(T(X)).$${#eq-hess-exp}
 
 :::
@@ -135,13 +137,13 @@ Or, comme $p_\theta$ est une densité de probabilité, son intégrale vaut 1 : 
 Pour l'autre sens, il suffit de reprendre toutes ces implications à l'envers : si $p_{\theta + \mu} = p_\theta$, alors pour $\nu$-presque tout $x$ on aura $\langle \theta + \mu, T(x)\rangle = \langle \theta, T(x)\rangle$, et donc $\langle \mu, T(x)\rangle = 0$, et in fine $\mu^\top \mathrm{Var}_\theta(T(X))\mu = 0$. 
 
 
-Comme iii) entraîne ii), il suffit donc de montrer que i) et ii) entraînent iii). Nous allons montrer la contraposée : si iii) n'est pas vrai et que ii) n'est pas vrai, c'est fini. On peut donc supposer que iii) n'est pas vrai et que ii) est vrai, et il faut montrer que i) est faux. Le point ii) entraîne que $\nabla \ln Z$ est localement injective (théorème d'inversion locale), donc si cette application n'était pas un difféomorphisme, cela voudrait dire qu'elle n'est pas injective et qu'il y aurait donc $\theta\neq\mu$ tels que $\nabla \ln Z(\theta) = \nabla \ln Z(\mu)$. Or, un calcul simple montre que 
-$$\dkl(P_\theta \mid P_\mu) + \dkl(P_\mu \mid P_\theta) = \langle \nabla \ln Z(\theta) - \nabla \ln Z(\mu), \theta - \mu \rangle $$
+Comme iii) entraîne ii), il suffit donc de montrer que i) et ii) entraînent iii). Nous allons montrer la contraposée : si iii) n'est pas vrai et que ii) n'est pas vrai, c'est fini. On peut donc supposer que iii) n'est pas vrai et que ii) est vrai, et il faut montrer que i) est faux. Le point ii) entraîne que $\nabla \ln Z$ est localement injective (théorème d'inversion locale), donc si cette application n'était pas un difféomorphisme, cela voudrait dire qu'elle n'est pas injective et qu'il y aurait donc $\theta\neq\mu$ tels que $\nabla \ln Z(\theta) = \nabla \ln Z(\mu)$. Or, un calcul montre que la divergence de Kullback-Leibler (@def-dkl) *symétrisée*, à savoir $\dkl(P_\theta \mid P_\mu) + \dkl(P_\mu \mid P_\theta)$, est égale à  $$\langle \nabla \ln Z(\theta) - \nabla \ln Z(\mu), \theta - \mu \rangle $$
 et ceci vaut donc zéro : c'est donc que chacune des deux $\dkl$ vaut zéro, puisque ces deux termes sont positifs. On en déduit alors que $P_\theta = P_\mu$, et donc le modèle n'est pas identifiable. 
 :::
 
+<!--
 ## Statistiques exhaustives
 
 Une statistique $T$ est *exhaustive* lorsqu'il existe deux fonctions $g,h$ telles que
 $$ p_\theta(x) = g(x)h(T(x), \theta).$$ 
-Lorsqu'une statistique exhaustive existe, elle contient toute l'information sur $\theta$ que l'on peut obtenir à partir d'une observation $x$. 
+Lorsqu'une statistique exhaustive existe, elle contient toute l'information sur $\theta$ que l'on peut obtenir à partir d'une observation $x$. -->

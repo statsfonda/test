@@ -2,7 +2,7 @@
 
 ## Vecteurs gaussiens
 
-Un vecteur aléatoire $X$ à valeurs dans $\mathbb{R}^n$ est un vecteur gaussien de loi $N(\mu,\Sigma)$ si sa densité est donnée par $$ \frac{1}{(2\pi \det(\Sigma))^{n/2}}\exp\left\lbrace - \frac{1}{2}\left\langle x-\mu, \Sigma^{-1}(x-\mu)\right\rangle \right\rbrace.$$
+Un vecteur aléatoire $X$ à valeurs dans $\mathbb{R}^n$ est un vecteur gaussien de loi $N(\mu,\Sigma)$ si sa densité est donnée par $$ \frac{1}{\sqrt{(2\pi)^n \det(\Sigma)}}\exp\left\lbrace - \frac{1}{2}\left\langle x-\mu, \Sigma^{-1}(x-\mu)\right\rangle \right\rbrace.$$
 Ici, le vecteur $\mu \in \mathbb{R}^n$ est appelé *moyenne* de $X$ parce que 
 $$\mathbb{E}[X] = \mu. $$
 La matrice $\Sigma$, qui est toujours supposée symétrique et à valeurs propres strictement positives (on dit *définie positive*), est appelée *matrice de covariance*, parce que
@@ -50,7 +50,7 @@ où $S = \Sigma_{1,1} - \Sigma_{2,1}\Sigma_{2,2}^{-1}\Sigma_{1,2}$.
 
 ## Théorème de Cochran
 
-Soit $X \sim N(0,I_d)$ et soient $E_1, \dotsc, E_k$ des sous-espaces orthogonaux de $\mathbb{R}^n$ tels que $\mathbb{R}^n = \oplus_{j=1}^k E_j$. On note $\pi_j(X)$ la projection orthogonale de $X$ sur $E_j$. Alors, la famille $(\pi_j(X))_{j = 1, \dotsc, k}$ est une famille de vecteurs gaussiens indépendants. De plus, 
+Soit $X \sim N(0,I_n)$ et soient $E_1, \dotsc, E_k$ des sous-espaces orthogonaux de $\mathbb{R}^n$ tels que $\mathbb{R}^n = \oplus_{j=1}^k E_j$. On note $\pi_j(X)$ la projection orthogonale de $X$ sur $E_j$. Alors, la famille $(\pi_j(X))_{j = 1, \dotsc, k}$ est une famille de vecteurs gaussiens indépendants. De plus, 
 $$ |\pi_j(X)|^2 \sim \chi_2(\dim E_j).$$
 
 :::
