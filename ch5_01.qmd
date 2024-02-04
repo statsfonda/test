@@ -4,7 +4,7 @@
 ## Modèle gaussien {#sec-mlg}
 
 À ce stade, nous n'avons fait aucune hypothèse statistique ni probabiliste sur le modèle : les $\bx_i, y_i$ étaient donnés tels quels. Le *modèle linéaire gaussien* avec variables explicatives $\bx_1, \dotsc, \bx_n$ exogènes consiste à supposer que $Y = X\bt + \varepsilon$, où $\varepsilon = N(0,\sigma^2 I_n)$. Formellement, le modèle est indexé par $\bt$ et $\sigma^2$, et donné par 
-$$P_{\bt, \sigma^2} = N(X\bt, \sigma^2 I_d).$$ 
+$$P_{\bt, \sigma^2} = N(X\bt, \sigma^2 I_n).$$ 
 Dans ce modèle, la loi de l'estimateur @eq-mco est connue. Par simplicité, je note $H = X(X^\top X)^{-1}X^\top$ la matrice de projection orthogonale sur l'espace vectoriel engendré par les colonnes de $X$, qui est de dimension $d$.
 
 :::{#thm-glm}
