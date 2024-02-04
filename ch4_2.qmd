@@ -129,7 +129,7 @@ De plus, si $\bp$ était effectivement de la forme $\hat{\bp}^x\hat{\bp}^y$, alo
 
 La statistique de Pearson est définie par 
 
-$$C_n = \sum_{i=1}^k \sum_{j=1}^k \frac{(N_{i,j} - \check{N}_{i,j})^2}{\hat{N}_{i,j}}. $$
+$$C_n = \sum_{i=1}^k \sum_{j=1}^h \frac{(N_{i,j} - \check{N}_{i,j})^2}{\check{N}_{i,j}}. $$
 
 :::
 
