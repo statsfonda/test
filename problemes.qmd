@@ -1,0 +1,55 @@
+# ٭  ٭ Problèmes {.unnumbered}
+
+
+:::{#exr-testsigne}
+
+## Test du signe 
+
+On observe $n$ couples aléatoires $(X_1,Y_1), (X_2,Y_2), \dots, (X_n,Y_n)$
+indépendants mais pas nécessairement de même loi. On suppose de plus que les variables $X_i$ et $Y_i$ sont indépendantes et qu'elles ont une loi diffuse  pour tout $i\in\{1,\dots,n\}$.
+On considère le test des hypothèses
+$$
+\begin{array}{@{}cl}
+H_0: &\text{$X_i=Y_i$ en loi pour tout $i$}, \\
+H_1: & \text{il existe $i\not=j$ tels que $X_i\not=Y_i$ en loi}.
+\end{array}
+$$
+
+1. Montrer que 
+$P\left(X_i=Y_i\right)=0$
+et en déduire que sous $H_0$, on a
+$P\left(X_i > Y_i\right) = \frac{1}{2}.$
+2. On pose $N = \sum_{i = 1}^n \mathbf{1}_{X_i>Y_i}.$ Quelle est la loi de $N$ sous $H_0$ ?
+3. En déduire que le test défini par la région critique
+$$\left\{\left|N-\frac{n}{2}\right| \geq c\right\}$$
+permet de construire un test de niveau inférieur à $\alpha \in \,]0,1[$ de $H_0$ contre $H_1$ pour un choix $c=c(\alpha) >0$ que l'on précisera. Parmi tous les choix possibles de $c(\alpha)$, lequel préférer ?
+4. Les moyennes générales de la première et de la deuxième année de cinquième de $12$ redoublants ont été relevées:\\[5mm]
+\begin{tabular}{*{13}{l|}}
+\hline
+\multicolumn{1}{|l|}{Elève} & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 & 11  & 12\\
+\hline
+\multicolumn{1}{|l|}{Année 1} & 8,2 & 6,9 & 7,0 & 6,2  & 6,4 & 6,3 & 7,2 & 7,6 & 7,8 & 6,4 & 7,3 & 8\\
+\hline
+\multicolumn{1}{|c|}{Année 2} & 10,1 & 6,7 & 7,9 & 10,5 & 5,3 & 8,3  & 9,6 & 11,4 & 7,9  & 9,9 & 10,0 &  9,8\\
+\hline
+\end{tabular}\\[3mm]
+Le redoublement a-t-il une influence sur la moyenne générale, sachant que le quantile d'ordre $0.975$ d'une $\mathscr{B}(12,0.5)$ est $9$.
+
+:::
+
+
+:::{#exr-jarque}
+
+## Test de gaussianté de Jarque-Bera
+
+
+Soit $(X_1,\dots, X_n)$ un $n$-échantillon de loi inconnue $F$ ayant au moins un moment d'ordre $4$ et de moyenne nulle et de variance non nulle. 
+
+1. On pose, pour $k= 1, \dots, 4,$ 
+$$T_n^{(k)} = \frac{\tfrac{1}{n}\sum_{i = 1}^n X_i^k}{\big(\tfrac{1}{n}\sum_{i = 1}^n X_i^2\big)^{k/2}}.$$
+Montrer que si $F$ est une distribution gaussienne, on a la convergence en loi suivante : 
+$$\frac{n}{15}\left (T_n^{(3)}\right )^2+\frac{n}{96}\left(T_n^{(4)}-3\right)^2 \to \chi^2_2$$
+1. En déduire un test de l'hypothèse nulle $H_0:$ « $F$ est gaussienne »  contre l'alternative $H_1:$ « $F$ n'est pas gaussienne ».
+2. Le test est-il convergent ?
+
+:::
