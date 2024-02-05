@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistiques Fondamentales - 18&nbsp; Algèbre linéaire</title>
+<title>Statistiques Fondamentales - ٭ ٭ Problèmes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./app2.html" rel="next">
-<link href="./ref.html" rel="prev">
+<link href="./ch7_0.html" rel="next">
+<link href="./ch6_ex.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./app1.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./problemes.html">٭ ٭ Problèmes</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -240,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./problemes.html" class="sidebar-item-text sidebar-link">
+  <a href="./problemes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">٭ ٭ Problèmes</span></a>
   </div>
 </li>
@@ -276,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./app1.html" class="sidebar-item-text sidebar-link active">
+  <a href="./app1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></span></a>
   </div>
 </li>
@@ -292,15 +292,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table des matières</h2>
-   
-  <ul>
-  <li><a href="#multiplication-matricielle" id="toc-multiplication-matricielle" class="nav-link active" data-scroll-target="#multiplication-matricielle"><span class="header-section-number">18.1</span> Multiplication matricielle</a></li>
-  <li><a href="#le-théorème-spectral" id="toc-le-théorème-spectral" class="nav-link" data-scroll-target="#le-théorème-spectral"><span class="header-section-number">18.2</span> Le théorème spectral</a></li>
-  <li><a href="#projections-orthogonales" id="toc-projections-orthogonales" class="nav-link" data-scroll-target="#projections-orthogonales"><span class="header-section-number">18.3</span> Projections orthogonales</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -316,7 +308,7 @@ $$
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-al" class="quarto-section-identifier"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></span></h1>
+<h1 class="title">٭ ٭ Problèmes</h1>
 </div>
 
 
@@ -331,39 +323,31 @@ $$
 
 </header>
 
-<section id="multiplication-matricielle" class="level2" data-number="18.1">
-<h2 data-number="18.1" class="anchored" data-anchor-id="multiplication-matricielle"><span class="header-section-number">18.1</span> Multiplication matricielle</h2>
-<p>La pratique des régressions linéaires nécessite une certaine familiarité avec la multiplication des matrices. On rappelle que si <span class="math inline">\(A\)</span> est une matrice à <span class="math inline">\(\ell\)</span> lignes et <span class="math inline">\(m\)</span> colonnes, et que <span class="math inline">\(B\)</span> est une matrice à <span class="math inline">\(m\)</span> lignes et <span class="math inline">\(n\)</span> colonnes, alors il est possible de les multiplier entre elles. Il en résulte une matrice <span class="math inline">\(AB\)</span> avec <span class="math inline">\(\ell\)</span> lignes et <span class="math inline">\(n\)</span> colonnes, dont le terme <span class="math inline">\(i,j\)</span> est égal à <span class="math display">\[\sum_{k=1}^m A_{i,k}B_{k,j}. \]</span> Ce terme peut aussi être vu comme <span class="math inline">\(\langle A_{i, \cdot}, B_{\cdot, j}\rangle\)</span>, le produit scalaire entre la <span class="math inline">\(i\)</span>-ème ligne de <span class="math inline">\(A\)</span> et la <span class="math inline">\(j\)</span>-ème colonne de <span class="math inline">\(B\)</span>.</p>
-<p>De façon générale, le produit scalaire entre deux vecteurs de même taille, <span class="math inline">\(\langle x, y\rangle\)</span>, est donc égal à la multiplication matricielle entre le vecteur ligne <span class="math inline">\(x^\top\)</span> et le vecteur colonne <span class="math inline">\(y\)</span>.</p>
-<p>Il est aussi possible de multiplier un vecteur ligne <span class="math inline">\(x\)</span> de taille <span class="math inline">\(n\)</span> et un vecteur colonne <span class="math inline">\(y^\top\)</span> de taille <span class="math inline">\(m\)</span>, mais ici on n’a plus besoin que <span class="math inline">\(n\)</span> et <span class="math inline">\(m\)</span> soient égaux. Il en résulte une matrice de taille <span class="math inline">\(n\times m\)</span>, <span class="math display">\[xy^\top = [x_i y_j]_{\substack{i=1, \dotsc, n\\ j=1,\dotsc, m}}.\]</span> Si, comme tout à l’heure, <span class="math inline">\(A\)</span> est une matrice <span class="math inline">\(\ell,n\)</span> et <span class="math inline">\(B\)</span> une matrice <span class="math inline">\(m,n\)</span>, notons <span class="math inline">\(a_i\)</span> les <em>colonnes</em> de <span class="math inline">\(A\)</span> (vecteurs colonnes) et <span class="math inline">\(b_i\)</span> les <em>lignes</em> de <span class="math inline">\(B\)</span> (vecteurs lignes). Alors, on peut écrire <span class="math display">\[ AB = \sum_{i=1}^m a_i b_i. \]</span> En particulier, pour n’importe quelle matrice <span class="math inline">\(X\)</span> de taille <span class="math inline">\(n,d\)</span> dont les lignes sont <span class="math inline">\(\bx_i\)</span> (et donc, les colonnes de <span class="math inline">\(X^\top\)</span> sont les <span class="math inline">\(\bx_i^\top\)</span>), alors on peut écrire <span class="math display">\[X^\top X = \sum_{i=1}^n \bx_i^\top \bx_i.\]</span></p>
-</section>
-<section id="le-théorème-spectral" class="level2" data-number="18.2">
-<h2 data-number="18.2" class="anchored" data-anchor-id="le-théorème-spectral"><span class="header-section-number">18.2</span> Le théorème spectral</h2>
-<p>Grâce aux manipulations ci-dessus, le théorème de décomposition en vecteurs propres prend une forme légèrement différente. Ce théorème dit habituellement que toute matrice <span class="math inline">\(M\)</span> symétrique réelle peut s’écrire <span class="math inline">\(UDU^\top\)</span>, avec <span class="math inline">\(U\)</span> la matrice de passage dans la base des vecteurs propres et <span class="math inline">\(D = \mathrm{diag}(\lambda_i)\)</span> la matrice diagonale des valeurs propres. C’est donc la même chose que l’énoncé suivant.</p>
-<div id="thm-spectral" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 18.1 </strong></span>Soit <span class="math inline">\(M\)</span> une matrice symétrique réelle. Il existe une base orthonormale de vecteurs <span class="math inline">\(u_1, \dotsc, u_n\)</span> et des nombres réels <span class="math inline">\(\lambda_1, \dotsc , \lambda_n\)</span> tels que <span class="math display">\[ M = \sum_{i=1}^n \lambda_i u_i u_i^\top.\]</span></p>
-</div>
-</section>
-<section id="projections-orthogonales" class="level2" data-number="18.3">
-<h2 data-number="18.3" class="anchored" data-anchor-id="projections-orthogonales"><span class="header-section-number">18.3</span> Projections orthogonales</h2>
-<p>Soit <span class="math inline">\(v\)</span> un vecteur non nul de <span class="math inline">\(\mathbb{R}^n\)</span>. L’espace vectoriel engendré par <span class="math inline">\(v\)</span> est l’ensemble <span class="math inline">\(\mathscr{V}=\{tv : t \in \mathbb{R}\}\)</span>, et son orthogonal est l’hyperplan <span class="math inline">\(\mathscr{V}^\perp = \{x :&nbsp;\langle x, v \rangle = 0\}\)</span>. Les résultats élémentaires d’algèbre linéaire disent que tout vecteur <span class="math inline">\(x\)</span> se décompose <em>de façon unique</em> sous la forme <span class="math display">\[ x = y + z\]</span> avec <span class="math inline">\(y\)</span> dans <span class="math inline">\(\mathscr{V}\)</span> et <span class="math inline">\(z\)</span> dans <span class="math inline">\(\mathscr{V}^\top\)</span>. En particulier, il existe un <span class="math inline">\(t\)</span> tel que <span class="math inline">\(y = tv\)</span>.</p>
-<p>Considérons maintenant la matrice <span class="math display">\[P = \frac{1}{|v|^2}vv^\top \in \mathscr{M}_{n,n}. \]</span> Appliquons cette matrice à <span class="math inline">\(x\)</span>. Par linéarité, <span class="math inline">\(Px = Px + Pz\)</span>. Calculons ces deux termes.</p>
+<div id="exr-testsigne" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 1 (Test du signe) </strong></span>On observe <span class="math inline">\(n\)</span> couples aléatoires <span class="math inline">\((X_1,Y_1), (X_2,Y_2), \dots, (X_n,Y_n)\)</span> indépendants mais pas nécessairement de même loi. On suppose de plus que les variables <span class="math inline">\(X_i\)</span> et <span class="math inline">\(Y_i\)</span> sont indépendantes et qu’elles ont une loi diffuse pour tout <span class="math inline">\(i\in\{1,\dots,n\}\)</span>. On considère le test des hypothèses <span class="math display">\[
+\begin{array}{@{}cl}
+H_0: &amp;\text{$X_i=Y_i$ en loi pour tout $i$}, \\
+H_1: &amp; \text{il existe $i\not=j$ tels que $X_i\not=Y_i$ en loi}.
+\end{array}
+\]</span></p>
 <ol type="1">
-<li><span class="math inline">\(Pz = |v|^{-1}v v^\top z = |v|^{-1}v \langle v, z\rangle\)</span>. Comme <span class="math inline">\(z\)</span> est orthogonal à <span class="math inline">\(v\)</span>, cela vaut 0.</li>
-<li><span class="math inline">\(Py = tPv\)</span>. Par définition de <span class="math inline">\(P\)</span>, ceci est donc égal à <span class="math inline">\(t|v|^{-2}v v^\top v = t|v|^{-2}v |v|^2 = tv\)</span>, c’est-à-dire <span class="math inline">\(y\)</span>.</li>
+<li>Montrer que <span class="math inline">\(P\left(X_i=Y_i\right)=0\)</span> et en déduire que sous <span class="math inline">\(H_0\)</span>, on a <span class="math inline">\(P\left(X_i &gt; Y_i\right) = \frac{1}{2}.\)</span></li>
+<li>On pose <span class="math inline">\(N = \sum_{i = 1}^n \mathbf{1}_{X_i&gt;Y_i}.\)</span> Quelle est la loi de <span class="math inline">\(N\)</span> sous <span class="math inline">\(H_0\)</span> ?</li>
+<li>En déduire que le test défini par la région critique <span class="math display">\[\left\{\left|N-\frac{n}{2}\right| \geq c\right\}\]</span> permet de construire un test de niveau inférieur à <span class="math inline">\(\alpha \in \,]0,1[\)</span> de <span class="math inline">\(H_0\)</span> contre <span class="math inline">\(H_1\)</span> pour un choix <span class="math inline">\(c=c(\alpha) &gt;0\)</span> que l’on précisera. Parmi tous les choix possibles de <span class="math inline">\(c(\alpha)\)</span>, lequel préférer ?</li>
+<li>Les moyennes générales de la première et de la deuxième année de cinquième de <span class="math inline">\(12\)</span> redoublants ont été relevées:\[5mm]
+\[3mm] Le redoublement a-t-il une influence sur la moyenne générale, sachant que le quantile d’ordre <span class="math inline">\(0.975\)</span> d’une <span class="math inline">\(\mathscr{B}(12,0.5)\)</span> est <span class="math inline">\(9\)</span>.</li>
 </ol>
-<p>Nous avons montré plusieurs choses. D’abord, l’application qui à <span class="math inline">\(x\)</span> associe <span class="math inline">\(y\)</span> est effectivement linéaire, et une de ses matrices est <span class="math inline">\(P\)</span>. On dit que <span class="math inline">\(P\)</span> est la matrice de projection sur <span class="math inline">\(\mathscr{V}\)</span>. De même, comme <span class="math inline">\((I - P)x = y+z - y = z\)</span>, la matrice <span class="math inline">\(I-P\)</span> est la matrice de projection sur <span class="math inline">\(\mathscr{V}^\perp\)</span>.</p>
-<p>Le cas d’un sous-espace vectoriel généré par <em>plusieurs</em> vecteurs <span class="math inline">\(v_1, \dotsc, v_d\)</span> linéairement indépendants se traite de la même façon. Soit <span class="math inline">\(V = [v_1, \dotsc, v_d]\)</span> la matrice <span class="math inline">\(n \times d\)</span> dont les colonnes sont les <span class="math inline">\(v_i\)</span>. Tout à l’heure, <span class="math inline">\(|v|^{-2}\)</span> aurait pu s’écrire <span class="math inline">\((v^\top v)^{-1}\)</span>. L’analogue avec <span class="math inline">\(V\)</span> est donc naturellement <span class="math inline">\((V^\top V)^{-1}\)</span>, donnant naissance au théorème suivant.</p>
-<div id="thm-projortho" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 18.2 </strong></span>Soient <span class="math inline">\(v_1, \dotsc, v_d\)</span> des vecteurs non-colinéaires de <span class="math inline">\(\mathbb{R}^n\)</span>, et soit <span class="math inline">\(V = [v_1, \dotsc, v_d]\)</span> la matrice <span class="math inline">\(n \times d\)</span> dont les colonnes sont les <span class="math inline">\(v_i\)</span>. La matrice de taille <span class="math inline">\(n\times n\)</span> <span class="math display">\[P_V = V (V^\top V)^{-1}V^\top \]</span> est la matrice de projection orthogonale sur le sous-espace <span class="math inline">\(\mathscr{V}\)</span> engendré par les <span class="math inline">\(v_i\)</span>. De plus, la matrice <span class="math inline">\(I - P_V\)</span> est la matrice de projection orthogonale sur le sous-espace <span class="math inline">\(\mathscr{V}^\perp\)</span>.</p>
 </div>
-<div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>Si <span class="math inline">\(x=y+z\)</span> est la décomposition de <span class="math inline">\(x\)</span> en somme d’un élément <span class="math inline">\(y\in\mathscr{V}\)</span> et d’un élément <span class="math inline">\(z \in \mathscr{V}^\perp\)</span>, alors <span class="math inline">\(Px = Py + Pz\)</span> et <span class="math display">\[ Pz = V(V^\top V)^{-1}V^\top z.\]</span> Or, les <span class="math inline">\(d\)</span> lignes de <span class="math inline">\(V^\top z\)</span> sont les produits scalaires <span class="math inline">\(\langle v_i, z\rangle\)</span>, qui sont tous nuls car <span class="math inline">\(z\)</span> est orthogonal à tous les <span class="math inline">\(v_i\)</span>. Ainsi, <span class="math inline">\(Pz = 0\)</span>.</p>
-<p>D’autre part, comme <span class="math inline">\(y\)</span> est dans l’espace engendré par les <span class="math inline">\(v_i\)</span>, il s’écrit sous la forme <span class="math inline">\(t_1 v_1 + \dotsc + t_d v_d\)</span>. Cela peut se récrire en disant que <span class="math inline">\(y = V t\)</span>, où <span class="math inline">\(t\)</span> est le vecteur colonne des <span class="math inline">\(t_i\)</span>. Mais alors, <span class="math display">\[ Py = V(V^\top V)^{-1}V^\top V t = Vt = y.\]</span> On conclut comme dans le cas <span class="math inline">\(d=1\)</span> exposé ci-dessus. Il reste cependant un point de détail :&nbsp;nous devons nous assurer que <span class="math inline">\(V^\top V\)</span> est effectivement inversible ! C’est le cas, je le jure.</p>
+<div id="exr-jarque" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 2 (Test de gaussianté de Jarque-Bera) </strong></span>Soit <span class="math inline">\((X_1,\dots, X_n)\)</span> un <span class="math inline">\(n\)</span>-échantillon de loi inconnue <span class="math inline">\(F\)</span> ayant au moins un moment d’ordre <span class="math inline">\(4\)</span> et de moyenne nulle et de variance non nulle.</p>
+<ol type="1">
+<li>On pose, pour <span class="math inline">\(k= 1, \dots, 4,\)</span> <span class="math display">\[T_n^{(k)} = \frac{\tfrac{1}{n}\sum_{i = 1}^n X_i^k}{\big(\tfrac{1}{n}\sum_{i = 1}^n X_i^2\big)^{k/2}}.\]</span> Montrer que si <span class="math inline">\(F\)</span> est une distribution gaussienne, on a la convergence en loi suivante : <span class="math display">\[\frac{n}{15}\left (T_n^{(3)}\right )^2+\frac{n}{96}\left(T_n^{(4)}-3\right)^2 \to \chi^2_2\]</span></li>
+<li>En déduire un test de l’hypothèse nulle <span class="math inline">\(H_0:\)</span> « <span class="math inline">\(F\)</span> est gaussienne » contre l’alternative <span class="math inline">\(H_1:\)</span> « <span class="math inline">\(F\)</span> n’est pas gaussienne ».</li>
+<li>Le test est-il convergent ?</li>
+</ol>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -716,13 +700,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ref.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Références</span>
+      <a href="./ch6_ex.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">٭ Exercices</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./app2.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">50&nbsp;nuances de TCL</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch7_0.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

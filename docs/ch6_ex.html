@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch7_0.html" rel="next">
+<link href="./problemes.html" rel="next">
 <link href="./ch6_2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -240,6 +240,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./problemes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">٭ ٭ Problèmes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./ch7_0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
   </div>
@@ -317,11 +323,65 @@ $$
 
 </header>
 
-<div class="{exr-mlef}">
-<p>Soit <span class="math inline">\(\hat{\theta}\)</span> l’estimateur du maximum de vraisemblance d’un paramètre <span class="math inline">\(\theta\)</span> dans un modèle régulier. Montrer que <span class="math inline">\(f(\hat{\theta})\)</span> est l’estimateur du maximum de vraisemblance de <span class="math inline">\(f(\theta)\)</span>, pour n’importe quelle fonction <span class="math inline">\(\theta\)</span> raisonnable.</p>
+<div id="exr-mlef" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 1 </strong></span>Soit <span class="math inline">\(\hat{\theta}\)</span> l’estimateur du maximum de vraisemblance d’un paramètre <span class="math inline">\(\theta\)</span> dans un modèle régulier. Montrer que <span class="math inline">\(f(\hat{\theta})\)</span> est l’estimateur du maximum de vraisemblance de <span class="math inline">\(f(\theta)\)</span>, pour n’importe quelle fonction <span class="math inline">\(\theta\)</span> raisonnable.</p>
+</div>
+<div id="exr-laplace" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 2 </strong></span>On observe un échantillon iid <span class="math inline">\((X_1, \dotsc, X_n)\)</span> de lois de Laplace, c’est-à-dire de densité <span class="math inline">\(x\mapsto \lambda e^{-\lambda|x-m|} / 2\)</span>, où <span class="math inline">\(\lambda&gt;0\)</span> et <span class="math inline">\(m\in \mathbb{R}\)</span>.</p>
+<ol type="1">
+<li>En supposant <span class="math inline">\(\lambda\)</span> connu, proposer un estimateur de <span class="math inline">\(m\)</span> par la méthode des moments, et un estimateur par la méthode du maximum de vraisemblance. Étudier leurs propriétés et les comparer.</li>
+<li>Même question lorsque ni <span class="math inline">\(\lambda\)</span> ni <span class="math inline">\(m\)</span> ne sont connus.</li>
+</ol>
+</div>
+<div id="exr-exemv" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 3 </strong></span>Calculer l’estimateur du maximum de vraisemblance et étudier ses propriétés dans les cas suivants :&nbsp;</p>
+<ol type="1">
+<li>On observe <span class="math inline">\(X_1, \dotsc, X_n\)</span> de loi de Poisson de paramètre <span class="math inline">\(\lambda&gt;0\)</span>.</li>
+<li>On observe <span class="math inline">\(X \sim \mathrm{Bin}(n,p)\)</span> où <span class="math inline">\(n\)</span> est connu et <span class="math inline">\(p\in ]0,1[\)</span>.</li>
+<li>On observe <span class="math inline">\(X_1, \dotsc, X_n\)</span> de loi <span class="math inline">\(\mathscr{N}(\mu,\sigma^2)\)</span>.</li>
+<li>On observe <span class="math inline">\(X_1, \dotsc, X_n\)</span> de loi de Pareto <span class="math inline">\(\mathrm{PL}(\alpha,1)\)</span>, dont la densité est <span class="math inline">\(\alpha x^{-\alpha-1}\)</span> sur <span class="math inline">\([1,\infty[\)</span>.</li>
+</ol>
+</div>
+<div id="exr-gammaemv" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 4 </strong></span>On se donne un échantillon <span class="math inline">\((X_1,\dots,X_n)\)</span> de loi <span class="math inline">\(\Gamma(\alpha, \beta)\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<ol type="1">
+<li>On suppose le paramètre <span class="math inline">\(\beta\)</span> connu. Proposer un estimateur de <span class="math inline">\(\alpha\)</span> par la méthode des moments.</li>
+<li>On suppose à présent que les deux paramètres <span class="math inline">\(\alpha, \beta\)</span> sont inconnus. Proposer un estimateur de <span class="math inline">\((\alpha,\beta)\)</span> par la méthode des moments.</li>
+<li>Toujours dans le cas où <span class="math inline">\(\alpha, \beta\)</span> sont inconnus, donner le système d’équation que satisfont les estimateurs de <span class="math inline">\((\alpha, \beta)\)</span> par la méthode du maximum de vraisemblance.</li>
+</ol>
+</div>
+<div id="exr-unifemv" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 5 </strong></span>Soit <span class="math inline">\((X_1,\dots,X_n)\)</span> un <span class="math inline">\(n\)</span>-échantillon de la loi uniforme sur <span class="math inline">\([-\theta,\theta]\)</span>, avec <span class="math inline">\(\theta&gt;0\)</span>.</p>
+<ol type="1">
+<li>Décrire le modèle statistique associé.</li>
+<li>Proposer un estimateur <span class="math inline">\(\hat \theta_n\)</span> de <span class="math inline">\(\theta\)</span> obtenu par méthode des moments. Est-il consistant? Proposer un intervalle de confiance asymptotique de niveau de confiance <span class="math inline">\(\alpha\)</span>.
+Soit <span class="math inline">\(T_n\)</span> l’estimateur du maximum de vraisemblance de <span class="math inline">\(\theta\)</span>. Montrer que pour tout réel <span class="math inline">\(t\)</span>, <span class="math display">\[P_\theta^n\left(n(T_n-\theta)\leq t\right)\to e^{t/\theta}
+\mathbf{1}_{t\leq 0}+\mathbf{1}_{t&gt; 0}\]</span> quand <span class="math inline">\(n\)</span> tend vers l’infini. En déduire un intervalle de confiance asymptotique de niveau <span class="math inline">\(\alpha\)</span>.</li>
+<li>Comparer les estimateurs <span class="math inline">\(\hat \theta_n\)</span> et <span class="math inline">\(T_n\)</span> sur la base des longueurs moyennes des intervalles de confiance asymptotiques associés.</li>
+</ol>
+</div>
+<div id="exr-weibullemv" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 6 </strong></span>Soit <span class="math inline">\(c&gt;0\)</span> un paramètre fixé connu. On considère la loi de Weibull de paramètre <span class="math inline">\(c\)</span>, notée <span class="math inline">\(\mathscr{W}(c)\)</span>, dont la densité sur <span class="math inline">\(\mathbb{R}_+\)</span> est <span class="math display">\[\lambda c x^{c-1}e^{-\lambda x^c}\]</span> On observe un <span class="math inline">\(n\)</span>-échantillon de loi <span class="math inline">\(\mathscr{W}(c)\)</span>, avec <span class="math inline">\(n\)</span> plus grand que 3.</p>
+<ol type="1">
+<li>Calculer l’estimateur du maximum de vraisemblance <span class="math inline">\(\hat \lambda_n\)</span> de <span class="math inline">\(\lambda\)</span>.</li>
+<li>Calculer son risque quadratique <span class="math inline">\(E_\lambda^n\left[(\hat \lambda_n-\lambda)^2\right]\)</span> o`u <span class="math inline">\(P_\lambda^n\)</span> désigne la loi du <span class="math inline">\(n\)</span>-échantillon.</li>
+</ol>
+</div>
+<div id="exr-buse" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 7 </strong></span>Dans une urne contenant 1000 tickets, 20 sont marqués <span class="math inline">\(\theta\)</span> et 980 sont marqués <span class="math inline">\(10\theta\)</span>, où <span class="math inline">\(\theta\)</span> est un réel strictement positif inconnu.</p>
+<ol type="1">
+<li>On tire un unique ticket de valeur <span class="math inline">\(X\)</span>. Écrire le modèle statistique associé : est-il dominé par une mesure <span class="math inline">\(\sigma\)</span>-finie? Donner un estimateur qui s’apparenterait à un maximum de vraisemblance <span class="math inline">\(\hat{\theta}\)</span> de <span class="math inline">\(\theta\)</span> (maximiser <span class="math inline">\(P_\theta(\{X\})\)</span>), puis montrer que <span class="math inline">\(\mathbb{P}(\hat{\theta}=\theta)\geq 0,98.\)</span></li>
+<li>On renumérote les tickets marqués <span class="math inline">\(10\theta\)</span> par <span class="math inline">\(a_i \theta\)</span>, <span class="math inline">\(1 \leq i \leq 980\)</span>, où les <span class="math inline">\(a_i\)</span> sont des réels connus tous distincts dans <span class="math inline">\([10;10,1]\)</span>. Donner le nouvel estimateur du maximum de vraisemblance <span class="math inline">\(\tilde{\theta}\)</span> et montrer que <span class="math inline">\(\mathbb{P}(\tilde{\theta}&lt;10 \theta)=0,02.\)</span></li>
+</ol>
 </div>
 
 
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>On rappelle que sa densité est <span class="math inline">\(\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}\exp(-\beta x)\)</span> sur <span class="math inline">\([0,\infty[\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -679,8 +739,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch7_0.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./problemes.html" class="pagination-link">
+        <span class="nav-page-text">٭ ٭ Problèmes</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
