@@ -377,7 +377,7 @@ $$
 <p>De plus, si <span class="math inline">\(\mathbf{p}\)</span> était effectivement de la forme <span class="math inline">\(\hat{\mathbf{p}}^x\hat{\mathbf{p}}^y\)</span>, alors la moyenne théorique des éléments de classe <span class="math inline">\((i,j)\)</span> serait <span class="math inline">\(n\hat{p}^x_i \hat{p}^y_j\)</span>. Cette quantité, notée <span class="math inline">\(\check{N}_{i,j}\)</span>, s’appelle <em>effectif théorique</em>. Nous pouvons maintenant construire la statistique qui nous servira à tester tout cela.</p>
 <div id="def-statpearson" class="theorem definition">
 <p><span class="theorem-title"><strong>Définition 8.2 (Statistique de Pearson) </strong></span>La statistique de Pearson est définie par</p>
-<p><span class="math display">\[C_n = \sum_{i=1}^k \sum_{j=1}^k \frac{(N_{i,j} - \check{N}_{i,j})^2}{\hat{N}_{i,j}}. \]</span></p>
+<p><span class="math display">\[C_n = \sum_{i=1}^k \sum_{j=1}^h \frac{(N_{i,j} - \check{N}_{i,j})^2}{\check{N}_{i,j}}. \]</span></p>
 </div>
 <p>Cette statistique possède une loi limite connue, encore en vertu du théorème de Cochran. Noter que la statistique de Pearson possède une expression alternative, <span class="math display">\[C_n = \sum\sum \frac{n(\hat{p}_{i,j} - \hat{p}^x_i \hat{p}^y_j)^2}{\hat{p}^x_i \hat{p}^y_j}.  \]</span></p>
 <div id="thm-testindepchi2" class="theorem">
