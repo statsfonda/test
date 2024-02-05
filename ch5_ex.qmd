@@ -111,7 +111,5 @@ On se place dans un modèle linéaire gaussien $Y = X\bt + \varepsilon$. L'objec
 1. Montrer que $(M - (X^\top X)^{-1}X^\top)X= 0$. 
 2. Calculer la matrice de variance de $\tilde{\bt}$ en fonction de $M - (X^\top X)^{-1}X^\top$ et conclure. 
 
-
-
 :::
 
