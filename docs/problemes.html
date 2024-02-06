@@ -397,12 +397,46 @@ H_1: &amp; \text{il existe $i\not=j$ tels que $X_i\not=Y_i$ en loi}.
 <li>Le test est-il convergent ?</li>
 </ol>
 </div>
+<div id="exr-testexactfisher" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 3 (Test exact de Fisher) </strong></span>On reprend l’exercice <a href="ch4_ex.html#exr-testind">Exercice&nbsp;<span>10</span></a>, mais cette fois la table de contingence des observations est la suivante :&nbsp;</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>riche</th>
+<th>pauvre</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>heureux</strong></td>
+<td>1</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>triste</strong></td>
+<td>11</td>
+<td>3</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>On cherche à tester si l’argent et le bonheur sont deux dimensions indépendantes (hypothèse nulle).</p>
+<ol type="1">
+<li>Un test du <span class="math inline">\(\chi_2\)</span> d’indépendance est-il adapté cette fois ?</li>
+<li>On suppose que le total de chaque ligne et de chaque colonne est fixé. Montrer que sous l’hypothèse nulle, la vraisemblance d’une table de contingence de la forme <span class="math display">\[t=\begin{bmatrix} a &amp;&amp; b \\ c &amp;&amp; d \end{bmatrix}\]</span> est égale à <span class="math display">\[p = \frac{\binom{a+b}{a}\binom{c+d}{c}}{\binom{24}{a+c}}. \]</span> On a supposé que <span class="math inline">\(a+b = 10, c+d = 14, a+c=11, b+d=12\)</span>. Pour la table ci-dessus, on trouve <span class="math inline">\(p = 0.001346\)</span>.</li>
+<li>La notion de quantile a peu de sens pour une loi comme ci-dessus<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. On remplace donc cette notion par la suivante : si <span class="math inline">\(p(t)\)</span> est la probabilité, sous l’hypothèse nulle, d’observer une table <span class="math inline">\(t\)</span>, alors on ordonne toutes les tables possible <span class="math inline">\(t_1, \dotsc, t_2, \dots\)</span> par probabilité croissante. On pose <span class="math inline">\(n_\alpha = \sup\{k :&nbsp;p(t_1) + \dotsb + p(t_k)&lt;\alpha\}\)</span>. Montrer que le test dont la région de rejet est <span class="math inline">\(\{t_1, \dotsc, t_{n_\alpha}\}\)</span> est un test de niveau de confiance au moins <span class="math inline">\(1-\alpha\)</span> de l’hypothèse nulle.</li>
+</ol>
+</div>
 
 
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>Le quantile d’ordre <span class="math inline">\(0.975\)</span> d’une <span class="math inline">\(\mathscr{B}(12,0.5)\)</span> est <span class="math inline">\(9\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Loi hypergéométrique. <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
