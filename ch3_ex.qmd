@@ -13,6 +13,7 @@
 9. Expliquer à votre grand-mère la différence entre un intervalle de fluctuation et un intervalle de confiance. 
 10. L'intervalle de confiance de niveau $1-\alpha$ pour la moyenne d'un modèle $N(\mu, 1)$ avec $n$ observations est $I_n = [\bar{X}_n \pm z_\alpha /\sqrt{n}]$. Supposons qu'on obtienne une nouvelle observation indépendante des autres, disons $Z$. La probabilité $\mathbb{P}(Z \in I_n)$ est-elle plus grande ou plus petite que $1-\alpha$ ?
 11. Comparer la longueur des intervalles de confiance obtenus par les différentes méthodes de la section @sec-icber. 
+12. Le quantile d'ordre 97,5% d'une variable $X\sim \mathrm{Bin}(12,1/2)$ est 9. Trouver $c$ tel que $\mathbb{P}(|X-6|>c)=95\%$. 
 
 
 ## Exercices 

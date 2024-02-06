@@ -1,6 +1,26 @@
 # L'information de Fisher
 
+
 ## Définitions
+
+
+Nous avons vu apparaître naturellement la *variance* du moment dans un modèle exponentiel, à savoir $\mathrm{Var}_\theta(T)$. Cette quantité s'appelle *information de Fisher*, parce qu'elle quantifie l'information relative au paramètre $\theta$ qui est « contenue » dans la distribution $p_\theta$. 
+
+
+
+
+:::{#def-information}
+
+## Information de Fisher
+
+L'information de Fisher est la matrice de covariance du moment $T$ : 
+
+$$I(\theta) = E_\theta[T(X)T(X)^\top] - E_\theta[T(X)]E_\theta[T(X)]^\top.$$
+
+:::
+
+
+L'information de Fisher possède de nombreuses expressions alternatives. La plus importante, outre la définition, est qu'on peut interpréter $I(\theta)$ comme la matrice de covariance du *score* du modèle.  
 
 
 :::{#def-score}
@@ -12,54 +32,36 @@ $$ s_\theta(x) = \nabla_\theta \ln p_\theta(x).$$
 
 :::
 
-Dans un modèle exponentiel $p_\theta(x) = \exp(\langle \theta, T(x)\rangle - \ln Z_\theta)$, on voit immédiatement que 
-$$ s_\theta(x) =  T(x).$$
-Le score dépend des observations, et donc est une variable aléatoire. On peut calculer son espérance par rapport à $p_\theta$. Il s'avère que le score est centré : 
-$$E_\theta[s_\theta(X)]=0.$$
-
-:::{.proof}
-
-L'espérance du score est $\int p_\theta(x) \nabla_\theta \ln p_\theta(x) \nu(dx)$, c'est-à-dire $\int \nabla_\theta p_\theta(x)\nu(dx)$. Si l'on peut intervertir l'intégrale et la dérivée, on obtient $\nabla_\theta \int p_\theta d\nu$, qui est le gradient de la fonction constante égale à 1 (puisque $p_\theta$ est une densité de probabilité par rapport à $\nu$) : c'est donc zéro. 
-:::
+Dans un modèle exponentiel $p_\theta(x) = \exp(\langle \theta, T(x)\rangle - \ln Z_\theta)$, nous avons déjà vu que 
+$$ s_\theta(x) =  T(x) - \nabla \ln Z(\theta).$$
+Le score dépend des observations, et donc est une variable aléatoire. En fait, @eq-grad-exp montre que l'espérance du score, $E_\theta[T(X)] - $\nabla \ln Z(\theta)$, vaut précisément zéro : le score est centré. 
 
 
 
-:::{#def-information}
 
-## Information de Fisher
+:::{#def-entropie}
 
-L'information de Fisher est la matrice de covariance du score : 
+## Entropie
 
-$$I(\theta) = E_\theta[s_\theta(X) s_\theta(X)^\top].$$
+L'entropie d'une loi de densité $f$ par rapport à la mesure de référence $\nu$ est donnée par 
+$$\mathrm{Ent}(f) = -\int f(x)\ln f(x)\nu(dx). $$ 
 
 :::
 
-L'information de Fisher possède de nombreuses expressions alternatives. Parmi elles, la suivante permet d'interpréter $I(\theta)$ comme la *courbure moyenne de l'entropie*. On note $\nabla^2_\theta f$ la matrice hessienne d'une fonction $f$. 
+Nous reviendrons plus tard sur cette quantité. Dans le cas d'un modèle exponentiel, l'entropie est égale à $E_\theta[\ln p_\theta(X)]$ par définition. On peut interpréter $I(\theta)$ comme la *courbure moyenne de l'entropie*. 
 
 :::{#prp-courbure}
 
-$I(\theta) = - \nabla^2_\theta E_\theta[ \ln p_\theta(X)].$
+$I(\theta) = - \nabla^2_\theta~ \mathrm{Ent}(p_\theta).$
 
 :::
 
-:::{.proof}
+:::{.proof} 
 
-L'intégrale en question est égale à $\int p_\theta \nabla_\theta^2\ln p_\theta$. Les règles de différentiation donnent 
-$$\nabla^2_\theta \ln p_\theta = \frac{p_\theta\nabla^2_\theta p_\theta}{p_\theta^2} -  \frac{\nabla_\theta p_\theta (\nabla_\theta p_\theta)^\top}{p_\theta^2}$$
-c'est-à-dire $\nabla^2_\theta p_\theta / p_\theta - s_\theta s_\theta^\top$. L'espérance de ceci par rapport à $p_\theta$ est donc égale à $\int \nabla^2_\theta p_\theta - I(\theta)$. Quant au premier terme, en intervertissant la dérivée seconde et l'intégrale, on voit qu'il est égal à la hessienne de la fonction constante égale à 1, donc il est nul. 
-:::
-
-## L'EMV est asymptotiquement normal
-
-
-
-:::{#thm-emv-an}
-
-## L'EMV est asymptotiquement normal
-
-$\sqrt{n}(\emv - \theta)$ converge en loi vers $N(0,I(\theta)^{-1})$. 
+Il suffit de dériver deux fois sous l'intégrale et d'utiliser @eq-hess-exp. 
 
 :::
+
 
 ## Borne de Cramér-Rao
 
@@ -69,7 +71,7 @@ $\sqrt{n}(\emv - \theta)$ converge en loi vers $N(0,I(\theta)^{-1})$.
 
 ## Borne de Cramér-Rao
 
-Pour tout estimateur sans biais $\hat{\theta}$ de $\theta$, on a^[Rappelons que, lorsque $A,B$ sont des matrices définies positives, $A \preceq B$ équivaut à ce que $\langle y, Ay\rangle \leqslant \langle y, By\rangle$ pour tout $y$. ] $I(\theta)^{-1} \preceq \mathrm{Cov}_\theta(\hat{\theta})$. 
+Pour tout estimateur sans biais $\hat{\theta}$ de $\theta$, on a^[Rappelons que (cf @sec-defpos) lorsque $A,B$ sont des matrices symétriques, $A \preceq B$ équivaut à ce que $\langle y, Ay\rangle \leqslant \langle y, By\rangle$ pour tout $y$. ] $I(\theta)^{-1} \preceq \mathrm{Cov}_\theta(\hat{\theta})$. 
 
 :::
 
@@ -84,5 +86,41 @@ qui est le résultat voulu. Pour la dimension supérieure, il suffit d'appliquer
 $$\langle y, I(\theta)^{-1}y\rangle \leqslant \langle y, \mathrm{Cov}_\theta(T)y\rangle, $$
 qui montre bien que $I(\theta)^{-1} \preceq \mathrm{Cov}_\theta(T)$. 
 :::
+
+## Tests fondés sur l'EMV
+
+L'idée principale de l'EMV (maximiser la vraisemblance) est utilisable pour effectuer des tests. Typiquement, dans un modèle exponentiel, on peut vouloir tester l'hypothèse nulle 
+$$ H_0 : \theta \in \Theta_0$$
+contre l'hypothèse alternative 
+$$ H_1 : \theta \in \Theta_1$$
+où $\Theta_0,\Theta_1$ sont deux régions distinctes de l'espace des paramètres $\Theta$. Dans ces cas, nous pouvons définir deux maximums de vraisemblance, un par hypothèse : par exemple, 
+$$ L_0 =  \sup_{\theta \in \Theta_0} p_\theta(x).$$
+
+Dans le cas où les régions $\Theta_0,\Theta_1$ sont constituées d'un seul élément, disons $\theta_0,\theta_1$, ces maximums de vraisemblance sont simplement $p_{\theta_0}(x)$ et $p_{\theta_1}(x)$. Dans tous les cas, on peut associer à chaque hypothèse un EMV, par exemple 
+$$ \hat{\theta}_0 = \arg \max_{\theta \in \Theta_0} p_\theta(x),$$
+qui s'il existe vérifie $L_0 = p_{\hat{\theta}_0}(x)$. 
+
+
+:::{#def-testRVgen}
+
+Les *tests du rapport de vraisemblance* pour les hypothèses qui ne sont pas forcément simples sont les tests dont la région de rejet est de la forme 
+$$ \left\lbrace\frac{\sup_{\theta \in \Theta_0}p_\theta(X)}{\sup_{\theta\in\Theta_1}p_\theta(X)} > z \right\rbrace. $$ 
+:::
+
+Lorsque les EMV pour chaque hypothèse existent, cette région de rejet s'écrit donc également 
+$$ \left\lbrace \frac{p_{\hat{\theta}_0}(X)}{p_{\hat{\theta}_1}(X)} > z \right\rbrace. $$
+Malheureusement, il n'y a pas d'équivalent du théorème de Neyman-Pearson (@thm-affinity, @thm-jerzy) lorsque les hypothèses ne sont pas simples. 
+
+
+
+## Limitations
+
+L'estimation par maximum de vraisemblance, par sa portée théorique autant que pratique, est une référence difficilement contournable. Au vu de son importance, il est de bon aloi d'en cerner les limites.
+
+1. Si la loi $P$ qui a généré les observations n'appartient pas au modèle, l'estimateur n'a aucune chance d'être convergent, même s'il constitue quand même la meilleure estimation possible *dans ce modèle*. Le choix du modèle statistique reste donc un problème fondamental. 
+
+2. L'apparente optimalité (au sens de Cramér-Rao) de l'EMV n'est qu'asymptotique. À distance finie, il peut y avoir des estimateurs biaisés ayant un meilleur risque quadratique. 
+
+3. Tous les modèles ne sont pas exponentiels. Même si l'estimation par maximum de vraisemblance reste pertinente en général, elle peut aussi donner des résultats peu cohérents, surtout lorsqu'elle est utilisée pour faire des tests (voir par exemple @exr-testunif). 
 
 

@@ -55,6 +55,13 @@ Soient $(x_1, y_1), \dotsc, (x_n, y_n)$ des points dans $\mathbb{R}^2$. Comparer
 
 :::
 
+:::{#exr-fw}
+
+## Théorème de Frish-Waugh
+
+Soit $Y$ un vecteur de variables à expliquer de taille $n$, et soient $X,Z$ deux matrices de variables explicatives, de dimensions $(n,d)$ et $(n,f)$. Soient $\hat{\bt}$ et $\hat{\bt}_X$ les estimateurs des moindres carrés des deux régressions $Y = X\bt + Z{\boldsymbol \mu} + \varepsilon$ d'une part, et $PY = PX\bt + P\varepsilon$ d'autre part, où $P$ est la matrice de projection sur le sous-espace vectoriel orthogonal aux colonnes de $Z$. Montrer que $\hat{\bt} = \hat{\bt}_X$. 
+
+:::
 
 :::{#exr-chow}
 

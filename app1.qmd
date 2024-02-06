@@ -62,3 +62,29 @@ $$ Py = V(V^\top V)^{-1}V^\top V t = Vt = y.$$
 On conclut comme dans le cas $d=1$ exposé ci-dessus. Il reste cependant un point de détail : nous devons nous assurer que $V^\top V$ est effectivement inversible ! C'est le cas, je le jure. 
 
 :::
+
+
+## Matrices positives {#sec-defpos}
+
+Une matrice symétrique réelle est *positive* lorsque toutes ses valeurs propres sont positives ou nulles, et *définie positive* lorsqu'elles sont toutes strictement positives. 
+
+:::{#prp-dp}
+
+Une matrice $A$ est positive si et seulement si $\langle x, Ax\rangle$ est un nombre positif ou nul pour tout $x$. 
+
+:::
+
+:::{.proof}
+
+Décomposer $x$ dans une base orthonormale $u_1, \dotsc, u_n$ de vecteurs propres de $A$ afin d'écrire $\langle x, Ax\rangle$ sous la forme $\sum_{i=1}^n \lambda_i \langle x, u_i\rangle^2$. 
+L'équivalence est alors évidente. 
+
+:::
+
+:::{#def-domination}
+
+On dit que $A$ est dominée par $B$ lorsque $B-A$ est une matrice positive. On note cela $A \preceq B$. 
+
+:::
+
+La proposition précédente montre immédiatement que c'est équivalent à ce que $\langle x, Ax\rangle \leqslant \langle x, Bx\rangle$ pour tout $x$. 
