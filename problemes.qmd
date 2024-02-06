@@ -50,3 +50,28 @@ $$\frac{n}{15}\left (T_n^{(3)}\right )^2+\frac{n}{96}\left(T_n^{(4)}-3\right)^2 
 2. Le test est-il convergent ?
 
 :::
+
+
+:::{#exr-testexactfisher}
+
+## Test exact de Fisher
+
+On reprend l'exercice @exr-testind, mais cette fois la table de contingence des observations est la suivante : 
+
+| | riche | pauvre | 
+|-|-|-|-|
+| **heureux** |1 | 9|
+| **triste**| 11| 3 | 
+
+On cherche à tester si l'argent et le bonheur sont deux dimensions indépendantes (hypothèse nulle). 
+
+1. Un test du $\chi_2$ d'indépendance est-il adapté cette fois ?
+2. On suppose que le total de chaque ligne et de chaque colonne est fixé. Montrer que sous l'hypothèse nulle, la vraisemblance d'une table de contingence de la forme 
+$$t=\begin{bmatrix} a && b \\ c && d \end{bmatrix}$$
+est égale à 
+   $$p = \frac{\binom{a+b}{a}\binom{c+d}{c}}{\binom{24}{a+c}}. $$
+   On a supposé que $a+b = 10, c+d = 14, a+c=11, b+d=12$. 
+Pour la table ci-dessus, on trouve $p = 0.001346$. 
+1. La notion de quantile a peu de sens pour une loi comme ci-dessus^[Loi hypergéométrique. ]. On remplace donc cette notion par la suivante : si $p(t)$ est la probabilité, sous l'hypothèse nulle, d'observer une table $t$, alors on ordonne toutes les tables possible $t_1, \dotsc, t_2, \dots$ par probabilité croissante. On pose $n_\alpha = \sup\{k : p(t_1) + \dotsb + p(t_k)<\alpha\}$. Montrer que le test dont la région de rejet est $\{t_1, \dotsc, t_{n_\alpha}\}$ est un test de niveau de confiance au moins $1-\alpha$ de l'hypothèse nulle. 
+
+:::
