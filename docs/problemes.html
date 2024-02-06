@@ -333,10 +333,61 @@ H_1: &amp; \text{il existe $i\not=j$ tels que $X_i\not=Y_i$ en loi}.
 <ol type="1">
 <li>Montrer que <span class="math inline">\(P\left(X_i=Y_i\right)=0\)</span> et en déduire que sous <span class="math inline">\(H_0\)</span>, on a <span class="math inline">\(P\left(X_i &gt; Y_i\right) = \frac{1}{2}.\)</span></li>
 <li>On pose <span class="math inline">\(N = \sum_{i = 1}^n \mathbf{1}_{X_i&gt;Y_i}.\)</span> Quelle est la loi de <span class="math inline">\(N\)</span> sous <span class="math inline">\(H_0\)</span> ?</li>
-<li>En déduire que le test défini par la région critique <span class="math display">\[\left\{\left|N-\frac{n}{2}\right| \geq c\right\}\]</span> permet de construire un test de niveau inférieur à <span class="math inline">\(\alpha \in \,]0,1[\)</span> de <span class="math inline">\(H_0\)</span> contre <span class="math inline">\(H_1\)</span> pour un choix <span class="math inline">\(c=c(\alpha) &gt;0\)</span> que l’on précisera. Parmi tous les choix possibles de <span class="math inline">\(c(\alpha)\)</span>, lequel préférer ?</li>
-<li>Les moyennes générales de la première et de la deuxième année de cinquième de <span class="math inline">\(12\)</span> redoublants ont été relevées:\[5mm]
-\[3mm] Le redoublement a-t-il une influence sur la moyenne générale, sachant que le quantile d’ordre <span class="math inline">\(0.975\)</span> d’une <span class="math inline">\(\mathscr{B}(12,0.5)\)</span> est <span class="math inline">\(9\)</span>.</li>
+<li>En déduire que le test défini par la région de rejet <span class="math display">\[\left\{\left|N-\frac{n}{2}\right| \geq c\right\}\]</span> permet de construire un test de niveau inférieur à <span class="math inline">\(\alpha \in \,]0,1[\)</span> de <span class="math inline">\(H_0\)</span> contre <span class="math inline">\(H_1\)</span> pour un choix <span class="math inline">\(c=c(\alpha) &gt;0\)</span> que l’on précisera. Parmi tous les choix possibles de <span class="math inline">\(c(\alpha)\)</span>, lequel préférer ?</li>
+<li>Les moyennes générales de la première et de la deuxième année de cinquième de <span class="math inline">\(12\)</span> redoublants ont été relevées:</li>
 </ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Élève</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Année 1</td>
+<td>12.0</td>
+<td>9.5</td>
+<td>13.0</td>
+<td>10.0</td>
+<td>8.5</td>
+<td>11.0</td>
+<td>7.8</td>
+<td>14.0</td>
+<td>5.0</td>
+<td>12.0</td>
+<td>12.0</td>
+<td>8.6</td>
+</tr>
+<tr class="even">
+<td>Année 2</td>
+<td>6.1</td>
+<td>14.0</td>
+<td>7.3</td>
+<td>7.3</td>
+<td>13.0</td>
+<td>17.0</td>
+<td>14.0</td>
+<td>9.2</td>
+<td>12.0</td>
+<td>14.0</td>
+<td>8.8</td>
+<td>8.8</td>
+</tr>
+</tbody>
+</table>
+<p>Le redoublement a-t-il une influence sur la moyenne générale ? <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </div>
 <div id="exr-jarque" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercice 2 (Test de gaussianté de Jarque-Bera) </strong></span>Soit <span class="math inline">\((X_1,\dots, X_n)\)</span> un <span class="math inline">\(n\)</span>-échantillon de loi inconnue <span class="math inline">\(F\)</span> ayant au moins un moment d’ordre <span class="math inline">\(4\)</span> et de moyenne nulle et de variance non nulle.</p>
@@ -348,6 +399,12 @@ H_1: &amp; \text{il existe $i\not=j$ tels que $X_i\not=Y_i$ en loi}.
 </div>
 
 
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Le quantile d’ordre <span class="math inline">\(0.975\)</span> d’une <span class="math inline">\(\mathscr{B}(12,0.5)\)</span> est <span class="math inline">\(9\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

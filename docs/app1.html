@@ -299,6 +299,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#multiplication-matricielle" id="toc-multiplication-matricielle" class="nav-link active" data-scroll-target="#multiplication-matricielle"><span class="header-section-number">18.1</span> Multiplication matricielle</a></li>
   <li><a href="#le-théorème-spectral" id="toc-le-théorème-spectral" class="nav-link" data-scroll-target="#le-théorème-spectral"><span class="header-section-number">18.2</span> Le théorème spectral</a></li>
   <li><a href="#projections-orthogonales" id="toc-projections-orthogonales" class="nav-link" data-scroll-target="#projections-orthogonales"><span class="header-section-number">18.3</span> Projections orthogonales</a></li>
+  <li><a href="#sec-defpos" id="toc-sec-defpos" class="nav-link" data-scroll-target="#sec-defpos"><span class="header-section-number">18.4</span> Matrices positives</a></li>
   </ul>
 </nav>
     </div>
@@ -361,6 +362,20 @@ $$
 <p><span class="proof-title"><em>Preuve</em>. </span>Si <span class="math inline">\(x=y+z\)</span> est la décomposition de <span class="math inline">\(x\)</span> en somme d’un élément <span class="math inline">\(y\in\mathscr{V}\)</span> et d’un élément <span class="math inline">\(z \in \mathscr{V}^\perp\)</span>, alors <span class="math inline">\(Px = Py + Pz\)</span> et <span class="math display">\[ Pz = V(V^\top V)^{-1}V^\top z.\]</span> Or, les <span class="math inline">\(d\)</span> lignes de <span class="math inline">\(V^\top z\)</span> sont les produits scalaires <span class="math inline">\(\langle v_i, z\rangle\)</span>, qui sont tous nuls car <span class="math inline">\(z\)</span> est orthogonal à tous les <span class="math inline">\(v_i\)</span>. Ainsi, <span class="math inline">\(Pz = 0\)</span>.</p>
 <p>D’autre part, comme <span class="math inline">\(y\)</span> est dans l’espace engendré par les <span class="math inline">\(v_i\)</span>, il s’écrit sous la forme <span class="math inline">\(t_1 v_1 + \dotsc + t_d v_d\)</span>. Cela peut se récrire en disant que <span class="math inline">\(y = V t\)</span>, où <span class="math inline">\(t\)</span> est le vecteur colonne des <span class="math inline">\(t_i\)</span>. Mais alors, <span class="math display">\[ Py = V(V^\top V)^{-1}V^\top V t = Vt = y.\]</span> On conclut comme dans le cas <span class="math inline">\(d=1\)</span> exposé ci-dessus. Il reste cependant un point de détail :&nbsp;nous devons nous assurer que <span class="math inline">\(V^\top V\)</span> est effectivement inversible ! C’est le cas, je le jure.</p>
 </div>
+</section>
+<section id="sec-defpos" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="sec-defpos"><span class="header-section-number">18.4</span> Matrices positives</h2>
+<p>Une matrice symétrique réelle est <em>positive</em> lorsque toutes ses valeurs propres sont positives ou nulles, et <em>définie positive</em> lorsqu’elles sont toutes strictement positives.</p>
+<div id="prp-dp" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 18.1 </strong></span>Une matrice <span class="math inline">\(A\)</span> est positive si et seulement si <span class="math inline">\(\langle x, Ax\rangle\)</span> est un nombre positif ou nul pour tout <span class="math inline">\(x\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span>Décomposer <span class="math inline">\(x\)</span> dans une base orthonormale <span class="math inline">\(u_1, \dotsc, u_n\)</span> de vecteurs propres de <span class="math inline">\(A\)</span> afin d’écrire <span class="math inline">\(\langle x, Ax\rangle\)</span> sous la forme <span class="math inline">\(\sum_{i=1}^n \lambda_i \langle x, u_i\rangle^2\)</span>. L’équivalence est alors évidente.</p>
+</div>
+<div id="def-domination" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 18.1 </strong></span>On dit que <span class="math inline">\(A\)</span> est dominée par <span class="math inline">\(B\)</span> lorsque <span class="math inline">\(B-A\)</span> est une matrice positive. On note cela <span class="math inline">\(A \preceq B\)</span>.</p>
+</div>
+<p>La proposition précédente montre immédiatement que c’est équivalent à ce que <span class="math inline">\(\langle x, Ax\rangle \leqslant \langle x, Bx\rangle\)</span> pour tout <span class="math inline">\(x\)</span>.</p>
 
 
 </section>
