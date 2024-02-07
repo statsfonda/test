@@ -1,7 +1,7 @@
 # Maximum de vraisemblance
 
-Dans cette section, on a fixé un modèle exponentiel^[On se restreindra toujours aux modèles exponentiels qui satisfont les propriétés de la section précédente. ] associé au moment $T$, et l'on dispose d'observations $x = (x_1, \dotsc, x_n)$ distribuées selon ce modèle. La densité par rapport à une mesure de référence $\nu$ est donc donnée par $e^{\langle \theta, T(x_i)\rangle} / Z(\theta)$. En particulier, la loi du *modèle global* a pour densité $p_\theta(x_1)\dotsb p_\theta(x_n)$, c'est-à-dire 
-$$ p_\theta(x) = e^{\langle \theta, \sum_{i=1}^n T(x_i)\rangle}/Z(\theta)^n.$${#eq-expo-prod}
+Dans cette section, on a fixé un modèle exponentiel^[On se restreindra toujours aux modèles exponentiels qui satisfont les propriétés de la section précédente. ] associé au moment $T$, et l'on dispose d'observations indépendantes $x_1, \dotsc, x_n$ distribuées selon ce modèle. La densité de chaque observation par rapport à la mesure de référence $\nu$ est donc par $e^{\langle \theta, T(x_i)\rangle} / Z(\theta)$. En particulier, la densité de l'échantillon $x=(x_1, \dotsc, x_n)$ est $p_\theta(x):=p_\theta(x_1)\dotsb p_\theta(x_n)$, c'est-à-dire 
+$$ \frac{e^{\langle \theta, \sum_{i=1}^n T(x_i)\rangle}}{Z(\theta)^n}.$${#eq-expo-prod}
 Cela reste un modèle exponentiel associé à la fonction de moment $(x_1, \dotsc, x_n)\to T(x_1) + \dotsc + T(x_n)$ et à la fonction de partition $Z(\theta)^n$. 
 
 
@@ -16,18 +16,18 @@ $$\emv = \arg \max_{\theta \in \Theta} p_\theta(x).$${#eq-MV}
 
 :::
 
-Il n'est pas évident que ce maximum existe, ni que le minimeur soit unique. C'est en règle générale le cas, à certaines exceptions près -- parfois même dans des modèles exponentiels. Il existe un théorème général garantissant son existence et son unicité. 
+Il n'est pas évident que ce maximum existe, ni que le minimiseur est unique. Il existe un théorème général garantissant son existence et son unicité. 
 
 :::{#prp-maxvraisex}
 
-Dans un modèle exponentiel identifiable dont l'espace des paramètres est un ouvert convexe avec $\nu(\partial \Theta)=0$,  l'estimateur @eq-MV existe et il est unique. 
+Dans un modèle exponentiel identifiable dont l'espace des paramètres $\Theta \subset \mathbb{R}^p$ est un ouvert convexe avec $\mathrm{Leb}(\partial \Theta)=0$,  l'estimateur @eq-MV existe et il est unique. 
 
 :::
 
-La démonstration de ce théorème général repose sur des outils purement analytiques relativement simples : en particulier, sous les hypothèses ci-dessus, la fonction de log-vraisemblance $\theta \mapsto \ln p_\theta(x)$ est presque sûrement strictement concave et tend vers $0$ au bord du domaine : son maximum $\hat{\theta}$ est donc bien défini, grâce aux résultats généraux de convexité. 
+La démonstration de ce théorème général repose sur des outils analytiques simples : sous les hypothèses ci-dessus, la fonction de log-vraisemblance $\theta \mapsto \ln p_\theta(x)$ est presque sûrement strictement concave et tend vers $0$ au bord du domaine : son maximum $\hat{\theta}$ est donc bien défini, grâce aux résultats généraux de convexité. Je ne rentrerai pas dans les détails, qui peuvent être délicats. 
 
-Trouver le maximum d'une fonction positive $f(x)$ et trouver le maximum de son logarithme $\ln f(x)$ reviennent au même : or, il est souvent bien plus facile dans les modèles exponentiels de maximiser le *logarithme* de la vraisemblance (la log-vraisemblance), qui dans un modèle exponentiel de la forme @eq-expo-prod s'écrit 
-$$\ell(\theta) = \sum_{i=1}^n \langle \theta, T(x_i)\rangle - n\ln Z(\theta). $${#eq-logv-expo-prod}
+Trouver le maximum d'une fonction positive $f(x)$ et trouver le maximum de son logarithme $\ln f(x)$ reviennent au même : or, il est souvent plus facile dans les modèles exponentiels de maximiser le *logarithme* de la vraisemblance $\ell(\theta)$, qui dans un modèle de la forme @eq-expo-prod s'écrit 
+$$\sum_{i=1}^n \langle \theta, T(x_i)\rangle - n\ln Z(\theta). $${#eq-logv-expo-prod}
 On omettra presque systématiquement le fait que la log-vraisemblance dépend des observations $x_i$, mais **il faut garder en tête que la vraisemblance et la log-vraisemblance sont des variables aléatoires car elles dépendent de l'échantillon**. Parfois, pour indiquer quand même que l'échantillon comporte $n$ éléments, on notera $\ell_n(\theta)$. 
  En règle générale, @eq-MV est donc équivalent au problème du maximum de log-vraisemblance, 
  $$ \emv = \arg \max \ell(\theta).$$
@@ -36,7 +36,7 @@ On omettra presque systématiquement le fait que la log-vraisemblance dépend de
 
 L'EMV maximise la log-vraisemblance. Lorsqu'il existe et qu'il est unique, il est donc l'unique solution de $\nabla_\theta \ell(\theta) = 0$. En dérivant @eq-logv-expo-prod, cette équation s'écrit encore 
 $$\frac{1}{n}\sum_{i=1}^n T(x_i) = \nabla \ln Z(\theta).$$ 
-Or, nous avons vu (@thm-iden-expo) que si le modèle est identifiable, le terme de droite, noté $\varphi(\theta)$, est un difféormorphisme. Le maximum de vraisemblance vérifie donc l'équation des moments, $\varphi(\emv) = \bar{T}_n(x)$. Dans le cas où les observations proviennent d'un échantillon iid, on peut donc appliquer le théorème des moments @thm-mom. L'hypothèse selon laquelle $T$ est de carré intégrable vient directement de @prp-reg. 
+Or, nous avons vu (@thm-iden-expo) que si le modèle est identifiable, le terme de droite, noté $\varphi(\theta)$, est un difféormorphisme. Le maximum de vraisemblance vérifie donc l'équation des moments, $\varphi(\emv) = \bar{T}_n$, où $\bar{T}_n = (T(x_1) + \dotsc + T(x_n))/n$. On peut donc appliquer le théorème des moments @thm-mom. L'hypothèse selon laquelle $T$ est de carré intégrable vient directement de @prp-reg. 
 
 :::{#thm-emv-mom}
 
@@ -59,7 +59,17 @@ Or, @eq-hess-exp montre que $D\varphi(\theta) = \nabla^2 \ln Z(\theta)$ vaut ég
 
 Il se trouve que la matrice $\mathrm{Var}_\theta(T)$ est centrale dans la théorie des statistiques : il s'agit de la *matrice d'information de Fisher*, que nous étudierons dans la prochaine section. 
 
-En pratique, on n'utilise pas la formulation abstraite de @thm-emv-mom : il est souvent plus immédiat de maximiser la vraisemblance à la main (ce qui est théoriquement équivalent). Si le modèle est exponentiel, on n'aura pas à le mettre *explicitement* sous sa forme exponentielle. 
+
+## Problème d'optimisation
+
+Dans les modèles exponentiels usuels où les paramètres ont peu de dimensions, il est aisé de maximiser la vraisemblance en résolvant l'équation $\nabla \ell(\theta)=0$ par des méthodes analytiques simples. Mais hors du giron des modèles classiques, on n'utilise presque jamais la formulation abstraite de @thm-emv-mom. La raison principale est que, *même dans les modèles exponentiels*, la fonction de partition $Z(\theta)$ peut être très difficile à inverser -- et parfois n'est même pas connue. Par exemple, un choix aussi simple que
+$$T(x) = -\begin{bmatrix}x^2 \\ x^4 \end{bmatrix}$$
+donne naissance à $Z(\theta) = \int e^{-\theta_1 x^2 - \theta_2 x^4}dx$ dont [la formule exacte](https://math.stackexchange.com/questions/471496/exponential-of-a-quartic) qui s'exprime via des fonctions hypergéométriques. Même si l'on accède à $\nabla \ln Z(\theta)$, il faut encore savoir en calculer l'inverse ! 
+
+
+Dans ces cas, on maximise directement la vraisemblance en utilisant un algorithme d'optimisation, qui fournira donc une approximation de $\emv$ : typiquement, une variante des algorithmes de montée de gradient^[Le monde de l'optimisation ayant été habitué à minimiser des fonctions, les statisticiens ont pris l'habitude d'utiliser des *descentes* de gradient pour minimiser l'opposé de la log-vraisemblance. ], dont la version la plus simple est 
+$$ \theta_{t+1} - \theta_t = \eta \nabla \ell(\theta_t)$$
+où $\eta$ est le *pas* de la montée de gradient. 
 
 ## Exemple
 

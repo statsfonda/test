@@ -13,9 +13,9 @@ Nous avons vu apparaître naturellement la *variance* du moment dans un modèle 
 
 ## Information de Fisher
 
-L'information de Fisher est la matrice de covariance du moment $T$ : 
+La matrice d'information de Fisher $I(\theta)$ est la matrice de covariance de $T$, 
 
-$$I(\theta) = E_\theta[T(X)T(X)^\top] - E_\theta[T(X)]E_\theta[T(X)]^\top.$$
+$$E_\theta[T(X)T(X)^\top] - E_\theta[T(X)]E_\theta[T(X)]^\top.$$
 
 :::
 
@@ -33,10 +33,11 @@ $$ s_\theta(x) = \nabla_\theta \ln p_\theta(x).$$
 :::
 
 Dans un modèle exponentiel $p_\theta(x) = \exp(\langle \theta, T(x)\rangle - \ln Z_\theta)$, nous avons déjà vu que 
-$$ s_\theta(x) =  T(x) - \nabla \ln Z(\theta).$$
-Le score dépend des observations, et donc est une variable aléatoire. En fait, @eq-grad-exp montre que l'espérance du score, $E_\theta[T(X)] - $\nabla \ln Z(\theta)$, vaut précisément zéro : le score est centré. 
+$$ s_\theta(x) =  T(x) - \nabla \ln Z(\theta).$${#eq-score-expp}
+Le score dépend des observations, et donc est une variable aléatoire. En fait, @eq-grad-exp montre que l'espérance du score, $E_\theta[T(X)] - \nabla \ln Z(\theta)$, vaut précisément zéro : le score est centré. Au vu de @eq-score-expp, el est donc clair que 
+$$ I(\theta) = \mathrm{Var}_\theta(s_\theta(X)).$$
 
-
+## Lien avec l'entropie
 
 
 :::{#def-entropie}
@@ -89,7 +90,7 @@ qui montre bien que $I(\theta)^{-1} \preceq \mathrm{Cov}_\theta(T)$.
 
 ## Tests fondés sur l'EMV
 
-L'idée principale de l'EMV (maximiser la vraisemblance) est utilisable pour effectuer des tests. Typiquement, dans un modèle exponentiel, on peut vouloir tester l'hypothèse nulle 
+L'idée principale de l'EMV (maximiser la vraisemblance) est utilisable pour effectuer des tests. Typiquement, on peut vouloir tester l'hypothèse nulle 
 $$ H_0 : \theta \in \Theta_0$$
 contre l'hypothèse alternative 
 $$ H_1 : \theta \in \Theta_1$$
@@ -119,8 +120,10 @@ L'estimation par maximum de vraisemblance, par sa portée théorique autant que 
 
 1. Si la loi $P$ qui a généré les observations n'appartient pas au modèle, l'estimateur n'a aucune chance d'être convergent, même s'il constitue quand même la meilleure estimation possible *dans ce modèle*. Le choix du modèle statistique reste donc un problème fondamental. 
 
-2. L'apparente optimalité (au sens de Cramér-Rao) de l'EMV n'est qu'asymptotique. À distance finie, il peut y avoir des estimateurs biaisés ayant un meilleur risque quadratique. 
+2. L'apparente optimalité (au sens de Cramér-Rao) de l'EMV n'est qu'asymptotique. À distance finie, il peut y avoir des estimateurs biaisés ayant un meilleur risque quadratique. Pire, dans des modèles exponentiels élémentaires comme le modèle gaussien $N(\mu, I_p) où l'on cherche à estimer une moyenne $\mu \in \mathbb{R}^p$ à partir d'une réalisation, il existe un estimateur dont le risque quadratique est strictement meilleur que l'EMV **quel que soit $\mu$** : c'est le [paradoxe de James-Stein](https://fr.wikipedia.org/wiki/Paradoxe_de_Stein) sur lequel nous reviendrons peut-être. 
 
 3. Tous les modèles ne sont pas exponentiels. Même si l'estimation par maximum de vraisemblance reste pertinente en général, elle peut aussi donner des résultats peu cohérents, surtout lorsqu'elle est utilisée pour faire des tests (voir par exemple @exr-testunif). 
+
+4. Enfin, même dans les modèles exponentiels, la fonction de partition $Z(\theta)$ peut être inaccessible, en particulier lorsque la dimension de $\theta$ est grande comme en deep learning. L'estimation par maximum de vraisemblance sera alors quasiment infaisable. 
 
 
