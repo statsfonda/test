@@ -4,6 +4,9 @@ project:
 
 lang: fr
 
+website:
+  favicon: images/logoUP.png
+
 book:
   title: "Statistiques Fondamentales"
   author: "Simon Coste"
