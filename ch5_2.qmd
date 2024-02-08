@@ -33,7 +33,7 @@ Les tests de contraintes linéaires consistent à tester si $\bt$ vérifie une �
 
 Formellement, un test de contrainte linéaire consiste à tester si $\bt$
 $$C\bt = c.$$
-où $C$ une matrice $r \times d$ et $c$ un vecteur de taille $r$. Comme $r$ possède $r$ lignes, cela signifie que l'on test les $r$ contraintes $\langle C_i, \bt\rangle = c_i$, où $C_i$ est la $i$-ème ligne de $C$. 
+où $C$ une matrice $r \times d$ et $c$ un vecteur de taille $r$. Comme $C$ possède $r$ lignes, cela signifie que l'on teste les $r$ contraintes $\langle C_i, \bt\rangle = c_i$, où $C_i$ est la $i$-ème ligne de $C$. 
 
 Sous cette hypothèse nulle, 
 $$C\hat{\bt}-c \sim N(0, \sigma^2 C(X^\top X)^{-1}C^\top).$$

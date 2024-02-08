@@ -77,7 +77,7 @@ de sorte que la fonction de partition est $Z(\theta) = e^{-\lambda} = e^{-\theta
 
 ## Régularité
 
-On supposera dorénavant que l'espace des paramètres $\Theta$ (qui est une partie de $\mathbb{R}^p$) est un ouvert, et que $Z(\theta)$ est fini pour tout $\theta \in \Theta$. 
+On supposera dorénavant que l'espace des paramètres $\Theta$ (qui est une partie de $\mathbb{R}^p$) est un ouvert, et que $Z(\theta)$ est fini pour tout $\theta \in \Theta$. Cela sera aussi valable pour les sections suivantes. 
 
 :::{#prp-reg}
 
@@ -99,7 +99,8 @@ $$ \nabla^2 \ln Z(\theta) = \mathrm{Var}_\theta(T(X)).$${#eq-hess-exp}
 $$\int e^{\langle \theta, T(x)\rangle + |\langle \delta, T(x)\rangle|}\nu(dx)<\infty. $$
  Le théorème d'interversion série-intégrale à termes positif montre que ce terme est aussi égal à 
 $$ \sum_{n=0}^\infty \int e^{\langle \theta, T(x)\rangle}\frac{|\langle \delta, T(x)\rangle|^n}{n!}\nu(dx).$$
-Tous les termes de cette somme sont donc finis, ce qui signifie précisément que $E_\theta[|\langle \delta, T(X)\rangle|^n]<\infty$ pour tout $n$. Ceci étant valable pour tout $\delta$ dans une boule autour de $\theta$, il est immédiat d'en déduire que $E_\theta[|\langle x, T(X)\rangle|^n]$ est fini pour tout $n$ et pour tout $x$. En prenant $x = \delta_i$, on voit donc que les coordonnées de $T$ ont des moments finis à tous les ordres, et donc que $T$ possède des moments finis à tous les ordres au sens où $E_\theta[|T(X)|^n]$. 
+Tous les termes de cette somme sont donc finis, ce qui signifie précisément que $E_\theta[|\langle \delta, T(X)\rangle|^n]<\infty$ pour tout $n$. Ceci étant valable pour tout $\delta$ dans une boule autour de $\theta$, il est immédiat d'en déduire que $E_\theta[|\langle x, T(X)\rangle|^n]$ est fini pour tout $n$ et pour tout $x$. En prenant $x = \delta_i$, on voit donc que les coordonnées de $T$ ont des moments finis à tous les ordres, et donc que $T$ possède des moments finis à tous les ordres au sens où $E_\theta[|T(X)|^n]<\infty$. 
+
 
 1. On a $\nabla \ln Z(\theta) = \nabla Z(\theta)/Z(\theta)$. Formellement, $\nabla Z(\theta)$ est donc égal à 
 $$\nabla \int e^{\langle \theta, T\rangle} = \int \nabla e^{\langle \theta, T\rangle} = \int T e^{\langle \theta, T\rangle}. $$
@@ -137,9 +138,17 @@ Or, comme $p_\theta$ est une densité de probabilité, son intégrale vaut 1 : 
 Pour l'autre sens, il suffit de reprendre toutes ces implications à l'envers : si $p_{\theta + \mu} = p_\theta$, alors pour $\nu$-presque tout $x$ on aura $\langle \theta + \mu, T(x)\rangle = \langle \theta, T(x)\rangle$, et donc $\langle \mu, T(x)\rangle = 0$, et in fine $\mu^\top \mathrm{Var}_\theta(T(X))\mu = 0$. 
 
 
-Comme iii) entraîne ii), il suffit donc de montrer que i) et ii) entraînent iii). Nous allons montrer la contraposée : si iii) n'est pas vrai et que ii) n'est pas vrai, c'est fini. On peut donc supposer que iii) n'est pas vrai et que ii) est vrai, et il faut montrer que i) est faux. Le point ii) entraîne que $\nabla \ln Z$ est localement injective (théorème d'inversion locale), donc si cette application n'était pas un difféomorphisme, cela voudrait dire qu'elle n'est pas injective et qu'il y aurait donc $\theta\neq\mu$ tels que $\nabla \ln Z(\theta) = \nabla \ln Z(\mu)$. Or, un calcul montre que la divergence de Kullback-Leibler (@def-dkl) *symétrisée*, à savoir $\dkl(P_\theta \mid P_\mu) + \dkl(P_\mu \mid P_\theta)$, est égale à  $$\langle \nabla \ln Z(\theta) - \nabla \ln Z(\mu), \theta - \mu \rangle $$
+Comme iii) entraîne ii), il suffit donc de montrer que i) et ii) entraînent iii). Nous allons montrer la contraposée : si iii) n'est pas vrai et que ii) n'est pas vrai, c'est fini. On peut donc supposer que iii) n'est pas vrai et que ii) est vrai, et il faut montrer que i) est faux. Le point ii) entraîne que $\nabla \ln Z$ est localement injective (théorème d'inversion locale), donc si cette application n'était pas un difféomorphisme, cela voudrait dire qu'elle n'est pas injective et qu'il y aurait donc $\theta\neq\mu$ tels que $\nabla \ln Z(\theta) = \nabla \ln Z(\mu)$. Or, un calcul montre que la divergence de Kullback-Leibler (@def-dkl) *symétrisée*, à savoir $\dkl(P_\theta \mid P_\mu) + \dkl(P_\mu \mid P_\theta)$, est égale à  $$\langle \nabla \ln Z(\theta) - \nabla \ln Z(\mu), \theta - \mu \rangle $${#eq-dkl-expo-formule}
 et ceci vaut donc zéro : c'est donc que chacune des deux $\dkl$ vaut zéro, puisque ces deux termes sont positifs. On en déduit alors que $P_\theta = P_\mu$, et donc le modèle n'est pas identifiable. 
 :::
+
+*Preuve de @eq-dkl-expo-formule.* En utilisant seulement les définitions, $\dkl(P_\theta \mid  P_\mu)$ est égal à 
+$$\int p_\theta(x)(\langle \theta, T(x)\rangle - \langle \mu, T(x)\rangle) \nu(dx) - \ln Z(\theta) + \ln Z(\mu). $$
+Le premier terme est égal à $\langle \theta - \mu, E_\theta[T]\rangle$. 
+La somme $\dkl(P_\theta \mid P_\mu) + \dkl(P_\mu \mid P_\theta)$ se simplifie et se factorise donc en 
+$$\langle \theta - \mu, E_\theta[T] - E_\mu[T]\rangle $$
+et l'identité en découle puisque $\nabla \ln Z(\theta) = E_\theta[T]$. 
+
 
 <!--
 ## Statistiques exhaustives

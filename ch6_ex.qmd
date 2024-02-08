@@ -1,4 +1,5 @@
-# ٭ Exercices {.unnumbered}
+# Exercices {.unnumbered}
+
 
 :::{#exr-mlef}
 
