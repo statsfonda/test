@@ -1,0 +1,94 @@
+# Entropie et information
+
+## Entropie
+
+
+:::{#def-entropie}
+
+$$H(P) = - \int f(x)\ln f(x)\nu(dx).$$
+
+:::
+
+$H(P) = -\sum_n P(X=a_k)\ln P(X = a_k).$
+
+Entropie relative 
+
+$$H(P \mid Q) = - \int f(x)\ln g(x)\nu(dx).$$
+
+$$\dkl(P \mid Q) = H(P \mid Q) - H(P)$$
+
+
+Propriété : sur en ensemble fini, $H(P)\leqslant \ln |\mathcal{X}|$.
+
+
+## Information mutuelle
+
+$$ I(X,Y) = ...$$
+
+## Shannon
+
+Soient $X_i$ des variables aléatoires définies sur un même ensemble fini $\mathcal{X} = (a_1, \dotsc, a_k)$. On note $p_k = \mathbb{P}(X = a_k)$. On observe un échantillon de $n$ réalisations des $X_i$, disons $(x_1, \dotsc, x_n)$. Avant de s'intéresser à l'information que portent ces observations sur la loi $\mathbb{P}$, qui est un problème *statistique*, on peut se demander quelle est la quantité d'information portée par les $x_i$ *tout court*. Il faut raisonner en termes de bits d'information : on veut coder chaque élément observé par une suite de zéros et de 1. 
+
+Par exemple, supposons que $\mathcal{X}$ ne possède que deux éléments ; on peut coder $x_i=0$ ou $1$ et voir notre échantillon comme une suite binaire de longueur $n$. On aura donc besoin de au plus $n$ bits d'information pour encoder l'échantillon. 
+
+Si maintenant $\mathcal{X}$ contient 4 éléments, on peut coder ses élements par des suites de deux bits : $00,01,10, 11$. Pour encoder notre échantillon, on aura besoin de $n$ fois deux bits d'information au plus, donc $2n$ bits. Plus généralement, si $\mathcal{X}$ contient $k$ éléments, on peut chacun les coder avec au plus $\log_2\lceil k \rceil$ bits et il faudra $n\log_2\lceil k \rceil$ pour encoder l'échantillon. 
+
+Dans ces exemples, chaque codage d'un échantillon nécessitait le même nombre de bits. Ce codage-là ne nécessite aucune information particulière sur les $x_i$. 
+
+Si l'on code l'observation $a_k$ avec un code binaire de longueur $\ell_k$, alors le nombre moyen de bits nécessaire pour coder une réalisation de $X$ est 
+$$ \sum_{k=1}\mathbb{P}(X=a_k) \ell_k.$$
+
+:::{#def-code}
+
+Un *code binaire* de $\mathcal{X}$ assigne à chaque élément $a$ de $\mathcal{X}$ un mot binaire $w(a)$. Le code d'un élément ne doit pas être le début du code d'un autre élément. 
+
+:::
+
+Par exemple, je n'ai pas le droit de coder l'ensemble à quatre éléments avec le code $w(1)=1, w(2)=10, w(3)=11, w(4)=010$. En effet, dans ce cas je ne serai pas en mesure de discerner si $1010$ veut dire $w(1)w(4)$ ou bien $w(2)w(2)$. 
+
+La longueur du $k$-ème élément $w(k)$ est notée $R_k$. Étant donné un code, le nombre moyen de bits d'information nécessaire pour coder une variable aléatoire $X$ sur $\mathcal{X}$ est donc 
+$$\mathbb{E}[R_X] = \sum_{i=1}^k R_i \mathbb{P}(X = a_i).$$
+
+:::{#thm-shannon}
+
+## Théorème de codage de Shannon
+
+Tout codage vérifie $\mathbb{E}[R]\geqslant H(P)$. 
+
+Il existe un codage appelé *codage entropique* vérifiant $R(a)=\lceil \log_2(p_k)\rceil$, et donc $\mathbb{E}[R_\star]\leqslant H(P)+1$. 
+
+:::
+
+En particulier, le codage optimal $R_n$ d'un échantillon iid de taille $n$ vérifie 
+$$ \lim \frac{\mathbb{E}[R_n]}{n} = H(P).$$
+
+L'entropie d'une loi est donc en quelque sorte le nombre moyen de bits d'information nécessaire à son meilleur codage, et le meilleur codage en question est le *codage entropique* qui assigne à chaque $a \in \mathcal{X}$ un code de longueur proche de $\log_2(\mathbb{P}(X=a))$. 
+
+Maintenant, étant donné n'importe quel autre codage $S$, la quantité 
+
+$$\sum_{k=1}^n p_k \log_2\frac{p_k}{S_k}$$
+peut aussi se voir comme 
+$$E[S_X] - E[R_X^\star].$$
+Il s'agit donc bien d'une « redondance d'information » : le terme de droite est la quantité minimale d'information dont on a besoin pour coder $X$ en moyenne (via le codage entropique), et le terme de gauche est la quantité d'information dont on use pour coder $X$ en moyenne par le code $S$. À une constante près^[À savoir $\ln(2)$.], la divergence de Kullback-Leibler
+$$ \dkl(P\mid Q) = H(P\mid Q) - H(P\mid P)$$
+indique donc à quel point il est optimal (ou pas) d'encoder les réalisations de la loi $P$ grâce à la densité de la loi $Q$. 
+
+## Entropie maximale
+
+
+:::{#thm-Boltzmann-Gibbs}
+
+
+Soit $T:\mathbb{R}^d \to \mathbb{R}^p$. La densité de probabilité $f$ qui maximise l'entropie $-\int f \ln f$ sous la containte $E_f[T]=c$ est exactement $e^{\langle \theta, T(x)\rangle}/Z(\theta)$, et les $\theta$ sont les multiplicateurs de Lagrange du problème.
+
+:::
+
+:::{.proof}
+
+Le problème de Lagrange associé est 
+$$ \int f \ln f + \lambda (\int f T -c ).$$
+L'équation d'Euler-Lagrange est simplement $\ln f + 1 + \lambda T = 0$, donc $f = ze^{-\lambda T - 1}$ pour une certaine constante $z$. La condition $\int f = 1$ permet de trouver la constante et la contrainte de moments permet de trouver $\lambda$. 
+
+:::
+
+L'EMV est donc précisément la distribution d'entropie maximale sous une contrainte de moments. 
