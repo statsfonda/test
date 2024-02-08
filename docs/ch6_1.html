@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch2_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -157,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch3_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch4_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -211,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -235,13 +235,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch6_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./problemes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ ٭ Problèmes</span></a>
+ <span class="menu-text">Problèmes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -259,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch7_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -340,10 +340,13 @@ $$
 </div>
 <p>Il n’est pas évident que ce maximum existe, ni que le minimiseur est unique. Il existe un théorème général garantissant son existence et son unicité.</p>
 <div id="prp-maxvraisex" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 14.1 </strong></span>Dans un modèle exponentiel identifiable dont l’espace des paramètres <span class="math inline">\(\Theta \subset \mathbb{R}^p\)</span> est un ouvert convexe avec <span class="math inline">\(\mathrm{Leb}(\partial \Theta)=0\)</span>, l’estimateur <a href="#eq-MV">Équation&nbsp;<span>14.2</span></a> existe et il est unique.</p>
+<p><span class="theorem-title"><strong>Proposition 14.1 </strong></span>Dans un modèle exponentiel identifiable dont l’espace des paramètres <span class="math inline">\(\Theta \subset \mathbb{R}^p\)</span> est un ouvert convexe, sous certaines hypothèses, l’estimateur <a href="#eq-MV">Équation&nbsp;<span>14.2</span></a> existe. Dans tous les cas, s’il existe, il est unique.</p>
 </div>
-<p>La démonstration de ce théorème général repose sur des outils analytiques simples :&nbsp;sous les hypothèses ci-dessus, la fonction de log-vraisemblance <span class="math inline">\(\theta \mapsto \ln p_\theta(x)\)</span> est presque sûrement strictement concave et tend vers <span class="math inline">\(0\)</span> au bord du domaine :&nbsp;son maximum <span class="math inline">\(\hat{\theta}\)</span> est donc bien défini, grâce aux résultats généraux de convexité. Je ne rentrerai pas dans les détails, qui peuvent être délicats.</p>
-<p>Trouver le maximum d’une fonction positive <span class="math inline">\(f(x)\)</span> et trouver le maximum de son logarithme <span class="math inline">\(\ln f(x)\)</span> reviennent au même : or, il est souvent plus facile dans les modèles exponentiels de maximiser le <em>logarithme</em> de la vraisemblance <span class="math inline">\(\ell(\theta)\)</span>, qui dans un modèle de la forme <a href="#eq-expo-prod">Équation&nbsp;<span>14.1</span></a> s’écrit <span id="eq-logv-expo-prod"><span class="math display">\[\sum_{i=1}^n \langle \theta, T(x_i)\rangle - n\ln Z(\theta).  \tag{14.3}\]</span></span> On omettra presque systématiquement le fait que la log-vraisemblance dépend des observations <span class="math inline">\(x_i\)</span>, mais <strong>il faut garder en tête que la vraisemblance et la log-vraisemblance sont des variables aléatoires car elles dépendent de l’échantillon</strong>. Parfois, pour indiquer quand même que l’échantillon comporte <span class="math inline">\(n\)</span> éléments, on notera <span class="math inline">\(\ell_n(\theta)\)</span>. En règle générale, <a href="#eq-MV">Équation&nbsp;<span>14.2</span></a> est donc équivalent au problème du maximum de log-vraisemblance, <span class="math display">\[ \emv = \arg \max \ell(\theta).\]</span></p>
+<p>Trouver le maximum d’une fonction positive <span class="math inline">\(f(x)\)</span> et trouver le maximum de son logarithme <span class="math inline">\(\ln f(x)\)</span> reviennent au même : or, il est souvent plus facile dans les modèles exponentiels de maximiser le <em>logarithme</em> de la vraisemblance <span class="math inline">\(\ell(\theta)\)</span>, qui dans un modèle de la forme <a href="#eq-expo-prod">Équation&nbsp;<span>14.1</span></a> s’écrit <span id="eq-logv-expo-prod"><span class="math display">\[\sum_{i=1}^n \langle \theta, T(x_i)\rangle - n\ln Z(\theta).  \tag{14.3}\]</span></span></p>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span>La démonstration du théorème ci-dessus repose sur des outils analytiques simples. Dans <a href="#eq-logv-expo-prod">Équation&nbsp;<span>14.3</span></a>, le premier terme est une fonction linéaire. Quant au terme <span class="math inline">\(\ln Z(\theta)\)</span>, sa matrice Hessienne n’est autre (<a href="ch6_0.html#eq-hess-exp">Équation&nbsp;<span>13.2</span></a>) qu’une matrice de variance, donc positive :&nbsp;<span class="math inline">\(\ln Z(\theta)\)</span> est donc convexe, et même <em>strictement</em> si le modèle est identifiable (<a href="ch6_0.html#thm-iden-expo">Théorème&nbsp;<span>13.1</span></a>). Ainsi, <a href="#eq-logv-expo-prod">Équation&nbsp;<span>14.3</span></a> est presque sûrement strictement concave. Cela suffit à assurer que le maximum, <em>s’il existe</em>, est unique. Quant à son existence, elle nécessite des hypothèses sur <span class="math inline">\(\ell\)</span> ou sur <span class="math inline">\(\Theta\)</span> et je ne vois pas l’intérêt d’en énoncer de générales : ce sera au cas par cas. Mais typiquement, on peut demander à ce que <span class="math inline">\(\ell(\theta) \to -\infty\)</span> lorsque <span class="math inline">\(\theta\)</span> tend vers le bord de <span class="math inline">\(\Theta\)</span>, ce qui revient à demander que <span class="math inline">\(p_\theta(x)\to 0\)</span>.</p>
+</div>
+<p>On omettra presque systématiquement le fait que la log-vraisemblance dépend des observations <span class="math inline">\(x_i\)</span>, mais <strong>il faut garder en tête que la vraisemblance et la log-vraisemblance sont des variables aléatoires car elles dépendent de l’échantillon</strong>. Parfois, pour indiquer quand même que l’échantillon comporte <span class="math inline">\(n\)</span> éléments, on notera <span class="math inline">\(\ell_n(\theta)\)</span>. En règle générale, <a href="#eq-MV">Équation&nbsp;<span>14.2</span></a> est donc équivalent au problème du maximum de log-vraisemblance, <span class="math display">\[ \emv = \arg \max \ell(\theta).\]</span></p>
 </section>
 <section id="lemv-et-les-moments" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="lemv-et-les-moments"><span class="header-section-number">14.2</span> L’EMV et les moments</h2>
