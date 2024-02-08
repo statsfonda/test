@@ -35,9 +35,9 @@ avec $y$ dans $\mathscr{V}$ et $z$ dans $\mathscr{V}^\top$. En particulier, il e
 
 Considérons maintenant la matrice 
 $$P = \frac{1}{|v|^2}vv^\top \in \mathscr{M}_{n,n}. $$
-Appliquons cette matrice à $x$. Par linéarité, $Px = Px + Pz$. Calculons ces deux termes. 
+Appliquons cette matrice à $x$. Par linéarité, $Px = Py + Pz$. Calculons ces deux termes. 
 
-1. $Pz = |v|^{-1}v v^\top z = |v|^{-1}v \langle v, z\rangle$. Comme $z$ est orthogonal à $v$, cela vaut 0. 
+1. $Pz = |v|^{-2}v v^\top z = |v|^{-2}v \langle v, z\rangle$. Comme $z$ est orthogonal à $v$, cela vaut 0. 
 2. $Py = tPv$. Par définition de $P$, ceci est donc égal à  $t|v|^{-2}v v^\top v = t|v|^{-2}v |v|^2 = tv$, c'est-à-dire $y$. 
    
 Nous avons montré plusieurs choses. D'abord, l'application qui à $x$ associe $y$ est effectivement linéaire, et une de ses matrices est $P$. On dit que $P$ est la matrice de projection sur $\mathscr{V}$. De même, comme $(I - P)x = y+z - y = z$, la matrice $I-P$ est la matrice de projection sur $\mathscr{V}^\perp$. 
