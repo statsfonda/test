@@ -292,7 +292,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#exercices" id="toc-exercices" class="nav-link active" data-scroll-target="#exercices">Exercices</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -323,6 +329,17 @@ $$
 
 </header>
 
+<p>##&nbsp;Questions {.unnumbered}</p>
+<ul>
+<li>On dispose d’une observation <span class="math inline">\(x\)</span> d’une variable aléatoire <span class="math inline">\(N(\mu, 1)\)</span>. Quel est l’EMV de <span class="math inline">\(\mu\)</span> ?</li>
+<li>On dispose d’une observation <span class="math inline">\(x\)</span> d’une variable aléatoire <span class="math inline">\(\mathrm{Ber}(p)\)</span>. Quel est l’EMV de <span class="math inline">\(\mu\)</span> ?</li>
+<li>Calculer l’EMV de <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\sigma^2\)</span> dans un modèle iid <span class="math inline">\(N(\mu, \sigma^2)\)</span> avec <span class="math inline">\(n\)</span> observations.</li>
+<li>Montrer que dans un modèle linéaire gaussien <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, l’estimateur des moindres carrés ordinaires est l’EMV de <span class="math inline">\(\bt\)</span>. Quel est l’EMV pour <span class="math inline">\(\sigma^2\)</span> ?</li>
+<li>Dans un modèle exponentiel, construire une région (ellipsoïde) de confiance asymptotique pour le paramètre.</li>
+<li>Soit <span class="math inline">\(\mathcal{X}\)</span> un ensemble fini à <span class="math inline">\(p\)</span> éléments et soient <span class="math inline">\(x_1, \dotsc, x_n\)</span> des réalisations iid d’une même loi <span class="math inline">\(P\)</span> sur <span class="math inline">\(\mathcal{X}\)</span>. On cherche <span class="math inline">\(P\)</span>. Montrer que ce problème peut se formuler comme la recherche d’un paramètre (indice : il est de dimension <span class="math inline">\(p\)</span>) dans un modèle exponentiel et écrire l’EMV.</li>
+</ul>
+<section id="exercices" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercices">Exercices</h2>
 <div id="exr-mlef" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercice 1 </strong></span>Soit <span class="math inline">\(\hat{\theta}\)</span> l’estimateur du maximum de vraisemblance d’un paramètre <span class="math inline">\(\theta\)</span> dans un modèle régulier. Montrer que <span class="math inline">\(f(\hat{\theta})\)</span> est l’estimateur du maximum de vraisemblance de <span class="math inline">\(f(\theta)\)</span>, pour n’importe quelle fonction <span class="math inline">\(\theta\)</span> raisonnable.</p>
 </div>
@@ -374,8 +391,22 @@ Soit <span class="math inline">\(T_n\)</span> l’estimateur du maximum de vrais
 <li>On renumérote les tickets marqués <span class="math inline">\(10\theta\)</span> par <span class="math inline">\(a_i \theta\)</span>, <span class="math inline">\(1 \leq i \leq 980\)</span>, où les <span class="math inline">\(a_i\)</span> sont des réels connus tous distincts dans <span class="math inline">\([10;10,1]\)</span>. Donner le nouvel estimateur du maximum de vraisemblance <span class="math inline">\(\tilde{\theta}\)</span> et montrer que <span class="math inline">\(\mathbb{P}(\tilde{\theta}&lt;10 \theta)=0,02.\)</span></li>
 </ol>
 </div>
+<div id="exr-logistique" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 8 (Régression logistique) </strong></span>On observe des couples <span class="math inline">\((\bx_i, y_i)\)</span> où les <span class="math inline">\(\bx_i\)</span> sont des variables explicatives (vecteurs ligne de dimension <span class="math inline">\(d\)</span>) et les <span class="math inline">\(y_i\)</span> sont des variables valant 0 ou 1.</p>
+<ol type="1">
+<li>Avant toute chose, expliquer pourquoi une régression linéaire des <span class="math inline">\(\bx_i\)</span> sur les <span class="math inline">\(y_i\)</span> n’aurait pas beaucoup de sens.</li>
+<li>On suppose dorénavant que les <span class="math inline">\(y_i\)</span> sont des réalisations indépendantes de <span class="math inline">\(Y_i \sim \mathrm{Ber}(p(x_i))\)</span> et on suppose que la fonction <span class="math inline">\(p :&nbsp;\mathbb{R}^{1,d}\to]0,1[\)</span> s’écrit sous forme <em>logistique</em> (« modèle logit ») : <span class="math display">\[p(\bx) = \frac{e^{\bx \bt}}{1 + e^{\bx \bt}}. \]</span> où <span class="math inline">\(\bt \in \mathbb{R}^d\)</span>.
+<ol type="i">
+<li>Écrire ce modèle sous forme exponentielle avec pour paramètre <span class="math inline">\(\bt\)</span>.</li>
+<li>Écrire l’équation vérifiée par l’EMV de <span class="math inline">\(\bt\)</span>.</li>
+<li>Se convaincre qu’elle ne possède pas d’expression exacte.</li>
+</ol></li>
+<li>Mêmes questions lorsque la fonction <span class="math inline">\(p\)</span> s’écrit sous forme « probit », <span class="math inline">\(p(\bx) = \Phi(\bx \bt)\)</span> avec <span class="math inline">\(\Phi\)</span> la fonction de répartition de <span class="math inline">\(N(0,1)\)</span>.</li>
+</ol>
+</div>
 
 
+</section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
