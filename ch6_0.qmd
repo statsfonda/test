@@ -8,7 +8,7 @@ $$ \frac{1}{1/\lambda}e^{-\lambda x}$$
 Les lois discrètes ont une densité par rapport à la mesure de comptage : la loi de Bernoulli, par exemple, s'écrit 
 $$ p^n(1-p)^{1-n} = \frac{e^{n\ln(p/(1-p))}}{(1-p)^{-1}} $$
 avec $n$ valant zéro ou 1, ou encore la loi de Poisson 
-$$ e^{-\lambda}\frac{\lambda^n}{n!} = \frac{1}{e^{\lambda}}\frac{1}{n!}e^{-\lambda n}$$
+$$ e^{-\lambda}\frac{\lambda^n}{n!} = \frac{1}{e^{e^{\ln(\lambda)}}}\frac{1}{n!}e^{-\ln(\lambda)n}$$
 ou enfin la loi géométrique
 $$p^n(1-p) = \frac{e^{n\ln(p)}}{(1-p)^{-1}}.$$
 Dans tous ces exemples, j'ai volontairement écrit la densité de façon inhabituelle : tous ces modèles peuvent s'écrire sous la forme 
@@ -51,12 +51,12 @@ $$\ell_\theta(x) = \ln p_\theta(x)$$
 
 La densité de $N(\mu,\sigma^2)$ s'écrit 
 
-$$\frac{e^{-\frac{\mu^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}e^{ \frac{\mu}{\sigma^2} x - \frac{1}{2 \sigma^2} x^2 - \frac{\mu^2}{2 \sigma^2}}.$$
+$$\frac{e^{-\frac{\mu^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}e^{ \frac{\mu}{\sigma^2} x - \frac{1}{2 \sigma^2} x^2 }.$$
 La mesure $\nu$ est la mesure de Lebesgue sur $\mathbb{R}$. Le moment $T$ est
 $$T(x) = \begin{bmatrix}x \\ -x^2/2 \end{bmatrix} .$$
 Le bon paramètre $\theta$ est 
 $$ \theta = \begin{bmatrix}\mu/\sigma^2 \\ 1 / \sigma^2\end{bmatrix}.$$
-La fonction de partition $Z(\theta)$ s'écrit aussi $$\exp\left(\frac{\mu^2}{2 \sigma^2} \right)\sqrt{2 \pi \sigma^2} = \exp(\theta_1 / 2)\sqrt{2\pi / \theta_2}. $$
+La fonction de partition $\exp\left(\frac{\mu^2}{2 \sigma^2} \right)\sqrt{2 \pi \sigma^2}$ s'écrit donc aussi $$Z(\theta)=\exp(\theta_1^2 / 2\theta_2)\sqrt{2\pi / \theta_2}. $$
 
 :::
 
@@ -67,10 +67,10 @@ L'exemple de la loi Gaussienne montre qu'en règle générale, il peut être né
 ## Poisson
 
 La mesure $\nu$ est la mesure de comptage sur $\mathbb{N}$. Le paramètre est 
-$$ \theta = \begin{bmatrix}\lambda \\ 1 \end{bmatrix}$$
+$$ \theta = \begin{bmatrix}\ln(\lambda) \\ 1 \end{bmatrix}$$
 et le moment $T$ est 
 $$ T = \begin{bmatrix}-n \\ - \ln(n!)\end{bmatrix}$$
-de sorte que la fonction de partition est $Z(\theta) = e^{-\lambda} = e^{-\theta_1}$.
+de sorte que la fonction de partition est $Z(\theta) = e^{e^{\ln\lambda}} = e^{e^{\theta_1}}$.
 
 
 :::

@@ -1,5 +1,23 @@
 # Exercices {.unnumbered}
 
+## Questions {.unnumbered} 
+
+- On dispose d'une observation $x$ d'une variable aléatoire $N(\mu, 1)$. Quel est l'EMV de $\mu$ ?
+- On dispose d'une observation $x$ d'une variable aléatoire $\mathrm{Ber}(p)$. Quel est l'EMV de $\mu$ ?
+- Calculer l'EMV de $\mu$ et $\sigma^2$ dans un modèle iid $N(\mu, \sigma^2)$ avec $n$ observations. 
+- Montrer que dans un modèle linéaire gaussien $Y = X\bt + \varepsilon$, l'estimateur des moindres carrés ordinaires est l'EMV de $\bt$. Quel est l'EMV pour $\sigma^2$ ?
+- Dans un modèle exponentiel, construire une région (ellipsoïde) de confiance asymptotique pour le paramètre. 
+- Soit $\mathcal{X}$ un ensemble fini à $p$ éléments et soient $x_1, \dotsc, x_n$ des réalisations iid d'une même loi $P$ sur $\mathcal{X}$. On cherche $P$. Montrer que ce problème peut se formuler comme la recherche d'un paramètre (indice : il est de dimension $p$) dans un modèle exponentiel et écrire l'EMV. 
+- Dans un modèle exponentiel $p_\theta(x) = e^{-\langle \theta, T(x)\rangle}/Z(\theta)$, on a des observations iid $x_1, \dotsc, x_n$. On note $\hat{\mu}_n$ la loi empirique^[C'est-à-dire la mesure de probabilité définie par $n^{-1}\sum \delta_{x_i}$.]. des $x_i$ Montrer que l'EMV (lorsqu'il existe) est l'unique $\theta$ tel que 
+$$ \int_{\mathcal{X}} T(x)d\hat{\mu}_n =  \int_{\mathcal{X}} T(x)p_\theta(x)dx.$$
+- Montrer que la densité gaussienne multidimensionnelle $N(0,\Sigma)$ peut aussi s'écrire 
+$$ \frac{\exp\left( - \langle \theta, xx^\top \rangle_F / 2 \right)}{\sqrt{(2\pi)^n \det(\Sigma)}}$$
+où $\langle A,B\rangle_F = \mathrm{trace}(AB^\top)$ est le produit scalaire^[Ce produit scalaire est appelé *produit de Frobenius* et correspond à la norme $L^2$ sur l'espace des matrices : $\Vert A \Vert_F^2 = \sum_{i,j}|A_{i,j}|^2$. ] sur l'espace des matrices, et où $\theta = \Sigma^{-1}$. 
+
+
+## Exercices {.unnumbered}
+
+
 
 :::{#exr-mlef}
 
@@ -60,8 +78,7 @@ $$\lambda c x^{c-1}e^{-\lambda x^c}$$
 On observe un $n$-échantillon de loi $\mathscr{W}(c)$, avec $n$ plus grand que 3.
 
 1. Calculer l'estimateur du maximum  de vraisemblance  $\hat \lambda_n$ de $\lambda$.
-2. Calculer son risque quadratique
-$E_\lambda^n\left[(\hat \lambda_n-\lambda)^2\right]$ o\`u $P_\lambda^n$ désigne la loi du $n$-échantillon.
+2. Calculer son risque quadratique.
 
 
 :::
@@ -73,5 +90,24 @@ Dans une urne contenant 1000 tickets, 20 sont marqués $\theta$ et 980 sont marq
 
 1. On tire un unique ticket de valeur $X$. Écrire le modèle statistique associé : est-il dominé par une mesure $\sigma$-finie?  Donner un estimateur qui s'apparenterait à un maximum de vraisemblance $\hat{\theta}$ de $\theta$ (maximiser $P_\theta(\{X\})$), puis montrer que $\mathbb{P}(\hat{\theta}=\theta)\geq 0,98.$
 2.  On renumérote les tickets marqués $10\theta$ par $a_i \theta$, $1 \leq i \leq 980$, où les $a_i$ sont des réels connus tous distincts dans $[10;10,1]$. Donner le nouvel estimateur du maximum de vraisemblance $\tilde{\theta}$ et montrer que $\mathbb{P}(\tilde{\theta}<10 \theta)=0,02.$
+
+:::
+
+
+
+:::{#exr-logistique}
+
+## Régression logistique
+
+On observe des couples $(\bx_i, y_i)$ où les $\bx_i$ sont des variables explicatives (vecteurs ligne de dimension $d$) et les $y_i$ sont des variables valant 0 ou 1. 
+
+1. Avant toute chose, expliquer pourquoi une régression linéaire des $\bx_i$ sur les $y_i$ n'aurait pas beaucoup de sens. 
+2. On suppose dorénavant que les $y_i$ sont des réalisations indépendantes de $Y_i \sim \mathrm{Ber}(p(x_i))$ et on suppose que la fonction $p : \mathbb{R}^{1,d}\to]0,1[$ s'écrit sous forme *logistique* (« modèle logit ») : 
+$$p(\bx) = \frac{e^{\bx \bt}}{1 + e^{\bx \bt}}. $$
+où $\bt \in \mathbb{R}^d$. 
+   i) Écrire ce modèle sous forme exponentielle avec pour paramètre $\bt$. 
+    ii) Écrire l'équation vérifiée par l'EMV de $\bt$. 
+    iii) Se convaincre qu'elle ne possède pas d'expression exacte. 
+3. Mêmes questions lorsque la fonction $p$ s'écrit sous forme « probit », $p(\bx) = \Phi(\bx \bt)$ avec $\Phi$ la fonction de répartition de $N(0,1)$. 
 
 :::
