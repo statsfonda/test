@@ -296,7 +296,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#exercices" id="toc-exercices" class="nav-link active" data-scroll-target="#exercices">Exercices</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link active" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices">Exercices</a></li>
   </ul>
 </nav>
     </div>
@@ -329,7 +330,8 @@ $$
 
 </header>
 
-<p>##&nbsp;Questions {.unnumbered}</p>
+<section id="questions" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="questions">Questions</h2>
 <ul>
 <li>On dispose d’une observation <span class="math inline">\(x\)</span> d’une variable aléatoire <span class="math inline">\(N(\mu, 1)\)</span>. Quel est l’EMV de <span class="math inline">\(\mu\)</span> ?</li>
 <li>On dispose d’une observation <span class="math inline">\(x\)</span> d’une variable aléatoire <span class="math inline">\(\mathrm{Ber}(p)\)</span>. Quel est l’EMV de <span class="math inline">\(\mu\)</span> ?</li>
@@ -337,7 +339,10 @@ $$
 <li>Montrer que dans un modèle linéaire gaussien <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, l’estimateur des moindres carrés ordinaires est l’EMV de <span class="math inline">\(\bt\)</span>. Quel est l’EMV pour <span class="math inline">\(\sigma^2\)</span> ?</li>
 <li>Dans un modèle exponentiel, construire une région (ellipsoïde) de confiance asymptotique pour le paramètre.</li>
 <li>Soit <span class="math inline">\(\mathcal{X}\)</span> un ensemble fini à <span class="math inline">\(p\)</span> éléments et soient <span class="math inline">\(x_1, \dotsc, x_n\)</span> des réalisations iid d’une même loi <span class="math inline">\(P\)</span> sur <span class="math inline">\(\mathcal{X}\)</span>. On cherche <span class="math inline">\(P\)</span>. Montrer que ce problème peut se formuler comme la recherche d’un paramètre (indice : il est de dimension <span class="math inline">\(p\)</span>) dans un modèle exponentiel et écrire l’EMV.</li>
+<li>Dans un modèle exponentiel <span class="math inline">\(p_\theta(x) = e^{-\langle \theta, T(x)\rangle}/Z(\theta)\)</span>, on a des observations iid <span class="math inline">\(x_1, \dotsc, x_n\)</span>. On note <span class="math inline">\(\hat{\mu}_n\)</span> la loi empirique<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. des <span class="math inline">\(x_i\)</span> Montrer que l’EMV (lorsqu’il existe) est l’unique <span class="math inline">\(\theta\)</span> tel que <span class="math display">\[ \int_{\mathcal{X}} T(x)d\hat{\mu}_n =  \int_{\mathcal{X}} T(x)p_\theta(x)dx.\]</span></li>
+<li>Montrer que la densité gaussienne multidimensionnelle <span class="math inline">\(N(0,\Sigma)\)</span> peut aussi s’écrire <span class="math display">\[ \frac{\exp\left( - \langle \theta, xx^\top \rangle_F / 2 \right)}{\sqrt{(2\pi)^n \det(\Sigma)}}\]</span> où <span class="math inline">\(\langle A,B\rangle_F = \mathrm{trace}(AB^\top)\)</span> est le produit scalaire<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> sur l’espace des matrices, et où <span class="math inline">\(\theta = \Sigma^{-1}\)</span>.</li>
 </ul>
+</section>
 <section id="exercices" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercices">Exercices</h2>
 <div id="exr-mlef" class="theorem exercise">
@@ -360,7 +365,7 @@ $$
 </ol>
 </div>
 <div id="exr-gammaemv" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 4 </strong></span>On se donne un échantillon <span class="math inline">\((X_1,\dots,X_n)\)</span> de loi <span class="math inline">\(\Gamma(\alpha, \beta)\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p><span class="theorem-title"><strong>Exercice 4 </strong></span>On se donne un échantillon <span class="math inline">\((X_1,\dots,X_n)\)</span> de loi <span class="math inline">\(\Gamma(\alpha, \beta)\)</span><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 <ol type="1">
 <li>On suppose le paramètre <span class="math inline">\(\beta\)</span> connu. Proposer un estimateur de <span class="math inline">\(\alpha\)</span> par la méthode des moments.</li>
 <li>On suppose à présent que les deux paramètres <span class="math inline">\(\alpha, \beta\)</span> sont inconnus. Proposer un estimateur de <span class="math inline">\((\alpha,\beta)\)</span> par la méthode des moments.</li>
@@ -381,7 +386,7 @@ Soit <span class="math inline">\(T_n\)</span> l’estimateur du maximum de vrais
 <p><span class="theorem-title"><strong>Exercice 6 </strong></span>Soit <span class="math inline">\(c&gt;0\)</span> un paramètre fixé connu. On considère la loi de Weibull de paramètre <span class="math inline">\(c\)</span>, notée <span class="math inline">\(\mathscr{W}(c)\)</span>, dont la densité sur <span class="math inline">\(\mathbb{R}_+\)</span> est <span class="math display">\[\lambda c x^{c-1}e^{-\lambda x^c}\]</span> On observe un <span class="math inline">\(n\)</span>-échantillon de loi <span class="math inline">\(\mathscr{W}(c)\)</span>, avec <span class="math inline">\(n\)</span> plus grand que 3.</p>
 <ol type="1">
 <li>Calculer l’estimateur du maximum de vraisemblance <span class="math inline">\(\hat \lambda_n\)</span> de <span class="math inline">\(\lambda\)</span>.</li>
-<li>Calculer son risque quadratique <span class="math inline">\(E_\lambda^n\left[(\hat \lambda_n-\lambda)^2\right]\)</span> o`u <span class="math inline">\(P_\lambda^n\)</span> désigne la loi du <span class="math inline">\(n\)</span>-échantillon.</li>
+<li>Calculer son risque quadratique.</li>
 </ol>
 </div>
 <div id="exr-buse" class="theorem exercise">
@@ -410,7 +415,9 @@ Soit <span class="math inline">\(T_n\)</span> l’estimateur du maximum de vrais
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>On rappelle que sa densité est <span class="math inline">\(\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}\exp(-\beta x)\)</span> sur <span class="math inline">\([0,\infty[\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>C’est-à-dire la mesure de probabilité définie par <span class="math inline">\(n^{-1}\sum \delta_{x_i}\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Ce produit scalaire est appelé <em>produit de Frobenius</em> et correspond à la norme <span class="math inline">\(L^2\)</span> sur l’espace des matrices : <span class="math inline">\(\Vert A \Vert_F^2 = \sum_{i,j}|A_{i,j}|^2\)</span>. <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>On rappelle que sa densité est <span class="math inline">\(\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}\exp(-\beta x)\)</span> sur <span class="math inline">\([0,\infty[\)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
