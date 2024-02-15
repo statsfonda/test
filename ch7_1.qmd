@@ -16,3 +16,9 @@ $$1 - 2\sum_{k=0}^\infty (-1)^k e^{-2x^2 (k+1)^2}.$$
 :::
 
 Ce théorème permet de construire des tests aymptotiques de niveau exactement $1-\alpha$. 
+
+:::{#thm-consistance-ks}
+
+Si $X_1, \dotsc, X_n$ suivent une loi de fonction de répartition $G \neq F$, alors $\sqrt{n}|F_n - F|_\infty \to \infty$ presque sûrement. 
+
+:::

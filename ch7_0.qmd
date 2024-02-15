@@ -52,12 +52,13 @@ Notons $q_j$ le $j$-ème quantile d'ordre $N$ de $F$ (on choisira l'entier $N$ p
 $$ F_n(q_j) - \frac{j}{N} - \frac{1}{N}$$
 et plus petit que 
 $$ F_n(q_{j+1})- \frac{j}{n} = F_n(q_{j+1})- \frac{j+1}{N}  + \frac{1}{N}.$$
-Quoi qu'il arrive, $|F_n(x) - F(x)|$ est plus petit que le plus grand des $|F_n(q_j) - j/N|$ augmenté de $1/N$, donc $|F_n - F|$ aussi. Pour n'importe quel $t>0$, nous pouvons utiliser la borne de l'union afin de borner $\mathbb{P}(|F_n - F|_\infty > t)$ par  $$\sum_{j}\mathbb{P}\left(\frac{1}{N} + |F_n(q_j) - j/N|>t\right).$${#eq-uniongc}
-Or, $nF_n(q_j)$ suit une loi $\mathrm{Bin}(n, j/N)$, donc si^[Que se passe-t-il si $t\leqslant 1/N$ ?]  $t-1/N>0$ on peut utiliser l'inégalité de Bienaymé-Chebychev, borner la variance de $\mathrm{Bin}(n,j/N)$ par $1/4n$, et obtenir
-$$\mathbb{P}\left(\frac{1}{N} + |F_n(q_j) - j/N|>t\right) \leqslant \frac{1}{4n (t - \frac{1}{N})^2}.$$
-Le terme @eq-uniongc est alors plus petit que $N / 4n(t-1/N)^2$. Le choix de $N = \lceil 2/t \rceil$ (par exemple) donne 
-$$\mathbb{P}(|F_n - F|_\infty > t) =O\left( \frac{1}{t^2 n}\right)$${#eq-predkw}
-et donc $|F_n - F|_\infty$ tend vers 0 en probabilité, comme demandé. 
+Quoi qu'il arrive, $|F_n(x) - F(x)|$ est plus petit que le plus grand des $|F_n(q_j) - j/N|$ augmenté de $1/N$, donc $|F_n - F|$ aussi. Pour n'importe quel $t>0$, nous pouvons utiliser la borne de l'union afin de borner $\mathbb{P}(|F_n - F|_\infty > t)$ par  $$\sum_{j=0}^N\mathbb{P}\left(\frac{1}{N} + |F_n(q_j) - j/N|>t\right).$${#eq-uniongc}
+Or, $nF_n(q_j)$ suit une loi $\mathrm{Bin}(n, j/N)$, donc si^[Que se passe-t-il si $t\leqslant 1/N$ ?]  $t-1/N>0$ on peut utiliser l'inégalité de Hoeffding : 
+$$\mathbb{P}\left(\frac{1}{N} + |F_n(q_j) - j/N|>t\right) \leqslant 2\exp\left\lbrace - 2 n\left(t - \frac{1}{N}\right)^2 \right\rbrace.$$
+En choisissant par exemple $N = \lceil 2/N\rceil$, le terme entre parenthèses est plus grand que $t/2$, et la borne devient elle-même plus petite que $2e^{-nt^2/4}$. 
+Le terme @eq-uniongc est alors plus petit que $N 2e^{-nt^2/4}$, c'est-à-dire 
+$$\mathbb{P}(|F_n - F|_\infty > t) \leqslant \frac{2}{t}e^{-nt^2/4}.$${#eq-predkw}
+Si l'on choisit une suite $t_n$ qui tend vers 0, et telle que $\sum_n e^{-nt_n^2/4}/t_n < \infty$, alors le lemme de Borel-Cantelli permet de conclure : presque sûrement, à partir d'un certain rang, on a $|F - F_n|_\infty \leqslant t_n$, et donc $|F_n - F|_\infty \to 0$. 
 
 ## Inégalité DKW
 
