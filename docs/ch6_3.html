@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistiques Fondamentales - Exercices</title>
+<title>Statistiques Fondamentales - 16&nbsp; Entropie et information</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch6_0.html" rel="next">
-<link href="./ch5_2.html" rel="prev">
+<link href="./ch6_4.html" rel="next">
+<link href="./ch6_ex.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch5_ex.html">Exercices</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch6_3.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Entropie et information</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -210,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch5_ex.html" class="sidebar-item-text sidebar-link active">
+  <a href="./ch5_ex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercices</span></a>
   </div>
 </li>
@@ -240,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch6_3.html" class="sidebar-item-text sidebar-link">
+  <a href="./ch6_3.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Entropie et information</span></span></a>
   </div>
 </li>
@@ -308,8 +308,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#questions" id="toc-questions" class="nav-link active" data-scroll-target="#questions">Questions</a></li>
-  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices">Exercices</a></li>
+  <li><a href="#la-notion-de-code" id="toc-la-notion-de-code" class="nav-link active" data-scroll-target="#la-notion-de-code"><span class="header-section-number">16.1</span> La notion de code</a></li>
+  <li><a href="#le-théorème-de-shannon" id="toc-le-théorème-de-shannon" class="nav-link" data-scroll-target="#le-théorème-de-shannon"><span class="header-section-number">16.2</span> Le théorème de Shannon</a></li>
+  <li><a href="#lentropie-relative" id="toc-lentropie-relative" class="nav-link" data-scroll-target="#lentropie-relative"><span class="header-section-number">16.3</span> L’entropie relative</a></li>
+  <li><a href="#retour-sur-linformation-de-fisher" id="toc-retour-sur-linformation-de-fisher" class="nav-link" data-scroll-target="#retour-sur-linformation-de-fisher"><span class="header-section-number">16.4</span> Retour sur l’information de Fisher</a></li>
   </ul>
 </nav>
     </div>
@@ -328,7 +330,7 @@ $$
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exercices</h1>
+<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Entropie et information</span></h1>
 </div>
 
 
@@ -343,97 +345,74 @@ $$
 
 </header>
 
-<section id="questions" class="level2">
-<h2 class="anchored" data-anchor-id="questions">Questions</h2>
-<ul>
-<li>Retrouver la formule des MCO par une méthode analytique.</li>
-<li>Construire un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour le coefficient <span class="math inline">\(\theta_j\)</span> d’une régression.</li>
-<li>Soit <span class="math inline">\(X\)</span> une matrice. Pourquoi les nombres <span class="math inline">\(\ell^2_j = ((X^\top X)^{-1})_{j,j}\)</span> sont-ils toujours des nombres positifs ?</li>
-<li>Écrire explicitement les deux leviers dans un modèle linéaire simple en une dimension.</li>
-<li>Concrètement, comment s’interprète la condition “la matrice des variables explicatives <span class="math inline">\(X\)</span> est de rang <span class="math inline">\(d\)</span>” ? Qu’est-ce qui ne va pas lorsque ce n’est pas le cas ?</li>
-<li>Au lieu de faire un test de significativité sur un coefficient d’une régression linéaire (<a href="ch5_2.html#thm-teststudent">Théorème&nbsp;<span>12.1</span></a>), tester <span class="math inline">\(\theta_j=x\)</span> pour n’importe quel <span class="math inline">\(x\)</span> (pas forcément <span class="math inline">\(0\)</span>).</li>
-<li>Dans un ajustement affine sans constante <span class="math inline">\(y_i=\beta x_i\)</span>, monter que <span class="math inline">\(\hat{\beta} = \sum_{i=1}^n p_i y_i\)</span> où <span class="math inline">\(p_i = x_i/|x|^2\)</span>.</li>
-<li>Calculer la limite en loi de <span class="math inline">\(\mathscr{F}_{r,n}\)</span> lorsque <span class="math inline">\(r\)</span> est fixé et <span class="math inline">\(n \to \infty\)</span>.</li>
-<li>Calculer la limite en loi de <span class="math inline">\(\mathscr{F}_{n,n}\)</span> lorsque <span class="math inline">\(n \to \infty\)</span>.</li>
-</ul>
+<p>Soient <span class="math inline">\(X_i\)</span> des variables aléatoires définies sur un même ensemble fini <span class="math inline">\(\mathcal{X} = (a_1, \dotsc, a_k)\)</span>. On note <span class="math inline">\(p_k = \mathbb{P}(X = a_k)\)</span>. On observe un échantillon de <span class="math inline">\(n\)</span> réalisations des <span class="math inline">\(X_i\)</span>, disons <span class="math inline">\((x_1, \dotsc, x_n)\)</span>. Avant de s’intéresser à l’information que portent ces observations sur la loi <span class="math inline">\(\mathbb{P}\)</span>, qui est le problème <em>statistique</em> auquel nous nous sommes intéressé, on peut se demander quelle est la quantité d’information portée par les <span class="math inline">\(x_i\)</span> <em>tout court</em>, sans avoir à faire d’hypothèses sur la loi de <span class="math inline">\(X\)</span>. Par exemple, si toutes les observations sont identiques, l’échantillon transporte peu d’information – en tout cas, moins que si les observations sont un peu plus variées. La question posée est la suivante :&nbsp;si l’on voulait coder les observations de sorte que deux observations différentes soient codées de deux façons différentes, et de sorte qu’en moyenne le codage des informations soit le plus compressé possible, quel code utiliserait-on ?</p>
+<section id="la-notion-de-code" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="la-notion-de-code"><span class="header-section-number">16.1</span> La notion de code</h2>
+<p>Il faut raisonner en termes de bits d’information :&nbsp;on veut coder chaque élément observé par une suite de 0 et de 1.</p>
+<p>Par exemple, supposons que <span class="math inline">\(\mathcal{X}\)</span> ne possède que deux éléments ; on peut coder <span class="math inline">\(x_i=0\)</span> ou <span class="math inline">\(1\)</span> et voir notre échantillon comme une suite binaire de longueur <span class="math inline">\(n\)</span>. On aura donc besoin de au plus <span class="math inline">\(n\)</span> bits d’information pour encoder l’échantillon ;&nbsp;un « bit » est la donnée d’un 0 ou d’un 1.</p>
+<p>Si maintenant <span class="math inline">\(\mathcal{X}\)</span> contient 4 éléments, on peut coder ses élements par des suites de deux bits :&nbsp;<span class="math inline">\(00,01,10, 11\)</span>. Le codage d’une observation nécessitera toujours deux bits. Pour encoder notre échantillon, on aura besoin de <span class="math inline">\(n\)</span> fois deux bits d’information au plus, donc <span class="math inline">\(2n\)</span> bits. Par exemple, l’échantillon <span class="math inline">\((a,a,a,b,a,d,d,a,a,a)\)</span> sera codé <span class="math inline">\(00000001001111000000\)</span>, donc 20 bits.</p>
+<p>Plus généralement, si <span class="math inline">\(\mathcal{X}\)</span> contient <span class="math inline">\(k\)</span> éléments, on peut chacun les coder avec au plus <span class="math inline">\(\log_2\lceil k \rceil\)</span> bits et il faudra <span class="math inline">\(n\log_2\lceil k \rceil\)</span> pour encoder l’échantillon.</p>
+<p>Dans ces exemples, chaque codage d’un échantillon nécessitait le même nombre de bits. Ce codage-là ne nécessite aucune information particulière sur les <span class="math inline">\(x_i\)</span>. Mais maintenant, dans le cas où <span class="math inline">\(\mathcal{X}\)</span> comporte 4 éléments <span class="math inline">\(\{a,b,c,d\}\)</span>, supposons que le premier élément soit beaucoup plus fréquent que les autres ; autrement dit,</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">a</th>
+<th style="text-align: center;">b</th>
+<th style="text-align: center;">c</th>
+<th style="text-align: center;">d</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathbb{P}(X = …)\)</span></td>
+<td style="text-align: center;">97%</td>
+<td style="text-align: center;">1%</td>
+<td style="text-align: center;">1%</td>
+<td style="text-align: center;">1%</td>
+</tr>
+</tbody>
+</table>
+<p>Dans ce cas, la plupart des observations n’auront que des <span class="math inline">\(a\)</span>. Donc si j’assigne à l’observation <span class="math inline">\(a\)</span> un code <em>d’un seul bit</em>, disons 0, et que j’assigne aux trois autres des codes plus longs comme <span class="math inline">\(10, 110, 111\)</span>, alors le coût moyen de codage d’une observation sera <span class="math display">\[ 1\times 97\% + 2\times 1\% + 3 \times 1\% + 3\times 1\% = 1.05\]</span> Autrement dit, en moyenne, je n’aurai pas besoin de beaucoup plus d’un bit d’observation par observation, alors que le codage élémentaire ci-dessus en nécessitait exactement deux. Avec ce code, l’échantillon <span class="math inline">\((a,a,a,b,a,d,d,a,a,a)\)</span> devient codé par <span class="math inline">\(000100111111000\)</span>, donc 15 bits.</p>
+<div id="def-code" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 16.1 </strong></span>Un <em>code binaire</em> de <span class="math inline">\(\mathcal{X}\)</span> assigne à chaque élément <span class="math inline">\(a\)</span> de <span class="math inline">\(\mathcal{X}\)</span> un mot binaire <span class="math inline">\(w(a)\)</span>. Le code d’un élément ne doit pas être le début du code d’un autre élément.</p>
+</div>
+<p>Par exemple, je n’ai pas le droit de coder l’ensemble à quatre éléments avec le code <span class="math inline">\(w(1)=1, w(2)=10, w(3)=11, w(4)=010\)</span>. En effet, dans ce cas je ne serai pas en mesure de discerner si <span class="math inline">\(1010\)</span> veut dire <span class="math inline">\(w(1)w(4)\)</span> ou bien <span class="math inline">\(w(2)w(2)\)</span>.</p>
+<p>La longueur du <span class="math inline">\(k\)</span>-ème élément <span class="math inline">\(w(k)\)</span> est notée <span class="math inline">\(\ell_k\)</span>. Étant donné un code, le nombre moyen de bits d’information nécessaire pour coder une variable aléatoire <span class="math inline">\(X\)</span> sur <span class="math inline">\(\mathcal{X}\)</span> est donc <span class="math display">\[\mathbb{E}[\ell_X] = \sum_{i=1}^k \ell_i \mathbb{P}(X = a_i).\]</span></p>
 </section>
-<section id="exercices" class="level2">
-<h2 class="anchored" data-anchor-id="exercices">Exercices</h2>
-<div id="exr-corrcaus" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 1 (Les limites du coefficient de détermination) </strong></span>&nbsp;</p>
-<ol type="1">
-<li>Construire un jeu de variables explicatives <span class="math inline">\(x_i\)</span> et expliquées <span class="math inline">\(y_i\)</span> tel que l’ajustement affine des <span class="math inline">\(x\)</span> vers les <span class="math inline">\(y\)</span> possède un <span class="math inline">\(R^2\)</span> égal à 0 (aucune significativité linéaire), mais tel que les <span class="math inline">\(y_i\)</span> sont parfaitement déterminés par les <span class="math inline">\(x_i\)</span> (c’est-à-dire tels qu’il y a une fonction <span class="math inline">\(f\)</span> avec <span class="math inline">\(f(x_i)=y_i\)</span> pour tout <span class="math inline">\(i\)</span>).</li>
-<li>Montrer qu’ajouter des variables explicatives dans un modèle augmente le coefficient de détermination.</li>
-</ol>
+<section id="le-théorème-de-shannon" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="le-théorème-de-shannon"><span class="header-section-number">16.2</span> Le théorème de Shannon</h2>
+<p>Quel est la plus petite quantité moyenne d’informations nécessaire à coder une réalisation de <span class="math inline">\(X\)</span> ? La réponse est <em>l’entropie de la loi de <span class="math inline">\(P\)</span></em>.</p>
+<div id="def-entropie" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 16.2 (Entropie) </strong></span>Soit <span class="math inline">\(X\)</span> une variable aléatoire de loi <span class="math inline">\(P\)</span>, possédant une densité <span class="math inline">\(f\)</span> par rapport à une mesure de référence. L’entropie <span class="math inline">\(\ent(P)\)</span> est <span class="math display">\[ - \int_{\mathcal{X}}f(x)\log_2 f(x)\nu(dx).\]</span></p>
 </div>
-<div id="exr-regl2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 2 (Pénalité <span class="math inline">\(\ell^2\)</span> (régression <em>ridge</em>)) </strong></span>Dans une régression de type <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, on s’intéresse au problème <span class="math display">\[ \arg \min |Y - X\theta|^2 + \lambda |\theta|^2.\]</span> Il s’agit du problème des moindres carrées, mais où la présence de la pénalité <span class="math inline">\(\lambda|\theta|^2\)</span> impose que les coefficients de <span class="math inline">\(\theta\)</span> ne soient pas trop grands au sens <span class="math inline">\(\ell^2\)</span>.</p>
-<ol type="1">
-<li>Montrer que la solution au problème est donnée par <span class="math inline">\(\hat{\bt}_{\lambda} = (X^\top X + \lambda I_d)^{-1}X^\top Y\)</span> sans aucune contrainte de rang sur <span class="math inline">\(X\)</span>.</li>
-<li>Calculer la loi de <span class="math inline">\(\hat{\bt}_{\lambda}\)</span> lorsque les résidus sont gaussiens. Quel est son biais ?</li>
-</ol>
+<p>Lorsque <span class="math inline">\(X\)</span> est une variable discrète prenant la valeur <span class="math inline">\(a_k\)</span> avec probabilité <span class="math inline">\(p_k\)</span>, l’entropie est donc égale à <span class="math display">\[ -\sum_{k} p_k \log_2 p_k.\]</span></p>
+<p>En théorie de l’information, on prend plutôt le logarithme en base 2 plutôt que le logarithme népérien. L’entropie ne diffère alors que d’une constante <span class="math inline">\(\ln(2)\)</span>.</p>
+<div id="thm-shannon" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 16.1 (Théorème de codage de Shannon) </strong></span>Tout codage vérifie <span class="math inline">\(\mathbb{E}[\ell_X]\geqslant \ent(P)\)</span>.</p>
+<p>Il existe un codage appelé <em>codage entropique</em> vérifiant <span class="math inline">\(\ell^\star(a)=\lceil \log_2(p_k)\rceil\)</span>, et donc <span class="math inline">\(\mathbb{E}[\ell^\star_X]\leqslant \ent(P)+1\)</span>.</p>
 </div>
-<div id="exr-uniquecontrainte" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 3 </strong></span>Dans un modèle linéaire <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, on cherche à tester une unique contrainte linéaire, à savoir <span class="math inline">\(\langle z, \bt \rangle = c\)</span> où <span class="math inline">\(z \in \mathbb{R}^d\)</span> et <span class="math inline">\(c \in \mathbb{R}\)</span>.</p>
-<ol type="1">
-<li>Montrer que dans ce cas, la statistique de Wald s’écrit <span class="math display">\[ |\langle z, \hat{\bt}\rangle - c|^2/\hat{\sigma}_n^2\langle z, (X^\top X)^{-1}z\rangle.\]</span> Écrire le test associé à cette statistique.</li>
-<li>Trouver un estimateur <span class="math inline">\(\hat{\tau}^2\)</span> de la variance de <span class="math inline">\(\langle z, \hat{\bt}\rangle -c\)</span>. Sous l’hypothèse nulle, quelle est la loi de <span class="math inline">\((\langle z, \hat{\bt}\rangle -c)/\hat{\tau}_n\)</span> ? En déduire un test associé à cette statistique.</li>
-<li>Montrer que les deux tests sont équivalents.</li>
-</ol>
+<p>En particulier, le codage optimal d’un échantillon iid de taille <span class="math inline">\(n\)</span> vérifie <span class="math display">\[ \lim \frac{\mathbb{E}[\ell^\star_n]}{n} = \ent(P).\]</span></p>
+<p>L’entropie d’une loi est donc en le nombre moyen de bits d’information nécessaire à son meilleur codage, et le meilleur codage en question est le <em>codage entropique</em> qui assigne à chaque <span class="math inline">\(a \in \mathcal{X}\)</span> un code de longueur proche de <span class="math inline">\(\log_2(\mathbb{P}(X=a))\)</span>. On a donc compressé au mieux la variable <span class="math inline">\(X\)</span>.</p>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span>J’écrirai plus tard la preuve via le lemme de Kraft.</p>
 </div>
-<div id="exr-aju" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 4 </strong></span>Soient <span class="math inline">\((x_1, y_1), \dotsc, (x_n, y_n)\)</span> des points dans <span class="math inline">\(\mathbb{R}^2\)</span>. Comparer l’ajustement affine des <span class="math inline">\(x\)</span> vers les <span class="math inline">\(y\)</span>, et l’ajustement affine des <span class="math inline">\(y\)</span> vers les <span class="math inline">\(x\)</span>.</p>
-</div>
-<div id="exr-fw" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 5 (Théorème de Frish-Waugh) </strong></span>Soit <span class="math inline">\(Y\)</span> un vecteur de variables à expliquer de taille <span class="math inline">\(n\)</span>, et soient <span class="math inline">\(X,Z\)</span> deux matrices de variables explicatives, de dimensions <span class="math inline">\((n,d)\)</span> et <span class="math inline">\((n,f)\)</span>. Soient <span class="math inline">\(\hat{\bt}\)</span> et <span class="math inline">\(\hat{\bt}_X\)</span> les estimateurs des moindres carrés des deux régressions <span class="math inline">\(Y = X\bt + Z{\boldsymbol \mu} + \varepsilon\)</span> d’une part, et <span class="math inline">\(PY = PX\bt + P\varepsilon\)</span> d’autre part, où <span class="math inline">\(P\)</span> est la matrice de projection sur le sous-espace vectoriel orthogonal aux colonnes de <span class="math inline">\(Z\)</span>. Montrer que <span class="math inline">\(\hat{\bt} = \hat{\bt}_X\)</span>.</p>
-</div>
-<div id="exr-chow" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 6 (Test de Chow) </strong></span>On dispose de deux jeux de données, disons <span class="math inline">\((X^1_1, Y^1_1), \dotsc, (X^1_n, Y^2_n)\)</span> et <span class="math inline">\((X^2_{1}, Y^2_{1}), \dotsc, (X^2_m, Y^2_m)\)</span>. Dans les deux régressions <span class="math inline">\(Y^1 = X^1 \bt^1+ \varepsilon^1\)</span> et <span class="math inline">\(Y^2 = X^2\bt^2+\varepsilon^2\)</span>, on souhaite tester si <span class="math inline">\(\bt^1 = \bt^2\)</span>.</p>
-<ol type="1">
-<li>On suppose dans un premier temps que les erreurs <span class="math inline">\(\varepsilon^1, \varepsilon^2\)</span> ont la même loi, avec une variance <span class="math inline">\(\sigma^2\)</span> connue. Proposer un test simple de l’hypothèse nulle.</li>
-<li>Même question lorsque <span class="math inline">\(\sigma\)</span> n’est pas connue.</li>
-<li>Même question lorsque <span class="math inline">\(\varepsilon^1,\varepsilon^2\)</span> n’ont pas la même variance.</li>
-</ol>
-</div>
-<div id="exr-covnonscal" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 7 </strong></span>On se place dans un modèle linéaire <em>gaussien</em> de la forme <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, mais on suppose que les entrées de <span class="math inline">\(\varepsilon_i\)</span> ne sont plus iid, mais possèdent une covariance <span class="math inline">\(\Sigma\)</span> non scalaire.</p>
-<ol type="1">
-<li>Si l’on connaît <span class="math inline">\(\Sigma\)</span>, on pose <span class="math inline">\(Y' = \Sigma^{-1/2}Y\)</span> et <span class="math inline">\(X' = \Omega^{-1/2}X\)</span>. Montrer que <span class="math display">\[\hat{\bt}_{\mathrm{MCG}}= (X^\top \Sigma^{-1} X)^{-1}X^\top \Sigma^{-1}Y\]</span> est un estimateur sans biais de <span class="math inline">\(\bt\)</span>, appelé <em>estimateur des moindres carrés généralisés</em>.</li>
-<li>On suppose qu’on dispose d’un estimateur <span class="math inline">\(\hat{\Sigma}\)</span> de <span class="math inline">\(\Sigma\)</span>. Montrer que <span class="math display">\[(X^\top \hat{\Sigma}^{-1} X)^{-1}X^\top \hat{\Sigma}^{-1}Y\]</span> est un estimateur asymptotiquement normal et sans biais de <span class="math inline">\(\bt\)</span>.</li>
-</ol>
-</div>
-<div id="exr-prediction" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 8 </strong></span>On considère le modèle de régression linéaire <span class="math inline">\(y_i=b_0+b_1x_i+\varepsilon_i\)</span> où <span class="math inline">\(i = 1, \dotsc, n\)</span> et les <span class="math inline">\(\varepsilon_i\)</span> sont des variables aléatoires indépendantes <span class="math inline">\({\mathcal N}(0,\sigma^2)\)</span> et <span class="math inline">\(b_0,b_1\)</span> et <span class="math inline">\(\sigma^2\)</span> sont inconnus.</p>
-<ol type="1">
-<li>Donner les estimateurs des moindres carrés ordinaires <span class="math inline">\(\hat{b}_0,\hat{b}_1\)</span> et <span class="math inline">\(\hat{\sigma}^2\)</span> et leur loi jointe.</li>
-<li>On dispose d’une nouvelle observation, disons <span class="math inline">\(y_0\)</span>, pour laquelle la valeur de <span class="math inline">\(x_0\)</span> de la variable explicative est inconnue. L’objectif est d’estimer <span class="math inline">\(x_0\)</span>. On suppose que <span class="math inline">\(y_0\)</span> est une réalisation d’une variable aléatoire <span class="math inline">\(Y_0\)</span> s’écrivant <span class="math inline">\(Y_0=b_0+b_1x_0+\eta\)</span>, avec <span class="math inline">\(\eta\)</span> une erreur d’observation de loi <span class="math inline">\(N(0,\sigma^2)\)</span> indépendante des <span class="math inline">\(\varepsilon_i\)</span>. On suppose en outre que la variable que l’on cherche, <span class="math inline">\(x_0\)</span>, n’est pas trop éloignée des autres <span class="math inline">\(x_i\)</span> : <span class="math inline">\(|x_0- \bar x| \leq 1\)</span>.
-<ol type="i">
-<li>Quelle est la loi de <span class="math inline">\(Y_0-\hat{b}_0-\hat{b}_1x_0\)</span> ?</li>
-<li>En utilisant l’estimateur <span class="math inline">\(\hat{\sigma}\)</span> de <span class="math inline">\({\sigma}\)</span>, déterminer un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour <span class="math inline">\(x_0\)</span>.</li>
-</ol></li>
-<li>On dispose maintenant de <span class="math inline">\(m\)</span> observations <span class="math inline">\(y_{0,1},\dots,y_{0,m}\)</span> correspondant à la valeur <span class="math inline">\(x_0\)</span> inconnue ; ce sont des réalisations de copies indépendantes <span class="math inline">\(Y_{0,j}\)</span> de <span class="math inline">\(Y_0\)</span>.
-<ol type="i">
-<li>Montrer que <span class="math display">\[\tilde{\sigma}^2=\frac{(n-2)\hat{\sigma}^2+\sum_{j=1}^{m}(Y_{0j}-\bar{Y}_0)^2}{n+m-3}\]</span> est un estimateur sans biais de <span class="math inline">\(\sigma^2\)</span>. Quelle est sa loi ?</li>
-<li>Quelle est la loi de <span class="math inline">\(\bar{Y}_0-\hat{b}_0-\hat{b}_1x_0\)</span> ?</li>
-<li>A l’aide de <span class="math inline">\(\tilde{\sigma}^2\)</span> et de <span class="math inline">\(\bar{Y}_0\)</span>, donner un intervalle de confiance pour <span class="math inline">\(x_0\)</span> de niveau <span class="math inline">\(1-\alpha\)</span>.</li>
-<li>Aurait-on pu construire un intervalle de confiance pour <span class="math inline">\(x_0\)</span> à l’aide de <span class="math inline">\(\hat{\sigma}^2\)</span> et de <span class="math inline">\(\bar{Y}_0\)</span> ?</li>
-</ol></li>
-</ol>
-</div>
-<div id="exr-gaussmarkov" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 9 (Théorème de Gauss-Markov) </strong></span>On se place dans un modèle linéaire gaussien <span class="math inline">\(Y = X\bt + \varepsilon\)</span>. L’objectif est de montrer que <span class="math inline">\(\hat{\bt}\)</span>, l’estimateur des moindres carrés, est le meilleur estimateur linéaire de <span class="math inline">\(\bt\)</span> qui soit sans biais<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Soit donc <span class="math inline">\(\tilde{\bt}\)</span> un autre estimateur linéaire sans biais, disons <span class="math inline">\(\tilde{\bt} = MY\)</span>.</p>
-<ol type="1">
-<li>Montrer que <span class="math inline">\((M - (X^\top X)^{-1}X^\top)X= 0\)</span>.</li>
-<li>Calculer la matrice de variance de <span class="math inline">\(\tilde{\bt}\)</span> en fonction de <span class="math inline">\(M - (X^\top X)^{-1}X^\top\)</span> et conclure.</li>
-</ol>
-</div>
+</section>
+<section id="lentropie-relative" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="lentropie-relative"><span class="header-section-number">16.3</span> L’entropie relative</h2>
+<p>Soit <span class="math inline">\(P\)</span> une loi de probabilité. Le codage optimal de <span class="math inline">\(P\)</span> est <span class="math inline">\(\log_2 P\)</span>. On pourrait aussi utiliser le codage d’une autre loi de probabilité, disons <span class="math inline">\(Q\)</span> :&nbsp; la quantité</p>
+<p><span class="math display">\[\sum_{k=1}^n p_k \log_2\frac{p_k}{q_k}\]</span> peut aussi se voir comme <span class="math display">\[E[\log_2 q_X] - E[\ell_X^\star].\]</span> Il s’agit donc bien d’une « redondance d’information » :&nbsp;le terme de droite est la quantité minimale d’information dont on a besoin pour coder <span class="math inline">\(X\)</span> en moyenne (via le codage entropique), et le terme de gauche est la quantité d’information dont on use pour coder <span class="math inline">\(X\)</span> en moyenne par le code <span class="math inline">\(S\)</span>. À une constante près<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, la divergence de Kullback-Leibler <span class="math display">\[ \dkl(P\mid Q) =  - \int P \ln Q - \left( - \int P \ln P \right)\]</span> indique donc à quel point il est optimal (ou pas) d’encoder les réalisations de la loi <span class="math inline">\(P\)</span> grâce au « code » <span class="math inline">\(\log_2 Q\)</span> : <span class="math inline">\(\dkl\)</span> quantifie la <em>redondance</em> de <span class="math inline">\(Q\)</span> par rapport à <span class="math inline">\(P\)</span>.&nbsp;Puisque le codage optimal est celui qui code <span class="math inline">\(x\)</span> par <span class="math inline">\(\log_2 P(x)\)</span>, le codage utilisant <span class="math inline">\(\log_2 Q(x)\)</span> n’a pas structuré au mieux l’information disponible dans <span class="math inline">\(P\)</span> est pourrait être allégé.</p>
+</section>
+<section id="retour-sur-linformation-de-fisher" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="retour-sur-linformation-de-fisher"><span class="header-section-number">16.4</span> Retour sur l’information de Fisher</h2>
+<p>Dans un modèle exponentiel, nous avons vu que l’information de Fisher est la courbure de l’entropie (<a href="ch6_2.html#prp-courbure">Proposition&nbsp;<span>15.1</span></a>). Comme dans ce cadre, l’entropie est concave, la courbure en <span class="math inline">\(\theta\)</span> est un indicateur de à quel point l’entropie forme un « pic » autour de <span class="math inline">\(\theta\)</span>.</p>
 
 
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>BLUE, <em>best linear unbiased estimator</em>. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>À savoir <span class="math inline">\(\ln(2)\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -788,13 +767,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ch5_2.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Tests linéaires</span></span>
+      <a href="./ch6_ex.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercices</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch6_0.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Modèles exponentiels</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch6_4.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Principe d’entropie maximale</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,63 @@
+# Principe d'entropie maximale
+
+Ce chapitre fait le pont entre la physique statistique et la statistique, et montre essentiellement qu'il s'agit de deux points de vue sur la même théorie.
+
+Dans une expérience statistique, on observe des échantillons $x_1, \dotsc, x_n$ qui sont iid selon une certaine $P$ loi qui est inconnue, et qu'on cherche à estimer. Si l'on n'a aucune information sur cette loi et qu'on ne veut pas faire d'hypothèses, il faudra estimer sa densité à l'aide d'outils non-paramétriques que nous verrons plus tard ; mais dans de nombreux cas, on préfère *supposer* que la loi appartient à une certaine classe, typiquement la classe des modèles exponentiels associés à un certain moment $T:\mathcal{X}\to\mathbb{R}$. 
+
+*Pourquoi avoir choisi les modèles exponentiels ?*
+
+## Hasard et information
+
+
+
+En pratique, les observations dont on dispose viennent ne viennent jamais de phénomènes dont on ne connaît rien. Il y a toujours un savoir implicite qui impose des contraintes sur $P$. Par exemple, on peut savoir que $P$ est supportée sur un ensemble compact ; ou encore, qu'elle a une variance finie. Souvent, ces contraintes s'écrivent sous la forme de moyennes : on peut savoir que la moyenne d'une certaine statistique $T(X)$ vaut exactement $c$, c'est-à-dire 
+$$ E_{X\sim P}[T(X)] = c.$$
+Typiquement, si l'on cherche une loi centrée réduite, on chorche $P$ parmi les lois qui vérifient $E[X]=0$ et $E[X^2]=1$. 
+
+Il est donc nécessaire de restreindre l'ensemble dans lequel on cherche $P$, et ne considérer que les lois vérifiant ces contraintes (les « lois admissibles »). Or, les contraintes comme celles ci-dessus sont vérifiées par énormément de lois. Laquelle choisir ? Si la seule information sur $P$ est la contrainte $E[T(X)]=c$, on veut choisir parmi celle qui est « la plus aléatoire possible » : autrement dit, **la loi d'entropie maximale**. Or, le théorème de Boltzmann-Gibbs doit que les lois d'entropie maximale vérifiant des contraintes de moyennes sont *exeactement* les lois exponentielles.  
+
+
+:::{#thm-boltzmann-gibbs}
+
+## Principe d'entropie maximale de Boltzmann-Gibbs
+
+
+Soit $T:\mathbb{R}^d \to \mathbb{R}^p$. Les densités de probabilité $f$ sur $\mathbb{R}^n$ qui maximisent l'entropie $-\int f(x) \ln f(x)\nu(dx)$ sous la containte $E_{X\sim f}[T(X)]=c$, si elles existent, sont exactement de la forme $e^{\langle \theta, T(x)\rangle}/Z(\theta)$. 
+:::
+
+Le principe d'entropie de Boltzmann-Gibbs s'applique aussi aux lois empiriques et permet de retrouver exactement l'EMV. En effet, supposons que dans une expérience statistique, on n'aie pas accès à l'échantillon $x_1, \dotsc, x_n$, mais seulement à des « moyennes d'observables » : 
+$$ \frac{1}{n}\sum_{i=1}^n T(x_i) = \bar{T}_n.$$
+Il est alors naturel de chercher $P$ parmi toutes les lois qui vérifient la contrainte $E_{X\sim P}[T(X)] = \bar{T}_n$, et *rien de plus*. Le principe de Boltzmann-Gibbs dit que les lois qui maximisent l'entropie sous cette contrainte sont exactement les lois exponentielles associées à $T$, et pour peu que le modèle soit identifiable (cf @thm-iden-expo), il n'y a qu'un seul paramètre qui garantit que $E_\theta[T(X)] = \bar{T}_n$. Ce paramètre est évidemment $\emv$. 
+
+:::{#exm-test} 
+
+## Loi gaussienne
+
+Quelle est la densité $f$ qui maximise l'entropie, sous la contrainte d'être centrée et réduite ? Ici, cette contrainte s'écrit $E[X] = 0$ et $E[X^2]=1$, donc le moment associé est $T(x) = (x, x^2)^\top$. Le théorème dit que cette loi s'écrit sous la forme $e^{-\alpha x - \beta x^2} / Z(\alpha, \beta)$, où $\alpha,\beta$ sont réels. En réalité, $\beta$ doit être positif sinon ce n'est pas une loi de probabilité. De plus, il est facile de voir que si $\alpha$ n'est pas nul, alors l'espérance n'est pas nulle. La loi d'entropie maximale est donc proportionnelle à $e^{-\beta x^2}$ : il s'agit évidemment d'une loi gaussienne, et le seul paramètre qui garantit que la variance est 1 est donné par $\beta = 1/2$. 
+
+
+:::
+
+
+## Démonstration
+
+La démonstration générale de @thm-boltzmann-gibbs nécessite des outils de calcul des variations, puisqu'il s'agit d'un problème s'optimisation en dimension infinie. Ce n'est pas difficile formellement, mais garantir l'existence d'un maximiseur peut s'avérer technique^[Après discussion avec mes collègues, il y a consensus sur la nécessité d'utiliser un critère de compacité L1 de type Dunford-Pettis. ]. En revanche, l'esprit de la preuve est très simple : on écrit le lagrangien du problème contraint. Lorsque l'espace d'états $\mathcal{X}$ est fini, c'est très simple. On supposera donc que $\mathcal{X} = \{1, \dotsc, n\}$, et on cherche une loi de probabilité sur $\mathcal{X}$, disons $p=(p_1, \dotsc, p_n)$, qui vérifie la contrainte de moments $m(p)=0$, où
+$$ m(p) = \sum_{i=1}^n p_i T(i) - c$$
+et qui maximise l'entropie $H(p)$, où 
+$$H(p)= -\sum_{i=1}^n p_i \ln p_i.$$
+Le fait que $p$ soit une loi de probabilité se traduit en pratique par des contraintes supplémentaires, à savoir $s(p)=0$ où 
+$$ -1 + \sum_{i=1}^n p_i = 0. $$ Il s'agit d'un problème d'optimisation sous contraintes dans^[Si l'un des $p_i$ est nul, $H(p)=+\infty$, donc on peut se restreindre aux $p_i >0$. ] $[0,1]^n$ : 
+$$ \begin{cases} \max_{p\in [0,1]^n} H(p) \\
+m(p)=0\\
+s(p)=0\end{cases}$${#eq-bgprb}
+Les deux contraintes sont linéaires et leur intersection n'est évidemment pas vide ; de plus, la fonction $H$ est concave. En effet, sa matrice hessienne au point $p$ est égale à $\mathrm{diag}(-1/p)$, qui est bien définie négative. Le problème @eq-bgprb possède donc une solution. Pour la trouver, on utilise les outils classiques de l'optimisation sous contraintes. Par facilité, j'exclurai les cas où ce maximum est atteint au bord du domaine. 
+
+Le Lagrangien de ce problème s'écrit 
+$$\mathscr{L}(p, \lambda, \mu) = H(p) + \lambda m(p) + \mu s(p). $$
+Les conditions du premier ordre (conditions KKT) pour l'existence d'un minimiseur local s'écrivent alors $\nabla \mathscr{L}=0$, soit $\nabla_p \mathscr{L}=0, \nabla_\lambda \mathscr{L}=0$ et $\nabla_\mu \mathscr{L}=0$. Le première identité se traduit par les équations suivantes : 
+$$ \partial_{p_i}\mathscr{L} = -(\ln(p_i) + 1) + \lambda T(i) + \mu = 0, $$
+soit $p_i = e^{-\lambda T(i) + \mu-1}$ pour un certain $\lambda$ et un certain $\mu$. Comme les $p_i$ somment à $1$, le nombre $\mu$ est immédiatement déterminé par l'équation $e^{\mu-1} = \sum_{i=1}^n e^{-\lambda T(i)}$. Les points critiques du système sont donc exactement
+$$\left(\frac{e^{-\lambda T(i)}}{Z(\lambda)}, \dotsc, \frac{e^{-\lambda T(i)}}{Z(\lambda)}\right)$$
+où $Z(\lambda) = \sum_{i=1}^n e^{-\lambda T(i)}$. **Autrement dit, s'il y a une solution au problème, il s'agit forcément d'une loi dans le modèle exponentiel associé à $T$**. Maintenant, la contrainte doit être réalisée, c'est-à-dire que l'on doit trouver un $\lambda$ qui vérifie
+$$E_\lambda [T(X)] = c.$$
+L'existence d'un tel $\lambda$ n'est pas forcément vérifiée^[Penser à la contrainte absurde $E_\lambda[X^2]=-1$. ]. Pour qu'il y ait une solution et une seule, on peut par exemple faire des hypothèses sur $T$ qui garantissent que le modèle est identifiable, de sorte que $E_\lambda [T(X)]$ est un difféormorphisme. 

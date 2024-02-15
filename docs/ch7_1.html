@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistiques Fondamentales - 17&nbsp; Test de Kolmogorov-Smirnov</title>
+<title>Statistiques Fondamentales - 19&nbsp; Test de Kolmogorov-Smirnov</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch7_1.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Test de Kolmogorov-Smirnov</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch7_1.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Test de Kolmogorov-Smirnov</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -240,6 +240,18 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./ch6_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Entropie et information</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch6_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Principe d’entropie maximale</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./problemes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problèmes</span></a>
   </div>
@@ -247,13 +259,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch7_0.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch7_1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Test de Kolmogorov-Smirnov</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Test de Kolmogorov-Smirnov</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -277,13 +289,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">50&nbsp;nuances de TCL</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">50&nbsp;nuances de TCL</span></span></a>
   </div>
 </li>
     </ul>
@@ -303,12 +315,13 @@ $$
 \newcommand{\dkl}{\mathrm{d}_{\mathrm{KL}}}
 \newcommand{\dtv}{\mathrm{d}_{\mathrm{TV}}}
 \newcommand{\emv}{\hat{\theta}_{\mathrm{emv}}}
+\newcommand{\ent}{\mathrm{Ent}}
 $$
 </p></div>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Test de Kolmogorov-Smirnov</span></h1>
+<h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Test de Kolmogorov-Smirnov</span></h1>
 </div>
 
 
@@ -326,11 +339,11 @@ $$
 <p>On souhaite maintenant <em>tester</em> la distribution d’un échantillon <span class="math inline">\((x_1, \dotsc, x_n)\)</span>, c’est-à-dire tester l’hypothèse nulle : « les <span class="math inline">\(x_i\)</span> sont des réalisations d’une variable aléatoire dont la fonction de répartition est <span class="math inline">\(F\)</span> », où <span class="math inline">\(F\)</span> est une fonction de répartition fixée. Le théorème de Glivenko-Cantelli dit que <span class="math inline">\(|F_n - F|_\infty\)</span>, sous l’hypothèse nulle, tend vers zéro. On rejettera donc l’hypothèse nulle si <span class="math inline">\(|F_n - F|\)</span> est trop grand ; mais à quel seuil ? La démonstration du théorème et l’inégalité DKW disent que la bonne échelle est <span class="math inline">\(\sqrt{n}\)</span> :&nbsp;en effet, <span class="math inline">\(\mathbb{P}(|F_n - F|_\infty &gt; \sqrt{\alpha/n}) = O(1/t^2)\)</span>. Un test dont la région de rejet est de la forme <span class="math display">\[\left\lbrace |F_n - F|_\infty &gt; \frac{10}{\sqrt{n}}\right\rbrace\]</span> aura un niveau de confiance d’ordre <span class="math inline">\(1-\alpha\)</span>, ce qui fournit déjà un test non-asymptotique. L’utilisation de l’inégalité DKW permet d’avoir une région de rejet encore plus grande.</p>
 <p>En réalité, si l’on suppose seulement que <span class="math inline">\(F\)</span> est continue, il se trouve que <span class="math inline">\(\sqrt{n}|F_n - F|_\infty\)</span> converge en loi vers une loi connue dont on connaît les quantiles.</p>
 <div id="thm-kolmo-smirnov" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 17.1 (Kolmogorov-Smirnov) </strong></span><span class="math inline">\(\sqrt{n}|F_n - F|_\infty\)</span> converge en loi vers <span class="math inline">\(|B|_\infty\)</span>, où <span class="math inline">\((B_t)_{t\in [0,1]}\)</span> est un mouvement Brownien standard. La loi de cette variable aléatoire positive est appelée <em>loi de Kolmogorov-Smirnov</em>, et sa fonction de répartition <span class="math inline">\(\mathbb{P}(|B|_\infty \leqslant x)\)</span> est donnée par <span class="math display">\[1 - 2\sum_{k=0}^\infty (-1)^k e^{-2x^2 (k+1)^2}.\]</span></p>
+<p><span class="theorem-title"><strong>Théorème 19.1 (Kolmogorov-Smirnov) </strong></span><span class="math inline">\(\sqrt{n}|F_n - F|_\infty\)</span> converge en loi vers <span class="math inline">\(|B|_\infty\)</span>, où <span class="math inline">\((B_t)_{t\in [0,1]}\)</span> est un mouvement Brownien standard. La loi de cette variable aléatoire positive est appelée <em>loi de Kolmogorov-Smirnov</em>, et sa fonction de répartition <span class="math inline">\(\mathbb{P}(|B|_\infty \leqslant x)\)</span> est donnée par <span class="math display">\[1 - 2\sum_{k=0}^\infty (-1)^k e^{-2x^2 (k+1)^2}.\]</span></p>
 </div>
 <p>Ce théorème permet de construire des tests aymptotiques de niveau exactement <span class="math inline">\(1-\alpha\)</span>.</p>
 <div id="thm-consistance-ks" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 17.2 </strong></span>Si <span class="math inline">\(X_1, \dotsc, X_n\)</span> suivent une loi de fonction de répartition <span class="math inline">\(G \neq F\)</span>, alors <span class="math inline">\(\sqrt{n}|F_n - F|_\infty \to \infty\)</span> presque sûrement.</p>
+<p><span class="theorem-title"><strong>Théorème 19.2 </strong></span>Si <span class="math inline">\(X_1, \dotsc, X_n\)</span> suivent une loi de fonction de répartition <span class="math inline">\(G \neq F\)</span>, alors <span class="math inline">\(\sqrt{n}|F_n - F|_\infty \to \infty\)</span> presque sûrement.</p>
 </div>
 
 
@@ -687,7 +700,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./ch7_0.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
