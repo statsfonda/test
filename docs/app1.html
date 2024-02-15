@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch2_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -157,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch3_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch4_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -211,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -235,13 +235,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch6_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./problemes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ ٭ Problèmes</span></a>
+ <span class="menu-text">Problèmes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -259,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch7_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -348,9 +348,9 @@ $$
 <section id="projections-orthogonales" class="level2" data-number="18.3">
 <h2 data-number="18.3" class="anchored" data-anchor-id="projections-orthogonales"><span class="header-section-number">18.3</span> Projections orthogonales</h2>
 <p>Soit <span class="math inline">\(v\)</span> un vecteur non nul de <span class="math inline">\(\mathbb{R}^n\)</span>. L’espace vectoriel engendré par <span class="math inline">\(v\)</span> est l’ensemble <span class="math inline">\(\mathscr{V}=\{tv : t \in \mathbb{R}\}\)</span>, et son orthogonal est l’hyperplan <span class="math inline">\(\mathscr{V}^\perp = \{x :&nbsp;\langle x, v \rangle = 0\}\)</span>. Les résultats élémentaires d’algèbre linéaire disent que tout vecteur <span class="math inline">\(x\)</span> se décompose <em>de façon unique</em> sous la forme <span class="math display">\[ x = y + z\]</span> avec <span class="math inline">\(y\)</span> dans <span class="math inline">\(\mathscr{V}\)</span> et <span class="math inline">\(z\)</span> dans <span class="math inline">\(\mathscr{V}^\top\)</span>. En particulier, il existe un <span class="math inline">\(t\)</span> tel que <span class="math inline">\(y = tv\)</span>.</p>
-<p>Considérons maintenant la matrice <span class="math display">\[P = \frac{1}{|v|^2}vv^\top \in \mathscr{M}_{n,n}. \]</span> Appliquons cette matrice à <span class="math inline">\(x\)</span>. Par linéarité, <span class="math inline">\(Px = Px + Pz\)</span>. Calculons ces deux termes.</p>
+<p>Considérons maintenant la matrice <span class="math display">\[P = \frac{1}{|v|^2}vv^\top \in \mathscr{M}_{n,n}. \]</span> Appliquons cette matrice à <span class="math inline">\(x\)</span>. Par linéarité, <span class="math inline">\(Px = Py + Pz\)</span>. Calculons ces deux termes.</p>
 <ol type="1">
-<li><span class="math inline">\(Pz = |v|^{-1}v v^\top z = |v|^{-1}v \langle v, z\rangle\)</span>. Comme <span class="math inline">\(z\)</span> est orthogonal à <span class="math inline">\(v\)</span>, cela vaut 0.</li>
+<li><span class="math inline">\(Pz = |v|^{-2}v v^\top z = |v|^{-2}v \langle v, z\rangle\)</span>. Comme <span class="math inline">\(z\)</span> est orthogonal à <span class="math inline">\(v\)</span>, cela vaut 0.</li>
 <li><span class="math inline">\(Py = tPv\)</span>. Par définition de <span class="math inline">\(P\)</span>, ceci est donc égal à <span class="math inline">\(t|v|^{-2}v v^\top v = t|v|^{-2}v |v|^2 = tv\)</span>, c’est-à-dire <span class="math inline">\(y\)</span>.</li>
 </ol>
 <p>Nous avons montré plusieurs choses. D’abord, l’application qui à <span class="math inline">\(x\)</span> associe <span class="math inline">\(y\)</span> est effectivement linéaire, et une de ses matrices est <span class="math inline">\(P\)</span>. On dit que <span class="math inline">\(P\)</span> est la matrice de projection sur <span class="math inline">\(\mathscr{V}\)</span>. De même, comme <span class="math inline">\((I - P)x = y+z - y = z\)</span>, la matrice <span class="math inline">\(I-P\)</span> est la matrice de projection sur <span class="math inline">\(\mathscr{V}^\perp\)</span>.</p>

@@ -81,7 +81,7 @@ Cette loi s'appelle *loi de Student* de paramètre $n$ ; on dit parfois *à $n$ 
 
 ### Loi de la statistique de Student {#sec-student2}
 
-Soient $X_1, \dotsc, X_n$ des variables gaussiennes $N(\mu, \sigma^2)$ indépendantes, et soit $T_n = (\bar{X}_n-\mu)/\sqrt{\hat{\sigma}^2_n}$, où 
+Soient $X_1, \dotsc, X_n$ des variables gaussiennes $N(\mu, \sigma^2)$ indépendantes, et soit $T_n = \sqrt{n}(\bar{X}_n-\mu)/\sqrt{\hat{\sigma}^2_n}$, où 
 $$\hat{\sigma}^2_n = \frac{\sum_{i=1}^n (X_i - \bar{X}_n)^2}{n-1}. $$
 
 

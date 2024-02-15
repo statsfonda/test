@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch2_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -157,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch3_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch4_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -211,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -235,13 +235,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch6_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./problemes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ ٭ Problèmes</span></a>
+ <span class="menu-text">Problèmes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -259,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch7_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -296,7 +296,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#la-répartition-empirique" id="toc-la-répartition-empirique" class="nav-link active" data-scroll-target="#la-répartition-empirique"><span class="header-section-number">16.1</span> La répartition empirique</a></li>
+  <li><a href="#la-répartition-empirique" id="toc-la-répartition-empirique" class="nav-link active" data-scroll-target="#la-répartition-empirique"><span class="header-section-number">16.1</span> La répartition empirique</a>
+  <ul class="collapse">
+  <li><a href="#calculabilité-et-loi" id="toc-calculabilité-et-loi" class="nav-link" data-scroll-target="#calculabilité-et-loi">Calculabilité et loi</a></li>
+  <li><a href="#démonstration-du-théorème-de-glivenko-cantelli" id="toc-démonstration-du-théorème-de-glivenko-cantelli" class="nav-link" data-scroll-target="#démonstration-du-théorème-de-glivenko-cantelli">Démonstration du théorème de Glivenko-Cantelli</a></li>
+  </ul></li>
   <li><a href="#inégalité-dkw" id="toc-inégalité-dkw" class="nav-link" data-scroll-target="#inégalité-dkw"><span class="header-section-number">16.2</span> Inégalité DKW</a></li>
   </ul>
 </nav>
@@ -330,13 +334,16 @@ $$
 
 </header>
 
-<p>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> des variables iid, de fonction de répartition <span class="math inline">\(F\)</span>. Le problème de l’estimation de densité est celui d’estimer la densité ou la fonction de répartition de <span class="math inline">\(F\)</span> à partir d’une réalisation des <span class="math inline">\(x_i\)</span>. Dans toute la suite, on se placera dans le cas où la fonction de répartition est <em>continue</em>.</p>
+<p>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> des variables iid, de fonction de répartition <span class="math inline">\(F\)</span>. Le problème de l’estimation de densité est celui d’estimer la densité ou la fonction de répartition de <span class="math inline">\(F\)</span> à partir de réalisations des <span class="math inline">\(X_i\)</span> : c’est un exemple typique d’estimation non-paramétrique. Dans toute la suite, on se placera dans le cas où la fonction de répartition est <em>continue</em>.</p>
 <section id="la-répartition-empirique" class="level2" data-number="16.1">
 <h2 data-number="16.1" class="anchored" data-anchor-id="la-répartition-empirique"><span class="header-section-number">16.1</span> La répartition empirique</h2>
-<p>L’objet central est la fonction de répartition empirique, <span class="math display">\[ F_n(t) = \frac{1}{n}\#\{i : X_i \leqslant t\}.\]</span> La loi des grands nombres montre immédiatement que, <span class="math inline">\(\mathbb{P}\)</span>-presque sûrement, <span class="math inline">\(F_n(t)\)</span> converge vers <span class="math inline">\(\mathbb{P}(X_i \leqslant t)=F(t)\)</span>. On peut étendre ce résultat simultanément à une quantité dénombrable de <span class="math inline">\(t\)</span> (par exemple, <span class="math inline">\(\mathbb{Q}\)</span>) mais pas à tous. De plus, ce résultat ne dit pas si la <em>fonction</em> <span class="math inline">\(F_n\)</span> est proche de la fonction <span class="math inline">\(F\)</span>, au sens de la norme uniforme par exemple. Le théorème suivant, parfois appelé <em>théorème fondamental de l’estimation</em>, confirme que c’est le cas.</p>
+<p>L’objet central est la fonction de répartition empirique, <span class="math display">\[ F_n(t) = \frac{1}{n}\#\{i : X_i \leqslant t\}.\]</span> La loi des grands nombres montre immédiatement que, <span class="math inline">\(\mathbb{P}\)</span>-presque sûrement, <span class="math inline">\(F_n(t)\)</span> converge vers <span class="math inline">\(\mathbb{P}(X_i \leqslant t)=F(t)\)</span>. On peut étendre ce résultat simultanément à une quantité dénombrable de <span class="math inline">\(t\)</span> (par exemple, <span class="math inline">\(\mathbb{Q}\)</span>) mais pas à tous. De plus, ce résultat ne dit pas si la <em>fonction</em> <span class="math inline">\(F_n\)</span> est proche de la fonction <span class="math inline">\(F\)</span>, au sens de la norme uniforme par exemple. Le théorème suivant, parfois appelé <em>théorème fondamental de l’estimation</em>, confirme que c’est le cas au sens de la norme uniforme<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <div id="thm-glivenko" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 16.1 (Théorème de Glivenko-Cantelli) </strong></span><span class="math inline">\(\mathbb{P}\)</span>-presque sûrement, lorsque <span class="math inline">\(n \to \infty\)</span> on a <span class="math inline">\(|\hat{F}_n - F|_\infty \to 0\)</span>.</p>
+<p><span class="theorem-title"><strong>Théorème 16.1 (Théorème de Glivenko-Cantelli) </strong></span><span class="math inline">\(\mathbb{P}\)</span>-presque sûrement, lorsque <span class="math inline">\(n \to \infty\)</span> on a <span class="math inline">\(|F_n - F|_\infty \to 0\)</span>.</p>
 </div>
+<p>Ce théorème dit essentiellement que <span class="math inline">\(F_n\)</span> est un estimateur « convergent au sens de la norme uniforme » de <span class="math inline">\(F\)</span>. On pourra également utiliser ce théorème pour faire des tests : typiquement, si <span class="math inline">\(|F_n - F|\)</span> n’est pas suffisamment proche de zéro, on rejettera l’hypothèse selon laquelle les <span class="math inline">\(X_i\)</span> ont <span class="math inline">\(F\)</span> pour fonction de répartition. Le critère exact est appelé <em>test de Kolmogorov-Smirnov</em> et sera vu dans la section suivante.</p>
+<section id="calculabilité-et-loi" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="calculabilité-et-loi">Calculabilité et loi</h3>
 <p>Soit <span class="math inline">\((X_{(1)}, \dotsc, X_{(n)})\)</span> l’échantillon trié en ordre croissant. Par convention, on pose <span class="math inline">\(X_{(0)} = -\infty\)</span>. Alors, la quantité <span class="math inline">\(|F_n - F|_\infty\)</span> est aisément calculable grâce à la représentation suivante : <span id="eq-supf"><span class="math display">\[|F_n - F|_\infty = \sup_{i\in \{0, \dotsc, n-1\}}\left|\frac{i}{n} - F(X_{(i)})\right| \vee \left| \frac{i}{n} - F(X_{(i+1)})\right|.  \tag{16.1}\]</span></span></p>
 <div class="proof">
 <p><span class="proof-title"><em>Preuve</em>. </span>La fonction <span class="math inline">\(F\)</span> est croissante, et la fonction <span class="math inline">\(\hat{F}_n\)</span> est constante par morceaux sur tous les intervalles <span class="math inline">\([X_{(i)}, X_{(i+1)}[\)</span>. En effet, à chaque <span class="math inline">\(X_{(i)}\)</span>, elle saute de la valeur à gauche <span class="math inline">\((i-1)/n\)</span> a la valeur à droite <span class="math inline">\(i/n\)</span>. Ainsi, le maximum de <span class="math inline">\(F - \hat{F}_n\)</span> sur l’intervalle <span class="math inline">\([X_{(i)}, X_{(i+1)}[\)</span> est forcément atteint à une des deux bornes, et vaut donc soit <span class="math inline">\(|i/n - F(X_{(i)})|\)</span>, soit <span class="math inline">\(|i/n - F(X_{(i+1)})|\)</span>, selon celui qui est le plus grand. Le supremum de <span class="math inline">\(|F - \hat{F}_n|\)</span> sur <span class="math inline">\(\mathbb{R}\)</span> étant aussi le supremum des supremums sur tous ces intervalles, la représentation ci-dessus est vraie.</p>
@@ -348,17 +355,28 @@ $$
 <p><span class="proof-title"><em>Preuve</em>. </span>Lorsque <span class="math inline">\(X\)</span> est une variable aléatoire dont la fonction de répartition <span class="math inline">\(F\)</span> est continue et strictement croissante, <span class="math inline">\(F(X)\)</span> suit une loi <span class="math inline">\(\mathscr{U}[0,1]\)</span>. En effet, si <span class="math inline">\(t\in [0,1]\)</span>, alors <span class="math inline">\(\mathbb{P}(F(X)&lt;t)\)</span> est égal à <span class="math inline">\(\mathbb{P}(X \leqslant F^{-1}(t))\)</span>, c’est-à-dire <span class="math inline">\(F(F^{-1}(t)) = t\)</span>. Lorsque <span class="math inline">\(F\)</span> est seulement continue, la même démonstration est vraie, mais il faut remplacer l’inverse <span class="math inline">\(F^{-1}(t)\)</span> par la « transformation quantile », à savoir <span class="math inline">\(F^{\leftarrow}(t) = \inf\{x : F(x)\geqslant t\}\)</span>. Les <span class="math inline">\(F(X_i)\)</span> sont donc des variables iid de loi <span class="math inline">\(\mathscr{U}[0,1]\)</span>, ce qui conclut la démonstration compte tenu de <a href="#eq-supf">Équation&nbsp;<span>16.1</span></a>.</p>
 </div>
 <p>En particulier, la loi de <span class="math inline">\(|F_n - F|_\infty\)</span> ne dépend pas de <span class="math inline">\(F\)</span> : on dit que cette statistique est <em>libre</em>.</p>
-<p><em>Démonstration de <a href="#thm-glivenko">Théorème&nbsp;<span>16.1</span></a>.</em></p>
-<p>Notons <span class="math inline">\(q_j\)</span> le <span class="math inline">\(j\)</span>-ème quantile d’ordre <span class="math inline">\(N\)</span> de <span class="math inline">\(F\)</span> (on choisira l’entier <span class="math inline">\(N\)</span> plus tard). Soit <span class="math inline">\(x\)</span> entre <span class="math inline">\(q_j\)</span> et <span class="math inline">\(q_{j+1}\)</span>. Par croissance, <span class="math inline">\(F_n(x)\)</span> est entre <span class="math inline">\(F_n(q_j)\)</span> et <span class="math inline">\(F_n(q_{j+1})\)</span>, et <span class="math inline">\(F(x)\)</span> est entre <span class="math inline">\(j/N\)</span> et <span class="math inline">\((j+1)/N\)</span>. Ainsi, <span class="math inline">\(F_n(x) - F(x)\)</span> est plus grand que <span class="math display">\[ F_n(q_j) - \frac{j}{N} - \frac{1}{N}\]</span> et plus petit que <span class="math display">\[ F_n(q_{j+1})- \frac{j}{n} = F_n(q_{j+1})- \frac{j+1}{N}  + \frac{1}{N}.\]</span> Quoi qu’il arrive, <span class="math inline">\(|F_n(x) - F(x)|\)</span> est plus petit que le plus grand des <span class="math inline">\(|F_n(q_j) - j/N|\)</span> augmenté de <span class="math inline">\(1/N\)</span>:&nbsp; Par la borne de l’union, la probabilité que le plus grand soit plus grand que <span class="math inline">\(t\)</span> est plus petite que la somme des probabilités que chacun soit plus grand que <span class="math inline">\(t\)</span>, soit <span class="math inline">\(\mathbb{P}(|F_n(q_j) - j/N|&gt;t)\)</span>. Or, <span class="math inline">\(nF_n(q_j)\)</span> suit une loi <span class="math inline">\(\mathrm{Bin}(n, j/N)\)</span>. La probabilité ci-dessus est donc brutalement bornée par <span class="math inline">\(N/nt^2\)</span>, par exemple via l’inégalité de Bienaymé-Chebychev. Le choix de <span class="math inline">\(N = \lceil 2/t \rceil\)</span> donne alors immédiatement <span class="math display">\[\mathbb{P}(|F_n - F|_\infty) \to 0. \]</span></p>
+</section>
+<section id="démonstration-du-théorème-de-glivenko-cantelli" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="démonstration-du-théorème-de-glivenko-cantelli">Démonstration du théorème de Glivenko-Cantelli</h3>
+<p>Notons <span class="math inline">\(q_j\)</span> le <span class="math inline">\(j\)</span>-ème quantile d’ordre <span class="math inline">\(N\)</span> de <span class="math inline">\(F\)</span> (on choisira l’entier <span class="math inline">\(N\)</span> plus tard). Soit <span class="math inline">\(x\)</span> entre <span class="math inline">\(q_j\)</span> et <span class="math inline">\(q_{j+1}\)</span>. Par croissance, <span class="math inline">\(F_n(x)\)</span> est entre <span class="math inline">\(F_n(q_j)\)</span> et <span class="math inline">\(F_n(q_{j+1})\)</span>, et <span class="math inline">\(F(x)\)</span> est entre <span class="math inline">\(j/N\)</span> et <span class="math inline">\((j+1)/N\)</span>. Ainsi, <span class="math inline">\(F_n(x) - F(x)\)</span> est plus grand que <span class="math display">\[ F_n(q_j) - \frac{j}{N} - \frac{1}{N}\]</span> et plus petit que <span class="math display">\[ F_n(q_{j+1})- \frac{j}{n} = F_n(q_{j+1})- \frac{j+1}{N}  + \frac{1}{N}.\]</span> Quoi qu’il arrive, <span class="math inline">\(|F_n(x) - F(x)|\)</span> est plus petit que le plus grand des <span class="math inline">\(|F_n(q_j) - j/N|\)</span> augmenté de <span class="math inline">\(1/N\)</span>, donc <span class="math inline">\(|F_n - F|\)</span> aussi. Pour n’importe quel <span class="math inline">\(t&gt;0\)</span>, nous pouvons utiliser la borne de l’union afin de borner <span class="math inline">\(\mathbb{P}(|F_n - F|_\infty &gt; t)\)</span> par <span id="eq-uniongc"><span class="math display">\[\sum_{j=0}^N\mathbb{P}\left(\frac{1}{N} + |F_n(q_j) - j/N|&gt;t\right). \tag{16.2}\]</span></span> Or, <span class="math inline">\(nF_n(q_j)\)</span> suit une loi <span class="math inline">\(\mathrm{Bin}(n, j/N)\)</span>, donc si<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="math inline">\(t-1/N&gt;0\)</span> on peut utiliser l’inégalité de Hoeffding :&nbsp; <span class="math display">\[\mathbb{P}\left(\frac{1}{N} + |F_n(q_j) - j/N|&gt;t\right) \leqslant 2\exp\left\lbrace - 2 n\left(t - \frac{1}{N}\right)^2 \right\rbrace.\]</span> En choisissant par exemple <span class="math inline">\(N = \lceil 2/N\rceil\)</span>, le terme entre parenthèses est plus grand que <span class="math inline">\(t/2\)</span>, et la borne devient elle-même plus petite que <span class="math inline">\(2e^{-nt^2/4}\)</span>. Le terme <a href="#eq-uniongc">Équation&nbsp;<span>16.2</span></a> est alors plus petit que <span class="math inline">\(N 2e^{-nt^2/4}\)</span>, c’est-à-dire <span id="eq-predkw"><span class="math display">\[\mathbb{P}(|F_n - F|_\infty &gt; t) \leqslant \frac{2}{t}e^{-nt^2/4}. \tag{16.3}\]</span></span> Si l’on choisit une suite <span class="math inline">\(t_n\)</span> qui tend vers 0, et telle que <span class="math inline">\(\sum_n e^{-nt_n^2/4}/t_n &lt; \infty\)</span>, alors le lemme de Borel-Cantelli permet de conclure :&nbsp;presque sûrement, à partir d’un certain rang, on a <span class="math inline">\(|F - F_n|_\infty \leqslant t_n\)</span>, et donc <span class="math inline">\(|F_n - F|_\infty \to 0\)</span>.</p>
+</section>
 </section>
 <section id="inégalité-dkw" class="level2" data-number="16.2">
 <h2 data-number="16.2" class="anchored" data-anchor-id="inégalité-dkw"><span class="header-section-number">16.2</span> Inégalité DKW</h2>
 <p>Le théorème de Glivenko-Cantelli possède une version beaucoup plus puissante car elle est entièrement quantitative, appelée <em>inégalité DKW</em>.</p>
 <div id="thm-DKW" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 16.2 (Dvoretzky-Kiefer-Wolfowitz) </strong></span>Dans le même contexte, pour tout <span class="math inline">\(t&gt;0\)</span> on a <span class="math display">\[\mathbb{P}(|F_n - F|_\infty &gt; t) \leqslant 2e^{-2nt^2}.\]</span></p>
+<p><span class="theorem-title"><strong>Théorème 16.2 (Dvoretzky-Kiefer-Wolfowitz) </strong></span>Dans le même contexte, pour tout <span class="math inline">\(t&gt;0\)</span> on a <span id="eq-dkw"><span class="math display">\[\mathbb{P}(|F_n - F|_\infty &gt; t) \leqslant 2e^{-2nt^2}. \tag{16.4}\]</span></span></p>
 </div>
+<p>Il faut comparer ce résultat avec <a href="#eq-predkw">Équation&nbsp;<span>16.3</span></a>, dans lequel la borne est effectivement décroissante en <span class="math inline">\(nt^2\)</span>, mais polynomialement. L’inégalité DKW donne une décroissance <em>exponentielle</em> en <span class="math inline">\(nt^2\)</span>.</p>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>On rappelle que <span class="math inline">\(|g|_\infty = \sup_{x\in\mathbb{R}}|g(x)|\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Que se passe-t-il si <span class="math inline">\(t\leqslant 1/N\)</span> ?<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -713,7 +731,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./problemes.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">٭ ٭ Problèmes</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Problèmes</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

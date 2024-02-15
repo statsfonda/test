@@ -20,14 +20,21 @@ Il n'est pas évident que ce maximum existe, ni que le minimiseur est unique. Il
 
 :::{#prp-maxvraisex}
 
-Dans un modèle exponentiel identifiable dont l'espace des paramètres $\Theta \subset \mathbb{R}^p$ est un ouvert convexe avec $\mathrm{Leb}(\partial \Theta)=0$,  l'estimateur @eq-MV existe et il est unique. 
+Dans un modèle exponentiel identifiable dont l'espace des paramètres $\Theta \subset \mathbb{R}^p$ est un ouvert convexe, sous certaines hypothèses, l'estimateur @eq-MV existe. Dans tous les cas, s'il existe, il est unique. 
 
 :::
 
-La démonstration de ce théorème général repose sur des outils analytiques simples : sous les hypothèses ci-dessus, la fonction de log-vraisemblance $\theta \mapsto \ln p_\theta(x)$ est presque sûrement strictement concave et tend vers $0$ au bord du domaine : son maximum $\hat{\theta}$ est donc bien défini, grâce aux résultats généraux de convexité. Je ne rentrerai pas dans les détails, qui peuvent être délicats. 
+
 
 Trouver le maximum d'une fonction positive $f(x)$ et trouver le maximum de son logarithme $\ln f(x)$ reviennent au même : or, il est souvent plus facile dans les modèles exponentiels de maximiser le *logarithme* de la vraisemblance $\ell(\theta)$, qui dans un modèle de la forme @eq-expo-prod s'écrit 
 $$\sum_{i=1}^n \langle \theta, T(x_i)\rangle - n\ln Z(\theta). $${#eq-logv-expo-prod}
+
+:::{.proof}
+
+La démonstration du théorème ci-dessus repose sur des outils analytiques simples. Dans @eq-logv-expo-prod, le premier terme est une fonction linéaire. Quant au terme $\ln Z(\theta)$, sa matrice Hessienne n'est autre (@eq-hess-exp) qu'une matrice de variance, donc positive : $\ln Z(\theta)$ est donc convexe, et même *strictement* si le modèle est identifiable (@thm-iden-expo). Ainsi, @eq-logv-expo-prod est presque sûrement strictement concave. Cela suffit à assurer que le maximum, *s'il existe*, est unique. Quant à son existence, elle nécessite des hypothèses sur $\ell$ ou sur $\Theta$ et je ne vois pas l'intérêt d'en énoncer de générales : ce sera au cas par cas. Mais typiquement, on peut demander à ce que $\ell(\theta) \to -\infty$ lorsque $\theta$ tend vers le bord de $\Theta$, ce qui revient à demander que $p_\theta(x)\to 0$. 
+
+:::
+
 On omettra presque systématiquement le fait que la log-vraisemblance dépend des observations $x_i$, mais **il faut garder en tête que la vraisemblance et la log-vraisemblance sont des variables aléatoires car elles dépendent de l'échantillon**. Parfois, pour indiquer quand même que l'échantillon comporte $n$ éléments, on notera $\ell_n(\theta)$. 
  En règle générale, @eq-MV est donc équivalent au problème du maximum de log-vraisemblance, 
  $$ \emv = \arg \max \ell(\theta).$$

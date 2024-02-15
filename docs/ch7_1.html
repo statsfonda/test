@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch2_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -157,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch3_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch4_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -211,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch5_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -235,13 +235,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch6_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./problemes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ ٭ Problèmes</span></a>
+ <span class="menu-text">Problèmes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -259,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch7_ex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">٭ Exercices</span></a>
+ <span class="menu-text">Exercices</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -323,8 +323,14 @@ $$
 
 </header>
 
+<p>On souhaite maintenant <em>tester</em> la distribution d’un échantillon <span class="math inline">\((x_1, \dotsc, x_n)\)</span>, c’est-à-dire tester l’hypothèse nulle : « les <span class="math inline">\(x_i\)</span> sont des réalisations d’une variable aléatoire dont la fonction de répartition est <span class="math inline">\(F\)</span> », où <span class="math inline">\(F\)</span> est une fonction de répartition fixée. Le théorème de Glivenko-Cantelli dit que <span class="math inline">\(|F_n - F|_\infty\)</span>, sous l’hypothèse nulle, tend vers zéro. On rejettera donc l’hypothèse nulle si <span class="math inline">\(|F_n - F|\)</span> est trop grand ; mais à quel seuil ? La démonstration du théorème et l’inégalité DKW disent que la bonne échelle est <span class="math inline">\(\sqrt{n}\)</span> :&nbsp;en effet, <span class="math inline">\(\mathbb{P}(|F_n - F|_\infty &gt; \sqrt{\alpha/n}) = O(1/t^2)\)</span>. Un test dont la région de rejet est de la forme <span class="math display">\[\left\lbrace |F_n - F|_\infty &gt; \frac{10}{\sqrt{n}}\right\rbrace\]</span> aura un niveau de confiance d’ordre <span class="math inline">\(1-\alpha\)</span>, ce qui fournit déjà un test non-asymptotique. L’utilisation de l’inégalité DKW permet d’avoir une région de rejet encore plus grande.</p>
+<p>En réalité, si l’on suppose seulement que <span class="math inline">\(F\)</span> est continue, il se trouve que <span class="math inline">\(\sqrt{n}|F_n - F|_\infty\)</span> converge en loi vers une loi connue dont on connaît les quantiles.</p>
 <div id="thm-kolmo-smirnov" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 17.1 (Kolmogorov-Smirnov) </strong></span><span class="math inline">\(\sqrt{n}|F_n - F|_\infty\)</span> converge en loi vers <span class="math inline">\(|B|_\infty\)</span>, où <span class="math inline">\((B_t)_{t\in [0,1]}\)</span> est un mouvement Brownien standard. Cette variable aléatoire possède une loi connue, appelée <em>loi de Kolmogorov-Smirnov</em>, de fonction de répartition <span class="math display">\[\mathbb{P}(|B|_\infty \leqslant x) = 1 - 2\sum_{k=0}^\infty (-1)^k e^{-2x^2 (k+1)^2}.\]</span></p>
+<p><span class="theorem-title"><strong>Théorème 17.1 (Kolmogorov-Smirnov) </strong></span><span class="math inline">\(\sqrt{n}|F_n - F|_\infty\)</span> converge en loi vers <span class="math inline">\(|B|_\infty\)</span>, où <span class="math inline">\((B_t)_{t\in [0,1]}\)</span> est un mouvement Brownien standard. La loi de cette variable aléatoire positive est appelée <em>loi de Kolmogorov-Smirnov</em>, et sa fonction de répartition <span class="math inline">\(\mathbb{P}(|B|_\infty \leqslant x)\)</span> est donnée par <span class="math display">\[1 - 2\sum_{k=0}^\infty (-1)^k e^{-2x^2 (k+1)^2}.\]</span></p>
+</div>
+<p>Ce théorème permet de construire des tests aymptotiques de niveau exactement <span class="math inline">\(1-\alpha\)</span>.</p>
+<div id="thm-consistance-ks" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 17.2 </strong></span>Si <span class="math inline">\(X_1, \dotsc, X_n\)</span> suivent une loi de fonction de répartition <span class="math inline">\(G \neq F\)</span>, alors <span class="math inline">\(\sqrt{n}|F_n - F|_\infty \to \infty\)</span> presque sûrement.</p>
 </div>
 
 
@@ -686,7 +692,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./ch7_ex.html" class="pagination-link">
-        <span class="nav-page-text">٭ Exercices</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Exercices</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

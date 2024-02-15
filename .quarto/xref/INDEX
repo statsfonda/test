@@ -41,5 +41,80 @@
   "ch7.qmd": {
     "ch7.html": "517b7d19",
     "ch7.tex": "532461b3"
+  },
+  "ch2_ex.qmd": {
+    "ch2_ex.html": "d4d7313d"
+  },
+  "ch31_outils.qmd": {
+    "ch31_outils.html": "21d0b2a0"
+  },
+  "ch3_ex.qmd": {
+    "ch3_ex.html": "9581a689"
+  },
+  "ch5_1.qmd": {
+    "ch5_1.html": "6a871d43"
+  },
+  "ch4_1.qmd": {
+    "ch4_1.html": "d7c85e49"
+  },
+  "ch4_0.qmd": {
+    "ch4_0.html": "d3a794a1"
+  },
+  "ch4_ex.qmd": {
+    "ch4_ex.html": "df32a1e6"
+  },
+  "ch4_2.qmd": {
+    "ch4_2.html": "1bd4e23f"
+  },
+  "ref.qmd": {
+    "ref.html": "2baf652b"
+  },
+  "ch5_ex.qmd": {
+    "ch5_ex.html": "a550634d"
+  },
+  "ch5_0.qmd": {
+    "ch5_0.html": "aca3d564"
+  },
+  "ch5_2.qmd": {
+    "ch5_2.html": "cb1d1c43"
+  },
+  "ch6_0.qmd": {
+    "ch6_0.html": "4d7a2e52"
+  },
+  "ch6_1.qmd": {
+    "ch6_1.html": "486c2c00"
+  },
+  "ch6_2.qmd": {
+    "ch6_2.html": "4098ab84"
+  },
+  "ch5_01.qmd": {
+    "ch5_01.html": "f29b3e7a"
+  },
+  "ch2_1.qmd": {
+    "ch2_1.html": "71fc650d"
+  },
+  "app1.qmd": {
+    "app1.html": "d86b4af3"
+  },
+  "ch7_0.qmd": {
+    "ch7_0.html": "a73da65d"
+  },
+  "ch7_1.qmd": {
+    "ch7_1.html": "84247bfe"
+  },
+  "ch6_ex.qmd": {
+    "ch6_ex.html": "76cf9bba"
+  },
+  "ch7_ex.qmd": {
+    "ch7_ex.html": "ab4ad02e"
+  },
+  "app2.qmd": {
+    "app2.html": "00766459"
+  },
+  "problemes.qmd": {
+    "problemes.html": "17495e75"
+  },
+  "ch6_3.qmd": {
+    "ch6_3.html": "b62d8ee5"
   }
 }
