@@ -105,7 +105,7 @@ qui s'il existe vérifie $L_0 = p_{\hat{\theta}_0}(x)$.
 :::{#def-testRVgen}
 
 Les *tests du rapport de vraisemblance* pour les hypothèses qui ne sont pas forcément simples sont les tests dont la région de rejet est de la forme 
-$$ \left\lbrace\frac{\sup_{\theta \in \Theta_0}p_\theta(X)}{\sup_{\theta\in\Theta_1}p_\theta(X)} > z \right\rbrace. $$ 
+$$ \left\lbrace\frac{\sup_{\theta \in \Theta_1}p_\theta(X)}{\sup_{\theta\in\Theta_0}p_\theta(X)} > z \right\rbrace. $$ 
 :::
 
 Lorsque les EMV pour chaque hypothèse existent, cette région de rejet s'écrit donc également 

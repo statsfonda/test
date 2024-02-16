@@ -1,2 +1,21 @@
 # Et après ? {.unnumbered}
 
+## Statistiques Bayésiennes 
+
+## Séries temporelles
+
+## Statistiques en grande dimension
+
+$n,d\to\infty$ mais $p$ n'est pas trop grand : matrices aléatoires, PCA, compressed sensing, clustering, SVM
+
+Modèles parcimonieux : ondelettes, LASSO, régression ridge
+
+## Statistiques non-paramétriques
+
+Histogrammes, kernel methods, fenêtres glissantes, malédiction de la dimension, VC dimension, complexité
+
+## Machine learning
+
+Input-output et apprentissage supervisé : classification, régressions logistiques, arbres de décision, online learning, reinforcement learning
+
+## Deep learning et réseaux de neurones

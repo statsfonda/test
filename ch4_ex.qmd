@@ -89,7 +89,7 @@ On se donne $X_1, \dots, X_n$ iid de loi $\mathscr{U}(0,\theta)$, et on note $M_
 3. On cherche à tester $H_0: \theta = 1$ contre $H_1: \theta < 1$. Comme la seconde hypothèse est composite, on ne peut pas directement appliquer le test du rapport de vraisemblance ; à la place, on utilise un test du *maximum* de vraisemblance, qui est de la forme 
    $$ \frac{\sup_{\theta < 1}\rho_\theta(x_1, \dotsc, x_n)}{\rho_1(x_1, \dotsc, x_n)} > z$$
    où $\rho_\theta$ est la densité d'un échantillon iid de lois $\mathscr{U}[0,\theta]$. Calculer le supremum dans cette expression, et en déduire la région de rejet. 
-4. Montrer que la puissance de $T$ vaut $1-\alpha$.
+4. Montrer que la puissance de $T$ vaut $\alpha$.
 5. En utilisant la même technique, construire le test du rapport de maximum de vraisemblance pour pour les hypothèses $H_0: \theta = 1$ contre $H_1: \theta>1$, noté $T'$, au niveau $1-\alpha$. Calculer sa puissance. 
 6. Donner un test de niveau $1-\alpha$ pour $H_0: \theta = 1$ contre $H_1: \theta>1$, plus puissant que $T'$ pour n'importe quel $\theta >1$. 
 
