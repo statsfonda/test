@@ -60,7 +60,7 @@ $$\mathbb{E}[e^{itX^2}] = \frac{1}{\sqrt{1 - 2it}}. $$
 
 Soient maintenant $X_1,\dotsc, X_n$ des variables de loi $N(0,1)$ indépendantes. Chaque $X_i^2$ est une $\chi_2(1)$ ; leur somme a pour loi la convolée $n$ fois de $\chi_2(1)$. Calculons sa tranformée de Fourier : 
 \begin{align}\mathbb{E}[e^{it(X_1^2 + \dotsb + X_n^2)}] &= \mathbb{E}[e^{itX_1^2}]^n \\ &= (1-2it)^{-\frac{n}{2}} .\end{align}
-On reconnaît la transformée de Fourier d'une loi $\Gamma(n/2, 1/2)$ ; cette loi s'appelle *loi du chi-deux à $n$ paramètres de liberté* et elle est notée $\chi_2(n)$. Sa densité est donnée par
+On reconnaît la transformée de Fourier d'une loi $\Gamma(1/2, n/2)$ ; cette loi s'appelle *loi du chi-deux à $n$ paramètres de liberté* et elle est notée $\chi_2(n)$. Sa densité est donnée par
 $$ \frac{1}{2^{n/2}\Gamma(n/2)}e^{-x/2}x^{n/2 - 1}\mathbf{1}_{x>0}.$${#eq-chideuxdensity}
 
 ### Loi de Student {#sec-student1}
