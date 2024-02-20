@@ -58,9 +58,9 @@ Sa loi n'est plus une loi gaussienne, mais une loi de Student à $n-1$ paramètr
 Les quantiles des lois de Student ont été calculés avec précision. On notera $t_{k,\alpha}$ le quantile symétrique de niveau $\alpha$ de $\mathscr{T}(k)$. Alors, 
 $$ P_{\mu, \sigma^2}(|T_n|> t_{n-1,\alpha})\leqslant \alpha .$$
 Par le même raisonnement que tout à l'heure, l'inégalité 
-$$ \left|\frac{\sqrt{n}}{\hat{\sigma}^2_n}(\bar{X}_n - \mu)\right| > t_{n-1,\alpha}$$
+$$ \left|\frac{\sqrt{n}}{\hat{\sigma}_n}(\bar{X}_n - \mu)\right| > t_{n-1,\alpha}$$
 est équivalente à 
-$$ \bar{X}_n - \frac{t_{n-1,\alpha}\hat{\sigma}^2_n}{\sqrt{n}} \leqslant \mu \leqslant \bar{X}_n + \frac{t_{n-1,\alpha}\hat{\sigma}^2_n}{\sqrt{n}}.$$
+$$ \bar{X}_n - \frac{t_{n-1,\alpha}\hat{\sigma}_n}{\sqrt{n}} \leqslant \mu \leqslant \bar{X}_n + \frac{t_{n-1,\alpha}\hat{\sigma}_n}{\sqrt{n}}.$$
 et les deux côtés de ces inégalités sont des statistiques; en les notant $A,B$, on a bien trouvé un intervalle de confiance de niveau $\alpha$, c'est-à-dire tel que $P_{\mu,\sigma^2}(\mu \in [A,B]) = \alpha$. Cet intervalle de confiance est d'une grande importance en pratique et mérite son propre théorème. Il est dû à [William Gosset](https://en.wikipedia.org/wiki/William_Sealy_Gosset). 
 
 :::{#thm-icg}
@@ -125,8 +125,8 @@ $$\left[\hat{p}_n \pm z_\alpha \sqrt{\frac{\hat{p}_n(1-\hat{p}_n)}{n}}\right] $$
 **Hoeffding.** L'inégalité de Bienaymé-Tchebychev n'est pas très fine. Il existe de nombreuses autres inégalités de concentration : l'inégalité de Hoeffding (@thm-hoeffding) concerne les variables bornées, comme ici où les $X_i$ sont dans $[0,1]$ . Cette inégalité dit que 
 $$\mathbb{P}(|\hat{p}_n - p|>t)\leqslant 2 e^{-2nt^2}. $$ 
 Le choix
-$$ t = \sqrt{\frac{1}{2n}\ln\left(\frac{1}{\alpha}\right)}$$ donne une probabilité inférieure à $\alpha$, et fournit donc l'intervalle de confiance **non-asymptotique** de niveau $1-\alpha$ suivant : 
-$$ \left[\bar{X}_n \pm \frac{\ln(1/\alpha)}{\sqrt{2n}}\right].$$
+$$ t = \sqrt{\frac{1}{2n}\ln\left(\frac{2}{\alpha}\right)}$$ donne une probabilité inférieure à $\alpha$, et fournit donc l'intervalle de confiance **non-asymptotique** de niveau $1-\alpha$ suivant : 
+$$ \left[\bar{X}_n \pm \frac{\ln(2/\alpha)}{\sqrt{2n}}\right].$$
 
 ### Estimation de moyenne dans un modèle non-gaussien. 
 
