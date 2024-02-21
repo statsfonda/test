@@ -23,7 +23,7 @@ Un test est un événement qui, s'il survient, nous incite à rejeter l'hypothè
   
 :::
 
-Par « événement », on veut bien dire « un élément de $\mathscr{F}$ », c'est-à-dire qui n'est déterminé que par les observations et pas par $\theta$. Formellement on écrit souvent qu'un test est une statistique, disons $T$, à valeurs dans $\{0,1\}$. L'événement $\{T=0\}$ est $\rejet$, l'événement $\{T=1\}$ est $\accept$.
+Par « événement », on veut bien dire « un élément de $\mathscr{F}$ », c'est-à-dire qui n'est déterminé que par les observations et pas par $\theta$. Formellement on écrit souvent qu'un test est une statistique, disons $T$, à valeurs dans $\{0,1\}$. L'événement $\{T=1\}$ est $\rejet$, l'événement $\{T=0\}$ est $\accept$.
 
 Un des grands objectifs de la statistique mathématique est de construire des familles de tests qui, pour un niveau de confiance $1-\alpha$ fixé, ont la plus grande puissance possible ; autrement dit, **trouver un événement hautement improbable sous l'hypothèse nulle, et hautement probable sous l'hypothèse alternative**. 
 
