@@ -4,7 +4,7 @@
     "href": "index.html#organisation",
     "title": "Statistiques Fondamentales",
     "section": "Organisation",
-    "text": "Organisation\n\nLes CM ont lieu les jeudi à (8h30 - 10h30), et les vendredi (10h45 - 12h45) sauf le premier cours qui a lieu lundi 8 janvier à 10h45-12h45.\nLes TD ont lieu lundi (13h45 - 16h45) et vendredi (13h30 - 15h30), de lundi 8 janvier à vendredi 16 février.\nIl y aura deux contrôles de 2h, le vendredi 26 janvier et lundi 12 février.\nL’examen a lieu le 1er mars de 13h30 à 16h30.\nIl y aura une interro de 5 minutes chaque semaine le jeudi."
+    "text": "Organisation\n\nL’examen a lieu le 1er mars de 13h30 à 16h30.\nCalcul de la note finale. Trois quantités entrent en jeu : la note de contrôle continu \\(c \\in [0,10]\\), la note du partiel \\(p\\in [0,20]\\), et la note que vous obtiendrez à l’examen, \\(e \\in [0,20]\\). La note finale \\(f \\in [0,20]\\) est donnée par la formule \\[ f = 20^{\\theta} \\left(\\frac{\\max\\{p,e\\} + e}{2}\\right)^{1 - \\theta} \\] où \\(\\theta = 0.3 \\times c/10\\). C’est une moyenne géométrique qui ne pénalise personne, et qui ne peut que tirer votre note vers le haut si vous avez une note de contrôle continu \\(c\\) strictement positive."
   },
   {
     "objectID": "index.html#utiliser-ce-site",
