@@ -1,20 +1,19 @@
 
 Bienvenue sur la page du cours de Statistiques Fondamentales (STF8) du master Mathématiques Fondamentales et Appliquées de l'Université Paris-Cité. Les notes de cours sont accessibles à tous. De nombreux auteurs s'y sont succédés ; je suis le dernier en date, mais les versions précédentes ont été travaillées par Clément Levrard, Stéphane Boucheron, Stéphane Gaïffas, Pierre Youssef. 
 
+Le cours reprendra l'année prochaine, en janvier 2025. 
+
 
 ## Organisation {.unnumbered}
 
-- Les CM ont lieu les jeudi à (8h30 - 10h30), et les vendredi (10h45 - 12h45) **sauf le premier cours qui a lieu lundi 8 janvier à 10h45-12h45**. 
-- Les TD ont lieu lundi (13h45 - 16h45) et vendredi (13h30 - 15h30), de lundi 8 janvier à vendredi 16 février. 
-- Il y aura deux contrôles de 2h, le vendredi 26 janvier et lundi 12 février. 
-- L'examen a lieu le 1er mars de 13h30 à 16h30. 
-- Il y aura une interro de 5 minutes chaque semaine le jeudi. 
+
+- **Calcul de la note finale**. Trois quantités entrent en jeu : la note de contrôle continu $c \in [0,10]$, la note du partiel $p\in [0,20]$, et la note que vous obtiendrez à l'examen, $e \in [0,20]$. La note finale $f \in [0,20]$ est donnée par la formule 
+$$ f = 20^{\theta} \left(\frac{\max\{p,e\} + e}{2}\right)^{1 - \theta} $$
+où $\theta = 0.3 \times c/10$. C'est une moyenne géométrique qui ne pénalise personne, et qui ne peut que tirer votre note vers le haut si vous avez une note de contrôle continu $c$ strictement positive. 
 
 ## Utiliser ce site
 
 Chaque chapitre de ce livre contient une page dédiée au cours théorique, et contiendra dans un futur proche une page d'exercices. 
-
-La saveur du cours est essentiellement mathématique et nous n'aurons pas de TP d'info ; cependant, je vous recommande vraiment d'essayer d'appliquer tout ça via votre langage de programmation favori, c'est-à-dire ~~Python~~ ~~R~~ ~~SAS~~ ~~C++~~ Julia. J'essaierai autant que possible de fournir des mini-jeux de données avec des petits challenges pour appliquer ce que vous apprenez en cours. 
 
 Ces notes sont mises en lignes et totalement accessibles via [Quarto](https://quarto.org). Si vous savez comment utiliser `git`, n'hésitez pas à corriger toutes les erreurs que vous pourriez voir (et Dieu sait qu'elles seront nombreuses) via des pull requests. 
 
