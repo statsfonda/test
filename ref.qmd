@@ -2,6 +2,7 @@
 
 - [Statistics done Wrong](https://www.statisticsdonewrong.com/)
 - [The earth is round (p<.05)](https://www.sjsu.edu/faculty/gerstman/misc/Cohen1994.pdf)
+- [The Epic Story of Maximum Likelihood](https://arxiv.org/abs/0804.2996)
 - [Statistiques mathématiques en action](https://www.deboecksuperieur.com/ouvrage/9782311007206-statistique-mathematique-en-action), pour ceux qui vont passer l'agrégation. 
 - [Introduction à l'économétrie](https://www.eyrolles.com/Entreprise/Livre/introduction-a-l-econometrie-9782707613981/) de Brigitte Dormont est un excellent livre, écrit en français, sur les modèles linéaires. 
 - En anglais, la référence sur les modèles linéaires est [Econometric analysis](https://www.pearson.fr/book/?gcoi=27440100285130) de Greene. 
