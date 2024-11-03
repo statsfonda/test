@@ -11,4 +11,5 @@
 - [Le cours de Stéphane Mallat au Collège de France](https://www.college-de-france.fr/fr/agenda/cours/information-et-complexite) qui est plus général, mais qui reprend tous les concepts. 
 - [L'article original de Ronald Fisher](/docs/fisher.pdf) de 1922 (et pas 1935 comme j'ai dit en cours), qui pose *toutes* les bases de la statistique moderne. 
 - [Computer age statistical inference](https://hastie.su.domains/CASI_files/PDF/casi.pdf) de Bradley Efron et Trevor Hastie n'est pas un livre de mathématiques, mais c'est le meilleur livre qui présente les idées et les algorithmes des statistiques avec un point de vue moderne. 
-- [Elements of information theory](https://onlinelibrary.wiley.com/doi/book/10.1002/047174882X), une référence sur la théorie de l'information. 
+- [Elements of information theory](https://onlinelibrary.wiley.com/doi/book/10.1002/047174882X), une référence sur la théorie de l'information
+- [Information THeory](https://people.lids.mit.edu/yp/homepage/data/itbook-export.pdf), même chose.
