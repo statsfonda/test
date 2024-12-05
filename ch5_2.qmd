@@ -37,7 +37,7 @@ où $C$ une matrice $r \times d$ et $c$ un vecteur de taille $r$. Comme $C$ poss
 
 Sous cette hypothèse nulle, 
 $$C\hat{\bt}-c \sim N(0, \sigma^2 C(X^\top X)^{-1}C^\top).$$
-En multipliant par la matrice $[\sigma^{-2}C(X^\top X)^{-1}C^\top]^{-1/2}$ puis en prenant la norme au carré et en simplifiant l'expression, on voit que
+En multipliant par la matrice $[\sigma^{2}C(X^\top X)^{-1}C^\top]^{-1/2}$ puis en prenant la norme au carré et en simplifiant l'expression, on voit que
 $$ \frac{1}{\sigma^2}\langle C\hat{\bt}-c, [C(X^\top X)^{-1}C^\top]^{-1} (C\hat{\bt}-c)\rangle \sim \chi^2(r).$$
 Maintenant, si l'on estime le terme $\sigma^2$ comme d'habitude et que l'on utilise le théorème @thm-glm, on obtient la loi de la statistique de test (une loi de Fisher), résumée dans le théorème suivant. 
 
