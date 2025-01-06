@@ -46,7 +46,7 @@ book:
      - content/app1.qmd
      - content/app2.qmd
   sidebar:
-    style: docked
+    #style: docked
     logo: "images/logoUP.png"
 
 bibliography: utils/references.bib
@@ -55,8 +55,7 @@ format:
   html:
     mainfont: "Computer Modern Serif"
     theme:
-      light: simplex
-      dark: solar
+      light: united
     css: utils/styles.css
     include-before-body:
       - utils/macros
