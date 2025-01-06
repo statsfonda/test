@@ -58,8 +58,21 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 600px) {
   .content {
-    margin-top: 2em;
-    width: 100vw; /* Ensure the content takes the full width of the viewport */
-    overflow: hidden; /* Hide overflow content */
+    margin: 2em 0;
+    width: calc(100vw - 2rem); /* Viewport width minus padding */
+    text-align: justify;
+    overflow-x: hidden;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .content .math, 
+  .content .math-display {
+    width: auto;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 }

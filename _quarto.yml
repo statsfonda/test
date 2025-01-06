@@ -59,6 +59,7 @@ format:
     css: utils/styles.css
     include-before-body:
       - utils/macros
+      - utils/katex-auto-render.html
 
 
 
