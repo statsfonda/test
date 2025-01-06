@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Statistiques Fondamentales - 5&nbsp; Outils pour les IC</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../content/ch3_ex.html" rel="next">
+<link href="../content/ch3.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../utils/styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/ch31_outils.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Outils pour les IC</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logoUP.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Statistiques Fondamentales</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/statsfonda/site" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../Statistiques-Fondamentales.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Organisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch2_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">La méthode des moments</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch2_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch31_outils.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Outils pour les IC</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch3_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test d’hypothèses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Théorie des tests simples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Tests du <span class="math inline">\(\chi_2\)</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Moindres carrés</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modèles linéaires</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Tests linéaires</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Modèles exponentiels</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Maximum de vraisemblance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">L’information de Fisher</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Entropie et information</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Principe d’entropie maximale</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/problemes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problèmes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch7_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch7_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Test de Kolmogorov-Smirnov</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch7_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Et après ?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Références</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/app1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/app2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">50&nbsp;nuances de TCL</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#sec-quantiles" id="toc-sec-quantiles" class="nav-link active" data-scroll-target="#sec-quantiles"><span class="header-section-number">5.1</span> Quantiles</a></li>
+  <li><a href="#calculs-de-lois" id="toc-calculs-de-lois" class="nav-link" data-scroll-target="#calculs-de-lois"><span class="header-section-number">5.2</span> Calculs de lois</a>
+  <ul class="collapse">
+  <li><a href="#lois-gamma" id="toc-lois-gamma" class="nav-link" data-scroll-target="#lois-gamma"><span class="header-section-number">5.2.1</span> Lois Gamma</a></li>
+  <li><a href="#sec-chideux" id="toc-sec-chideux" class="nav-link" data-scroll-target="#sec-chideux"><span class="header-section-number">5.2.2</span> Loi du chi-deux</a></li>
+  <li><a href="#sec-student1" id="toc-sec-student1" class="nav-link" data-scroll-target="#sec-student1"><span class="header-section-number">5.2.3</span> Loi de Student</a></li>
+  <li><a href="#sec-student2" id="toc-sec-student2" class="nav-link" data-scroll-target="#sec-student2"><span class="header-section-number">5.2.4</span> Loi de la statistique de Student</a></li>
+  </ul></li>
+  <li><a href="#inégalités-de-concentration" id="toc-inégalités-de-concentration" class="nav-link" data-scroll-target="#inégalités-de-concentration"><span class="header-section-number">5.3</span> Inégalités de concentration</a></li>
+  <li><a href="#inégalité-de-bienaymé-tchebychev" id="toc-inégalité-de-bienaymé-tchebychev" class="nav-link" data-scroll-target="#inégalité-de-bienaymé-tchebychev"><span class="header-section-number">5.4</span> Inégalité de Bienaymé-Tchebychev</a></li>
+  <li><a href="#inégalité-de-hoeffding" id="toc-inégalité-de-hoeffding" class="nav-link" data-scroll-target="#inégalité-de-hoeffding"><span class="header-section-number">5.5</span> Inégalité de Hoeffding</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<div style="display:&nbsp;none;"><p style="display: none;">
+$$
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bt}{\boldsymbol{\theta}}
+\newcommand{\dkl}{\mathrm{d}_{\mathrm{KL}}}
+\newcommand{\dtv}{\mathrm{d}_{\mathrm{TV}}}
+\newcommand{\emv}{\hat{\theta}_{\mathrm{emv}}}
+\newcommand{\ent}{\mathrm{Ent}}
+$$
+</p></div>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Outils pour les IC</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="sec-quantiles" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-quantiles"><span class="header-section-number">5.1</span> Quantiles</h2>
+<p>Si <span class="math inline">\(X\)</span> est une variable aléatoire sur <span class="math inline">\(\mathbb{R}\)</span>, un quantile d’ordre <span class="math inline">\(\beta \in ]0,1[\)</span>, noté <span class="math inline">\(q_\beta\)</span>, est un nombre tel que <span class="math inline">\(\mathbb{P}(X \leqslant q_\beta) = \beta\)</span>. Lorsque <span class="math inline">\(X\)</span> est continue, un tel nombre existe forcément, car la fonction de répartition <span class="math inline">\(F(x) = \mathbb{P}(X\leqslant x)\)</span> est une surjection continue. Les quantiles symétriques <span class="math inline">\(z_\beta\)</span> sont, eux, définis par <span class="math inline">\(\mathbb{P}(|X|\leqslant z_\beta) = \beta\)</span>.</p>
+<p>Si la loi de <span class="math inline">\(X\)</span> est de surcroît symétrique, les quantiles symétriques s’expriment facilement en fonction des quantiles classiques. En effet, <span class="math inline">\(\mathbb{P}(|X|\leqslant z)\)</span> est égal à <span class="math inline">\(\mathbb{P}(X \leqslant z) - \mathbb{P}(X \leqslant -z)\)</span>. Or, si la loi de <span class="math inline">\(X\)</span> est symétrique, alors <span class="math inline">\(\mathbb{P}(X \leqslant -z) = 1 - \mathbb{P}(X \leqslant z)\)</span>, et donc <span class="math display">\[ \mathbb{P}(|X|\leqslant z) = 2\mathbb{P}(X \leqslant z) - 1.\]</span> Il suffit alors de choisir pour <span class="math inline">\(z\)</span> le quantile <span class="math inline">\(q_{\frac{1+\beta}{2}}\)</span> pour obtenir <span class="math inline">\(\mathbb{P}(|X|\leqslant z) = \beta\)</span>. Lorsque <span class="math inline">\(\beta\)</span> est de la forme <span class="math inline">\(1-\alpha\)</span> avec <span class="math inline">\(\alpha\)</span> petit (comme les niveaux des intervalles de confiance), on trouve alors <span class="math inline">\(z_{1-\alpha} = q_{1 - \alpha/2}\)</span>.</p>
+<p>Les quantiles s’obtiennent en inversant la fonction de répartition :&nbsp;lorsque celle-ci est une bijection sur <span class="math inline">\(]0,1[\)</span>, alors <span class="math inline">\(q_\beta = F^{-1}(\beta)\)</span>. En règle générale, il n’y a pas de forme fermée. Par exemple, pour une loi gaussienne standard, <span class="math display">\[F(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^x e^{-u^2/2}du\]</span> qui elle-même n’a pas d’écriture plus simple. Fort heureusement, les outils de calcul numérique permettent d’effectuer ces calculs avec une grande précision. La table suivante donne les quantiles symétriques de la gaussienne.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\beta\)</span></th>
+<th>90%</th>
+<th>95%</th>
+<th>98%</th>
+<th>99%</th>
+<th>99.9%</th>
+<th>99.99999%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(z_\beta\)</span></td>
+<td>1.64</td>
+<td>1.96</td>
+<td>2.32</td>
+<td>2.57</td>
+<td>3.2</td>
+<td>5.32</td>
+</tr>
+</tbody>
+</table>
+<p>Voir aussi la <a href="https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule">règle 1-2-3</a>. Il existe de nombreuses tables de quantiles pour les lois usuelles.</p>
+<div id="thm-gaussiantail" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 5.1 (Queues de distribution de la gaussienne) </strong></span>Si <span class="math inline">\(x\)</span> est plus grand que 1, <span class="math display">\[  \left(\frac{1}{x} - \frac{1}{x^3}\right) \frac{e^{-x^2/2}}{\sqrt{2\pi}}\leqslant \mathbb{P}(X &gt; x) \leqslant \frac{1}{x}\frac{e^{-x^2/2}}{\sqrt{2\pi}} \]</span> En particulier, si <span class="math inline">\(x\)</span> est grand, <span class="math inline">\(\mathbb{P}(X \geqslant x) \sim e^{-x^2/2}/x\sqrt{2\pi}\)</span> avec une erreur d’ordre <span class="math inline">\(O(e^{-x^2/2}/x^3)\)</span>.</p>
+</div>
+<p>À titre d’exemple, pour <span class="math inline">\(x=2.32\)</span> cette approximation donne 98.83%, ce qui est remarquablement proche de 98%. Pour <span class="math inline">\(x = 2.57\)</span> on trouve 99.42%.</p>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span>À écrire.</p>
+</div>
+</section>
+<section id="calculs-de-lois" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="calculs-de-lois"><span class="header-section-number">5.2</span> Calculs de lois</h2>
+<section id="lois-gamma" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="lois-gamma"><span class="header-section-number">5.2.1</span> Lois Gamma</h3>
+<p>Une variable aléatoire suit une loi Gamma de paramètres <span class="math inline">\(\lambda&gt;0, \alpha&gt;0\)</span> lorsque sa densité est donnée par <span class="math display">\[\gamma_{r,\alpha}(x) =  \frac{\lambda^\alpha}{\Gamma(\alpha)}e^{-\lambda x}x^{\alpha -1}\mathbf{1}_{x&gt;0}.\]</span> Les lois Gamma rassemblent les lois exponentielles (<span class="math inline">\(\Gamma(\lambda, 1) = \mathscr{E}(\lambda)\)</span>) et les lois du chi-deux qu’on verra ci-dessous <span class="math inline">\((\Gamma(1/2, n/2) = \chi_2(n)\)</span>). La transformée de Fourier <span class="math inline">\(\varphi_{\lambda, \alpha}\)</span> d’une loi <span class="math inline">\(\Gamma(\lambda, \alpha)\)</span> se calcule facilement par un changement de variables : <span id="eq-fcgamma"><span class="math display">\[\varphi_{\lambda, \alpha}(t) = \left(1 - \frac{it}{\lambda}\right)^{-\alpha}. \tag{5.1}\]</span></span> Cette identité montre également que si <span class="math inline">\(X_1, \dotsc, X_n\)</span> sont des variables indépendantes de loi <span class="math inline">\(\Gamma(\lambda, \alpha_i)\)</span>, alors leur somme est une variable de loi <span class="math inline">\(\Gamma(\lambda, \alpha_1 + \dotsc + \alpha_n)\)</span>.</p>
+</section>
+<section id="sec-chideux" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="sec-chideux"><span class="header-section-number">5.2.2</span> Loi du chi-deux</h3>
+<p>Soit <span class="math inline">\(X\)</span> une loi gaussienne standard. Calculons la densité de <span class="math inline">\(X^2\)</span> ;&nbsp;pour toute fonction-test <span class="math inline">\(\varphi\)</span>, <span class="math inline">\(\mathbb{E}[\varphi(X^2)]\)</span> est donné par <span class="math display">\[\frac{1}{\sqrt{2\pi}}\int e^{-x^2/2}\varphi(x^2)dx.\]</span> Cette intégrale est symétrique, donc on peut ajouter un facteur 2 et intégrer sur <span class="math inline">\([0,\infty[\)</span>. En posant <span class="math inline">\(u=x^2\)</span>, on obtient alors la valeur <span class="math display">\[ \frac{2}{\sqrt{2\pi}}\int_0^\infty e^{-u/2}\varphi(u)\frac{1}{2\sqrt{u}}du.\]</span> On reconnaît la densité d’une <a href="https://fr.wikipedia.org/wiki/Loi_Gamma">loi Gamma</a> de paramètres <span class="math inline">\((1/2, 1/2)\)</span>. Cette loi s’appelle <em>loi du chi-deux</em> et on la note <span class="math inline">\(\chi_2(1)\)</span>. Sa tranformée de Fourier est donnée par <span class="math display">\[\mathbb{E}[e^{itX^2}] = \frac{1}{\sqrt{1 - 2it}}. \]</span></p>
+<p>Soient maintenant <span class="math inline">\(X_1,\dotsc, X_n\)</span> des variables de loi <span class="math inline">\(N(0,1)\)</span> indépendantes. Chaque <span class="math inline">\(X_i^2\)</span> est une <span class="math inline">\(\chi_2(1)\)</span> ; leur somme a pour loi la convolée <span class="math inline">\(n\)</span> fois de <span class="math inline">\(\chi_2(1)\)</span>. Calculons sa tranformée de Fourier :&nbsp; <span class="math display">\[\begin{align}\mathbb{E}[e^{it(X_1^2 + \dotsb + X_n^2)}] &amp;= \mathbb{E}[e^{itX_1^2}]^n \\ &amp;= (1-2it)^{-\frac{n}{2}} .\end{align}\]</span> On reconnaît la transformée de Fourier d’une loi <span class="math inline">\(\Gamma(1/2, n/2)\)</span> ; cette loi s’appelle <em>loi du chi-deux à <span class="math inline">\(n\)</span> paramètres de liberté</em> et elle est notée <span class="math inline">\(\chi_2(n)\)</span>. Sa densité est donnée par <span id="eq-chideuxdensity"><span class="math display">\[ \frac{1}{2^{n/2}\Gamma(n/2)}e^{-x/2}x^{n/2 - 1}\mathbf{1}_{x&gt;0}. \tag{5.2}\]</span></span></p>
+</section>
+<section id="sec-student1" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="sec-student1"><span class="header-section-number">5.2.3</span> Loi de Student</h3>
+<p>Soit <span class="math inline">\(X\)</span> une variable de loi <span class="math inline">\(N(0,1)\)</span> et <span class="math inline">\(Y_n\)</span> une variable de loi <span class="math inline">\(\chi_2(n)\)</span> indépendante de <span class="math inline">\(X\)</span>. On va calculer la loi de <span class="math inline">\(T_n = X/\sqrt{Y_n/n}\)</span>. Soit <span class="math inline">\(\varphi\)</span> une fonction test ; l’espérance <span class="math inline">\(\mathbb{E}[\varphi(T_n)]\)</span> est égale à <span class="math display">\[\frac{1}{Z_n\sqrt{2\pi}}\int_0^\infty \int_{-\infty}^{\infty}  \varphi\left(\frac{x}{\sqrt{y/n}}\right) e^{-\frac{x^2}{2}}e^{-\frac{y}{2}}y^{\frac{n}{2} - 1}dxdy \]</span> où <span class="math inline">\(Z_n = 2^{n/2}\Gamma(n/2)\)</span>. Dans l’intégrale en <span class="math inline">\(x\)</span>, on effectue le changement de variable <span class="math inline">\(u = x/\sqrt{y/n}\)</span> afin d’obtenir <span class="math display">\[\frac{1}{Z_n\sqrt{2\pi}}\int_0^\infty \int_{-\infty}^{\infty}  \varphi(u) e^{-\frac{yu^2}{2n}}e^{-\frac{y}{2}}y^{\frac{n}{2} - 1}\sqrt{\frac{y}{n}} dxdy. \]</span> La densité de <span class="math inline">\(T_n\)</span> est donc donnée par <span class="math display">\[t_n(u)= \frac{1}{Z_n\sqrt{2\pi n}}\int_0^\infty  e^{-\frac{yu^2}{2n}-\frac{y}{2}}y^{\frac{n+1}{2}-1} dy. \]</span> Le changement de variables <span class="math inline">\(z = y(1+u^2/n)/2\)</span> nous ramène à <span class="math display">\[t_n(u) = \frac{1}{Z_n\sqrt{2\pi n}}\left(\frac{2}{1+\frac{u^2}{n}}\right)^{\frac{n+1}{2}}\int_0^\infty  e^{-z}z^{\frac{n+1}{2}- 1} dz.\]</span> On reconnaît <span class="math inline">\(\Gamma((n+1)/2)\)</span> à droite. La densité <span class="math inline">\(t_n(x)\)</span> est donc <span class="math display">\[t_n(x) = \frac{1}{\sqrt{n\pi}}\frac{\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)}\left(\frac{1}{1 + \frac{x^2}{n}}\right)^{\frac{n+1}{2}}.\]</span></p>
+<p>Cette loi s’appelle <em>loi de Student</em> de paramètre <span class="math inline">\(n\)</span> ; on dit parfois <em>à <span class="math inline">\(n\)</span> degrés de liberté</em>. Elle est notée <span class="math inline">\(\mathscr{T}(n)\)</span>. La loi de Student de paramètre <span class="math inline">\(n=1\)</span> est tout simplement une loi de Cauchy.</p>
+</section>
+<section id="sec-student2" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="sec-student2"><span class="header-section-number">5.2.4</span> Loi de la statistique de Student</h3>
+<p>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> des variables gaussiennes <span class="math inline">\(N(\mu, \sigma^2)\)</span> indépendantes, et soit <span class="math inline">\(T_n = \sqrt{n}(\bar{X}_n-\mu)/\sqrt{\hat{\sigma}^2_n}\)</span>, où <span class="math display">\[\hat{\sigma}^2_n = \frac{\sum_{i=1}^n (X_i - \bar{X}_n)^2}{n-1}. \]</span></p>
+<div id="thm-student_density" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 5.2 </strong></span><span class="math display">\[T_n \sim \mathscr{T}(n-1).\]</span></p>
+</div>
+<p><span class="math inline">\(~~\)</span></p>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span>On va montrer 1° que <span class="math inline">\(\bar{X}_n\)</span> et <span class="math inline">\(\sqrt{\hat{\sigma}^2_n / \sigma^2}\)</span> sont indépendantes, et 2° que <span class="math inline">\(\sqrt{\hat{\sigma}^2_n / \sigma^2}\)</span> a bien la même loi que <span class="math inline">\(\sqrt{Y_{n-1}/(n-1)}\)</span> où <span class="math inline">\(Y_{n-1}\)</span> est une <span class="math inline">\(\chi_2(n-1)\)</span>. Dans la suite, on supposera que <span class="math inline">\(\mu=0\)</span> et <span class="math inline">\(\sigma=1\)</span>, ce qui n’enlève rien en généralité.</p>
+<p><em>Premier point. </em> Le vecteur <span class="math inline">\(X=(X_1, \dotsc, X_n)\)</span> est gaussien. Posons <span class="math inline">\(Z = (X_1 - \bar{X}_n, \dotsc, X_n - \bar{X}_n)\)</span>. Le couple <span class="math inline">\((\bar{X}_n, Z_n)\)</span> est linéaire en <span class="math inline">\(X\)</span>, donc ce couple est aussi un vecteur gaussien. Or, la covariance de ses deux éléments est nulle. Par exemple, <span class="math inline">\(\mathrm{Cov}(\bar{X}_n, Z_1)\)</span> est égale à <span class="math inline">\(\mathrm{Cov}(\bar{X}_n, X_1) - \mathrm{Var}(\bar{X}_n)\)</span>, ce qui par linéarité donne <span class="math inline">\(1/n - 1/n = 0\)</span>. Ainsi, <span class="math inline">\(\bar{X}_n\)</span> et <span class="math inline">\(Z\)</span> sont deux variables conjointement gaussiennes et décorrélées : elles sont donc indépendantes. Comme <span class="math inline">\(\hat{\sigma}_n\)</span> est une fonction de <span class="math inline">\(Z\)</span>, elle est aussi indépendante de <span class="math inline">\(\bar{X}_n\)</span>.</p>
+<p><em>Second point. </em> <span class="math inline">\(Z\)</span> est la projection orthogonale de <span class="math inline">\(X\)</span> sur le sous-espace vectoriel <span class="math inline">\(\mathscr{V}=\{x \in \mathbb{R}^n : x_1 + \dotsc + x_n = 0\}\)</span>. Soit <span class="math inline">\((f_i)_{i=2, \dotsc, n}\)</span> une base orthonormale de <span class="math inline">\(\mathscr{V}\)</span>, de sorte que <span class="math inline">\(Z = \sum_{i=2}^n \langle f_i, X\rangle f_i\)</span>. Par l’identité de Parseval, <span class="math display">\[|Z|^2 = \sum_{i=2}^n |\langle f_i, X \rangle|^2.\]</span> Or, les <span class="math inline">\(n-1\)</span> variables aléatoires <span class="math inline">\(G_i = \langle f_i, X\rangle\)</span> sont des gaussiennes standard iid. En effet, on vérifie facilement que <span class="math inline">\(\mathrm{Cov}(G_i, G_j) = \langle f_i, f_j\rangle = \delta_{i,j}\)</span>. On en déduit donc que <span class="math inline">\(|Z|^2\)</span> suit une loi <span class="math inline">\(\chi_2(n-1)\)</span>.</p>
+</div>
+<p>La seconde partie de la démonstration est un cas particulier du théorème de Cochran, que nous verrons dans le chapitre sur la régression linéaire.</p>
+</section>
+</section>
+<section id="inégalités-de-concentration" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="inégalités-de-concentration"><span class="header-section-number">5.3</span> Inégalités de concentration</h2>
+<p>Les outils de base pour construire des intervalles de confiance dans des circonstances générales (non gaussiennes) sont les inégalités de concentration. Une inégalité de concentration pour une variable aléatoire intégrable <span class="math inline">\(X\)</span> consiste à borner <span class="math inline">\(\mathbb{P}(|X - \mathbb{E}[X]|&gt;x)\)</span> par quelque chose de petit quand x est grand : on cherche à contrôler la probabilité pour que les réalisations de la variable aléatoire <span class="math inline">\(X\)</span> soient éloignées de leur valeur moyenne <span class="math inline">\(\mathbb{E}[X]\)</span> de plus de <span class="math inline">\(x\)</span>.</p>
+</section>
+<section id="inégalité-de-bienaymé-tchebychev" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="inégalité-de-bienaymé-tchebychev"><span class="header-section-number">5.4</span> Inégalité de Bienaymé-Tchebychev</h2>
+<div id="thm-bt" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 5.3 </strong></span>Soit <span class="math inline">\(X\)</span> une variable aléatoire de carré intégrable. Alors, <span class="math display">\[ \mathbb{P}(|X - \mathbb{E}[X]|\geqslant x)\leqslant \frac{\mathrm{Var}(X)}{x^2}.\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span>Élever au carré les deux membres de l’inégalité dans <span class="math inline">\(\mathbb{P}\)</span>, puis appliquer l’inégalité de Markov à la variable aléatoire positive <span class="math inline">\(|X - \mathbb{E}X|^2\)</span> dont l’espérance est <span class="math inline">\(\mathrm{Var}(X)\)</span>.</p>
+</div>
+</section>
+<section id="inégalité-de-hoeffding" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="inégalité-de-hoeffding"><span class="header-section-number">5.5</span> Inégalité de Hoeffding</h2>
+<div id="thm-hoeffding" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 5.4 (Inégalité de Hoeffding) </strong></span>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> des variables aléatoires indépendantes, pas forcément de même loi. On suppose que chaque <span class="math inline">\(X_i\)</span> est à valeurs dans un intervalle borné <span class="math inline">\([a_i, b_i]\)</span> et on pose <span class="math inline">\(S_n = X_1 + \dotsc + X_n\)</span>. Pour tout <span class="math inline">\(t&gt;0\)</span>,</p>
+<p><span id="eq-hoeffding"><span class="math display">\[\mathbb{P}(S_n - \mathbb{E}[S_n] \geqslant t) \leqslant e^{-\frac{2t^2}{\sum_{i=1}^n(b_i - a_i)^2}} \tag{5.3}\]</span></span> et <span id="eq-hoeffdingsym"><span class="math display">\[\mathbb{P}(|S_n - \mathbb{E}[S_n]| \geqslant t) \leqslant 2e^{-\frac{2t^2}{\sum_{i=1}^n(b_i - a_i)^2}}.  \tag{5.4}\]</span></span></p>
+</div>
+<p>La démonstration se fonde sur le lemme suivant.</p>
+<div id="lem-hoeffding" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemme 5.1 (lemme de Hoeffding) </strong></span>Soit <span class="math inline">\(X\)</span> une variable aléatoire à valeurs dans <span class="math inline">\([a,b]\)</span>. Pour tout <span class="math inline">\(t\)</span>,</p>
+<p><span id="eq-lemme_hoeffding"><span class="math display">\[\mathbb{E}[e^{t(X-\mathbb{E}[X]}] \leqslant e^{\frac{t^2(b-a)^2}{8}}. \tag{5.5}\]</span></span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span>Soit <span class="math inline">\(X\)</span> une variable aléatoire, que par simplicité on supposera centrée et à valeurs dans l’intervalle <span class="math inline">\([a,b]\)</span> (<span class="math inline">\(a\)</span> est forcément négatif). En écrivant <span class="math display">\[x = a\times \frac{b-x}{b-a} + b\times \left(1 - \frac{b-x}{b-a}\right)\]</span> et en utilisant la convexité de la fonction <span class="math inline">\(x \mapsto e^{tx}\)</span>, on obtient <span class="math inline">\(e^{tX}\leqslant (b-X)e^{ta}/(b-a) + (1 - (b-x)/(b-a)) e^{bt})\)</span>, puis en prenant l’espérance et le fait que <span class="math inline">\(X\)</span> est centrée et en simplifiant, <span class="math display">\[\mathbb{E}[e^{tX}]\leqslant \frac{be^{ta} - ae^{tb}}{b-a}.\]</span> Notons <span class="math inline">\(f(t)\)</span> le terme à droite ;&nbsp;pour montrer <a href="#eq-lemme_hoeffding">Équation&nbsp;<span>5.5</span></a>, il suffit de montrer que <span class="math inline">\(\ln f(t) \leqslant t^2(b-a)^2/8\)</span>. La formule de Taylor dit que <span class="math display">\[ \ln f(t) = \ln f(0) + t (\ln f)'(0) + \frac{t^2}{2}(\ln f)''(\xi)\]</span> pour un certain <span class="math inline">\(\xi\)</span>. Or, <span class="math inline">\(\ln f(0) = \ln 1 = 0\)</span>, <span class="math inline">\((\ln f)'(0) = f'(0)/f(0) = 0\)</span>, et il suffit donc de montrer que <span class="math inline">\((\ln f)''(t)\)</span> est toujours plus petit que <span class="math inline">\((b-a)^2/4\)</span> pour conclure. Un simple calcul montre que <span class="math inline">\(\ln f(t) = \ln(b/(b-a)) + ta + \ln(1 - ae^{t(b-a)} / b)\)</span>, et donc <span class="math display">\[ (\ln f)''(t) = \frac{(a/b)(b-a)e^{t(b-a)}}{(1 - ae^{t(b-a)}/b)^2}.\]</span> L’inégalité <span class="math inline">\(uv/(u-v)^2 \leqslant 1/4\)</span> appliquée à <span class="math inline">\(u = a/b\)</span> et <span class="math inline">\(v = e^{t(b-a)}\)</span> permet alors de conclure.</p>
+</div>
+<p><em>Preuve de l’inégalité de Hoeffding.</em> En remplaçant <span class="math inline">\(X_k\)</span> par <span class="math inline">\(X_k - \mathbb{E}[X_k]\)</span>, on peut supposer que tous les <span class="math inline">\(X_i\)</span> sont centrés et étudier seulement <span class="math inline">\(\mathbb{P}(S_n &gt;t)\)</span>. Écrivons <span class="math inline">\(\mathbb{P}(S_n &gt; t) = \mathbb{P}(e^{\lambda S_n} &gt; e^{\lambda t})\)</span>, où <span class="math inline">\(\lambda\)</span> est un nombre positif que l’on choisira plus tard. L’inégalité de Markov borne cette probabilité par <span class="math inline">\(\mathbb{E}[e^{\lambda S_n}]e^{-\lambda t}\)</span>. Comme les <span class="math inline">\(X_i\)</span> sont indépendantes, <span class="math inline">\(\mathbb{E}[e^{tS_n}]\)</span> est le produit des <span class="math inline">\(e^{ \varphi_k(\lambda)}\)</span> où <span class="math inline">\(\varphi_k(t) = \ln \mathbb{E}[e^{itX_k}]\)</span>. En appliquant le lemme de Hoeffding à chaque <span class="math inline">\(\varphi_k\)</span>, on borne <span class="math inline">\(\mathbb{P}(S_n &gt;t)\)</span> par <span class="math display">\[ \exp\left(\sum_{i=1}^n \frac{(b_i - a_i)^2 \lambda^2}{8} - t\lambda\right).\]</span> Le minimum en <span class="math inline">\(\lambda\)</span> du terme dans l’exponentielle est atteint au point <span class="math inline">\(4t / \sum (a_i - b_i)^2\)</span> et la valeur du minimum est le terme dans l’exponentielle de <a href="#eq-hoeffding">Équation&nbsp;<span>5.3</span></a>. On déduit <a href="#eq-hoeffdingsym">Équation&nbsp;<span>5.4</span></a> par une simple borne de l’union.</p>
+<p>La démonstration de l’inégalité de Hoeffding ne dépend pas directement du fait que <span class="math inline">\(X\)</span> est bornée, mais plutôt de <a href="#eq-lemme_hoeffding">Équation&nbsp;<span>5.5</span></a>. Toutes les variables aléatoires qui vérifient une inégalité de type <span class="math inline">\(\mathbb{E}[e^{tX}]\leqslant e^{c t^2}\)</span> pour une constante <span class="math inline">\(c\)</span> peuvent donc avoir leur propre inégalité de Hoeffding.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copié");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copié");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../content/ch3.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../content/ch3_ex.html" class="pagination-link">
+        <span class="nav-page-text">Exercices</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

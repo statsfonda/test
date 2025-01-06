@@ -15,41 +15,41 @@ book:
   downloads: pdf
   chapters:
      - index.qmd
-     - ch1.qmd
-     - ch2.qmd
-     - ch2_1.qmd
-     - ch2_ex.qmd
-     - ch3.qmd
-     - ch31_outils.qmd
-     - ch3_ex.qmd
-     - ch4_0.qmd
-     - ch4_1.qmd
-     - ch4_2.qmd
-     - ch4_ex.qmd
-     - ch5_0.qmd 
-     - ch5_01.qmd
-     - ch5_1.qmd
-     - ch5_2.qmd
-     - ch5_ex.qmd
-     - ch6_0.qmd
-     - ch6_1.qmd
-     - ch6_2.qmd
-     - ch6_ex.qmd
-     - ch6_3.qmd
-     - ch6_4.qmd
-     - problemes.qmd
-     - ch7_0.qmd
-     - ch7_1.qmd
-     - ch7_ex.qmd
-     - references.qmd
-     - ref.qmd
-     - app1.qmd
-     - app2.qmd
+     - content/ch1.qmd
+     - content/ch2.qmd
+     - content/ch2_1.qmd
+     - content/ch2_ex.qmd
+     - content/ch3.qmd
+     - content/ch31_outils.qmd
+     - content/ch3_ex.qmd
+     - content/ch4_0.qmd
+     - content/ch4_1.qmd
+     - content/ch4_2.qmd
+     - content/ch4_ex.qmd
+     - content/ch5_0.qmd 
+     - content/ch5_01.qmd
+     - content/ch5_1.qmd
+     - content/ch5_2.qmd
+     - content/ch5_ex.qmd
+     - content/ch6_0.qmd
+     - content/ch6_1.qmd
+     - content/ch6_2.qmd
+     - content/ch6_ex.qmd
+     - content/ch6_3.qmd
+     - content/ch6_4.qmd
+     - content/problemes.qmd
+     - content/ch7_0.qmd
+     - content/ch7_1.qmd
+     - content/ch7_ex.qmd
+     - content/references.qmd
+     - content/ref.qmd
+     - content/app1.qmd
+     - content/app2.qmd
   sidebar:
     style: docked
     logo: "images/logoUP.png"
 
-bibliography: references.bib
+bibliography: utils/references.bib
 
 format:
   html:
@@ -57,9 +57,9 @@ format:
     theme:
       light: simplex
       dark: solar
-    css: styles.css
+    css: utils/styles.css
     include-before-body:
-      - macros
+      - utils/macros
 
 
 
@@ -71,7 +71,7 @@ format:
     margin-bottom: 3cm
     margin-top: 2cm
     include-in-header:
-      - macros.tex
+      - utils/macros.tex
     
 
 

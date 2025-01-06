@@ -122,5 +122,95 @@
   },
   "exam.qmd": {
     "exam.html": "d88e44f9"
+  },
+  "content/ch1.qmd": {
+    "ch1.html": "e9553c04"
+  },
+  "content/ch2.qmd": {
+    "ch2.html": "64560cd3"
+  },
+  "content/ch2_1.qmd": {
+    "ch2_1.html": "5b8cee04"
+  },
+  "content/ch2_ex.qmd": {
+    "ch2_ex.html": "9e4b06d1"
+  },
+  "content/ch3.qmd": {
+    "ch3.html": "2fcabf26"
+  },
+  "content/ch31_outils.qmd": {
+    "ch31_outils.html": "46c814e6"
+  },
+  "content/ch3_ex.qmd": {
+    "ch3_ex.html": "c0a93254"
+  },
+  "content/ch4_0.qmd": {
+    "ch4_0.html": "1867aa27"
+  },
+  "content/ch4_1.qmd": {
+    "ch4_1.html": "238f2cd7"
+  },
+  "content/ch4_2.qmd": {
+    "ch4_2.html": "5dfb2a1a"
+  },
+  "content/ch4_ex.qmd": {
+    "ch4_ex.html": "c6ddbd02"
+  },
+  "content/ch5_0.qmd": {
+    "ch5_0.html": "0f7c857d"
+  },
+  "content/ch5_01.qmd": {
+    "ch5_01.html": "1f49f50c"
+  },
+  "content/ch5_1.qmd": {
+    "ch5_1.html": "d1333d64"
+  },
+  "content/ch5_2.qmd": {
+    "ch5_2.html": "2d2e7fde"
+  },
+  "content/ch5_ex.qmd": {
+    "ch5_ex.html": "b74dc44f"
+  },
+  "content/ch6_0.qmd": {
+    "ch6_0.html": "848b95ac"
+  },
+  "content/ch6_1.qmd": {
+    "ch6_1.html": "345e12e5"
+  },
+  "content/ch6_2.qmd": {
+    "ch6_2.html": "09d5b472"
+  },
+  "content/ch6_ex.qmd": {
+    "ch6_ex.html": "0d792228"
+  },
+  "content/ch6_3.qmd": {
+    "ch6_3.html": "6ac763ff"
+  },
+  "content/ch6_4.qmd": {
+    "ch6_4.html": "0dd1b17a"
+  },
+  "content/problemes.qmd": {
+    "problemes.html": "948f0d66"
+  },
+  "content/ch7_0.qmd": {
+    "ch7_0.html": "1c5ec899"
+  },
+  "content/ch7_1.qmd": {
+    "ch7_1.html": "4115c990"
+  },
+  "content/ch7_ex.qmd": {
+    "ch7_ex.html": "35de1ebe"
+  },
+  "content/references.qmd": {
+    "references.html": "1ddbb696"
+  },
+  "content/ref.qmd": {
+    "ref.html": "acf7b405"
+  },
+  "content/app1.qmd": {
+    "app1.html": "0c1ee361"
+  },
+  "content/app2.qmd": {
+    "app2.html": "56764412"
   }
 }

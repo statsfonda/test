@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Statistiques Fondamentales - 4&nbsp; Intervalles de confiance</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../content/ch31_outils.html" rel="next">
+<link href="../content/ch2_ex.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../utils/styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/ch3.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logoUP.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Statistiques Fondamentales</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/statsfonda/site" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../Statistiques-Fondamentales.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Organisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch2_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">La méthode des moments</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch2_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch31_outils.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Outils pour les IC</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch3_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test d’hypothèses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Théorie des tests simples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Tests du <span class="math inline">\(\chi_2\)</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Moindres carrés</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modèles linéaires</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Tests linéaires</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Modèles exponentiels</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Maximum de vraisemblance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">L’information de Fisher</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Entropie et information</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Principe d’entropie maximale</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/problemes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problèmes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch7_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch7_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Test de Kolmogorov-Smirnov</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch7_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Et après ?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Références</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/app1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/app2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">50&nbsp;nuances de TCL</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#principe" id="toc-principe" class="nav-link active" data-scroll-target="#principe"><span class="header-section-number">4.1</span> Principe</a></li>
+  <li><a href="#exemples-gaussiens" id="toc-exemples-gaussiens" class="nav-link" data-scroll-target="#exemples-gaussiens"><span class="header-section-number">4.2</span> Exemples gaussiens</a>
+  <ul class="collapse">
+  <li><a href="#estimation-de-mu" id="toc-estimation-de-mu" class="nav-link" data-scroll-target="#estimation-de-mu"><span class="header-section-number">4.2.1</span> Estimation de <span class="math inline">\(\mu\)</span></a></li>
+  <li><a href="#estimation-de-sigma" id="toc-estimation-de-sigma" class="nav-link" data-scroll-target="#estimation-de-sigma"><span class="header-section-number">4.2.2</span> Estimation de <span class="math inline">\(\sigma\)</span></a></li>
+  </ul></li>
+  <li><a href="#exemples-asymptotiques" id="toc-exemples-asymptotiques" class="nav-link" data-scroll-target="#exemples-asymptotiques"><span class="header-section-number">4.3</span> Exemples asymptotiques</a>
+  <ul class="collapse">
+  <li><a href="#sec-icber" id="toc-sec-icber" class="nav-link" data-scroll-target="#sec-icber"><span class="header-section-number">4.3.1</span> Estimation du paramètre <span class="math inline">\(p\)</span> dans un modèle de Bernoulli.</a></li>
+  <li><a href="#estimation-de-moyenne-dans-un-modèle-non-gaussien." id="toc-estimation-de-moyenne-dans-un-modèle-non-gaussien." class="nav-link" data-scroll-target="#estimation-de-moyenne-dans-un-modèle-non-gaussien."><span class="header-section-number">4.3.2</span> Estimation de moyenne dans un modèle non-gaussien.</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<div style="display:&nbsp;none;"><p style="display: none;">
+$$
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bt}{\boldsymbol{\theta}}
+\newcommand{\dkl}{\mathrm{d}_{\mathrm{KL}}}
+\newcommand{\dtv}{\mathrm{d}_{\mathrm{TV}}}
+\newcommand{\emv}{\hat{\theta}_{\mathrm{emv}}}
+\newcommand{\ent}{\mathrm{Ent}}
+$$
+</p></div>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="principe" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="principe"><span class="header-section-number">4.1</span> Principe</h2>
+<p>Dans un modèle statistique, l’estimation du paramètre d’intérêt <span class="math inline">\(\theta\)</span> par intervalles de confiance consiste à spécifier un intervalle calculable à partir des données, et qui contient <span class="math inline">\(\theta\)</span> avec grande probabilité : en d’autres termes, une <em>région de confiance</em> pour <span class="math inline">\(\theta\)</span>.</p>
+<p>Pour simplifier, on supposera d’abord que <span class="math inline">\(\theta\)</span> est un paramètre réel.</p>
+<div id="def-ic" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 4.1 (intervalle de confiance) </strong></span>Un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> est un intervalle <span class="math inline">\(I = [A,B]\)</span> dont les bornes <span class="math inline">\(A,B\)</span> sont des statistiques, et tel que pour tout <span class="math inline">\(\theta\)</span>, <span class="math display">\[P_\theta(\theta \in I) \geqslant 1 - \alpha.\]</span> Un intervalle de confiance de niveau asymptotique <span class="math inline">\(1-\alpha\)</span> est une <em>suite</em> d’intervalles <span class="math inline">\(I_n = [A_n,B_n]\)</span> dont les bornes <span class="math inline">\(A_n,B_n\)</span> sont des statistiques, et tels que pour tout <span class="math inline">\(n\)</span>, <span class="math display">\[ P_\theta(\theta \in I_n) \geqslant 1 - \alpha.\]</span></p>
+</div>
+<p>Le terme « niveau » désigne <span class="math inline">\(1-\alpha\)</span> ; la vocation de ce nombre est d’être proche de 1, typiquement 99%. Le nombre <span class="math inline">\(\alpha\)</span> est parfois appelé « erreur », « marge d’erreur » ou encore « niveau de risque » ; la vocation de ce nombre est d’être proche de zéro, typiquement 1%.</p>
+<p>Il n’y a rien d’autre à savoir sur les intervalles de confiance ; tout l’art de la chose consiste à savoir les construire. Commençons par des exemples essentiels à plusieurs titres :&nbsp;le cas d’un échantillon gaussien, et le cas de lois de Bernoulli.</p>
+</section>
+<section id="exemples-gaussiens" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="exemples-gaussiens"><span class="header-section-number">4.2</span> Exemples gaussiens</h2>
+<p>On dispose de variables aléatoires <span class="math inline">\(X_1, \dotsc, X_n\)</span> de loi <span class="math inline">\(N(\mu, \sigma^2)\)</span>. On va donner des intervalles de confiance pour l’estimation des paramètres <span class="math inline">\(\mu\)</span> et <span class="math inline">\(\sigma\)</span> dans plusieurs cas de figure.</p>
+<section id="estimation-de-mu" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="estimation-de-mu"><span class="header-section-number">4.2.1</span> Estimation de <span class="math inline">\(\mu\)</span></h3>
+<p><strong>Lorsque <span class="math inline">\(\sigma\)</span> est connue. </strong></p>
+<p>Nous avons déjà vu que la moyenne empirique <span class="math inline">\(\bar{X}_n\)</span> est un estimateur sans biais de <span class="math inline">\(\mu\)</span>. Or, nous savons aussi la loi <em>exacte</em> de <span class="math inline">\(\bar{X}_n\)</span>, qui est <span class="math inline">\(N(\mu, \sigma^2/n)\)</span>. Autrement dit, <span id="eq-pivg"><span class="math display">\[\frac{\sqrt{n}}{\sigma}(\bar{X}_n - \mu) \sim N(0,1). \tag{4.1}\]</span></span></p>
+<p>Dans cette équation, on a trouvé une variable aléatoire dont la loi ne dépend plus de <span class="math inline">\(\mu\)</span>. Il est donc possible de déterminer un intervalle dans lequel elle fluctue à l’aide des quantiles de la loi normale, qui sont étudiés dans <a href="ch31_outils.html#sec-quantiles"><span>Section&nbsp;5.1</span></a>. Si l’on se donne une marge d’erreur <span class="math inline">\(\alpha = 1\%\)</span>, alors <span class="math display">\[ \mathbb{P}( (\sqrt{n}/\sigma)|\bar{X}_n - \mu| &gt; z_{0.99}) = 1\%\]</span> où <span class="math inline">\(z_{0.99} \approx 2.32\)</span>. Or, <span id="eq-piv1"><span class="math display">\[ \frac{\sqrt{n}}{\sigma}|\bar{X}_n - \mu| &gt; z_{0.99} \tag{4.2}\]</span></span> est équivalent à <span id="eq-piv2"><span class="math display">\[ \bar{X}_n - \frac{z_{0.99}\sigma}{\sqrt{n}} \leqslant \mu \leqslant \bar{X}_n + \frac{z_{0.99}\sigma}{\sqrt{n}}. \tag{4.3}\]</span></span> Le passage de <a href="#eq-piv1">Équation&nbsp;<span>4.2</span></a> à <a href="#eq-piv2">Équation&nbsp;<span>4.3</span></a> est souvent appelé <em>pivot</em> et sert à passer d’un intervalle de fluctuation à un intervalle de confiance.</p>
+<p>Nous avons donc les deux bornes de notre intervalle de confiance : <span class="math display">\[ A = \bar{X}_n - \frac{z_{0.99}\sigma}{\sqrt{n}}\]</span> <span class="math display">\[ B = \bar{X}_n + \frac{z_{0.99}\sigma}{\sqrt{n}} .\]</span> Ces deux quantités sont bien des statistiques, car <span class="math inline">\(\sigma\)</span> est connu. De plus, nous venons de montrer que <span class="math inline">\(P_\mu(\mu \in [A,B]) = 99\%\)</span>. Ici, le choix de la marge d’erreur <span class="math inline">\(\alpha = 1\%\)</span> ne jouait aucun rôle particulier ; ainsi, un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour l’estimation de <span class="math inline">\(\mu\)</span> est donné par <span id="eq-icgmu1"><span class="math display">\[\left[\bar{X}_n - \frac{z_{1-\alpha}\sigma}{\sqrt{n}}~~;~~\bar{X}_n + \frac{z_{1-\alpha}\sigma}{\sqrt{n}} \right]. \tag{4.4}\]</span></span></p>
+<p><strong>Lorsque <span class="math inline">\(\sigma\)</span> est inconnue. </strong></p>
+<p>Lorsque <span class="math inline">\(\sigma\)</span> n’est pas connu, les bornes <span class="math inline">\(A,B\)</span> ci-dessus ne sont pas des statistiques, car elles dépendent de <span class="math inline">\(\sigma\)</span>. Heureusement, on peut estimer <span class="math inline">\(\sigma\)</span> sans biais via l’estimateur <span class="math display">\[ \hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_n)^2.\]</span> Que se passe-t-il si, dans la statistique <a href="#eq-pivg">Équation&nbsp;<span>4.1</span></a>, on remplace <span class="math inline">\(\sigma\)</span> par son estimation <span class="math inline">\(\hat{\sigma}_n^2\)</span> ? On obtient la statistique dite <em>de Student</em>, <span id="eq-pivst"><span class="math display">\[T_n = \frac{\sqrt{n}}{\sqrt{\hat{\sigma}_n^2}}(\bar{X}_n - \mu). \tag{4.5}\]</span></span> Sa loi n’est plus une loi gaussienne, mais une loi de Student à <span class="math inline">\(n-1\)</span> paramètres de liberté <span class="math inline">\(\mathscr{T}(n-1)\)</span>:&nbsp;le calcul de la densité est fait en détails dans <a href="ch31_outils.html#sec-student1"><span>Section&nbsp;5.2.3</span></a> - <a href="ch31_outils.html#sec-student2"><span>Section&nbsp;5.2.4</span></a>. Les quantiles des lois de Student ont été calculés avec précision. On notera <span class="math inline">\(t_{k,\alpha}\)</span> le quantile symétrique de niveau <span class="math inline">\(\alpha\)</span> de <span class="math inline">\(\mathscr{T}(k)\)</span>. Alors, <span class="math display">\[ P_{\mu, \sigma^2}(|T_n|&gt; t_{n-1,\alpha})\leqslant \alpha .\]</span> Par le même raisonnement que tout à l’heure, l’inégalité <span class="math display">\[ \left|\frac{\sqrt{n}}{\hat{\sigma}_n}(\bar{X}_n - \mu)\right| &gt; t_{n-1,\alpha}\]</span> est équivalente à <span class="math display">\[ \bar{X}_n - \frac{t_{n-1,\alpha}\hat{\sigma}_n}{\sqrt{n}} \leqslant \mu \leqslant \bar{X}_n + \frac{t_{n-1,\alpha}\hat{\sigma}_n}{\sqrt{n}}.\]</span> et les deux côtés de ces inégalités sont des statistiques;&nbsp;en les notant <span class="math inline">\(A,B\)</span>, on a bien trouvé un intervalle de confiance de niveau <span class="math inline">\(\alpha\)</span>, c’est-à-dire tel que <span class="math inline">\(P_{\mu,\sigma^2}(\mu \in [A,B]) = \alpha\)</span>. Cet intervalle de confiance est d’une grande importance en pratique et mérite son propre théorème. Il est dû à <a href="https://en.wikipedia.org/wiki/William_Sealy_Gosset">William Gosset</a>.</p>
+<div id="thm-icg" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 4.1 (Intervalle de Student) </strong></span>Un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour l’estimation de <span class="math inline">\(\mu\)</span> lorsque <span class="math inline">\(\sigma\)</span> n’est pas connue est donné par</p>
+<p><span class="math display">\[\left[\bar{X}_n - \frac{t_{n-1, 1-\alpha}\hat{\sigma}_n}{\sqrt{n}}~~;~~\bar{X}_n + \frac{t_{n-1, 1-\alpha}\hat{\sigma}_n}{\sqrt{n}} \right].\]</span></p>
+</div>
+</section>
+<section id="estimation-de-sigma" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="estimation-de-sigma"><span class="header-section-number">4.2.2</span> Estimation de <span class="math inline">\(\sigma\)</span></h3>
+<p>Supposons maintenant qu’on désire estimer la variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p><strong>Lorsque <span class="math inline">\(\mu\)</span> est connue.</strong></p>
+<p>En supposant que <span class="math inline">\(\mu\)</span> est connue, l’estimateur des moments le plus naturel pour estimer <span class="math inline">\(\sigma^2\)</span> est évidemment <span class="math display">\[ \tilde{\sigma}^2_n = \frac{1}{n}\sum_{i=1}^n (X_i - \mu)^2.\]</span> Comme les <span class="math inline">\((X_i - \mu)/\sigma\)</span> sont des variables aléatoires gaussiennes centrées réduites, l’estimateur <span class="math inline">\(\tilde{\sigma}^2_n \times (n/ \sigma^2)\)</span> est une somme de <span class="math inline">\(n\)</span> gaussiennes standard indépendantes. La loi de cette statistique est connue :&nbsp;c’est une <a href="https://fr.wikipedia.org/wiki/Loi_du_%CF%87%C2%B2">loi du chi-deux</a> à <span class="math inline">\(n\)</span> paramètres de liberté comme démontré dans <a href="ch31_outils.html#sec-chideux"><span>Section&nbsp;5.2.2</span></a>. Cette loi n’est pas symétrique, puisqu’elle est supportée sur <span class="math inline">\([0,\infty[\)</span>. On note souvent <span class="math inline">\(k^-_{n,\alpha}\)</span> et <span class="math inline">\(k^+_{n,\alpha}\)</span> les nombres les plus éloignées possible (ils exisent) tels que <span class="math inline">\(\mathbb{P}(k^-_{n,\alpha}&lt; \chi^2(n)&lt;k^+_{n,\alpha}) = 1-\alpha\)</span>. Ainsi, <span class="math display">\[P_{\sigma^2}(k^-_{n,\alpha}&lt; \frac{n \tilde{\sigma}^2_n}{\sigma^2} &lt; k^+_{n,\alpha}) = \alpha.\]</span> En pivotant comme dans les exemples précédents, on obtient que l’intervalle <span class="math display">\[\left[\frac{n\tilde{\sigma}_n^2}{k^{+}_{n,\alpha}} ~~;~~ \frac{n\tilde{\sigma}_n^2}{k^-_{n,\alpha}} \right] \]</span> est un intervalle de confiance de niveau <span class="math inline">\(\alpha\)</span> pour <span class="math inline">\(\sigma^2\)</span>.</p>
+<p><strong>Lorsque <span class="math inline">\(\mu\)</span> est inconnue.</strong></p>
+<p>Cette fois, on utilise l’estimateur déjà évoqué plus tôt, à savoir <span class="math display">\[ \hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_n)^2.\]</span> La loi de <span class="math inline">\((n-1)\hat{\sigma}^2_n / \sigma^2\)</span> est encore une loi du chi-deux, mais à <span class="math inline">\(n-1\)</span> paramètres de liberté. Ainsi, le même raisonnement que ci-dessus donne l’intervalle de confiance de niveau <span class="math inline">\(\alpha\)</span> suivant :&nbsp; <span class="math display">\[\left[\frac{(n-1)\hat{\sigma}_n^2}{k^+_{n-1,\alpha}} ~~;~~ \frac{(n-1)\hat{\sigma}_n^2}{k^-_{n-1,\alpha}} \right]. \]</span></p>
+</section>
+</section>
+<section id="exemples-asymptotiques" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="exemples-asymptotiques"><span class="header-section-number">4.3</span> Exemples asymptotiques</h2>
+<section id="sec-icber" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="sec-icber"><span class="header-section-number">4.3.1</span> Estimation du paramètre <span class="math inline">\(p\)</span> dans un modèle de Bernoulli.</h3>
+<p>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> des variables indépendantes de loi <span class="math inline">\(\mathscr{B}(p)\)</span>, dont on cherche à estimer le paramètre <span class="math inline">\(p\in ]0,1[\)</span>. Un estimateur naturel est donné par la moyenne empirique, <span class="math inline">\(\hat{p}_n = (X_1 + \dotsb + X_n)/n\)</span>. Cet estimateur est non biaisé et son risque quadratique est égal à <span class="math inline">\(p(1-p)/n\)</span>. De plus, la loi de <span class="math inline">\(\hat{p}_n\)</span> est connue : <span class="math inline">\(n\hat{p}_n \sim \mathrm{Bin}(n,p)\)</span>. Par conséquent, si l’on connaît les quantiles de <span class="math inline">\(\mathscr{Bin}(n,p)-p\)</span>, on pourra construire des intervalles de confiance de niveau <span class="math inline">\(1-\alpha\)</span>. Ces quantiles peuvent être calculés par des méthodes numériques, mais il existe des façons plus simples de faire.</p>
+<p><strong>Inégalité BT. </strong> L’inégalité de Bienaymé-Tchebychev dit que <span id="eq-btbin"><span class="math display">\[P_p(|\hat{p}_n - p|&gt;t)\leqslant \frac{p(1-p)}{nt^2}.  \tag{4.6}\]</span></span> Si l’on choisit <span class="math display">\[t = \sqrt{\frac{p(1-p)}{n\alpha}},\]</span> cette probabilité est plus petite que <span class="math inline">\(\alpha\)</span>. En pivotant, on en déduit que l’intervalle <span class="math inline">\([\hat{p_n} \pm \sqrt{p(1-p)/n\alpha}]\)</span> contient <span class="math inline">\(p\)</span> avec une probabilité supérieure à <span class="math inline">\(1-\alpha\)</span>. Mais les bornes de cet intervalle ne sont pas des statistiques, car elles dépendent de <span class="math inline">\(p\)</span> ! Fort heureusement, on sait que <span class="math inline">\(p\)</span> est entre <span class="math inline">\(0\)</span> et <span class="math inline">\(1\)</span>, ce qui entraîne que <span class="math inline">\(p(1-p)\)</span> est plus petit que <span class="math inline">\(1/4\)</span>, donc l’intervalle ci-dessus est contenu dans l’intervalle plus grand <span class="math display">\[ \left[\hat{p}_n \pm \frac{1}{2\sqrt{n\alpha}}\right]. \]</span> Ce dernier est bien un intervalle de confiance de niveau <span class="math inline">\(1-\alpha\)</span> pour l’estimation de <span class="math inline">\(p\)</span>.</p>
+<p><strong>TCL. </strong> On a mentionné que les quantiles des lois binomiales pourraient être calculés ; or, ils peuvent également être approchés grâce au théorème central-limite. Celui-ci dit que <span id="eq-tclbin"><span class="math display">\[ \frac{\sqrt{n}(\hat{p}_n - p)}{\sqrt{p(1-p)}} \to N(0,1). \tag{4.7}\]</span></span> Si <span class="math inline">\(z_\alpha\)</span> est le quantile symétrique d’ordre <span class="math inline">\(\alpha\)</span> de <span class="math inline">\(N(0,1)\)</span>, alors on en déduit que <span class="math display">\[\mathbb{P}\left(\left|\frac{\sqrt{n}(\hat{p}_n - p)}{\sqrt{p(1-p)}} \right|&gt;z_\alpha \right) \to \alpha. \]</span> En pivotant, on voit alors que l’intervalle <span class="math display">\[\left[\hat{p}_n \pm z_\alpha \sqrt{p(1-p)/n}\right] \]</span> contient <span class="math inline">\(p\)</span> avec une probabilité <em>qui tend lorsque <span class="math inline">\(n\to\infty\)</span> vers <span class="math inline">\(1-\alpha\)</span></em>. Là encore, cet intervalle n’est pas un intervalle de confiance. On pourrait utiliser deux techniques.</p>
+<ol type="1">
+<li>Comme tout à l’heure, l’intervalle ci-dessus est contenu dans l’intervalle plus grand <span class="math inline">\([\hat{p}_n \pm z_\alpha/2\sqrt{n}]\)</span> qui est un intervalle de confiance <em>asymptotique</em> de niveau <span class="math inline">\(1-\alpha\)</span>.</li>
+<li>Il y a plus fin. Nous savons par la loi des grands nombres que <span class="math inline">\(\hat{p}_n \to p\)</span> en probabilité. Ainsi, <span class="math inline">\(\sqrt{\hat{p}_n(1-\hat{p}_n)} \to \sqrt{p(1-p)}\)</span> en probabilité. Le lemme de Slutsky nous assure alors que dans <a href="#eq-tclbin">Équation&nbsp;<span>4.8</span></a>, on peut remplacer le dénominateur par <span class="math inline">\(\sqrt{\hat{p}_n (1-\hat{p}_n)}\)</span> pour obtenir <span id="eq-tclbin"><span class="math display">\[ \frac{\sqrt{n}(\hat{p}_n - p)}{\sqrt{\hat{p}_n(1-\hat{p}_n)}} \to N(0,1). \tag{4.8}\]</span></span> Le reste du raisonnement est identique, et l’on obtient l’intervalle de confiance asymptotique de niveau <span class="math inline">\(1-\alpha\)</span> suivant : <span class="math display">\[\left[\hat{p}_n \pm z_\alpha \sqrt{\frac{\hat{p}_n(1-\hat{p}_n)}{n}}\right] \]</span></li>
+</ol>
+<p><strong>Hoeffding.</strong> L’inégalité de Bienaymé-Tchebychev n’est pas très fine. Il existe de nombreuses autres inégalités de concentration :&nbsp;l’inégalité de Hoeffding (<a href="ch31_outils.html#thm-hoeffding">Théorème&nbsp;<span>5.4</span></a>) concerne les variables bornées, comme ici où les <span class="math inline">\(X_i\)</span> sont dans <span class="math inline">\([0,1]\)</span> . Cette inégalité dit que <span class="math display">\[\mathbb{P}(|\hat{p}_n - p|&gt;t)\leqslant 2 e^{-2nt^2}. \]</span> Le choix <span class="math display">\[ t = \sqrt{\frac{1}{2n}\ln\left(\frac{2}{\alpha}\right)}\]</span> donne une probabilité inférieure à <span class="math inline">\(\alpha\)</span>, et fournit donc l’intervalle de confiance <strong>non-asymptotique</strong> de niveau <span class="math inline">\(1-\alpha\)</span> suivant :&nbsp; <span class="math display">\[ \left[\bar{X}_n \pm \frac{\ln(2/\alpha)}{\sqrt{2n}}\right].\]</span></p>
+</section>
+<section id="estimation-de-moyenne-dans-un-modèle-non-gaussien." class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="estimation-de-moyenne-dans-un-modèle-non-gaussien."><span class="header-section-number">4.3.2</span> Estimation de moyenne dans un modèle non-gaussien.</h3>
+<p>Les deux techniques ci-dessus n’ont rien de spécifique au cas de variables de Bernoulli. En fait, elles s’appliquent à tout modèle statistique iid dont on cherche à estimer la moyenne <span class="math inline">\(\mu\)</span>, pourvu que la variance existe.</p>
+<p>La première méthode utilisant Bienaymé-Tchebychev nécessite de borner la variance. Cela peut se faire dans certains cas, mais pas dans tous.</p>
+<p>La seconde méthode s’applique systématiquement en utilisant l’estimateur de la variance empirique <span class="math inline">\(\hat{\sigma}_n^2\)</span>. En effet, la convergence <span class="math display">\[\frac{\sqrt{n}}{\hat{\sigma}_n}(\bar{X}_n - \mu) \to N(0,1)\]</span> est toujours vraie d’après le théorème de Slutsky.</p>
+<div id="thm-icasymptcl" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 4.2 </strong></span>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> des variables iid possédant une variance. L’intervalle <span class="math display">\[ \left[ \bar{X}_n \pm \frac{z_\alpha \hat{\sigma}_n}{\sqrt{n}} \right]\]</span> est un intervalle de confiance asymptotique de niveau <span class="math inline">\(\alpha\)</span> pour l’estimation de la moyenne des <span class="math inline">\(X_i\)</span>.</p>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copié");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copié");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../content/ch2_ex.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercices</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../content/ch31_outils.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Outils pour les IC</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
