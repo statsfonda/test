@@ -37,12 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../utils/styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -91,17 +89,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/logoUP.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Statistiques Fondamentales</a> 
-        <div class="sidebar-tools-main tools-wide">
+        <div class="sidebar-tools-main">
     <a href="https://github.com/statsfonda/site" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="../Statistiques-Fondamentales.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -335,6 +329,7 @@ $$
 $$
 </p></div>
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Outils pour les IC</span></h1>
@@ -446,10 +441,10 @@ $$
 <p><span id="eq-lemme_hoeffding"><span class="math display">\[\mathbb{E}[e^{t(X-\mathbb{E}[X]}] \leqslant e^{\frac{t^2(b-a)^2}{8}}. \tag{5.5}\]</span></span></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>Soit <span class="math inline">\(X\)</span> une variable aléatoire, que par simplicité on supposera centrée et à valeurs dans l’intervalle <span class="math inline">\([a,b]\)</span> (<span class="math inline">\(a\)</span> est forcément négatif). En écrivant <span class="math display">\[x = a\times \frac{b-x}{b-a} + b\times \left(1 - \frac{b-x}{b-a}\right)\]</span> et en utilisant la convexité de la fonction <span class="math inline">\(x \mapsto e^{tx}\)</span>, on obtient <span class="math inline">\(e^{tX}\leqslant (b-X)e^{ta}/(b-a) + (1 - (b-x)/(b-a)) e^{bt})\)</span>, puis en prenant l’espérance et le fait que <span class="math inline">\(X\)</span> est centrée et en simplifiant, <span class="math display">\[\mathbb{E}[e^{tX}]\leqslant \frac{be^{ta} - ae^{tb}}{b-a}.\]</span> Notons <span class="math inline">\(f(t)\)</span> le terme à droite ;&nbsp;pour montrer <a href="#eq-lemme_hoeffding">Équation&nbsp;<span>5.5</span></a>, il suffit de montrer que <span class="math inline">\(\ln f(t) \leqslant t^2(b-a)^2/8\)</span>. La formule de Taylor dit que <span class="math display">\[ \ln f(t) = \ln f(0) + t (\ln f)'(0) + \frac{t^2}{2}(\ln f)''(\xi)\]</span> pour un certain <span class="math inline">\(\xi\)</span>. Or, <span class="math inline">\(\ln f(0) = \ln 1 = 0\)</span>, <span class="math inline">\((\ln f)'(0) = f'(0)/f(0) = 0\)</span>, et il suffit donc de montrer que <span class="math inline">\((\ln f)''(t)\)</span> est toujours plus petit que <span class="math inline">\((b-a)^2/4\)</span> pour conclure. Un simple calcul montre que <span class="math inline">\(\ln f(t) = \ln(b/(b-a)) + ta + \ln(1 - ae^{t(b-a)} / b)\)</span>, et donc <span class="math display">\[ (\ln f)''(t) = \frac{(a/b)(b-a)e^{t(b-a)}}{(1 - ae^{t(b-a)}/b)^2}.\]</span> L’inégalité <span class="math inline">\(uv/(u-v)^2 \leqslant 1/4\)</span> appliquée à <span class="math inline">\(u = a/b\)</span> et <span class="math inline">\(v = e^{t(b-a)}\)</span> permet alors de conclure.</p>
+<p><span class="proof-title"><em>Preuve</em>. </span>Soit <span class="math inline">\(X\)</span> une variable aléatoire, que par simplicité on supposera centrée et à valeurs dans l’intervalle <span class="math inline">\([a,b]\)</span> (<span class="math inline">\(a\)</span> est forcément négatif). En écrivant <span class="math display">\[x = a\times \frac{b-x}{b-a} + b\times \left(1 - \frac{b-x}{b-a}\right)\]</span> et en utilisant la convexité de la fonction <span class="math inline">\(x \mapsto e^{tx}\)</span>, on obtient <span class="math inline">\(e^{tX}\leqslant (b-X)e^{ta}/(b-a) + (1 - (b-x)/(b-a)) e^{bt})\)</span>, puis en prenant l’espérance et le fait que <span class="math inline">\(X\)</span> est centrée et en simplifiant, <span class="math display">\[\mathbb{E}[e^{tX}]\leqslant \frac{be^{ta} - ae^{tb}}{b-a}.\]</span> Notons <span class="math inline">\(f(t)\)</span> le terme à droite ;&nbsp;pour montrer <a href="#eq-lemme_hoeffding">Équation&nbsp;<span class="quarto-unresolved-ref">eq-lemme_hoeffding</span></a>, il suffit de montrer que <span class="math inline">\(\ln f(t) \leqslant t^2(b-a)^2/8\)</span>. La formule de Taylor dit que <span class="math display">\[ \ln f(t) = \ln f(0) + t (\ln f)'(0) + \frac{t^2}{2}(\ln f)''(\xi)\]</span> pour un certain <span class="math inline">\(\xi\)</span>. Or, <span class="math inline">\(\ln f(0) = \ln 1 = 0\)</span>, <span class="math inline">\((\ln f)'(0) = f'(0)/f(0) = 0\)</span>, et il suffit donc de montrer que <span class="math inline">\((\ln f)''(t)\)</span> est toujours plus petit que <span class="math inline">\((b-a)^2/4\)</span> pour conclure. Un simple calcul montre que <span class="math inline">\(\ln f(t) = \ln(b/(b-a)) + ta + \ln(1 - ae^{t(b-a)} / b)\)</span>, et donc <span class="math display">\[ (\ln f)''(t) = \frac{(a/b)(b-a)e^{t(b-a)}}{(1 - ae^{t(b-a)}/b)^2}.\]</span> L’inégalité <span class="math inline">\(uv/(u-v)^2 \leqslant 1/4\)</span> appliquée à <span class="math inline">\(u = a/b\)</span> et <span class="math inline">\(v = e^{t(b-a)}\)</span> permet alors de conclure.</p>
 </div>
-<p><em>Preuve de l’inégalité de Hoeffding.</em> En remplaçant <span class="math inline">\(X_k\)</span> par <span class="math inline">\(X_k - \mathbb{E}[X_k]\)</span>, on peut supposer que tous les <span class="math inline">\(X_i\)</span> sont centrés et étudier seulement <span class="math inline">\(\mathbb{P}(S_n &gt;t)\)</span>. Écrivons <span class="math inline">\(\mathbb{P}(S_n &gt; t) = \mathbb{P}(e^{\lambda S_n} &gt; e^{\lambda t})\)</span>, où <span class="math inline">\(\lambda\)</span> est un nombre positif que l’on choisira plus tard. L’inégalité de Markov borne cette probabilité par <span class="math inline">\(\mathbb{E}[e^{\lambda S_n}]e^{-\lambda t}\)</span>. Comme les <span class="math inline">\(X_i\)</span> sont indépendantes, <span class="math inline">\(\mathbb{E}[e^{tS_n}]\)</span> est le produit des <span class="math inline">\(e^{ \varphi_k(\lambda)}\)</span> où <span class="math inline">\(\varphi_k(t) = \ln \mathbb{E}[e^{itX_k}]\)</span>. En appliquant le lemme de Hoeffding à chaque <span class="math inline">\(\varphi_k\)</span>, on borne <span class="math inline">\(\mathbb{P}(S_n &gt;t)\)</span> par <span class="math display">\[ \exp\left(\sum_{i=1}^n \frac{(b_i - a_i)^2 \lambda^2}{8} - t\lambda\right).\]</span> Le minimum en <span class="math inline">\(\lambda\)</span> du terme dans l’exponentielle est atteint au point <span class="math inline">\(4t / \sum (a_i - b_i)^2\)</span> et la valeur du minimum est le terme dans l’exponentielle de <a href="#eq-hoeffding">Équation&nbsp;<span>5.3</span></a>. On déduit <a href="#eq-hoeffdingsym">Équation&nbsp;<span>5.4</span></a> par une simple borne de l’union.</p>
-<p>La démonstration de l’inégalité de Hoeffding ne dépend pas directement du fait que <span class="math inline">\(X\)</span> est bornée, mais plutôt de <a href="#eq-lemme_hoeffding">Équation&nbsp;<span>5.5</span></a>. Toutes les variables aléatoires qui vérifient une inégalité de type <span class="math inline">\(\mathbb{E}[e^{tX}]\leqslant e^{c t^2}\)</span> pour une constante <span class="math inline">\(c\)</span> peuvent donc avoir leur propre inégalité de Hoeffding.</p>
+<p><em>Preuve de l’inégalité de Hoeffding.</em> En remplaçant <span class="math inline">\(X_k\)</span> par <span class="math inline">\(X_k - \mathbb{E}[X_k]\)</span>, on peut supposer que tous les <span class="math inline">\(X_i\)</span> sont centrés et étudier seulement <span class="math inline">\(\mathbb{P}(S_n &gt;t)\)</span>. Écrivons <span class="math inline">\(\mathbb{P}(S_n &gt; t) = \mathbb{P}(e^{\lambda S_n} &gt; e^{\lambda t})\)</span>, où <span class="math inline">\(\lambda\)</span> est un nombre positif que l’on choisira plus tard. L’inégalité de Markov borne cette probabilité par <span class="math inline">\(\mathbb{E}[e^{\lambda S_n}]e^{-\lambda t}\)</span>. Comme les <span class="math inline">\(X_i\)</span> sont indépendantes, <span class="math inline">\(\mathbb{E}[e^{tS_n}]\)</span> est le produit des <span class="math inline">\(e^{ \varphi_k(\lambda)}\)</span> où <span class="math inline">\(\varphi_k(t) = \ln \mathbb{E}[e^{itX_k}]\)</span>. En appliquant le lemme de Hoeffding à chaque <span class="math inline">\(\varphi_k\)</span>, on borne <span class="math inline">\(\mathbb{P}(S_n &gt;t)\)</span> par <span class="math display">\[ \exp\left(\sum_{i=1}^n \frac{(b_i - a_i)^2 \lambda^2}{8} - t\lambda\right).\]</span> Le minimum en <span class="math inline">\(\lambda\)</span> du terme dans l’exponentielle est atteint au point <span class="math inline">\(4t / \sum (a_i - b_i)^2\)</span> et la valeur du minimum est le terme dans l’exponentielle de <a href="#eq-hoeffding">Équation&nbsp;<span class="quarto-unresolved-ref">eq-hoeffding</span></a>. On déduit <a href="#eq-hoeffdingsym">Équation&nbsp;<span class="quarto-unresolved-ref">eq-hoeffdingsym</span></a> par une simple borne de l’union.</p>
+<p>La démonstration de l’inégalité de Hoeffding ne dépend pas directement du fait que <span class="math inline">\(X\)</span> est bornée, mais plutôt de <a href="#eq-lemme_hoeffding">Équation&nbsp;<span class="quarto-unresolved-ref">eq-lemme_hoeffding</span></a>. Toutes les variables aléatoires qui vérifient une inégalité de type <span class="math inline">\(\mathbb{E}[e^{tX}]\leqslant e^{c t^2}\)</span> pour une constante <span class="math inline">\(c\)</span> peuvent donc avoir leur propre inégalité de Hoeffding.</p>
 
 
 </section>
@@ -475,121 +470,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

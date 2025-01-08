@@ -37,12 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../utils/styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -91,17 +89,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/logoUP.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Statistiques Fondamentales</a> 
-        <div class="sidebar-tools-main tools-wide">
+        <div class="sidebar-tools-main">
     <a href="https://github.com/statsfonda/site" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="../Statistiques-Fondamentales.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -328,6 +322,7 @@ $$
 $$
 </p></div>
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></h1>
@@ -384,7 +379,7 @@ $$
 <div id="thm-fisher" class="theorem">
 <p><span class="theorem-title"><strong>Théorème 11.4 </strong></span>Soient <span class="math inline">\(X,Y\)</span> deux variables aléatoires indépendantes, de lois respectives <span class="math inline">\(\chi_2(p)\)</span> et <span class="math inline">\(\chi_2(q)\)</span>. La loi du rapport <span class="math inline">\((X/p)/(Y/q)\)</span> s’appelle loi de Fisher de paramètres <span class="math inline">\(p,q\)</span>, et on la note <span class="math inline">\(\mathscr{F}_{p,q}\)</span>. Sa densité est donnée par <span id="eq-fisherdensity"><span class="math display">\[ f_{p,q}(x) = \frac{\mathbf{1}_{x&gt;0}}{Z_{p,q}}\frac{\left(\frac{px}{px + q}\right)^{\frac{p}{2}} \left(1 - \frac{px}{px + q}\right)^{\frac{q}{2}}}{x} \tag{11.1}\]</span></span> où la constante <span class="math inline">\(Z_{p,q}\)</span> est <span class="math inline">\(B(p/2, q/2)\)</span>, c’est-à-dire <span class="math display">\[ Z_{p,q} =  \int_0^1 u^{\frac{p}{2}-1}(1-u)^{\frac{q}{2}-1}du.\]</span></p>
 </div>
-<p>Le calcul est facile, puisque les lois du <span class="math inline">\(\chi_2\)</span> ont une densité connue donnée par <a href="ch31_outils.html#eq-chideuxdensity">Équation&nbsp;<span>5.2</span></a>. Soit <span class="math inline">\(\varphi\)</span> une fonction test et soit <span class="math inline">\(F = (X/p)/(Y/q)\)</span>. Alors, <span class="math inline">\(\mathbb{E}[\varphi(F)]\)</span> vaut <span class="math display">\[\frac{1}{C_p C_q}\int_0^\infty \int_0^\infty \varphi\left(\frac{uq}{vp}\right)e^{-\frac{u}{2}-\frac{v}{2}}u^{\frac{p}{2}-1}v^{\frac{q}{2}-1}dudv \]</span> avec <span class="math inline">\(C_n = 2^{n/2}\Gamma(n/2)\)</span>. Dans l’intégrale en <span class="math inline">\(v\)</span>, on pose <span class="math inline">\(x = uq/vp\)</span>, de sorte que l’intégrale ci-dessus devient <span class="math display">\[\frac{(p/q)^{\frac{p}{2}}}{C_p C_q}\int_0^\infty \varphi(x) x^{\frac{p}{2}-1}\int_0^\infty e^{-\frac{vpx}{2q}-\frac{v}{2}}v^{\frac{p}{2}-1}v^{\frac{q}{2}}dv dx. \]</span> On reconnaît dans l’intégrale en <span class="math inline">\(v\)</span> une fonction Gamma, égale à <span class="math display">\[\frac{\Gamma(p/2 + q/2)}{\left(\frac{px+q}{2q}\right)^{\frac{p+q}{2}}}.\]</span> L’espérance <span class="math inline">\(\mathbb{E}[\varphi(F)]\)</span> vaut donc <span class="math display">\[\frac{(p/q)^{p/2}\Gamma\left(\frac{p+q}{2}\right)}{C_p C_q (2q)^{\frac{p+q}{2}}}\int_0^\infty \varphi(x)\frac{x^{\frac{p}{2}-1}}{(px + q)^{\frac{p+q}{2}}}dx. \]</span> En simplifiant, on trouve exactement la densité donnée par <a href="#eq-fisherdensity">Équation&nbsp;<span>11.1</span></a>.</p>
+<p>Le calcul est facile, puisque les lois du <span class="math inline">\(\chi_2\)</span> ont une densité connue donnée par <a href="#eq-chideuxdensity">Équation&nbsp;<span class="quarto-unresolved-ref">eq-chideuxdensity</span></a>. Soit <span class="math inline">\(\varphi\)</span> une fonction test et soit <span class="math inline">\(F = (X/p)/(Y/q)\)</span>. Alors, <span class="math inline">\(\mathbb{E}[\varphi(F)]\)</span> vaut <span class="math display">\[\frac{1}{C_p C_q}\int_0^\infty \int_0^\infty \varphi\left(\frac{uq}{vp}\right)e^{-\frac{u}{2}-\frac{v}{2}}u^{\frac{p}{2}-1}v^{\frac{q}{2}-1}dudv \]</span> avec <span class="math inline">\(C_n = 2^{n/2}\Gamma(n/2)\)</span>. Dans l’intégrale en <span class="math inline">\(v\)</span>, on pose <span class="math inline">\(x = uq/vp\)</span>, de sorte que l’intégrale ci-dessus devient <span class="math display">\[\frac{(p/q)^{\frac{p}{2}}}{C_p C_q}\int_0^\infty \varphi(x) x^{\frac{p}{2}-1}\int_0^\infty e^{-\frac{vpx}{2q}-\frac{v}{2}}v^{\frac{p}{2}-1}v^{\frac{q}{2}}dv dx. \]</span> On reconnaît dans l’intégrale en <span class="math inline">\(v\)</span> une fonction Gamma, égale à <span class="math display">\[\frac{\Gamma(p/2 + q/2)}{\left(\frac{px+q}{2q}\right)^{\frac{p+q}{2}}}.\]</span> L’espérance <span class="math inline">\(\mathbb{E}[\varphi(F)]\)</span> vaut donc <span class="math display">\[\frac{(p/q)^{p/2}\Gamma\left(\frac{p+q}{2}\right)}{C_p C_q (2q)^{\frac{p+q}{2}}}\int_0^\infty \varphi(x)\frac{x^{\frac{p}{2}-1}}{(px + q)^{\frac{p+q}{2}}}dx. \]</span> En simplifiant, on trouve exactement la densité donnée par <a href="#eq-fisherdensity">Équation&nbsp;<span class="quarto-unresolved-ref">eq-fisherdensity</span></a>.</p>
 
 
 </section>
@@ -410,121 +405,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

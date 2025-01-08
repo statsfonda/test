@@ -37,12 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../utils/styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -91,17 +89,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/logoUP.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Statistiques Fondamentales</a> 
-        <div class="sidebar-tools-main tools-wide">
+        <div class="sidebar-tools-main">
     <a href="https://github.com/statsfonda/site" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="../Statistiques-Fondamentales.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -329,6 +323,7 @@ $$
 $$
 </p></div>
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></h1>
@@ -357,7 +352,6 @@ $$
 </ul>
 </div>
 <p>En pratique, on peut vouloir estimer non pas <span class="math inline">\(\theta\)</span> lui-même, mais un paramètre <span class="math inline">\(\psi = \psi_\theta\)</span> qui dépend de <span class="math inline">\(\theta\)</span>, comme <span class="math inline">\(\cos(\theta)\)</span> ou <span class="math inline">\(|\theta|\)</span> par exemple. Dans ce cas, si <span class="math inline">\(\hat{\psi}\)</span> est un estimateur de <span class="math inline">\(\psi\)</span> alors le biais est défini par <span class="math inline">\(\mathbb{E}_\theta[\hat{\psi} - \psi_\theta]\)</span> et le risque quadratique par <span class="math inline">\(\mathbb{E}_\theta [ |\hat\psi - \psi_\theta|^2]\)</span>.</p>
-<p>La dépendance du risque quadratique vis à vis de la taille de l’échantillon est une question importante :&nbsp;pour une suite d’expériences donnée, quelles sont les meilleures vitesses envisageables, et comment les obtenir ?</p>
 <div id="thm-biaisvar" class="theorem">
 <p><span class="theorem-title"><strong>Théorème 2.1 (Décomposition biais-variance) </strong></span><span class="math display">\[
 \mathbb{E}_{\theta} [|\hat{\theta}-\theta|^2]
@@ -365,15 +359,20 @@ $$
 \underbrace{\mathbb{E}_{\theta}[\hat{\theta}-\theta]^2}_{\text{carré du biais}} \, .
 \]</span></p>
 </div>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span>En notant <span class="math inline">\(x\)</span> l’espérance de <span class="math inline">\(\hat{\theta}\)</span>, on voit que le risque quadratique est égal à <span class="math inline">\(\mathbb{E}[|\hat{\theta} - x - (\theta - x)|^2]\)</span>. Le carré se développe en trois termes :&nbsp;le premier, <span class="math inline">\(\mathbb{E}[|\hat{\theta} - x|^2]\)</span>, est la variance de <span class="math inline">\(\hat{\theta}\)</span>. Le second, <span class="math inline">\(-2\mathbb{E}[(\hat{\theta} - x)(\theta - x)]\)</span>, est égal à <span class="math inline">\(-2(\theta - x)\mathbb{E}[\hat{\theta} - x]\)</span>, c’est-à-dire 0. Le dernier, <span class="math inline">\(\mathbb{E}[(\theta - x)^2]\)</span>, est égal à <span class="math inline">\((\theta - x)^2\)</span>, c’est-à-dire <span class="math inline">\((\theta - \mathbb{E}[\hat{\theta}])^2\)</span> :&nbsp;c’est bien le carré du biais.</p>
+</div>
+<p><img src="../images/bias-variance.webp" class="img-fluid"></p>
 </section>
 <section id="convergence" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="convergence"><span class="header-section-number">2.2</span> Convergence</h2>
+<p>La dépendance du biais ou du RQ (ou d’autres indicateurs) vis à vis de la taille de l’échantillon est une question importante :&nbsp;pour une suite d’expériences donnée, on veut que ces indicateurs tendent vite vers zéro. Quelles sont les meilleures vitesses envisageables, et comment les obtenir ?</p>
 <p>Rappelons brièvement deux notions de convergence des variables aléatoires. Une suite de variables aléatoires <span class="math inline">\(X_n\)</span> à valeurs dans <span class="math inline">\(\mathbb{R}^d\)</span> converge en probabilité vers une variable aléatoire <span class="math inline">\(X\)</span> à valeurs dans <span class="math inline">\(\mathbb{R}^d\)</span> si pour tout <span class="math inline">\(\varepsilon &gt;0\)</span>, <span class="math display">\[
 \lim_{n\to\infty} \mathbb{P} (| X_n -X|&gt; \varepsilon ) = 0 \, .
 \]</span></p>
 <div id="def-consistance" class="theorem definition">
-<p><span class="theorem-title"><strong>Définition 2.2 (consistance d’un estimateur) </strong></span>Une suite d’estimateurs <span class="math inline">\((\widehat{\theta}_n)\)</span> est convergente pour l’estimation de <span class="math inline">\(\theta\)</span> lorsque, pour tout <span class="math inline">\(\theta \in \Theta\)</span>, sous <span class="math inline">\(P_\theta\)</span>, la suite <span class="math inline">\((\hat{\theta}_n)\)</span> converge en probabilité vers <span class="math inline">\(\theta\)</span> ; autrement dit, lorsque <span class="math display">\[ \forall \varepsilon&gt;0, \qquad \lim_n     P_\theta ( | \widehat{\theta}_n-\theta| &gt; \varepsilon ) =0.
-\]</span> La suite est fortement convergente si, pour tout <span class="math inline">\(\theta\)</span>, la convergence a lieu <span class="math inline">\(P_\theta\)</span>-presque sûrement. $$</p>
+<p><span class="theorem-title"><strong>Définition 2.2 (convergence d’un estimateur) </strong></span>Une suite d’estimateurs <span class="math inline">\((\widehat{\theta}_n)\)</span> est convergente pour l’estimation de <span class="math inline">\(\theta\)</span> lorsque, pour tout <span class="math inline">\(\theta \in \Theta\)</span>, sous <span class="math inline">\(P_\theta\)</span>, la suite <span class="math inline">\((\hat{\theta}_n)\)</span> converge en probabilité vers <span class="math inline">\(\theta\)</span> ; autrement dit, lorsque <span class="math display">\[ \forall \varepsilon&gt;0, \qquad \lim_n     P_\theta ( | \widehat{\theta}_n-\theta| &gt; \varepsilon ) =0.
+\]</span> La suite est fortement convergente si, pour tout <span class="math inline">\(\theta\)</span>, la convergence a lieu <span class="math inline">\(P_\theta\)</span>-presque sûrement.</p>
 </div>
 <p>On voit parfois le mot <em>consistant</em> utilisé au lieu de <em>convergent</em>. Je pense que c’est un anglicisme.</p>
 </section>
@@ -386,11 +385,12 @@ $$
 </section>
 <section id="trois-outils-sur-la-normalité-asymptotique" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="trois-outils-sur-la-normalité-asymptotique"><span class="header-section-number">2.4</span> Trois outils sur la normalité asymptotique</h2>
-<p>La normalité asymptotique n’est pas intéressante en elle-même ; l’idée est plutôt de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d’intervalle de confiance. Nous utiliserons cela de nombreuses fois dans la suite ; la normalité asymptotique sera par exemple utilisée dans la construction des intervalles de confiance. Aussi, prouver que des estimateurs sont asymptotiquement normaux est une tache importante, qui est grandement simplifiée par les deux outils suivants. On commence par rappeler le théorème centra-limite.</p>
+<p>La normalité asymptotique n’est pas intéressante en elle-même ; l’idée est plutôt de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d’intervalle de confiance. Nous le ferons souvent par la suite : la normalité asymptotique sera par exemple utilisée pour construire des intervalles de confiance. Aussi, prouver que des estimateurs sont asymptotiquement normaux est une tache importante, qui est grandement simplifiée par les deux outils suivants. On commence par rappeler le théorème centra-limite.</p>
 <div id="thm-tcl" class="theorem">
 <p><span class="theorem-title"><strong>Théorème 2.2 (Théorème Central-Limite) </strong></span>Soit <span class="math inline">\((X_i)\)</span> une suite de variables aléatoires réelles, indépendantes et identiquement distribuées. On suppose que ces variables ont une variance <span class="math inline">\(\sigma^2\)</span> finie. Alors, la variable aléatoire <span class="math display">\[ \sqrt{n}\left(\frac{1}{n}\sum_{i=1}^n X_i - \mathbb{E}[X]\right)\]</span> converge en loi vers une loi <span class="math inline">\(N(0,\sigma^2)\)</span>.</p>
 </div>
-<p>Le Lemme de Slutsky sera fréquemment utilisé pour combiner convergence en loi et convergence en probabilité.</p>
+<p>Le <a href="#sec-tcl"><span class="quarto-unresolved-ref">sec-tcl</span></a> de l’appendice revient sur différentes formes du TCL.</p>
+<p>Un autre lemme, dit « Lemme de Slutsky », sera fréquemment utilisé pour combiner convergence en loi et convergence en probabilité.</p>
 <div id="thm-slutsky" class="theorem">
 <p><span class="theorem-title"><strong>Théorème 2.3 (Lemme de Slutsky) </strong></span>Soit <span class="math inline">\((X_n)\)</span> une suite de variables aléatoire qui converge en loi vers <span class="math inline">\(X\)</span> et <span class="math inline">\((Y_n)\)</span> une suite de variables aléatoires qui converge en probabilité (ou en loi) vers une constante <span class="math inline">\(c\)</span>. Alors, le <em>couple</em> <span class="math inline">\((X_n, Y_n)\)</span> converge en loi vers <span class="math inline">\((X,c)\)</span> ; autrement dit, pour toute fonction continue bornée <span class="math inline">\(\varphi\)</span>, <span class="math display">\[\mathbb{E}[\varphi(X_n, Y_n)] \to \mathbb{E}[\varphi(X,c)].\]</span></p>
 </div>
@@ -399,18 +399,22 @@ $$
 <p>Comme <span class="math inline">\(X_n\)</span> tend en loi vers <span class="math inline">\(X\)</span> et que <span class="math inline">\(t\to \varphi(t,c)\)</span> est continue bornée, l’espérance de <span class="math inline">\(B\)</span> tend vers zéro. Il faut donc montrer que l’espérance de <span class="math inline">\(A\)</span> tend vers zéro. On fixe un <span class="math inline">\(\varepsilon&gt;0\)</span>.</p>
 <ul>
 <li>Par le <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Heine">théorème de Heine</a>, <span class="math inline">\(\varphi\)</span> est uniformément continue :&nbsp;il existe <span class="math inline">\(\delta&gt;0\)</span> tel que <span class="math inline">\(|(x,y) - (x', y')|&lt;\delta\)</span> entraîne que <span class="math inline">\(|\varphi(x,y) - \varphi(x', y')|&lt; \varepsilon/2\)</span>.</li>
-<li>On introduit l’événement <span class="math inline">\(\{|Y_n - c|\leqslant \delta\}\)</span>. Par le point précédent, sur cet événement on a <span class="math inline">\(|A| &lt; \varepsilon/2\)</span>. Hors de cet événement, on peut toujours borner <span class="math inline">\(|A|\)</span> par <span class="math inline">\(2M\)</span>. On a donc <span class="math display">\[|\mathbb{E}A| \leqslant \mathbb{P}(|Y_n - c|\leqslant \delta)\varepsilon/2 +  \mathbb{P}(|Y_n - c| &gt; \delta)2M.\]</span></li>
+<li>On introduit l’événement <span class="math inline">\(\{|Y_n - c|\leqslant \delta\}\)</span>. Par le point précédent, sur cet événement on a <span class="math inline">\(|A| &lt; \varepsilon/2\)</span>. Hors de cet événement, on peut toujours borner <span class="math inline">\(|A|\)</span> par <span class="math inline">\(2M\)</span>. Le terme <span class="math inline">\(|\mathbb{E}A|\)</span> est donc plus petit que <span class="math display">\[\mathbb{P}(|Y_n - c|\leqslant \delta)\varepsilon/2 +  \mathbb{P}(|Y_n - c| &gt; \delta)2M.\]</span></li>
 <li>Comme <span class="math inline">\(Y_n\)</span> converge en probabilité vers <span class="math inline">\(c\)</span>, lorsque <span class="math inline">\(n\)</span> est assez grand on a <span class="math inline">\(\mathbb{P}(|Y_n - c| &gt; \delta) &lt; \varepsilon/4M\)</span>.</li>
-<li>En regroupant tout ce qui a été dit, on obtient bien <span class="math inline">\(|\mathbb{E}A| \leqslant \varepsilon\)</span> dès que <span class="math inline">\(n\)</span> est assez grand, ce qui montre bien que <span class="math inline">\(\mathbb{E}A \to 0\)</span>.<br>
+<li>En regroupant tout ce qui a été dit, on obtient bien <span class="math inline">\(|\mathbb{E}A| \leqslant \varepsilon\)</span> dès que <span class="math inline">\(n\)</span> est assez grand, ce qui montre que <span class="math inline">\(\mathbb{E}A \to 0\)</span>.<br>
 </li>
 </ul>
 </div>
+<p>On termine par la « delta-méthode » :&nbsp;si une suite d’estimateurs est asymptotiquement normale, leur image par n’importe quelle fonction lisse <span class="math inline">\(g\)</span> l’est encore, et on sait calculer la moyenne et la variance limites.</p>
+<p><img src="../images/histogram.webp" class="img-fluid"></p>
 <div id="thm-deltamethod" class="theorem">
 <p><span class="theorem-title"><strong>Théorème 2.4 (Delta-méthode) </strong></span>Soit <span class="math inline">\((X_n)\)</span> une suite de variables aléatoires réelles telle que <span class="math inline">\(\sqrt{n}(X_n - \alpha)\)</span> converge en loi vers <span class="math inline">\(N(0,\sigma^2)\)</span>. Pour toute fonction <span class="math inline">\(g :&nbsp;\mathbb{R} \to \mathbb{R}\)</span> dérivable en <span class="math inline">\(\alpha\)</span> (de dérivée non nulle en <span class="math inline">\(\alpha\)</span>), on a <span class="math display">\[ \sqrt{n}(g(X_n) - g(\alpha)) \xrightarrow[n \to \infty]{\text{loi}} N(0, g'(\alpha)^2 \sigma^2).\]</span></p>
 </div>
 <p>Plus généralement, si les <span class="math inline">\(X_n\)</span> sont à valeurs dans <span class="math inline">\(\mathbb{R}^d\)</span> et que <span class="math inline">\(\sqrt{n}(X_n - \alpha) \to N(0,\Sigma)\)</span>, alors pour toute application <span class="math inline">\(g:\mathbb{R}^d \to \mathbb{R}^k\)</span>, la suite <span class="math inline">\(\sqrt{n}(g(X_n) - g(\alpha))\)</span> converge en loi vers <span class="math display">\[N(0, Dg(\alpha)\Sigma Dg(\alpha)^\top)\]</span> où <span class="math inline">\(Dg(x)\)</span> est la <a href="https://fr.wikipedia.org/wiki/Matrice_jacobienne">matrice jacobienne</a> de <span class="math inline">\(g\)</span> en <span class="math inline">\(x\)</span>.</p>
 <div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>À&nbsp;écrire.</p>
+<p><span class="proof-title"><em>Preuve</em>. </span>L’approximation au premier ordre de <span class="math inline">\(g\)</span> au point <span class="math inline">\(\alpha\)</span> dit que <span class="math inline">\(\sqrt{n}(g(X_n) - g(\alpha))\)</span> est à peu près égal à <span class="math inline">\(\sqrt{n}(X_n - \alpha)g'(\alpha)\)</span>, et comme <span class="math inline">\(g'(\alpha)\)</span> est une constante, ce terme converge bien en loi vers <span class="math inline">\(N(0,\sigma^2 g'(\alpha)^2)\)</span>. Il suffit donc de montrer que le terme de reste <span class="math inline">\(r_n\)</span> qui complète le « à peu près » de la phrase précédente tend lui-même vers 0. On va montrer qu’il tend bien vers 0 en probabilité : l’application du Lemme de Slutsky ci-dessus permettra de conclure.</p>
+<p>La <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Taylor">formule de Taylor-Lagrange</a> montre qu’il y a un nombre (aléatoire) <span class="math inline">\(\xi_n\)</span> entre <span class="math inline">\(X_n\)</span> et <span class="math inline">\(\alpha\)</span> tel que le reste <span class="math inline">\(r_n\)</span> est égal à <span class="math display">\[\sqrt{n}\frac{(X_n - \alpha)^2}{2}g''(\xi_n) = \frac{[\sqrt{n}(X_n - \alpha)]^2}{2\sqrt{n}}g''(\xi_n). \]</span></p>
+<p>On introduit l’événement <span class="math inline">\(E_n(b) = \{|\sqrt{n}(X_n - \alpha)| &lt; b\}\)</span>, où <span class="math inline">\(b\)</span> est une constante arbitraire ici. Sur cet événement, <span class="math inline">\(|X_n - \alpha|\)</span> est plus petit que <span class="math inline">\(b/\sqrt{n}\)</span> donc <span class="math inline">\(X_n\)</span> et <span class="math inline">\(\xi_n\)</span> tendent vers <span class="math inline">\(\alpha\)</span>, et donc <span class="math inline">\(g''(\xi_n)\)</span> est bornée : ainsi, sur cet événement, <span class="math inline">\(r_n\)</span> tend vers zéro. Pour tout <span class="math inline">\(\varepsilon &gt;0\)</span>, on a donc <span class="math display">\[ \limsup_n \mathbb{P}(|r_n|&gt;\varepsilon) \leqslant \limsup_n \mathbb{P}(\overline{E_n(b)})\]</span> et le terme de droite, par convergence en loi, est égale à <span class="math inline">\(\mathbb{P}(|N(0,\sigma^2)|&gt;b)\)</span>. Ce nombre peut être rendu arbitrairement petit par le choix de <span class="math inline">\(b\)</span>, la limite ci-dessus est donc nulle et on a bien <span class="math inline">\(r_n \to 0\)</span> en probabilité.</p>
 </div>
 </section>
 <section id="deux-estimateurs-importants" class="level2" data-number="2.5">
@@ -419,10 +423,12 @@ $$
 <p>La moyenne empirique est définie par <span class="math display">\[ \bar{X}_n = \frac{1}{n}\sum_{i=1}^n X_i.\]</span> Il est évident que <span class="math inline">\(\mathbb{E}[\bar{X}_n] = \mathbb{E}[X] = \mu\)</span>. Cet estimateur est donc toujours sans biais, et son risque quadratique est égal à sa variance, c’est-à-dire <span class="math inline">\(\frac{\sigma^2}{n}\)</span>.</p>
 <p>L’estimateur de la variance empirique est défini comme <span class="math display">\[\hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar{X}_n)^2.\]</span></p>
 <div id="thm-unb" class="theorem">
-<p><span class="theorem-title"><strong>Théorème 2.5 </strong></span>L’estimateur <span class="math inline">\(\hat{\sigma}_n^2\)</span> est sans biais.</p>
+<p><span class="theorem-title"><strong>Théorème 2.5 </strong></span>Si les <span class="math inline">\(X_i\)</span> sont indépendants (ou simplement décorrélés), l’estimateur <span class="math inline">\(\hat{\sigma}_n^2\)</span> est sans biais.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>À écrire.</p>
+<p><span class="proof-title"><em>Preuve</em>. </span>Il suffit de calculer l’espérance de <span class="math inline">\((n-1)\hat{\sigma}^2_n\)</span>, ce qui revient à calculer la somme des <span class="math inline">\(\mathbb{E}[X_i^2 - 2X_i \bar{X}_n + \bar{X}_n^2]\)</span>. Il y a trois éléments dans cette expression :&nbsp;<span class="math inline">\(\mathbb{E}[X_i^2], -2\mathbb{E}[X_i \bar{X}_n]\)</span> et <span class="math inline">\(\mathbb{E}[\bar{X}_n^2]\)</span>.</p>
+<p>Le premier terme est égal à <span class="math inline">\(\sigma^2\)</span>. Le second terme vaut <span class="math inline">\(-2\sum_j \mathbb{E}[X_i X_j]/n\)</span>, et tous les termes avec <span class="math inline">\(i\neq j\)</span> sont nuls car les <span class="math inline">\(X_k\)</span> sont décorrélés. Il ne reste que le terme <span class="math inline">\(j=i\)</span>, à savoir <span class="math inline">\(-2 \sigma^2 / n\)</span>. Enfin, <span class="math inline">\(\mathbb{E}[\bar{X}_n^2]\)</span> est la variance de <span class="math inline">\(\bar{X}_n\)</span>, c’est-à-dire <span class="math inline">\(\sigma^2/n\)</span>.</p>
+<p>En additionnant tout, on obtient <span class="math inline">\(\sigma^2 - \sigma^2 / n\)</span> et comme il y avait <span class="math inline">\(n\)</span> termes dans la somme initiale, on obtient <span class="math inline">\((n-1)\mathbb{E}[\hat{\sigma}_n^2] = n\sigma^2 - \sigma^2\)</span> et donc <span class="math inline">\(\mathbb{E}[\hat{\sigma}_n^2] = \sigma^2\)</span>.</p>
 </div>
 
 
@@ -449,121 +455,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

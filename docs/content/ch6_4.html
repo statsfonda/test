@@ -37,12 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../utils/styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -91,17 +89,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/logoUP.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Statistiques Fondamentales</a> 
-        <div class="sidebar-tools-main tools-wide">
+        <div class="sidebar-tools-main">
     <a href="https://github.com/statsfonda/site" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="../Statistiques-Fondamentales.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -326,6 +320,7 @@ $$
 $$
 </p></div>
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Principe d’entropie maximale</span></h1>
@@ -353,16 +348,16 @@ $$
 <div id="thm-boltzmann-gibbs" class="theorem">
 <p><span class="theorem-title"><strong>Théorème 17.1 (Principe d’entropie maximale de Boltzmann-Gibbs) </strong></span>Soit <span class="math inline">\(T:\mathbb{R}^d \to \mathbb{R}^p\)</span>. Les densités de probabilité <span class="math inline">\(f\)</span> sur <span class="math inline">\(\mathbb{R}^n\)</span> qui maximisent l’entropie <span class="math inline">\(-\int f(x) \ln f(x)\nu(dx)\)</span> sous la containte <span class="math inline">\(E_{X\sim f}[T(X)]=c\)</span>, si elles existent, sont exactement de la forme <span class="math inline">\(e^{\langle \theta, T(x)\rangle}/Z(\theta)\)</span>.</p>
 </div>
-<p>Le principe d’entropie de Boltzmann-Gibbs s’applique aussi aux lois empiriques et permet de retrouver exactement l’EMV. En effet, supposons que dans une expérience statistique, on n’aie pas accès à l’échantillon <span class="math inline">\(x_1, \dotsc, x_n\)</span>, mais seulement à des « moyennes d’observables » : <span class="math display">\[ \frac{1}{n}\sum_{i=1}^n T(x_i) = \bar{T}_n.\]</span> Il est alors naturel de chercher <span class="math inline">\(P\)</span> parmi toutes les lois qui vérifient la contrainte <span class="math inline">\(E_{X\sim P}[T(X)] = \bar{T}_n\)</span>, et <em>rien de plus</em>. Le principe de Boltzmann-Gibbs dit que les lois qui maximisent l’entropie sous cette contrainte sont exactement les lois exponentielles associées à <span class="math inline">\(T\)</span>, et pour peu que le modèle soit identifiable (cf <a href="ch6_0.html#thm-iden-expo">Théorème&nbsp;<span>13.1</span></a>), il n’y a qu’un seul paramètre qui garantit que <span class="math inline">\(E_\theta[T(X)] = \bar{T}_n\)</span>. Ce paramètre est évidemment <span class="math inline">\(\emv\)</span>.</p>
+<p>Le principe d’entropie de Boltzmann-Gibbs s’applique aussi aux lois empiriques et permet de retrouver exactement l’EMV. En effet, supposons que dans une expérience statistique, on n’aie pas accès à l’échantillon <span class="math inline">\(x_1, \dotsc, x_n\)</span>, mais seulement à des « moyennes d’observables » : <span class="math display">\[ \frac{1}{n}\sum_{i=1}^n T(x_i) = \bar{T}_n.\]</span> Il est alors naturel de chercher <span class="math inline">\(P\)</span> parmi toutes les lois qui vérifient la contrainte <span class="math inline">\(E_{X\sim P}[T(X)] = \bar{T}_n\)</span>, et <em>rien de plus</em>. Le principe de Boltzmann-Gibbs dit que les lois qui maximisent l’entropie sous cette contrainte sont exactement les lois exponentielles associées à <span class="math inline">\(T\)</span>, et pour peu que le modèle soit identifiable (cf <a href="#thm-iden-expo">Théorème&nbsp;<span class="quarto-unresolved-ref">thm-iden-expo</span></a>), il n’y a qu’un seul paramètre qui garantit que <span class="math inline">\(E_\theta[T(X)] = \bar{T}_n\)</span>. Ce paramètre est évidemment <span class="math inline">\(\emv\)</span>.</p>
 <div id="exm-test" class="theorem example">
 <p><span class="theorem-title"><strong>Exemple 17.1 (Loi gaussienne) </strong></span>Quelle est la densité <span class="math inline">\(f\)</span> qui maximise l’entropie, sous la contrainte d’être centrée et réduite ? Ici, cette contrainte s’écrit <span class="math inline">\(E[X] = 0\)</span> et <span class="math inline">\(E[X^2]=1\)</span>, donc le moment associé est <span class="math inline">\(T(x) = (x, x^2)^\top\)</span>. Le théorème dit que cette loi s’écrit sous la forme <span class="math inline">\(e^{-\alpha x - \beta x^2} / Z(\alpha, \beta)\)</span>, où <span class="math inline">\(\alpha,\beta\)</span> sont réels. En réalité, <span class="math inline">\(\beta\)</span> doit être positif sinon ce n’est pas une loi de probabilité. De plus, il est facile de voir que si <span class="math inline">\(\alpha\)</span> n’est pas nul, alors l’espérance n’est pas nulle. La loi d’entropie maximale est donc proportionnelle à <span class="math inline">\(e^{-\beta x^2}\)</span> :&nbsp;il s’agit évidemment d’une loi gaussienne, et le seul paramètre qui garantit que la variance est 1 est donné par <span class="math inline">\(\beta = 1/2\)</span>.</p>
 </div>
 </section>
 <section id="démonstration" class="level2" data-number="17.2">
 <h2 data-number="17.2" class="anchored" data-anchor-id="démonstration"><span class="header-section-number">17.2</span> Démonstration</h2>
-<p>La démonstration générale de <a href="#thm-boltzmann-gibbs">Théorème&nbsp;<span>17.1</span></a> nécessite des outils de calcul des variations, puisqu’il s’agit d’un problème s’optimisation en dimension infinie. Ce n’est pas difficile formellement, mais garantir l’existence d’un maximiseur peut s’avérer technique<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. En revanche, l’esprit de la preuve est très simple :&nbsp;on écrit le lagrangien du problème contraint. Lorsque l’espace d’états <span class="math inline">\(\mathcal{X}\)</span> est fini, c’est très simple. On supposera donc que <span class="math inline">\(\mathcal{X} = \{1, \dotsc, n\}\)</span>, et on cherche une loi de probabilité sur <span class="math inline">\(\mathcal{X}\)</span>, disons <span class="math inline">\(p=(p_1, \dotsc, p_n)\)</span>, qui vérifie la contrainte de moments <span class="math inline">\(m(p)=0\)</span>, où <span class="math display">\[ m(p) = \sum_{i=1}^n p_i T(i) - c\]</span> et qui maximise l’entropie <span class="math inline">\(H(p)\)</span>, où <span class="math display">\[H(p)= -\sum_{i=1}^n p_i \ln p_i.\]</span> Le fait que <span class="math inline">\(p\)</span> soit une loi de probabilité se traduit en pratique par des contraintes supplémentaires, à savoir <span class="math inline">\(s(p)=0\)</span> où <span class="math display">\[ -1 + \sum_{i=1}^n p_i = 0. \]</span> Il s’agit d’un problème d’optimisation sous contraintes dans<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="math inline">\([0,1]^n\)</span> :&nbsp; <span id="eq-bgprb"><span class="math display">\[ \begin{cases} \max_{p\in [0,1]^n} H(p) \\
+<p>La démonstration générale de <a href="#thm-boltzmann-gibbs">Théorème&nbsp;<span class="quarto-unresolved-ref">thm-boltzmann-gibbs</span></a> nécessite des outils de calcul des variations, puisqu’il s’agit d’un problème s’optimisation en dimension infinie. Ce n’est pas difficile formellement, mais garantir l’existence d’un maximiseur peut s’avérer technique<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. En revanche, l’esprit de la preuve est très simple :&nbsp;on écrit le lagrangien du problème contraint. Lorsque l’espace d’états <span class="math inline">\(\mathcal{X}\)</span> est fini, c’est très simple. On supposera donc que <span class="math inline">\(\mathcal{X} = \{1, \dotsc, n\}\)</span>, et on cherche une loi de probabilité sur <span class="math inline">\(\mathcal{X}\)</span>, disons <span class="math inline">\(p=(p_1, \dotsc, p_n)\)</span>, qui vérifie la contrainte de moments <span class="math inline">\(m(p)=0\)</span>, où <span class="math display">\[ m(p) = \sum_{i=1}^n p_i T(i) - c\]</span> et qui maximise l’entropie <span class="math inline">\(H(p)\)</span>, où <span class="math display">\[H(p)= -\sum_{i=1}^n p_i \ln p_i.\]</span> Le fait que <span class="math inline">\(p\)</span> soit une loi de probabilité se traduit en pratique par des contraintes supplémentaires, à savoir <span class="math inline">\(s(p)=0\)</span> où <span class="math display">\[ -1 + \sum_{i=1}^n p_i = 0. \]</span> Il s’agit d’un problème d’optimisation sous contraintes dans<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="math inline">\([0,1]^n\)</span> :&nbsp; <span id="eq-bgprb"><span class="math display">\[ \begin{cases} \max_{p\in [0,1]^n} H(p) \\
 m(p)=0\\
-s(p)=0\end{cases} \tag{17.1}\]</span></span> Les deux contraintes sont linéaires et leur intersection n’est évidemment pas vide ; de plus, la fonction <span class="math inline">\(H\)</span> est concave. En effet, sa matrice hessienne au point <span class="math inline">\(p\)</span> est égale à <span class="math inline">\(\mathrm{diag}(-1/p)\)</span>, qui est bien définie négative. Le problème <a href="#eq-bgprb">Équation&nbsp;<span>17.1</span></a> possède donc une solution. Pour la trouver, on utilise les outils classiques de l’optimisation sous contraintes. Par facilité, j’exclurai les cas où ce maximum est atteint au bord du domaine.</p>
+s(p)=0\end{cases} \tag{17.1}\]</span></span> Les deux contraintes sont linéaires et leur intersection n’est évidemment pas vide ; de plus, la fonction <span class="math inline">\(H\)</span> est concave. En effet, sa matrice hessienne au point <span class="math inline">\(p\)</span> est égale à <span class="math inline">\(\mathrm{diag}(-1/p)\)</span>, qui est bien définie négative. Le problème <a href="#eq-bgprb">Équation&nbsp;<span class="quarto-unresolved-ref">eq-bgprb</span></a> possède donc une solution. Pour la trouver, on utilise les outils classiques de l’optimisation sous contraintes. Par facilité, j’exclurai les cas où ce maximum est atteint au bord du domaine.</p>
 <p>Le Lagrangien de ce problème s’écrit <span class="math display">\[\mathscr{L}(p, \lambda, \mu) = H(p) + \lambda m(p) + \mu s(p). \]</span> Les conditions du premier ordre (conditions KKT) pour l’existence d’un minimiseur local s’écrivent alors <span class="math inline">\(\nabla \mathscr{L}=0\)</span>, soit <span class="math inline">\(\nabla_p \mathscr{L}=0, \nabla_\lambda \mathscr{L}=0\)</span> et <span class="math inline">\(\nabla_\mu \mathscr{L}=0\)</span>. Le première identité se traduit par les équations suivantes :&nbsp; <span class="math display">\[ \partial_{p_i}\mathscr{L} = -(\ln(p_i) + 1) + \lambda T(i) + \mu = 0, \]</span> soit <span class="math inline">\(p_i = e^{-\lambda T(i) + \mu-1}\)</span> pour un certain <span class="math inline">\(\lambda\)</span> et un certain <span class="math inline">\(\mu\)</span>. Comme les <span class="math inline">\(p_i\)</span> somment à <span class="math inline">\(1\)</span>, le nombre <span class="math inline">\(\mu\)</span> est immédiatement déterminé par l’équation <span class="math inline">\(e^{\mu-1} = \sum_{i=1}^n e^{-\lambda T(i)}\)</span>. Les points critiques du système sont donc exactement <span class="math display">\[\left(\frac{e^{-\lambda T(i)}}{Z(\lambda)}, \dotsc, \frac{e^{-\lambda T(i)}}{Z(\lambda)}\right)\]</span> où <span class="math inline">\(Z(\lambda) = \sum_{i=1}^n e^{-\lambda T(i)}\)</span>. <strong>Autrement dit, s’il y a une solution au problème, il s’agit forcément d’une loi dans le modèle exponentiel associé à <span class="math inline">\(T\)</span></strong>. Maintenant, la contrainte doit être réalisée, c’est-à-dire que l’on doit trouver un <span class="math inline">\(\lambda\)</span> qui vérifie <span class="math display">\[E_\lambda [T(X)] = c.\]</span> L’existence d’un tel <span class="math inline">\(\lambda\)</span> n’est pas forcément vérifiée<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Pour qu’il y ait une solution et une seule, on peut par exemple faire des hypothèses sur <span class="math inline">\(T\)</span> qui garantissent que le modèle est identifiable, de sorte que <span class="math inline">\(E_\lambda [T(X)]\)</span> est un difféormorphisme.</p>
 
 
@@ -397,121 +392,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

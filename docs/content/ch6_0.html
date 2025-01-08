@@ -37,12 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../utils/styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -91,17 +89,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/logoUP.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Statistiques Fondamentales</a> 
-        <div class="sidebar-tools-main tools-wide">
+        <div class="sidebar-tools-main">
     <a href="https://github.com/statsfonda/site" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="../Statistiques-Fondamentales.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -329,6 +323,7 @@ $$
 $$
 </p></div>
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Modèles exponentiels</span></h1>
@@ -387,8 +382,8 @@ $$
 <p><span class="proof-title"><em>Preuve</em>. </span></p>
 <ol type="1">
 <li><p>Prenons un petit <span class="math inline">\(\delta\)</span> tel que <span class="math inline">\(\theta + \delta\)</span> et <span class="math inline">\(\theta - \delta\)</span> sont dans <span class="math inline">\(\Theta\)</span>. Comme <span class="math inline">\(Z(\theta \pm \delta) = \int e^{\langle \theta, T(x)\rangle \pm \langle \delta, T(X)\rangle}\nu(dx)\)</span> et que <span class="math inline">\(e^{|\langle \delta, T(x)\rangle|}\leqslant e^{\langle \delta, T(x)\rangle} + e^{\langle -\delta, T(x)\rangle}\)</span>, on en déduit que <span class="math display">\[\int e^{\langle \theta, T(x)\rangle + |\langle \delta, T(x)\rangle|}\nu(dx)&lt;\infty. \]</span> Le théorème d’interversion série-intégrale à termes positif montre que ce terme est aussi égal à <span class="math display">\[ \sum_{n=0}^\infty \int e^{\langle \theta, T(x)\rangle}\frac{|\langle \delta, T(x)\rangle|^n}{n!}\nu(dx).\]</span> Tous les termes de cette somme sont donc finis, ce qui signifie précisément que <span class="math inline">\(E_\theta[|\langle \delta, T(X)\rangle|^n]&lt;\infty\)</span> pour tout <span class="math inline">\(n\)</span>. Ceci étant valable pour tout <span class="math inline">\(\delta\)</span> dans une boule autour de <span class="math inline">\(\theta\)</span>, il est immédiat d’en déduire que <span class="math inline">\(E_\theta[|\langle x, T(X)\rangle|^n]\)</span> est fini pour tout <span class="math inline">\(n\)</span> et pour tout <span class="math inline">\(x\)</span>. En prenant <span class="math inline">\(x = \delta_i\)</span>, on voit donc que les coordonnées de <span class="math inline">\(T\)</span> ont des moments finis à tous les ordres, et donc que <span class="math inline">\(T\)</span> possède des moments finis à tous les ordres au sens où <span class="math inline">\(E_\theta[|T(X)|^n]&lt;\infty\)</span>.</p></li>
-<li><p>On a <span class="math inline">\(\nabla \ln Z(\theta) = \nabla Z(\theta)/Z(\theta)\)</span>. Formellement, <span class="math inline">\(\nabla Z(\theta)\)</span> est donc égal à <span class="math display">\[\nabla \int e^{\langle \theta, T\rangle} = \int \nabla e^{\langle \theta, T\rangle} = \int T e^{\langle \theta, T\rangle}. \]</span> Il est alors clair que <span class="math inline">\(\nabla \ln Z(\theta) = \int p_\theta T\)</span>. Pour justifier la dérivation sous le signe intégral, notons <span class="math inline">\(f(\theta, x) = e^{\langle \theta, T(x)\rangle}\)</span>. Elle est infiniment différentiable en <span class="math inline">\(\theta\)</span> et son intégrale est finie dès que <span class="math inline">\(\theta\)</span> est dans <span class="math inline">\(\Theta\)</span>. Son gradient en <span class="math inline">\(\theta\)</span> est égal à <span class="math inline">\(e^{\langle \theta, T(x)\rangle}T(x)\)</span> qui est d’intégrale finie d’après le premier point. En regardant bien la démonstration, on constate également qu’il y a une constante <span class="math inline">\(c\)</span> telle que pour tout <span class="math inline">\(\delta\)</span> dans un voisinage de <span class="math inline">\(\theta\)</span>, on a <span class="math inline">\(E_{\theta + \delta}[|T(X)|]&lt;c\)</span>. Tout cela permet d’appliquer le théorème de dérivation sous le signe intégral et la formule <a href="#eq-grad-exp">Équation&nbsp;<span>13.1</span></a>.</p></li>
-<li><p>Pour la formule <a href="#eq-hess-exp">Équation&nbsp;<span>13.2</span></a>, c’est la même chose :&nbsp;<span class="math inline">\(\nabla^2 \ln Z(\theta) = \nabla \frac{\nabla Z(\theta)}{Z(\theta)}\)</span>. Les règles de dérivation des produits disent alors que ce terme est égal à <span class="math display">\[\frac{Z(\theta)\nabla^2 Z(\theta) - \nabla Z(\theta)\nabla Z(\theta)^\top}{Z(\theta)^2}. \]</span> Il suffit donc de calculer <span class="math inline">\(\nabla^2 Z(\theta)\)</span>, qui par un argument de dérivation sous l’intégrale similaire au précédent, est égal à <span class="math display">\[ \int e^{\langle \theta, T(x)\rangle}T(x)T(x)^\top \nu(dx).\]</span> La formule <a href="#eq-hess-exp">Équation&nbsp;<span>13.2</span></a> découle alors de la définition de la covariance.</p></li>
+<li><p>On a <span class="math inline">\(\nabla \ln Z(\theta) = \nabla Z(\theta)/Z(\theta)\)</span>. Formellement, <span class="math inline">\(\nabla Z(\theta)\)</span> est donc égal à <span class="math display">\[\nabla \int e^{\langle \theta, T\rangle} = \int \nabla e^{\langle \theta, T\rangle} = \int T e^{\langle \theta, T\rangle}. \]</span> Il est alors clair que <span class="math inline">\(\nabla \ln Z(\theta) = \int p_\theta T\)</span>. Pour justifier la dérivation sous le signe intégral, notons <span class="math inline">\(f(\theta, x) = e^{\langle \theta, T(x)\rangle}\)</span>. Elle est infiniment différentiable en <span class="math inline">\(\theta\)</span> et son intégrale est finie dès que <span class="math inline">\(\theta\)</span> est dans <span class="math inline">\(\Theta\)</span>. Son gradient en <span class="math inline">\(\theta\)</span> est égal à <span class="math inline">\(e^{\langle \theta, T(x)\rangle}T(x)\)</span> qui est d’intégrale finie d’après le premier point. En regardant bien la démonstration, on constate également qu’il y a une constante <span class="math inline">\(c\)</span> telle que pour tout <span class="math inline">\(\delta\)</span> dans un voisinage de <span class="math inline">\(\theta\)</span>, on a <span class="math inline">\(E_{\theta + \delta}[|T(X)|]&lt;c\)</span>. Tout cela permet d’appliquer le théorème de dérivation sous le signe intégral et la formule <a href="#eq-grad-exp">Équation&nbsp;<span class="quarto-unresolved-ref">eq-grad-exp</span></a>.</p></li>
+<li><p>Pour la formule <a href="#eq-hess-exp">Équation&nbsp;<span class="quarto-unresolved-ref">eq-hess-exp</span></a>, c’est la même chose :&nbsp;<span class="math inline">\(\nabla^2 \ln Z(\theta) = \nabla \frac{\nabla Z(\theta)}{Z(\theta)}\)</span>. Les règles de dérivation des produits disent alors que ce terme est égal à <span class="math display">\[\frac{Z(\theta)\nabla^2 Z(\theta) - \nabla Z(\theta)\nabla Z(\theta)^\top}{Z(\theta)^2}. \]</span> Il suffit donc de calculer <span class="math inline">\(\nabla^2 Z(\theta)\)</span>, qui par un argument de dérivation sous l’intégrale similaire au précédent, est égal à <span class="math display">\[ \int e^{\langle \theta, T(x)\rangle}T(x)T(x)^\top \nu(dx).\]</span> La formule <a href="#eq-hess-exp">Équation&nbsp;<span class="quarto-unresolved-ref">eq-hess-exp</span></a> découle alors de la définition de la covariance.</p></li>
 </ol>
 </div>
 </section>
@@ -398,7 +393,7 @@ $$
 <p><span class="theorem-title"><strong>Théorème 13.1 </strong></span>Dans un modèle exponentiel, les points suivants sont équivalents.</p>
 <ol type="i">
 <li>Le modèle est identifiable.</li>
-<li>La matrice hessienne de la fonction de log-partition (<a href="#eq-hess-exp">Équation&nbsp;<span>13.2</span></a>) est inversible en tout <span class="math inline">\(\theta\)</span>.</li>
+<li>La matrice hessienne de la fonction de log-partition (<a href="#eq-hess-exp">Équation&nbsp;<span class="quarto-unresolved-ref">eq-hess-exp</span></a>) est inversible en tout <span class="math inline">\(\theta\)</span>.</li>
 <li><span class="math inline">\(\nabla \ln Z(\theta)\)</span> est un difféomorphisme.</li>
 </ol>
 </div>
@@ -406,9 +401,9 @@ $$
 <p><span class="proof-title"><em>Preuve</em>. </span>Démontrons d’abord l’équivalence des deux premiers points.</p>
 <p>La matrice hessienne de <span class="math inline">\(\ln Z_\theta\)</span> est égale à <span class="math inline">\(\mathrm{Var}_\theta(T(X))\)</span>, donc elle est toujours positive. Si elle n’est pas inversible, alors elle n’est pas définie positive et il existe un <span class="math inline">\(\mu\)</span> tel que <span class="math inline">\(\mu^\top \mathrm{Var}_\theta(T) \mu\)</span> vaut zéro. Or, ce terme est aussi égal à <span class="math inline">\(\mathrm{Var}_\theta(\langle \mu, T\rangle)\)</span>. Cela impliquerait que la variable aléatoire <span class="math inline">\(\langle \mu, T(X)\rangle\)</span> soit constante <span class="math inline">\(P_\theta\)</span>-presque sûrement, disons égale à un certain <span class="math inline">\(\alpha\)</span>, et donc que <span class="math inline">\(\nu\)</span>-presque sûrement, <span class="math inline">\(\langle \mu, T(x)\rangle = \alpha\)</span>. Mais alors, <span class="math inline">\(p_{\theta + \mu}(x)\)</span> peut s’écrire <span class="math display">\[\frac{e^{\langle\theta + \mu, T(x)\rangle}}{Z(\theta + \mu)} = \frac{e^{\langle\theta, T(x)\rangle}e^{\alpha}}{Z(\theta + \mu)}\]</span> c’est-à-dire <span class="math display">\[p_\theta(x)\times \frac{e^\alpha Z(\theta)}{Z(\theta + \mu)}.\]</span> Or, comme <span class="math inline">\(p_\theta\)</span> est une densité de probabilité, son intégrale vaut 1 :&nbsp;la constante <span class="math inline">\(e^\alpha Z(\theta) / Z(\theta + \mu)\)</span> vaut donc 1 et l’on a montré que <span class="math inline">\(p_{\theta + \mu}\)</span> et <span class="math inline">\(p_\theta\)</span> sont égales partout. Le modèle n’est donc pas identifiable.</p>
 <p>Pour l’autre sens, il suffit de reprendre toutes ces implications à l’envers :&nbsp;si <span class="math inline">\(p_{\theta + \mu} = p_\theta\)</span>, alors pour <span class="math inline">\(\nu\)</span>-presque tout <span class="math inline">\(x\)</span> on aura <span class="math inline">\(\langle \theta + \mu, T(x)\rangle = \langle \theta, T(x)\rangle\)</span>, et donc <span class="math inline">\(\langle \mu, T(x)\rangle = 0\)</span>, et in fine <span class="math inline">\(\mu^\top \mathrm{Var}_\theta(T(X))\mu = 0\)</span>.</p>
-<p>Comme iii) entraîne ii), il suffit donc de montrer que i) et ii) entraînent iii). Nous allons montrer la contraposée :&nbsp;si iii) n’est pas vrai et que ii) n’est pas vrai, c’est fini. On peut donc supposer que iii) n’est pas vrai et que ii) est vrai, et il faut montrer que i) est faux. Le point ii) entraîne que <span class="math inline">\(\nabla \ln Z\)</span> est localement injective (théorème d’inversion locale), donc si cette application n’était pas un difféomorphisme, cela voudrait dire qu’elle n’est pas injective et qu’il y aurait donc <span class="math inline">\(\theta\neq\mu\)</span> tels que <span class="math inline">\(\nabla \ln Z(\theta) = \nabla \ln Z(\mu)\)</span>. Or, un calcul montre que la divergence de Kullback-Leibler (<a href="ch4_1.html#def-dkl">Définition&nbsp;<span>7.3</span></a>) <em>symétrisée</em>, à savoir <span class="math inline">\(\dkl(P_\theta \mid P_\mu) + \dkl(P_\mu \mid P_\theta)\)</span>, est égale à <span id="eq-dkl-expo-formule"><span class="math display">\[\langle \nabla \ln Z(\theta) - \nabla \ln Z(\mu), \theta - \mu \rangle  \tag{13.3}\]</span></span> et ceci vaut donc zéro : c’est donc que chacune des deux <span class="math inline">\(\dkl\)</span> vaut zéro, puisque ces deux termes sont positifs. On en déduit alors que <span class="math inline">\(P_\theta = P_\mu\)</span>, et donc le modèle n’est pas identifiable.</p>
+<p>Comme iii) entraîne ii), il suffit donc de montrer que i) et ii) entraînent iii). Nous allons montrer la contraposée :&nbsp;si iii) n’est pas vrai et que ii) n’est pas vrai, c’est fini. On peut donc supposer que iii) n’est pas vrai et que ii) est vrai, et il faut montrer que i) est faux. Le point ii) entraîne que <span class="math inline">\(\nabla \ln Z\)</span> est localement injective (théorème d’inversion locale), donc si cette application n’était pas un difféomorphisme, cela voudrait dire qu’elle n’est pas injective et qu’il y aurait donc <span class="math inline">\(\theta\neq\mu\)</span> tels que <span class="math inline">\(\nabla \ln Z(\theta) = \nabla \ln Z(\mu)\)</span>. Or, un calcul montre que la divergence de Kullback-Leibler (<a href="#def-dkl">Définition&nbsp;<span class="quarto-unresolved-ref">def-dkl</span></a>) <em>symétrisée</em>, à savoir <span class="math inline">\(\dkl(P_\theta \mid P_\mu) + \dkl(P_\mu \mid P_\theta)\)</span>, est égale à <span id="eq-dkl-expo-formule"><span class="math display">\[\langle \nabla \ln Z(\theta) - \nabla \ln Z(\mu), \theta - \mu \rangle  \tag{13.3}\]</span></span> et ceci vaut donc zéro : c’est donc que chacune des deux <span class="math inline">\(\dkl\)</span> vaut zéro, puisque ces deux termes sont positifs. On en déduit alors que <span class="math inline">\(P_\theta = P_\mu\)</span>, et donc le modèle n’est pas identifiable.</p>
 </div>
-<p><em>Preuve de <a href="#eq-dkl-expo-formule">Équation&nbsp;<span>13.3</span></a>.</em> En utilisant seulement les définitions, <span class="math inline">\(\dkl(P_\theta \mid P_\mu)\)</span> est égal à <span class="math display">\[\int p_\theta(x)(\langle \theta, T(x)\rangle - \langle \mu, T(x)\rangle) \nu(dx) - \ln Z(\theta) + \ln Z(\mu). \]</span> Le premier terme est égal à <span class="math inline">\(\langle \theta - \mu, E_\theta[T]\rangle\)</span>. La somme <span class="math inline">\(\dkl(P_\theta \mid P_\mu) + \dkl(P_\mu \mid P_\theta)\)</span> se simplifie et se factorise donc en <span class="math display">\[\langle \theta - \mu, E_\theta[T] - E_\mu[T]\rangle \]</span> et l’identité en découle puisque <span class="math inline">\(\nabla \ln Z(\theta) = E_\theta[T]\)</span>.</p>
+<p><em>Preuve de <a href="#eq-dkl-expo-formule">Équation&nbsp;<span class="quarto-unresolved-ref">eq-dkl-expo-formule</span></a>.</em> En utilisant seulement les définitions, <span class="math inline">\(\dkl(P_\theta \mid P_\mu)\)</span> est égal à <span class="math display">\[\int p_\theta(x)(\langle \theta, T(x)\rangle - \langle \mu, T(x)\rangle) \nu(dx) - \ln Z(\theta) + \ln Z(\mu). \]</span> Le premier terme est égal à <span class="math inline">\(\langle \theta - \mu, E_\theta[T]\rangle\)</span>. La somme <span class="math inline">\(\dkl(P_\theta \mid P_\mu) + \dkl(P_\mu \mid P_\theta)\)</span> se simplifie et se factorise donc en <span class="math display">\[\langle \theta - \mu, E_\theta[T] - E_\mu[T]\rangle \]</span> et l’identité en découle puisque <span class="math inline">\(\nabla \ln Z(\theta) = E_\theta[T]\)</span>.</p>
 <!--
 ## Statistiques exhaustives
 
@@ -446,121 +441,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
