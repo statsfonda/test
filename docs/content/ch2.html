@@ -362,7 +362,7 @@ $$
 <div class="proof">
 <p><span class="proof-title"><em>Preuve</em>. </span>En notant <span class="math inline">\(x\)</span> l’espérance de <span class="math inline">\(\hat{\theta}\)</span>, on voit que le risque quadratique est égal à <span class="math inline">\(\mathbb{E}[|\hat{\theta} - x - (\theta - x)|^2]\)</span>. Le carré se développe en trois termes :&nbsp;le premier, <span class="math inline">\(\mathbb{E}[|\hat{\theta} - x|^2]\)</span>, est la variance de <span class="math inline">\(\hat{\theta}\)</span>. Le second, <span class="math inline">\(-2\mathbb{E}[(\hat{\theta} - x)(\theta - x)]\)</span>, est égal à <span class="math inline">\(-2(\theta - x)\mathbb{E}[\hat{\theta} - x]\)</span>, c’est-à-dire 0. Le dernier, <span class="math inline">\(\mathbb{E}[(\theta - x)^2]\)</span>, est égal à <span class="math inline">\((\theta - x)^2\)</span>, c’est-à-dire <span class="math inline">\((\theta - \mathbb{E}[\hat{\theta}])^2\)</span> :&nbsp;c’est bien le carré du biais.</p>
 </div>
-<p><img src="../images/bias-variance.webp" class="img-fluid"></p>
+<p><img src="../images/bias-variance.png" class="img-fluid"></p>
 </section>
 <section id="convergence" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="convergence"><span class="header-section-number">2.2</span> Convergence</h2>
@@ -406,7 +406,7 @@ $$
 </ul>
 </div>
 <p>On termine par la « delta-méthode » :&nbsp;si une suite d’estimateurs est asymptotiquement normale, leur image par n’importe quelle fonction lisse <span class="math inline">\(g\)</span> l’est encore, et on sait calculer la moyenne et la variance limites.</p>
-<p><img src="../images/histogram.webp" class="img-fluid"></p>
+<p><img src="../images/histogram.png" class="img-fluid"></p>
 <div id="thm-deltamethod" class="theorem">
 <p><span class="theorem-title"><strong>Théorème 2.4 (Delta-méthode) </strong></span>Soit <span class="math inline">\((X_n)\)</span> une suite de variables aléatoires réelles telle que <span class="math inline">\(\sqrt{n}(X_n - \alpha)\)</span> converge en loi vers <span class="math inline">\(N(0,\sigma^2)\)</span>. Pour toute fonction <span class="math inline">\(g :&nbsp;\mathbb{R} \to \mathbb{R}\)</span> dérivable en <span class="math inline">\(\alpha\)</span> (de dérivée non nulle en <span class="math inline">\(\alpha\)</span>), on a <span class="math display">\[ \sqrt{n}(g(X_n) - g(\alpha)) \xrightarrow[n \to \infty]{\text{loi}} N(0, g'(\alpha)^2 \sigma^2).\]</span></p>
 </div>
