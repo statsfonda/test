@@ -33,7 +33,7 @@ En notant $x$ l'espérance de $\hat{\theta}$, on voit que le risque quadratique 
 :::
 
 
-![](/images/bias-variance.webp)
+![](/images/bias-variance.png)
 
 
 ## Convergence 
@@ -116,7 +116,7 @@ $$\mathbb{P}(|Y_n - c|\leqslant \delta)\varepsilon/2 +  \mathbb{P}(|Y_n - c| > \
 
 On termine par la « delta-méthode » : si une suite d'estimateurs est asymptotiquement normale, leur image par n'importe quelle fonction lisse $g$ l'est encore, et on sait calculer la moyenne et la variance limites. 
 
-![](/images/histogram.webp)
+![](/images/histogram.png)
 
 :::{#thm-deltamethod}
 
