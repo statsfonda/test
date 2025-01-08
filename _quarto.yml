@@ -4,9 +4,6 @@ project:
 
 lang: fr
 
-website:
-  favicon: images/logoUP.png
-
 book:
   title: "Statistiques Fondamentales"
   author: "Simon Coste"
@@ -45,9 +42,7 @@ book:
      - content/ref.qmd
      - content/app1.qmd
      - content/app2.qmd
-  sidebar:
-    #style: docked
-    logo: "images/logoUP.png"
+
 
 bibliography: utils/references.bib
 
@@ -60,6 +55,8 @@ format:
     include-before-body:
       - utils/macros
       - utils/katex-auto-render.html
+    toc: true
+    sidebar: true
 
 
 

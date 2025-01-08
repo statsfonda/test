@@ -1,28 +1,9 @@
-/* css styles */
-body {
-  text-align: center;
-  margin: 0 auto;
-  padding-top: 10em;
-}
-.navbar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 10;
-}
+
 
 h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
-.content {
-  text-align: justify;
-  display: inline-block;
-  max-width: 800px;
-  font-size: 1.1em;
-  margin-top: 10em;
-}
 
 .theorem {
     background-color: rgb(248, 239, 239);
