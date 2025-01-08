@@ -29,6 +29,10 @@ $$
 $$
 :::
 
+:::{.proof}
+En notant $x$ l'espérance de $\hat{\theta}$, on voit que le risque quadratique est égal à $\mathbb{E}[|\hat{\theta} - x - (\theta - x)|^2]$. Le carré se développe en trois termes : le premier, $\mathbb{E}[|\hat{\theta} - x|^2]$, est la variance de $\hat{\theta}$. Le second, $-2\mathbb{E}[(\hat{\theta} - x)(\theta - x)]$, est égal à $-2(\theta - x)\mathbb{E}[\hat{\theta} - x]$, c'est-à-dire 0. Le dernier, $\mathbb{E}[(\theta - x)^2]$, est égal à $(\theta - x)^2$, c'est-à-dire $(\theta - \mathbb{E}[\hat{\theta}])^2$ : c'est bien le carré du biais. 
+:::
+
 
 ## Convergence 
 
@@ -145,10 +149,14 @@ $$\hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar{X}_n)^2.$$
 
 :::{#thm-unb}
 
-L'estimateur $\hat{\sigma}_n^2$ est sans biais. 
+Si les $X_i$ sont indépendants (ou simplement décorrélés), l'estimateur $\hat{\sigma}_n^2$ est sans biais. 
 
 :::
 
 :::{.proof}
-À écrire.
+Il suffit de calculer l'espérance de $(n-1)\hat{\sigma}^2_n$, ce qui revient à calculer la somme des $\mathbb{E}[X_i^2 - 2X_i \bar{X}_n + \bar{X}_n^2]$. Il y a trois éléments dans cette expression : $\mathbb{E}[X_i^2], -2\mathbb{E}[X_i \bar{X}_n]$ et $\mathbb{E}[\bar{X}_n^2]$. 
+
+Le premier terme est égal à $\sigma^2$.  Le second terme vaut $-2\sum_j \mathbb{E}[X_i X_j]/n$, et tous les termes avec $i\neq j$ sont nuls car les $X_k$ sont décorrélés. Il ne reste que le terme $j=i$, à savoir $-2 \sigma^2 / n$. Enfin, $\mathbb{E}[\bar{X}_n^2]$ est la variance de $\bar{X}_n$, c'est-à-dire $\sigma^2/n$. 
+
+En additionnant tout, on obtient $\sigma^2 - \sigma^2 / n$ et comme il y avait $n$ termes dans la somme initiale, on obtient $(n-1)\mathbb{E}[\hat{\sigma}_n^2] = n\sigma^2 - \sigma^2$ et donc $\mathbb{E}[\hat{\sigma}_n^2] = \sigma^2$.
 :::
