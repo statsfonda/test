@@ -17,7 +17,6 @@ L'estimateur est dit *sans biais* s'il est de biais nul.
 
 En pratique, on peut vouloir estimer non pas $\theta$ lui-même, mais un paramètre $\psi = \psi_\theta$ qui dépend de $\theta$, comme $\cos(\theta)$ ou $|\theta|$ par exemple. Dans ce cas, si $\hat{\psi}$ est un estimateur de $\psi$ alors le biais est défini par $\mathbb{E}_\theta[\hat{\psi} - \psi_\theta]$ et le risque quadratique par $\mathbb{E}_\theta [ |\hat\psi - \psi_\theta|^2]$. 
 
-La dépendance du risque  quadratique vis à vis de la taille de l'échantillon est une question importante : pour une suite d'expériences donnée, quelles sont les meilleures vitesses envisageables, et comment les obtenir ?
 
 :::{#thm-biaisvar}
 
@@ -34,8 +33,12 @@ En notant $x$ l'espérance de $\hat{\theta}$, on voit que le risque quadratique 
 :::
 
 
+![](/images/bias-variance.webp)
+
+
 ## Convergence 
 
+La dépendance du biais ou du RQ (ou d'autres indicateurs) vis à vis de la taille de l'échantillon est une question importante : pour une suite d'expériences donnée, on veut que ces indicateurs tendent vite vers zéro. Quelles sont les meilleures vitesses envisageables, et comment les obtenir ?
 
 
 Rappelons brièvement deux notions de convergence des variables aléatoires. Une suite de variables aléatoires $X_n$ à valeurs dans
@@ -110,6 +113,10 @@ $$\mathbb{P}(|Y_n - c|\leqslant \delta)\varepsilon/2 +  \mathbb{P}(|Y_n - c| > \
 - Comme $Y_n$ converge en probabilité vers $c$, lorsque $n$ est assez grand on a $\mathbb{P}(|Y_n - c| > \delta) < \varepsilon/4M$. 
 - En regroupant tout ce qui a été dit, on obtient bien $|\mathbb{E}A| \leqslant \varepsilon$ dès que $n$ est assez grand, ce qui montre que $\mathbb{E}A \to 0$.  
 :::
+
+On termine par la « delta-méthode » : si une suite d'estimateurs est asymptotiquement normale, leur image par n'importe quelle fonction lisse $g$ l'est encore, et on sait calculer la moyenne et la variance limites. 
+
+![](/images/histogram.webp)
 
 :::{#thm-deltamethod}
 
