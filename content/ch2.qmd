@@ -17,7 +17,6 @@ L'estimateur est dit *sans biais* s'il est de biais nul.
 
 En pratique, on peut vouloir estimer non pas $\theta$ lui-même, mais un paramètre $\psi = \psi_\theta$ qui dépend de $\theta$, comme $\cos(\theta)$ ou $|\theta|$ par exemple. Dans ce cas, si $\hat{\psi}$ est un estimateur de $\psi$ alors le biais est défini par $\mathbb{E}_\theta[\hat{\psi} - \psi_\theta]$ et le risque quadratique par $\mathbb{E}_\theta [ |\hat\psi - \psi_\theta|^2]$. 
 
-La dépendance du risque  quadratique vis à vis de la taille de l'échantillon est une question importante : pour une suite d'expériences donnée, quelles sont les meilleures vitesses envisageables, et comment les obtenir ?
 
 :::{#thm-biaisvar}
 
@@ -29,8 +28,18 @@ $$
 $$
 :::
 
+:::{.proof}
+En notant $x$ l'espérance de $\hat{\theta}$, on voit que le risque quadratique est égal à $\mathbb{E}[|\hat{\theta} - x - (\theta - x)|^2]$. Le carré se développe en trois termes : le premier, $\mathbb{E}[|\hat{\theta} - x|^2]$, est la variance de $\hat{\theta}$. Le second, $-2\mathbb{E}[(\hat{\theta} - x)(\theta - x)]$, est égal à $-2(\theta - x)\mathbb{E}[\hat{\theta} - x]$, c'est-à-dire 0. Le dernier, $\mathbb{E}[(\theta - x)^2]$, est égal à $(\theta - x)^2$, c'est-à-dire $(\theta - \mathbb{E}[\hat{\theta}])^2$ : c'est bien le carré du biais. 
+:::
+
+
+![](/images/bias-variance.webp)
+
 
 ## Convergence 
+
+La dépendance du biais ou du RQ (ou d'autres indicateurs) vis à vis de la taille de l'échantillon est une question importante : pour une suite d'expériences donnée, on veut que ces indicateurs tendent vite vers zéro. Quelles sont les meilleures vitesses envisageables, et comment les obtenir ?
+
 
 Rappelons brièvement deux notions de convergence des variables aléatoires. Une suite de variables aléatoires $X_n$ à valeurs dans
 $\mathbb{R}^d$ converge en probabilité vers une
@@ -43,12 +52,11 @@ $$
 
 :::{#def-consistance}
 
-## consistance d'un estimateur
+## convergence d'un estimateur
 Une suite d'estimateurs $(\widehat{\theta}_n)$ est convergente pour l'estimation de $\theta$ lorsque, pour tout $\theta \in \Theta$, sous $P_\theta$, la suite $(\hat{\theta}_n)$ converge en probabilité vers $\theta$ ; autrement dit, lorsque 
  $$ \forall \varepsilon>0, \qquad \lim_n     P_\theta ( | \widehat{\theta}_n-\theta| > \varepsilon ) =0.
 $$
 La suite est fortement convergente si, pour tout $\theta$, la convergence a lieu $P_\theta$-presque sûrement. 
-$$
 
 :::
 
@@ -71,7 +79,7 @@ où $\Sigma$ est une matrice de covariance qui dépend peut-être de $\theta$ --
 
 ## Trois outils sur la normalité asymptotique
 
-La normalité asymptotique n'est pas intéressante en elle-même ; l'idée est plutôt de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d'intervalle de confiance. Nous utiliserons cela de nombreuses fois dans la suite ; la normalité asymptotique sera par exemple utilisée dans la construction des intervalles de confiance. Aussi, prouver que des estimateurs sont asymptotiquement normaux est une tache importante, qui est grandement simplifiée par les deux outils suivants. On commence par rappeler le théorème centra-limite. 
+La normalité asymptotique n'est pas intéressante en elle-même ; l'idée est plutôt de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d'intervalle de confiance. Nous le ferons souvent par la suite : la normalité asymptotique sera par exemple utilisée pour construire des intervalles de confiance. Aussi, prouver que des estimateurs sont asymptotiquement normaux est une tache importante, qui est grandement simplifiée par les deux outils suivants. On commence par rappeler le théorème centra-limite. 
 
 :::{#thm-tcl}
 
@@ -82,7 +90,9 @@ $$ \sqrt{n}\left(\frac{1}{n}\sum_{i=1}^n X_i - \mathbb{E}[X]\right)$$
 converge en loi vers une loi $N(0,\sigma^2)$. 
 :::
 
-Le Lemme de Slutsky sera fréquemment utilisé pour combiner convergence en loi et convergence en probabilité. 
+Le @sec-tcl de l'appendice revient sur différentes formes du TCL.
+
+Un autre lemme, dit  « Lemme de Slutsky », sera fréquemment utilisé pour combiner convergence en loi et convergence en probabilité. 
 
 :::{#thm-slutsky}
 
@@ -98,11 +108,15 @@ Fixons une fonction test $\varphi$ continue à support compact, donc bornée par
 Comme $X_n$ tend en loi vers $X$ et que $t\to \varphi(t,c)$ est continue bornée, l'espérance de $B$ tend vers zéro. Il faut donc montrer que l'espérance de $A$ tend vers zéro. On fixe un $\varepsilon>0$.   
 
 - Par le [théorème de Heine](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Heine), $\varphi$ est uniformément continue : il existe $\delta>0$ tel que $|(x,y) - (x', y')|<\delta$ entraîne que $|\varphi(x,y) - \varphi(x', y')|< \varepsilon/2$. 
-- On introduit l'événement $\{|Y_n - c|\leqslant \delta\}$. Par le point précédent, sur cet événement on a $|A| < \varepsilon/2$. Hors de cet événement, on peut toujours borner $|A|$ par $2M$. On a donc 
-$$|\mathbb{E}A| \leqslant \mathbb{P}(|Y_n - c|\leqslant \delta)\varepsilon/2 +  \mathbb{P}(|Y_n - c| > \delta)2M.$$
+- On introduit l'événement $\{|Y_n - c|\leqslant \delta\}$. Par le point précédent, sur cet événement on a $|A| < \varepsilon/2$. Hors de cet événement, on peut toujours borner $|A|$ par $2M$. Le terme $|\mathbb{E}A|$ est donc plus petit que
+$$\mathbb{P}(|Y_n - c|\leqslant \delta)\varepsilon/2 +  \mathbb{P}(|Y_n - c| > \delta)2M.$$
 - Comme $Y_n$ converge en probabilité vers $c$, lorsque $n$ est assez grand on a $\mathbb{P}(|Y_n - c| > \delta) < \varepsilon/4M$. 
-- En regroupant tout ce qui a été dit, on obtient bien $|\mathbb{E}A| \leqslant \varepsilon$ dès que $n$ est assez grand, ce qui montre bien que $\mathbb{E}A \to 0$.  
+- En regroupant tout ce qui a été dit, on obtient bien $|\mathbb{E}A| \leqslant \varepsilon$ dès que $n$ est assez grand, ce qui montre que $\mathbb{E}A \to 0$.  
 :::
+
+On termine par la « delta-méthode » : si une suite d'estimateurs est asymptotiquement normale, leur image par n'importe quelle fonction lisse $g$ l'est encore, et on sait calculer la moyenne et la variance limites. 
+
+![](/images/histogram.webp)
 
 :::{#thm-deltamethod}
 
@@ -117,7 +131,15 @@ Plus généralement, si les $X_n$ sont à valeurs dans $\mathbb{R}^d$ et que $\s
 où $Dg(x)$ est la [matrice jacobienne](https://fr.wikipedia.org/wiki/Matrice_jacobienne) de $g$ en $x$. 
 
 :::{.proof}
-À écrire. 
+L'approximation au premier ordre de $g$ au point $\alpha$ dit que $\sqrt{n}(g(X_n) - g(\alpha))$ est à peu près égal à $\sqrt{n}(X_n - \alpha)g'(\alpha)$, et comme $g'(\alpha)$ est une constante, ce terme converge bien en loi vers $N(0,\sigma^2 g'(\alpha)^2)$. Il suffit donc de montrer que le terme de reste $r_n$ qui complète le « à peu près » de la phrase précédente tend lui-même vers 0. On va montrer qu'il tend bien vers 0 en probabilité : l'application du Lemme de Slutsky ci-dessus permettra de conclure. 
+
+La [formule de Taylor-Lagrange](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Taylor) montre qu'il y a un nombre (aléatoire) $\xi_n$ entre $X_n$ et $\alpha$ tel que le reste $r_n$ est égal à 
+$$\sqrt{n}\frac{(X_n - \alpha)^2}{2}g''(\xi_n) = \frac{[\sqrt{n}(X_n - \alpha)]^2}{2\sqrt{n}}g''(\xi_n). $$
+
+On introduit l'événement $E_n(b) = \{|\sqrt{n}(X_n - \alpha)| < b\}$, où $b$ est une constante arbitraire ici. Sur cet événement, $|X_n - \alpha|$ est plus petit que $b/\sqrt{n}$ donc $X_n$ et $\xi_n$ tendent vers $\alpha$, et donc $g''(\xi_n)$ est bornée : ainsi, sur cet événement, $r_n$ tend vers zéro. Pour tout $\varepsilon >0$, on a donc
+$$ \limsup_n \mathbb{P}(|r_n|>\varepsilon) \leqslant \limsup_n \mathbb{P}(\overline{E_n(b)})$$
+et le terme de droite, par convergence en loi, est égale à $\mathbb{P}(|N(0,\sigma^2)|>b)$. Ce nombre peut être rendu arbitrairement petit par le choix de $b$, la limite ci-dessus est donc nulle et on a bien $r_n \to 0$ en probabilité. 
+
 :::
 
 
@@ -134,10 +156,14 @@ $$\hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n(X_i - \bar{X}_n)^2.$$
 
 :::{#thm-unb}
 
-L'estimateur $\hat{\sigma}_n^2$ est sans biais. 
+Si les $X_i$ sont indépendants (ou simplement décorrélés), l'estimateur $\hat{\sigma}_n^2$ est sans biais. 
 
 :::
 
 :::{.proof}
-À écrire.
+Il suffit de calculer l'espérance de $(n-1)\hat{\sigma}^2_n$, ce qui revient à calculer la somme des $\mathbb{E}[X_i^2 - 2X_i \bar{X}_n + \bar{X}_n^2]$. Il y a trois éléments dans cette expression : $\mathbb{E}[X_i^2], -2\mathbb{E}[X_i \bar{X}_n]$ et $\mathbb{E}[\bar{X}_n^2]$. 
+
+Le premier terme est égal à $\sigma^2$.  Le second terme vaut $-2\sum_j \mathbb{E}[X_i X_j]/n$, et tous les termes avec $i\neq j$ sont nuls car les $X_k$ sont décorrélés. Il ne reste que le terme $j=i$, à savoir $-2 \sigma^2 / n$. Enfin, $\mathbb{E}[\bar{X}_n^2]$ est la variance de $\bar{X}_n$, c'est-à-dire $\sigma^2/n$. 
+
+En additionnant tout, on obtient $\sigma^2 - \sigma^2 / n$ et comme il y avait $n$ termes dans la somme initiale, on obtient $(n-1)\mathbb{E}[\hat{\sigma}_n^2] = n\sigma^2 - \sigma^2$ et donc $\mathbb{E}[\hat{\sigma}_n^2] = \sigma^2$.
 :::

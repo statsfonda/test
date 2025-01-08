@@ -8,6 +8,8 @@
 3. Trouver un couple de variables aléatoires $(X_n, Y_n)$ tel que $X_n$ converge en loi et $Y_n$ converge en loi, mais le couple ne converge pas en loi. 
 4. On observe un échantillon de lois de Poisson de paramètre $\lambda$, que l'on estime par la moyenne empirique. Calculer le risque quadratique de cet estimateur. 
 5. Quelle est la loi d'une somme de lois de Bernoulli indépendantes ? L'écart-type ?
+6. Dans la delta-méthode, on demande à ce que la dérivée de $g$ au point limite soit non nulle. Pourquoi ? 
+7. On se place dans le cadre de la delta-méthode, avec une suite $X_n$ telle que $\sqrt{n}(X_n - \alpha)$ converge en loi vers $N(0,1)$. Si on a une fonction $g$ telle que $g'(\alpha)=0$ mais $g''(\alpha)\neq 0$, comment renormaliser $X_n - \alpha$ pour qu'on ait encore la normalité asymptotique ?
 
 ## Exercices 
 
@@ -104,4 +106,7 @@ Une variable aléatoire $X$ suit la loi de Yule-Simon de paramètre $\rho>0$ lor
 2. Trouver un estimateur de $\rho$ et donner ses propriétés. 
 
 ::: 
+
+
+
 
