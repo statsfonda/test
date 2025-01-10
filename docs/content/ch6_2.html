@@ -352,7 +352,7 @@ $$
 <div id="def-score" class="theorem definition">
 <p><span class="theorem-title"><strong>Définition 15.2 (Fonction de score) </strong></span>Le score est la dérivée de la log-vraisemblance : <span class="math display">\[ s_\theta(x) = \nabla_\theta \ln p_\theta(x).\]</span></p>
 </div>
-<p>Dans un modèle exponentiel <span class="math inline">\(p_\theta(x) = \exp(\langle \theta, T(x)\rangle - \ln Z_\theta)\)</span>, nous avons déjà vu que <span id="eq-score-expp"><span class="math display">\[ s_\theta(x) =  T(x) - \nabla \ln Z(\theta). \tag{15.1}\]</span></span> Le score dépend des observations, et donc est une variable aléatoire. En fait, <a href="#eq-grad-exp">Équation&nbsp;<span class="quarto-unresolved-ref">eq-grad-exp</span></a> montre que l’espérance du score, <span class="math inline">\(E_\theta[T(X)] - \nabla \ln Z(\theta)\)</span>, vaut précisément zéro :&nbsp;le score est centré. Au vu de <a href="#eq-score-expp">Équation&nbsp;<span class="quarto-unresolved-ref">eq-score-expp</span></a>, el est donc clair que <span class="math display">\[ I(\theta) = \mathrm{Var}_\theta(s_\theta(X)).\]</span></p>
+<p>Dans un modèle exponentiel <span class="math inline">\(p_\theta(x) = \exp(\langle \theta, T(x)\rangle - \ln Z_\theta)\)</span>, nous avons déjà vu que <span id="eq-score-expp"><span class="math display">\[ s_\theta(x) =  T(x) - \nabla \ln Z(\theta). \tag{15.1}\]</span></span> Le score dépend des observations, et donc est une variable aléatoire. En fait, <a href="ch6_0.html#eq-grad-exp">Équation&nbsp;<span>13.1</span></a> montre que l’espérance du score, <span class="math inline">\(E_\theta[T(X)] - \nabla \ln Z(\theta)\)</span>, vaut précisément zéro :&nbsp;le score est centré. Au vu de <a href="#eq-score-expp">Équation&nbsp;<span>15.1</span></a>, el est donc clair que <span class="math display">\[ I(\theta) = \mathrm{Var}_\theta(s_\theta(X)).\]</span></p>
 </section>
 <section id="lien-avec-lentropie" class="level2" data-number="15.2">
 <h2 data-number="15.2" class="anchored" data-anchor-id="lien-avec-lentropie"><span class="header-section-number">15.2</span> Lien avec l’entropie</h2>
@@ -364,7 +364,7 @@ $$
 <p><span class="theorem-title"><strong>Proposition 15.1 </strong></span><span class="math inline">\(I(\theta) = - \nabla^2_\theta~ \mathrm{Ent}(p_\theta).\)</span></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Preuve</em>. </span>Il suffit de dériver deux fois sous l’intégrale et d’utiliser <a href="#eq-hess-exp">Équation&nbsp;<span class="quarto-unresolved-ref">eq-hess-exp</span></a>.</p>
+<p><span class="proof-title"><em>Preuve</em>. </span>Il suffit de dériver deux fois sous l’intégrale et d’utiliser <a href="ch6_0.html#eq-hess-exp">Équation&nbsp;<span>13.2</span></a>.</p>
 </div>
 </section>
 <section id="borne-de-cramér-rao" class="level2" data-number="15.3">
@@ -384,7 +384,7 @@ $$
 <div id="def-testRVgen" class="theorem definition">
 <p><span class="theorem-title"><strong>Définition 15.4 </strong></span>Les <em>tests du rapport de vraisemblance</em> pour les hypothèses qui ne sont pas forcément simples sont les tests dont la région de rejet est de la forme <span class="math display">\[ \left\lbrace\frac{\sup_{\theta \in \Theta_1}p_\theta(X)}{\sup_{\theta\in\Theta_0}p_\theta(X)} &gt; z \right\rbrace. \]</span></p>
 </div>
-<p>Lorsque les EMV pour chaque hypothèse existent, cette région de rejet s’écrit donc également <span class="math display">\[ \left\lbrace \frac{p_{\hat{\theta}_0}(X)}{p_{\hat{\theta}_1}(X)} &gt; z \right\rbrace. \]</span> Malheureusement, il n’y a pas d’équivalent du théorème de Neyman-Pearson (<a href="#thm-affinity">Théorème&nbsp;<span class="quarto-unresolved-ref">thm-affinity</span></a>, <a href="#thm-jerzy">Théorème&nbsp;<span class="quarto-unresolved-ref">thm-jerzy</span></a>) lorsque les hypothèses ne sont pas simples.</p>
+<p>Lorsque les EMV pour chaque hypothèse existent, cette région de rejet s’écrit donc également <span class="math display">\[ \left\lbrace \frac{p_{\hat{\theta}_0}(X)}{p_{\hat{\theta}_1}(X)} &gt; z \right\rbrace. \]</span> Malheureusement, il n’y a pas d’équivalent du théorème de Neyman-Pearson (<a href="ch4_1.html#thm-affinity">Théorème&nbsp;<span>7.1</span></a>, <a href="ch4_1.html#thm-jerzy">Théorème&nbsp;<span>7.2</span></a>) lorsque les hypothèses ne sont pas simples.</p>
 </section>
 <section id="limitations" class="level2" data-number="15.5">
 <h2 data-number="15.5" class="anchored" data-anchor-id="limitations"><span class="header-section-number">15.5</span> Limitations</h2>
@@ -392,7 +392,7 @@ $$
 <ol type="1">
 <li><p>Si la loi <span class="math inline">\(P\)</span> qui a généré les observations n’appartient pas au modèle, l’estimateur n’a aucune chance d’être convergent, même s’il constitue quand même la meilleure estimation possible <em>dans ce modèle</em>. Le choix du modèle statistique reste donc un problème fondamental.</p></li>
 <li><p>L’apparente optimalité (au sens de Cramér-Rao) de l’EMV&nbsp;n’est qu’asymptotique. À distance finie, il peut y avoir des estimateurs biaisés ayant un meilleur risque quadratique. Pire, dans des modèles exponentiels élémentaires comme le modèle gaussien <span class="math inline">\(N(\mu, I_p)\)</span> où l’on cherche à estimer une moyenne <span class="math inline">\(\mu \in \mathbb{R}^p\)</span> à partir d’une réalisation, il existe un estimateur dont le risque quadratique est strictement meilleur que l’EMV <strong>quel que soit <span class="math inline">\(\mu\)</span></strong> :&nbsp;c’est le <a href="https://fr.wikipedia.org/wiki/Paradoxe_de_Stein">paradoxe de James-Stein</a> sur lequel nous reviendrons peut-être.</p></li>
-<li><p>Tous les modèles ne sont pas exponentiels. Même si l’estimation par maximum de vraisemblance reste pertinente en général, elle peut aussi donner des résultats peu cohérents, surtout lorsqu’elle est utilisée pour faire des tests (voir par exemple <a href="#exr-testunif">Exercice&nbsp;<span class="quarto-unresolved-ref">exr-testunif</span></a>).</p></li>
+<li><p>Tous les modèles ne sont pas exponentiels. Même si l’estimation par maximum de vraisemblance reste pertinente en général, elle peut aussi donner des résultats peu cohérents, surtout lorsqu’elle est utilisée pour faire des tests (voir par exemple <a href="ch4_ex.html#exr-testunif">Exercice&nbsp;<span>7</span></a>).</p></li>
 <li><p>Enfin, même dans les modèles exponentiels, la fonction de partition <span class="math inline">\(Z(\theta)\)</span> peut être inaccessible, en particulier lorsque la dimension de <span class="math inline">\(\theta\)</span> est grande comme en deep learning. L’estimation par maximum de vraisemblance sera alors quasiment infaisable.</p></li>
 </ol>
 
@@ -401,7 +401,7 @@ $$
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Rappelons que (cf <a href="#sec-defpos"><span class="quarto-unresolved-ref">sec-defpos</span></a>) lorsque <span class="math inline">\(A,B\)</span> sont des matrices symétriques, <span class="math inline">\(A \preceq B\)</span> équivaut à ce que <span class="math inline">\(\langle y, Ay\rangle \leqslant \langle y, By\rangle\)</span> pour tout <span class="math inline">\(y\)</span>. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Rappelons que (cf <a href="app1.html#sec-defpos"><span>Section&nbsp;20.4</span></a>) lorsque <span class="math inline">\(A,B\)</span> sont des matrices symétriques, <span class="math inline">\(A \preceq B\)</span> équivaut à ce que <span class="math inline">\(\langle y, Ay\rangle \leqslant \langle y, By\rangle\)</span> pour tout <span class="math inline">\(y\)</span>. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
