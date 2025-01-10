@@ -1,8 +1,38 @@
 # Introduction
 
-Les outils des statistiques furent créés pour analyser des phénomènes quantitatifs dans lesquels la présence de *bruit* ou de *hasard* rendait l'analyse classique moins opérante. Il peut typiquement s'agir de problèmes dans lesquels de nombreuses données indépendantes ont été générées par le même phénomène. Dans cette section, nous allons développer un exemple pour bien comprendre les questions qui se posent et la façon de les résoudre, puis nous poserons quelques bases qui nous permettront d'utiliser le langage des mathématiques. 
+Les outils des statistiques furent créés pour analyser des phénomènes quantitatifs dans lesquels la présence de *bruit* ou de *hasard* rend l'analyse classique moins puissante. Il peut s'agir de problèmes dans lesquels des données indépendantes ont été générées par le même phénomène. Dans cette section, nous allons développer un exemple qui illustre bien les questions qui se posent et la façon de les résoudre, puis nous poserons quelques bases qui nous permettront d'utiliser le langage des mathématiques. 
 
 
+
+## Une histoire d'influenceurs
+
+
+Dans le monde des applications mobiles, une donnée clé pour de nombreux modèles de type freemium est la *conversion*. Il ne suffit pas que des utilisateurs téléchargent l'app et utilisent sa version gratuite : encore faut-il qu'ils décident de payer, c'est-à-dire de convertir leur accès gratuit en abonnement payant. C'est ce qu'on appelle « convertir ». À de nombreux égard, cette métrique est essentielle pour faire croître un projet. Or, avant même de *convertir* des utilisateurs, il est évidemment essentiel d'en *acquérir*. C'est le rôle du marketing ; aujourd'hui, une grande partie du marketing moderne passe par du marketing de contenu : on paie des influenceurs pour qu'ils parlent de l'app ou créent du « contenu » qui la mentionne. 
+
+Lorsque j'ai lancé ma première app mobile, mon amie Carlita était influenceuse, et possédait une communauté assez large et proche de mon business. J'avais signé avec elle un contrat de marketing : Carlita devait publier une vingtaine de contenus par mois (stories, reels) parlant de mon app. C'était mon seul et unique canal d'acquisition de clients. 
+
+
+**Estimation.** 
+Entre janvier et mars, Carlita avait généré 4023 acquisitions, et sur ces acquisitions, il y eut 460 conversions. À supposer que la communauté de Carlita soit stable et qu'une proportion fixe $p$ des nouveaux utilisateurs convertissent effectivement le mois suivant, on pouvait donc estimer $p$ par $460/4023 \approx 11.5\%$. 
+
+**Précision.** Au fil du temps, Carlita générait environ 10000 nouveaux utilisateurs gratuits par semestre. Je pouvais donc m'attendre à ce que dans la foulée, $11.5\% \times 10000 = 1150$ d'entre eux convertissent leur abonnement gratuit en abonnement payant, ce qui me permettait de prévoir tout un tas de choses (besoins en coût de serveurs, cashflow futur, etc). Seulement, pour des raisons comptables, il était indispensable que le nombre de conversions semestrielles ne tombe pas en dessous de 1000. À quel point ce nombre de 11.5\% était-il donc précis ? 
+
+Une modélisation rapide permet de s'en rendre compte. Chaque utilisateur peut être vu comme une variable de Bernoulli de paramètre $p$ : $X_i=1$ si conversion, 0 sinon. L'estimation ci-dessus est la moyenne empirique des conversions, $\bar{X}_n = (X_1 + \dotsb + X_n) / n$ avec $n = 4023$. La loi de cette variable est tout simplement $\mathrm{Bin}(n,p)/n$, et on sait qu'avec probabilité supérieure à 99\%, l'estimée $\bar{X}_n$ et la vraie valeur $p$ ne diffèrent pas de plus de $0.7\%$ : l'inégalté de Bienaymé-Chebychev dit que $\mathbb{P}(|\bar{X}_n - p|>0.007) < \frac{\mathrm{Var}(\bar{X}_n)}{0.007^2}$, et l'on peut borner ceci (pourquoi ?) par 
+$$\frac{1}{4n 0.007^2} = 99\%.$$
+ Autrement dit, j'étais sûr à 99\% que le vrai taux de conversion de Carlita se situait quelque part entre 10.8\% et 12.2\%. En moyenne, il était donc peu probable que sur 10000 utilisateurs que Carlita pouvait emmener sur mon app chaque semestre, seulement moins de 1000 convertissent. 
+
+Ce raisonnement donne ce qu'on appelle un *intervalle de confiance* pour $p$. 
+
+**Tests.** Un jour, une webagence vint me démarcher. Elle me proposait de signer un contrat avec un de *ses* influenceurs, appelons-le Szeequie, qui avait un taux de conversion supposé meilleur que Carlita, à savoir 12\%. L'agence avait estimé ce chiffre sur le dernier mois de Szeequie : il avait généré 10000 acquisitions pour 1200 conversions, sur des apps similaires aux miennes. Évidemment, une question se pose : Szeequie a généré bien plus d'acquisitions que Carlita, l'estimation de 12\% est donc plus précise que celle des 11.5\%. Mais à quel point ? Peut-on *vraiment* dire que la communauté de Szeequie convertit mieux que celle de Carlita ? 
+
+Reprenons le calcul ci-dessus. On a vu qu'il y a 99\% de chances pour que $p_{\mathrm{carlita}}$ soit compris entre 10.7\% et 12.2\%. Le même calcul montre qu'il y a 99\% de chances pour que $p_{\mathrm{szeequie}}$ soit compris entre 11.99\% et 12.01\%. 
+
+Autrement dit, en écartant des événements trop rares (qui arrivent moins de 1\% des fois), les deux intervalles se chevauchent : je ne suis pas **absolument sûr** que Szeequie est absolument meilleur que Carlita. Peut-être que $p_{\mathrm{carlita}}$ est égal à 12.2\% mais qu'elle n'avait pas eu de chance lorsque j'ai fait ma première estimation. En revanche, si Carlita se met à acquérir pour moi beaucoup d'utilisateurs (disons, 100000) et que l'estimation de son taux de conversion ne change pas et reste 11.5\%, alors les deux estimations seront plus précises et me permettront d'être sûr que je devrais plutôt travailler avec Szeequie.
+
+En attendant, Carlita reste mon amie : tant que je ne suis pas sûr que d'autres sont vraiment meilleurs, je préfère travailler avec elle. 
+
+Ce mode de raisonnement porte le nom de *test d'hypothèse*, et ce n'est pas pour rien que je mentionne mon amitié avec Carlita : dans tous les problèmes statistiques, il y a des préférences, des non-dits et des choix qui rendent les choses non symétriques. On veut avant tout être sûr de rejeter une hypothèse (dite « nulle »), et surtout pas la rejeter à tort. 
+<!--
 ## Un exemple pour fixer les idées
 
 
@@ -26,7 +56,7 @@ Les trois points de vue donnés ci-dessus sont en quelque sorte les piliers de l
 
 L'objectif du cours de statistiques de quantifier l'incertitude liée au hasard dans chacun de ces objectifs. Comme dans les exemples donnés ci-dessus, c'est un ensemble de méthodes scientifiques qui s'appuient sur la théorie des probabilités ; dans ce cours, on fera des *hypothèses* sur le hasard qui est en jeu, et on en tirera des conséquences *probables* sur le modèle sous-jacent. En théorie des probabilités, le jeu est plutôt inverse : partant d'un modèle probabiliste fixé, on essaie de déterminer quel sera le comportement des réalisations de ce modèle. Il semble difficile de faire l'un sans l'autre. 
 :::
-
+-->
 
 ## Qu'est-ce qu'un problème statistique ?
 
@@ -112,3 +142,5 @@ En fait, on n'est pas obligés de vouloir estimer précisément $\theta$. Peut-�
 
 
 **Statistique bayésienne.** En statistique paramétrique, les paramètres $\theta$ déterminent le hasard qui génère les observations $x_i$. La statistique bayésienne consiste à renverser le point de vue, et à rendre le paramètre $\theta$ lui-même aléatoire ; sa loi, appelée *prior*, mesure "le degré de connaissance a priori" qu'on en a. La règle de Bayes explique comment cette loi est modifiée par les observations. C'est un point de vue qui ne sera pas abordé dans ce cours. 
+
+
