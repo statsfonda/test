@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Statistiques Fondamentales - 13&nbsp; Modèles exponentiels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../content/ch6_1.html" rel="next">
+<link href="../content/ch5_ex.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../utils/styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/ch6_0.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Modèles exponentiels</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Statistiques Fondamentales</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/statsfonda/site" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../Statistiques-Fondamentales.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Organisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estimation de paramètre</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch2_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">La méthode des moments</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch2_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalles de confiance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch31_outils.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Outils pour les IC</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch3_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test d’hypothèses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Théorie des tests simples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Tests du <span class="math inline">\(\chi_2\)</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch4_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Moindres carrés</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modèles linéaires</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Outils gaussiens</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Tests linéaires</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch5_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_0.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Modèles exponentiels</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Maximum de vraisemblance</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">L’information de Fisher</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Entropie et information</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch6_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Principe d’entropie maximale</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/problemes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problèmes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch7_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Estimation de densité</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch7_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Test de Kolmogorov-Smirnov</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ch7_ex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercices</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Et après ?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Références</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/app1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Algèbre linéaire</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/app2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">50&nbsp;nuances de TCL</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#exemples" id="toc-exemples" class="nav-link active" data-scroll-target="#exemples">Exemples</a></li>
+  <li><a href="#définitions" id="toc-définitions" class="nav-link" data-scroll-target="#définitions"><span class="header-section-number">13.1</span> Définitions</a></li>
+  <li><a href="#retour-sur-des-exemples" id="toc-retour-sur-des-exemples" class="nav-link" data-scroll-target="#retour-sur-des-exemples"><span class="header-section-number">13.2</span> Retour sur des exemples</a></li>
+  <li><a href="#régularité" id="toc-régularité" class="nav-link" data-scroll-target="#régularité"><span class="header-section-number">13.3</span> Régularité</a></li>
+  <li><a href="#identifiabilité" id="toc-identifiabilité" class="nav-link" data-scroll-target="#identifiabilité"><span class="header-section-number">13.4</span> Identifiabilité</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<div style="display:&nbsp;none;"><p style="display: none;">
+$$
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bt}{\boldsymbol{\theta}}
+\newcommand{\dkl}{\mathrm{d}_{\mathrm{KL}}}
+\newcommand{\dtv}{\mathrm{d}_{\mathrm{TV}}}
+\newcommand{\emv}{\hat{\theta}_{\mathrm{emv}}}
+\newcommand{\ent}{\mathrm{Ent}}
+$$
+</p></div>
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Modèles exponentiels</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="exemples" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exemples">Exemples</h2>
+<p>Jusqu’ici, nous avons vu de nombreux exemples de modèles statistiques. Dans la plupart des cas, il s’agissait de modèles de la loi de <span class="math inline">\(n\)</span> variables aléatoires indépendantes et identiquement distribuées selon une même loi <span class="math inline">\(P\)</span> (le modèle était donc <span class="math inline">\(P^{\otimes n}\)</span>). Cette loi <span class="math inline">\(P\)</span> possède souvent une densité par rapport à une mesure de référence. Par exemple, la loi gaussienne a une densité par rapport à la mesure de Lebesgue sur <span class="math inline">\(\mathbb{R}\)</span> : <span class="math display">\[ \frac{1}{\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2}}=\frac{1}{\sqrt{2\pi}e^{\frac{\mu^2}{2}}}e^{-\frac{x^2}{2}}e^{x\mu}.\]</span> La loi exponentielle a une densité par rapport à la mesure de Lebesgue sur <span class="math inline">\(\mathbb{R}_+\)</span> : <span class="math display">\[ \frac{1}{1/\lambda}e^{-\lambda x}\]</span> Les lois discrètes ont une densité par rapport à la mesure de comptage :&nbsp;la loi de Bernoulli, par exemple, s’écrit <span class="math display">\[ p^n(1-p)^{1-n} = \frac{e^{n\ln(p/(1-p))}}{(1-p)^{-1}} \]</span> avec <span class="math inline">\(n\)</span> valant zéro ou 1, ou encore la loi de Poisson <span class="math display">\[ e^{-\lambda}\frac{\lambda^n}{n!} = \frac{1}{e^{e^{\ln(\lambda)}}}\frac{1}{n!}e^{-\ln(\lambda)n}\]</span> ou enfin la loi géométrique <span class="math display">\[p^n(1-p) = \frac{e^{n\ln(p)}}{(1-p)^{-1}}.\]</span> Dans tous ces exemples, j’ai volontairement écrit la densité de façon inhabituelle : tous ces modèles peuvent s’écrire sous la forme <span class="math display">\[ \frac{1}{Z(\theta)}h(x)e^{\theta f(x)}\]</span> où <span class="math inline">\(f\)</span> et <span class="math inline">\(g\)</span> sont des fonctions qui ne dépendent pas de <span class="math inline">\(\theta\)</span>, et où <span class="math inline">\(Z\)</span> est une constante qui ne dépend que de <span class="math inline">\(\theta\)</span>. Ces modèles appartiennent à la famille des <em>modèles exponentiels</em>.</p>
+</section>
+<section id="définitions" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="définitions"><span class="header-section-number">13.1</span> Définitions</h2>
+<p>Soit <span class="math inline">\(\nu\)</span> une mesure de référence (<span class="math inline">\(\sigma\)</span>-finie) sur <span class="math inline">\(\mathbb{R}^d\)</span>.</p>
+<p>Soit <span class="math inline">\(\Theta \subset \mathbb{R}^p\)</span> (l’espace des paramètres) et soit <span class="math inline">\(T :&nbsp;\mathbb{R}^d \to \mathbb{R}^p\)</span> une fonction mesurable.</p>
+<p>On suppose que pour tout <span class="math inline">\(\theta \in \Theta\)</span>, la fonction <span class="math inline">\(x \mapsto e^{\langle \theta, T(x)\rangle}\)</span> est intégrable par rapport à <span class="math inline">\(\nu\)</span> : son intégrale <span class="math display">\[Z_\theta = \int e^{\langle \theta, T(x)\rangle}\nu(dx)\]</span> est appelée <em>fonction de partition</em>.</p>
+<div id="def-modele_expo" class="theorem definition">
+<p><span class="theorem-title"><strong>Définition 13.1 </strong></span>Le modèle exponentiel associé à <span class="math inline">\(T\)</span> est la famille de densités (par rapport à <span class="math inline">\(\nu\)</span>) définie par <span class="math display">\[ p_\theta(x) = \frac{e^{\langle \theta, T(x)\rangle}}{Z_\theta}.\]</span></p>
+</div>
+<p>Lorsqu’on fixe un <span class="math inline">\(x\)</span> dans l’espace des observations, la fonction<br>
+<span class="math display">\[ \theta \mapsto p_\theta(x)\]</span> est appelée <em>vraisemblance</em> et son logarithme <span class="math display">\[\ell_\theta(x) = \ln p_\theta(x)\]</span> est appelé <em>log-vraisemblance</em>. Lorsqu’il est bien défini, le gradient (en <span class="math inline">\(\theta\)</span>) de la log-vraisemblance <span class="math display">\[ \nabla \ln p_\theta(x)\]</span> est appelé <em>fonction de score</em> du modèle. Ces termes ne sont pas propres aux modèles exponentiels. On omet fréquemment de noter la dépendance en les observations, qu’on suppose fixées une bonne fois pour toutes.</p>
+</section>
+<section id="retour-sur-des-exemples" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="retour-sur-des-exemples"><span class="header-section-number">13.2</span> Retour sur des exemples</h2>
+<div id="exm-s" class="theorem example">
+<p><span class="theorem-title"><strong>Exemple 13.1 (Gaussiennes) </strong></span>La densité de <span class="math inline">\(N(\mu,\sigma^2)\)</span> s’écrit</p>
+<p><span class="math display">\[\frac{e^{-\frac{\mu^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}e^{ \frac{\mu}{\sigma^2} x - \frac{1}{2 \sigma^2} x^2 }.\]</span> La mesure <span class="math inline">\(\nu\)</span> est la mesure de Lebesgue sur <span class="math inline">\(\mathbb{R}\)</span>. Le moment <span class="math inline">\(T\)</span> est <span class="math display">\[T(x) = \begin{bmatrix}x \\ -x^2/2 \end{bmatrix} .\]</span> Le bon paramètre <span class="math inline">\(\theta\)</span> est <span class="math display">\[ \theta = \begin{bmatrix}\mu/\sigma^2 \\ 1 / \sigma^2\end{bmatrix}.\]</span> La fonction de partition <span class="math inline">\(\exp\left(\frac{\mu^2}{2 \sigma^2} \right)\sqrt{2 \pi \sigma^2}\)</span> s’écrit donc aussi <span class="math display">\[Z(\theta)=\exp(\theta_1^2 / 2\theta_2)\sqrt{2\pi / \theta_2}. \]</span></p>
+</div>
+<p>L’exemple de la loi Gaussienne montre qu’en règle générale, il peut être nécessaire de « reparamétriser » le modèle pour l’écrire sous sa forme exponentielle.</p>
+<div id="exm-ss" class="theorem example">
+<p><span class="theorem-title"><strong>Exemple 13.2 (Poisson) </strong></span>La mesure <span class="math inline">\(\nu\)</span> est la mesure de comptage sur <span class="math inline">\(\mathbb{N}\)</span>. Le paramètre est <span class="math display">\[ \theta = \begin{bmatrix}\ln(\lambda) \\ 1 \end{bmatrix}\]</span> et le moment <span class="math inline">\(T\)</span> est <span class="math display">\[ T = \begin{bmatrix}-n \\ - \ln(n!)\end{bmatrix}\]</span> de sorte que la fonction de partition est <span class="math inline">\(Z(\theta) = e^{e^{\ln\lambda}} = e^{e^{\theta_1}}\)</span>.</p>
+</div>
+</section>
+<section id="régularité" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="régularité"><span class="header-section-number">13.3</span> Régularité</h2>
+<p>On supposera dorénavant que l’espace des paramètres <span class="math inline">\(\Theta\)</span> (qui est une partie de <span class="math inline">\(\mathbb{R}^p\)</span>) est un ouvert, et que <span class="math inline">\(Z(\theta)\)</span> est fini pour tout <span class="math inline">\(\theta \in \Theta\)</span>. Cela sera aussi valable pour les sections suivantes.</p>
+<div id="prp-reg" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 13.1 </strong></span>&nbsp;</p>
+<ol type="1">
+<li><p>Pour tout <span class="math inline">\(n\)</span>, <span class="math inline">\(E_\theta[|T(X)|^n]\)</span> est fini.</p></li>
+<li><p>La fonction de partition d’un modèle exponentiel est infiniment différentiable.</p></li>
+<li><p>Le gradient de la log-partition est donné par <span id="eq-grad-exp"><span class="math display">\[\nabla \ln Z(\theta) = E_\theta[T(X)] \tag{13.1}\]</span></span> et sa matrice hessienne<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> par <span id="eq-hess-exp"><span class="math display">\[ \nabla^2 \ln Z(\theta) = \mathrm{Var}_\theta(T(X)). \tag{13.2}\]</span></span></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span></p>
+<ol type="1">
+<li><p>Prenons un petit <span class="math inline">\(\delta\)</span> tel que <span class="math inline">\(\theta + \delta\)</span> et <span class="math inline">\(\theta - \delta\)</span> sont dans <span class="math inline">\(\Theta\)</span>. Comme <span class="math inline">\(Z(\theta \pm \delta) = \int e^{\langle \theta, T(x)\rangle \pm \langle \delta, T(X)\rangle}\nu(dx)\)</span> et que <span class="math inline">\(e^{|\langle \delta, T(x)\rangle|}\leqslant e^{\langle \delta, T(x)\rangle} + e^{\langle -\delta, T(x)\rangle}\)</span>, on en déduit que <span class="math display">\[\int e^{\langle \theta, T(x)\rangle + |\langle \delta, T(x)\rangle|}\nu(dx)&lt;\infty. \]</span> Le théorème d’interversion série-intégrale à termes positif montre que ce terme est aussi égal à <span class="math display">\[ \sum_{n=0}^\infty \int e^{\langle \theta, T(x)\rangle}\frac{|\langle \delta, T(x)\rangle|^n}{n!}\nu(dx).\]</span> Tous les termes de cette somme sont donc finis, ce qui signifie précisément que <span class="math inline">\(E_\theta[|\langle \delta, T(X)\rangle|^n]&lt;\infty\)</span> pour tout <span class="math inline">\(n\)</span>. Ceci étant valable pour tout <span class="math inline">\(\delta\)</span> dans une boule autour de <span class="math inline">\(\theta\)</span>, il est immédiat d’en déduire que <span class="math inline">\(E_\theta[|\langle x, T(X)\rangle|^n]\)</span> est fini pour tout <span class="math inline">\(n\)</span> et pour tout <span class="math inline">\(x\)</span>. En prenant <span class="math inline">\(x = \delta_i\)</span>, on voit donc que les coordonnées de <span class="math inline">\(T\)</span> ont des moments finis à tous les ordres, et donc que <span class="math inline">\(T\)</span> possède des moments finis à tous les ordres au sens où <span class="math inline">\(E_\theta[|T(X)|^n]&lt;\infty\)</span>.</p></li>
+<li><p>On a <span class="math inline">\(\nabla \ln Z(\theta) = \nabla Z(\theta)/Z(\theta)\)</span>. Formellement, <span class="math inline">\(\nabla Z(\theta)\)</span> est donc égal à <span class="math display">\[\nabla \int e^{\langle \theta, T\rangle} = \int \nabla e^{\langle \theta, T\rangle} = \int T e^{\langle \theta, T\rangle}. \]</span> Il est alors clair que <span class="math inline">\(\nabla \ln Z(\theta) = \int p_\theta T\)</span>. Pour justifier la dérivation sous le signe intégral, notons <span class="math inline">\(f(\theta, x) = e^{\langle \theta, T(x)\rangle}\)</span>. Elle est infiniment différentiable en <span class="math inline">\(\theta\)</span> et son intégrale est finie dès que <span class="math inline">\(\theta\)</span> est dans <span class="math inline">\(\Theta\)</span>. Son gradient en <span class="math inline">\(\theta\)</span> est égal à <span class="math inline">\(e^{\langle \theta, T(x)\rangle}T(x)\)</span> qui est d’intégrale finie d’après le premier point. En regardant bien la démonstration, on constate également qu’il y a une constante <span class="math inline">\(c\)</span> telle que pour tout <span class="math inline">\(\delta\)</span> dans un voisinage de <span class="math inline">\(\theta\)</span>, on a <span class="math inline">\(E_{\theta + \delta}[|T(X)|]&lt;c\)</span>. Tout cela permet d’appliquer le théorème de dérivation sous le signe intégral et la formule <a href="#eq-grad-exp">Équation&nbsp;<span>13.1</span></a>.</p></li>
+<li><p>Pour la formule <a href="#eq-hess-exp">Équation&nbsp;<span>13.2</span></a>, c’est la même chose :&nbsp;<span class="math inline">\(\nabla^2 \ln Z(\theta) = \nabla \frac{\nabla Z(\theta)}{Z(\theta)}\)</span>. Les règles de dérivation des produits disent alors que ce terme est égal à <span class="math display">\[\frac{Z(\theta)\nabla^2 Z(\theta) - \nabla Z(\theta)\nabla Z(\theta)^\top}{Z(\theta)^2}. \]</span> Il suffit donc de calculer <span class="math inline">\(\nabla^2 Z(\theta)\)</span>, qui par un argument de dérivation sous l’intégrale similaire au précédent, est égal à <span class="math display">\[ \int e^{\langle \theta, T(x)\rangle}T(x)T(x)^\top \nu(dx).\]</span> La formule <a href="#eq-hess-exp">Équation&nbsp;<span>13.2</span></a> découle alors de la définition de la covariance.</p></li>
+</ol>
+</div>
+</section>
+<section id="identifiabilité" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="identifiabilité"><span class="header-section-number">13.4</span> Identifiabilité</h2>
+<div id="thm-iden-expo" class="theorem">
+<p><span class="theorem-title"><strong>Théorème 13.1 </strong></span>Dans un modèle exponentiel, les points suivants sont équivalents.</p>
+<ol type="i">
+<li>Le modèle est identifiable.</li>
+<li>La matrice hessienne de la fonction de log-partition (<a href="#eq-hess-exp">Équation&nbsp;<span>13.2</span></a>) est inversible en tout <span class="math inline">\(\theta\)</span>.</li>
+<li><span class="math inline">\(\nabla \ln Z(\theta)\)</span> est un difféomorphisme.</li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Preuve</em>. </span>Démontrons d’abord l’équivalence des deux premiers points.</p>
+<p>La matrice hessienne de <span class="math inline">\(\ln Z_\theta\)</span> est égale à <span class="math inline">\(\mathrm{Var}_\theta(T(X))\)</span>, donc elle est toujours positive. Si elle n’est pas inversible, alors elle n’est pas définie positive et il existe un <span class="math inline">\(\mu\)</span> tel que <span class="math inline">\(\mu^\top \mathrm{Var}_\theta(T) \mu\)</span> vaut zéro. Or, ce terme est aussi égal à <span class="math inline">\(\mathrm{Var}_\theta(\langle \mu, T\rangle)\)</span>. Cela impliquerait que la variable aléatoire <span class="math inline">\(\langle \mu, T(X)\rangle\)</span> soit constante <span class="math inline">\(P_\theta\)</span>-presque sûrement, disons égale à un certain <span class="math inline">\(\alpha\)</span>, et donc que <span class="math inline">\(\nu\)</span>-presque sûrement, <span class="math inline">\(\langle \mu, T(x)\rangle = \alpha\)</span>. Mais alors, <span class="math inline">\(p_{\theta + \mu}(x)\)</span> peut s’écrire <span class="math display">\[\frac{e^{\langle\theta + \mu, T(x)\rangle}}{Z(\theta + \mu)} = \frac{e^{\langle\theta, T(x)\rangle}e^{\alpha}}{Z(\theta + \mu)}\]</span> c’est-à-dire <span class="math display">\[p_\theta(x)\times \frac{e^\alpha Z(\theta)}{Z(\theta + \mu)}.\]</span> Or, comme <span class="math inline">\(p_\theta\)</span> est une densité de probabilité, son intégrale vaut 1 :&nbsp;la constante <span class="math inline">\(e^\alpha Z(\theta) / Z(\theta + \mu)\)</span> vaut donc 1 et l’on a montré que <span class="math inline">\(p_{\theta + \mu}\)</span> et <span class="math inline">\(p_\theta\)</span> sont égales partout. Le modèle n’est donc pas identifiable.</p>
+<p>Pour l’autre sens, il suffit de reprendre toutes ces implications à l’envers :&nbsp;si <span class="math inline">\(p_{\theta + \mu} = p_\theta\)</span>, alors pour <span class="math inline">\(\nu\)</span>-presque tout <span class="math inline">\(x\)</span> on aura <span class="math inline">\(\langle \theta + \mu, T(x)\rangle = \langle \theta, T(x)\rangle\)</span>, et donc <span class="math inline">\(\langle \mu, T(x)\rangle = 0\)</span>, et in fine <span class="math inline">\(\mu^\top \mathrm{Var}_\theta(T(X))\mu = 0\)</span>.</p>
+<p>Comme iii) entraîne ii), il suffit donc de montrer que i) et ii) entraînent iii). Nous allons montrer la contraposée :&nbsp;si iii) n’est pas vrai et que ii) n’est pas vrai, c’est fini. On peut donc supposer que iii) n’est pas vrai et que ii) est vrai, et il faut montrer que i) est faux. Le point ii) entraîne que <span class="math inline">\(\nabla \ln Z\)</span> est localement injective (théorème d’inversion locale), donc si cette application n’était pas un difféomorphisme, cela voudrait dire qu’elle n’est pas injective et qu’il y aurait donc <span class="math inline">\(\theta\neq\mu\)</span> tels que <span class="math inline">\(\nabla \ln Z(\theta) = \nabla \ln Z(\mu)\)</span>. Or, un calcul montre que la divergence de Kullback-Leibler (<a href="ch4_1.html#def-dkl">Définition&nbsp;<span>7.3</span></a>) <em>symétrisée</em>, à savoir <span class="math inline">\(\dkl(P_\theta \mid P_\mu) + \dkl(P_\mu \mid P_\theta)\)</span>, est égale à <span id="eq-dkl-expo-formule"><span class="math display">\[\langle \nabla \ln Z(\theta) - \nabla \ln Z(\mu), \theta - \mu \rangle  \tag{13.3}\]</span></span> et ceci vaut donc zéro : c’est donc que chacune des deux <span class="math inline">\(\dkl\)</span> vaut zéro, puisque ces deux termes sont positifs. On en déduit alors que <span class="math inline">\(P_\theta = P_\mu\)</span>, et donc le modèle n’est pas identifiable.</p>
+</div>
+<p><em>Preuve de <a href="#eq-dkl-expo-formule">Équation&nbsp;<span>13.3</span></a>.</em> En utilisant seulement les définitions, <span class="math inline">\(\dkl(P_\theta \mid P_\mu)\)</span> est égal à <span class="math display">\[\int p_\theta(x)(\langle \theta, T(x)\rangle - \langle \mu, T(x)\rangle) \nu(dx) - \ln Z(\theta) + \ln Z(\mu). \]</span> Le premier terme est égal à <span class="math inline">\(\langle \theta - \mu, E_\theta[T]\rangle\)</span>. La somme <span class="math inline">\(\dkl(P_\theta \mid P_\mu) + \dkl(P_\mu \mid P_\theta)\)</span> se simplifie et se factorise donc en <span class="math display">\[\langle \theta - \mu, E_\theta[T] - E_\mu[T]\rangle \]</span> et l’identité en découle puisque <span class="math inline">\(\nabla \ln Z(\theta) = E_\theta[T]\)</span>.</p>
+<!--
+## Statistiques exhaustives
+
+Une statistique $T$ est *exhaustive* lorsqu'il existe deux fonctions $g,h$ telles que
+$$ p_\theta(x) = g(x)h(T(x), \theta).$$ 
+Lorsqu'une statistique exhaustive existe, elle contient toute l'information sur $\theta$ que l'on peut obtenir à partir d'une observation $x$. -->
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>On rappelle que la Hessienne d’une fonction <span class="math inline">\(f:\mathbb{R}^d \to \mathbb{R}\)</span> est la matrice de ses dérivées secondes <span class="math display">\[\frac{\partial^2}{\partial x_i \partial x_j}f(x_1, \dotsc, x_d).\]</span> Par abus de notation, on la note souvent <span class="math inline">\(\nabla^2\)</span>, mais il serait plus juste de la noter <span class="math inline">\(\nabla^\top \nabla\)</span>. <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copié");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copié");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../content/ch5_ex.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercices</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../content/ch6_1.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Maximum de vraisemblance</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
