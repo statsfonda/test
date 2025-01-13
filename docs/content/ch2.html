@@ -363,7 +363,7 @@ $$
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../images/bias-variance.png" class="img-fluid figure-img"></p>
+<p><img src="../images/bias-variance.webp" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">À&nbsp;droite, RQ élevé mais biais nul ;&nbsp;à gauche, RQ faible mais biais non nul.</figcaption>
 </figure>
 </div>
@@ -410,7 +410,12 @@ $$
 </ul>
 </div>
 <p>On termine par la « delta-méthode » :&nbsp;si une suite d’estimateurs est asymptotiquement normale, leur image par n’importe quelle fonction lisse <span class="math inline">\(g\)</span> l’est encore, et on sait calculer la moyenne et la variance limites.</p>
-<p><img src="../images/histogram.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/histogram.webp" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Une petite gaussienne autour de 1.5 est transformée par une fonction <span class="math inline">\(f \in \mathscr{C}^1\)</span> en une petite gaussienne autour de <span class="math inline">\(f(1.5)\)</span>, de variance normalisée par <span class="math inline">\(f'(1.5)\)</span>.</figcaption>
+</figure>
+</div>
 <div id="thm-deltamethod" class="theorem">
 <p><span class="theorem-title"><strong>Théorème 2.4 (Delta-méthode) </strong></span>Soit <span class="math inline">\((X_n)\)</span> une suite de variables aléatoires réelles telle que <span class="math inline">\(\sqrt{n}(X_n - \alpha)\)</span> converge en loi vers <span class="math inline">\(N(0,\sigma^2)\)</span>. Pour toute fonction <span class="math inline">\(g :&nbsp;\mathbb{R} \to \mathbb{R}\)</span> dérivable en <span class="math inline">\(\alpha\)</span> (de dérivée non nulle en <span class="math inline">\(\alpha\)</span>), alors la variable aléatoire <span class="math display">\[ \sqrt{n}(g(X_n) - g(\alpha))\]</span> converge en loi vers <span class="math display">\[N(0, g'(\alpha)^2 \sigma^2).\]</span></p>
 </div>
