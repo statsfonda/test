@@ -26,7 +26,6 @@ On se donne $Y_1, \dots, Y_n$, i.i.d de moyenne $\mu$ et variance $\sigma^2$.
 
 
 
-
 :::{#exr-tanks}
 
 ## Estimation de masse
@@ -108,5 +107,23 @@ Une variable aléatoire $X$ suit la loi de Yule-Simon de paramètre $\rho>0$ lor
 ::: 
 
 
+
+## Concours
+
+
+
+
+J'ai choisi un polynôme $p \in \mathbb{R}[X]$. Puis, j'ai tiré aléatoirement $n=1000$ réalisations iid d'une loi $N(0,1)$, appelées $\varepsilon_i$, et pour chacune j'ai calculé $x_i = p(\varepsilon_i)$. Ces $\{x_i\}$ sont les observations que je vous donne [dans ce fichier](/images/numbers.txt). 
+
+Votre objectif est de deviner le mieux possible le polynôme $p$, c'est-à-dire son degré et ses coefficients. 
+
+*Règles : * 
+
+- la solution doit m'être envoyée par mail **avant dimanche 20 janvier, 23h59**. 
+- l'objet du mail doit être la suite des coefficients que vous avez estimés. Par exemple, si vous pensez que le polynôme est $p(x) = 1 + x^2 - x^5 + 3x^7$, vous écrivez 1,0,1,0,0,-1,0,3 dans l'objet du mail, sans rien d'autre.
+- vous devez me montrer que vous avez compris ce que vous faites et l'exprimer dans le cadre du cours.
+- envoyez moi le code ou les calculs que vous avez faits. 
+ 
+ Ceux qui auront correctement estimé le degré et/ou le polynôme auront comme récompense des M&Ms. 
 
 

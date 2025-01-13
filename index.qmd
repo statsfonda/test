@@ -1,10 +1,29 @@
 
 Bienvenue sur la page du cours de Statistiques Fondamentales (STF8) du master Mathématiques Fondamentales et Appliquées de l'Université Paris-Cité. Les notes de cours sont accessibles à tous. De nombreux auteurs s'y sont succédés ; je suis le dernier en date, mais les versions précédentes ont été travaillées par Clément Levrard, Stéphane Boucheron, Stéphane Gaïffas, Pierre Youssef. 
 
-Le cours reprendra l'année prochaine, en janvier 2025. 
 
 
 ## Organisation {.unnumbered}
+
+- **Horaires.** Les cours ont lieu
+  - lundi 13h45 - 16h45, SG1021
+  - jeudi 8h30 - 10h30, SG1021
+  - vendredi 10h45 - 12h45 puis 13h30 - 15h30, SG2015
+
+- **Agenda.** Les cours reprennent le 13 janvier. Il y a six semaines de cours ; le programme approximatif est le suivant : 
+  - S1 : Estimation, intervalles de confiance (chapitres 1 à 5). 
+  - S2 : Tests (chapitres 6 à 8)
+  - S3 : Tests, exercices, **examen partiel le jeudi 30**.
+  - S4 : Modèles linéaires et MCO (chapitres 9 à 11).
+  - S5 : Modèles exponentiels et théorie de l'information (chapitres 13 à 17)
+  - S5 : Compléments et révisions. 
+  
+  Il y aura une interrogation par semaine.
+
+  Il y a un partiel jeudi 30 janvier. 
+
+  L'examen final a lieu **Lundi 3 mars de 14h à 17h.**
+
 
 
 - **Calcul de la note finale**. Trois quantités entrent en jeu : la note de contrôle continu $c \in [0,10]$, la note du partiel $p\in [0,20]$, et la note que vous obtiendrez à l'examen, $e \in [0,20]$. La note finale $f \in [0,20]$ est donnée par la formule 
@@ -13,7 +32,7 @@ où $\theta = 0.3 \times c/10$. C'est une moyenne géométrique qui ne pénalise
 
 ## Utiliser ce site
 
-Chaque chapitre de ce livre contient une page dédiée au cours théorique, et contiendra dans un futur proche une page d'exercices. 
+Chaque chapitre de ce livre contient une page dédiée au cours théorique, et une page d'exercices. 
 
 Ces notes sont mises en lignes et totalement accessibles via [Quarto](https://quarto.org). Si vous savez comment utiliser `git`, n'hésitez pas à corriger toutes les erreurs que vous pourriez voir (et Dieu sait qu'elles seront nombreuses) via des pull requests. 
 

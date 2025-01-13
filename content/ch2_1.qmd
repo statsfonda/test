@@ -2,11 +2,11 @@
 # La méthode des moments
 
 
-Il existe plusieurs techniques générales pour *construire* des estimateurs. Deux se démarquent : la méthode des moments, et la méthode du maximum de vraisemblance. La méthode des moments est naturelle et donne des estimateurs avec de bonnes propriétés, mais elle est moins automatique que la méthode du maximum de vraisemblance que nous verrons plus tard. 
+Il existe plusieurs techniques générales pour *construire* des estimateurs. Deux se démarquent : la méthode des moments, et la méthode du maximum de vraisemblance (qui est un cas particulier de la première). La méthode des moments est naturelle et donne des estimateurs avec de bonnes propriétés, mais elle est moins automatique que la méthode du maximum de vraisemblance que nous verrons plus tard. 
 
 ## Qu'est-ce qu'un *moment* ?
 
-Dans un modèle statistique, supposons qu'on dispose d'une statistiques intégrable $T$ (pas forcément réelle), dont la moyenne n'est pas le paramètre $\theta$ lui-même, mais plutôt une *fonction* de $\theta$ :  
+Dans un modèle statistique, supposons qu'on dispose d'une statistiques intégrable $T$, dont la moyenne n'est pas le paramètre $\theta$ lui-même, mais plutôt une *fonction* de $\theta$ :  
 $$\mathbb{E}_\theta[T(X)] = \varphi(\theta).$$ 
 C'est cette fonction $\varphi$ qu'on appelle *moment*. Typiquement, 
 

@@ -15,15 +15,15 @@ L'estimateur est dit *sans biais* s'il est de biais nul.
 - Le risque quadratique de $\hat\theta$ est la quantité $\mathbb{E}_{\theta}[ |\hat{\theta}- \theta|^2]$. 
 :::
 
-En pratique, on peut vouloir estimer non pas $\theta$ lui-même, mais un paramètre $\psi = \psi_\theta$ qui dépend de $\theta$, comme $\cos(\theta)$ ou $|\theta|$ par exemple. Dans ce cas, si $\hat{\psi}$ est un estimateur de $\psi$ alors le biais est défini par $\mathbb{E}_\theta[\hat{\psi} - \psi_\theta]$ et le risque quadratique par $\mathbb{E}_\theta [ |\hat\psi - \psi_\theta|^2]$. 
+En pratique, on peut vouloir estimer non pas $\theta$ lui-même, mais un paramètre $\phi = \phi(\theta)$ qui dépend de $\theta$. Dans ce cas, si $\hat{\phi}$ est un estimateur de $\phi$ alors le biais est défini par $\mathbb{E}_\theta[\hat{\phi} - \phi]$ et le risque quadratique par $\mathbb{E}_\theta [ |\hat\phi - \phi|^2]$. 
 
 
 :::{#thm-biaisvar}
 
 ## Décomposition biais-variance
+Le risque quadratique $\mathbb{E}_{\theta} [|\hat{\theta}-\theta|^2]$ est égal à 
 $$
-\mathbb{E}_{\theta} [|\hat{\theta}-\theta|^2]
-= \underbrace{\operatorname{Var}_{\theta} (\hat{\theta})}_{\text{variance}} +
+\underbrace{\operatorname{Var}_{\theta} (\hat{\theta})}_{\text{variance}} +
 \underbrace{\mathbb{E}_{\theta}[\hat{\theta}-\theta]^2}_{\text{carré du biais}} \, .
 $$
 :::
@@ -33,12 +33,12 @@ En notant $x$ l'espérance de $\hat{\theta}$, on voit que le risque quadratique 
 :::
 
 
-![](/images/bias-variance.png)
+![À droite, RQ élevé mais biais nul ; à gauche, RQ faible mais biais non nul. ](/images/bias-variance.png)
 
 
 ## Convergence 
 
-La dépendance du biais ou du RQ (ou d'autres indicateurs) vis à vis de la taille de l'échantillon est une question importante : pour une suite d'expériences donnée, on veut que ces indicateurs tendent vite vers zéro. Quelles sont les meilleures vitesses envisageables, et comment les obtenir ?
+La dépendance du biais ou du risque quadratique (ou d'autres indicateurs) vis à vis de la taille de l'échantillon est une question importante : pour une suite d'expériences donnée, on veut que ces indicateurs tendent vite vers zéro. Quelles sont les meilleures vitesses envisageables, et comment les obtenir ?
 
 
 Rappelons brièvement deux notions de convergence des variables aléatoires. Une suite de variables aléatoires $X_n$ à valeurs dans
@@ -53,8 +53,8 @@ $$
 :::{#def-consistance}
 
 ## convergence d'un estimateur
-Une suite d'estimateurs $(\widehat{\theta}_n)$ est convergente pour l'estimation de $\theta$ lorsque, pour tout $\theta \in \Theta$, sous $P_\theta$, la suite $(\hat{\theta}_n)$ converge en probabilité vers $\theta$ ; autrement dit, lorsque 
- $$ \forall \varepsilon>0, \qquad \lim_n     P_\theta ( | \widehat{\theta}_n-\theta| > \varepsilon ) =0.
+Une suite d'estimateurs $(\hat{\theta}_n)$ est convergente pour l'estimation de $\theta$ lorsque, pour tout $\theta \in \Theta$, sous $P_\theta$, la suite $(\hat{\theta}_n)$ converge en probabilité vers $\theta$ ; autrement dit, lorsque pour tout $\varepsilon>0$, 
+ $$\lim_n     P_\theta ( | \hat{\theta}_n-\theta| > \varepsilon ) =0.
 $$
 La suite est fortement convergente si, pour tout $\theta$, la convergence a lieu $P_\theta$-presque sûrement. 
 
@@ -64,7 +64,7 @@ On voit parfois le mot *consistant* utilisé au lieu de *convergent*. Je pense q
 
 ## Normalité asymptotique
 
-Lorsqu'un estimateur est convergent, on peut se demander à quoi ressemblent ses fluctuations autour de sa valeur limite. Le théorème central limite indique que le comportement asymptotique gaussiens est relativement fréquent, et beaucoup d'estimateurs sont des sommes de réalisations de variables indépendantes. 
+Lorsqu'un estimateur est convergent, on peut se demander à quoi ressemblent ses fluctuations autour de sa valeur limite. Le théorème central limite indique que le comportement asymptotique gaussiens est relativement fréquent, parce que beaucoup d'estimateurs sont des sommes de variables indépendantes. 
 
 ::: {#def-normasymp}
 
@@ -72,14 +72,17 @@ Lorsqu'un estimateur est convergent, on peut se demander à quoi ressemblent ses
 
 Soit $\theta$ un paramètre à estimer, et $\hat{\theta}_n$ une suite d'estimateurs de $\theta$. On dit que ces estimateurs sont *asymptotiquement gaussiens* (ou *normaux*) si, après les avoir renormalisés convenablement, ils convergent en loi vers une loi gaussienne. Autrement dit, s'il existe une suite $a_n$ de nombres réels tels que 
 $$ a_n(\hat{\theta}_n - \theta) \xrightarrow[n\to \infty]{\text{loi}} N(0,\Sigma)$$
-où $\Sigma$ est une matrice de covariance qui dépend peut-être de $\theta$ --- pour éviter les cas dégénérés, on demande à ce que $\Sigma$ soit non-nulle. 
+où $\Sigma$ est une matrice de covariance qui dépend peut-être de $\theta$. Pour éviter les cas dégénérés, on demande à ce que $\Sigma$ soit non-nulle.
+
 :::
 
+La normalité asymptotique sera utilisée pour construire des intervalles de confiance et des tests. Aussi, prouver que des estimateurs sont asymptotiquement normaux est une tache importante, qui est grandement simplifiée par les outils suivants. 
 
 
 ## Trois outils sur la normalité asymptotique
 
-La normalité asymptotique n'est pas intéressante en elle-même ; l'idée est plutôt de chercher le comportement asymptotique de la statistique recentrée pour pouvoir en déduire des garanties en terme de risque asymptotique ou d'intervalle de confiance. Nous le ferons souvent par la suite : la normalité asymptotique sera par exemple utilisée pour construire des intervalles de confiance. Aussi, prouver que des estimateurs sont asymptotiquement normaux est une tache importante, qui est grandement simplifiée par les deux outils suivants. On commence par rappeler le théorème centra-limite. 
+Vous devez maîtriser sur le bout des doigts le Théorème Central-Limite. Le @sec-tcl de l'appendice revient sur différentes formes qu'il peut prendre.
+
 
 :::{#thm-tcl}
 
@@ -90,7 +93,6 @@ $$ \sqrt{n}\left(\frac{1}{n}\sum_{i=1}^n X_i - \mathbb{E}[X]\right)$$
 converge en loi vers une loi $N(0,\sigma^2)$. 
 :::
 
-Le @sec-tcl de l'appendice revient sur différentes formes du TCL.
 
 Un autre lemme, dit  « Lemme de Slutsky », sera fréquemment utilisé pour combiner convergence en loi et convergence en probabilité. 
 

@@ -88,7 +88,7 @@ On dit qu'un modèle statistique est identifiable si $\theta \neq \theta'$ entra
 :::
 
 
-Si l'on a bien choisi notre modèle statistique, alors il existe un « vrai » paramètre, disons $\theta_\star$, tel que les observations $x_1, \dotsc, x_n$ sont des réalisations de loi $p_{\theta_\star}$. L'objectif est alors de trouver $\theta_\star$ ou quelque information que ce soit le concernant. 
+Si l'on a bien choisi notre modèle statistique, alors il existe un paramètre, disons $\theta_\star$, tel que les observations $x_1, \dotsc, x_n$ sont des réalisations de loi $p_{\theta_{\star}}$. Si ce n'est pas le cas, il existe certainement un $\theta_\star$ tel que $p_{\theta_\star}$ est « la loi la plus proche possible » de la vrai loi qui a généré les $x_i$. L'objectif est alors de trouver $\theta_\star$ ou quelque information que ce soit le concernant. 
 
 
 
@@ -110,7 +110,7 @@ Dans un modèle identifiable, la statistique inférentielle (classique) permet d
 
 :::{#def-stat}
 
-Une *statistique* est une fonction mesurable des observations. Plus formellement, si le modèle statistique fixé est $(\mathcal{X}, \mathscr{F}, P)$, alors une statistique est n'importe quelle fonction mesurable de $(\mathcal{X}, \mathscr{F})$. 
+Une *statistique* est une fonction mesurable des observations. Plus formellement, si le modèle statistique fixé est $(\mathcal{X}, \mathscr{F}, P)$, alors une statistique est une fonction mesurable de $(\mathcal{X}, \mathscr{F})$. 
 ::: 
 
 
@@ -120,7 +120,7 @@ Une *statistique* est une fonction mesurable des observations. Plus formellement
 $$\mathbb{E}_\theta[T(X)] = \int_{\mathcal{X}} T(x) P_\theta(dx)$$
 ou encore sa variance $\mathbb{E}_\theta[T(X)^2] - (\mathbb{E}_\theta[T(X)])^2$, etc. On peut aussi calculer la valeur de cette statistique sur l'échantillon dont on dispose, c'est-à-dire $T(x_1, \dotsc, x_n)$. Par exemple, la moyenne empirique d'un $n$-échantillon réel est la fonction $T : (a_1, \dots, a_n) \to n^{-1}(a_1+\dotsb + a_n)$. Si les $x_i$ sont des réalisations des variables aléatoires $X_i$, alors $T(x_1, \dotsc, x_n)$ est une réalisation de la variable aléatoire $T(X_1, \dotsc, X_n)$. 
 
-3) Ce qui ne se voit pas dans la définition, c'est qu'une bonne statistique devrait être facilement calculable ; à la place de *statistique*, on peut penser à *algorithme* : une bonne statistique doit pouvoir être calculée facilement par un algorithme ne prenant en entrée que les échantillons $x_i$. 
+1) Ce qui ne se voit pas dans la définition, c'est qu'une bonne statistique devrait être facilement calculable ; à la place de *statistique*, on peut penser à *algorithme* : une bonne statistique doit pouvoir être calculée *facilement* par un algorithme ne prenant en entrée que les échantillons $x_i$. Si le calcul de la statistique nécessite seulement des multiplications et des additions (comme pour une moyenne empirique), c'est bien ; mais parfois, elle nécessite la résolution d'un problème algorithmique trop difficile (typiquement NP-complet).  
 
 
 
@@ -130,7 +130,7 @@ Si le but est de deviner la valeur de $\theta$ à partir des observations, il es
 Dans le modèle $(\mathcal{X},\mathcal{A}, (P_\theta)_{\theta \in \Theta})$, un estimateur de $\theta$ est une statistique à valeurs dans $\Theta$.
 :::
 
-En fait, on n'est pas obligés de vouloir estimer précisément $\theta$. Peut-être qu'on veut estimer quelque chose qui dépend de $\theta$, mais qui n'est pas $\theta$ ; disons, une fonction $\varphi(\theta)$. Dans ce cas, un estimateur de $\varphi(\theta)$ sera simplement une statistique à valeurs dans l'espace où vit $\varphi(\theta)$. 
+En fait, on n'est pas obligés de vouloir estimer précisément $\theta$. Peut-être qu'on veut estimer quelque chose qui dépend de $\theta$, mais qui n'est pas $\theta$, comme $\cos(\theta)$ ou $\theta^2$ ; disons, une fonction $\varphi(\theta)$. Dans ce cas, un estimateur de $\varphi(\theta)$ sera simplement une statistique à valeurs dans l'espace où vit $\varphi(\theta)$. 
 
 
 
