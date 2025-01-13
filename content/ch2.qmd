@@ -124,8 +124,10 @@ On termine par la « delta-méthode » : si une suite d'estimateurs est asympto
 
 ## Delta-méthode
 
-Soit $(X_n)$ une suite de variables aléatoires réelles telle que $\sqrt{n}(X_n - \alpha)$ converge en loi vers $N(0,\sigma^2)$. Pour toute fonction $g : \mathbb{R} \to \mathbb{R}$ dérivable en $\alpha$ (de dérivée non nulle en $\alpha$), on a 
-$$ \sqrt{n}(g(X_n) - g(\alpha)) \xrightarrow[n \to \infty]{\text{loi}} N(0, g'(\alpha)^2 \sigma^2).$$
+Soit $(X_n)$ une suite de variables aléatoires réelles telle que $\sqrt{n}(X_n - \alpha)$ converge en loi vers $N(0,\sigma^2)$. Pour toute fonction $g : \mathbb{R} \to \mathbb{R}$ dérivable en $\alpha$ (de dérivée non nulle en $\alpha$), alors la variable aléatoire
+$$ \sqrt{n}(g(X_n) - g(\alpha))$$
+converge en loi vers 
+$$N(0, g'(\alpha)^2 \sigma^2).$$
 
 :::
 
@@ -135,11 +137,10 @@ où $Dg(x)$ est la [matrice jacobienne](https://fr.wikipedia.org/wiki/Matrice_ja
 :::{.proof}
 L'approximation au premier ordre de $g$ au point $\alpha$ dit que $\sqrt{n}(g(X_n) - g(\alpha))$ est à peu près égal à $\sqrt{n}(X_n - \alpha)g'(\alpha)$, et comme $g'(\alpha)$ est une constante, ce terme converge bien en loi vers $N(0,\sigma^2 g'(\alpha)^2)$. Il suffit donc de montrer que le terme de reste $r_n$ qui complète le « à peu près » de la phrase précédente tend lui-même vers 0. On va montrer qu'il tend bien vers 0 en probabilité : l'application du Lemme de Slutsky ci-dessus permettra de conclure. 
 
-La [formule de Taylor-Lagrange](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Taylor) montre qu'il y a un nombre (aléatoire) $\xi_n$ entre $X_n$ et $\alpha$ tel que le reste $r_n$ est égal à 
-$$\sqrt{n}\frac{(X_n - \alpha)^2}{2}g''(\xi_n) = \frac{[\sqrt{n}(X_n - \alpha)]^2}{2\sqrt{n}}g''(\xi_n). $$
+La [formule de Taylor-Lagrange](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Taylor) montre qu'il y a un nombre (aléatoire) $\xi_n$ entre $X_n$ et $\alpha$ tel que le reste $r_n$ est égal à  $\sqrt{n}\frac{(X_n - \alpha)^2}{2}g''(\xi_n)$, qu'on peut écrire $$\frac{[\sqrt{n}(X_n - \alpha)]^2}{2\sqrt{n}}g''(\xi_n). $$
 
 On introduit l'événement $E_n(b) = \{|\sqrt{n}(X_n - \alpha)| < b\}$, où $b$ est une constante arbitraire ici. Sur cet événement, $|X_n - \alpha|$ est plus petit que $b/\sqrt{n}$ donc $X_n$ et $\xi_n$ tendent vers $\alpha$, et donc $g''(\xi_n)$ est bornée : ainsi, sur cet événement, $r_n$ tend vers zéro. Pour tout $\varepsilon >0$, on a donc
-$$ \limsup_n \mathbb{P}(|r_n|>\varepsilon) \leqslant \limsup_n \mathbb{P}(\overline{E_n(b)})$$
+$$ \overline{\lim}_n \mathbb{P}(|r_n|>\varepsilon) \leqslant \overline{\lim}_n \mathbb{P}(\overline{E_n(b)})$$
 et le terme de droite, par convergence en loi, est égale à $\mathbb{P}(|N(0,\sigma^2)|>b)$. Ce nombre peut être rendu arbitrairement petit par le choix de $b$, la limite ci-dessus est donc nulle et on a bien $r_n \to 0$ en probabilité. 
 
 :::

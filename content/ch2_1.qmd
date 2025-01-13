@@ -13,8 +13,8 @@ C'est cette fonction $\varphi$ qu'on appelle *moment*. Typiquement,
 - la moyenne d'une loi $\mathscr{E}(\theta)$ n'est pas $\theta$ mais $1/\theta$. 
 - la moyenne d'une loi log-normale de paramètres $(0, \sigma^2)$ est $e^{\sigma^2/2}$. 
 
-Prenons la moyenne empirique associée à cet estimateur, $\bar{T}_n$. Par la loi des grands nombres, 
-$$\bar{T}_n = \frac{1}{n}\sum_{i=1}^n T(X_i) \to \varphi(\theta) \qquad P_\theta-ps, $$
+Prenons la moyenne empirique associée à cet estimateur, $\bar{T}_n$. Par la loi des grands nombres, $P_\theta$-presque sûrement on a 
+$$\bar{T}_n = \frac{1}{n}\sum_{i=1}^n T(X_i) \to \varphi(\theta)$$
 ce qui permet d'estimer $\varphi(\theta)$. Peut-on alors estimer $\theta$ ? 
 
 
