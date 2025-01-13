@@ -341,13 +341,13 @@ $$
 <p>Il existe plusieurs techniques générales pour <em>construire</em> des estimateurs. Deux se démarquent :&nbsp;la méthode des moments, et la méthode du maximum de vraisemblance (qui est un cas particulier de la première). La méthode des moments est naturelle et donne des estimateurs avec de bonnes propriétés, mais elle est moins automatique que la méthode du maximum de vraisemblance que nous verrons plus tard.</p>
 <section id="quest-ce-quun-moment" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="quest-ce-quun-moment"><span class="header-section-number">3.1</span> Qu’est-ce qu’un <em>moment</em> ?</h2>
-<p>Dans un modèle statistique, supposons qu’on dispose d’une statistiques intégrable <span class="math inline">\(T\)</span> (pas forcément réelle), dont la moyenne n’est pas le paramètre <span class="math inline">\(\theta\)</span> lui-même, mais plutôt une <em>fonction</em> de <span class="math inline">\(\theta\)</span> :<br>
+<p>Dans un modèle statistique, supposons qu’on dispose d’une statistiques intégrable <span class="math inline">\(T\)</span>, dont la moyenne n’est pas le paramètre <span class="math inline">\(\theta\)</span> lui-même, mais plutôt une <em>fonction</em> de <span class="math inline">\(\theta\)</span> :<br>
 <span class="math display">\[\mathbb{E}_\theta[T(X)] = \varphi(\theta).\]</span> C’est cette fonction <span class="math inline">\(\varphi\)</span> qu’on appelle <em>moment</em>. Typiquement,</p>
 <ul>
 <li>la moyenne d’une loi <span class="math inline">\(\mathscr{E}(\theta)\)</span> n’est pas <span class="math inline">\(\theta\)</span> mais <span class="math inline">\(1/\theta\)</span>.</li>
 <li>la moyenne d’une loi log-normale de paramètres <span class="math inline">\((0, \sigma^2)\)</span> est <span class="math inline">\(e^{\sigma^2/2}\)</span>.</li>
 </ul>
-<p>Prenons la moyenne empirique associée à cet estimateur, <span class="math inline">\(\bar{T}_n\)</span>. Par la loi des grands nombres, <span class="math display">\[\bar{T}_n = \frac{1}{n}\sum_{i=1}^n T(X_i) \to \varphi(\theta) \qquad P_\theta-ps, \]</span> ce qui permet d’estimer <span class="math inline">\(\varphi(\theta)\)</span>. Peut-on alors estimer <span class="math inline">\(\theta\)</span> ?</p>
+<p>Prenons la moyenne empirique associée à cet estimateur, <span class="math inline">\(\bar{T}_n\)</span>. Par la loi des grands nombres, <span class="math inline">\(P_\theta\)</span>-presque sûrement on a <span class="math display">\[\bar{T}_n = \frac{1}{n}\sum_{i=1}^n T(X_i) \to \varphi(\theta)\]</span> ce qui permet d’estimer <span class="math inline">\(\varphi(\theta)\)</span>. Peut-on alors estimer <span class="math inline">\(\theta\)</span> ?</p>
 </section>
 <section id="estimateur-des-moments" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="estimateur-des-moments"><span class="header-section-number">3.2</span> Estimateur des moments</h2>
