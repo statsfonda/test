@@ -16,7 +16,7 @@ Bienvenue sur la page du cours de Statistiques Fondamentales (STF8) du master Ma
   - S3 : Tests, exercices, **examen partiel le jeudi 30**.
   - S4 : Modèles linéaires et MCO (chapitres 9 à 11).
   - S5 : Modèles exponentiels et théorie de l'information (chapitres 13 à 17)
-  - S5 : Compléments et révisions. 
+  - S6 : Compléments et révisions. 
   
   Il y aura une interrogation par semaine.
 

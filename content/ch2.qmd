@@ -32,8 +32,18 @@ $$
 En notant $x$ l'espérance de $\hat{\theta}$, on voit que le risque quadratique est égal à $\mathbb{E}[|\hat{\theta} - x - (\theta - x)|^2]$. Le carré se développe en trois termes : le premier, $\mathbb{E}[|\hat{\theta} - x|^2]$, est la variance de $\hat{\theta}$. Le second, $-2\mathbb{E}[(\hat{\theta} - x)(\theta - x)]$, est égal à $-2(\theta - x)\mathbb{E}[\hat{\theta} - x]$, c'est-à-dire 0. Le dernier, $\mathbb{E}[(\theta - x)^2]$, est égal à $(\theta - x)^2$, c'est-à-dire $(\theta - \mathbb{E}[\hat{\theta}])^2$ : c'est bien le carré du biais. 
 :::
 
+::: {.content-visible when-format="html"} 
+
+
+![À droite, RQ élevé mais biais nul ; à gauche, RQ faible mais biais non nul. ](/images/bias-variance.webp)
+
+:::
+
+::: {.content-visible when-format="pdf"} 
 
 ![À droite, RQ élevé mais biais nul ; à gauche, RQ faible mais biais non nul. ](/images/bias-variance.png)
+
+:::
 
 
 ## Convergence 
@@ -118,7 +128,17 @@ $$\mathbb{P}(|Y_n - c|\leqslant \delta)\varepsilon/2 +  \mathbb{P}(|Y_n - c| > \
 
 On termine par la « delta-méthode » : si une suite d'estimateurs est asymptotiquement normale, leur image par n'importe quelle fonction lisse $g$ l'est encore, et on sait calculer la moyenne et la variance limites. 
 
-![](/images/histogram.png)
+::: {.content-visible when-format="pdf"} 
+
+![Une petite gaussienne autour de 1.5 est transformée par une fonction $f \in \mathscr{C}^1$ en une petite gaussienne autour de $f(1.5)$, de variance normalisée par $f'(1.5)$. ](/images/histogram.png)
+
+:::
+
+::: {.content-visible when-format="html"} 
+
+![Une petite gaussienne autour de 1.5 est transformée par une fonction $f \in \mathscr{C}^1$ en une petite gaussienne autour de $f(1.5)$, de variance normalisée par $f'(1.5)$. ](/images/histogram.webp)
+
+:::
 
 :::{#thm-deltamethod}
 
