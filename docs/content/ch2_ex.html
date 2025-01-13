@@ -304,6 +304,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#questions" id="toc-questions" class="nav-link active" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices">Exercices</a></li>
+  <li><a href="#concours" id="toc-concours" class="nav-link" data-scroll-target="#concours">Concours</a></li>
   </ul>
 </nav>
     </div>
@@ -406,6 +407,19 @@ $$
 <li>Trouver un estimateur de <span class="math inline">\(\rho\)</span> et donner ses propriétés.</li>
 </ol>
 </div>
+</section>
+<section id="concours" class="level2">
+<h2 class="anchored" data-anchor-id="concours">Concours</h2>
+<p>J’ai choisi un polynôme <span class="math inline">\(p \in \mathbb{R}[X]\)</span>. Puis, j’ai tiré aléatoirement <span class="math inline">\(n=1000\)</span> réalisations iid d’une loi <span class="math inline">\(N(0,1)\)</span>, appelées <span class="math inline">\(\varepsilon_i\)</span>, et pour chacune j’ai calculé <span class="math inline">\(x_i = p(\varepsilon_i)\)</span>. Ces <span class="math inline">\(\{x_i\}\)</span> sont les observations que je vous donne <a href="../images/numbers.txt">dans ce fichier</a>.</p>
+<p>Votre objectif est de deviner le mieux possible le polynôme <span class="math inline">\(p\)</span>, c’est-à-dire son degré et ses coefficients.</p>
+<p><em>Règles :&nbsp;</em></p>
+<ul>
+<li>la solution doit m’être envoyée par mail <strong>avant dimanche 20 janvier, 23h59</strong>.</li>
+<li>l’objet du mail doit être la suite des coefficients que vous avez estimés. Par exemple, si vous pensez que le polynôme est <span class="math inline">\(p(x) = 1 + x^2 - x^5 + 3x^7\)</span>, vous écrivez 1,0,1,0,0,-1,0,3 dans l’objet du mail, sans rien d’autre.</li>
+<li>vous devez me montrer que vous avez compris ce que vous faites et l’exprimer dans le cadre du cours.</li>
+<li>envoyez moi le code ou les calculs que vous avez faits.</li>
+</ul>
+<p>Ceux qui auront correctement estimé le degré et/ou le polynôme auront comme récompense des M&amp;Ms.&nbsp;</p>
 
 
 </section>
