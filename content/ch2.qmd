@@ -155,13 +155,19 @@ Plus généralement, si les $X_n$ sont à valeurs dans $\mathbb{R}^d$ et que $\s
 où $Dg(x)$ est la [matrice jacobienne](https://fr.wikipedia.org/wiki/Matrice_jacobienne) de $g$ en $x$. 
 
 :::{.proof}
-L'approximation au premier ordre de $g$ au point $\alpha$ dit que $\sqrt{n}(g(X_n) - g(\alpha))$ est à peu près égal à $\sqrt{n}(X_n - \alpha)g'(\alpha)$, et comme $g'(\alpha)$ est une constante, ce terme converge bien en loi vers $N(0,\sigma^2 g'(\alpha)^2)$. Il suffit donc de montrer que le terme de reste $r_n$ qui complète le « à peu près » de la phrase précédente tend lui-même vers 0. On va montrer qu'il tend bien vers 0 en probabilité : l'application du Lemme de Slutsky ci-dessus permettra de conclure. 
+L'approximation au premier ordre de $g$ au point $\alpha$ dit que $\sqrt{n}(g(X_n) - g(\alpha))$ est à peu près égale à $\sqrt{n}(X_n - \alpha)g'(\alpha)$, et comme $g'(\alpha)$ est une constante, ce terme converge bien en loi vers $N(0,\sigma^2 g'(\alpha)^2)$. Il suffit donc de montrer que le terme de reste $r_n$ qui complète le « à peu près » de la phrase précédente tend lui-même vers 0. On va montrer qu'il tend bien vers 0 en probabilité : l'application du Lemme de Slutsky ci-dessus permettra de conclure. 
 
-La [formule de Taylor-Lagrange](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Taylor) montre qu'il y a un nombre (aléatoire) $\xi_n$ entre $X_n$ et $\alpha$ tel que le reste $r_n$ est égal à  $\sqrt{n}\frac{(X_n - \alpha)^2}{2}g''(\xi_n)$, qu'on peut écrire $$\frac{[\sqrt{n}(X_n - \alpha)]^2}{2\sqrt{n}}g''(\xi_n). $$
+Soit donc $s >0$. On veut montrer que $\mathbb{P}(|r_n| > s)$ tend vers zéro. On se donne un $\varepsilon >0$, et on introduit l'événement $E_n(b) = \{|\sqrt{n}(X_n - \alpha)| < b\}$, où $b$ est une constante arbitraire.  
 
-On introduit l'événement $E_n(b) = \{|\sqrt{n}(X_n - \alpha)| < b\}$, où $b$ est une constante arbitraire ici. Sur cet événement, $|X_n - \alpha|$ est plus petit que $b/\sqrt{n}$ donc $X_n$ et $\xi_n$ tendent vers $\alpha$, et donc $g''(\xi_n)$ est bornée : ainsi, sur cet événement, $r_n$ tend vers zéro. Pour tout $\varepsilon >0$, on a donc
-$$ \overline{\lim}_n \mathbb{P}(|r_n|>\varepsilon) \leqslant \overline{\lim}_n \mathbb{P}(\overline{E_n(b)})$$
-et le terme de droite, par convergence en loi, est égale à $\mathbb{P}(|N(0,\sigma^2)|>b)$. Ce nombre peut être rendu arbitrairement petit par le choix de $b$, la limite ci-dessus est donc nulle et on a bien $r_n \to 0$ en probabilité. 
+Par définition de la dérivabilité de $g$ en $\alpha$, il y a une fonction $r$ telle que $g(x) - g(\alpha) - (x-\alpha)g'(\alpha)$ est égal à $r(x)$ et telle que $r(x)/x \to 0$ quand $x\to 0$. Au vu des définitions ci-dessus, on peut même écrire que $r_n = \sqrt{n}r(X_n - \alpha)$. Il y a un $\delta$ tel que si $|x| < \delta$ alors $|r(x)|/ |x|< s/b$. 
+
+
+Sur $E_n$, dès que $n$ est plus grand que $(b/\delta)^2$, alors $|X_n - \alpha|<\delta$ et donc $|r_n| < (s/b)\sqrt{n}|X_n - \alpha|$, ce qui est plus petit que $s$. On vient de montrer que sur l'événement $E_n$, dès que $n$ est grand il devient impossible d'avoir $|r_n|>s$. Par conséquent, 
+
+$$\overline{\lim}\mathbb{P}(|r_n| > s) \leqslant \overline{\lim}\mathbb{P}(\overline{E_n}).$$
+Or, par définition de la convergence en loi, $\mathbb{P}(\overline{E_n})$ converge vers la probabilité $p(b)$  qu'une variable de loi $N(0,\sigma^2)$ soit plus grande en valeur absolue que $b$. Cette probabilité converge vers 0 quand $b$ est très grand, donc on peut choisir $b$ de sorte que $p(b)<\varepsilon$. Ainsi, 
+$$\overline{\lim}\mathbb{P}(|r_n| > s) \leqslant \varepsilon.$$
+Cela entraîne bien la convergence vers 0 de $\mathbb{P}(|r_n| > s)$. 
 
 :::
 
