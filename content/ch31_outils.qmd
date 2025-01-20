@@ -1,5 +1,5 @@
 
-# Outils pour les IC
+# Outils pour les Intervalles de Confiance
 
 
 ## Quantiles {#sec-quantiles}
@@ -26,16 +26,24 @@ Voir aussi la [règle 1-2-3](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9
 
 ## Queues de distribution de la gaussienne
 
-Si $x$ est plus grand que 1, 
-$$  \left(\frac{1}{x} - \frac{1}{x^3}\right) \frac{e^{-x^2/2}}{\sqrt{2\pi}}\leqslant \mathbb{P}(X > x) \leqslant \frac{1}{x}\frac{e^{-x^2/2}}{\sqrt{2\pi}} $$
-En particulier, si $x$ est grand, $\mathbb{P}(X \geqslant x) \sim e^{-x^2/2}/x\sqrt{2\pi}$ avec une erreur d'ordre $O(e^{-x^2/2}/x^3)$. 
+Si $x$ est plus grand que 1, $\mathbb{P}(X > x)$ est compris entre
+$$  \left(1 - \frac{1}{x^2}\right) \frac{1}{x}\frac{e^{-x^2/2}}{\sqrt{2\pi}} $${#eq-gaussiantailu}
+et
+$$ \frac{1}{x}\frac{e^{-x^2/2}}{\sqrt{2\pi}}. $${#eq-gaussiantaill}
+
+En particulier, si $x$ est grand, $$\mathbb{P}(X \geqslant x) \sim e^{-x^2/2}/x\sqrt{2\pi}$$ avec une erreur d'ordre $O(e^{-x^2/2}/x^3)$. 
 :::
 
 À titre d'exemple, pour $x=2.32$ cette approximation donne 98.83%, ce qui est remarquablement proche de 98%. Pour $x = 2.57$ on trouve 99.42%.
 
 :::{.proof}
-
-À écrire. 
+Le nombre $\mathbb{P}(X>x)$ est exactement égal à $(2\pi)^{-1/2}\int_x^\infty e^{-t^2/2}dt$. En multipliant et en divisant l'exponentielle dans l'intégrale par $t$ et en faisant une intégration par parties, on peut écrire ceci sous la forme 
+$$ \frac{e^{-x^2/2}}{x\sqrt{2\pi}} - \int_x^\infty \frac{e^{-t^2/2}}{t^2\sqrt{2\pi}}dt.$$
+Comme l'intégrale $I$ à droite est positive, tout ce terme est bien plus petit que @eq-gaussiantailu. Par ailleurs, en refaisant la même astuce, on peut écrire $I$ sous la forme
+$$ \frac{e^{-x^2/2}}{x^3\sqrt{2\pi}} - 2\int_x^\infty \frac{e^{-t^2/2}}{t^3\sqrt{2\pi}}dt.$$
+Si $J$ est la nouvelle intégrale à droite, elle est positive ; on a donc montré que $\mathbb{P}(X>x)$ est aussi égal à 
+$$  \left(1 - \frac{1}{x^2}\right) \frac{1}{x}\frac{e^{-x^2/2}}{\sqrt{2\pi}} + J$$
+et donc, est plus grand que @eq-gaussiantaill. 
 :::
 
 
@@ -43,15 +51,15 @@ En particulier, si $x$ est grand, $\mathbb{P}(X \geqslant x) \sim e^{-x^2/2}/x\s
 
 ### Lois Gamma 
 
-Une variable aléatoire suit une loi Gamma de paramètres $\lambda>0, \alpha>0$ lorsque sa densité est donnée par 
-$$\gamma_{r,\alpha}(x) =  \frac{\lambda^\alpha}{\Gamma(\alpha)}e^{-\lambda x}x^{\alpha -1}\mathbf{1}_{x>0}.$$
-Les lois Gamma rassemblent les lois exponentielles ($\Gamma(\lambda, 1) = \mathscr{E}(\lambda)$) et les lois du chi-deux qu'on verra ci-dessous $(\Gamma(1/2, n/2) = \chi_2(n)$). La transformée de Fourier $\varphi_{\lambda, \alpha}$ d'une loi $\Gamma(\lambda, \alpha)$ se calcule facilement par un changement de variables : 
+Une variable aléatoire de loi Gamma de paramètres $\lambda>0, \alpha>0$ possède une densité $\gamma_{r,\alpha}(x)$ égale à
+$$\frac{\lambda^\alpha}{\Gamma(\alpha)}e^{-\lambda x}x^{\alpha -1}\mathbf{1}_{x>0}.$$
+Les lois Gamma rassemblent les lois exponentielles ($\Gamma(\lambda, 1) = \mathscr{E}(\lambda)$) et les lois du chi-deux qu'on verra ci-dessous $(\Gamma(1/2, n/2) = \chi_2(n)$). La transformée de Fourier $\varphi_{\lambda, \alpha}$ d'une loi $\Gamma(\lambda, \alpha)$ se calcule par un changement de variables : 
 $$\varphi_{\lambda, \alpha}(t) = \left(1 - \frac{it}{\lambda}\right)^{-\alpha}.$${#eq-fcgamma}
 Cette identité montre également que si $X_1, \dotsc, X_n$ sont des variables indépendantes de loi $\Gamma(\lambda, \alpha_i)$, alors leur somme est une variable de loi $\Gamma(\lambda, \alpha_1 + \dotsc + \alpha_n)$. 
 
 ### Loi du chi-deux {#sec-chideux}
 
-Soit $X$ une loi gaussienne standard. Calculons la densité de $X^2$ ; pour toute fonction-test $\varphi$, $\mathbb{E}[\varphi(X^2)]$ est donné par
+La loi du chi-deux est la loi du carré d'une gaussienne standard $X$. Calculons sa densité ; pour toute fonction-test $\varphi$, $\mathbb{E}[\varphi(X^2)]$ est donné par
 $$\frac{1}{\sqrt{2\pi}}\int e^{-x^2/2}\varphi(x^2)dx.$$
 Cette intégrale est symétrique, donc on peut ajouter un facteur 2 et intégrer sur $[0,\infty[$. En posant $u=x^2$, on obtient alors la valeur 
 $$ \frac{2}{\sqrt{2\pi}}\int_0^\infty e^{-u/2}\varphi(u)\frac{1}{2\sqrt{u}}du.$$

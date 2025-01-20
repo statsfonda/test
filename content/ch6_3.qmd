@@ -56,6 +56,8 @@ $$ -\sum_{k} p_k \log_2 p_k.$$
 
 En théorie de l'information, on prend plutôt le logarithme en base 2 plutôt que le logarithme népérien. L'entropie ne diffère alors que d'une constante $\ln(2)$. 
 
+Le théorème de codage suivant ne s'applique qu'aux variables discrètes. 
+
 :::{#thm-shannon}
 
 ## Théorème de codage de Shannon
@@ -69,13 +71,38 @@ Il existe un codage appelé *codage entropique* vérifiant $\ell^\star(a)=\lceil
 En particulier, le codage optimal d'un échantillon iid de taille $n$ vérifie 
 $$ \lim \frac{\mathbb{E}[\ell^\star_n]}{n} = \ent(P).$$
 
-L'entropie d'une loi est donc en le nombre moyen de bits d'information nécessaire à son meilleur codage, et le meilleur codage en question est le *codage entropique* qui assigne à chaque $a \in \mathcal{X}$ un code de longueur proche de $\log_2(\mathbb{P}(X=a))$. On a donc compressé au mieux la variable $X$. 
+L'entropie d'une loi est donc en le nombre moyen de bits d'information nécessaire à son codage le plus économe : asymptotiquement, ce codage est le *codage entropique* qui assigne à chaque $a \in \mathcal{X}$ un code de longueur proche de $\log_2(\mathbb{P}(X=a))$. Cependant, il existe d'autres codages qui sont asymptotiquement meilleurs que le codage ci-dessus, et qui sont meilleurs même à distance finie : par exemple, le codage de Huffman. 
+
+
 
 :::{.proof} 
 
-J'écrirai plus tard la preuve via le lemme de Kraft. 
-
+On énumère les $n>2$ éléments de $\mathcal{X}$ en $a_1, \dotsc, a_n$, et on note $p_i = P(X = a_i)$. Soit $\ell$ un codage et soit $\ell_i$ la longueur du code $\ell(a_i)$. La longueur moyenne de ce code est 
+$$ E[\ell_X] = \sum_{i=1}^n p_i\ell_i.$$
 :::
+Ainsi, $E[\ell_X] - \ent(P)$ vaut
+$$\sum_{i=1}^n p_i\left(\ell_i + \log_2(p_i)\right)$$
+c'est-à-dire, après une petite manipulation, 
+$$-\sum_{i=1}^n p_i\log_2\left(\frac{1}{p_i2^{\ell_i}}\right).$$
+La fonction $-\log_2$ étant convexe, l'inégalité de Jensen dit que la quantité ci-dessus est plus grande que 
+$$ -\log_2 \left( \sum_{i=1}^n p_i\frac{1}{p_i 2^{\ell_i}} \right)$$
+qui se simplifie en
+$$ -\log_2 \left( \sum_{i=1}^n \frac{1}{2^{\ell_i}} \right).$$
+Il suffit alors de montrer que la somme $s$ à l'intérieur du $\log_2$ est plus petite que 1 : c'est cette inégalité qui est connue sous le nom de *lemme de Kraft*. Elle entraîne immédiatement que $-\log_2(s) \geqslant 0$, et donc $E[\ell_X] \geqslant \ent(P)$. 
+
+**Démonstration du lemme de Kraft.** Mettons la constante $s$ à une puissance entière $k$ : en écrivant $s^k$ comme
+$$\left(\sum_{a \in \mathcal{X}}\frac{1}{2^{\ell(a)}} \right)^k$$ 
+et en développant, on trouve
+$$\sum_{a^1, \dotsc, a^k \in \mathcal{X}}\frac{1}{2^{\ell(a^1) + \dotsb + \ell(a^k)}}$$ 
+c'est-à-dire
+$$\sum_{A \in \mathcal{X}^k}\frac{1}{2^{\ell(A)}}.$$
+Notons $c_i$ le nombre de mots de $k$ lettres dont le code est lui-même de longueur $i$. La quantité précédente vaut
+$$\sum_{i=1}^{+\infty} c_i \frac{1}{2^i}.$$
+Vu que le code est injectif, deux mots différents ont deux codes différents : or, il y a $2^i$ codes possibles de longueur $i$, donc $c_i \leqslant 2^i$. De plus, si $N$ est la longueur de la lettre la plus longue à coder, il est clair que le mot le plus long à coder aura une longueur de $kN$. Ainsi, $c_i$ devient nul dès que $i>kN$. On en déduit que la somme ci-dessus est plus petite que 
+$$\sum_{i=1}^{kN} 2^i \frac{1}{2^i} = kN.$$
+On vient de montrer que, pour n'importe quel nombre entier $k$ non nul, 
+$$s^k \leqslant kN.$$
+Si le nombre $s$ était strictement plus grand que 1, le terme de droite aurait une croissance exponentielle en $k$, tandis que le terme de gauche n'aurait qu'une croissance linéaire. C'est impossible, et on doit donc avoir $s\leqslant 1$. 
 
 ## L'entropie relative
 

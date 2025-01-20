@@ -2,7 +2,7 @@
 
 ## Principe 
 
-Dans un modèle statistique, l'estimation du paramètre d'intérêt $\theta$ par intervalles de confiance consiste à spécifier un intervalle calculable à partir des données, et qui contient $\theta$ avec grande probabilité : en d'autres termes, une *région de confiance* pour $\theta$. 
+Dans un modèle statistique, l'estimation du paramètre $\theta$ par intervalle de confiance consiste à spécifier une région calculable à partir des données, et qui contient $\theta$ avec grande probabilité : en d'autres termes, une *région de confiance* pour $\theta$. 
 
 Pour simplifier, on supposera d'abord que $\theta$ est un paramètre réel. 
 
@@ -28,15 +28,15 @@ On dispose de variables aléatoires $X_1, \dotsc, X_n$ de loi $N(\mu, \sigma^2)$
 
 **Lorsque $\sigma$ est connue. **
 
-Nous avons déjà vu que la moyenne empirique $\bar{X}_n$ est un estimateur sans biais de $\mu$. Or, nous savons aussi la loi *exacte* de $\bar{X}_n$, qui est $N(\mu, \sigma^2/n)$. Autrement dit, 
+La moyenne empirique $\bar{X}_n$ est un estimateur sans biais de $\mu$. Nous savons aussi la loi *exacte* de $\bar{X}_n$, qui est $N(\mu, \sigma^2/n)$. Autrement dit, 
 $$\frac{\sqrt{n}}{\sigma}(\bar{X}_n - \mu) \sim N(0,1).$${#eq-pivg}
 
 Dans cette équation, on a trouvé une variable aléatoire dont la loi ne dépend plus de $\mu$. Il est donc possible de déterminer un intervalle dans lequel elle fluctue à l'aide des quantiles de la loi normale, qui sont étudiés dans @sec-quantiles. Si l'on se donne une marge d'erreur $\alpha = 1\%$, alors 
 $$ \mathbb{P}( (\sqrt{n}/\sigma)|\bar{X}_n - \mu| > z_{0.99}) = 1\%$$
-où $z_{0.99} \approx 2.32$. Or, 
+où $z_{0.99} \approx 2.57$. Or, l'inégalité
 $$ \frac{\sqrt{n}}{\sigma}|\bar{X}_n - \mu| > z_{0.99}$${#eq-piv1}
-est équivalent à 
-$$ \bar{X}_n - \frac{z_{0.99}\sigma}{\sqrt{n}} \leqslant \mu \leqslant \bar{X}_n + \frac{z_{0.99}\sigma}{\sqrt{n}}.$${#eq-piv2}
+équivaut à[^1]
+$$ \mu \in \left[ \bar{X}_n \pm \frac{z_{0.99}\sigma}{\sqrt{n}} \right].$${#eq-piv2}
 Le passage de @eq-piv1 à @eq-piv2 est souvent appelé *pivot* et sert à passer d'un intervalle de fluctuation à un intervalle de confiance. 
 
 Nous avons donc les deux bornes de notre intervalle de confiance : 
@@ -50,18 +50,18 @@ $$\left[\bar{X}_n - \frac{z_{1-\alpha}\sigma}{\sqrt{n}}~~;~~\bar{X}_n + \frac{z_
 **Lorsque $\sigma$ est inconnue. **
 
 
-Lorsque $\sigma$ n'est pas connu, les bornes $A,B$ ci-dessus ne sont pas des statistiques, car elles dépendent de $\sigma$. Heureusement, on peut estimer $\sigma$ sans biais via l'estimateur 
+Lorsque $\sigma$ n'est pas connue, les bornes $A,B$ ci-dessus ne sont pas des statistiques, car elles dépendent de $\sigma$. On peut estimer $\sigma$ sans biais (cf @thm-unb) via l'estimateur 
 $$ \hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_n)^2.$$
-Que se passe-t-il si, dans la statistique @eq-pivg, on remplace $\sigma$ par son estimation $\hat{\sigma}_n^2$ ? On obtient la statistique dite *de Student*, 
+Que se passe-t-il si, dans @eq-pivg, on remplace $\sigma$ par son estimation $\hat{\sigma}_n^2$ ? On obtient la statistique dite *de Student*, 
 $$T_n = \frac{\sqrt{n}}{\sqrt{\hat{\sigma}_n^2}}(\bar{X}_n - \mu).$${#eq-pivst}
-Sa loi n'est plus une loi gaussienne, mais une loi de Student à $n-1$ paramètres de liberté $\mathscr{T}(n-1)$: le calcul de la densité est fait en détails dans @sec-student1 - @sec-student2. 
+Sa loi n'est plus gaussienne : c'est une loi de Student à $n-1$ paramètres de liberté $\mathscr{T}(n-1)$: le calcul de la densité est fait en détails dans @sec-student1 - @sec-student2. 
 Les quantiles des lois de Student ont été calculés avec précision. On notera $t_{k,\alpha}$ le quantile symétrique de niveau $\alpha$ de $\mathscr{T}(k)$. Alors, 
-$$ P_{\mu, \sigma^2}(|T_n|> t_{n-1,\alpha})\leqslant \alpha .$$
+$$ P_{\mu, \sigma^2}(|T_n|> t_{n-1,1-\alpha}) = \alpha .$$
 Par le même raisonnement que tout à l'heure, l'inégalité 
-$$ \left|\frac{\sqrt{n}}{\hat{\sigma}_n}(\bar{X}_n - \mu)\right| > t_{n-1,\alpha}$$
+$$ \left|\frac{\sqrt{n}}{\hat{\sigma}_n}(\bar{X}_n - \mu)\right| > t_{n-1,1-\alpha}$$
 est équivalente à 
-$$ \bar{X}_n - \frac{t_{n-1,\alpha}\hat{\sigma}_n}{\sqrt{n}} \leqslant \mu \leqslant \bar{X}_n + \frac{t_{n-1,\alpha}\hat{\sigma}_n}{\sqrt{n}}.$$
-et les deux côtés de ces inégalités sont des statistiques; en les notant $A,B$, on a bien trouvé un intervalle de confiance de niveau $\alpha$, c'est-à-dire tel que $P_{\mu,\sigma^2}(\mu \in [A,B]) = \alpha$. Cet intervalle de confiance est d'une grande importance en pratique et mérite son propre théorème. Il est dû à [William Gosset](https://en.wikipedia.org/wiki/William_Sealy_Gosset). 
+$$ \mu \in \left[\bar{X}_n \pm \frac{t_{n-1,1-\alpha}\hat{\sigma}_n}{\sqrt{n}} \right]$$
+et les deux côtés de cet intervalle sont des statistiques; en les notant $A,B$, on a bien trouvé un intervalle de confiance de niveau $\alpha$, c'est-à-dire tel que $P_{\mu,\sigma^2}(\mu \in [A,B]) = \alpha$. Cet intervalle de confiance est d'une grande importance en pratique et mérite son propre théorème. Il est dû à [William Gosset](https://en.wikipedia.org/wiki/William_Sealy_Gosset). 
 
 :::{#thm-icg}
 
@@ -69,7 +69,7 @@ et les deux côtés de ces inégalités sont des statistiques; en les notant $A
 
 Un intervalle de confiance de niveau $1-\alpha$ pour l'estimation de $\mu$ lorsque $\sigma$ n'est pas connue est donné par
 
-$$\left[\bar{X}_n - \frac{t_{n-1, 1-\alpha}\hat{\sigma}_n}{\sqrt{n}}~~;~~\bar{X}_n + \frac{t_{n-1, 1-\alpha}\hat{\sigma}_n}{\sqrt{n}} \right].$$
+$$\left[\bar{X}_n \pm \frac{t_{n-1, 1-\alpha}\hat{\sigma}_n}{\sqrt{n}}\right].$$
 :::
 
 ### Estimation de $\sigma$
@@ -80,17 +80,17 @@ Supposons maintenant qu'on désire estimer la variance $\sigma^2$.
 
 En supposant que $\mu$ est connue, l'estimateur des moments le plus naturel pour estimer $\sigma^2$ est évidemment 
 $$ \tilde{\sigma}^2_n = \frac{1}{n}\sum_{i=1}^n (X_i - \mu)^2.$$
-Comme les $(X_i - \mu)/\sigma$ sont des variables aléatoires gaussiennes centrées réduites, l'estimateur $\tilde{\sigma}^2_n \times (n/ \sigma^2)$ est une somme de $n$ gaussiennes standard indépendantes. La loi de cette statistique est connue : c'est une [loi du chi-deux](https://fr.wikipedia.org/wiki/Loi_du_%CF%87%C2%B2) à $n$ paramètres de liberté comme démontré dans @sec-chideux. Cette loi n'est pas symétrique, puisqu'elle est supportée sur $[0,\infty[$. On note souvent $k^-_{n,\alpha}$ et $k^+_{n,\alpha}$ les nombres les plus éloignées possible (ils exisent) tels que $\mathbb{P}(k^-_{n,\alpha}< \chi^2(n)<k^+_{n,\alpha}) = 1-\alpha$. Ainsi, 
-$$P_{\sigma^2}(k^-_{n,\alpha}< \frac{n \tilde{\sigma}^2_n}{\sigma^2} < k^+_{n,\alpha}) = \alpha.$$
+Comme les $(X_i - \mu)/\sigma$ sont des variables aléatoires gaussiennes centrées réduites, l'estimateur $\tilde{\sigma}^2_n \times (n/ \sigma^2)$ est une somme de $n$ gaussiennes standard indépendantes. La loi de cette statistique est connue : c'est une [loi du chi-deux](https://fr.wikipedia.org/wiki/Loi_du_%CF%87%C2%B2) à $n$ paramètres de liberté comme démontré dans @sec-chideux. Cette loi n'est pas symétrique, puisqu'elle est supportée sur $[0,\infty[$. On note souvent $k^-_{n,\alpha}$ et $k^+_{n,\alpha}$ les nombres les plus éloignés possibles[^2] tels que $\mathbb{P}(k^-_{n,\alpha}< \chi^2(n)<k^+_{n,\alpha}) = 1-\alpha$. Ainsi, 
+$$P_{\sigma^2}(k^-_{n,\alpha}< \frac{n \tilde{\sigma}^2_n}{\sigma^2} < k^+_{n,\alpha}) = 1-\alpha.$$
 En pivotant comme dans les exemples précédents, on obtient que l'intervalle 
 $$\left[\frac{n\tilde{\sigma}_n^2}{k^{+}_{n,\alpha}} ~~;~~ \frac{n\tilde{\sigma}_n^2}{k^-_{n,\alpha}} \right] $$
 est un intervalle de confiance de niveau $\alpha$ pour $\sigma^2$. 
 
 **Lorsque $\mu$ est inconnue.**
 
-Cette fois, on utilise l'estimateur déjà évoqué plus tôt, à savoir 
+Cette fois, on utilise l'estimateur de @thm-unb, à savoir 
 $$ \hat{\sigma}_n^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_n)^2.$$
-La loi de $(n-1)\hat{\sigma}^2_n / \sigma^2$ est encore une loi du chi-deux, mais à $n-1$ paramètres de liberté. Ainsi, le même raisonnement que ci-dessus donne l'intervalle de confiance de niveau $\alpha$ suivant : 
+La loi de $(n-1)\hat{\sigma}^2_n / \sigma^2$ est encore une loi du chi-deux, mais à $n-1$ paramètres de liberté (cela sera montré dans @sec-chideux). Le même raisonnement que ci-dessus donne l'intervalle de confiance de niveau $1-\alpha$ suivant : 
 $$\left[\frac{(n-1)\hat{\sigma}_n^2}{k^+_{n-1,\alpha}} ~~;~~ \frac{(n-1)\hat{\sigma}_n^2}{k^-_{n-1,\alpha}} \right]. $$
 
 ## Exemples asymptotiques
@@ -98,7 +98,7 @@ $$\left[\frac{(n-1)\hat{\sigma}_n^2}{k^+_{n-1,\alpha}} ~~;~~ \frac{(n-1)\hat{\si
 
 ### Estimation du paramètre $p$ dans un modèle de Bernoulli. {#sec-icber}
 
-Soient $X_1, \dotsc, X_n$ des variables indépendantes de loi $\mathscr{B}(p)$, dont on cherche à estimer le paramètre $p\in ]0,1[$. Un estimateur naturel est donné par la moyenne empirique, $\hat{p}_n = (X_1 + \dotsb + X_n)/n$. Cet estimateur est non biaisé et son risque quadratique est égal à $p(1-p)/n$. De plus, la loi de $\hat{p}_n$ est connue : $n\hat{p}_n \sim \mathrm{Bin}(n,p)$. Par conséquent, si l'on connaît les quantiles de $\mathscr{Bin}(n,p)-p$, on pourra construire des intervalles de confiance de niveau $1-\alpha$. Ces quantiles peuvent être calculés par des méthodes numériques, mais il existe des façons plus simples de faire. 
+Soient $X_1, \dotsc, X_n$ des variables indépendantes de loi $\mathscr{B}(p)$, dont on cherche à estimer le paramètre $p\in ]0,1[$. La moyenne empirique, $\hat{p}_n = (X_1 + \dotsb + X_n)/n$ est un estimateur est non biaisé de $p$ et son risque quadratique $p(1-p)/n$. De plus, la loi de $\hat{p}_n$ est connue : $n\hat{p}_n \sim \mathrm{Bin}(n,p)$. Par conséquent, si l'on connaît les quantiles de $\mathrm{Bin}(n,p)-p$, on pourra construire des intervalles de confiance de niveau $1-\alpha$. Ces quantiles peuvent être calculés par des méthodes numériques, mais il y a plus simple. 
 
 **Inégalité BT. ** L'inégalité de Bienaymé-Tchebychev dit que 
 $$P_p(|\hat{p}_n - p|>t)\leqslant \frac{p(1-p)}{nt^2}. $${#eq-btbin}
@@ -132,7 +132,7 @@ $$ \left[\bar{X}_n \pm \frac{\ln(2/\alpha)}{\sqrt{2n}}\right].$$
 
 Les deux techniques ci-dessus n'ont rien de spécifique au cas de variables de Bernoulli. En fait, elles s'appliquent à tout modèle statistique iid dont on cherche à estimer la moyenne $\mu$, pourvu que la variance existe. 
 
-La première méthode utilisant Bienaymé-Tchebychev nécessite de borner la variance. Cela peut se faire dans certains cas, mais pas dans tous. 
+La première méthode utilisant Bienaymé-Tchebychev nécessite de borner la variance. Cela peut se faire dans certains cas, mais pas dans tous. L'inégalité de Hoeffding est beaucoup plus fine que l'inégalité de Bienaymé-Tchebychev, mais elle ne s'applique qu'aux variables qui sont bornées ou sous-gaussiennes. 
 
 La seconde méthode s'applique systématiquement en utilisant l'estimateur de la variance empirique $\hat{\sigma}_n^2$. En effet, la convergence 
 $$\frac{\sqrt{n}}{\hat{\sigma}_n}(\bar{X}_n - \mu) \to N(0,1)$$
@@ -146,3 +146,9 @@ est un intervalle de confiance asymptotique de niveau $\alpha$ pour l'estimation
 
 :::
 
+
+
+
+[^1]: Je noterai toujours $[x \pm \varepsilon]$ l'intervalle symétrique $[x - \varepsilon, x+\varepsilon]$. 
+
+[^2]: Leur existence n'est pas évidente. 
