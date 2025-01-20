@@ -2,15 +2,20 @@
 # Outils pour les Intervalles de Confiance
 
 
-## Quantiles {#sec-quantiles}
+## Quantiles  {#sec-quantiles}
 
-Si $X$ est une variable aléatoire sur $\mathbb{R}$, un quantile d'ordre $\beta \in ]0,1[$, noté $q_\beta$, est un nombre tel que $\mathbb{P}(X \leqslant q_\beta) = \beta$. Lorsque $X$ est continue, un tel nombre existe forcément, car la fonction de répartition $F(x) = \mathbb{P}(X\leqslant x)$ est une surjection continue. Les quantiles symétriques $z_\beta$ sont, eux, définis par $\mathbb{P}(|X|\leqslant z_\beta) = \beta$. 
+
+### Quantiles des lois continues
+
+Si $X$ est une variable aléatoire continue sur $\mathbb{R}$, un quantile d'ordre $\beta \in ]0,1[$, noté $q_\beta$, est un nombre tel que $\mathbb{P}(X \leqslant q_\beta) = \beta$. 
+ Lorsque $X$ est continue, un tel nombre existe forcément, car la fonction de répartition $F(x) = \mathbb{P}(X\leqslant x)$ est une bijection continue. 
+Les quantiles symétriques $z_\beta$ sont, eux, définis par $\mathbb{P}(|X|\leqslant z_\beta) = \beta$. 
 
 Si la loi de $X$ est de surcroît symétrique, les quantiles symétriques s'expriment facilement en fonction des quantiles classiques. En effet, $\mathbb{P}(|X|\leqslant z)$ est égal à $\mathbb{P}(X \leqslant z) - \mathbb{P}(X \leqslant -z)$. Or, si la loi de $X$ est symétrique, alors $\mathbb{P}(X \leqslant -z) = 1 - \mathbb{P}(X \leqslant z)$, et donc 
 $$ \mathbb{P}(|X|\leqslant z) = 2\mathbb{P}(X \leqslant z) - 1.$$
 Il suffit alors de choisir pour $z$ le quantile $q_{\frac{1+\beta}{2}}$ pour obtenir $\mathbb{P}(|X|\leqslant z) = \beta$. Lorsque $\beta$ est de la forme $1-\alpha$ avec $\alpha$ petit (comme les niveaux des intervalles de confiance), on trouve alors $z_{1-\alpha} = q_{1 - \alpha/2}$. 
 
-Les quantiles s'obtiennent en inversant la fonction de répartition : lorsque celle-ci est une bijection sur $]0,1[$, alors $q_\beta = F^{-1}(\beta)$. En règle générale, il n'y a pas de forme fermée. Par exemple, pour une loi gaussienne standard, 
+Les quantiles s'obtiennent en inversant la fonction de répartition : lorsque celle-ci est une bijection sur $]0,1[$, alors $$q_\beta = F^{-1}(\beta).$$ En règle générale, il n'y a pas de forme fermée. Par exemple, pour une loi gaussienne standard, 
 $$F(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^x e^{-u^2/2}du$$
 qui elle-même n'a pas d'écriture plus simple. Fort heureusement, les outils de calcul numérique permettent d'effectuer ces calculs avec une grande précision. La table suivante donne les quantiles symétriques de la gaussienne.  
 
@@ -19,7 +24,6 @@ qui elle-même n'a pas d'écriture plus simple. Fort heureusement, les outils de
 | $z_\beta$ | 1.64 | 1.96 | 2.32 | 2.57 | 3.2 | 5.32 |
 
 Voir aussi la [règle 1-2-3](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule). Il existe de nombreuses tables de quantiles pour les lois usuelles. 
-
 
 
 :::{#thm-gaussiantail}
@@ -46,6 +50,11 @@ $$  \left(1 - \frac{1}{x^2}\right) \frac{1}{x}\frac{e^{-x^2/2}}{\sqrt{2\pi}} + J
 et donc, est plus grand que @eq-gaussiantaill. 
 :::
 
+
+### Quantiles généraux
+
+ Dans le cas général où la fonction de répartition $F(x) = \mathbb{P}(X \leqslant x)$ n'est pas continue (par exemple pour les lois discrètes), on peut toujours définir les quantiles de n'importe quel ordre $\beta \in [0,1]$ en prenant la plus petite valeur $q$ telle que $\mathbb{P}(X \leqslant q) \geqslant \beta$. Autrement dit, 
+$$q(\beta) = \inf \{t : F(t) \geqslant \beta \}.$$
 
 ## Calculs de lois
 
@@ -78,14 +87,30 @@ On va calculer la loi de $T_n = X/\sqrt{Y_n/n}$. Soit $\varphi$ une fonction tes
 $$\frac{1}{Z_n\sqrt{2\pi}}\int_0^\infty \int_{-\infty}^{\infty}  \varphi\left(\frac{x}{\sqrt{y/n}}\right) e^{-\frac{x^2}{2}}e^{-\frac{y}{2}}y^{\frac{n}{2} - 1}dxdy $$
 où $Z_n = 2^{n/2}\Gamma(n/2)$. Dans l'intégrale en $x$, on effectue le changement de variable $u = x/\sqrt{y/n}$ afin d'obtenir 
 $$\frac{1}{Z_n\sqrt{2\pi}}\int_0^\infty \int_{-\infty}^{\infty}  \varphi(u) e^{-\frac{yu^2}{2n}}e^{-\frac{y}{2}}y^{\frac{n}{2} - 1}\sqrt{\frac{y}{n}} dxdy. $$
-La densité de $T_n$ est donc donnée par 
-$$t_n(u)= \frac{1}{Z_n\sqrt{2\pi n}}\int_0^\infty  e^{-\frac{yu^2}{2n}-\frac{y}{2}}y^{\frac{n+1}{2}-1} dy. $$
+La densité $t_n(u)$ de $T_n$ est donc donnée par 
+$$\frac{1}{Z_n\sqrt{2\pi n}}\int_0^\infty  e^{-\frac{yu^2}{2n}-\frac{y}{2}}y^{\frac{n+1}{2}-1} dy. $$
 Le changement de variables $z = y(1+u^2/n)/2$ nous ramène à 
-$$t_n(u) = \frac{1}{Z_n\sqrt{2\pi n}}\left(\frac{2}{1+\frac{u^2}{n}}\right)^{\frac{n+1}{2}}\int_0^\infty  e^{-z}z^{\frac{n+1}{2}- 1} dz.$$
+$$\frac{1}{Z_n\sqrt{2\pi n}}\left(\frac{2}{1+\frac{u^2}{n}}\right)^{\frac{n+1}{2}}\int_0^\infty  e^{-z}z^{\frac{n+1}{2}- 1} dz.$$
 On reconnaît $\Gamma((n+1)/2)$ à droite. La densité $t_n(x)$ est donc 
 $$t_n(x) = \frac{1}{\sqrt{n\pi}}\frac{\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)}\left(\frac{1}{1 + \frac{x^2}{n}}\right)^{\frac{n+1}{2}}.$$
 
 Cette loi s'appelle *loi de Student* de paramètre $n$ ; on dit parfois *à $n$ degrés de liberté*. Elle est notée $\mathscr{T}(n)$. La loi de Student de paramètre $n=1$ est tout simplement une loi de Cauchy. 
+
+
+::: {.content-visible when-format="html"} 
+
+
+![Densité de plusieurs lois de Student. ](/images/student_t_distributions.png)
+
+:::
+
+::: {.content-visible when-format="pdf"} 
+
+![Densité de plusieurs lois de Student. ](/images/student_t_distributions.png)
+
+:::
+
+
 
 ### Loi de la statistique de Student {#sec-student2}
 
