@@ -110,21 +110,21 @@ Dans un modèle identifiable, la statistique inférentielle (classique) permet d
 
 :::{#def-stat}
 
-Une *statistique* est une fonction mesurable des observations. Plus formellement, si le modèle statistique fixé est $(\mathcal{X}, \mathscr{F}, P)$, alors une statistique est une fonction mesurable de $(\mathcal{X}, \mathscr{F})$. 
+Une *statistique* est une fonction mesurable des observations. Plus formellement, si le modèle statistique fixé est $(\mathcal{X}, \mathscr{F}, (P_\theta)_{\theta})$, alors une statistique est une fonction mesurable de $(\mathcal{X}, \mathscr{F})$. 
 ::: 
 
 
-1) Le premier point important est qu'une statistique ne peut pas prendre $\theta$ en argument. Ses valeurs ne doivent dépendre du paramètre $\theta$ qu'au travers de $P_\theta$. 
+1) Le premier point important est qu'une statistique ne peut pas prendre $\theta$ en argument. Elle ne doit pas du tout dépendre de $\theta$. 
 
 2) Le second point important est que, si $X$ est une variable aléatoire et $T$ une statistique, alors $T(X)$ est une variable aléatoire. On peut donc définir des quantités théoriques liées à $T$: typiquement, si $X$ a pour loi $P_\theta$, on peut définir la valeur moyenne de $T$ sous le modèle $P_\theta$ comme 
 $$\mathbb{E}_\theta[T(X)] = \int_{\mathcal{X}} T(x) P_\theta(dx)$$
 ou encore sa variance $\mathbb{E}_\theta[T(X)^2] - (\mathbb{E}_\theta[T(X)])^2$, etc. On peut aussi calculer la valeur de cette statistique sur l'échantillon dont on dispose, c'est-à-dire $T(x_1, \dotsc, x_n)$. Par exemple, la moyenne empirique d'un $n$-échantillon réel est la fonction $T : (a_1, \dots, a_n) \to n^{-1}(a_1+\dotsb + a_n)$. Si les $x_i$ sont des réalisations des variables aléatoires $X_i$, alors $T(x_1, \dotsc, x_n)$ est une réalisation de la variable aléatoire $T(X_1, \dotsc, X_n)$. 
 
-1) Ce qui ne se voit pas dans la définition, c'est qu'une bonne statistique devrait être facilement calculable ; à la place de *statistique*, on peut penser à *algorithme* : une bonne statistique doit pouvoir être calculée *facilement* par un algorithme ne prenant en entrée que les échantillons $x_i$. Si le calcul de la statistique nécessite seulement des multiplications et des additions (comme pour une moyenne empirique), c'est bien ; mais parfois, elle nécessite la résolution d'un problème algorithmique trop difficile (typiquement NP-complet).  
+3) Ce qui ne se voit pas dans la définition, c'est qu'une bonne statistique devrait être facilement calculable ; à la place de *statistique*, on peut penser à *algorithme* : une bonne statistique doit pouvoir être calculée *facilement* par un algorithme ne prenant en entrée que les échantillons $x_i$. Si le calcul de la statistique nécessite seulement des multiplications et des additions (comme pour une moyenne empirique), c'est bien ; mais parfois, elle nécessite la résolution d'un problème algorithmique trop difficile (typiquement NP-complet).  
 
 
 
-Si le but est de deviner la valeur de $\theta$ à partir des observations, il est naturel de considérer des statistiques à valeurs dans $\Theta$. C'est précisément la définition d'un estimateur.
+Si le but est de deviner la valeur de $\theta$ à partir des observations d'une variable aléatoire de distribution $P_\theta$, il est naturel de considérer des statistiques à valeurs dans $\Theta$. C'est précisément la définition d'un estimateur.
 
 :::{#def-estimateur}
 Dans le modèle $(\mathcal{X},\mathcal{A}, (P_\theta)_{\theta \in \Theta})$, un estimateur de $\theta$ est une statistique à valeurs dans $\Theta$.
@@ -132,7 +132,14 @@ Dans le modèle $(\mathcal{X},\mathcal{A}, (P_\theta)_{\theta \in \Theta})$, un 
 
 En fait, on n'est pas obligés de vouloir estimer précisément $\theta$. Peut-être qu'on veut estimer quelque chose qui dépend de $\theta$, mais qui n'est pas $\theta$, comme $\cos(\theta)$ ou $\theta^2$ ; disons, une fonction $\varphi(\theta)$. Dans ce cas, un estimateur de $\varphi(\theta)$ sera simplement une statistique à valeurs dans l'espace où vit $\varphi(\theta)$. 
 
+La tradition statistique consiste à coiffer d'un chapeau tout paramètre que l'on veut estimer, et à l'affubler éventuellement d'un indice (typiquement $n$) pour rappeler des paramètres d'intérêt, comme la taille de l'échantillon. On utilisera par exemple $\hat{\theta}_n$ pour désigner un estimateur de $\theta$ calculé sur un échantillon de taille $n$. Cette notation cache le fait que $\hat{\theta}$ est bien une variable aléatoire. 
 
+:::{#exm-formel}
+Soit $X = (X_1, \dotsc, X_n)$ des variables iid gaussiennes. Le modèle statistique sous-jacent est $\mathcal{X} = \mathbb{R}^n$, $\mathscr{F}$ la tribu borélienne usuelle, et la famille de lois que l'on considère est la famille $N(\mu, \sigma^2)^{\otimes n}$. La moyenne empirique 
+$$\hat{\mu} = \frac{X_1 + \dotsb + X_n}{n}$$
+est un estimateur, associé à la fonction mesurable $T:\mathbb{R}^n \to \mathbb{R}$ définie par $T(x_1, \dotsc, x_n) = n^{-1}(x_1 + \dotsc + x_n)$. On a donc $\hat{\mu}_n = T(X_1, \dotsc, X_n)$. C'est bien une variable aléatoire.  
+
+:::
 
 ## Points de vue
 

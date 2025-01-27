@@ -2,7 +2,7 @@
 
 Si l'on essaie d'estimer le rendement $\mu$ d'un actif financier, on cherche implicitement à savoir si l'on va investir ou pas. Cette décision dépendra de notre estimation : pour faire simple, on peut considérer que si nous estimons que le rendement est positif ($\hat{\mu}>0$), alors il faut investir. Sinon, on n'investira pas. 
 
-Les tests d'hypothèses visent à formaliser cela. Faire une *hypothèse* dans un modèle statistique $(\mathcal{X}, \mathscr{F}, (P_\theta)_{\theta \in \Theta_0})$, c'est supposer que $\theta$ appartient à une certaine région de $H_0 \subset \Theta$. Les *tests* visent à construire des procédures pour tester une hypothèse nulle, que l'on notera $H_0$, contre une hypothèse alternative, notée $H_1$. 
+Les tests d'hypothèses visent à formaliser cela. Faire une *hypothèse* dans un modèle statistique $(\mathcal{X}, \mathscr{F}, (P_\theta)_{\theta \in \Theta})$, c'est supposer que $\theta$ appartient à une certaine région de $H_0 \subset \Theta$. Les *tests* visent à construire des procédures pour tester une hypothèse nulle, que l'on notera $H_0$, contre une hypothèse alternative, notée $H_1$. 
 
 
 

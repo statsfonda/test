@@ -37,6 +37,12 @@ La longueur du $k$-ème élément $w(k)$ est notée $\ell_k$. Étant donné un c
 $$\mathbb{E}[\ell_X] = \sum_{i=1}^k \ell_i \mathbb{P}(X = a_i).$$
 
 
+:::{#exm-codage}
+
+Un roman contient environ 80000 mots, donc environ 400000 signes (en comptant les espaces). Un signe peut être l'une des 26 lettres de l'alphabet (en majuscule ou minuscule), un signe de ponctuation, un chiffre, une lettre accentuée… La plupart des romans occidentaux ont besoin d'un alphabet de ~200 lettres. Le codage binaire basique lettre-par-lettre nécessiterait donc environ $\lceil \log_2 200 \rceil \approx 8$ bits d'information par lettre, soit 3200000 bits. On compte plutôt en paquet de 8 bits, appelés bytes : le codage du roman nécessiterait donc environ 400000 bytes soit 400kB. 
+
+:::
+
 ## Le théorème de Shannon
 
 Quel est la plus petite quantité moyenne d'informations nécessaire à coder une réalisation de $X$ ? La réponse est *l'entropie de la loi de $P$*. 

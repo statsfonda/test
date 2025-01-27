@@ -35,13 +35,13 @@ En notant $x$ l'espérance de $\hat{\theta}$, on voit que le risque quadratique 
 ::: {.content-visible when-format="html"} 
 
 
-![À droite, RQ élevé mais biais nul ; à gauche, RQ faible mais biais non nul. ](/images/bias-variance.webp)
+![À gauche, RQ élevé mais biais nul ; à droite, RQ faible mais biais non nul. ](/images/bias-variance.webp)
 
 :::
 
 ::: {.content-visible when-format="pdf"} 
 
-![À droite, RQ élevé mais biais nul ; à gauche, RQ faible mais biais non nul. ](/images/bias-variance.png){width=50%}
+![À gauche, RQ élevé mais biais nul ; à droite, RQ faible mais biais non nul. ](/images/bias-variance.png){width=50%}
 
 :::
 
@@ -56,8 +56,12 @@ $\mathbb{R}^d$ converge en probabilité vers une
 variable aléatoire $X$ à valeurs dans
 $\mathbb{R}^d$ si pour tout $\varepsilon >0$, 
 $$
-\lim_{n\to\infty} \mathbb{P} (| X_n -X|> \varepsilon ) = 0 \, .
+\lim_{n\to\infty} \mathbb{P} (| X_n -X|> \varepsilon ) = 0.
 $$
+
+On dit qu'elle converge $\mathbb{P}$-presque sûrement vers $X$ si 
+$$\mathbb{P}(\lim X_n = X) = 1.$$
+
 
 
 :::{#def-consistance}

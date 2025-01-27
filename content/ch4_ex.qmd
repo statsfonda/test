@@ -140,6 +140,25 @@ L'argent fait-il le bonheur ?
 
 :::
 
+# Concours
+
+Faites un test du chi-deux (indépendance ou adéquation) de votre choix. Vous devez vous-même trouver une question qui vous intéresse. Cela peut être n'importe quoi : 
+
+- vérifier la loi de Benford dans je ne sais quel document ou site ou journal ;
+- se demander si le département de région d'une personne et ses opinions politiques sont indépendantes ; 
+- tester une corrélation simple entre la météo à NY et la positivé du rendement du S&P500 (« il pleut à Wall Street » vs « les marchés sont dans le vert ») ; 
+- se demander si les naissances en France sont uniformément réparties sur les 365 jours de l'année ; 
+- tester si ChatGPT ou je ne sais quel LLM est capable de générer des échantillons de lois précises (loi uniforme, loi de Poisson, etc). Je serai curieux d'avoir le résultat. 
+- Etc. 
+
+
+Trouvez donc une question intéressante, trouvez des données pertinentes (c'est peut-être la partie la moins simple), formulez la question sous la forme d'un test statistique, et réalisez le test avec votre langage de programmation favori (qui n'est pas R, soyez de bon goût). Écrivez quelques lignes pour me dire où vous avez eu les données et comment vous vous adaptez au formalisme du cours. Une page max (snippet de code compris) devrait suffire. 
+
+Pas besoin d'aller chercher très loin, un jeu de données simple suffit ! Amusez-vous bien. 
+
+Vous devez m'envoyer ça avant le 9 février 23h59, avec pour objet du mail votre nom suivi de "chi-deux". 
+
+
 # Annales de partiel
 
 Je ne garantis pas que les notations et les concepts utilisés dans ces annales soient en phase avec le cours de cette année !
@@ -149,6 +168,8 @@ Je ne garantis pas que les notations et les concepts utilisés dans ces annales 
 - [Examen 2020](/pdfs/ExoExam.pdf) ; ne pas regarder le deuxième exercice. 
 
 - [Partiel 2023](/pdfs/Partiel2023.pdf) et [sa correction](/pdfs/Partiel2023Corrige.pdf)
+
+- [Partiel 2024](/pdfs/partiel_24.pdf) avec sa correction intégrée, assez proche de ce que j'attend de vous pour le partiel 2025. 
 
 
 
