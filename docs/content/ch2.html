@@ -364,7 +364,7 @@ $$
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/bias-variance.webp" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">À&nbsp;droite, RQ élevé mais biais nul ;&nbsp;à gauche, RQ faible mais biais non nul.</figcaption>
+<figcaption class="figure-caption">À gauche, RQ élevé mais biais nul ;&nbsp;à droite, RQ faible mais biais non nul.</figcaption>
 </figure>
 </div>
 </section>
@@ -372,8 +372,9 @@ $$
 <h2 data-number="2.2" class="anchored" data-anchor-id="convergence"><span class="header-section-number">2.2</span> Convergence</h2>
 <p>La dépendance du biais ou du risque quadratique (ou d’autres indicateurs) vis à vis de la taille de l’échantillon est une question importante :&nbsp;pour une suite d’expériences donnée, on veut que ces indicateurs tendent vite vers zéro. Quelles sont les meilleures vitesses envisageables, et comment les obtenir ?</p>
 <p>Rappelons brièvement deux notions de convergence des variables aléatoires. Une suite de variables aléatoires <span class="math inline">\(X_n\)</span> à valeurs dans <span class="math inline">\(\mathbb{R}^d\)</span> converge en probabilité vers une variable aléatoire <span class="math inline">\(X\)</span> à valeurs dans <span class="math inline">\(\mathbb{R}^d\)</span> si pour tout <span class="math inline">\(\varepsilon &gt;0\)</span>, <span class="math display">\[
-\lim_{n\to\infty} \mathbb{P} (| X_n -X|&gt; \varepsilon ) = 0 \, .
+\lim_{n\to\infty} \mathbb{P} (| X_n -X|&gt; \varepsilon ) = 0.
 \]</span></p>
+<p>On dit qu’elle converge <span class="math inline">\(\mathbb{P}\)</span>-presque sûrement vers <span class="math inline">\(X\)</span> si <span class="math display">\[\mathbb{P}(\lim X_n = X) = 1.\]</span></p>
 <div id="def-consistance" class="theorem definition">
 <p><span class="theorem-title"><strong>Définition 2.2 (convergence d’un estimateur) </strong></span>Une suite d’estimateurs <span class="math inline">\((\hat{\theta}_n)\)</span> est convergente pour l’estimation de <span class="math inline">\(\theta\)</span> lorsque, pour tout <span class="math inline">\(\theta \in \Theta\)</span>, sous <span class="math inline">\(P_\theta\)</span>, la suite <span class="math inline">\((\hat{\theta}_n)\)</span> converge en probabilité vers <span class="math inline">\(\theta\)</span> ; autrement dit, lorsque pour tout <span class="math inline">\(\varepsilon&gt;0\)</span>, <span class="math display">\[\lim_n     P_\theta ( | \hat{\theta}_n-\theta| &gt; \varepsilon ) =0.
 \]</span> La suite est fortement convergente si, pour tout <span class="math inline">\(\theta\)</span>, la convergence a lieu <span class="math inline">\(P_\theta\)</span>-presque sûrement.</p>

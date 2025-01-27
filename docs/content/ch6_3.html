@@ -374,6 +374,9 @@ $$
 </div>
 <p>Par exemple, je n’ai pas le droit de coder l’ensemble à quatre éléments avec le code <span class="math inline">\(w(1)=1, w(2)=10, w(3)=11, w(4)=010\)</span>. En effet, dans ce cas je ne serai pas en mesure de discerner si <span class="math inline">\(1010\)</span> veut dire <span class="math inline">\(w(1)w(4)\)</span> ou bien <span class="math inline">\(w(2)w(2)\)</span>.</p>
 <p>La longueur du <span class="math inline">\(k\)</span>-ème élément <span class="math inline">\(w(k)\)</span> est notée <span class="math inline">\(\ell_k\)</span>. Étant donné un code, le nombre moyen de bits d’information nécessaire pour coder une variable aléatoire <span class="math inline">\(X\)</span> sur <span class="math inline">\(\mathcal{X}\)</span> est donc <span class="math display">\[\mathbb{E}[\ell_X] = \sum_{i=1}^k \ell_i \mathbb{P}(X = a_i).\]</span></p>
+<div id="exm-codage" class="theorem example">
+<p><span class="theorem-title"><strong>Exemple 16.1 </strong></span>Un roman contient environ 80000 mots, donc environ 400000 signes (en comptant les espaces). Un signe peut être l’une des 26 lettres de l’alphabet (en majuscule ou minuscule), un signe de ponctuation, un chiffre, une lettre accentuée… La plupart des romans occidentaux ont besoin d’un alphabet de ~200 lettres. Le codage binaire basique lettre-par-lettre nécessiterait donc environ <span class="math inline">\(\lceil \log_2 200 \rceil \approx 8\)</span> bits d’information par lettre, soit 3200000 bits. On compte plutôt en paquet de 8 bits, appelés bytes :&nbsp;le codage du roman nécessiterait donc environ 400000 bytes soit 400kB.</p>
+</div>
 </section>
 <section id="le-théorème-de-shannon" class="level2" data-number="16.2">
 <h2 data-number="16.2" class="anchored" data-anchor-id="le-théorème-de-shannon"><span class="header-section-number">16.2</span> Le théorème de Shannon</h2>
