@@ -349,6 +349,7 @@ $$
 <li>Montrer que si <span class="math inline">\(\mathrm{d}_{\mathrm{KL}}(P_n \mid Q) \to 0\)</span>, alors <span class="math inline">\(P_n\)</span> converge en loi vers <span class="math inline">\(Q\)</span>.</li>
 <li>Calculer la distance en variation totale entre deux lois de Bernoulli de paramètres respectifs <span class="math inline">\(p\)</span> et <span class="math inline">\(q\)</span>.</li>
 <li>Calculer la distance en variation totale entre une loi <span class="math inline">\(\mathrm{Bin}(n,p)\)</span> et une loi <span class="math inline">\(N(\mu,\sigma^2)\)</span>.</li>
+<li>Soient <span class="math inline">\(P,Q\)</span> deux mesures distinctes. Montrer que <span class="math inline">\(\dtv(P^{\otimes n}, Q^{\otimes n})\)</span> tend vers 1.</li>
 <li>Soient <span class="math inline">\(P,Q\)</span> deux mesures. Montrer que <span class="math inline">\(\dkl(P^{\otimes n} \mid Q^{\otimes n}) = n \dkl(P \mid Q)\)</span>.</li>
 </ul>
 </section>
@@ -357,9 +358,10 @@ $$
 <p>Pour tous les cas suivants, il faut savoir réaliser rapidement un test puissant, voire même optimal au sens qu’il vous plaira.</p>
 <ul>
 <li>Tester <span class="math inline">\(\mu = \mu_0\)</span> contre <span class="math inline">\(\mu = \mu_1\)</span> dans un échantillon <span class="math inline">\(N(\mu, \sigma^2)\)</span> lorsque <span class="math inline">\(\sigma\)</span> est connu.</li>
-<li>Même question lorsque <span class="math inline">\(\sigma\)</span> est inconnu.</li>
+<li>Même question lorsque <span class="math inline">\(\sigma\)</span> est inconnu (attention :&nbsp;dans ce cas les hypothèses ne sont pas simples mais composites. Il faut utiliser le rapport des maximums de vraisemblance, que l’on verra plus tard).</li>
 <li>Soient <span class="math inline">\(X_1, \dotsc, X_n\)</span> un échantillon iid <span class="math inline">\(N(\mu_1,\sigma_1^2)\)</span> et <span class="math inline">\(Y_1, \dotsc, Y_m\)</span> (<span class="math inline">\(m\)</span> et <span class="math inline">\(n\)</span> ne sont pas forcément égaux) un échantillon iid de loi <span class="math inline">\(N(\mu_2,\sigma_2^2)\)</span>. Tester <span class="math inline">\(\sigma_1 = \sigma_2\)</span> lorsque <span class="math inline">\(\mu_1\)</span> et <span class="math inline">\(\mu_2\)</span> sont connues.</li>
-<li>Même question lorsque <span class="math inline">\(\mu_1\)</span> et <span class="math inline">\(\mu_2\)</span> ne sont pas connues.</li>
+<li>Même question lorsque <span class="math inline">\(\mu_1\)</span> et <span class="math inline">\(\mu_2\)</span> ne sont pas connues (même remarque que précédemment).<br>
+</li>
 <li>Donner la forme d’un test sur la valeur de <span class="math inline">\(p\)</span> pour une réalisation d’une loi <span class="math inline">\(\mathrm{Bin}(n,p)\)</span> et calculer son niveau asymptotique quand <span class="math inline">\(n\to\infty\)</span>.</li>
 <li>Donner la forme d’un test sur la valeur de <span class="math inline">\(\lambda\)</span> dans un échantillon de <span class="math inline">\(n\)</span> variables aléatoires de Poisson de paramètre <span class="math inline">\(\lambda\)</span>.</li>
 </ul>
