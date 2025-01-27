@@ -12,6 +12,7 @@
 - Dans un ajustement affine sans constante $y_i=\beta x_i$, monter que $\hat{\beta} = \sum_{i=1}^n p_i y_i$ où $p_i = x_i/|x|^2$. 
 - Calculer la limite en loi de $\mathscr{F}_{r,n}$ lorsque $r$ est fixé et $n \to \infty$. 
 - Calculer la limite en loi de $\mathscr{F}_{n,n}$ lorsque $n \to \infty$. 
+- Réfléchir au tweet suivant : [random points ALWAYS produce a slope](https://x.com/nntaleb/status/1280090844113100801). 
 
 ## Exercices
 

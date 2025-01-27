@@ -8,6 +8,7 @@
 - Montrer que si $\mathrm{d}_{\mathrm{KL}}(P_n \mid Q) \to 0$, alors $P_n$ converge en loi vers $Q$. 
 - Calculer la distance en variation totale entre deux lois de Bernoulli de paramètres respectifs $p$ et $q$.
 - Calculer la distance en variation totale entre une loi $\mathrm{Bin}(n,p)$ et une loi $N(\mu,\sigma^2)$. 
+- Soient $P,Q$ deux mesures distinctes. Montrer que $\dtv(P^{\otimes n}, Q^{\otimes n})$ tend vers 1. 
 - Soient $P,Q$ deux mesures. Montrer que $\dkl(P^{\otimes n} \mid Q^{\otimes n}) = n \dkl(P \mid Q)$. 
 
 ## Tests élémentaires
@@ -15,9 +16,9 @@
 Pour tous les cas suivants, il faut savoir réaliser rapidement un test puissant, voire même optimal au sens qu'il vous plaira. 
 
 - Tester $\mu = \mu_0$ contre $\mu = \mu_1$ dans un échantillon $N(\mu, \sigma^2)$ lorsque $\sigma$ est connu. 
-- Même question lorsque $\sigma$ est inconnu. 
+- Même question lorsque $\sigma$ est inconnu (attention : dans ce cas les hypothèses ne sont pas simples mais composites. Il faut utiliser le rapport des maximums de vraisemblance, que l'on verra plus tard). 
 - Soient $X_1, \dotsc, X_n$ un échantillon iid $N(\mu_1,\sigma_1^2)$ et $Y_1, \dotsc, Y_m$ ($m$ et $n$ ne sont pas forcément égaux) un échantillon iid de loi $N(\mu_2,\sigma_2^2)$. Tester $\sigma_1 = \sigma_2$ lorsque $\mu_1$ et $\mu_2$ sont connues. 
-- Même question lorsque $\mu_1$ et $\mu_2$ ne sont pas connues. 
+- Même question lorsque $\mu_1$ et $\mu_2$ ne sont pas connues (même remarque que précédemment).  
 - Donner la forme d'un test sur la valeur de $p$ pour une réalisation d'une loi $\mathrm{Bin}(n,p)$ et calculer son niveau asymptotique quand $n\to\infty$. 
 - Donner la forme d'un test sur la valeur de $\lambda$ dans un échantillon de $n$ variables aléatoires de Poisson de paramètre $\lambda$. 
   

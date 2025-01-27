@@ -1,4 +1,4 @@
-# Algèbre linéaire {#app-al}
+# Algèbre linéaire {#sec-al}
 
 ## Multiplication matricielle
 

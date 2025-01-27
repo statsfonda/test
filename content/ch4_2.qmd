@@ -7,16 +7,16 @@
 \newcommand{\bp}{\mathbf{p}}
 
 
-Les tests du $\chi_2$ sont une vaste famille de tests qui visent, pour la plupart, à tester si un échantillon (souvent discret) a été généré par une loi précise ; on parle parfois de test d'ajustement. 
+Les tests du $\chi_2$ sont une famille de tests qui visent, pour la plupart, à tester si un échantillon discret a été généré par une loi précise ; on parle parfois de test d'ajustement. 
 
 
 ## Loi multinomiale
 
-Soit $\Omega$ un ensemble fini à $k$ éléments, disons pour simplifier $\{1, \dotsc, k\}$. On notera $S_k$ l'ensemble des lois de probabilités sur cet ensemble, c'est-à-dire les $k$-uplets $\mathbf{p} = (p_1, \dotsc, p_k)$ de nombres positifs dont la somme vaut 1. On observe $n$ tirages indépendants et identiquement distribués selon une même loi sur $\Omega$. Formellement, le modèle statistique est donné par $(\mathbf{p}^{\otimes n} : \mathbf{p} \in S_k)$. 
+Soit $\Omega$ un ensemble fini à $k$ éléments, disons pour simplifier $\{1, \dotsc, k\}$. On notera $S_k$ l'ensemble des lois de probabilités sur cet ensemble, c'est-à-dire les $\mathbf{p} = (p_1, \dotsc, p_k)$ tels que les $p_i$ sont positifs et de somme 1. On observe $n$ tirages iid selon une même loi sur $\Omega$. Formellement, le modèle statistique est donné par $(\mathbf{p}^{\otimes n} : \mathbf{p} \in S_k)$. 
 
 
 
-On note $N_j$ le nombre d'observations égales à $j$. Le vecteur $N=(N_1, \dotsc, N_k)$ suit alors une loi multinomiale de paramètres $n$ et $\mathbf{p}$, donnée par 
+On note $N_j$ le nombre d'observations égales à $j$. Le vecteur $N=(N_1, \dotsc, N_k)$ suit une loi multinomiale de paramètres $n$ et $\mathbf{p}$, donnée par 
 \begin{align*}
 \PP(N = (n_1, \dotsc, n_k)) = \frac{n!}{n_1! \dotsc n_k!} \prod_{j=1}^k {p}_j^{n_j},
 \end{align*} 
@@ -24,7 +24,7 @@ où $\sum_{j=1}^k n_j = n$. Cette loi sera notée $\mathrm{Mult}(n, \mathbf{p})$
 
 :::{#thm-cvloimult}
 
-Soit $N \sim \mathrm{Mult}(n,\mathbf{p})$. Alors, $\sqrt{n}(\frac{N}{n}- \mathbf{p})$ converge en loi lorsque $n\to\infty$ vers $\mathcal{N}(0, \Sigma)$, où 
+Soit $N \sim \mathrm{Mult}(n,\mathbf{p})$. Le vecteur $\sqrt{n}(\frac{N}{n}- \mathbf{p})$ converge en loi vers $N(0, \Sigma)$, où 
 $$ \Sigma = \mathrm{diag}(\mathbf{p}) - \mathbf{p}\mathbf{p}^\top.$${#eq-covarmultin}
 
 ::: 
@@ -49,7 +49,7 @@ pour une valeur de $\mathbf{p}_0$ fixée au préalable. À partir de maintenant
 
 :::{#exm-testadeq}
 
-On peut se demander si, dans la langue courante, les 21 lettres de l'alphabet ont à peu près la même probabilité d'apparaître comme première lettre d'un mot. Cela revient à tester si $\bp_0=(1/26, \dotsc, 1/26)$, hypothèse qui est évidemment fausse. 
+On peut se demander si, dans la langue courante, les 21 lettres de l'alphabet ont à peu près la même probabilité d'apparaître comme première lettre d'un mot. Cela revient à tester si $\bp_0=(1/26, \dotsc, 1/26)$, hypothèse qui est évidemment fausse, il suffit de regarder l'épaisseur des 26 sections du dictionnaire pour s'en rendre compte. 
 
 Qu'en est-il des 9 chiffres ? On peut vouloir tester si, dans n'importe quel document (journal, site internet, article scientifique), ces 9 chiffres apparaissent à peu près uniformément en tant que premier chiffre d'un nombre. Cela reviendrait à tester $\bp_0 = (1/9, \dotsc, 1/9)$. 
 
@@ -59,11 +59,13 @@ Ce n'est pas le cas et cette hypothèse est très fréquemment réfutée : le pr
 
 Le théorème @thm-cvloimult dit que $\sqrt{n}(\frac{N}{n}- \mathbf{p}) \approx N(0, \Sigma)$. Notons $\sqrt{\bp_0} = (\sqrt{p_1}, \dotsc, \sqrt{p_k})$ et $D = \mathrm{diag}(\sqrt{\bp}_0)$. Sous $H_0$,  $D^{-1} \sqrt{n}(\frac{N}{n}- \mathbf{p}_0)$ converge en loi vers  $D^{-1}N(0,\Sigma) = N(0,D^{-1}\Sigma (D^{-1})^\top)$. Que vaut cette matrice de covariance ? 
 
-D'abord, comme $D$ est diagonale, $D^{-1}$ l'est aussi et $(D^{-1})^\top$ vaut $D^{-1}$. De plus, $D^2$ est égal à $\mathrm{diag}(\bp_0)$. Enfin, en faisant la multiplication on voit vite que $D^{-1}\bp_0 = \sqrt{\bp}_0$. Ainsi, on voit que $D^{-1}\Sigma D^{-1}$ vaut également 
-$$D^{-1}D^2 D^{-1} - D^{-1}\bp_0 \bp_0 D^{-1} = I_k - \sqrt{\bp}_0 \bp_0^{\top}.$$
-En regroupant tout cela, on obtient donc que $D^{-1}\sqrt{n}(N/n - \bp_0)$ converge en loi vers
-$$N(0, I_k - \sqrt{\mathbf{p}_0} \sqrt{\mathbf{p}_0}^T).$$
-La statistique qui va nous servir à faire des tests est tout simplement la norme au carré de $D^{-1}\sqrt{n}(N/n - \bp_0)$. En manipulant légèrement cette expression, on obtient sa forme usuelle, le *contraste du $\chi_2$*. 
+D'abord, comme $D$ est diagonale, $D^{-1}$ l'est aussi et $(D^{-1})^\top$ vaut $D^{-1}$. De plus, $D^2$ est égal à $\mathrm{diag}(\bp_0)$. Enfin, en faisant la multiplication on voit vite que $D^{-1}\bp_0 = \sqrt{\bp}_0$. Ainsi, on voit que $D^{-1}\Sigma D^{-1}$ vaut également $D^{-1}D^2 D^{-1} - D^{-1}\bp_0 \bp_0 D^{-1}$ c'est-à-dire $$I_k - \sqrt{\bp}_0 \bp_0^{\top}.$$
+L'appendice @sec-al rappelle pourquoi cette matrice est une matrice de projection orthogonale. 
+
+
+On a montré que $D^{-1}\sqrt{n}(N/n - \bp_0)$ converge en loi vers
+$$N(0, I_k - \sqrt{\mathbf{p}_0} \sqrt{\mathbf{p}_0}^\top).$$
+La statistique qui va nous servir à faire des tests est la norme au carré de $D^{-1}\sqrt{n}(N/n - \bp_0)$. En manipulant cette expression, on obtient sa forme usuelle, le *contraste du $\chi_2$*. 
 
 
 :::{#def-contraste}
@@ -100,18 +102,23 @@ $$ \{ D_n(\mathbf{p}_0) > \kappa_{k-1, 1-\alpha} \}$$
 
 ## Test d'indépendance
 
-Les tests du $\chi_2$ d'indépendance sont omniprésents en sciences humaines. Dans ces tests, on observe des variables aléatoires qui sont des *couples* à valeur dans deux espaces discrets ; disons, pour simplifier, que cet espace est $\Omega = \{1, \dotsc, k\}\times \{1, \dotsc, h\}$. Les observations $(x_i, y_i)$ sont des réalisations d'une variable aléatoire $(X,Y)$. Ici, le modèle statistique sera donc $(\mathbf{p}^{\otimes n} : \mathbf{p} \in S_{k,h})$, où $S_{k,h}$ est l'ensemble des $\mathbf{p} = (p_{i,j}, i \in \{1,\dots, k\}, j\in \{1, \dots, h\})$ qui sont des lois de probabilité. 
+Les tests du $\chi_2$ d'indépendance sont omniprésents en sciences humaines. Dans ces tests, on observe des variables aléatoires qui sont des *couples* à valeur dans deux espaces discrets ; disons, pour simplifier, que cet espace est $\Omega = \{1, \dotsc, k\}\times \{1, \dotsc, h\}$. Les observations $(x_i, y_i)$ sont des réalisations d'une variable aléatoire $(X,Y)$. 
+
+
+:::{#exm-test}
+
+On récolte des données sur le groupe socio-professionnel (GSP) et le genre. Chaque observation correspond à une personne, possédant deux attributs : $\mathtt{genre}$, valant 0 ou 1, et $\mathtt{GSP}$, valant l'une des 6 groupes définis par l'INSEE (Agriculteur, artisan, cadre, etc.). On cherche à déterminer si les deux modalités sont indépendantes, c'est-à-dire si la proportion d'hommes et de femmes dans chaque groupe ne diffère pas significativement en fonction du groupe. 
+
+:::
+
+
+Ici, le modèle statistique sera donc $(\mathbf{p}^{\otimes n} : \mathbf{p} \in S_{k,h})$, où $S_{k,h}$ est l'ensemble des $\mathbf{p} = (p_{i,j})$ qui sont des lois de probabilité. 
 
 Si $\mathbf{p}$ est la loi de $(X,Y)$, alors $X$ et $Y$ sont indépendantes si et seulement si $\mathbf{p}$ peut s'écrire sous la forme $p_{i,j} = p^x_i p^y_j$, où $\mathbf{p}^x \in S_k$ et $\mathbf{p}^y \in S_h$. L'ensemble de ces lois sera noté $I_{k,h}$ (« I » pour « Indépendant » ). Les tests d'indépendance visent à tester l'hypothèse nulle 
 $$ H_0 : \mathbf{p}\in I_{k,h}$${#eq-chi2indepnul}
 contre l'hypothèse alternative 
 $$ H_1 : \mathbf{p} \notin I_{k,h}.$$
 
-:::{#exm-test}
-
-On récolte des données sur le groupe socio-professionnel (GSP) et le genre. Chaque observation correspond à une personne, possédant deux attributs : $\mathtt{genre}$, valant 0 ou 1, et $\mathtt{GSP}$, valant l'une des 6 groupes définis par l'INSEE (Agriculteur, artisan, cadre, etc.). Le test ci-dessus vise à déterminer si les deux modalités sont indépendantes, c'est-à-dire si la proportion d'hommes et de femmes dans chaque groupe ne diffère pas significativement en fonction du groupe. 
-
-:::
 
 La procédure pour effectuer un tel test nécessite plusieurs étapes. 
 
@@ -150,7 +157,7 @@ C'est une conséquence un peu plus technique du théorème de Cochran.
 
 :::
 
-Tout cela permet encore une fois d'obtenir des tests très efficacement : en abrégeant $\kappa_{1 - \alpha} = \kappa_{(k-1)(h-1), 1-\alpha}$, on obtient que $\mathbb{P}(C_n > \kappa_{1-\alpha}) \to \alpha$. Ainsi, la région de rejet 
+Tout cela permet encore une fois d'obtenir des tests : en abrégeant $\kappa_{1 - \alpha} = \kappa_{(k-1)(h-1), 1-\alpha}$, on obtient que $\mathbb{P}(C_n > \kappa_{1-\alpha}) \to \alpha$. Ainsi, la région de rejet 
 $$\{C_n > \kappa_{1-\alpha}\} $$
 fournit un test de niveau asymptotique $1-\alpha$. La seconde partie du théorème dit que si la véritable loi sous-jacente n'est effectivement pas la loi de deux variables indépendantes, alors ce test sera systématiquement rejeté --- autrement dit, si l'hypothèse alternative est simple, la puissance de ce test tend vers 1. 
 

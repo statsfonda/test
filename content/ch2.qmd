@@ -41,7 +41,7 @@ En notant $x$ l'espérance de $\hat{\theta}$, on voit que le risque quadratique 
 
 ::: {.content-visible when-format="pdf"} 
 
-![À droite, RQ élevé mais biais nul ; à gauche, RQ faible mais biais non nul. ](/images/bias-variance.png)
+![À droite, RQ élevé mais biais nul ; à gauche, RQ faible mais biais non nul. ](/images/bias-variance.png){width=50%}
 
 :::
 

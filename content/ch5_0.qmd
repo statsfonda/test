@@ -81,4 +81,16 @@ C'est un nombre entre 0 et 1.
 
 Le numérateur est la variance empirique des prédictions $\hat{y}_i$. Le dénominateur est la variance empirique des observations. Dans les des cas, il s'agit de la norme carrée d'un vecteur ($\hat{Y}$ et $Y$) projeté sur l'espace des vecteurs de moyenne nulle. Comme $\hat{Y}$ est déjà une projection de $Y$ sur un certain sous-espace, on a forcément $|\hat{Y} - \bar{y}| \leqslant |Y - \bar{y}|$, donc le coefficient $R^2$ est toujours entre 0 et 1. 
 
-Plus le coefficient de détermination est proche de 1, meilleure est la régression -- attention, cet indicateur possède de nombreuses limites. 
+Plus le coefficient de détermination est proche de 1, meilleure est la régression -- attention, cet indicateur possède de nombreuses limites. Comme tous les outils statistiques puissants, la régression linéaire et le coefficient R2 donnent toujours lieu à des utilisations fantastiques : 
+
+::: {.content-visible when-format="html"} 
+
+![Cet ajustement affine est vraiment très très mauvais.](/images/bad_regression.png)
+
+:::
+
+::: {.content-visible when-format="pdf"}
+
+![Cet ajustement affine est vraiment très très mauvais.](/images/bad_regression.png){width=70%}
+
+:::
