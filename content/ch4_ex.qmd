@@ -140,7 +140,7 @@ L'argent fait-il le bonheur ?
 
 :::
 
-# Concours
+# Travail pratique[^1]
 
 Faites un test du chi-deux (indépendance ou adéquation) de votre choix. Vous devez vous-même trouver une question qui vous intéresse. Cela peut être n'importe quoi : 
 
@@ -170,6 +170,8 @@ Je ne garantis pas que les notations et les concepts utilisés dans ces annales 
 - [Partiel 2023](/pdfs/Partiel2023.pdf) et [sa correction](/pdfs/Partiel2023Corrige.pdf)
 
 - [Partiel 2024](/pdfs/partiel_24.pdf) avec sa correction intégrée, assez proche de ce que j'attend de vous pour le partiel 2025. 
+
+[^1]: une dénomination très vieillote, je vous le concède. 
 
 
 
