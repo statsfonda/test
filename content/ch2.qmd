@@ -130,7 +130,7 @@ On termine par la « delta-méthode » : si une suite d'estimateurs est asympto
 
 ::: {.content-visible when-format="pdf"} 
 
-![Une petite gaussienne autour de 1.5 est transformée par une fonction $f \in \mathscr{C}^1$ en une petite gaussienne autour de $f(1.5)$, de variance normalisée par $f'(1.5)$. ](/images/histogram.png)
+![Une petite gaussienne autour de 1.5 est transformée par une fonction $f \in \mathscr{C}^1$ en une petite gaussienne autour de $f(1.5)$, de variance normalisée par $f'(1.5)$. ](/images/histogram.png){width=60%}
 
 :::
 

@@ -96,3 +96,17 @@ $$ p_\star = \inf\{\alpha>0 : \rejet_\alpha\} = \sup\{\alpha>0 : \accept_\alph
 
 **Calcul de $p$-valeur.** Dans de nombreux tests, la construction d'un test se fonde sur une statistique, disons $S$, qui sous l'hypothèse nulle suit une loi particulière (par exemple, $\sqrt{n}\bar{X}_n / \hat{\sigma}_n \sim \mathscr{T}(n-1)$ sous l'hypothèse $X_i \sim N(\mu,\sigma^2)$ avec $\mu=0$ dans le cas d'un test de Student). Si le test est de la forme $S < q_{1-\alpha}$, ce qui équivaut à $F(S)<1-\alpha$. La $p$-valeur est donnée par
 $$p_\star = \sup\{\alpha > 0 : S < q_{1-\alpha}\} = \sup\{\alpha : F(S)<1-\alpha\} = 1 - F(S).$$
+
+
+
+::: {.content-visible when-format="html"} 
+
+![$p$-valeur d'un test dont la statistique d'intérêt est $t$. ](/images/p_value.webp){width=70%}
+
+:::
+
+::: {.content-visible when-format="pdf"} 
+
+![$p$-valeur d'un test dont la statistique d'intérêt est $t$. ](/images/p_value.png){width=60%}
+
+:::

@@ -23,7 +23,7 @@ Le coefficient $\beta$ n'est rien d'autre que la covariance empirique des $x_i$ 
 
 L'inégalité de Cauchy-Schwartz dit que $\left|\overline{xy} - \bar{x}{\bar{y}}\right| \leqslant \tilde{\sigma}_x \tilde{\sigma}_y$, où l'on a noté
 $$\tilde{\sigma}_x^2 = \frac{1}{n}\sum_{i=1}^n x_i^2 - \left(\frac{1}{n}\sum_{i=1}^n x_i\right)^2$$
-l'estimateur naïf de la variance[^1]. L'inégalité n'est une égalité que si $x$ et $y$ sont effectivement colinéaires, c'est-à-dire si $y_i = \hat{\alpha} + x_i \hat{\beta}$ pour tous les $i$. La qualité de l'ajustement affine est donc bien mesurée par la quantité 
+l'estimateur naïf de la variance. L'inégalité n'est une égalité que si $x$ et $y$ sont effectivement colinéaires, c'est-à-dire si $y_i = \hat{\alpha} + x_i \hat{\beta}$ pour tous les $i$. La qualité de l'ajustement affine est donc bien mesurée par la quantité 
 $$ R^2 = \frac{\overline{xy}-\bar{x}\bar{x}}{\tilde{\sigma}_x \tilde{\sigma}_y}.$$
 
 

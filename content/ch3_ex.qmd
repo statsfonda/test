@@ -69,7 +69,7 @@ Soit $X_1, \dotsc, X_n$ des variables aléatoires iid exponentielles de paramèt
 
 Montrer que l'inégalité de Hoeffding reste valable lorsque les $X_i$ ne sont plus supposés indépendants, mais que la suite $S_k = X_1 + \dotsb + X_k$ est une martingale. Indice : $\mathbb{E}[e^{\lambda S_{n+1}}] = \mathbb{E}[e^{\lambda S_n}\mathbb{E}[e^{\lambda X_{n+1}}|S_n]]$. 
 
-Ce raffinement s'appelle *inégalite de Hoeffding-Azuma*. C'est celui que nous avons utilisé dans l'exercice @ex-tanks, lorsque les $X_1, \dotsc, X_n$ sont des tirages *sans remise* dans une urne à $N$ éléments. 
+Ce raffinement s'appelle *inégalite de Hoeffding-Azuma*. C'est celui que nous avons utilisé dans l'exercice @exr-tanks, lorsque les $X_1, \dotsc, X_n$ sont des tirages *sans remise* dans une urne à $N$ éléments. 
 
 
 

@@ -183,6 +183,5 @@ soit $-\dkl \leqslant -\ln(1 - \dtv^2)$, c'est-à-dire @eq-bh.
 
 
 
-
 [^1]: Si $P$ est [absolument continue](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Radon-Nikodym-Lebesgue) par rapport à $Q$ (ce qu'on note $P \ll Q$), alors la dérivée de Radon-Nikodym existe, et c'est une fonction mesurable positive $f$ (unique à un ensemble $Q$-négligeable près) qui vérifie $P(A) = \int f(x)\mathbf{1}_{x\in A}\mathrm{d}Q$. On appelle cette fonction *densité* de $P$ par rapport à $Q$. 
 
