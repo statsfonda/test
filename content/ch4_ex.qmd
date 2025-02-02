@@ -170,6 +170,9 @@ Je ne garantis pas que les notations et les concepts utilisés dans ces annales 
 - [Partiel 2023](/pdfs/Partiel2023.pdf) et [sa correction](/pdfs/Partiel2023Corrige.pdf)
 
 - [Partiel 2024](/pdfs/partiel_24.pdf) avec sa correction intégrée, assez proche de ce que j'attend de vous pour le partiel 2025. 
+- 
+- [Partiel 2025](/pdfs/partiel_25.pdf) avec aussi sa correction intégrée. 
+
 
 [^1]: une dénomination très vieillote, je vous le concède. 
 

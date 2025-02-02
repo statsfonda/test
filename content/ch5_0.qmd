@@ -12,10 +12,10 @@ où $\alpha, \beta$ sont deux nombres réels. Ici, $\approx$ signifie que la rel
 Pour l'heure, nous voulons chercher les meilleurs $\alpha, \beta$ possibles. On calcule la distance entre le nuage de points $(x_i, y_i)$ et la droite d'équation $y = \alpha + \beta x$. Cette distance au carré est donnée par 
 $$ L(\alpha, \beta) = \sum_{i=1}^n (y_i - \alpha - \beta x_i)^2.$$
 
-On cherchera donc les $(\hat\alpha, \hat\beta)$ qui  minimisent cette distance. La fonction $L$ est manifestement une fonction quadratique qui tend vers $+\infty$ lorsque $(\alpha, \beta) \to \infty$, par conséquent cette fonction possède un unique minimiseur $(\hat{\alpha}, \hat{\beta})$, et ce minimiseur est le seul point en lequel les dérivées partielles s'annulent (*conditions de premier ordre*) : $\partial_\alpha L(\hat{\alpha}, \hat{\beta}) = 0$ et $\partial_\beta L(\hat{\alpha}, \hat{\beta})=0$. Or, 
-$$\partial_\alpha L(\alpha, \beta)  = \sum_{i=1}^n (\alpha + \beta x_i - y_i)$$
-$$ \partial_\beta L(\alpha, \beta) = \sum_{i=1}^n x_i(\alpha + \beta x_i - y_i).$$
-Les conditions de premier ordre deviennent donc $n\alpha + \beta (x_1 + \dotsc + x_n) - (y_1 + \dotsb + y_n) =0$ soit encore $\alpha + \beta \bar{x} - \bar{y}=0$, et d'autre part $\alpha (x_1 + \dotsb + x_n) + \beta(x_1^2 + \dotsb + x_n^2) - (x_1y_1 + \dotsb + x_ny_n) = 0$, soit $\alpha \bar{x}+ \beta \overline{xx} - \overline{xy} = 0$, où $\overline{xx}$ est la moyenne des carrés des $x_i$ et $\overline{xy}$ la moyenne des $x_iy_i$. En résolvant ces équations, on trouve d'abord $\alpha$ puis $\beta$ : 
+On cherchera donc les $(\hat\alpha, \hat\beta)$ qui  minimisent cette distance. La fonction $L$ est manifestement une fonction quadratique positive, par conséquent cette fonction possède au moins un minimum local $(\hat{\alpha}, \hat{\beta})$, et ce minimiseur est un point en lequel les dérivées partielles s'annulent (*conditions de premier ordre*) : $\partial_\alpha L(\hat{\alpha}, \hat{\beta}) = 0$ et $\partial_\beta L(\hat{\alpha}, \hat{\beta})=0$. Or, 
+$$\partial_\alpha L(\alpha, \beta)  = 2\sum_{i=1}^n (\alpha + \beta x_i - y_i)$$
+$$ \partial_\beta L(\alpha, \beta) = 2\sum_{i=1}^n x_i(\alpha + \beta x_i - y_i).$$
+En manipulant ces équations et en introduisant $\bar{x}, \bar{x}, \bar{xx}, \bar{xy}$ les moyennes empiriques respectives des $x_i, y_i, x_i^2, x_i y_i$, on voit que les conditions de premier ordre deviennent $\alpha + \beta \bar{x} - \bar{y}=0$, et $\alpha (x_1 + \dotsb + x_n) + \beta(x_1^2 + \dotsb + x_n^2) - (x_1y_1 + \dotsb + x_ny_n) = 0$, soit $\alpha \bar{x}+ \beta \overline{xx} - \overline{xy} = 0$, où $\overline{xx}$ est la moyenne des carrés des $x_i$ et $\overline{xy}$ la moyenne des $x_iy_i$. En résolvant ces équations, on trouve d'abord $\alpha$ puis $\beta$ : 
 $$\beta = \frac{\overline{xy}-\bar{x}\bar{y}}{\overline{xx} - \bar{x}\bar{x}} ,~~\quad\alpha = \bar{y} - \hat{\beta}\bar{x}.$$
 Le coefficient $\beta$ n'est rien d'autre que la covariance empirique des $x_i$ et des $y_i$, normalisé par la variance empirique des $x_i$. 
 
@@ -60,10 +60,10 @@ La projection orthogonale sur le sous-espace vectoriel engendré par les colonne
 :::
 
 
-L'expression @eq-mco possède de nombreuses expressions alternatives. Parmi elles, on pourra noter que 
-$$\hat{\bt} = \bt + \left(\frac{1}{n}\sum_{i=1}^n \bx_i^\top\bx_i \right)^{-1}\frac{1}{n}\sum_{i=1}^n \bx_i^\top \varepsilon_i. $${#eq-mco-alt}
+L'expression @eq-mco possède de nombreuses expressions alternatives. Parmi elles, on pourra noter que $\hat{\bt} - \bt$ est égal à 
+$$ \left(\frac{\sum_{i=1}^n \bx_i^\top\bx_i}{n} \right)^{-1}\frac{\sum_{i=1}^n \bx_i^\top \varepsilon_i}{n}. $${#eq-mco-alt}
 
-**Remarque générale.** Si, en dimension 1, on cherche à trouver le $\theta$ qui résout l'équation $y = x\theta$, on trouve évidemment $\theta = y/x$, c'est-à-dire qu'on *divise* $y$ par $x$, ou encore qu'on multiplie $y$ par l'inverse de $x$. En dimension supérieure, quand on veut résoudre en $\theta$ l'équation $Y = X\theta$, c'est pareil. Le problème, c'est qu'on ne sait pas forcément *inverser* $X$. La formule @eq-mco dit que même si $X$ n'est pas inversible, on peut quand même "diviser par $X$" : c'est pour cela que la matrice $(X^\top X)^{-1} X^\top$ est appelée *pseudo-inverse à gauche* de $X$ -- parfois associée au nom de Moore-Penrose. Multiplier $Y$ par $(X^\top X)^{-1}X^\top$ donne $(X^\top X)^{-1}X^\top Y = \hat{\bt}$ : ce vecteur ne vérifie par forcément $X{\hat{\bt}} = Y$, mais parmi tous les vecteurs possibles, c'est celui qui rend $X\bt$ le plus proche possible de $Y$.
+**Remarque générale.** Si, en dimension 1, on cherche à trouver le $\theta$ qui résout l'équation $y = x\theta$, on trouve évidemment $\theta = y/x$, c'est-à-dire qu'on *divise* $y$ par $x$, ou encore qu'on multiplie $y$ par l'inverse de $x$. En dimension supérieure, quand on veut résoudre en $\theta$ l'équation $Y = X\theta$, c'est pareil. Le problème, c'est qu'on ne sait pas forcément *inverser* $X$. La formule @eq-mco dit que même si $X$ n'est pas inversible, on peut quand même "diviser par $X$" : c'est pour cela que la matrice $(X^\top X)^{-1} X^\top$ est appelée *pseudo-inverse à gauche* de $X$ -- parfois associée au nom de Moore-Penrose. Multiplier $Y$ par $(X^\top X)^{-1}X^\top$ donne $\hat{\bt}$ : ce vecteur ne vérifie par forcément $X{\hat{\bt}} = Y$, mais parmi tous les vecteurs possibles, c'est celui qui rend $X\bt$ le plus proche possible de $Y$.
 
 
 ## Résidus et $R^2$
@@ -79,9 +79,9 @@ $$R^2 = \frac{\sum_{i=1}^n |\hat{y}_i - \bar{y}|^2}{\sum_{i=1}^n |y_i - \bar{y}|
 C'est un nombre entre 0 et 1. 
 :::
 
-Le numérateur est la variance empirique des prédictions $\hat{y}_i$. Le dénominateur est la variance empirique des observations. Dans les des cas, il s'agit de la norme carrée d'un vecteur ($\hat{Y}$ et $Y$) projeté sur l'espace des vecteurs de moyenne nulle. Comme $\hat{Y}$ est déjà une projection de $Y$ sur un certain sous-espace, on a forcément $|\hat{Y} - \bar{y}| \leqslant |Y - \bar{y}|$, donc le coefficient $R^2$ est toujours entre 0 et 1. 
+Le numérateur est la variance empirique des prédictions $\hat{y}_i$. Le dénominateur est la variance empirique des observations. Dans les deux cas, il s'agit de la norme carrée d'un vecteur ($\hat{Y}$ et $Y$) projeté sur l'espace des vecteurs de moyenne nulle. Comme $\hat{Y}$ est déjà une projection de $Y$ sur un certain sous-espace, on a forcément $|\hat{Y} - \bar{y}| \leqslant |Y - \bar{y}|$, donc le coefficient $R^2$ est toujours entre 0 et 1. 
 
-Plus le coefficient de détermination est proche de 1, meilleure est la régression -- attention, cet indicateur possède de nombreuses limites. Comme tous les outils statistiques puissants, la régression linéaire et le coefficient R2 donnent toujours lieu à des utilisations fantastiques : 
+Plus le coefficient de détermination est proche de 1, meilleure est la régression -- attention, cet indicateur possède de nombreuses limites. Comme tous les outils statistiques puissants, la régression linéaire et le coefficient R2 donnent toujours lieu à des utilisations fantastiques : la régression suivante, par exemple, possède un $R^2$ respectable. 
 
 ::: {.content-visible when-format="html"} 
 

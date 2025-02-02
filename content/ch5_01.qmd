@@ -20,13 +20,13 @@ et ces deux variables aléatoires sont indépendantes.
 
 :::{.proof} 
 
-Ce n'est rien de plus que le théorème de Cochran appliqué à notre problème : en effet, le vecteur des résidus est la projection orthogonale de $Y$ sur le sous-espace orthogonal à l'espace des colonnes de $X$. 
+Ce n'est rien de plus que le @thm-cochran appliqué à notre problème : en effet, $X\hat{\bt}$ est la projection orthogonale de $Y$ sur l'espace vectoriel $\mathrm{Im}(X)$, tandis que $\hat{\varepsilon}$ est la projection orthogonale de $Y$ sur le sous-espace orthogonal à $\mathrm{Im}(X)$.  
 
 :::
 
 La variable aléatoire $|\hat\varepsilon|^2$ est souvent appelée *Somme des Carrés des Résidus* (SCR). Le théorème précédent implique que 
 $$\hat{\sigma}^2_n = \frac{|\hat\varepsilon|^2}{n-d}$$
-est un estimateur sans biais de $\sigma^2$. et ces deux variables aléatoires sont indépendantes. En particulier, $(n-d)\hat{\sigma}^2_n/\sigma^2 \sim \chi_2(n-d)$. 
+est un estimateur sans biais de $\sigma^2$, et ces deux variables aléatoires sont indépendantes. En particulier, $(n-d)\hat{\sigma}^2_n/\sigma^2 \sim \chi_2(n-d)$. 
 
 
 ## Modèle linéaire général {#sec-mlgen}
@@ -37,7 +37,7 @@ Sous ces hypothèses, $\hat{\bt}$ est toujours un estimateur sans biais de $\bt$
 
 :::{#hyp-?}
 On suppose que les variables explicatives $\bx_i$ vérifient la propriété suivante^[On rappelle que $\bx_i$ est un vecteur ligne de taille $d$, et donc que les matrices $\bx_i^\top \bx_i$ sont bien des matrices carrées de taille $d \times d$.] : 
-$$ \lim_{n \to \infty}\frac{1}{n}\sum_{i=1}^n \bx_i^\top \bx_i = \Sigma_x,$${#eq-hyp-mco-x}
+$$ \lim_{n \to \infty}\frac{\sum_{i=1}^n \bx_i^\top \bx_i}{n} = \Sigma_x,$${#eq-hyp-mco-x}
 où $\Sigma_x$ est inversible. Cette propriété s'écrit aussi $X^\top X / n \to \Sigma_x$. 
 
 :::
@@ -69,7 +69,7 @@ Les deux théorèmes énoncés ci-dessus permettent de définir des régions de 
 
 ### Préliminaire : la variance est connue {.unnumbered}
 
-Commençons par construire une région probable pour un vecteur gaussien $\xi \sim N(0,I_d)$. Nous savons que $|\xi|^2 \sim \chi_2(d)$. Si $\kappa_{d,1-\alpha}$ désigne le quantile d'ordre $1-\alpha$ de cette loi, on en déduit que $\xi$ est de norme inférieure à $\sqrt{\kappa_{d,1-\alpha}}$ avec probabilité $1-\alpha$ ; autrement dit, 
+Commençons par construire une région probable pour un vecteur gaussien $\xi \sim N(0,I_d)$. Nous savons que $|\xi|^2 \sim \chi_2(d)$. Si $\kappa_{d,1-\alpha}$ (on notera simplement $\kappa$) désigne le quantile d'ordre $1-\alpha$ de cette loi, on en déduit que $\xi$ est de norme inférieure à $\sqrt{\kappa_{d,1-\alpha}}$ avec probabilité $1-\alpha$ ; autrement dit, 
 $$ \mathbb{P}(0 \in B(\xi, \sqrt{\kappa})) = 1-\alpha.$$
 Il est immédiat d'en déduire que si $\xi \sim N(\mu, I_d)$, alors comme $\xi - \mu \sim N(0,I_d)$, on a
 $$ \mathbb{P}(\mu \in B(\xi, \sqrt{\kappa})) = 1-\alpha. $$
@@ -78,7 +78,7 @@ $$ \mathbb{P}(\mu \in \Sigma^{1/2} B(\xi, \sqrt{\kappa})) = 1-\alpha.$$
 La région de confiance est donc l'image de la boule $B(\xi, \sqrt{\kappa})$ par la matrice symétrique $\Sigma^{1/2}$ : c'est une ellipse. Par ailleurs, l'ensemble $\Sigma B(x, \delta)$ peut aussi s'écrire $\{y \in \mathbb{R}^d : |\Sigma^{1/2}(x - y)|^2 \leqslant \delta\}$. 
 
 En combinant ce résultat avec la loi de $\hat{\bt}$ donnée dans @thm-glm, on obtient la région de confiance 
-$$ \left\lbrace \theta \in \mathbb{R}^d : \left|\frac{1}{\sigma}(X^{\top} X)^{1/2}(\hat{\bt} - \theta) \right|^2 < \kappa_{d,1-\alpha} \right\rbrace.$$
+$$ \left\lbrace \theta \in \mathbb{R}^d : \frac{\left|(X^{\top} X)^{1/2}(\hat{\bt} - \theta) \right|^2}{\sigma} < \kappa \right\rbrace.$$
 Malheureusement, cette région nécessite de connaître $\sigma$. Lorsqu'on ne le connaît pas, il faut l'estimer. 
 
 ### Cas général {.unnumbered}
@@ -94,8 +94,8 @@ a pour loi le rapport de lois du $\chi_2$ indépendantes de paramètres $d$ et $
 
 Soit $\hat{\bt}$ l'estimateur des MCO dans un modèle linéaire gaussien. 
 
-Si $f_{d,n-d,1-\alpha}$ est le quantile d'ordre $1-\alpha$ d'une loi $\mathscr{F}_{d,n-d}$, alors la région 
-$$ \left\lbrace \theta \in \mathbb{R}^d : \frac{|(X^\top X)^{1/2}(\hat{\bt} - \bt) |^2 / d}{\hat{\sigma}_n^2 } <  f_{d,n-d,1-\alpha} \right\rbrace $$
+Si $f=f_{d,n-d,1-\alpha}$ est le quantile d'ordre $1-\alpha$ d'une loi $\mathscr{F}_{d,n-d}$, alors la région 
+$$ \left\lbrace \theta \in \mathbb{R}^d : \frac{|(X^\top X)^{1/2}(\hat{\bt} - \bt) |^2 }{d\hat{\sigma}_n^2 } <  f\right\rbrace $$
 est une région de confiance de niveau $1-\alpha$ pour $\bt$. 
 
 Lorsque le modèle n'est pas gaussien, mais qu'il vérifie les hypothèses de la section @sec-mlgen, le même résultat est valable mais le niveau de confiance de la région ci-dessus est *asymptotiquement* égal à $1-\alpha$. 
