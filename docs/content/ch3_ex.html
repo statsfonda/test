@@ -247,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../content/problemes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Problèmes</span></a>
+ <span class="menu-text">Problèmes et sujets</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -359,10 +359,10 @@ $$
 <section id="exercices" class="level2">
 <h2 class="anchored" data-anchor-id="exercices">Exercices</h2>
 <div id="exr-poisson" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 1 (Lois de Poisson) </strong></span>On suppose que l’on observe <span class="math inline">\(X_1, \dots, X_n\)</span> i.i.d de loi <span class="math inline">\(\mathscr{P}(\theta)\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercice 1 (Lois de Poisson) </strong></span>On suppose que l’on observe <span class="math inline">\(X_1, \dots, X_n\)</span> i.i.d de loi de Poisson de paramètre <span class="math inline">\(\theta\)</span>.</p>
 <ol type="1">
 <li>Étudier <span class="math inline">\(\bar{X}_n\)</span>.</li>
-<li>Montrer que <span class="math inline">\(\sqrt{\bar{X}_n} \underset{n \rightarrow \infty}{\overset{\mathbb{P}}{\longrightarrow}} \sqrt{\theta}\)</span>.</li>
+<li>Montrer que <span class="math inline">\(\sqrt{\bar{X}_n}\)</span> converge en probabilité vers <span class="math inline">\(\sqrt{\theta}\)</span>.</li>
 <li>Donner deux intervalles de confiance au niveau <span class="math inline">\(98 \%\)</span> pour <span class="math inline">\(\sqrt{\theta}\)</span>, et les comparer.</li>
 </ol>
 </div>
@@ -388,6 +388,14 @@ $$
 <div id="exr-azuma" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercice 5 (Inégalité d’Azuma) </strong></span>Montrer que l’inégalité de Hoeffding reste valable lorsque les <span class="math inline">\(X_i\)</span> ne sont plus supposés indépendants, mais que la suite <span class="math inline">\(S_k = X_1 + \dotsb + X_k\)</span> est une martingale. Indice : <span class="math inline">\(\mathbb{E}[e^{\lambda S_{n+1}}] = \mathbb{E}[e^{\lambda S_n}\mathbb{E}[e^{\lambda X_{n+1}}|S_n]]\)</span>.</p>
 <p>Ce raffinement s’appelle <em>inégalite de Hoeffding-Azuma</em>. C’est celui que nous avons utilisé dans l’exercice <a href="ch2_ex.html#exr-tanks">Exercice&nbsp;<span>2</span></a>, lorsque les <span class="math inline">\(X_1, \dotsc, X_n\)</span> sont des tirages <em>sans remise</em> dans une urne à <span class="math inline">\(N\)</span> éléments.</p>
+</div>
+<div id="exr-poissonexp" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 6 (Examen 24) </strong></span>Soit <span class="math inline">\((E_i)\)</span> une suite de variables aléatoires iid de loi exponentielle de paramètre <span class="math inline">\(c&gt;0\)</span>, et soit <span class="math inline">\((X_i)\)</span> une suite de variables aléatoires indépendantes de loi de Poisson, avec <span class="math inline">\(X_i \sim \mathrm{Poisson}(E_i)\)</span>. Autrement dit, <span class="math inline">\(X_i\)</span> suit une loi de Poisson de paramètre <span class="math inline">\(E_i\)</span> qui est lui-même aléatoire et dépend de <span class="math inline">\(c\)</span>. L’objectif est d’estimer <span class="math inline">\(c\)</span>.</p>
+<ol type="1">
+<li>Calculer <span class="math inline">\(\mathbb{P}(X_i=n)\)</span> pour tout <span class="math inline">\(n\)</span>. Quelle est la loi de <span class="math inline">\(X_i\)</span> ?</li>
+<li>Proposer un estimateur convergent de <span class="math inline">\(c\)</span>.</li>
+<li>Proposer un intervalle de confiance asymptotique de <span class="math inline">\(c\)</span> de niveau de risque <span class="math inline">\(\alpha\)</span>.</li>
+</ol>
 </div>
 
 

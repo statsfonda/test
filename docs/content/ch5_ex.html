@@ -247,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../content/problemes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Problèmes</span></a>
+ <span class="menu-text">Problèmes et sujets</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -378,7 +378,7 @@ $$
 </ol>
 </div>
 <div id="exr-aju" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercice 4 </strong></span>Soient <span class="math inline">\((x_1, y_1), \dotsc, (x_n, y_n)\)</span> des points dans <span class="math inline">\(\mathbb{R}^2\)</span>. Comparer l’ajustement affine des <span class="math inline">\(x\)</span> vers les <span class="math inline">\(y\)</span>, et l’ajustement affine des <span class="math inline">\(y\)</span> vers les <span class="math inline">\(x\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercice 4 </strong></span>Soient <span class="math inline">\((x_1, y_1), \dotsc, (x_n, y_n)\)</span> des points dans <span class="math inline">\(\mathbb{R}^2\)</span>. Comparer l’ajustement affine des <span class="math inline">\(x\)</span> vers les <span class="math inline">\(y\)</span>, et l’ajustement affine des <span class="math inline">\(y\)</span> vers les <span class="math inline">\(x\)</span> (sans constantes).</p>
 </div>
 <div id="exr-fw" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercice 5 (Théorème de Frish-Waugh) </strong></span>Soit <span class="math inline">\(Y\)</span> un vecteur de variables à expliquer de taille <span class="math inline">\(n\)</span>, et soient <span class="math inline">\(X,Z\)</span> deux matrices de variables explicatives, de dimensions <span class="math inline">\((n,d)\)</span> et <span class="math inline">\((n,f)\)</span>. Soient <span class="math inline">\(\hat{\bt}\)</span> et <span class="math inline">\(\hat{\bt}_X\)</span> les estimateurs des moindres carrés des deux régressions <span class="math inline">\(Y = X\bt + Z{\boldsymbol \mu} + \varepsilon\)</span> d’une part, et <span class="math inline">\(PY = PX\bt + P\varepsilon\)</span> d’autre part, où <span class="math inline">\(P\)</span> est la matrice de projection sur le sous-espace vectoriel orthogonal aux colonnes de <span class="math inline">\(Z\)</span>. Montrer que <span class="math inline">\(\hat{\bt} = \hat{\bt}_X\)</span>.</p>
@@ -394,7 +394,7 @@ $$
 <div id="exr-covnonscal" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercice 7 </strong></span>On se place dans un modèle linéaire <em>gaussien</em> de la forme <span class="math inline">\(Y = X\bt + \varepsilon\)</span>, mais on suppose que les entrées de <span class="math inline">\(\varepsilon_i\)</span> ne sont plus iid, mais possèdent une covariance <span class="math inline">\(\Sigma\)</span> non scalaire.</p>
 <ol type="1">
-<li>Si l’on connaît <span class="math inline">\(\Sigma\)</span>, on pose <span class="math inline">\(Y' = \Sigma^{-1/2}Y\)</span> et <span class="math inline">\(X' = \Omega^{-1/2}X\)</span>. Montrer que <span class="math display">\[\hat{\bt}_{\mathrm{MCG}}= (X^\top \Sigma^{-1} X)^{-1}X^\top \Sigma^{-1}Y\]</span> est un estimateur sans biais de <span class="math inline">\(\bt\)</span>, appelé <em>estimateur des moindres carrés généralisés</em>.</li>
+<li>On suppose que l’on connaît <span class="math inline">\(\Sigma\)</span>. Montrer que <span class="math display">\[\hat{\bt}_{\mathrm{MCG}}= (X^\top \Sigma^{-1} X)^{-1}X^\top \Sigma^{-1}Y\]</span> est un estimateur sans biais de <span class="math inline">\(\bt\)</span>, appelé <em>estimateur des moindres carrés généralisés</em>, dont on calculera la loi.</li>
 <li>On suppose qu’on dispose d’un estimateur <span class="math inline">\(\hat{\Sigma}\)</span> de <span class="math inline">\(\Sigma\)</span>. Montrer que <span class="math display">\[(X^\top \hat{\Sigma}^{-1} X)^{-1}X^\top \hat{\Sigma}^{-1}Y\]</span> est un estimateur asymptotiquement normal et sans biais de <span class="math inline">\(\bt\)</span>.</li>
 </ol>
 </div>
@@ -421,6 +421,15 @@ $$
 <ol type="1">
 <li>Montrer que <span class="math inline">\((M - (X^\top X)^{-1}X^\top)X= 0\)</span>.</li>
 <li>Calculer la matrice de variance de <span class="math inline">\(\tilde{\bt}\)</span> en fonction de <span class="math inline">\(M - (X^\top X)^{-1}X^\top\)</span> et conclure.</li>
+</ol>
+</div>
+<div id="exr-regpoly" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 10 (Régression polynomiale (examen 25-bis)) </strong></span>On dispose de <span class="math inline">\(n\)</span> variables <span class="math inline">\(x_1, \dotsc, x_n \in \mathbb{R}\)</span>, et <span class="math inline">\(n\)</span> variables à expliquer <span class="math inline">\(y_1, \dotsc, y_n \in \mathbb{R}\)</span>. L’objectif est de trouver le meilleur polynôme possible de degré <span class="math inline">\(d\)</span> qui relie les <span class="math inline">\(x_i\)</span> aux <span class="math inline">\(y_i\)</span>.</p>
+<ol type="1">
+<li>Soit <span class="math inline">\(\mathscr{F}_d\)</span> l’ensemble des polynômes à coefficients réels, de degré inférieur ou égal à <span class="math inline">\(d\)</span>. On veut trouver <span class="math inline">\(f\in \mathscr{F}_d\)</span> tel que <span class="math display">\[ f \in \arg\min_{g\in \mathscr{F}_d} \sum_{i=1}^n (y_i - g(x_i))^2.\]</span> Exprimer ce problème de minimisation comme un problème de moindres carrés et exprimer la solution <span class="math inline">\(f\)</span> en fonction des <span class="math inline">\(x_i\)</span> et des <span class="math inline">\(y_i\)</span> (on pourra faire des hypothèses raisonnables sur les <span class="math inline">\(x_i\)</span>).</li>
+<li>On suppose qu’il existe un polynôme <span class="math inline">\(f_\star\)</span> de degré au plus <span class="math inline">\(d\)</span> tel que <span class="math inline">\(y_i = f_\star(x_i) + \varepsilon_i\)</span> où les <span class="math inline">\(\varepsilon_i\)</span> sont des variables aléatoires indépendantes de loi <span class="math inline">\(N(0,\sigma^2)\)</span>, avec <span class="math inline">\(\sigma^2\)</span> une variance inconnue. On note <span class="math inline">\(\hat{f}\)</span> l’estimateur trouvé à la question précédente. Quelle est la loi des coefficients de <span class="math inline">\(\hat{f}\)</span> ? Donner aussi l’estimateur de <span class="math inline">\(\sigma^2\)</span> et sa loi.</li>
+<li>Tester l’hypothèse selon laquelle <span class="math inline">\(f_\star\)</span> est en réalité de degré strictement inférieur à <span class="math inline">\(d\)</span>.</li>
+<li>Maintenant, on suppose que les <span class="math inline">\(x_i\)</span> sont de dimension <span class="math inline">\(2\)</span>. On souhaite faire une régression polynomiale de degré <span class="math inline">\(d\)</span> comme ci-dessus des <span class="math inline">\(x_i\)</span> vers les <span class="math inline">\(y_i\)</span>. Quelle est la dimension de cette nouvelle régression ? Tester l’hypothèse selon laquelle les <span class="math inline">\(y_i\)</span> dépendent seulement des <span class="math inline">\(|x_i|^2\)</span> (difficile).</li>
 </ol>
 </div>
 

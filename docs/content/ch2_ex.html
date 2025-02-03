@@ -247,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../content/problemes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Problèmes</span></a>
+ <span class="menu-text">Problèmes et sujets</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -405,6 +405,19 @@ $$
 <ol type="1">
 <li>Montrer que si <span class="math inline">\(\rho&gt;1\)</span>, alors <span class="math inline">\(\mathbb{E}[X] = \rho/(\rho-1)\)</span>.</li>
 <li>Trouver un estimateur de <span class="math inline">\(\rho\)</span> et donner ses propriétés.</li>
+</ol>
+</div>
+<div id="exr-massemanquante" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 8 (Estimation des espèces manquantes de Fisher-Corbet (examen 24)) </strong></span>Un naturaliste capture des papillons dans une forêt lointaine. Il effectue deux collectes de même durée. Soit <span class="math inline">\(S\)</span> le nombre total d’espèces distinctes dans cette forêt ; on note <span class="math inline">\(X^1_k\)</span> (respectivement <span class="math inline">\(X^2_k\)</span>) le nombre de spécimens de l’espèce <span class="math inline">\(k\)</span> qui ont été capturées pendant la première collecte (respectivement, la seconde). On fait l’hypothèse selon laquelle les <span class="math inline">\(X^i_k\)</span> sont des variables aléatoires indépendantes avec <span class="math inline">\(X^i_k \sim \mathrm{Poisson}(\theta_k)\)</span> où <span class="math inline">\(\theta_k\)</span> est un paramètre positif qui représente la rareté de l’espèce <span class="math inline">\(k\)</span>.</p>
+<ol type="1">
+<li>On pose <span class="math inline">\(N_r\)</span> le nombre d’espèces dont exactement <span class="math inline">\(r\)</span> spécimens ont été capturés . Par exemple, <span class="math inline">\(N_3\)</span> est le nombre d’espèces dont on a capturé 3 spécimens et <span class="math inline">\(N_0\)</span> est le nombre d’espèces qu’on n’a pas capturées.
+<ol type="a">
+<li>Calculer l’espérance et la variance des <span class="math inline">\(N_r\)</span>.</li>
+<li>Quelle est la probabilité qu’aucun spécimen de l’espèce <span class="math inline">\(k\)</span> n’ait été capturé pendant la première collecte, mais qu’au moins un ait été capturé pendant la seconde ?</li>
+</ol></li>
+<li>En utilisant le développement <span class="math inline">\(e^{x} - 1 = \sum_{t=1}^\infty x^t / t!\)</span>, montrer que le nombre d’espèces <span class="math inline">\(N\)</span> qui n’ont pas été capturées pendant la première collecte mais qui ont été capturées pendant la seconde collecte vérifie <span class="math display">\[ \mathbb{E}[N] = \sum_{t=0}^\infty (-1)^t \sum_{k=1}^S e^{-\theta_k}\frac{\theta_k^{t+1}}{(t+1)!}.\]</span></li>
+<li>En déduire que <span class="math display">\[\hat{N} := N_1 - N_2 + N_3 -N_4 + N_5 - \dotsb \]</span> est un estimateur sans biais de <span class="math inline">\(N\)</span> .</li>
+<li>Expliquer pourquoi ce résultat est étonnant. Quelles pourraient être les limitations de cet estimateur ?</li>
 </ol>
 </div>
 </section>

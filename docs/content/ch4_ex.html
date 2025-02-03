@@ -247,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../content/problemes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Problèmes</span></a>
+ <span class="menu-text">Problèmes et sujets</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -481,6 +481,19 @@ $$
 </tbody>
 </table>
 <p>L’argent fait-il le bonheur ?</p>
+</div>
+<div id="exr-testsmultiples" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercice 11 (Tests multiples (examen 24)) </strong></span>Soient <span class="math inline">\(x_1, \dotsc, x_n\)</span> des variables aléatoires indépendantes gaussiennes dans <span class="math inline">\(\mathbb{R}^d\)</span>, de lois respectives <span class="math inline">\(N(\mu_i, \sigma_i^2 I_d)\)</span>, où <span class="math inline">\(\mu_i \in \mathbb{R}^d\)</span> et <span class="math inline">\(\sigma_i^2 &gt; 0\)</span> sont inconnus. On note <span class="math inline">\(H_{0,i}\)</span> l’hypothèse « <span class="math inline">\(\mu_i = 0\)</span> ».</p>
+<ol type="1">
+<li>Construire un test de <span class="math inline">\(H_{0,i}\)</span> de niveau de confiance <span class="math inline">\(1-\alpha\)</span>. On le notera <span class="math inline">\(T_{\alpha}^{(i)}\)</span>.</li>
+<li>On effectue chacun des tests <span class="math inline">\(T^{(i)}_\alpha\)</span>, indépendamment les uns des autres. Si tous les <span class="math inline">\(\mu_i\)</span> sont simultanément nuls, quelle est la probabilité qu’aucune des hypothèses <span class="math inline">\(H_{0,i}\)</span> ne soit rejetée ? Quelle est la limite de cette probabilité lorsque <span class="math inline">\(n \to \infty\)</span> ?</li>
+<li>Dorénavant, on notera <span class="math inline">\(H_0\)</span> l’hypothèse selon laquelle tous les <span class="math inline">\(\mu_i\)</span> sont nuls. Quel niveau de confiance <span class="math inline">\(1-\delta\)</span> faudrait-il choisir pour que, sous <span class="math inline">\(H_0\)</span>, la probabilité de l’événement « aucun des tests <span class="math inline">\(T^{(i)}_{\delta}\)</span> ne rejette <span class="math inline">\(H_{0,i}\)</span> » soit égale à <span class="math inline">\(1-\alpha\)</span> ?</li>
+<li>On s’intéresse maintenant à la propriété suivante : « sous <span class="math inline">\(H_0\)</span>, la probabilité de l’événement “plus de <span class="math inline">\(k\%\)</span> des tests <span class="math inline">\(T^{(i)}_\delta\)</span> ont rejetés <span class="math inline">\(H_{0,i}\)</span>” est inférieure à <span class="math inline">\(\alpha\)</span> ».
+<ol type="1">
+<li>Sous <span class="math inline">\(H_0\)</span>, quelle est la loi du nombre d’hypothèses <span class="math inline">\(H_{0,i}\)</span> rejetées par <span class="math inline">\(T^{(i)}_{\delta}\)</span> ?</li>
+<li>Trouver un <span class="math inline">\(\delta\)</span> (dépendant de <span class="math inline">\(k,\alpha,n\)</span>) tel que la famille de tests <span class="math inline">\(T_\delta^{(i)}\)</span> vérifie la propriété ci-dessus. (indice : Wassily).</li>
+</ol></li>
+</ol>
 </div>
 </section>
 <section id="travail-pratique1" class="level1">
