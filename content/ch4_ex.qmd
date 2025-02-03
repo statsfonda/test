@@ -140,6 +140,22 @@ L'argent fait-il le bonheur ?
 
 :::
 
+
+:::{#exr-testsmultiples}
+
+## Tests multiples (examen 24)
+
+Soient $x_1, \dotsc, x_n$ des variables aléatoires indépendantes gaussiennes dans $\mathbb{R}^d$, de lois respectives $N(\mu_i, \sigma_i^2 I_d)$, où $\mu_i \in \mathbb{R}^d$ et $\sigma_i^2 > 0$ sont inconnus. On note $H_{0,i}$ l'hypothèse « $\mu_i = 0$ ».
+
+1. Construire un test de $H_{0,i}$ de niveau de confiance $1-\alpha$. On le notera $T_{\alpha}^{(i)}$.
+2. On effectue chacun des tests $T^{(i)}_\alpha$, indépendamment les uns des autres. Si tous les $\mu_i$ sont simultanément nuls, quelle est la probabilité qu'aucune des hypothèses $H_{0,i}$ ne soit rejetée ? Quelle est la limite de cette probabilité lorsque $n \to \infty$ ?
+3. Dorénavant, on notera $H_0$ l'hypothèse selon laquelle tous les $\mu_i$ sont nuls. Quel niveau de confiance $1-\delta$ faudrait-il choisir pour que, sous $H_0$, la probabilité de l'événement « aucun des tests $T^{(i)}_{\delta}$ ne rejette $H_{0,i}$ » soit égale à $1-\alpha$ ?
+4. On s'intéresse maintenant à la propriété suivante : « sous $H_0$, la probabilité de l'événement "plus de $k\%$ des tests $T^{(i)}_\delta$ ont rejetés $H_{0,i}$" est inférieure à $\alpha$ ».
+    1. Sous $H_0$, quelle est la loi du nombre d'hypothèses $H_{0,i}$ rejetées par $T^{(i)}_{\delta}$ ?
+    2. Trouver un $\delta$ (dépendant de $k,\alpha,n$) tel que la famille de tests $T_\delta^{(i)}$ vérifie la propriété ci-dessus. (indice : Wassily).
+
+:::
+
 # Travail pratique[^1]
 
 Faites un test du chi-deux (indépendance ou adéquation) de votre choix. Vous devez vous-même trouver une question qui vous intéresse. Cela peut être n'importe quoi : 
@@ -157,6 +173,10 @@ Trouvez donc une question intéressante, trouvez des données pertinentes (c'est
 Pas besoin d'aller chercher très loin, un jeu de données simple suffit ! Amusez-vous bien. 
 
 Vous devez m'envoyer ça avant le 9 février 23h59, avec pour objet du mail votre nom suivi de "chi-deux". 
+
+
+
+
 
 
 # Annales de partiel

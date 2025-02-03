@@ -1,5 +1,6 @@
-# Problèmes {.unnumbered}
+# Problèmes et sujets {.unnumbered}
 
+## Problèmes
 
 :::{#exr-testsigne}
 
@@ -75,3 +76,26 @@ Pour la table ci-dessus, on trouve $p = 0.001346$.
 1. La notion de quantile a peu de sens pour une loi comme ci-dessus^[Loi hypergéométrique. ]. On remplace donc cette notion par la suivante : si $p(t)$ est la probabilité, sous l'hypothèse nulle, d'observer une table $t$, alors on ordonne toutes les tables possible $t_1, \dotsc, t_2, \dots$ par probabilité croissante. On pose $n_\alpha = \sup\{k : p(t_1) + \dotsb + p(t_k)<\alpha\}$. Montrer que le test dont la région de rejet est $\{t_1, \dotsc, t_{n_\alpha}\}$ est un test de niveau de confiance au moins $1-\alpha$ de l'hypothèse nulle. 
 
 :::
+
+
+## Sujets passés d'examens
+
+
+Je ne garantis pas que les notations et les concepts utilisés dans ces annales soient en phase avec le cours de cette année !
+
+- [Partiel 2020](/pdfs/CC1.pdf) et [sa correction](/pdfs/Corrige_CC1.pdf)
+
+- [Examen 2020](/pdfs/ExoExam.pdf) ; ne pas regarder le deuxième exercice. 
+
+- [Partiel 2023](/pdfs/Partiel2023.pdf) et [sa correction](/pdfs/Partiel2023Corrige.pdf)
+
+- [Partiel 2024](/pdfs/partiel_24.pdf) avec sa correction intégrée, assez proche de ce que j'attend de vous pour le partiel 2025. 
+
+- [Examen 2024](/pdfs/examen_24.pdf) avec sa correction. 
+
+- [Second examen 2024](/pdfs/rattrapage_24.pdf), avec sa correction. 
+
+- [Partiel 2025](/pdfs/partiel_25.pdf) avec aussi sa correction intégrée. 
+
+
+[^1]: une dénomination très vieillote, je vous le concède. 

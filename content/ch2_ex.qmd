@@ -106,7 +106,24 @@ Une variable aléatoire $X$ suit la loi de Yule-Simon de paramètre $\rho>0$ lor
 
 ::: 
 
+:::{#exr-massemanquante}
 
+## Estimation des espèces manquantes de Fisher-Corbet (examen 24)
+
+Un naturaliste capture des papillons dans une forêt lointaine. Il effectue deux collectes de même durée. Soit $S$ le nombre total d'espèces distinctes dans cette forêt ; on note $X^1_k$ (respectivement $X^2_k$) le nombre de spécimens de l'espèce $k$ qui ont été capturées pendant la première collecte (respectivement, la seconde). On fait l'hypothèse selon laquelle les $X^i_k$ sont des variables aléatoires indépendantes avec $X^i_k \sim \mathrm{Poisson}(\theta_k)$ où $\theta_k$ est un paramètre positif qui représente la rareté de l'espèce $k$. 
+
+1. On pose $N_r$ le nombre d'espèces dont exactement $r$ spécimens ont été capturés \textbf{pendant la première collecte}. Par exemple, $N_3$ est le nombre d'espèces dont on a capturé 3 spécimens et $N_0$ est le nombre d'espèces qu'on n'a pas capturées. 
+   a. Calculer l'espérance et la variance des $N_r$. 
+   b. Quelle est la probabilité qu'aucun spécimen de l'espèce $k$ n'ait été capturé pendant la première collecte, mais qu'au moins un ait été capturé pendant la seconde ?
+2. En utilisant le développement $e^{x} - 1 = \sum_{t=1}^\infty x^t / t!$, montrer que le nombre d'espèces $N$ qui n'ont pas été capturées pendant la première collecte mais qui ont été capturées pendant la seconde collecte vérifie 
+$$ \mathbb{E}[N] = \sum_{t=0}^\infty (-1)^t \sum_{k=1}^S e^{-\theta_k}\frac{\theta_k^{t+1}}{(t+1)!}.$$
+1. En déduire que 
+$$\hat{N} := N_1 - N_2 + N_3 -N_4 + N_5 - \dotsb $$
+est un estimateur sans biais de $N$ \emph{même lorsque $S$ n'est pas connu}. 
+1. Expliquer pourquoi ce résultat est étonnant. Quelles pourraient être les limitations de cet estimateur ? 
+
+
+:::
 
 ## Concours
 
@@ -125,5 +142,8 @@ Votre objectif est de deviner le mieux possible le polynôme $p$, c'est-à-dire 
 - envoyez moi le code ou les calculs que vous avez faits. 
  
  Ceux qui auront correctement estimé le degré et/ou le polynôme auront comme récompense des M&Ms. 
+
+
+
 
 

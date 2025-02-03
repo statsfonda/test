@@ -22,10 +22,10 @@
 
 ## Lois de Poisson
 
-On suppose que l'on observe $X_1, \dots, X_n$ i.i.d de loi $\mathscr{P}(\theta)$.
+On suppose que l'on observe $X_1, \dots, X_n$ i.i.d de loi de Poisson de paramètre $\theta$.
 
 1. Étudier $\bar{X}_n$. 
-2. Montrer que $\sqrt{\bar{X}_n} \underset{n \rightarrow \infty}{\overset{\mathbb{P}}{\longrightarrow}} \sqrt{\theta}$. 
+2. Montrer que $\sqrt{\bar{X}_n}$ converge en probabilité vers $\sqrt{\theta}$. 
 3. Donner deux intervalles de confiance au niveau $98 \%$ pour $\sqrt{\theta}$, et les comparer.
 
 ::: 
@@ -72,5 +72,19 @@ Montrer que l'inégalité de Hoeffding reste valable lorsque les $X_i$ ne sont p
 Ce raffinement s'appelle *inégalite de Hoeffding-Azuma*. C'est celui que nous avons utilisé dans l'exercice @exr-tanks, lorsque les $X_1, \dotsc, X_n$ sont des tirages *sans remise* dans une urne à $N$ éléments. 
 
 
+
+:::
+
+
+:::{#exr-poissonexp}
+
+## Examen 24
+
+
+Soit $(E_i)$ une suite de variables aléatoires iid de loi exponentielle de paramètre $c>0$, et soit $(X_i)$ une suite de variables aléatoires indépendantes de loi de Poisson, avec $X_i \sim \mathrm{Poisson}(E_i)$. Autrement dit, $X_i$ suit une loi de Poisson de paramètre $E_i$ qui est lui-même aléatoire et dépend de $c$. L'objectif est d'estimer $c$.
+
+1. Calculer $\mathbb{P}(X_i=n)$ pour tout $n$. Quelle est la loi de $X_i$ ?
+2. Proposer un estimateur convergent de $c$.
+3. Proposer un intervalle de confiance asymptotique de $c$ de niveau de risque $\alpha$.
 
 :::

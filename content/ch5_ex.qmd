@@ -53,7 +53,7 @@ Dans un modèle linéaire $Y = X\bt + \varepsilon$, on cherche à tester une uni
 
 :::{#exr-aju}
 
-Soient $(x_1, y_1), \dotsc, (x_n, y_n)$ des points dans $\mathbb{R}^2$. Comparer l'ajustement affine des $x$ vers les $y$, et l'ajustement affine des $y$ vers les $x$. 
+Soient $(x_1, y_1), \dotsc, (x_n, y_n)$ des points dans $\mathbb{R}^2$. Comparer l'ajustement affine des $x$ vers les $y$, et l'ajustement affine des $y$ vers les $x$ (sans constantes). 
 
 :::
 
@@ -81,9 +81,9 @@ On dispose de deux jeux de données, disons $(X^1_1, Y^1_1), \dotsc, (X^1_n, Y^2
 
 On se place dans un modèle linéaire *gaussien* de la forme $Y = X\bt + \varepsilon$, mais on suppose que les entrées de $\varepsilon_i$ ne sont plus iid, mais possèdent une covariance $\Sigma$ non scalaire. 
 
-1. Si l'on connaît $\Sigma$, on pose $Y' = \Sigma^{-1/2}Y$ et $X' = \Omega^{-1/2}X$. Montrer que $$\hat{\bt}_{\mathrm{MCG}}= (X^\top \Sigma^{-1} X)^{-1}X^\top \Sigma^{-1}Y$$
-est un estimateur sans biais de $\bt$, appelé *estimateur des moindres carrés généralisés*. 
-2. On suppose qu'on dispose d'un estimateur $\hat{\Sigma}$ de $\Sigma$. Montrer que 
+1. On suppose que l'on connaît $\Sigma$. Montrer que $$\hat{\bt}_{\mathrm{MCG}}= (X^\top \Sigma^{-1} X)^{-1}X^\top \Sigma^{-1}Y$$
+est un estimateur sans biais de $\bt$, appelé *estimateur des moindres carrés généralisés*, dont on calculera la loi. 
+1. On suppose qu'on dispose d'un estimateur $\hat{\Sigma}$ de $\Sigma$. Montrer que 
 $$(X^\top \hat{\Sigma}^{-1} X)^{-1}X^\top \hat{\Sigma}^{-1}Y$$
 est un estimateur asymptotiquement normal et sans biais de $\bt$. 
 
@@ -119,6 +119,23 @@ On se place dans un modèle linéaire gaussien $Y = X\bt + \varepsilon$. L'objec
 
 1. Montrer que $(M - (X^\top X)^{-1}X^\top)X= 0$. 
 2. Calculer la matrice de variance de $\tilde{\bt}$ en fonction de $M - (X^\top X)^{-1}X^\top$ et conclure. 
+
+:::
+
+
+
+:::{#exr-regpoly}
+
+## Régression polynomiale (examen 25-bis)
+
+On dispose de $n$ variables $x_1, \dotsc, x_n \in \mathbb{R}$, et $n$ variables à expliquer $y_1, \dotsc, y_n \in \mathbb{R}$. L'objectif est de trouver le meilleur polynôme possible de degré $d$ qui relie les $x_i$ aux $y_i$.
+
+1. Soit $\mathscr{F}_d$ l'ensemble des polynômes à coefficients réels, de degré inférieur ou égal à $d$. On veut trouver $f\in \mathscr{F}_d$ tel que 
+        $$ f \in \arg\min_{g\in \mathscr{F}_d} \sum_{i=1}^n (y_i - g(x_i))^2.$$
+        Exprimer ce problème de minimisation comme un problème de moindres carrés et exprimer la solution $f$ en fonction des $x_i$ et des $y_i$ (on pourra faire des hypothèses raisonnables sur les $x_i$). 
+2. On suppose qu'il existe un polynôme $f_\star$ de degré au plus $d$ tel que $y_i = f_\star(x_i) + \varepsilon_i$ où les $\varepsilon_i$ sont des variables aléatoires indépendantes de loi $N(0,\sigma^2)$, avec $\sigma^2$ une variance inconnue. On note $\hat{f}$ l'estimateur trouvé à la question précédente. Quelle est la loi des coefficients de $\hat{f}$ ? Donner aussi l'estimateur de $\sigma^2$ et sa loi. 
+3. Tester l'hypothèse selon laquelle $f_\star$ est en réalité de degré strictement inférieur à $d$. 
+4. Maintenant, on suppose que les $x_i$ sont de dimension $2$. On souhaite faire une régression polynomiale de degré $d$ comme ci-dessus des $x_i$ vers les $y_i$.  Quelle est la dimension de cette nouvelle régression ? Tester l'hypothèse selon laquelle les $y_i$ dépendent seulement des $|x_i|^2$ (difficile). 
 
 :::
 
